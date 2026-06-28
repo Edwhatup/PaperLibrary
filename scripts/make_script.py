@@ -44,8 +44,9 @@ def _prompt(paper: dict, full_text: str, minutes: int) -> str:
         if relevant
         else "这篇和听众方向关系不大，做一个清晰的科普式概览即可，重点讲清它解决什么问题、核心思路、和主要结论。"
     )
+    lo, hi = int(chars * 0.85), int(chars * 1.1)
     return f"""你是一档面向通勤者的 AI 论文导读播客主播，用{lang}口播。请把下面这篇论文讲成一段约 {minutes} 分钟、
-适合开车时收听的连续口播稿，目标长度大约 {chars} 字（请尽量接近，不要明显偏短）。
+适合开车时收听的连续口播稿。总字数控制在 {lo} 到 {hi} 字之间（务必不要少于 {lo}，也不要明显超过 {hi}），讲完自然收尾。
 
 要求：
 - 全程是可以直接朗读的连续口语，不要小标题、不要分点编号、不要"第一部分"这种字样，段落之间自然过渡。
@@ -78,13 +79,16 @@ def _via_gemini(paper, full_text, minutes):
 
     genai.configure(api_key=config.GEMINI_API_KEY)
     prompt = _prompt(paper, full_text, minutes)
+    # ~0.86 output tokens per Chinese char observed; cap near the target length
+    # (with headroom) so off-topic papers stay ~10 min and relevant ~20 min.
+    max_tokens = min(8192, int(minutes * config.CHARS_PER_MIN))
     last = None
     for name in _gemini_models():
         try:
             model = genai.GenerativeModel(name)
             resp = model.generate_content(
                 prompt,
-                generation_config={"max_output_tokens": 8192, "temperature": 0.7},
+                generation_config={"max_output_tokens": max_tokens, "temperature": 0.7},
             )
             print(f"[script] gemini ok via {name}")
             return resp.text.strip()

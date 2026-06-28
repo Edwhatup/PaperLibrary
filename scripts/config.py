@@ -30,7 +30,7 @@ DIGEST_LANG = os.getenv("DIGEST_LANG", "zh")
 # no separate LLM_BACKEND variable needed.
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001")
 
 LLM_BACKEND = os.getenv("LLM_BACKEND", "auto").lower()
