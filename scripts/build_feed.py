@@ -59,6 +59,8 @@ def build_rss() -> None:
     for ep in episodes:  # already newest-first in the manifest
         path = config.AUDIO_DIR / ep["audio"]
         size = path.stat().st_size if path.exists() else ep.get("size", 0)
+        # edge-tts output is ~48 kbps CBR -> duration ≈ bytes*8/48000 seconds.
+        dur = int(size * 8 / 48000)
         link = ep.get("url") or _audio_url(ep["audio"])
         items.append(
             "    <item>\n"
@@ -67,6 +69,7 @@ def build_rss() -> None:
             f"      <link>{escape(link)}</link>\n"
             f"      <guid isPermaLink=\"false\">{escape(ep['audio'])}</guid>\n"
             f"      <pubDate>{_rfc2822(ep['published'])}</pubDate>\n"
+            f"      <itunes:duration>{dur}</itunes:duration>\n"
             f"      <enclosure url=\"{escape(_audio_url(ep['audio']))}\" "
             f"length=\"{size}\" type=\"audio/mpeg\"/>\n"
             "    </item>"
