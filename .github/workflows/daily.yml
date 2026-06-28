@@ -14,10 +14,15 @@ on:
 
 permissions:
   contents: write   # commit audio/feed back to the repo
+  pages: write      # deploy to GitHub Pages
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     env:
       DIGEST_LANG: ${{ vars.DIGEST_LANG || 'zh' }}
       # "auto" picks gemini/anthropic by whichever key secret is set.
@@ -70,3 +75,12 @@ jobs:
           printf '%s\n' "$RCLONE_CONF" > ~/.config/rclone/rclone.conf
           rclone copy public "$RCLONE_REMOTE" \
             --include "audio/**" --include "playlist.m3u8" --progress
+
+      # Deploy public/ to GitHub Pages directly (a token-push would NOT trigger
+      # the standalone pages.yml, so we deploy here in the same job).
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deployment
+        uses: actions/deploy-pages@v4
