@@ -1,0 +1,88 @@
+# Paper Library 📚🎧
+
+我自己的论文图书馆 + 论文导读电台。每天自动抓 [HuggingFace Daily Papers](https://huggingface.co/papers)，
+生成中文/英文导读音频，输出成一个**播客 RSS 订阅源**——用任何播客 App 订阅，开车时就能听。
+
+```
+HF Daily Papers API
+   └─> 抓取当天热门论文 (fetch_papers.py)
+        └─> LLM 生成导读口播稿 (make_script.py，可插拔；不配也能跑)
+             └─> edge-tts 合成 MP3 (synth_audio.py，免费免 key，中英都支持)
+                  └─> 生成 RSS + markdown 图书馆 (build_feed.py)
+                       └─> GitHub Actions 每天定时跑并提交回仓库
+```
+
+## 快速开始
+
+```bash
+pip install -r requirements.txt
+
+# 跑一次（默认中文导读、免费 edge-tts、无 LLM 时直接读摘要）
+python scripts/run_daily.py            # 今天
+python scripts/run_daily.py 2026-06-27 # 指定日期
+```
+
+产物：
+- `public/audio/*.mp3` —— 每篇论文一集音频
+- `public/rss.xml` —— 播客订阅源
+- `library/README.md` —— 可读的图书馆索引
+- `data/` —— 原始论文元数据、导读脚本、节目清单
+
+## 让导读更好听（可选）
+
+不配 LLM 时，中文模式会用中文开场再读英文摘要。想要**真正的中文导读**，配一个 LLM：
+
+```bash
+# Gemini（有免费额度，推荐）
+export LLM_BACKEND=gemini GEMINI_API_KEY=xxx
+# 或 Claude
+export LLM_BACKEND=anthropic ANTHROPIC_API_KEY=xxx
+pip install google-generativeai   # 或 anthropic
+```
+
+## 常用配置（环境变量）
+
+| 变量 | 默认 | 说明 |
+|------|------|------|
+| `DIGEST_LANG` | `zh` | 导读语言：`zh` / `en` |
+| `MAX_PAPERS` | `5` | 每天取前 N 篇（按点赞数） |
+| `LLM_BACKEND` | `none` | `none` / `gemini` / `anthropic` |
+| `TTS_VOICE_ZH` | `zh-CN-YunxiNeural` | 中文音色（`edge-tts --list-voices` 看全部） |
+| `TTS_VOICE_EN` | `en-US-AndrewNeural` | 英文音色 |
+| `TTS_RATE` | `+8%` | 语速 |
+| `FEED_BASE_URL` | 空 | `public/` 的公开地址（如 GitHub Pages），**RSS 里音频链接靠它** |
+
+## 自动化（GitHub Actions）
+
+`.github/workflows/daily.yml` 每天北京时间 07:00 自动跑并把音频/feed 提交回仓库。
+在仓库 **Settings → Secrets and variables → Actions** 里：
+- Variables：`DIGEST_LANG`、`LLM_BACKEND`、`MAX_PAPERS`、`FEED_BASE_URL`
+- Secrets：`GEMINI_API_KEY` 或 `ANTHROPIC_API_KEY`（用 LLM 时）
+
+把 `public/` 用 GitHub Pages 发布后，`FEED_BASE_URL` 设成 Pages 地址，
+然后在播客 App 里订阅 `<FEED_BASE_URL>/rss.xml` 即可。
+
+---
+
+## 附：开源方案调研
+
+围绕「论文导读朗读 / 一站式 TTS」调研到的现成轮子，按用途分：
+
+### 核心引擎（论文 → 对话式音频）
+- **[Podcastfy](https://github.com/souzatharsis/podcastfy)** ⭐ — NotebookLM 音频概览的开源平替，最成熟。
+  多语言（中英可）、多 TTS 后端（OpenAI / Google / ElevenLabs / **Edge 免费**）、吃 PDF/URL。
+  本仓库目前用更轻的自研流水线 + edge-tts；想要双人对话式高质量音频可切到 Podcastfy。
+- [Azzedde/paper_to_podcast](https://github.com/Azzedde/paper_to_podcast) — 三人讨论式，OpenAI TTS
+- [lamm-mit/PDF2Audio](https://github.com/lamm-mit/PDF2Audio) — Gradio 界面，PDF→播客/讲座/摘要
+- [Mozilla Blueprint](https://blog.mozilla.ai/blueprint-deep-dive-turn-documents-into-podcasts-locally-with-open-source-ai/) — 纯本地（OuteTTS），隐私优先
+
+### 直接对接 HF Daily Papers
+- [gabrielchua/daily-ai-papers](https://github.com/gabrielchua/daily-ai-papers) — 抓 HF Daily Papers 生成音频摘要，GitHub Actions 全自动（推 Telegram）
+- [deep-diver/paper-reviewer](https://github.com/deep-diver/paper-reviewer) — HF Daily Papers 自动深度 review + 语音合成（[在线站](https://deep-diver.github.io/ai-paper-reviewer/)）
+- [fabiogiglietto/research-radio](https://github.com/fabiogiglietto/research-radio) — 论文→多人对话播客全流水线（Claude + Gemini + TTS）
+
+### 中文 TTS 引擎（想换更自然的中文音色）
+[edge-tts](https://github.com/rany2/edge-tts)（免费首选，本仓库默认）、
+[ChatTTS](https://github.com/2noise/ChatTTS)、
+[IndexTTS](https://github.com/index-tts/index-tts)、
+[EmotiVoice](https://github.com/netease-youdao/EmotiVoice)。

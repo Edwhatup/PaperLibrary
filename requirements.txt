@@ -1,0 +1,10 @@
+# Core pipeline (free path)
+requests>=2.31
+edge-tts>=6.1.9          # free Microsoft TTS, supports zh + en, no API key
+python-slugify>=8.0
+# RSS is hand-rolled with the stdlib (no lxml/feedgen native build needed).
+
+# Optional LLM backends for generating Chinese "导读" scripts.
+# Pick ONE (or none -> falls back to reading the English abstract).
+#   google-generativeai>=0.8   # Gemini, has a free tier
+#   anthropic>=0.40            # Claude

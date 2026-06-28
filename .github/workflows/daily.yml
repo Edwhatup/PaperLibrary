@@ -1,0 +1,50 @@
+name: Daily Paper Radio
+
+on:
+  schedule:
+    - cron: "0 23 * * *"   # 07:00 Beijing time (UTC+8)
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date to build (YYYY-MM-DD, default = today UTC)"
+        required: false
+
+permissions:
+  contents: write   # commit audio/feed back to the repo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DIGEST_LANG: ${{ vars.DIGEST_LANG || 'zh' }}
+      LLM_BACKEND: ${{ vars.LLM_BACKEND || 'none' }}
+      MAX_PAPERS: ${{ vars.MAX_PAPERS || '5' }}
+      # FEED_BASE_URL should point at where `public/` is served (e.g. Pages).
+      FEED_BASE_URL: ${{ vars.FEED_BASE_URL }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+          # Install the optional LLM backend if one is configured.
+          if [ "$LLM_BACKEND" = "gemini" ]; then pip install google-generativeai; fi
+          if [ "$LLM_BACKEND" = "anthropic" ]; then pip install anthropic; fi
+
+      - name: Build episodes
+        run: python scripts/run_daily.py ${{ github.event.inputs.date }}
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data public library
+          git diff --cached --quiet || git commit -m "chore: daily papers $(date -u +%F)"
+          git push
