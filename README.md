@@ -61,7 +61,17 @@ pip install google-generativeai   # 或 anthropic
 
 每篇会按是否命中 `INTERESTS` 自动决定长度：**命中 → 深讲 20 分钟**（动机、方法细节、实验数字、局限与借鉴），**不相关 → 科普式概览 10 分钟**。这一档**必须配 LLM**（`LLM_BACKEND=gemini` + key），因为要读全文再展开；不配则退回「读摘要」的短兜底，到不了目标长度。手写的稿子放进 `data/scripts/` 会被原样复用、不覆盖。
 
-## 私人收听：iPhone + VLC（不公开任何东西）
+## 订阅（VLC 网络串流 / 播客 App）
+
+仓库公开后用 GitHub Pages 托管 `public/`（`pages.yml` 自动部署）。一次性设置：
+仓库设为 Public → Settings → Pages → Source 选 **GitHub Actions**。之后：
+
+- **VLC**：网络串流打开 `https://edwhatup.github.io/PaperLibrary/playlist.m3u8`，
+  VLC 会记住这个地址，以后一点就是最新列表。
+- **播客 App**（小宇宙/Apple Podcasts/Pocket Casts）：订阅
+  `https://edwhatup.github.io/PaperLibrary/rss.xml`，新集自动推送。
+
+## 私人收听：iPhone + VLC（云盘同步，可选）
 
 不想公开成博客？不需要。仓库保持 **private**，用 VLC 放云盘里的 `playlist.m3u8` 即可：
 

@@ -23,8 +23,9 @@ jobs:
       # "auto" picks gemini/anthropic by whichever key secret is set.
       LLM_BACKEND: ${{ vars.LLM_BACKEND || 'auto' }}
       MAX_PAPERS: ${{ github.event.inputs.max || vars.MAX_PAPERS || '5' }}
-      # FEED_BASE_URL should point at where `public/` is served (e.g. Pages).
-      FEED_BASE_URL: ${{ vars.FEED_BASE_URL }}
+      # Where `public/` is served (GitHub Pages). Absolute URLs in rss.xml /
+      # playlist.m3u8 come from this, so VLC / podcast apps can stream them.
+      FEED_BASE_URL: ${{ vars.FEED_BASE_URL || 'https://edwhatup.github.io/PaperLibrary' }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:

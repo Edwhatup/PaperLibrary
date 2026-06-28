@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
   <channel>
     <title>我的论文电台 · Paper Library Radio</title>
-    <link>https://example.com</link>
+    <link>https://edwhatup.github.io/PaperLibrary</link>
     <description>每日 HuggingFace Daily Papers 的中文/英文导读，开车也能听。</description>
     <language>zh-cn</language>
     <itunes:author>Paper Library</itunes:author>
@@ -13,7 +13,7 @@
       <link>https://arxiv.org/abs/2606.26025</link>
       <guid isPermaLink="false">2026-06-26-in-context-world-modeling-for-robotic-control.mp3</guid>
       <pubDate>Sun, 28 Jun 2026 04:34:02 +0000</pubDate>
-      <enclosure url="audio/2026-06-26-in-context-world-modeling-for-robotic-control.mp3" length="604656" type="audio/mpeg"/>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-in-context-world-modeling-for-robotic-control.mp3" length="604656" type="audio/mpeg"/>
     </item>
     <item>
       <title>DanceOPD: On-Policy Generative Field Distillation</title>
@@ -21,7 +21,7 @@
       <link>https://arxiv.org/abs/2606.27377</link>
       <guid isPermaLink="false">2026-06-26-danceopd-on-policy-generative-field-distillation.mp3</guid>
       <pubDate>Sun, 28 Jun 2026 04:33:56 +0000</pubDate>
-      <enclosure url="audio/2026-06-26-danceopd-on-policy-generative-field-distillation.mp3" length="2478096" type="audio/mpeg"/>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-danceopd-on-policy-generative-field-distillation.mp3" length="2478096" type="audio/mpeg"/>
     </item>
   </channel>
 </rss>
