@@ -8,6 +8,9 @@ on:
       date:
         description: "Date to build (YYYY-MM-DD, default = today UTC)"
         required: false
+      max:
+        description: "Max papers this run (overrides MAX_PAPERS; e.g. 1 for a cheap test)"
+        required: false
 
 permissions:
   contents: write   # commit audio/feed back to the repo
@@ -17,8 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DIGEST_LANG: ${{ vars.DIGEST_LANG || 'zh' }}
-      LLM_BACKEND: ${{ vars.LLM_BACKEND || 'none' }}
-      MAX_PAPERS: ${{ vars.MAX_PAPERS || '5' }}
+      # "auto" picks gemini/anthropic by whichever key secret is set.
+      LLM_BACKEND: ${{ vars.LLM_BACKEND || 'auto' }}
+      MAX_PAPERS: ${{ github.event.inputs.max || vars.MAX_PAPERS || '5' }}
       # FEED_BASE_URL should point at where `public/` is served (e.g. Pages).
       FEED_BASE_URL: ${{ vars.FEED_BASE_URL }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -34,9 +38,9 @@ jobs:
       - name: Install deps
         run: |
           pip install -r requirements.txt
-          # Install the optional LLM backend if one is configured.
-          if [ "$LLM_BACKEND" = "gemini" ]; then pip install google-generativeai; fi
-          if [ "$LLM_BACKEND" = "anthropic" ]; then pip install anthropic; fi
+          # Install whichever LLM SDK matches the key that's present.
+          if [ -n "$GEMINI_API_KEY" ] || [ "$LLM_BACKEND" = "gemini" ]; then pip install google-generativeai; fi
+          if [ -n "$ANTHROPIC_API_KEY" ] || [ "$LLM_BACKEND" = "anthropic" ]; then pip install anthropic; fi
 
       - name: Build episodes
         run: python scripts/run_daily.py ${{ github.event.inputs.date }}

@@ -24,13 +24,23 @@ MAX_PAPERS = int(os.getenv("MAX_PAPERS", "5"))
 # "zh" -> Chinese digest (needs an LLM), "en" -> English digest.
 DIGEST_LANG = os.getenv("DIGEST_LANG", "zh")
 
-# LLM backend for turning an abstract into a spoken 导读 script.
-# One of: "gemini", "anthropic", "none" (none -> read the abstract verbatim).
-LLM_BACKEND = os.getenv("LLM_BACKEND", "none")
+# LLM backend for turning a paper into a spoken 导读 script.
+# One of: "gemini", "anthropic", "none". Defaults to "auto": pick whichever
+# key is present (Gemini first). So just setting GEMINI_API_KEY is enough —
+# no separate LLM_BACKEND variable needed.
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
 ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001")
+
+LLM_BACKEND = os.getenv("LLM_BACKEND", "auto").lower()
+if LLM_BACKEND in ("auto", "", "none"):
+    if GEMINI_API_KEY:
+        LLM_BACKEND = "gemini"
+    elif ANTHROPIC_API_KEY:
+        LLM_BACKEND = "anthropic"
+    else:
+        LLM_BACKEND = "none"
 
 # --- Long-form 导读 ------------------------------------------------------
 # Target audio length depends on whether a paper matches YOUR research
