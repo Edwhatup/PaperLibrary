@@ -1,8 +1,4 @@
 #EXTM3U
-#EXTINF:-1,2026-06-26 · DanceOPD: On-Policy Generative Field Distillation
-https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-danceopd-on-policy-generative-field-distillation.mp3
-#EXTINF:-1,2026-06-26 · In-Context World Modeling for Robotic Control
-https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-in-context-world-modeling-for-robotic-control.mp3
 #EXTINF:-1,2026-06-23 · PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems
 https://edwhatup.github.io/PaperLibrary/audio/2026-06-23-planbench-xl-evaluating-long-horizon-planning-of-llm-tool-us.mp3
 #EXTINF:-1,2026-06-23 · EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions
@@ -15,3 +11,7 @@ https://edwhatup.github.io/PaperLibrary/audio/2026-06-24-naturebench-can-coding-
 https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-are-we-ready-for-an-agent-native-memory-system.mp3
 #EXTINF:-1,2026-06-25 · Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models
 https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio.mp3
+#EXTINF:-1,2026-06-26 · DanceOPD: On-Policy Generative Field Distillation
+https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-danceopd-on-policy-generative-field-distillation.mp3
+#EXTINF:-1,2026-06-26 · In-Context World Modeling for Robotic Control
+https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-in-context-world-modeling-for-robotic-control.mp3
