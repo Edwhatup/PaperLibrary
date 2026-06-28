@@ -5,12 +5,12 @@
 
 ## 2026-06-26
 
-- **In-Context World Modeling for Robotic Control** · 46★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-in-context-world-modeling-for-robotic-control.mp3) [arXiv](https://arxiv.org/abs/2606.26025)
-- **DanceOPD: On-Policy Generative Field Distillation** · 66★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-danceopd-on-policy-generative-field-distillation.mp3) [arXiv](https://arxiv.org/abs/2606.27377)
+- **In-Context World Modeling for Robotic Control** · 47★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-in-context-world-modeling-for-robotic-control.mp3) [arXiv](https://arxiv.org/abs/2606.26025)
+- **DanceOPD: On-Policy Generative Field Distillation** · 68★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-danceopd-on-policy-generative-field-distillation.mp3) [arXiv](https://arxiv.org/abs/2606.27377)
 
 ## 2026-06-25
 
-- **Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models** · 92★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio.mp3) [arXiv](https://arxiv.org/abs/2606.25041)
+- **Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models** · 93★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio.mp3) [arXiv](https://arxiv.org/abs/2606.25041)
 - **Are We Ready For An Agent-Native Memory System?** · 104★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-are-we-ready-for-an-agent-native-memory-system.mp3) [arXiv](https://arxiv.org/abs/2606.24775)
 
 ## 2026-06-24
