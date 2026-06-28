@@ -4,8 +4,11 @@
 The library lives entirely in the repo:
   library/index.jsonl       one compact line per paper (the fast lookup table)
   library/papers/<id>.md     one card per paper: meta + digest links + your
-                             notes / Q&A / quiz (user sections are NEVER
-                             overwritten by `build`)
+                             notes / Q&A (user sections are NEVER overwritten
+                             by `build`)
+
+Quizzing ("test if I understood") is a Claude Code skill (.claude/skills/quiz-me)
+and is intentionally NOT persisted here.
 
 Commands (run `python scripts/lib.py -h`):
   build                       (re)generate cards + index from data/ (idempotent;
@@ -20,7 +23,6 @@ Commands (run `python scripts/lib.py -h`):
   untag ID TAG...             remove tags
   note ID "text"              append a dated note
   qa ID -q "..." -a "..."     append a dated Q&A entry
-  quiz ID --score N "detail"  record a quiz attempt and set `understood`
 
 Frontmatter values are JSON-encoded (valid YAML), so they parse unambiguously
 with the stdlib — no extra dependencies beyond python-slugify (already used).
@@ -44,7 +46,7 @@ LIB = ROOT / "library"
 CARDS = LIB / "papers"
 INDEX = LIB / "index.jsonl"
 
-USER_SECTIONS = ["笔记", "问答记录", "测验"]
+USER_SECTIONS = ["笔记", "问答记录"]
 _FIRST_USER_HEADER = f"## {USER_SECTIONS[0]}"
 
 
@@ -75,7 +77,7 @@ def parse_card(text: str) -> tuple[dict, str]:
 
 def _dump_fm(meta: dict) -> str:
     order = ["id", "title", "date", "arxiv", "pdf", "upvotes", "audio",
-             "digest", "tags", "listened", "read", "understood"]
+             "digest", "tags", "listened", "read"]
     keys = order + [k for k in meta if k not in order]
     lines = [f"{k}: {json.dumps(meta[k], ensure_ascii=False)}"
              for k in keys if k in meta]
@@ -160,7 +162,6 @@ def build_library() -> int:
             "tags": prev.get("tags", []),
             "listened": prev.get("listened", False),
             "read": prev.get("read", False),
-            "understood": prev.get("understood", None),
         }
         summary = _summary(paper, digest)
         path.write_text(
@@ -186,7 +187,6 @@ def write_index() -> int:
             "tags": meta.get("tags", []),
             "listened": meta.get("listened", False),
             "read": meta.get("read", False),
-            "understood": meta.get("understood", None),
             "audio": bool(meta.get("audio")),
             "summary": _index_summary(path, meta),
         })
@@ -253,10 +253,8 @@ def _append_section(aid: str, section: str, block: str) -> None:
 # --- CLI --------------------------------------------------------------------
 def _print_row(r: dict) -> None:
     flags = ("L" if r["listened"] else "-") + ("R" if r["read"] else "-")
-    u = r["understood"]
-    u = "?" if u is None else (f"{u}" if isinstance(u, int) else "y")
     tags = ",".join(r.get("tags") or [])
-    print(f"{r['id']:<14} [{flags} u={u}] {r['date']}  {r['title'][:60]}"
+    print(f"{r['id']:<14} [{flags}] {r['date']}  {r['title'][:60]}"
           + (f"  #{tags}" if tags else ""))
 
 
@@ -274,8 +272,6 @@ def cmd_list(args):
             continue
         if args.unlistened and r["listened"]:
             continue
-        if args.unquizzed and r["understood"] is not None:
-            continue
         if args.tag and args.tag not in (r.get("tags") or []):
             continue
         _print_row(r)
@@ -287,7 +283,7 @@ def cmd_show(args):
 
 def cmd_status(args, **changes):
     m = _edit_meta(args.id, **changes)
-    print(f"{args.id}: listened={m['listened']} read={m['read']} understood={m['understood']}")
+    print(f"{args.id}: listened={m['listened']} read={m['read']}")
 
 
 def cmd_tag(args):
@@ -313,13 +309,6 @@ def cmd_qa(args):
     print(f"{args.id}: Q&A logged")
 
 
-def cmd_quiz(args):
-    _append_section(args.id, "测验",
-                    f"- ({_today()}) 得分 {args.score}/100 — {args.detail}")
-    _edit_meta(args.id, understood=args.score)
-    print(f"{args.id}: quiz recorded, understood={args.score}")
-
-
 def main():
     ap = argparse.ArgumentParser(description="git-native paper library")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -331,7 +320,6 @@ def main():
     s = sub.add_parser("list")
     s.add_argument("--unread", action="store_true")
     s.add_argument("--unlistened", action="store_true")
-    s.add_argument("--unquizzed", action="store_true")
     s.add_argument("--tag")
     s.set_defaults(func=cmd_list)
     s = sub.add_parser("show"); s.add_argument("id"); s.set_defaults(func=cmd_show)
@@ -349,9 +337,6 @@ def main():
     s = sub.add_parser("note"); s.add_argument("id"); s.add_argument("text"); s.set_defaults(func=cmd_note)
     s = sub.add_parser("qa"); s.add_argument("id")
     s.add_argument("-q", required=True); s.add_argument("-a", required=True); s.set_defaults(func=cmd_qa)
-    s = sub.add_parser("quiz"); s.add_argument("id")
-    s.add_argument("--score", type=int, required=True); s.add_argument("--detail", default="")
-    s.set_defaults(func=cmd_quiz)
 
     args = ap.parse_args()
     args.func(args)

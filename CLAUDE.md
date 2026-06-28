@@ -32,12 +32,12 @@ lib.py listened ID / unlistened  # mark listened (听完)
 lib.py tag ID t1 t2              # add tags   (untag ID t1 to remove)
 lib.py note ID "..."             # append a dated note to ## 笔记
 lib.py qa ID -q "..." -a "..."   # append a Q&A to ## 问答记录
-lib.py quiz ID --score N --detail "..."   # record a quiz attempt, set understood
 lib.py build                     # regenerate cards+index from data/ (safe: never
-                                 # overwrites tags/status/notes/Q&A/quiz)
+                                 # overwrites tags/status/notes/Q&A)
 ```
 
-`understood`: `null` = 未测验, otherwise the last quiz score 0–100.
+Status flags: `listened` (听完), `read` (读过). Tags + status live in the card
+frontmatter and the index.
 
 ## When the user asks about a paper
 
@@ -48,16 +48,9 @@ lib.py build                     # regenerate cards+index from data/ (safe: neve
 
 ## When the user wants to be quizzed (测验/quiz me)
 
-Goal: test whether they *actually understood* a paper, not just listened.
-
-1. Pick a target: a paper that is `read` or `listened` but `understood == null`
-   (`lib.py list --unquizzed`), or one the user names. For spaced review, you may
-   re-quiz papers whose last quiz was long ago / low score.
-2. Read that card + its `digest` text. Ask 3–5 questions probing the core
-   mechanism, the why-behind-design, results, and limitations — not trivia.
-3. Ask one at a time, let the user answer, then grade and explain gaps.
-4. Record it: `lib.py quiz <id> --score <0-100> --detail "<what they nailed / missed>"`.
-   This sets `understood` and logs the attempt in `## 测验`.
+Use the **`quiz-me` skill** (`.claude/skills/quiz-me`). It reads the paper's card
++ digest and quizzes the user to test real understanding. It is **ephemeral on
+purpose — nothing is recorded** (no score, no card edits).
 
 ## Pipeline (audio side — usually runs itself; don't touch unless asked)
 
