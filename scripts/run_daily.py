@@ -19,6 +19,7 @@ import build_feed
 import config
 import fetch_fulltext
 import fetch_papers
+import lib
 import make_script
 import synth_audio
 
@@ -76,6 +77,7 @@ def run(date_str: str | None = None) -> None:
         )
 
     build_feed.build_all()
+    lib.build_library()  # refresh paper cards + index (preserves notes/status)
     print("\n[run] done.")
 
 
