@@ -1,13 +1,43 @@
 [
   {
     "date": "2026-06-26",
+    "title": "The Verification Horizon: No Silver Bullet for Coding Agent Rewards",
+    "abstract": "A classical intuition holds that verifying a solution is easier than producing one. For today's coding agents, this intuition is being inverted: as foundation models develop stronger reasoning capabilities and engineering harnesses grow more sophisticated, generating complex candidate solutions is no longer difficult -- reliably verifying them has become the harder problem. Every verifier we can build is only a proxy for human intent, never the intent itself. This makes verification subject to a twofold difficulty: first, intent is underspecified by nature, making it inherently hard to faithfully check whether it has been fulfilled; second, during model training, optimization widens the gap between proxy and intent -- manifesting as reward hacking or signal saturation. To address this, we characterize the quality of verification signals along three dimensions -- scalability, faithfulness, and robustness -- and argue that achieving all three simultaneously is the central challenge. We further study four reward constructions: a test verifier for general coding tasks, a rubric verifier for frontend tasks, the user as verifier for real-world agent tasks, and an automated agent verifier for long-horizon tasks. Across different task types and policy capability levels, we conduct in-depth analysis and experiments on the core challenges of reward design and how to more effectively leverage reward signals. Experiments show that targeted verification design can effectively suppress reward hacking, improve task completion quality, and achieve significant gains across multiple internal and public benchmarks. These experiences collectively point to a core observation: no fixed reward function can remain effective as policy capability continues to grow; and verification must co-evolve with the generator.",
+    "url": "https://arxiv.org/abs/2606.26300",
+    "upvotes": 38,
+    "audio": "2026-06-26-the-verification-horizon-no-silver-bullet-for-coding-agent-r.mp3",
+    "size": 717840,
+    "published": "2026-06-28T04:32:45.190983+00:00"
+  },
+  {
+    "date": "2026-06-26",
+    "title": "OPID: On-Policy Skill Distillation for Agentic Reinforcement Learning",
+    "abstract": "Outcome-based reinforcement learning provides a stable optimization backbone for language agents, but its sparse trajectory-level rewards provide little guidance on which intermediate decisions should be reinforced or suppressed. On-policy self-distillation offers dense token-level supervision, yet existing skill-conditioned variants often rely on external skill memories or retrieved privileged context, which are costly to maintain and can be mismatched with the state distribution induced by the current policy in multi-turn interaction. We propose OPID (On-Policy Skill Distillation), a framework that extracts skill supervision directly from completed on-policy trajectories. OPID represents trajectory hindsight as hierarchical skills: episode-level skills capture global workflows or failure-avoidance rules, while step-level skills capture local decision knowledge at critical timesteps. A critical-first routing mechanism uses step-level skills when critical decisions are identified and falls back to episode-level skills as default guidance otherwise. The selected skill is injected into the interaction history, allowing the old policy to re-score the same sampled response under both original and skill-augmented contexts. The resulting log-probability shift yields a token-level self-distillation advantage, which is combined with the outcome advantage for policy optimization. OPID thus preserves RL as the primary training objective while introducing dense, distribution-matched hindsight supervision. Experiments on ALFWorld, WebShop and Search-based QA demonstrate that OPID generally improves agent performance, sample efficiency, and robustness over outcome-only RL and existing skill-distillation baselines. Our code is available at https://github.com/jinyangwu/OPID/tree/main.",
+    "url": "https://arxiv.org/abs/2606.26790",
+    "upvotes": 40,
+    "audio": "2026-06-26-opid-on-policy-skill-distillation-for-agentic-reinforcement-.mp3",
+    "size": 727920,
+    "published": "2026-06-28T04:32:40.846544+00:00"
+  },
+  {
+    "date": "2026-06-26",
+    "title": "Qwen-Image-Agent: Bridging the Context Gap in Real-World Image Generation",
+    "abstract": "While text-to-image (T2I) models have achieved remarkable progress, they struggle with real-world requests that are often underspecified, implicit, or dependent on up-to-date knowledge. We identify this challenge as the Context Gap: the mismatch between the user context and the sufficient generation context for T2I models. To bridge this gap, we propose Qwen-Image-Agent, a unified agentic framework that integrates plan, reason, search, memory and feedback in a context-centric manner. Qwen-Image-Agent treats user input as partial context and progressively constructs the generation context through Context-Aware Planning and Context Grounding. Specifically, Context-Aware Planning identifies missing context and plans how it should be acquired and used, while Context Grounding gathers this context from reason, search, memory, and feedback. To evaluate agentic image generation, we further introduce Image Agent Bench (IA-Bench), a benchmark covering four core image agent capabilities: Plan, Reason, Search, and Memory. Experiments on IA-Bench, Mindbench and WISE-Verified show that Qwen-Image-Agent outperforms strong baselines and achieves state-of-the-art performance.",
+    "url": "https://arxiv.org/abs/2606.26907",
+    "upvotes": 41,
+    "audio": "2026-06-26-qwen-image-agent-bridging-the-context-gap-in-real-world-imag.mp3",
+    "size": 506592,
+    "published": "2026-06-28T04:32:35.518469+00:00"
+  },
+  {
+    "date": "2026-06-26",
     "title": "In-Context World Modeling for Robotic Control",
     "abstract": "Modern Vision-Language-Action (VLA) models often fail to generalize to novel setups, such as altered camera viewpoints or robot morphologies, because they are typically conditioned only on current observations and language instructions. By ignoring the underlying system configuration as a variable, these models implicitly assume a fixed execution context encountered during training, necessitating data-intensive fine-tuning for any new environment. In this work, we introduce In-Context World Modeling (ICWM), a framework that treats system identification as an in-context adaptation problem. ICWM enables robot policies to autonomously infer essential system variables from a short history of self-generated, task-agnostic interactions. Unlike traditional In-Context Learning that uses demonstrations to specify what task to perform, ICWM leverages the context window to understand how the system operates. By processing these interactions before task execution, the model implicitly captures the world dynamics of the current system, enabling adaptation to novel configurations without parameter updates. Extensive experiments in simulation and on real-world robot platforms demonstrate that ICWM significantly outperforms standard VLA baselines on novel camera viewpoints.",
     "url": "https://arxiv.org/abs/2606.26025",
-    "upvotes": 42,
+    "upvotes": 43,
     "audio": "2026-06-26-in-context-world-modeling-for-robotic-control.mp3",
     "size": 533232,
-    "published": "2026-06-28T03:30:01.904637+00:00"
+    "published": "2026-06-28T04:32:32.092511+00:00"
   },
   {
     "date": "2026-06-26",
@@ -17,6 +47,6 @@
     "upvotes": 64,
     "audio": "2026-06-26-danceopd-on-policy-generative-field-distillation.mp3",
     "size": 551376,
-    "published": "2026-06-28T03:29:56.502752+00:00"
+    "published": "2026-06-28T04:32:30.964470+00:00"
   }
 ]
