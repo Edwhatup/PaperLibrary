@@ -1,6 +1,6 @@
 # EPHEMERAL test workflow — triggers on push to the dev branch so we can verify
 # the Gemini long-form path end-to-end without workflow_dispatch permission.
-# Delete after verification.
+# Delete after verification. (re-run 2: model fallback chain)
 name: _test gemini
 
 on:

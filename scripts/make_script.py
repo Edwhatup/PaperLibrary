@@ -61,16 +61,37 @@ def _prompt(paper: dict, full_text: str, minutes: int) -> str:
 """
 
 
+def _gemini_models() -> list[str]:
+    """Configured model first, then fallbacks with free-tier availability."""
+    chain = [config.GEMINI_MODEL, "gemini-2.0-flash", "gemini-2.5-flash",
+             "gemini-2.0-flash-lite", "gemini-1.5-flash"]
+    seen, out = set(), []
+    for m in chain:
+        if m and m not in seen:
+            seen.add(m)
+            out.append(m)
+    return out
+
+
 def _via_gemini(paper, full_text, minutes):
     import google.generativeai as genai
 
     genai.configure(api_key=config.GEMINI_API_KEY)
-    model = genai.GenerativeModel(config.GEMINI_MODEL)
-    resp = model.generate_content(
-        _prompt(paper, full_text, minutes),
-        generation_config={"max_output_tokens": 8192, "temperature": 0.7},
-    )
-    return resp.text.strip()
+    prompt = _prompt(paper, full_text, minutes)
+    last = None
+    for name in _gemini_models():
+        try:
+            model = genai.GenerativeModel(name)
+            resp = model.generate_content(
+                prompt,
+                generation_config={"max_output_tokens": 8192, "temperature": 0.7},
+            )
+            print(f"[script] gemini ok via {name}")
+            return resp.text.strip()
+        except Exception as e:
+            last = e
+            print(f"[script] gemini {name} failed: {str(e)[:140]}")
+    raise last
 
 
 def _via_anthropic(paper, full_text, minutes):
