@@ -57,9 +57,9 @@ pip install google-generativeai   # 或 anthropic
 
 不想公开成博客？不需要。仓库保持 **private**，用 VLC 放云盘里的 `playlist.m3u8` 即可：
 
-1. 把 `public/`（含 `audio/` 和 `playlist.m3u8`）同步进 iCloud Drive 或 Dropbox 的一个文件夹。
+1. 把 `public/`（含 `audio/` 和 `playlist.m3u8`）同步进 Dropbox / Google Drive 的一个文件夹。
    - 手动：下载仓库 `public/` 拖进云盘
-   - 自动：在 Action 里加一步 `rclone` 推到你的云盘（见下方注释）
+   - 全自动：配好 rclone，Action 跑完自动推（见下「全自动同步到云盘」）
 2. iPhone 上打开 **VLC → Network / 云服务**，登录同一个云盘，打开那个文件夹里的 `playlist.m3u8`。
 3. 上车连 CarPlay/蓝牙，VLC 从头放到尾，就是你的私人论文电台。
 
@@ -72,6 +72,27 @@ pip install google-generativeai   # 或 anthropic
 在仓库 **Settings → Secrets and variables → Actions** 里：
 - Variables：`DIGEST_LANG`、`LLM_BACKEND`、`MAX_PAPERS`、`FEED_BASE_URL`
 - Secrets：`GEMINI_API_KEY` 或 `ANTHROPIC_API_KEY`（用 LLM 时）
+
+> 私有仓库的 Actions 每月有免费分钟额度，这个任务很小，基本用不完。
+
+### 全自动同步到云盘（VLC 自动出新集）
+
+配好后，Action 每天生成音频并自动推到你的私有云盘文件夹，VLC 第二天就能看到新集。
+**推荐 Dropbox 或 Google Drive**（rclone 的 iCloud 后端是实验性的，别用）。
+
+一次性配置（约 10 分钟，在你自己电脑上）：
+
+```bash
+rclone config        # 新建 remote，名字如 dropbox，浏览器点同意授权
+rclone config show   # 复制整段输出
+```
+
+然后在 **Settings → Secrets and variables → Actions**：
+- Secret `RCLONE_CONF` = `rclone config show` 的整段输出
+- Variable `RCLONE_REMOTE` = `dropbox:PaperRadio`（文件夹名随你起）
+
+没设 `RCLONE_REMOTE` 时这步自动跳过，不会报错。设好后 iPhone 上用 VLC 登录
+同一个云盘，打开 `PaperRadio/playlist.m3u8` 即可。
 
 把 `public/` 用 GitHub Pages 发布后，`FEED_BASE_URL` 设成 Pages 地址，
 然后在播客 App 里订阅 `<FEED_BASE_URL>/rss.xml` 即可。

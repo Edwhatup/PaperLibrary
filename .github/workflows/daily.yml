@@ -49,15 +49,19 @@ jobs:
           git diff --cached --quiet || git commit -m "chore: daily papers $(date -u +%F)"
           git push
 
-      # Optional: push audio + playlist to your private cloud folder so VLC on
-      # iPhone sees new episodes automatically. Configure an rclone remote and
-      # store its config in the RCLONE_CONF secret, set RCLONE_REMOTE variable
-      # (e.g. "icloud:PaperRadio" or "dropbox:PaperRadio"), then uncomment:
-      #
-      # - name: Sync to cloud drive (VLC)
-      #   if: ${{ vars.RCLONE_REMOTE != '' }}
-      #   run: |
-      #     curl -s https://rclone.org/install.sh | sudo bash
-      #     mkdir -p ~/.config/rclone
-      #     echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
-      #     rclone copy public "${{ vars.RCLONE_REMOTE }}" --include "audio/**" --include "playlist.m3u8"
+      # Push audio + playlist to your private cloud folder so VLC on iPhone
+      # sees new episodes automatically. Inactive until you set the
+      # RCLONE_REMOTE variable (e.g. "dropbox:PaperRadio") and the RCLONE_CONF
+      # secret (output of `rclone config show`). Recommended remote: Dropbox or
+      # Google Drive (rclone's iCloud backend is experimental — avoid).
+      - name: Sync to cloud drive (VLC)
+        if: ${{ vars.RCLONE_REMOTE != '' }}
+        env:
+          RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+          RCLONE_REMOTE: ${{ vars.RCLONE_REMOTE }}
+        run: |
+          curl -s https://rclone.org/install.sh | sudo bash
+          mkdir -p ~/.config/rclone
+          printf '%s\n' "$RCLONE_CONF" > ~/.config/rclone/rclone.conf
+          rclone copy public "$RCLONE_REMOTE" \
+            --include "audio/**" --include "playlist.m3u8" --progress
