@@ -17,6 +17,7 @@ from slugify import slugify
 
 import build_feed
 import config
+import fetch_fulltext
 import fetch_papers
 import make_script
 import synth_audio
@@ -42,7 +43,11 @@ def run(date_str: str | None = None) -> None:
             script = script_path.read_text(encoding="utf-8")
             print(f"[script] reuse {script_path.name}")
         else:
-            script = make_script.make_script(paper)
+            mins = make_script.target_minutes(paper)
+            tag = "相关·长" if make_script.is_relevant(paper) else "概览·短"
+            print(f"[script] {tag} target≈{mins}min")
+            full_text = fetch_fulltext.fetch_fulltext(paper["arxiv_id"])
+            script = make_script.make_script(paper, full_text)
             script_path.write_text(script, encoding="utf-8")
 
         audio_name = f"{base}.mp3"

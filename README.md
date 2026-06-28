@@ -47,11 +47,19 @@ pip install google-generativeai   # 或 anthropic
 |------|------|------|
 | `DIGEST_LANG` | `zh` | 导读语言：`zh` / `en` |
 | `MAX_PAPERS` | `5` | 每天取前 N 篇（按点赞数） |
-| `LLM_BACKEND` | `none` | `none` / `gemini` / `anthropic` |
+| `LLM_BACKEND` | `none` | `none` / `gemini` / `anthropic`（**长稿必须配**） |
+| `INTERESTS` | 见 config | 你的方向关键词，命中则按长档处理 |
+| `LONG_MINUTES` | `20` | 命中方向的论文，目标时长（分钟） |
+| `SHORT_MINUTES` | `10` | 不相关论文的目标时长（分钟） |
+| `FETCH_FULLTEXT` | `1` | 抓 arXiv 全文（HTML→PDF 兜底）喂给 LLM；`0` 只用摘要 |
 | `TTS_VOICE_ZH` | `zh-CN-YunxiNeural` | 中文音色（`edge-tts --list-voices` 看全部） |
 | `TTS_VOICE_EN` | `en-US-AndrewNeural` | 英文音色 |
 | `TTS_RATE` | `+8%` | 语速 |
 | `FEED_BASE_URL` | 空 | `public/` 的公开地址（如 GitHub Pages），**RSS 里音频链接靠它** |
+
+### 长稿导读（10–20 分钟）
+
+每篇会按是否命中 `INTERESTS` 自动决定长度：**命中 → 深讲 20 分钟**（动机、方法细节、实验数字、局限与借鉴），**不相关 → 科普式概览 10 分钟**。这一档**必须配 LLM**（`LLM_BACKEND=gemini` + key），因为要读全文再展开；不配则退回「读摘要」的短兜底，到不了目标长度。手写的稿子放进 `data/scripts/` 会被原样复用、不覆盖。
 
 ## 私人收听：iPhone + VLC（不公开任何东西）
 

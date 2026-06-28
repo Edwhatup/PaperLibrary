@@ -1,93 +1,112 @@
-"""Turn a paper (title + abstract) into a spoken 导读 script.
+"""Turn a paper into a long-form spoken 导读 script (Chinese by default).
 
-Pluggable LLM backend (config.LLM_BACKEND):
-  - "gemini"    -> Google Gemini (free tier available)
-  - "anthropic" -> Claude
-  - "none"      -> no LLM; just read title + abstract verbatim (English),
-                   or a minimal Chinese frame if DIGEST_LANG=zh.
+Length adapts to relevance:
+  - matches your INTERESTS  -> LONG_MINUTES  (deep dive)
+  - otherwise               -> SHORT_MINUTES (overview)
 
-The output is plain narration text (no markdown, no stage directions) so it
-feeds straight into edge-tts.
+Needs an LLM (config.LLM_BACKEND = gemini / anthropic) plus the paper's full
+text to sustain 10-20 minutes. With no LLM it falls back to a short
+abstract-only reading and prints a warning — that path can't reach the target
+length.
+
+Output is clean narration text (no markdown / bullets / stage directions) so
+it feeds straight into edge-tts.
 """
 from __future__ import annotations
 
+import re
+
 import config
 
-_ZH_PROMPT = """你是一档面向通勤者的 AI 论文导读播客主播。请把下面这篇论文讲成一段 90~150 秒、
-适合开车时收听的中文口播稿。要求：
-- 开头一句话点出这篇论文解决什么问题、为什么值得关注；
-- 用大白话讲清核心方法和最关键的结果，避免堆术语，必要术语顺带解释；
-- 结尾给一句「谁该关注 / 有什么启发」。
-- 只输出可以直接朗读的纯文本，不要标题、不要分点符号、不要旁白提示。
 
-论文标题：{title}
-摘要：{abstract}
+def is_relevant(paper: dict) -> bool:
+    """Keyword match of the user's INTERESTS against title + abstract."""
+    interests = [k.strip().lower() for k in re.split(r"[,，;；、]", config.INTERESTS) if k.strip()]
+    if not interests:
+        return False
+    hay = f"{paper.get('title','')} {paper.get('abstract','')}".lower()
+    return any(kw in hay for kw in interests)
+
+
+def target_minutes(paper: dict) -> int:
+    return config.LONG_MINUTES if is_relevant(paper) else config.SHORT_MINUTES
+
+
+def _prompt(paper: dict, full_text: str, minutes: int) -> str:
+    chars = minutes * config.CHARS_PER_MIN
+    lang = "中文" if config.DIGEST_LANG == "zh" else "English"
+    body = full_text.strip() or paper.get("abstract", "")
+    source_note = "以下是论文全文（可能含公式/排版噪声，请抓主干）：" if full_text else "（只有摘要可用，请基于摘要尽量展开）："
+    relevant = is_relevant(paper)
+    depth = (
+        "这篇和听众的研究方向相关，请讲得深入：方法的动机与直觉、关键设计选择和为什么这么设计、"
+        "和已有工作的区别、实验设置与最重要的几个结果数字、以及局限和可借鉴之处都要覆盖。"
+        if relevant
+        else "这篇和听众方向关系不大，做一个清晰的科普式概览即可，重点讲清它解决什么问题、核心思路、和主要结论。"
+    )
+    return f"""你是一档面向通勤者的 AI 论文导读播客主播，用{lang}口播。请把下面这篇论文讲成一段约 {minutes} 分钟、
+适合开车时收听的连续口播稿，目标长度大约 {chars} 字（请尽量接近，不要明显偏短）。
+
+要求：
+- 全程是可以直接朗读的连续口语，不要小标题、不要分点编号、不要"第一部分"这种字样，段落之间自然过渡。
+- 开头用一两句话点出这篇解决什么问题、为什么值得听。
+- {depth}
+- 适当解释专业术语，用类比帮助理解，但不要啰嗦注水；宁可多讲清楚一个机制，也不要重复空话。
+- 结尾给一句总结和"对听众有什么启发 / 谁该关注"。
+- 只输出口播正文本身。
+
+论文标题：{paper['title']}
+{source_note}
+{body}
 """
 
-_EN_PROMPT = """You are the host of a commuter-friendly AI paper digest podcast.
-Turn the paper below into a 90-150s spoken script for listening while driving:
-- open with the problem it solves and why it matters;
-- explain the core method and key result in plain language;
-- close with who should care / the takeaway.
-Output only clean narration text — no title, no bullets, no stage directions.
 
-Title: {title}
-Abstract: {abstract}
-"""
-
-
-def _prompt(paper: dict) -> str:
-    tmpl = _ZH_PROMPT if config.DIGEST_LANG == "zh" else _EN_PROMPT
-    return tmpl.format(title=paper["title"], abstract=paper["abstract"])
-
-
-def _via_gemini(paper: dict) -> str:
+def _via_gemini(paper, full_text, minutes):
     import google.generativeai as genai
 
     genai.configure(api_key=config.GEMINI_API_KEY)
     model = genai.GenerativeModel(config.GEMINI_MODEL)
-    resp = model.generate_content(_prompt(paper))
+    resp = model.generate_content(
+        _prompt(paper, full_text, minutes),
+        generation_config={"max_output_tokens": 8192, "temperature": 0.7},
+    )
     return resp.text.strip()
 
 
-def _via_anthropic(paper: dict) -> str:
+def _via_anthropic(paper, full_text, minutes):
     import anthropic
 
     client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
     msg = client.messages.create(
         model=config.ANTHROPIC_MODEL,
-        max_tokens=1024,
-        messages=[{"role": "user", "content": _prompt(paper)}],
+        max_tokens=8192,
+        messages=[{"role": "user", "content": _prompt(paper, full_text, minutes)}],
     )
     return "".join(b.text for b in msg.content if b.type == "text").strip()
 
 
 def _fallback(paper: dict) -> str:
+    print("[script] WARNING: no LLM configured — short abstract reading only "
+          "(can't reach the target length; set LLM_BACKEND + key).")
     if config.DIGEST_LANG == "zh":
-        # No LLM means no translation; frame in Chinese, read abstract as-is.
-        return (
-            f"下面这篇论文标题是：{paper['title']}。以下是它的英文摘要。"
-            f" {paper['abstract']}"
-        )
+        return (f"下面这篇论文标题是：{paper['title']}。以下是它的英文摘要。 {paper['abstract']}")
     return f"{paper['title']}. {paper['abstract']}"
 
 
-def make_script(paper: dict) -> str:
+def make_script(paper: dict, full_text: str = "") -> str:
+    minutes = target_minutes(paper)
     backend = config.LLM_BACKEND
     try:
         if backend == "gemini" and config.GEMINI_API_KEY:
-            return _via_gemini(paper)
+            return _via_gemini(paper, full_text, minutes)
         if backend == "anthropic" and config.ANTHROPIC_API_KEY:
-            return _via_anthropic(paper)
-    except Exception as e:  # never let one paper kill the run
+            return _via_anthropic(paper, full_text, minutes)
+    except Exception as e:
         print(f"[script] LLM '{backend}' failed ({e}); falling back to abstract")
     return _fallback(paper)
 
 
 if __name__ == "__main__":
-    demo = {
-        "title": "Attention Is All You Need",
-        "abstract": "We propose the Transformer, a model architecture relying "
-        "entirely on attention mechanisms.",
-    }
+    demo = {"title": "Attention Is All You Need",
+            "abstract": "We propose the Transformer ...", "upvotes": 1}
     print(make_script(demo))
