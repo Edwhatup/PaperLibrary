@@ -41,12 +41,10 @@ jobs:
         run: |
           pip install -r requirements.txt
           if [ -n "$GEMINI_API_KEY" ]; then pip install google-generativeai; fi
-      - name: Backfill recent days
+      - name: Refresh 2026-06-26 via Gemini (replace old hand/fallback)
         run: |
-          for d in 2026-06-23 2026-06-24 2026-06-25; do
-            echo "===== $d ====="
-            python scripts/run_daily.py "$d" || echo "skip $d"
-          done
+          rm -f data/scripts/2026-06-26-*.txt public/audio/2026-06-26-*.mp3
+          python scripts/run_daily.py 2026-06-26
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
