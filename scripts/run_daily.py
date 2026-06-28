@@ -30,15 +30,27 @@ def run(date_str: str | None = None) -> None:
 
     for i, paper in enumerate(papers, 1):
         print(f"\n=== {i}/{len(papers)}: {paper['title']} ===")
-        script = make_script.make_script(paper)
 
         slug = slugify(paper["title"])[:60] or f"paper-{i}"
         base = f"{paper['date']}-{slug}"
-        (config.SCRIPTS_DIR / f"{base}.txt").write_text(script, encoding="utf-8")
+        script_path = config.SCRIPTS_DIR / f"{base}.txt"
+
+        # A hand-written / previously generated script wins: this lets you
+        # commit a polished 导读 and have CI reuse it verbatim (no LLM needed),
+        # and makes re-runs of the same date idempotent.
+        if script_path.exists():
+            script = script_path.read_text(encoding="utf-8")
+            print(f"[script] reuse {script_path.name}")
+        else:
+            script = make_script.make_script(paper)
+            script_path.write_text(script, encoding="utf-8")
 
         audio_name = f"{base}.mp3"
         audio_path = config.AUDIO_DIR / audio_name
-        synth_audio.synth(script, audio_path)
+        if audio_path.exists():
+            print(f"[tts] reuse {audio_name}")
+        else:
+            synth_audio.synth(script, audio_path)
 
         build_feed.add_episode(
             {
