@@ -45,11 +45,11 @@ if LLM_BACKEND in ("auto", "", "none"):
 # --- Long-form 导读 ------------------------------------------------------
 # Target audio length depends on whether a paper matches YOUR research
 # direction. On-topic papers get the long treatment, off-topic the short.
-LONG_MINUTES = int(os.getenv("LONG_MINUTES", "20"))    # relevant papers
-SHORT_MINUTES = int(os.getenv("SHORT_MINUTES", "10"))  # off-topic papers
-# Roughly how many Chinese characters edge-tts reads per minute (at TTS_RATE).
+LONG_MINUTES = int(os.getenv("LONG_MINUTES", "20"))    # relevant papers (>=)
+SHORT_MINUTES = int(os.getenv("SHORT_MINUTES", "15"))  # off-topic papers (>=)
+# Measured: edge-tts at TTS_RATE reads ~340 Chinese chars per audio-minute.
 # Used to translate target minutes into a target script length for the LLM.
-CHARS_PER_MIN = int(os.getenv("CHARS_PER_MIN", "270"))
+CHARS_PER_MIN = int(os.getenv("CHARS_PER_MIN", "340"))
 
 # Your research interests / keywords, separated by comma or 、. A paper is
 # "relevant" (-> long) if it matches any of these. Empty = treat all as

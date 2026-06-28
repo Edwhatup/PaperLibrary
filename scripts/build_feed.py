@@ -63,7 +63,7 @@ def build_rss() -> None:
         items.append(
             "    <item>\n"
             f"      <title>{escape(ep['title'])}</title>\n"
-            f"      <description>{escape(ep.get('abstract', ''))}</description>\n"
+            f"      <description>{escape(ep.get('notes') or ep.get('abstract', ''))}</description>\n"
             f"      <link>{escape(link)}</link>\n"
             f"      <guid isPermaLink=\"false\">{escape(ep['audio'])}</guid>\n"
             f"      <pubDate>{_rfc2822(ep['published'])}</pubDate>\n"

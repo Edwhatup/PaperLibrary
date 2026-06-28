@@ -57,11 +57,16 @@ def run(date_str: str | None = None) -> None:
         else:
             synth_audio.synth(script, audio_path)
 
+        # Chinese show-notes = first paragraph of the script (the podcast app
+        # shows this); fall back to the English abstract.
+        notes = next((p.strip() for p in script.split("\n") if p.strip()), "")[:300]
+
         build_feed.add_episode(
             {
                 "date": paper["date"],
                 "title": paper["title"],
                 "abstract": paper["abstract"],
+                "notes": notes,
                 "url": paper["url"],
                 "upvotes": paper["upvotes"],
                 "audio": audio_name,

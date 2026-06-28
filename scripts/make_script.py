@@ -39,21 +39,26 @@ def _prompt(paper: dict, full_text: str, minutes: int) -> str:
     source_note = "以下是论文全文（可能含公式/排版噪声，请抓主干）：" if full_text else "（只有摘要可用，请基于摘要尽量展开）："
     relevant = is_relevant(paper)
     depth = (
-        "这篇和听众的研究方向相关，请讲得深入：方法的动机与直觉、关键设计选择和为什么这么设计、"
-        "和已有工作的区别、实验设置与最重要的几个结果数字、以及局限和可借鉴之处都要覆盖。"
+        "这篇和听众的研究方向相关，要讲得很深入、很完整：研究背景和它真正想解决的痛点、"
+        "方法的动机与直觉、每一个关键设计选择以及为什么这么设计、和已有工作/基线的区别、"
+        "实验设置与最重要的几个结果数字和它们说明了什么、消融或诊断实验的发现、"
+        "以及局限性和对听众工作的具体可借鉴之处，都要展开讲透。"
         if relevant
-        else "这篇和听众方向关系不大，做一个清晰的科普式概览即可，重点讲清它解决什么问题、核心思路、和主要结论。"
+        else "这篇虽然和听众方向不完全对口，但也要讲得清楚扎实、有信息量：研究背景与问题、"
+        "核心方法和它的直觉、关键设计、主要实验结论、以及它的意义和局限，都要覆盖，不要只停在一句话概括。"
     )
-    lo, hi = int(chars * 0.85), int(chars * 1.1)
-    return f"""请把下面这篇论文写成一段约 {minutes} 分钟、用{lang}讲解、适合开车时收听的连续口播稿。
-总字数控制在 {lo} 到 {hi} 字之间（务必不要少于 {lo}，也不要明显超过 {hi}），讲完自然收尾。
+    lo, hi = int(chars * 0.9), int(chars * 1.25)
+    return f"""请把下面这篇论文写成一段至少 {minutes} 分钟、用{lang}讲解、适合开车时收听的连续口播稿。
+目标字数 {lo} 到 {hi} 字，**务必不少于 {lo} 字**——这是硬性要求，宁可长一点也不要短。
 
 要求：
 - 第一句话就直接切入这篇论文要解决的问题，禁止任何开场白、问候语、自我介绍、报播客名/栏目名，
   绝对不要出现"各位""大家好""欢迎收听""我是主播""通勤路上""本期节目"这类套话。
 - 全程是可以直接朗读的连续口语，不要小标题、不要分点编号、不要"第一部分"这种字样，段落之间自然过渡。
 - {depth}
-- 适当解释专业术语，用类比帮助理解，但不要啰嗦注水；宁可多讲清楚一个机制，也不要重复空话。
+- 如果讲完感觉字数还不够，就继续补充：更多背景与动机、和相关工作的对比、方法每一步的直觉、
+  具体的例子和类比、实验设置与结果的解读、潜在局限和未来方向——靠这些真内容把长度撑够，而不是重复空话注水。
+- 适当解释专业术语，用类比帮助理解；宁可多讲清楚一个机制，也不要泛泛而谈。
 - 结尾直接给结论和启发，不要"以上就是""感谢收听"这类结束语。
 - 只输出口播正文本身。
 
@@ -80,9 +85,9 @@ def _via_gemini(paper, full_text, minutes):
 
     genai.configure(api_key=config.GEMINI_API_KEY)
     prompt = _prompt(paper, full_text, minutes)
-    # ~0.86 output tokens per Chinese char observed; cap near the target length
-    # (with headroom) so off-topic papers stay ~10 min and relevant ~20 min.
-    max_tokens = min(8192, int(minutes * config.CHARS_PER_MIN))
+    # Give the model room to reach the (now higher) target length; 8192 output
+    # tokens ≈ ~9500 Chinese chars ≈ ~28 min, the practical ceiling.
+    max_tokens = min(8192, int(minutes * config.CHARS_PER_MIN * 1.3))
     last = None
     for name in _gemini_models():
         try:
