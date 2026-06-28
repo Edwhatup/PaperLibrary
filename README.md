@@ -24,7 +24,8 @@ python scripts/run_daily.py 2026-06-27 # 指定日期
 
 产物：
 - `public/audio/*.mp3` —— 每篇论文一集音频
-- `public/rss.xml` —— 播客订阅源
+- `public/playlist.m3u8` —— **VLC 播放列表（私人收听首选，见下）**
+- `public/rss.xml` —— 播客订阅源（要公开托管才有意义）
 - `library/README.md` —— 可读的图书馆索引
 - `data/` —— 原始论文元数据、导读脚本、节目清单
 
@@ -51,6 +52,19 @@ pip install google-generativeai   # 或 anthropic
 | `TTS_VOICE_EN` | `en-US-AndrewNeural` | 英文音色 |
 | `TTS_RATE` | `+8%` | 语速 |
 | `FEED_BASE_URL` | 空 | `public/` 的公开地址（如 GitHub Pages），**RSS 里音频链接靠它** |
+
+## 私人收听：iPhone + VLC（不公开任何东西）
+
+不想公开成博客？不需要。仓库保持 **private**，用 VLC 放云盘里的 `playlist.m3u8` 即可：
+
+1. 把 `public/`（含 `audio/` 和 `playlist.m3u8`）同步进 iCloud Drive 或 Dropbox 的一个文件夹。
+   - 手动：下载仓库 `public/` 拖进云盘
+   - 自动：在 Action 里加一步 `rclone` 推到你的云盘（见下方注释）
+2. iPhone 上打开 **VLC → Network / 云服务**，登录同一个云盘，打开那个文件夹里的 `playlist.m3u8`。
+3. 上车连 CarPlay/蓝牙，VLC 从头放到尾，就是你的私人论文电台。
+
+> `playlist.m3u8` 用的是相对文件名，所以它和 mp3 放在**同一个云盘文件夹**里就能直接播，无需任何公开 URL。
+> 想用「打开网络串流」直接贴一个 m3u 链接，就把仓库变量 `FEED_BASE_URL` 设成那个（私有/不可猜的）托管地址，playlist 里会变成绝对 URL。
 
 ## 自动化（GitHub Actions）
 

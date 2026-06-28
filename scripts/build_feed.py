@@ -111,8 +111,30 @@ def build_library_index() -> None:
     print(f"[index] library/README.md ({len(episodes)} episodes)")
 
 
+def build_playlist() -> None:
+    """Emit an M3U8 playlist for VLC (iOS/desktop).
+
+    If FEED_BASE_URL is set, entries are absolute URLs (works with VLC's
+    "Open Network Stream"). Otherwise entries are bare filenames, which VLC
+    resolves relative to the playlist's own location — drop playlist.m3u8 next
+    to the mp3s in the same cloud folder (iCloud/Dropbox) and it just works.
+    """
+    episodes = load_manifest()  # newest first
+    lines = ["#EXTM3U"]
+    # Manifest is newest-first; reverse so the playlist plays oldest -> newest.
+    for ep in reversed(episodes):
+        secs = ep.get("duration", -1)
+        title = f"{ep['date']} · {ep['title']}"
+        lines.append(f"#EXTINF:{secs},{title}")
+        lines.append(_audio_url(ep["audio"]))
+    out = config.PUBLIC / "playlist.m3u8"
+    out.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"[playlist] {len(episodes)} tracks -> {out}")
+
+
 def build_all() -> None:
     build_rss()
+    build_playlist()
     build_library_index()
 
 
