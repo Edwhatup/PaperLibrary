@@ -8,6 +8,24 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models</title>
+      <description>我们今天聊的这篇论文，Wan-Streamer v0.1，它直接切入了一个当前人工智能交互系统的核心痛点：那就是我们都希望AI能够像真人一样，进行实时、流畅、全双工的音视频互动，但现实中的大多数AI系统，距离这个目标还有不小的差距。想象一下，你和一位朋友聊天，是自然而然地边听边看边回应的。朋友说话时，你会点头、眼神会有交流，甚至在他还没说完时，你就能根据语境做出预判或插话。但现在大多数AI助手，比如我们常用的语音助手或聊天机器人，它们的工作模式是高度串行的。你先说完一句话，它才开始识别你的语音，然后理解你的语义，接着生成一个文本回复，最后再把这个文本转换成语音播出来。这个过程是严格一步接一步的</description>
+      <link>https://arxiv.org/abs/2606.25041</link>
+      <guid isPermaLink="false">2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio.mp3</guid>
+      <pubDate>Mon, 29 Jun 2026 15:19:36 +0000</pubDate>
+      <itunes:duration>335</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio.mp3" length="2014992" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Are We Ready For An Agent-Native Memory System?</title>
+      <description>大型语言模型（LLM）智能体在执行复杂任务时，面临着一个核心挑战，那就是如何高效地管理和利用它们积累的记忆信息。尽管智能体记忆系统已经从简单的检索增强机制迅速发展成了支持信息存储、检索、更新、整合和动态生命周期管理的数据管理系统，但我们现有的评估方法却常常把它当作一个黑箱。这意味着我们主要关注智能体最终能否完成任务（比如F1分数或BLEU分数），却很少深入探究其底层的记忆系统本身。因此，许多系统层面的关键问题，比如运营成本、不同记忆模块之间的架构权衡，以及在知识动态更新下的鲁棒性，都还远未得到充分探索。</description>
+      <link>https://arxiv.org/abs/2606.24775</link>
+      <guid isPermaLink="false">2026-06-25-are-we-ready-for-an-agent-native-memory-system.mp3</guid>
+      <pubDate>Mon, 29 Jun 2026 15:17:57 +0000</pubDate>
+      <itunes:duration>1167</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-are-we-ready-for-an-agent-native-memory-system.mp3" length="7005456" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>In-Context World Modeling for Robotic Control</title>
       <description>现代视觉-语言-动作模型，也就是VLA模型，在面对新的机器人设置时，比如摄像机视角改变或者机器人形态变化，往往无法很好地泛化。这是因为它们通常只依赖当前的观察和语言指令，默认训练时的执行环境是固定的。它们忽略了系统配置本身作为一个可变因素，这导致每次遇到新环境，都需要大量数据进行代价高昂的微调。</description>
       <link>https://arxiv.org/abs/2606.26025</link>
@@ -24,24 +42,6 @@
       <pubDate>Mon, 29 Jun 2026 15:05:05 +0000</pubDate>
       <itunes:duration>725</itunes:duration>
       <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-danceopd-on-policy-generative-field-distillation.mp3" length="4354272" type="audio/mpeg"/>
-    </item>
-    <item>
-      <title>Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models</title>
-      <description>下面这篇论文标题是：Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models。以下是它的英文摘要。 We present Wan-Streamer, a native-streaming, end-to-end interactive foundation model designed from the ground up for real-time, low-latency, full-duplex audio-visual interaction. Wan-Streamer seamlessly models</description>
-      <link>https://arxiv.org/abs/2606.25041</link>
-      <guid isPermaLink="false">2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio.mp3</guid>
-      <pubDate>Mon, 29 Jun 2026 15:03:33 +0000</pubDate>
-      <itunes:duration>115</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio.mp3" length="690480" type="audio/mpeg"/>
-    </item>
-    <item>
-      <title>Are We Ready For An Agent-Native Memory System?</title>
-      <description>下面这篇论文标题是：Are We Ready For An Agent-Native Memory System?。以下是它的英文摘要。 Memory for large language model (LLM) agents has rapidly evolved from simple retrieval-augmented mechanisms into a data management system that supports persistent information storage, retrieval, update, consolidation, and dynamic l</description>
-      <link>https://arxiv.org/abs/2606.24775</link>
-      <guid isPermaLink="false">2026-06-25-are-we-ready-for-an-agent-native-memory-system.mp3</guid>
-      <pubDate>Mon, 29 Jun 2026 15:03:26 +0000</pubDate>
-      <itunes:duration>131</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-are-we-ready-for-an-agent-native-memory-system.mp3" length="786960" type="audio/mpeg"/>
     </item>
     <item>
       <title>NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers?</title>
