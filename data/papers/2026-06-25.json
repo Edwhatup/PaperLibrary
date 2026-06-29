@@ -4,7 +4,7 @@
     "arxiv_id": "2606.24775",
     "title": "Are We Ready For An Agent-Native Memory System?",
     "abstract": "Memory for large language model (LLM) agents has rapidly evolved from simple retrieval-augmented mechanisms into a data management system that supports persistent information storage, retrieval, update, consolidation, and dynamic lifecycle governance throughout agent execution. Despite this evolution, existing evaluations still benchmark agent memory mainly through end-to-end task success metrics (e.g., F1, BLEU), while treating the underlying system as a monolithic black box. As a result, critical system-level concerns, including operational costs, architectural trade-offs across memory modules, and robustness under dynamic knowledge updates, remain insufficiently explored. In this paper, we present a systematic experimental study of agent memory from a data management perspective. We propose an analytical framework that decomposes agent memory into four core modules: memory representation and storage, extraction, retrieval and routing, and maintenance. Under this framework, we evaluate 12 representative memory systems and two reference baselines across five benchmark workloads spanning 11 datasets. Our extensive end-to-end evaluation shows that no single architecture dominates across all scenarios; instead, effectiveness depends heavily on how well the memory structure aligns with the workload bottleneck. Furthermore, through fine-grained ablation studies, we quantify their individual effects on representation fidelity, retrieval precision, update correctness, and long-horizon stability. Finally, we reveal cost-performance trade-offs under realistic workloads, showing localized maintenance is more cost-efficient than global reorganization. Based on these findings, we identify promising directions towards building truly agent-native memory systems. The code is publicly available at https://github.com/OpenDataBox/MemoryData.",
-    "upvotes": 104,
+    "upvotes": 106,
     "url": "https://arxiv.org/abs/2606.24775",
     "pdf": "https://arxiv.org/pdf/2606.24775",
     "hf_url": "https://huggingface.co/papers/2606.24775"
@@ -14,7 +14,7 @@
     "arxiv_id": "2606.25041",
     "title": "Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models",
     "abstract": "We present Wan-Streamer, a native-streaming, end-to-end interactive foundation model designed from the ground up for real-time, low-latency, full-duplex audio-visual interaction. Wan-Streamer seamlessly models language, audio, and video as both input and output within a single Transformer, where the sequence is represented as interleaved visual, audio, and text input tokens together with visual, audio, and text output tokens, coordinated by block-causal attention for incremental streaming. Unlike cascaded interactive systems that rely on separate VAD, ASR, language, TTS, audio-driven animation, or video-generation modules, Wan-Streamer does not rely on external language, speech, avatar, or video-generation modules: perception, reasoning, generation, response timing, turn management, and cross-modal synchronization are learned jointly within one unified model, reducing pipeline latency and error accumulation. To support natural audio-visual responsiveness, we redesign the entire stack around streamability, including causal encoders, causal decoders, block-causal attention, and low-latency multimodal token scheduling, enabling streaming units as short as 160 ms at 25 fps. Wan-Streamer achieves approximately 200 ms model-side response latency and approximately 550 ms total interaction latency when combined with 350 ms bidirectional network latency, supporting sub-second duplex audio-visual communication. These results position Wan-Streamer as a unified, end-to-end, multimodal interactive foundation model for low-latency streaming interaction.",
-    "upvotes": 93,
+    "upvotes": 100,
     "url": "https://arxiv.org/abs/2606.25041",
     "pdf": "https://arxiv.org/pdf/2606.25041",
     "hf_url": "https://huggingface.co/papers/2606.25041"
@@ -24,7 +24,7 @@
     "arxiv_id": "2606.26058",
     "title": "DomainShuttle: Freeform Open Domain Subject-driven Text-to-video Generation",
     "abstract": "Open domain subject-driven text-to-video (S2V) generation has drawn significant interest in academia and industry. Open domain S2V mainly involves two scenarios: in-domain, which requires retaining the reference subject features as much as possible, and cross-domain, which preserves the intrinsic features of the subject while allowing subject-irrelevant properties to vary flexibly according to the text prompt. Existing methods primarily focus on maximizing subject fidelity in in-domain scenarios, which limits their editability and adaptability in cross-domain scenarios, such as novel styles, semantic combinations, or domain attributes. In this study, we propose that an ideal S2V method should flexibly shuttle between different domains, achieving strong performance in both in-domain and cross-domain scenarios. To this end, we propose DomainShuttle, which could achieve high fidelity and generative flexibility for open domain video personalization. Specifically, we introduce Domain-MoT, which decouples videos and reference features and introduces the domain-aware AdaLN for domain-specific modeling of reference images. We then introduce the Video-Reference DualRoPE scheme, which places reference image tokens and video tokens in separate RoPE spaces to enable precise subject-level spatial modeling, and Cross-Pair Consistent Loss, which aims to extract intrinsic subject features unaffected by irrelevant features. Extensive experiments demonstrate that DomainShuttle achieves significant performance improvements over existing methods, exhibiting high subject fidelity and generative flexibility across diverse open domain application scenarios.",
-    "upvotes": 64,
+    "upvotes": 65,
     "url": "https://arxiv.org/abs/2606.26058",
     "pdf": "https://arxiv.org/pdf/2606.26058",
     "hf_url": "https://huggingface.co/papers/2606.26058"
@@ -34,7 +34,7 @@
     "arxiv_id": "2606.25763",
     "title": "ShutterMuse: Capture-Time Photography Guidance with MLLMs",
     "abstract": "Real-world photography requires capture-time guidance for both camera framing and subject pose. Yet existing aesthetic cropping benchmarks mainly evaluate post-hoc crop prediction and overlook subject-side recommendations, leaving the capture-time guidance capabilities of multimodal large language models (MLLMs) underexplored. To address this gap, we introduce CaptureGuide-Bench, a benchmark with two complementary tasks: photographer-side composition decision and refinement, and subject-side scene-conditioned pose recommendation. Our evaluation reveals limitations: general-purpose MLLMs can make composition decisions but lack precise refinement localization, while specialized aesthetic cropping models localize crops effectively but are limited to refinement; neither provides actionable pose guidance. To support model development, we further construct CaptureGuide-Dataset, comprising 130K samples with textual rationales and structured visual annotations, and develop ShutterMuse, a unified MLLM trained with supervised and reinforcement fine-tuning. Experiments on CaptureGuide-Bench show that ShutterMuse achieves the best overall photographer-side performance among evaluated baselines and competitive subject-side pose recommendation with substantially lower inference cost, demonstrating the potential of MLLMs as interactive assistants for photography during image capture.",
-    "upvotes": 44,
+    "upvotes": 45,
     "url": "https://arxiv.org/abs/2606.25763",
     "pdf": "https://arxiv.org/pdf/2606.25763",
     "hf_url": "https://huggingface.co/papers/2606.25763"
@@ -54,7 +54,7 @@
     "arxiv_id": "2606.15932",
     "title": "Beyond NL2Code: A Structured Survey of Multimodal Code Intelligence",
     "abstract": "While Large Language Models (LLMs) have substantially advanced text-to-code synthesis, many real programming tasks specify intent through visual artifacts such as screenshots, charts, vector drawings, videos, and interactive states. These tasks require models to connect visual perception to executable programs, because correctness depends not only on syntax but also on layout, data semantics, interaction behavior, and domain-specific constraints that apply after execution. This survey examines Multimodal Code Intelligence, covering systems that generate, edit, refine, or reason with code under visually grounded inputs and outputs. We first formulate the field by the role that code plays in each task, distinguishing code as a rendered artifact, an editable symbolic structure, a scientific representation, an intermediate reasoning trace, or an executable policy or tool interface. We then organize benchmarks and methods into four domains: Graphical User Interface, Scientific Visualization, Structured Graphics, and Frontier Tasks and Frameworks. This taxonomy connects mature artifact-generation problems to emerging agentic and unified settings and allows us to compare how different tasks treat evidence of correctness. Looking ahead, we argue that future research may benefit from four verification-centered directions. Multi-signal validation can combine complementary evidence of correctness, multi-state verification can test behavior across execution trajectories, cross-task transfer testing can probe reusable visual-code skills, and verifiable agent traces can reveal whether agent actions are grounded in visual evidence. Together, these directions may move this field from single-output imitation toward evidence-grounded executable systems. An ongoing project and resources are available on https://github.com/xjywhu/Awesome-Multimodal-LLM-for-Code{GitHub}.",
-    "upvotes": 37,
+    "upvotes": 38,
     "url": "https://arxiv.org/abs/2606.15932",
     "pdf": "https://arxiv.org/pdf/2606.15932",
     "hf_url": "https://huggingface.co/papers/2606.15932"
@@ -64,7 +64,7 @@
     "arxiv_id": "2606.26087",
     "title": "MVTrack4Gen: Multi-View Point Tracking as Geometric Supervision for 4D Video Generation",
     "abstract": "Synthesizing a novel-view video from a monocular reference video along a target camera trajectory requires both geometric consistency and motion fidelity with respect to the reference video. Existing methods based on explicit 3D representations are limited by the accuracy of off-the-shelf reconstruction modules, which often produce inaccurate geometry for dynamic objects in monocular videos. In contrast, camera-conditioning-only methods can achieve high visual quality but often struggle to preserve geometric and motion consistency. In this work, we introduce MVTrack4Gen (Multi-View point Tracking for Novel-View Generation), a motion-aware training framework that leverages multi-view point tracking as an additional geometric and motion supervision signal for camera-conditioning-only novel-view video diffusion models. Our key finding is that specific attention layers encode strong correspondence cues, where query features attend to key features at geometrically corresponding locations across views and over time, and the misalignment of these correspondences causes motion inconsistency. Based on this observation, we route these features into an auxiliary multi-view tracking head and jointly train the diffusion model with a point-tracking objective. By explicitly strengthening these motion-aware correspondences, MVTrack4Gen improves existing models to better follow the motion in the reference view and maintain cross-view geometric consistency. Across diverse benchmarks, our method achieves state-of-the-art geometric consistency and competitive camera accuracy.",
-    "upvotes": 34,
+    "upvotes": 35,
     "url": "https://arxiv.org/abs/2606.26087",
     "pdf": "https://arxiv.org/pdf/2606.26087",
     "hf_url": "https://huggingface.co/papers/2606.26087"
@@ -74,7 +74,7 @@
     "arxiv_id": "2606.25319",
     "title": "V-Zero: Answer-Label-Free On-Policy Distillation with Contrastive Evidence Gating for Fine-Grained Visual Reasoning",
     "abstract": "Fine-grained visual reasoning requires multimodal large language models (MLLMs) to identify task-relevant visual evidence and ground their reasoning in local image regions. Existing agentic methods typically rely on reinforcement learning with verifiable rewards or supervised fine-tuning on large-scale annotated reasoning traces, leading to costly exploration, hand-designed verification rules, or heavy dependence on textual supervision. A natural way to avoid such external answer labels is to learn from trajectories sampled by the student itself, which points to On-Policy Distillation (OPD). To understand what OPD can and cannot provide for visual reasoning, we revisit it as negative-free stop-gradient alignment. This perspective shows that, although OPD provides effective token-level correction, its ceiling is constrained by the absence of trajectory-level discrimination. Motivated by these observations, we propose V-Zero, an answer-label-free framework for visual reasoning with contrastive evidence gating. V-Zero uses no annotated textual answer labels; instead, during training it pairs a question-relevant regional crop with a negative visual view to evaluate student-sampled trajectories and gate dense token-level distillation. Experiments on multiple visual reasoning benchmarks show that V-Zero consistently improves fine-grained visual reasoning while preserving strong generalization. Notably, V-Zero is more than 5times faster than previous supervised fine-tuning methods and more than 10times faster than reinforcement learning baselines. Code and dataset will be released at https://github.com/eVI-group-SCU/V-Zero",
-    "upvotes": 25,
+    "upvotes": 27,
     "url": "https://arxiv.org/abs/2606.25319",
     "pdf": "https://arxiv.org/pdf/2606.25319",
     "hf_url": "https://huggingface.co/papers/2606.25319"
@@ -94,7 +94,7 @@
     "arxiv_id": "2606.25473",
     "title": "Causal-rCM: A Unified Teacher-Forcing and Self-Forcing Open Recipe for Autoregressive Diffusion Distillation in Streaming Video Generation and Interactive World Models",
     "abstract": "Autoregressive video diffusion with causal diffusion transformers has emerged as a major paradigm for real-time streaming video generation and action-conditioned interactive world models. In this work, we extend rCM, an advanced diffusion distillation framework, to autoregressive video diffusion. The core philosophy of rCM lies in the complementarity between forward and reverse divergences, represented by consistency models (CMs) and distribution matching distillation (DMD), respectively, in diffusion distillation. This philosophy naturally carries over to the autoregressive setting, where teacher-forcing (TF) provides an offline, forward-divergence causal training paradigm, while self-forcing (SF) corresponds to an on-policy, reverse-divergence refinement.\n  Our contributions are: (1) through extensive experiments, we show that teacher-forcing CM is currently the best complement to self-forcing DMD as an initialization strategy (2) we present the first implementation of teacher-forcing-based continuous-time CMs (e.g., sCM/MeanFlow) for autoregressive video diffusion, enabled by our custom-mask FlashAttention-2 JVP kernel, achieving 10times faster convergence compared to discrete-time CMs (dCMs) (3) we introduce Causal-rCM, a leading, unified, and scalable algorithm-infrastructure open recipe for diffusion distillation and causal training (4) we achieve state-of-the-art streaming video generation performance in both frame-wise and chunk-wise settings, using only synthetic data for training.\n  Notably, our distilled 2-step causal Wan2.1-1.3B model achieves a VBench-T2V score of 84.63 with only 1 or 2 sampling steps. We further apply Causal-rCM to Cosmos 3, an advanced omnimodal world foundation model for physical AI with action-conditioned generation capability, enabling an interactive world model.",
-    "upvotes": 22,
+    "upvotes": 23,
     "url": "https://arxiv.org/abs/2606.25473",
     "pdf": "https://arxiv.org/pdf/2606.25473",
     "hf_url": "https://huggingface.co/papers/2606.25473"
@@ -104,10 +104,30 @@
     "arxiv_id": "2606.24849",
     "title": "IV-CoT: Implicit Visual Chain-of-Thought for Structure-Aware Text-to-Image Generation",
     "abstract": "Unified multi-modal large language models (MLLMs) have achieved strong text-to-image generation quality, but still struggle with structure-aware prompt following, where object counts, spatial relations, attribute bindings, and coarse layouts must be preserved. We attribute this limitation in part to the entanglement of structural planning and appearance rendering within a single conditioning stream. To address this issue, we propose Implicit Visual Chain-of-Thought (IV-CoT), a latent visual reasoning framework for query-conditioned image generation. IV-CoT decomposes the visual conditioning queries into a structural-to-semantic cascade, where structural queries first form a latent visual plan and semantic queries then render appearance conditioned on this plan. To guide the structural queries, we introduce training-only sketch supervision, which encourages them to capture structure from sketches without requiring sketch extraction or intermediate decoding at inference time. IV-CoT performs implicit CoT reasoning in a single forward pass and achieves superior results on GenEval and T2I-CompBench. Visualizations and analyses demonstrate that the learned structural and semantic queries play complementary roles in structure-aware generation.",
-    "upvotes": 16,
+    "upvotes": 17,
     "url": "https://arxiv.org/abs/2606.24849",
     "pdf": "https://arxiv.org/pdf/2606.24849",
     "hf_url": "https://huggingface.co/papers/2606.24849"
+  },
+  {
+    "date": "2026-06-25",
+    "arxiv_id": "2606.25996",
+    "title": "Autodata: An agentic data scientist to create high quality synthetic data",
+    "abstract": "We introduce Autodata, a general method that enables AI agents to act as data scientists who build high quality training and evaluation data. We show how to train (meta-optimize) such a data scientist agent, so that it learns to create even stronger data. We describe the overall formulation, and a specific practical implementation, Agentic Self-Instruct. We conduct experiments on computer science research tasks, legal reasoning tasks and reasoning with mathematical objects, where we obtain improved results compared to classical synthetic dataset creation methods. Further, meta-optimizing the data scientist agent itself delivers an even larger performance uplift. Agentic data creation provides a way to convert increased inference compute into higher quality model training. Overall, we believe this direction has the potential to change the way we build AI data.",
+    "upvotes": 15,
+    "url": "https://arxiv.org/abs/2606.25996",
+    "pdf": "https://arxiv.org/pdf/2606.25996",
+    "hf_url": "https://huggingface.co/papers/2606.25996"
+  },
+  {
+    "date": "2026-06-25",
+    "arxiv_id": "2606.24937",
+    "title": "The Hitchhiker's Guide to Agentic AI: From Foundations to Systems",
+    "abstract": "The Hitchhiker's Guide to Agentic AI is a comprehensive practitioner's reference for building autonomous AI systems. The book covers the full stack from first principles to production deployment, organized around a central thesis: building great agentic systems requires understanding every layer of the pipeline, not just one. The book opens with the LLM substrate -- transformer architecture, GPU systems, training and fine-tuning (SFT,LoRA, MoE), model compression, and inference optimization -- treated as essential foundations rather than the primary focus. It then develops the alignment and reasoning layer: reinforcement learning from human feedback (RLHF), PPO, DPO and its variants, GRPO, reward modeling, and RL for large reasoning models including chain-of-thought and test-time scaling. The second half is devoted to agentic AI proper. Topics include agentic training and trajectory-based RL, retrieval-augmented generation (RAG and Agentic RAG), memory systems (in-context, external, episodic, and semantic), agent harness design and context management, and a taxonomy of agent design patterns. Inter-agent coordination is covered in depth: the Model Context Protocol (MCP), agent skills and tool use, the Agent-to-Agent (A2A) communication protocol, and multi-agent architectures spanning centralized, decentralized, and hierarchical topologies. The book concludes with agent development frameworks, agentic UI design, evaluation methodology for agentic tasks, and production deployment. Each chapter pairs rigorous theoretical foundations with implementation guidance, code examples, and references to the primary literature.",
+    "upvotes": 15,
+    "url": "https://arxiv.org/abs/2606.24937",
+    "pdf": "https://arxiv.org/pdf/2606.24937",
+    "hf_url": "https://huggingface.co/papers/2606.24937"
   },
   {
     "date": "2026-06-25",
@@ -118,26 +138,6 @@
     "url": "https://arxiv.org/abs/2606.18239",
     "pdf": "https://arxiv.org/pdf/2606.18239",
     "hf_url": "https://huggingface.co/papers/2606.18239"
-  },
-  {
-    "date": "2026-06-25",
-    "arxiv_id": "2606.24937",
-    "title": "The Hitchhiker's Guide to Agentic AI: From Foundations to Systems",
-    "abstract": "The Hitchhiker's Guide to Agentic AI is a comprehensive practitioner's reference for building autonomous AI systems. The book covers the full stack from first principles to production deployment, organized around a central thesis: building great agentic systems requires understanding every layer of the pipeline, not just one. The book opens with the LLM substrate -- transformer architecture, GPU systems, training and fine-tuning (SFT,LoRA, MoE), model compression, and inference optimization -- treated as essential foundations rather than the primary focus. It then develops the alignment and reasoning layer: reinforcement learning from human feedback (RLHF), PPO, DPO and its variants, GRPO, reward modeling, and RL for large reasoning models including chain-of-thought and test-time scaling. The second half is devoted to agentic AI proper. Topics include agentic training and trajectory-based RL, retrieval-augmented generation (RAG and Agentic RAG), memory systems (in-context, external, episodic, and semantic), agent harness design and context management, and a taxonomy of agent design patterns. Inter-agent coordination is covered in depth: the Model Context Protocol (MCP), agent skills and tool use, the Agent-to-Agent (A2A) communication protocol, and multi-agent architectures spanning centralized, decentralized, and hierarchical topologies. The book concludes with agent development frameworks, agentic UI design, evaluation methodology for agentic tasks, and production deployment. Each chapter pairs rigorous theoretical foundations with implementation guidance, code examples, and references to the primary literature.",
-    "upvotes": 14,
-    "url": "https://arxiv.org/abs/2606.24937",
-    "pdf": "https://arxiv.org/pdf/2606.24937",
-    "hf_url": "https://huggingface.co/papers/2606.24937"
-  },
-  {
-    "date": "2026-06-25",
-    "arxiv_id": "2606.25996",
-    "title": "Autodata: An agentic data scientist to create high quality synthetic data",
-    "abstract": "We introduce Autodata, a general method that enables AI agents to act as data scientists who build high quality training and evaluation data. We show how to train (meta-optimize) such a data scientist agent, so that it learns to create even stronger data. We describe the overall formulation, and a specific practical implementation, Agentic Self-Instruct. We conduct experiments on computer science research tasks, legal reasoning tasks and reasoning with mathematical objects, where we obtain improved results compared to classical synthetic dataset creation methods. Further, meta-optimizing the data scientist agent itself delivers an even larger performance uplift. Agentic data creation provides a way to convert increased inference compute into higher quality model training. Overall, we believe this direction has the potential to change the way we build AI data.",
-    "upvotes": 13,
-    "url": "https://arxiv.org/abs/2606.25996",
-    "pdf": "https://arxiv.org/pdf/2606.25996",
-    "hf_url": "https://huggingface.co/papers/2606.25996"
   },
   {
     "date": "2026-06-25",
@@ -181,6 +181,16 @@
   },
   {
     "date": "2026-06-25",
+    "arxiv_id": "2606.16316",
+    "title": "RL-Index: Reinforcement Learning for Retrieval Index Reasoning",
+    "abstract": "Retrieving external knowledge is essential for solving real-world tasks, yet it remains challenging when the relationship between a query and its relevant knowledge involves implicit and complex reasoning beyond surface-level semantic or lexical matching (e.g., mathematical problems relying on the same theorem or coding requiring deep reasoning). Existing approaches primarily rely on query-side reasoning (e.g., query rewriting), which introduces significant online latency and underutilizes the opportunity to perform reasoning over the knowledge corpus itself (i.e., index-side reasoning). In this paper, we propose RL-Index, an agentic indexing framework that formulates retrieval index reasoning as a reinforcement learning problem. Instead of performing reasoning at query time, RL-Index shifts reasoning to the indexing stage by augmenting documents with LLM-generated rationales that explicitly encode the latent query-knowledge relationship. To optimize the quality of these rationales, we employ Group Relative Policy Optimization (GRPO) and use retrieval similarity as a verifiable reward signal, enabling direct optimization of indexing decisions for retrieval effectiveness. Extensive experiments on the BRIGHT benchmark demonstrate that RL-Index consistently improves both retrieval and downstream question-answering performance, while significantly reducing online inference latency. Moreover, the learned rationale augmentation generalizes across diverse retrievers and generators, highlighting its robustness as a plug-and-play indexing strategy across different retrieval systems.",
+    "upvotes": 6,
+    "url": "https://arxiv.org/abs/2606.16316",
+    "pdf": "https://arxiv.org/pdf/2606.16316",
+    "hf_url": "https://huggingface.co/papers/2606.16316"
+  },
+  {
+    "date": "2026-06-25",
     "arxiv_id": "2606.23104",
     "title": "ReNIO: Reweighting Negative Trajectory Importance for LLM On-Policy Distillation",
     "abstract": "On-policy distillation (OPD) improves LLM reasoning by training a student model on its own generated outputs, but standard OPD treats all student-generated outputs (SGOs) equally regardless of their informativeness. We observe a consistent asymmetry in controlled filtering experiments: in both OPD and on-policy self distillation (OPSD), training only on incorrect SGOs outperforms training only on correct ones. Our further analysis suggests that models trained on correct-only SGOs tend to generate shorter reasoning traces and show weaker reflection behavior, while incorrect SGOs better preserve exploratory reasoning near the model's capability boundary. To exploit this signal without requiring full answer-containing rollouts, we introduce ReNIO, which Reweights Negative trajectory Importance for LLM On-policy distillation. By using the student-to-teacher probability ratio, ReNIO identifies pivotal tokens leading to wrong reasoning traces and aggregates their information into a normalized sample weight, inherently assigning larger weights to likely negative trajectories without observing the correctness of final-answer. Since Re-NIO only uses prefix-conditioned token probabilities, it preserves OPD's prefix training advantage over full-rollout reinforcement learning. Across both mathematical reasoning and code generation tasks, ReNIO improves both OPD and OPSD, with representative relative gains of up to 8.90% for Qwen3-1.7B and 10.00% for R1-Distill-Qwen-7B on mathematical reasoning benchmarks. Code repo: https://github.com/BDML-lab/ReNIO.",
@@ -191,13 +201,13 @@
   },
   {
     "date": "2026-06-25",
-    "arxiv_id": "2606.16316",
-    "title": "RL-Index: Reinforcement Learning for Retrieval Index Reasoning",
-    "abstract": "Retrieving external knowledge is essential for solving real-world tasks, yet it remains challenging when the relationship between a query and its relevant knowledge involves implicit and complex reasoning beyond surface-level semantic or lexical matching (e.g., mathematical problems relying on the same theorem or coding requiring deep reasoning). Existing approaches primarily rely on query-side reasoning (e.g., query rewriting), which introduces significant online latency and underutilizes the opportunity to perform reasoning over the knowledge corpus itself (i.e., index-side reasoning). In this paper, we propose RL-Index, an agentic indexing framework that formulates retrieval index reasoning as a reinforcement learning problem. Instead of performing reasoning at query time, RL-Index shifts reasoning to the indexing stage by augmenting documents with LLM-generated rationales that explicitly encode the latent query-knowledge relationship. To optimize the quality of these rationales, we employ Group Relative Policy Optimization (GRPO) and use retrieval similarity as a verifiable reward signal, enabling direct optimization of indexing decisions for retrieval effectiveness. Extensive experiments on the BRIGHT benchmark demonstrate that RL-Index consistently improves both retrieval and downstream question-answering performance, while significantly reducing online inference latency. Moreover, the learned rationale augmentation generalizes across diverse retrievers and generators, highlighting its robustness as a plug-and-play indexing strategy across different retrieval systems.",
-    "upvotes": 5,
-    "url": "https://arxiv.org/abs/2606.16316",
-    "pdf": "https://arxiv.org/pdf/2606.16316",
-    "hf_url": "https://huggingface.co/papers/2606.16316"
+    "arxiv_id": "2606.25182",
+    "title": "What Intermediate Layers Know: Detecting Jailbreaks from Entropy Dynamics",
+    "abstract": "Jailbreak attacks reveal a persistent weakness in aligned Large Language Models: carefully crafted prompts can elicit policy-violating responses despite safety training. While most defenses operate at the prompt or output level, it remains unclear how harmful intent is encoded within the model's internal representations. We investigate this question by analyzing token-level predictive entropy trajectories across layers of a frozen LLM using the logit lens. We find that static aggregate statistics of prompt-level entropy (e.g., mean, variance) carry little discriminative signal, whereas features capturing how entropy evolves across token positions, such as monotonic rank-based trend scores, are substantially more informative. Importantly, this signal is not uniform across model depth: it is concentrated in intermediate layers and degrades at the final layer, indicating that jailbreak-relevant structure is most pronounced in mid-network representations rather than at the output head. Across multiple models (Llama, Qwen, Gemma) and adversarial benchmarks, these entropy dynamics provide architecture-consistent separation without additional training. Together, our findings show that jailbreak behavior is reflected in structured intermediate uncertainty dynamics, clarifying both which entropy-derived features encode harmful intent and where in the network that signal is most pronounced.",
+    "upvotes": 4,
+    "url": "https://arxiv.org/abs/2606.25182",
+    "pdf": "https://arxiv.org/pdf/2606.25182",
+    "hf_url": "https://huggingface.co/papers/2606.25182"
   },
   {
     "date": "2026-06-25",
@@ -221,6 +231,16 @@
   },
   {
     "date": "2026-06-25",
+    "arxiv_id": "2606.25605",
+    "title": "Constraint Tax in Open-Weight LLMs: An Empirical Study of Tool Calling Suppression Under Structured Output Constraints",
+    "abstract": "Tool Calling and Structured Output are two core capabilities of modern Agent systems, yet their interaction under joint deployment conditions remains insufficiently understood. This paper reports a reproducible phenomenon observed in a production Agent system: when Tool Calling and JSON Schema constraints are simultaneously enabled, multiple open-weight models cease invoking tools despite maintaining high schema compliance. We refer to this behavior as Tool Suppression. Through controlled experiments across multiple model families and deployment settings, we consistently reproduce Tool Suppression under joint constraints, while tool execution and schema compliance remain functional when evaluated independently. Further analysis reveals that JSON Schema constraints are compiled into grammar-based token masks, causing tool-call tokens to become unreachable during decoding. This provides an implementation-level explanation for the observed behavior. To interpret the phenomenon, we formulate the Constraint Priority Inversion (CPI) hypothesis, which suggests that schema satisfaction may dominate action-selection behavior under multiple simultaneous constraints. We present CPI as a behavioral hypothesis consistent with the observed evidence rather than a verified internal mechanism. To mitigate the problem, we propose Transparent Two-Pass Execution, an inference-time strategy that decouples tool execution from schema-constrained response generation. Experimental results show that this approach restores tool invocation while preserving structured output guarantees without requiring model retraining. These findings suggest that evaluating tool use and structured output separately may overlook important reliability issues in production Agent systems. Code, data, and docs will be released at https://github.com/Fzsama/Constrain-Tax-26-06.git.",
+    "upvotes": 3,
+    "url": "https://arxiv.org/abs/2606.25605",
+    "pdf": "https://arxiv.org/pdf/2606.25605",
+    "hf_url": "https://huggingface.co/papers/2606.25605"
+  },
+  {
+    "date": "2026-06-25",
     "arxiv_id": "2606.24457",
     "title": "Lite Any Stereo V2: Faster and Stronger Efficient Zero-Shot Stereo Matching",
     "abstract": "Recent advances in stereo matching have achieved remarkable accuracy, but often rely on large models, heavy computation, or additional foundation-model priors, making them difficult to deploy on resource-constrained platforms. In contrast, efficient stereo models offer faster inference but are commonly considered less capable of strong zero-shot generalization. In this paper, we challenge this assumption by introducing Lite Any Stereo V2 (LAS2), an ultra-fast model series designed for efficient zero-shot stereo matching. LAS2 is developed from both architecture and training perspectives. Architecturally, we revisit efficient stereo design under practical deployment settings and propose a 2D-only cost aggregation framework, optimized for real inference latency rather than theoretical MACs alone. For training, we develop a three-stage strategy that combines synthetic supervision, self-distillation, and real-world knowledge distillation. To improve the reliability of real-world pseudo supervision, we further introduce pseudo-label filtering and an error-clamping operation, enabling smoother synthetic-to-real transfer. We instantiate LAS2 as a family of models, including feed-forward variants for different efficiency budgets and an iterative variant for higher accuracy. Extensive experiments show that LAS2 achieves state-of-the-art accuracy among efficient stereo methods while maintaining significantly lower latency. Specifically, LAS2-H achieves stronger overall zero-shot performance than the iterative method Fast-FoundationStereo, with 1.8x and 2.7x faster inference on H200 and Orin, respectively. The project page, demos, and code are available at https://tomtomtommi.github.io/LiteAnyStereoV2/.",
@@ -228,16 +248,6 @@
     "url": "https://arxiv.org/abs/2606.24457",
     "pdf": "https://arxiv.org/pdf/2606.24457",
     "hf_url": "https://huggingface.co/papers/2606.24457"
-  },
-  {
-    "date": "2026-06-25",
-    "arxiv_id": "2606.25182",
-    "title": "What Intermediate Layers Know: Detecting Jailbreaks from Entropy Dynamics",
-    "abstract": "Jailbreak attacks reveal a persistent weakness in aligned Large Language Models: carefully crafted prompts can elicit policy-violating responses despite safety training. While most defenses operate at the prompt or output level, it remains unclear how harmful intent is encoded within the model's internal representations. We investigate this question by analyzing token-level predictive entropy trajectories across layers of a frozen LLM using the logit lens. We find that static aggregate statistics of prompt-level entropy (e.g., mean, variance) carry little discriminative signal, whereas features capturing how entropy evolves across token positions, such as monotonic rank-based trend scores, are substantially more informative. Importantly, this signal is not uniform across model depth: it is concentrated in intermediate layers and degrades at the final layer, indicating that jailbreak-relevant structure is most pronounced in mid-network representations rather than at the output head. Across multiple models (Llama, Qwen, Gemma) and adversarial benchmarks, these entropy dynamics provide architecture-consistent separation without additional training. Together, our findings show that jailbreak behavior is reflected in structured intermediate uncertainty dynamics, clarifying both which entropy-derived features encode harmful intent and where in the network that signal is most pronounced.",
-    "upvotes": 3,
-    "url": "https://arxiv.org/abs/2606.25182",
-    "pdf": "https://arxiv.org/pdf/2606.25182",
-    "hf_url": "https://huggingface.co/papers/2606.25182"
   },
   {
     "date": "2026-06-25",
@@ -308,16 +318,6 @@
     "url": "https://arxiv.org/abs/2606.11445",
     "pdf": "https://arxiv.org/pdf/2606.11445",
     "hf_url": "https://huggingface.co/papers/2606.11445"
-  },
-  {
-    "date": "2026-06-25",
-    "arxiv_id": "2606.25605",
-    "title": "Constraint Tax in Open-Weight LLMs: An Empirical Study of Tool Calling Suppression Under Structured Output Constraints",
-    "abstract": "Tool Calling and Structured Output are two core capabilities of modern Agent systems, yet their interaction under joint deployment conditions remains insufficiently understood. This paper reports a reproducible phenomenon observed in a production Agent system: when Tool Calling and JSON Schema constraints are simultaneously enabled, multiple open-weight models cease invoking tools despite maintaining high schema compliance. We refer to this behavior as Tool Suppression. Through controlled experiments across multiple model families and deployment settings, we consistently reproduce Tool Suppression under joint constraints, while tool execution and schema compliance remain functional when evaluated independently. Further analysis reveals that JSON Schema constraints are compiled into grammar-based token masks, causing tool-call tokens to become unreachable during decoding. This provides an implementation-level explanation for the observed behavior. To interpret the phenomenon, we formulate the Constraint Priority Inversion (CPI) hypothesis, which suggests that schema satisfaction may dominate action-selection behavior under multiple simultaneous constraints. We present CPI as a behavioral hypothesis consistent with the observed evidence rather than a verified internal mechanism. To mitigate the problem, we propose Transparent Two-Pass Execution, an inference-time strategy that decouples tool execution from schema-constrained response generation. Experimental results show that this approach restores tool invocation while preserving structured output guarantees without requiring model retraining. These findings suggest that evaluating tool use and structured output separately may overlook important reliability issues in production Agent systems. Code, data, and docs will be released at https://github.com/Fzsama/Constrain-Tax-26-06.git.",
-    "upvotes": 0,
-    "url": "https://arxiv.org/abs/2606.25605",
-    "pdf": "https://arxiv.org/pdf/2606.25605",
-    "hf_url": "https://huggingface.co/papers/2606.25605"
   },
   {
     "date": "2026-06-25",

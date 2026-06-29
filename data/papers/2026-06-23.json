@@ -14,7 +14,7 @@
     "arxiv_id": "2606.23654",
     "title": "EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions",
     "abstract": "Enterprise agents increasingly operate inside workspaces: they read heterogeneous files, invoke tools, and deliver business artifacts. We introduce EnterpriseClawBench, an enterprise agent benchmark constructed from proprietary, real-world agent sessions. Starting from a large archive of workplace sessions, the EnterpriseClawBench produces 852 reproducible tasks, each paired with recovered fixtures, rewritten prompts, role classes, skill subclasses, hard rules, and semantic rubrics. Because the sessions contain internal enterprise content, we do not release the benchmark data; instead, our reusable contribution is the construction and evaluation protocol. On EnterpriseClawBench, the best configuration reaches only 0.663 (Codex with GPT-5.5). These results show that enterprise agent evaluation must report harness--model combinations, artifact delivery, visual quality, cost, runtime, and skill-transfer behavior, rather than collapsing performance into a single score. Code: https://github.com/FrontisAI/EnterpriseClawBench",
-    "upvotes": 80,
+    "upvotes": 79,
     "url": "https://arxiv.org/abs/2606.23654",
     "pdf": "https://arxiv.org/pdf/2606.23654",
     "hf_url": "https://huggingface.co/papers/2606.23654"
@@ -64,7 +64,7 @@
     "arxiv_id": "2606.22807",
     "title": "KaLM-Reranker-V1: Fast but Not Late Interaction for Compressed Document Reranking",
     "abstract": "As retrieval systems scale, high-quality reranking becomes increasingly important. However, most existing rerankers, whether encoder-based or decoder-based, jointly encode the query and passage, tightly coupling their computation and limiting deployment efficiency as well as flexibility. We present KaLM-Reranker-V1, a fast but not late-interaction (FBNL) reranker that decouples query and passage computation while retaining expressive relevance modeling. Built on an encoder-decoder architecture, KaLM-Reranker-V1 uses the encoder to pre-encode passages with Matryoshka embedding pooling, while the decoder models the system instruction, user instruction, and query intent; cross-attention then captures relevance between the query context and passage representations. This design makes KaLM-Reranker-V1 efficient through decoupled passage encoding, yet not late interaction, by preserving rich relevance modeling through cross-attention. We instantiate KaLM-Reranker-V1 in three sizes, Nano, Small, and Large, with 0.27B, 1B, and 4B activated parameters, respectively. Extensive experiments on BEIR, MIRACL, and LMEB demonstrate that KaLM-Reranker-V1 achieves strong reranking performance with superior efficiency. On BEIR, KaLM-Reranker-V1 achieves state-of-the-art performance, on par with strong industrial models such as the Qwen3-Reranker series; on MIRACL, despite not being extensively trained on multilingual data, KaLM-Reranker-V1 still shows excellent reranking performance. Moreover, on LMEB, reranking models demonstrate a clear advantage, with even the 0.27B Nano model remaining competitive with 7-12B embedding models.",
-    "upvotes": 47,
+    "upvotes": 48,
     "url": "https://arxiv.org/abs/2606.22807",
     "pdf": "https://arxiv.org/pdf/2606.22807",
     "hf_url": "https://huggingface.co/papers/2606.22807"
@@ -74,7 +74,7 @@
     "arxiv_id": "2606.23050",
     "title": "Unlimited OCR Works",
     "abstract": "Recently, end-to-end OCR models, exemplified by DeepSeek OCR, have once again thrust OCR into the spotlight. A widely held view is that employing a large language model (LLM) as the decoder allows the model to leverage the prior distribution of language, leading to improved OCR performance. However, the downside is equally evident: as the output sequence lengthens, the accumulated KV cache drives up memory consumption and progressively slows down generation. This stands in stark contrast to humans, who exhibit no such decline in efficiency during long-horizon copying tasks. In this technical report, we propose Unlimited OCR, a model designed to emulate human parsing working memory. Taking DeepSeek OCR as the baseline, we replace all attention layers in the decoder with our proposed Reference Sliding Window Attention (R-SWA), which reduces attention computation costs while maintaining a constant KV cache throughout the entire decoding process. By combining the high compression rate of DeepSeek OCR's encoder with our constant KV cache design, Unlimited OCR can transcribe dozens of pages of documents in a single forward pass under a standard maximum length of 32K. More importantly, R-SWA is a general-purpose parsing attention mechanism - beyond OCR, it is equally applicable to tasks such as ASR, translation, etc. Codes and model weights are publicly available at http://github.com/baidu/Unlimited-OCR.",
-    "upvotes": 38,
+    "upvotes": 40,
     "url": "https://arxiv.org/abs/2606.23050",
     "pdf": "https://arxiv.org/pdf/2606.23050",
     "hf_url": "https://huggingface.co/papers/2606.23050"
@@ -131,6 +131,16 @@
   },
   {
     "date": "2026-06-23",
+    "arxiv_id": "2606.23525",
+    "title": "Self-Compacting Language Model Agents",
+    "abstract": "Long agent traces composed of chains of thought and tool calls accumulate stale content that anchor subsequent generations, and eventually outgrow the context window. Existing scaffolds mitigate it with fixed-interval compaction triggered at a token threshold. Such triggers pay no heed to trajectory structure, risking discard of partial results mid-derivation or mid-search. We propose SelfCompact, a scaffold that allows the model itself to decide when and how to compact. Specifically, it pairs two inference-time elements: (i) a compaction tool the model invokes to summarize the accumulated context, and (ii) a lightweight rubric specifying when to fire (a sub-task has resolved, or the trajectory is converging) and when to suppress (mid-derivation, or when stuck). Both are needed. The tool alone is unevenly used across open-weight models, often invoked at unhelpful moments or not at all; the rubric alone cannot act. Together, they elicit effective adaptive compaction without any fine-tuning or external supervision. We present empirical results on six benchmarks (competitive math and agentic search) and seven models. Our results show that SelfCompact matches or exceeds fixed-interval summarization at a fraction of the token cost, improving over a no-summarization baseline by up to 18.1 points on math and 5-9 points on agentic search at 30-70% lower per-question cost. Our results expose a meta-cognitive gap: although unprompted models cannot reliably tell when their own context is rotting, a lightweight rubric closes this gap, reframing when to compact as a capability that scaffolds can supply without training.",
+    "upvotes": 18,
+    "url": "https://arxiv.org/abs/2606.23525",
+    "pdf": "https://arxiv.org/pdf/2606.23525",
+    "hf_url": "https://huggingface.co/papers/2606.23525"
+  },
+  {
+    "date": "2026-06-23",
     "arxiv_id": "2606.20097",
     "title": "HydraHead: From Head-Level Functional Heterogeneity to Specialized Attention Hybridization",
     "abstract": "The quadratic complexity of attention poses a critical bottleneck for long-context processing, spurring interest in hybrid attention designs. Most open-source hybrid models adopt a layer-wise strategy. Yet, prior work has noted the inherent difficulty of integrating Linear Attention (LA) with Full Attention (FA), suggesting that the design space of attention hybridization remains underexplored. To probe this space, we conduct interpretability analysis and observe that layers exhibit block-wise functional similarity, while individual heads within the same layer display distinct functional specialization despite sharing input features. This head-level heterogeneity suggests that the head dimension provides a natural and principled granularity for fusing heterogeneous attention signals. Building on this insight, we introduce HydraHead, a novel architecture that hybridizes FA and LA along the head axis. HydraHead features two key innovations: (1) an interpretability-driven selection strategy that identifies retrieval-critical heads and preserves FA only for them, and (2) a scale-normalized fusion module that reconciles the distributional gap between FA and LA head outputs. By leveraging a three-stage transfer pipeline with parameter reuse and distillation, we achieve high-performance hybrid models with minimal training overhead. Under a unified training setup, HydraHead outperforms other hybrid designs in long-context tasks while maintaining strong general reasoning. With interpretability-driven head selection, it matches a 3:1 layer-wise hybrid's long-context performance at a 7:1 LA-to-FA ratio. Crucially, trained on only 15B tokens, HydraHead achieves over 69% improvement over the baseline at 512K context length, approaching Qwen3.5, a leading model of comparable size with a native context length of 256K. This highlights the significant scaling potential of head-level hybridization.",
@@ -151,20 +161,10 @@
   },
   {
     "date": "2026-06-23",
-    "arxiv_id": "2606.23525",
-    "title": "Self-Compacting Language Model Agents",
-    "abstract": "Long agent traces composed of chains of thought and tool calls accumulate stale content that anchor subsequent generations, and eventually outgrow the context window. Existing scaffolds mitigate it with fixed-interval compaction triggered at a token threshold. Such triggers pay no heed to trajectory structure, risking discard of partial results mid-derivation or mid-search. We propose SelfCompact, a scaffold that allows the model itself to decide when and how to compact. Specifically, it pairs two inference-time elements: (i) a compaction tool the model invokes to summarize the accumulated context, and (ii) a lightweight rubric specifying when to fire (a sub-task has resolved, or the trajectory is converging) and when to suppress (mid-derivation, or when stuck). Both are needed. The tool alone is unevenly used across open-weight models, often invoked at unhelpful moments or not at all; the rubric alone cannot act. Together, they elicit effective adaptive compaction without any fine-tuning or external supervision. We present empirical results on six benchmarks (competitive math and agentic search) and seven models. Our results show that SelfCompact matches or exceeds fixed-interval summarization at a fraction of the token cost, improving over a no-summarization baseline by up to 18.1 points on math and 5-9 points on agentic search at 30-70% lower per-question cost. Our results expose a meta-cognitive gap: although unprompted models cannot reliably tell when their own context is rotting, a lightweight rubric closes this gap, reframing when to compact as a capability that scaffolds can supply without training.",
-    "upvotes": 17,
-    "url": "https://arxiv.org/abs/2606.23525",
-    "pdf": "https://arxiv.org/pdf/2606.23525",
-    "hf_url": "https://huggingface.co/papers/2606.23525"
-  },
-  {
-    "date": "2026-06-23",
     "arxiv_id": "2606.23049",
     "title": "Training Open Models for Agentic Phone Use",
     "abstract": "Phones are becoming an important execution surface for general-purpose agents, but training open models for reliable phone use remains difficult because the environment that matters at deployment, real devices running real apps, is slow, stateful, side-effectful, and hard to reset or verify, while scalable mock environments only approximate real behavior. We present PhoneBuddy, a training recipe and open-model line for agentic phone use that combines a real-app environment with a mock-app environment, PhoneWorld, which reconstructs runnable mock apps from real GUI usage structure. PhoneBuddy first builds a shared supervised fine-tuning stage from trajectories collected in both environments, then compares real-app RL against mixed RL across both environments. Across a 150-task human evaluation on real phones spanning apps, mini-apps, and cross-app workflows, task success rate improves from 36.67\\% after supervised fine-tuning to 40.67\\% after real-app RL and 45.33\\% after mixed RL. On AndroidWorld, the same progression rises from 60.3\\% to 77.2\\% to 83.2\\%. These results show that mock-app training is not a replacement for real-app RL, but a complementary source of scalable, resettable, and automatically checked interaction. The gains are strongest on app and mini-app tasks, while long-horizontal cross-app workflows remain an important open challenge.",
-    "upvotes": 15,
+    "upvotes": 16,
     "url": "https://arxiv.org/abs/2606.23049",
     "pdf": "https://arxiv.org/pdf/2606.23049",
     "hf_url": "https://huggingface.co/papers/2606.23049"
@@ -204,10 +204,20 @@
     "arxiv_id": "2606.23321",
     "title": "Tmax: A simple recipe for terminal agents",
     "abstract": "Terminal-using agents have quickly become the most popular downstream application of language models (LMs). Despite their prevalence, relatively little academic work has examined RL-based training of these models, likely due to difficult benchmarks, a lack of data, and a lack of simple baseline recipes. We present Tmax, the strongest open RL recipe for terminal agents to date, bringing open data recipes closer to the frontier. While simple, our recipe achieves 27\\% on Terminal-Bench 2.0 with only 9B parameters, outperforming much larger models from prior work. Concretely, we generate data using a novel taxonomy, combining difficulty control, personas, and verifier diversification, which allows us to cheaply generate large amounts of terminal environments for RL and SFT training. We open-source our terminal dataset, which is over 2.5x larger than previously released terminal-agent datasets. We then train open-weight models using RL with our data, using a simple, outcome-only recipe. We release our data, models, and code as a strong baseline for future open academic work on terminal agents at https://github.com/hamishivi/tmax.",
-    "upvotes": 12,
+    "upvotes": 13,
     "url": "https://arxiv.org/abs/2606.23321",
     "pdf": "https://arxiv.org/pdf/2606.23321",
     "hf_url": "https://huggingface.co/papers/2606.23321"
+  },
+  {
+    "date": "2026-06-23",
+    "arxiv_id": "2606.21139",
+    "title": "PoLAR: Factorizing Extent and Mode in Latent Actions for Robot Policy Learning",
+    "abstract": "Latent action pretraining learns representations of visual change from pairs of observations, but existing methods typically encode each transition as a single unstructured representation that entangles transition extent and transition mode. We introduce Polar Latent Actions with Radial structure (PoLAR), which imposes a radial-direction structure on latent actions, encouraging radius to encode transition extent and direction to retain transition mode. PoLAR uses temporal offset between two observations as a weak proxy for transition extent, encouraging latent action from observation pairs separated by larger temporal gaps to occupy larger radii. We instantiate this structure in hyperbolic space, whose expanding volume with radius offers a natural fit for more diverse transition modes at larger extents. Across in-task and large-scale pretraining settings, PoLAR improves downstream policy performance in simulation and real-world robot experiments, outperforming latent action baselines and strong pretrained VLAs. These results suggest that the geometry of the latent action space is an important design choice for transferring visual pretraining to downstream robot policy learning.",
+    "upvotes": 11,
+    "url": "https://arxiv.org/abs/2606.21139",
+    "pdf": "https://arxiv.org/pdf/2606.21139",
+    "hf_url": "https://huggingface.co/papers/2606.21139"
   },
   {
     "date": "2026-06-23",
@@ -218,16 +228,6 @@
     "url": "https://arxiv.org/abs/2606.11897",
     "pdf": "https://arxiv.org/pdf/2606.11897",
     "hf_url": "https://huggingface.co/papers/2606.11897"
-  },
-  {
-    "date": "2026-06-23",
-    "arxiv_id": "2606.21139",
-    "title": "PoLAR: Factorizing Extent and Mode in Latent Actions for Robot Policy Learning",
-    "abstract": "Latent action pretraining learns representations of visual change from pairs of observations, but existing methods typically encode each transition as a single unstructured representation that entangles transition extent and transition mode. We introduce Polar Latent Actions with Radial structure (PoLAR), which imposes a radial-direction structure on latent actions, encouraging radius to encode transition extent and direction to retain transition mode. PoLAR uses temporal offset between two observations as a weak proxy for transition extent, encouraging latent action from observation pairs separated by larger temporal gaps to occupy larger radii. We instantiate this structure in hyperbolic space, whose expanding volume with radius offers a natural fit for more diverse transition modes at larger extents. Across in-task and large-scale pretraining settings, PoLAR improves downstream policy performance in simulation and real-world robot experiments, outperforming latent action baselines and strong pretrained VLAs. These results suggest that the geometry of the latent action space is an important design choice for transferring visual pretraining to downstream robot policy learning.",
-    "upvotes": 10,
-    "url": "https://arxiv.org/abs/2606.21139",
-    "pdf": "https://arxiv.org/pdf/2606.21139",
-    "hf_url": "https://huggingface.co/papers/2606.21139"
   },
   {
     "date": "2026-06-23",
@@ -244,7 +244,7 @@
     "arxiv_id": "2606.23610",
     "title": "Vera: A Layered Diffusion Model for Content-Preserving Video Editing",
     "abstract": "Video diffusion models have enabled remarkable progress in video generation and editing. However, content preservation remains a core challenge: existing methods regenerate every pixel and often alter elements that should remain unchanged, such as characters or background scenes. We introduce Vera, a layered diffusion framework for content-preserving video editing. Instead of regenerating the entire video, Vera generates an edit layer along with an alpha matte for compositing with the source video, separating creative editing from content preservation by design. To encourage coherent composition with the source video, we extend the text-to-video DiT into a Mixture-of-Transformers (MoT) architecture, with separate DiTs for each layer that interact through joint self-attention. To support the training of Vera, we further construct a high-quality layered dataset with accurate alpha mattes, diverse scenes and dynamics, and visual effects. Across our quantitative benchmark and human preference study, Vera outperforms leading open-source video editing models in content preservation while remaining competitive in edit quality, using 486K frames of layered training data.",
-    "upvotes": 8,
+    "upvotes": 9,
     "url": "https://arxiv.org/abs/2606.23610",
     "pdf": "https://arxiv.org/pdf/2606.23610",
     "hf_url": "https://huggingface.co/papers/2606.23610"
@@ -254,7 +254,7 @@
     "arxiv_id": "2606.23670",
     "title": "Tapered Language Models",
     "abstract": "Modern language models, including transformer, recurrent, and memory-based variants, share a common chassis: a stack of identical layers in which parameters are allocated uniformly across depth. This is a default inherited from the original transformer and largely unchanged since, yet a growing body of evidence suggests that layers contribute non-uniformly to the final output, with later layers refining the residual stream rather than transforming it. We ask whether parameter capacity should reflect this asymmetry. Our controlled experiment shows that, under a fixed budget, allocating more capacity to earlier layers and less to later layers improves perplexity over a uniform-width baseline, while the reverse allocation hurts. Building on this result, we introduce Tapered Language Models (TLMs), an architectural principle in which a parameter-bearing component is monotonically tapered across depth under a fixed total budget. MLPs are the natural site for this instantiation: they dominate parameter count across all modern LM families and expose width as a single, clean axis of variation. Across three model scales and four architectures (Transformer, Gated Attention, Hope-attention, and Titans), tapering MLP width via a smooth cosine schedule consistently improves perplexity and downstream benchmark performance over uniform baselines, at no additional parameter or compute cost. These findings establish depth-aware capacity allocation as a simple, architecture-agnostic axis of language model design, a free lever hidden in plain sight.",
-    "upvotes": 8,
+    "upvotes": 9,
     "url": "https://arxiv.org/abs/2606.23670",
     "pdf": "https://arxiv.org/pdf/2606.23670",
     "hf_url": "https://huggingface.co/papers/2606.23670"
@@ -331,6 +331,16 @@
   },
   {
     "date": "2026-06-23",
+    "arxiv_id": "2606.23688",
+    "title": "Lift4D: Harmonizing Single-View 3D Estimation for 4D Reconstruction In-the-Wild",
+    "abstract": "Reconstructing dynamic non-rigid objects from monocular video requires integrating visual cues from direct observations with data-driven priors over geometry and appearance. Prior approaches either learn to directly predict 4D representations from visual input or initialize a 3D representation that is subsequently deformed and refined based on video evidence. However, the former are constrained by the scarcity of 4D training data, while the latter leverage priors only for the initial reconstruction and rely solely on video supervision thereafter; neither handles complex in-the-wild scenarios with large deformations and occlusions well. We present Lift4D, a test-time optimization framework that addresses both limitations. First, we adapt an existing single-view 3D reconstruction model to yield temporally consistent per-frame predictions via causal latent conditioning, providing a coherent initialization for a deformable 3D Gaussian Splatting representation. We then ``sculpt'' this representation to match the input video through an occlusion-aware optimization that faithfully recovers visible surface details while completing unobserved regions using a view-conditioned diffusion prior. We demonstrate that Lift4D clearly improves over prior 4D reconstruction methods, particularly on challenging in-the-wild sequences with severe occlusions and non-rigid motion.",
+    "upvotes": 5,
+    "url": "https://arxiv.org/abs/2606.23688",
+    "pdf": "https://arxiv.org/pdf/2606.23688",
+    "hf_url": "https://huggingface.co/papers/2606.23688"
+  },
+  {
+    "date": "2026-06-23",
     "arxiv_id": "2606.22540",
     "title": "PolicyTrim: Boosting Intrinsic Policy Efficiency of Vision-Language-Action Models",
     "abstract": "Vision-Language-Action (VLA) models provide a unified paradigm for robotic manipulation, yet their real-world deployment is often bottlenecked by execution efficiency. While existing efforts predominantly focus on compute-centric efficiency to reduce per-step inference latency, the intrinsic policy efficiency of these models remains largely unexplored. Policy efficiency is fundamentally affected by two factors, namely the effective executable length of predicted action chunks and the total physical steps required to complete a task. These two factors jointly determine the total number of forward inference calls during execution. We observe that current VLA policies struggle with planning unreliability and action redundancy, suffering from severe prediction degradation at the tail of action chunks and tending to generate unnecessarily redundant physical steps. To address this, we propose PolicyTrim, a reinforcement learning-based post-training framework that extends the reliable action chunk length and reduces redundant physical steps. For reliable chunk extension, we employ a dynamic exploration strategy that explicitly rewards the successful completion of longer executable lengths, progressively pushing the trustworthy prediction horizon to its empirical limit. For step efficiency, we design a redundancy-aware reward that directly favors successful task completions with fewer steps while penalizing unreproducible shortcuts, effectively eliminating redundant physical actions. Extensive experiments across three benchmarks and three VLA models demonstrate that PolicyTrim improves action chunk utilization by 3times and reduces physical execution steps by 51.4\\%. Ultimately, our framework delivers up to a 5.83times end-to-end deployment speedup without compromising task success rates.",
@@ -338,16 +348,6 @@
     "url": "https://arxiv.org/abs/2606.22540",
     "pdf": "https://arxiv.org/pdf/2606.22540",
     "hf_url": "https://huggingface.co/papers/2606.22540"
-  },
-  {
-    "date": "2026-06-23",
-    "arxiv_id": "2606.23688",
-    "title": "Lift4D: Harmonizing Single-View 3D Estimation for 4D Reconstruction In-the-Wild",
-    "abstract": "Reconstructing dynamic non-rigid objects from monocular video requires integrating visual cues from direct observations with data-driven priors over geometry and appearance. Prior approaches either learn to directly predict 4D representations from visual input or initialize a 3D representation that is subsequently deformed and refined based on video evidence. However, the former are constrained by the scarcity of 4D training data, while the latter leverage priors only for the initial reconstruction and rely solely on video supervision thereafter; neither handles complex in-the-wild scenarios with large deformations and occlusions well. We present Lift4D, a test-time optimization framework that addresses both limitations. First, we adapt an existing single-view 3D reconstruction model to yield temporally consistent per-frame predictions via causal latent conditioning, providing a coherent initialization for a deformable 3D Gaussian Splatting representation. We then ``sculpt'' this representation to match the input video through an occlusion-aware optimization that faithfully recovers visible surface details while completing unobserved regions using a view-conditioned diffusion prior. We demonstrate that Lift4D clearly improves over prior 4D reconstruction methods, particularly on challenging in-the-wild sequences with severe occlusions and non-rigid motion.",
-    "upvotes": 4,
-    "url": "https://arxiv.org/abs/2606.23688",
-    "pdf": "https://arxiv.org/pdf/2606.23688",
-    "hf_url": "https://huggingface.co/papers/2606.23688"
   },
   {
     "date": "2026-06-23",
@@ -378,6 +378,16 @@
     "url": "https://arxiv.org/abs/2606.23514",
     "pdf": "https://arxiv.org/pdf/2606.23514",
     "hf_url": "https://huggingface.co/papers/2606.23514"
+  },
+  {
+    "date": "2026-06-23",
+    "arxiv_id": "2606.23503",
+    "title": "UniverSat: Resolution- and Modality-Agnostic Transformers for Earth Observation",
+    "abstract": "Vision Transformers (ViT) dominate computer vision. However, their reliance on rigid patch projectors hinders transfer to Earth Observation (EO), where input modalities, scales, and resolutions vary widely. We introduce UniverSat, a ViT-style backbone built around a Universal Patch Encoder that maps patches from arbitrary spatial, spectral, and temporal resolutions, and from both optical and non-optical sensors, into a shared embedding space with a shared set of weights. This enables training a single model on heterogeneous multimodal corpora via self-supervision, yielding robust, sensor-agnostic spatial features. We validate this approach with strong results across classification and segmentation on standard EO benchmarks from GeoBench, PANGEABench, and SpectralEarth. Our code and models are available at https://github.com/gastruc/UniverSat.",
+    "upvotes": 3,
+    "url": "https://arxiv.org/abs/2606.23503",
+    "pdf": "https://arxiv.org/pdf/2606.23503",
+    "hf_url": "https://huggingface.co/papers/2606.23503"
   },
   {
     "date": "2026-06-23",
@@ -448,16 +458,6 @@
     "url": "https://arxiv.org/abs/2606.23489",
     "pdf": "https://arxiv.org/pdf/2606.23489",
     "hf_url": "https://huggingface.co/papers/2606.23489"
-  },
-  {
-    "date": "2026-06-23",
-    "arxiv_id": "2606.23503",
-    "title": "UniverSat: Resolution- and Modality-Agnostic Transformers for Earth Observation",
-    "abstract": "Vision Transformers (ViT) dominate computer vision. However, their reliance on rigid patch projectors hinders transfer to Earth Observation (EO), where input modalities, scales, and resolutions vary widely. We introduce UniverSat, a ViT-style backbone built around a Universal Patch Encoder that maps patches from arbitrary spatial, spectral, and temporal resolutions, and from both optical and non-optical sensors, into a shared embedding space with a shared set of weights. This enables training a single model on heterogeneous multimodal corpora via self-supervision, yielding robust, sensor-agnostic spatial features. We validate this approach with strong results across classification and segmentation on standard EO benchmarks from GeoBench, PANGEABench, and SpectralEarth. Our code and models are available at https://github.com/gastruc/UniverSat.",
-    "upvotes": 2,
-    "url": "https://arxiv.org/abs/2606.23503",
-    "pdf": "https://arxiv.org/pdf/2606.23503",
-    "hf_url": "https://huggingface.co/papers/2606.23503"
   },
   {
     "date": "2026-06-23",
