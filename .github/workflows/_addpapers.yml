@@ -1,6 +1,7 @@
 # Generate audio for the curated reading list (data/curated/reading.json).
 # Resumable: re-run to pick up papers skipped on 429. Trigger by pushing this
 # file, or via "Run workflow". Keep until the list is fully done, then remove.
+# batch 2: retry the 15 papers that hit quota in batch 1
 name: _add papers
 
 on:
