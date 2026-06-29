@@ -1,22 +1,60 @@
 # 论文图书馆 · Paper Library
 
+📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
+
 
 ## 2026-06-26
 
-- **In-Context World Modeling for Robotic Control** · 57★ — [🔊 音频](audio/2026-06-26-in-context-world-modeling-for-robotic-control-e0d36561.mp3) [arXiv](https://arxiv.org/abs/2606.26025)
-- **DanceOPD: On-Policy Generative Field Distillation** · 73★ — [🔊 音频](audio/2026-06-26-danceopd-on-policy-generative-field-distillation-5a5ba75b.mp3) [arXiv](https://arxiv.org/abs/2606.27377)
+- **In-Context World Modeling for Robotic Control** · 57★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-in-context-world-modeling-for-robotic-control-e0d36561.mp3) [arXiv](https://arxiv.org/abs/2606.26025)
+- **DanceOPD: On-Policy Generative Field Distillation** · 73★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-danceopd-on-policy-generative-field-distillation-5a5ba75b.mp3) [arXiv](https://arxiv.org/abs/2606.27377)
 
 ## 2026-06-25
 
-- **Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models** · 100★ — [🔊 音频](audio/2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio-ad252d59.mp3) [arXiv](https://arxiv.org/abs/2606.25041)
-- **Are We Ready For An Agent-Native Memory System?** · 106★ — [🔊 音频](audio/2026-06-25-are-we-ready-for-an-agent-native-memory-system-dd26bd35.mp3) [arXiv](https://arxiv.org/abs/2606.24775)
+- **Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models** · 100★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio-ad252d59.mp3) [arXiv](https://arxiv.org/abs/2606.25041)
+- **Are We Ready For An Agent-Native Memory System?** · 106★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-are-we-ready-for-an-agent-native-memory-system-dd26bd35.mp3) [arXiv](https://arxiv.org/abs/2606.24775)
 
 ## 2026-06-24
 
-- **NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers?** · 61★ — [🔊 音频](audio/2026-06-24-naturebench-can-coding-agents-match-the-published-sota-of-na-fbef4af1.mp3) [arXiv](https://arxiv.org/abs/2606.24530)
-- **Qwen-AgentWorld: Language World Models for General Agents** · 139★ — [🔊 音频](audio/2026-06-24-qwen-agentworld-language-world-models-for-general-agents-4c7b3076.mp3) [arXiv](https://arxiv.org/abs/2606.24597)
+- **NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers?** · 61★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-24-naturebench-can-coding-agents-match-the-published-sota-of-na-fbef4af1.mp3) [arXiv](https://arxiv.org/abs/2606.24530)
+- **Qwen-AgentWorld: Language World Models for General Agents** · 139★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-24-qwen-agentworld-language-world-models-for-general-agents-4c7b3076.mp3) [arXiv](https://arxiv.org/abs/2606.24597)
 
 ## 2026-06-23
 
-- **EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions** · 79★ — [🔊 音频](audio/2026-06-23-enterpriseclawbench-benchmarking-agents-from-real-workplace--af103a1d.mp3) [arXiv](https://arxiv.org/abs/2606.23654)
-- **PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems** · 95★ — [🔊 音频](audio/2026-06-23-planbench-xl-evaluating-long-horizon-planning-of-llm-tool-us-5e6a16ee.mp3) [arXiv](https://arxiv.org/abs/2606.22388)
+- **EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions** · 79★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-23-enterpriseclawbench-benchmarking-agents-from-real-workplace--af103a1d.mp3) [arXiv](https://arxiv.org/abs/2606.23654)
+- **PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems** · 95★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-23-planbench-xl-evaluating-long-horizon-planning-of-llm-tool-us-5e6a16ee.mp3) [arXiv](https://arxiv.org/abs/2606.22388)
+
+## 2025-11-03
+
+- **Measuring what Matters: Construct Validity in Large Language Model Benchmarks** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-11-03-measuring-what-matters-construct-validity-in-large-language--a555a4a5.mp3) [arXiv](https://arxiv.org/abs/2511.04703)
+
+## 2025-03-20
+
+- **Survey on Evaluation of LLM-based Agents** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-03-20-survey-on-evaluation-of-llm-based-agents-2ff9c68d.mp3) [arXiv](https://arxiv.org/abs/2503.16416)
+
+## 2024-10-21
+
+- **Procedural Content Generation in Games: A Survey with Insights on Emerging LLM Integration** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-10-21-procedural-content-generation-in-games-a-survey-with-insight-979d4868.mp3) [arXiv](https://arxiv.org/abs/2410.15644)
+
+## 2024-08-13
+
+- **SWE-bench Verified** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-08-13-swe-bench-verified-c8c477cd.mp3) [arXiv](https://openai.com/index/introducing-swe-bench-verified/)
+
+## 2024-06-17
+
+- **$τ$-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-06-17-t-bench-a-benchmark-for-tool-agent-user-interaction-in-real--7231e0a5.mp3) [arXiv](https://arxiv.org/abs/2406.12045)
+
+## 2023-10-10
+
+- **SWE-bench: Can Language Models Resolve Real-World GitHub Issues?** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-9f03fd3e.mp3) [arXiv](https://arxiv.org/abs/2310.06770)
+
+## 2023-05-02
+
+- **Is Your Code Generated by ChatGPT Really Correct? Rigorous Evaluation of Large Language Models for Code Generation** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2023-05-02-is-your-code-generated-by-chatgpt-really-correct-rigorous-ev-89276993.mp3) [arXiv](https://arxiv.org/abs/2305.01210)
+
+## 2021-07-07
+
+- **Evaluating Large Language Models Trained on Code** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2021-07-07-evaluating-large-language-models-trained-on-code-3eb86058.mp3) [arXiv](https://arxiv.org/abs/2107.03374)
+
+## 2019-11-05
+
+- **On the Measure of Intelligence** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2019-11-05-on-the-measure-of-intelligence-c95716e9.mp3) [arXiv](https://arxiv.org/abs/1911.01547)
