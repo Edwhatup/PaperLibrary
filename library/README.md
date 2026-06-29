@@ -3,6 +3,11 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-06-29
+
+- **Qwen-Image-2.0-RL Technical Report** · 27★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-29-qwen-image-2-0-rl-technical-report-db097d83.mp3) [arXiv](https://arxiv.org/abs/2606.27608)
+- **PhysisForcing: Physics Reinforced World Simulator for Robotic Manipulation** · 39★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-29-physisforcing-physics-reinforced-world-simulator-for-robotic-88dd399b.mp3) [arXiv](https://arxiv.org/abs/2606.28128)
+
 ## 2026-06-26
 
 - **In-Context World Modeling for Robotic Control** · 57★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-in-context-world-modeling-for-robotic-control-e0d36561.mp3) [arXiv](https://arxiv.org/abs/2606.26025)
