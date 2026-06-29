@@ -41,17 +41,14 @@ jobs:
         run: |
           pip install -r requirements.txt
           if [ -n "$GEMINI_API_KEY" ]; then pip install google-generativeai; fi
-      - name: Regenerate 06-23..26 (fix truncation)
+      - name: Regenerate 06-25 (the two that fell back to English)
         run: |
-          rm -f data/scripts/2026-06-2[3456]-*.txt public/audio/2026-06-2[3456]-*.mp3
-          for d in 2026-06-23 2026-06-24 2026-06-25 2026-06-26; do
-            echo "===== $d ====="
-            python scripts/run_daily.py "$d" || echo "skip $d"
-          done
+          rm -f data/scripts/2026-06-25-*.txt public/audio/2026-06-25-*.mp3
+          python scripts/run_daily.py 2026-06-25
       - name: Verify no script ends mid-sentence
         run: |
           bad=0
-          for f in data/scripts/2026-06-2[3456]-*.txt; do
+          for f in data/scripts/2026-06-25-*.txt; do
             tail_char=$(python3 -c "t=open('$f',encoding='utf-8').read().rstrip(); print(t[-1] if t else '')")
             case "$tail_char" in 。|！|？|.|!|\?|”|\"|）|\)) : ;; *) echo "STILL TRUNCATED: $f (…$tail_char)"; bad=1;; esac
           done
