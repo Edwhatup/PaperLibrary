@@ -12,7 +12,7 @@
       <description>当前评估大型语言模型生成代码正确性的方法，面临着一个核心问题：我们真的能相信这些代码是正确的吗？现有基准测试，比如广受欢迎的HumanEval，通常只包含少量测试用例，这导致我们对LLM生成代码的实际功能正确性产生了过度乐观的估计。</description>
       <link>https://arxiv.org/abs/2305.01210</link>
       <guid isPermaLink="false">2023-05-02-is-your-code-generated-by-chatgpt-really-correct-rigorous-ev-89276993.mp3</guid>
-      <pubDate>Mon, 29 Jun 2026 20:26:16 +0000</pubDate>
+      <pubDate>Mon, 29 Jun 2026 21:05:32 +0000</pubDate>
       <itunes:duration>1182</itunes:duration>
       <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2023-05-02-is-your-code-generated-by-chatgpt-really-correct-rigorous-ev-89276993.mp3" length="7096608" type="audio/mpeg"/>
     </item>
@@ -21,7 +21,7 @@
       <description>现有的语言智能体基准测试在评估它们与人类用户的互动能力以及遵循特定领域规则的能力方面存在明显不足，而这两点对于将智能体部署到真实世界的应用中至关重要。想象一下，一个航空公司的订票智能体，当用户想要更改航班目的地时，它不仅需要通过多轮对话从用户那里收集必要信息，还要根据航空公司复杂的政策指南来检查规则，然后通过复杂的预订API查找新航班并完成改签。在这个过程中，智能体必须在不同的用户和相似请求下保持行为一致性，并且能够稳健地应对对话流程中的细微变化，确保最终结果不受影响。然而，目前大多数语言智能体基准，例如ToolBench、WebShop等，通常采用简化的指令遵循设置，智能体在预先提供所有信息</description>
       <link>https://arxiv.org/abs/2406.12045</link>
       <guid isPermaLink="false">2024-06-17-t-bench-a-benchmark-for-tool-agent-user-interaction-in-real--7231e0a5.mp3</guid>
-      <pubDate>Mon, 29 Jun 2026 20:22:26 +0000</pubDate>
+      <pubDate>Mon, 29 Jun 2026 21:03:51 +0000</pubDate>
       <itunes:duration>1367</itunes:duration>
       <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-06-17-t-bench-a-benchmark-for-tool-agent-user-interaction-in-real--7231e0a5.mp3" length="8205264" type="audio/mpeg"/>
     </item>
@@ -30,7 +30,7 @@
       <description>游戏内容自动生成，也就是我们常说的PCG，它要解决的核心问题，就是当前游戏开发中内容生产耗时巨大、成本高昂，却又要不断满足玩家对新鲜内容永无止境的需求这个痛点。在过去，开发一款大型游戏可能需要数年时间，投入海量人力物力，而PCG技术的目标，就是利用算法自动生成游戏内容，从而提高游戏的可玩性、降低开发成本，并减少开发人员的工作量。这项技术从上世纪80年代的《Beneath Apple Manor》和《Rogue》这类Roguelike游戏开始，就已经在业内和学术界有了很长的历史。而近些年，随着深度学习技术的飞速发展，PCG能够生成的内容变得越来越复杂精妙。但真正颠覆这一领域发展轨迹的，是大型语言</description>
       <link>https://arxiv.org/abs/2410.15644</link>
       <guid isPermaLink="false">2024-10-21-procedural-content-generation-in-games-a-survey-with-insight-979d4868.mp3</guid>
-      <pubDate>Mon, 29 Jun 2026 20:16:40 +0000</pubDate>
+      <pubDate>Mon, 29 Jun 2026 21:00:28 +0000</pubDate>
       <itunes:duration>870</itunes:duration>
       <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-10-21-procedural-content-generation-in-games-a-survey-with-insight-979d4868.mp3" length="5223456" type="audio/mpeg"/>
     </item>
@@ -39,7 +39,7 @@
       <description>大型语言模型（LLM）驱动的智能体，也就是我们常说的LLM Agent，正在彻底改变人工智能的范式，让AI系统能够自主规划、推理并利用工具与动态环境互动。但随之而来的一个核心挑战是：我们该如何有效地评估这些日益强大的智能体？传统的LLM评估方法，比如仅仅测量文本输出的质量，已经远远不足以衡量智能体在动态环境中进行序列决策和操作的能力。我们需要全新的评估范式和基准，它们不仅要能评估智能体完成多步骤任务的能力，还要能适应智能体能力的不断演进，覆盖新的任务类型和应用领域。今天，我们就来深入探讨这篇关于LLM智能体评估的综述论文，它全面梳理了当前的评估格局，并指出了未来研究的关键方向。</description>
       <link>https://arxiv.org/abs/2503.16416</link>
       <guid isPermaLink="false">2025-03-20-survey-on-evaluation-of-llm-based-agents-2ff9c68d.mp3</guid>
-      <pubDate>Mon, 29 Jun 2026 20:14:40 +0000</pubDate>
+      <pubDate>Mon, 29 Jun 2026 21:00:28 +0000</pubDate>
       <itunes:duration>1198</itunes:duration>
       <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-03-20-survey-on-evaluation-of-llm-based-agents-2ff9c68d.mp3" length="7188336" type="audio/mpeg"/>
     </item>
@@ -48,7 +48,7 @@
       <description>现在，大型语言模型的评估是理解它们能力、发现潜在安全和鲁棒性问题的关键一步，这直接关系到它们能否被安全可靠地部署。但是，我们真的在有效地测量我们想测量的东西吗？比如，当我们说一个模型“安全”或者“鲁棒”，我们用来评估这些抽象概念的基准测试，真的能够准确地代表这些概念本身吗？这正是这篇论文《测量真正重要的：大型语言模型基准测试中的建构效度》所要解决的核心问题。它指出，如果我们的评估工具，也就是这些基准测试，缺乏“建构效度”，那么我们对模型能力的所有判断都可能是不准确的，甚至会误导研究方向。</description>
       <link>https://arxiv.org/abs/2511.04703</link>
       <guid isPermaLink="false">2025-11-03-measuring-what-matters-construct-validity-in-large-language--a555a4a5.mp3</guid>
-      <pubDate>Mon, 29 Jun 2026 20:12:31 +0000</pubDate>
+      <pubDate>Mon, 29 Jun 2026 21:00:28 +0000</pubDate>
       <itunes:duration>814</itunes:duration>
       <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-11-03-measuring-what-matters-construct-validity-in-large-language--a555a4a5.mp3" length="4888512" type="audio/mpeg"/>
     </item>
@@ -57,7 +57,7 @@
       <description>今天我们要聊的这篇论文，关注的核心问题是如何准确评估大型语言模型在生成代码方面的能力。我们都知道，像GPT-3这样的大语言模型在处理自然语言任务上表现出色，但当它们被用来编写代码时，我们该如何判断它们写出的代码是否真的“好用”呢？这篇论文引入了一个名为Codex的模型，它是GPT语言模型的一个变体，经过了大量GitHub上公开代码的微调训练。同时，论文还发布了一个全新的评估数据集HumanEval，专门用来衡量模型根据函数文档字符串来合成程序的功能正确性。</description>
       <link>https://arxiv.org/abs/2107.03374</link>
       <guid isPermaLink="false">2021-07-07-evaluating-large-language-models-trained-on-code-3eb86058.mp3</guid>
-      <pubDate>Mon, 29 Jun 2026 20:10:54 +0000</pubDate>
+      <pubDate>Mon, 29 Jun 2026 21:00:28 +0000</pubDate>
       <itunes:duration>342</itunes:duration>
       <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2021-07-07-evaluating-large-language-models-trained-on-code-3eb86058.mp3" length="2056176" type="audio/mpeg"/>
     </item>
@@ -66,7 +66,7 @@
       <description>我们今天来聊聊一个对人工智能领域至关重要的问题：到底什么是智能，我们又该如何有效地衡量它？长期以来，人工智能领域一直致力于开发出拥有媲美人类智能的机器。然而，尽管我们在特定任务上取得了惊人的成就，比如下棋、玩游戏，但这些系统往往非常脆弱，对数据需求巨大，难以理解与训练数据稍有偏差的情况，更无法在没有人类大量干预的情况下自主适应新任务。这背后的一个核心原因，就是我们缺乏一个精确、可操作的智能定义和衡量标准，尤其是针对类人通用智能的标准。</description>
       <link>https://arxiv.org/abs/1911.01547</link>
       <guid isPermaLink="false">2019-11-05-on-the-measure-of-intelligence-c95716e9.mp3</guid>
-      <pubDate>Mon, 29 Jun 2026 20:10:00 +0000</pubDate>
+      <pubDate>Mon, 29 Jun 2026 21:00:28 +0000</pubDate>
       <itunes:duration>408</itunes:duration>
       <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2019-11-05-on-the-measure-of-intelligence-c95716e9.mp3" length="2448432" type="audio/mpeg"/>
     </item>
@@ -75,7 +75,7 @@
       <description>我们今天来聊聊一个在人工智能领域，尤其是在大型语言模型（LLM）评估中，常常被忽视但又极其关键的问题：我们用来衡量模型能力的那些基准测试，它们本身真的可靠吗？具体来说，我们今天要深入探讨的是一篇来自OpenAI的研究，它聚焦于SWE-bench这个著名的软件工程基准测试。</description>
       <link>https://openai.com/index/introducing-swe-bench-verified/</link>
       <guid isPermaLink="false">2024-08-13-swe-bench-verified-c8c477cd.mp3</guid>
-      <pubDate>Mon, 29 Jun 2026 20:08:47 +0000</pubDate>
+      <pubDate>Mon, 29 Jun 2026 21:00:28 +0000</pubDate>
       <itunes:duration>473</itunes:duration>
       <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-08-13-swe-bench-verified-c8c477cd.mp3" length="2842848" type="audio/mpeg"/>
     </item>
@@ -84,7 +84,7 @@
       <description>当前大型语言模型在代码生成方面的进步速度，已经超越了我们有效评估它们的能力。现有的代码生成基准测试，比如HumanEval，大多只涉及一些独立、几行代码就能解决的简单问题。然而，真实的软件工程任务远比这复杂：它可能需要你在一个庞大的代码库中穿梭，理解不同文件、不同函数之间的相互作用，甚至要从一大堆代码里找出那个不起眼的小错误。这些任务需要模型具备复杂的推理能力、处理超长上下文的能力，并且能与执行环境进行交互，这远远超出了传统代码生成的范畴。</description>
       <link>https://arxiv.org/abs/2310.06770</link>
       <guid isPermaLink="false">2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-9f03fd3e.mp3</guid>
-      <pubDate>Mon, 29 Jun 2026 20:07:40 +0000</pubDate>
+      <pubDate>Mon, 29 Jun 2026 21:00:28 +0000</pubDate>
       <itunes:duration>303</itunes:duration>
       <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-9f03fd3e.mp3" length="1823472" type="audio/mpeg"/>
     </item>
