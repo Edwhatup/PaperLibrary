@@ -1,0 +1,78 @@
+# EPHEMERAL one-shot: regenerate 06-23..26 with the truncation fix (full,
+# clean-ending scripts), then deploy. Delete after it runs.
+name: _backfill
+
+on:
+  push:
+    branches: [claude/paper-library-tts-ub68qn]
+    paths: [".github/workflows/_backfill.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      DIGEST_LANG: zh
+      LLM_BACKEND: auto
+      MAX_PAPERS: "2"
+      FEED_BASE_URL: https://edwhatup.github.io/PaperLibrary
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      RCLONE_REMOTE: ${{ vars.RCLONE_REMOTE }}
+      RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+          if [ -n "$GEMINI_API_KEY" ]; then pip install google-generativeai; fi
+      - name: Regenerate 06-23..26 (fix truncation)
+        run: |
+          rm -f data/scripts/2026-06-2[3456]-*.txt public/audio/2026-06-2[3456]-*.mp3
+          for d in 2026-06-23 2026-06-24 2026-06-25 2026-06-26; do
+            echo "===== $d ====="
+            python scripts/run_daily.py "$d" || echo "skip $d"
+          done
+      - name: Verify no script ends mid-sentence
+        run: |
+          bad=0
+          for f in data/scripts/2026-06-2[3456]-*.txt; do
+            tail_char=$(python3 -c "t=open('$f',encoding='utf-8').read().rstrip(); print(t[-1] if t else '')")
+            case "$tail_char" in 。|！|？|.|!|\?|”|\"|）|\)) : ;; *) echo "STILL TRUNCATED: $f (…$tail_char)"; bad=1;; esac
+          done
+          [ "$bad" = 0 ] && echo "all scripts end cleanly"
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data public library
+          git diff --cached --quiet || git commit -m "chore: regenerate 06-23..26 (fix audio truncation)"
+          git push
+      - name: Sync to cloud drive (VLC)
+        if: ${{ vars.RCLONE_REMOTE != '' }}
+        run: |
+          curl -s https://rclone.org/install.sh | sudo bash
+          mkdir -p ~/.config/rclone
+          printf '%s\n' "$RCLONE_CONF" > ~/.config/rclone/rclone.conf
+          rclone copy public "$RCLONE_REMOTE" --include "audio/**" --include "playlist.m3u8"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deployment
+        uses: actions/deploy-pages@v4
