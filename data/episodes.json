@@ -1,90 +1,98 @@
 [
   {
-    "date": "2026-06-25",
-    "title": "Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models",
-    "abstract": "We present Wan-Streamer, a native-streaming, end-to-end interactive foundation model designed from the ground up for real-time, low-latency, full-duplex audio-visual interaction. Wan-Streamer seamlessly models language, audio, and video as both input and output within a single Transformer, where the sequence is represented as interleaved visual, audio, and text input tokens together with visual, audio, and text output tokens, coordinated by block-causal attention for incremental streaming. Unlike cascaded interactive systems that rely on separate VAD, ASR, language, TTS, audio-driven animation, or video-generation modules, Wan-Streamer does not rely on external language, speech, avatar, or video-generation modules: perception, reasoning, generation, response timing, turn management, and cross-modal synchronization are learned jointly within one unified model, reducing pipeline latency and error accumulation. To support natural audio-visual responsiveness, we redesign the entire stack around streamability, including causal encoders, causal decoders, block-causal attention, and low-latency multimodal token scheduling, enabling streaming units as short as 160 ms at 25 fps. Wan-Streamer achieves approximately 200 ms model-side response latency and approximately 550 ms total interaction latency when combined with 350 ms bidirectional network latency, supporting sub-second duplex audio-visual communication. These results position Wan-Streamer as a unified, end-to-end, multimodal interactive foundation model for low-latency streaming interaction.",
-    "notes": "我们今天聊的这篇论文，Wan-Streamer v0.1，它直接切入了一个当前人工智能交互系统的核心痛点：那就是我们都希望AI能够像真人一样，进行实时、流畅、全双工的音视频互动，但现实中的大多数AI系统，距离这个目标还有不小的差距。想象一下，你和一位朋友聊天，是自然而然地边听边看边回应的。朋友说话时，你会点头、眼神会有交流，甚至在他还没说完时，你就能根据语境做出预判或插话。但现在大多数AI助手，比如我们常用的语音助手或聊天机器人，它们的工作模式是高度串行的。你先说完一句话，它才开始识别你的语音，然后理解你的语义，接着生成一个文本回复，最后再把这个文本转换成语音播出来。这个过程是严格一步接一步的",
-    "url": "https://arxiv.org/abs/2606.25041",
-    "upvotes": 100,
-    "audio": "2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio.mp3",
-    "size": 2014992,
-    "published": "2026-06-29T15:19:36.027778+00:00"
-  },
-  {
-    "date": "2026-06-25",
-    "title": "Are We Ready For An Agent-Native Memory System?",
-    "abstract": "Memory for large language model (LLM) agents has rapidly evolved from simple retrieval-augmented mechanisms into a data management system that supports persistent information storage, retrieval, update, consolidation, and dynamic lifecycle governance throughout agent execution. Despite this evolution, existing evaluations still benchmark agent memory mainly through end-to-end task success metrics (e.g., F1, BLEU), while treating the underlying system as a monolithic black box. As a result, critical system-level concerns, including operational costs, architectural trade-offs across memory modules, and robustness under dynamic knowledge updates, remain insufficiently explored. In this paper, we present a systematic experimental study of agent memory from a data management perspective. We propose an analytical framework that decomposes agent memory into four core modules: memory representation and storage, extraction, retrieval and routing, and maintenance. Under this framework, we evaluate 12 representative memory systems and two reference baselines across five benchmark workloads spanning 11 datasets. Our extensive end-to-end evaluation shows that no single architecture dominates across all scenarios; instead, effectiveness depends heavily on how well the memory structure aligns with the workload bottleneck. Furthermore, through fine-grained ablation studies, we quantify their individual effects on representation fidelity, retrieval precision, update correctness, and long-horizon stability. Finally, we reveal cost-performance trade-offs under realistic workloads, showing localized maintenance is more cost-efficient than global reorganization. Based on these findings, we identify promising directions towards building truly agent-native memory systems. The code is publicly available at https://github.com/OpenDataBox/MemoryData.",
-    "notes": "大型语言模型（LLM）智能体在执行复杂任务时，面临着一个核心挑战，那就是如何高效地管理和利用它们积累的记忆信息。尽管智能体记忆系统已经从简单的检索增强机制迅速发展成了支持信息存储、检索、更新、整合和动态生命周期管理的数据管理系统，但我们现有的评估方法却常常把它当作一个黑箱。这意味着我们主要关注智能体最终能否完成任务（比如F1分数或BLEU分数），却很少深入探究其底层的记忆系统本身。因此，许多系统层面的关键问题，比如运营成本、不同记忆模块之间的架构权衡，以及在知识动态更新下的鲁棒性，都还远未得到充分探索。",
-    "url": "https://arxiv.org/abs/2606.24775",
-    "upvotes": 106,
-    "audio": "2026-06-25-are-we-ready-for-an-agent-native-memory-system.mp3",
-    "size": 7005456,
-    "published": "2026-06-29T15:17:57.494370+00:00"
-  },
-  {
+    "key": "2606.26025",
     "date": "2026-06-26",
     "title": "In-Context World Modeling for Robotic Control",
     "abstract": "Modern Vision-Language-Action (VLA) models often fail to generalize to novel setups, such as altered camera viewpoints or robot morphologies, because they are typically conditioned only on current observations and language instructions. By ignoring the underlying system configuration as a variable, these models implicitly assume a fixed execution context encountered during training, necessitating data-intensive fine-tuning for any new environment. In this work, we introduce In-Context World Modeling (ICWM), a framework that treats system identification as an in-context adaptation problem. ICWM enables robot policies to autonomously infer essential system variables from a short history of self-generated, task-agnostic interactions. Unlike traditional In-Context Learning that uses demonstrations to specify what task to perform, ICWM leverages the context window to understand how the system operates. By processing these interactions before task execution, the model implicitly captures the world dynamics of the current system, enabling adaptation to novel configurations without parameter updates. Extensive experiments in simulation and on real-world robot platforms demonstrate that ICWM significantly outperforms standard VLA baselines on novel camera viewpoints.",
     "notes": "现代视觉-语言-动作模型，也就是VLA模型，在面对新的机器人设置时，比如摄像机视角改变或者机器人形态变化，往往无法很好地泛化。这是因为它们通常只依赖当前的观察和语言指令，默认训练时的执行环境是固定的。它们忽略了系统配置本身作为一个可变因素，这导致每次遇到新环境，都需要大量数据进行代价高昂的微调。",
     "url": "https://arxiv.org/abs/2606.26025",
     "upvotes": 57,
-    "audio": "2026-06-26-in-context-world-modeling-for-robotic-control.mp3",
+    "audio": "2026-06-26-in-context-world-modeling-for-robotic-control-e0d36561.mp3",
     "size": 4033584,
-    "published": "2026-06-29T15:06:45.046633+00:00"
+    "published": "2026-06-29T16:00:12.316010+00:00"
   },
   {
+    "key": "2606.27377",
     "date": "2026-06-26",
     "title": "DanceOPD: On-Policy Generative Field Distillation",
     "abstract": "Modern image generation demands a single model that unifies diverse capabilities, including text-to-image (T2I), local editing, and global editing. However, these capabilities are rarely naturally aligned and often conflict. For instance, editing tends to degrade T2I performance, while global and local editing interfere with each other. Consequently, effectively composing these capabilities has become a central challenge for image generation model training. To tackle this, we introduce DanceOPD, an on-policy generative field distillation framework for flow-matching models that routes each sample to one capability field, queries one low-noise student-induced state, and trains with a simple velocity MSE objective. With each capability source defined as a velocity field over the shared flow state space, the student learns from fields queried on its own rollout states to compose expert capabilities. This formulation also absorbs operator-defined fields such as classifier-free guidance. Comprehensive experiments on T2I, editing, realism-field absorption, and CFG absorption show that our approach improves multi-capability composition, strengthening target capabilities while preserving anchor generation quality. We believe this work establishes a practical route for generative field distillation in flow-matching models.",
     "notes": "现代图像生成模型正面临一个核心挑战：我们期望一个模型能够同时拥有多种强大的功能，比如根据文字描述生成图像、对图像进行局部修改，以及进行全局性的风格或布局编辑。然而，这些能力在实际应用中往往难以兼容，甚至会相互冲突。举例来说，为了实现更精细的图像编辑，模型可能会牺牲文本到图像生成时的整体质量和对指令的遵循度；而局部编辑和全局编辑的目标本身就可能存在矛盾，一个要求尽可能保留原始图像的细节，另一个则要求大幅改变图像的整体外观或风格。因此，如何有效地整合这些多样的能力，让它们在同一个模型中和谐共存并发挥作用，成为了当前图像生成模型训练中的一个关键难题。",
     "url": "https://arxiv.org/abs/2606.27377",
     "upvotes": 73,
-    "audio": "2026-06-26-danceopd-on-policy-generative-field-distillation.mp3",
+    "audio": "2026-06-26-danceopd-on-policy-generative-field-distillation-5a5ba75b.mp3",
     "size": 4354272,
-    "published": "2026-06-29T15:05:05.166876+00:00"
+    "published": "2026-06-29T16:00:06.138972+00:00"
   },
   {
+    "key": "2606.25041",
+    "date": "2026-06-25",
+    "title": "Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models",
+    "abstract": "We present Wan-Streamer, a native-streaming, end-to-end interactive foundation model designed from the ground up for real-time, low-latency, full-duplex audio-visual interaction. Wan-Streamer seamlessly models language, audio, and video as both input and output within a single Transformer, where the sequence is represented as interleaved visual, audio, and text input tokens together with visual, audio, and text output tokens, coordinated by block-causal attention for incremental streaming. Unlike cascaded interactive systems that rely on separate VAD, ASR, language, TTS, audio-driven animation, or video-generation modules, Wan-Streamer does not rely on external language, speech, avatar, or video-generation modules: perception, reasoning, generation, response timing, turn management, and cross-modal synchronization are learned jointly within one unified model, reducing pipeline latency and error accumulation. To support natural audio-visual responsiveness, we redesign the entire stack around streamability, including causal encoders, causal decoders, block-causal attention, and low-latency multimodal token scheduling, enabling streaming units as short as 160 ms at 25 fps. Wan-Streamer achieves approximately 200 ms model-side response latency and approximately 550 ms total interaction latency when combined with 350 ms bidirectional network latency, supporting sub-second duplex audio-visual communication. These results position Wan-Streamer as a unified, end-to-end, multimodal interactive foundation model for low-latency streaming interaction.",
+    "notes": "我们今天聊的这篇论文，Wan-Streamer v0.1，它直接切入了一个当前人工智能交互系统的核心痛点：那就是我们都希望AI能够像真人一样，进行实时、流畅、全双工的音视频互动，但现实中的大多数AI系统，距离这个目标还有不小的差距。想象一下，你和一位朋友聊天，是自然而然地边听边看边回应的。朋友说话时，你会点头、眼神会有交流，甚至在他还没说完时，你就能根据语境做出预判或插话。但现在大多数AI助手，比如我们常用的语音助手或聊天机器人，它们的工作模式是高度串行的。你先说完一句话，它才开始识别你的语音，然后理解你的语义，接着生成一个文本回复，最后再把这个文本转换成语音播出来。这个过程是严格一步接一步的",
+    "url": "https://arxiv.org/abs/2606.25041",
+    "upvotes": 100,
+    "audio": "2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio-ad252d59.mp3",
+    "size": 2014992,
+    "published": "2026-06-29T15:59:55.168291+00:00"
+  },
+  {
+    "key": "2606.24775",
+    "date": "2026-06-25",
+    "title": "Are We Ready For An Agent-Native Memory System?",
+    "abstract": "Memory for large language model (LLM) agents has rapidly evolved from simple retrieval-augmented mechanisms into a data management system that supports persistent information storage, retrieval, update, consolidation, and dynamic lifecycle governance throughout agent execution. Despite this evolution, existing evaluations still benchmark agent memory mainly through end-to-end task success metrics (e.g., F1, BLEU), while treating the underlying system as a monolithic black box. As a result, critical system-level concerns, including operational costs, architectural trade-offs across memory modules, and robustness under dynamic knowledge updates, remain insufficiently explored. In this paper, we present a systematic experimental study of agent memory from a data management perspective. We propose an analytical framework that decomposes agent memory into four core modules: memory representation and storage, extraction, retrieval and routing, and maintenance. Under this framework, we evaluate 12 representative memory systems and two reference baselines across five benchmark workloads spanning 11 datasets. Our extensive end-to-end evaluation shows that no single architecture dominates across all scenarios; instead, effectiveness depends heavily on how well the memory structure aligns with the workload bottleneck. Furthermore, through fine-grained ablation studies, we quantify their individual effects on representation fidelity, retrieval precision, update correctness, and long-horizon stability. Finally, we reveal cost-performance trade-offs under realistic workloads, showing localized maintenance is more cost-efficient than global reorganization. Based on these findings, we identify promising directions towards building truly agent-native memory systems. The code is publicly available at https://github.com/OpenDataBox/MemoryData.",
+    "notes": "大型语言模型（LLM）智能体在执行复杂任务时，面临着一个核心挑战，那就是如何高效地管理和利用它们积累的记忆信息。尽管智能体记忆系统已经从简单的检索增强机制迅速发展成了支持信息存储、检索、更新、整合和动态生命周期管理的数据管理系统，但我们现有的评估方法却常常把它当作一个黑箱。这意味着我们主要关注智能体最终能否完成任务（比如F1分数或BLEU分数），却很少深入探究其底层的记忆系统本身。因此，许多系统层面的关键问题，比如运营成本、不同记忆模块之间的架构权衡，以及在知识动态更新下的鲁棒性，都还远未得到充分探索。",
+    "url": "https://arxiv.org/abs/2606.24775",
+    "upvotes": 106,
+    "audio": "2026-06-25-are-we-ready-for-an-agent-native-memory-system-dd26bd35.mp3",
+    "size": 7005456,
+    "published": "2026-06-29T15:59:51.897326+00:00"
+  },
+  {
+    "key": "2606.24530",
     "date": "2026-06-24",
     "title": "NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers?",
     "abstract": "We introduce NatureBench, a cross-discipline benchmark of 90 tasks distilled from peer-reviewed Nature-family publications, designed to evaluate whether AI coding agents can move beyond reproduction toward discovery on real scientific problems. NatureBench is built on NatureGym, an automated pipeline that constructs a standardized, per-task containerized environment from a source paper, addressing the environment-fragmentation problem that has limited the credibility of prior agent-on-research benchmarks. Evaluating ten frontier agent configurations under a strict web-search-disabled protocol, we find that the strongest model surpasses SOTA on only 17.8% of tasks under the g>0.1 criterion. Analysis of method pathways reveals that agents succeed primarily through methodological translation, converting scientific tasks into familiar supervised prediction problems, rather than through genuine scientific invention. Failures are dominated by wrong method choice and insufficient compute budget, not by task misunderstanding. We release the benchmark, the NatureGym pipeline, and a public leaderboard with maintainer-side reproduction. Code: https://github.com/FrontisAI/NatureBench",
     "notes": "当前AI编码智能体正快速走向自主科学研究，从重现已发表的实现到执行端到端的科研工作流。然而，当我们评估这些系统在科学研究中的能力时，现有的基准测试存在诸多局限，使得我们无法可靠地判断一个智能体究竟是在真正推进科学前沿，还是仅仅在用熟悉模式拟合新数据。",
     "url": "https://arxiv.org/abs/2606.24530",
     "upvotes": 61,
-    "audio": "2026-06-24-naturebench-can-coding-agents-match-the-published-sota-of-na.mp3",
+    "audio": "2026-06-24-naturebench-can-coding-agents-match-the-published-sota-of-na-fbef4af1.mp3",
     "size": 12659472,
-    "published": "2026-06-29T15:03:08.475770+00:00"
+    "published": "2026-06-29T15:59:38.320804+00:00"
   },
   {
+    "key": "2606.24597",
     "date": "2026-06-24",
     "title": "Qwen-AgentWorld: Language World Models for General Agents",
     "abstract": "A world model predicts environment dynamics based on current observations and actions, serving as a core cognitive mechanism for reasoning and planning. In this work, we investigate how world modeling based on language models can further push the boundaries of general agents. (i) We first focus on building foundation models for agentic environment simulation. We introduce Qwen-AgentWorld-35B-A3B and Qwen-AgentWorld-397B-A17B, the first language world models capable of simulating agentic environments covering 7 domains via long chain-of-thought reasoning. Leveraging more than 10M environment interaction trajectories of 7 domains in real-world environments, we develop Qwen-AgentWorld through a three-stage training pipeline: CPT injects general-purpose world modeling capabilities from the state transition dynamics and augmented professional corpora, SFT activates next-state-prediction reasoning, and RL sharpens simulation fidelity through a tailored framework with hybrid rubric-and-rule rewards. To evaluate language world models, we present AgentWorldBench, a comprehensive benchmark constructed from real-world interactions of 5 frontier models on 9 established benchmarks. Empirical results demonstrate that Qwen-AgentWorld significantly outperforms existing frontier models. (ii) Beyond foundation models, we further investigate two complementary paradigms through which world modeling enhances general agents. First, as a decoupled environment simulator, Qwen-AgentWorld supports scalable and controllable simulation of thousands of real-world environments for agentic RL, yielding gains that surpass real-environment training alone. Second, as a unified agent foundation model, world-model training acts as a highly effective warm-up that improves downstream performance across 7 agentic benchmarks. Code: https://github.com/QwenLM/Qwen-AgentWorld",
     "notes": "现有大型语言模型（LLM）驱动的智能体，尽管在决策方面取得了巨大进步，但却普遍缺乏一个核心能力——对所处环境的“世界模型”。一个世界模型，简单来说，就是能够基于当前的观察和智能体的动作，准确预测环境接下来会如何变化的认知机制。它就像智能体内部的一个小宇宙，能模拟未来的可能性，是智能体进行推理和规划的基础。",
     "url": "https://arxiv.org/abs/2606.24597",
     "upvotes": 139,
-    "audio": "2026-06-24-qwen-agentworld-language-world-models-for-general-agents.mp3",
+    "audio": "2026-06-24-qwen-agentworld-language-world-models-for-general-agents-4c7b3076.mp3",
     "size": 7809408,
-    "published": "2026-06-29T14:59:16.420853+00:00"
+    "published": "2026-06-29T15:56:11.954939+00:00"
   },
   {
+    "key": "2606.23654",
     "date": "2026-06-23",
     "title": "EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions",
     "abstract": "Enterprise agents increasingly operate inside workspaces: they read heterogeneous files, invoke tools, and deliver business artifacts. We introduce EnterpriseClawBench, an enterprise agent benchmark constructed from proprietary, real-world agent sessions. Starting from a large archive of workplace sessions, the EnterpriseClawBench produces 852 reproducible tasks, each paired with recovered fixtures, rewritten prompts, role classes, skill subclasses, hard rules, and semantic rubrics. Because the sessions contain internal enterprise content, we do not release the benchmark data; instead, our reusable contribution is the construction and evaluation protocol. On EnterpriseClawBench, the best configuration reaches only 0.663 (Codex with GPT-5.5). These results show that enterprise agent evaluation must report harness--model combinations, artifact delivery, visual quality, cost, runtime, and skill-transfer behavior, rather than collapsing performance into a single score. Code: https://github.com/FrontisAI/EnterpriseClawBench",
     "notes": "当前的大语言模型正从简单的文本助手演变为能够在可执行工作空间中操作，并产出实际业务成果的智能代理。然而，在评估这些企业级代理时，我们面临着几个核心挑战：首先，如何构建既能真实反映企业需求，又能大规模生成的任务？现有基准测试的任务往往是人工编写、模拟或基于公开环境的，这与真实企业工作中的自然需求之间存在显著差距。其次，代理的性能评估不应仅仅是一个单一的分数，它受到基础模型、代理框架（我们称之为“爪子”或“harness”）、环境、状态、多模态输出质量、成本和延迟等多种因素的影响。因此，我们需要一个多维度的评估体系。最后，在企业环境中，可复用的技能正成为重要的资产，但现有的基准测试要么没有为技能评",
     "url": "https://arxiv.org/abs/2606.23654",
     "upvotes": 79,
-    "audio": "2026-06-23-enterpriseclawbench-benchmarking-agents-from-real-workplace-.mp3",
+    "audio": "2026-06-23-enterpriseclawbench-benchmarking-agents-from-real-workplace--af103a1d.mp3",
     "size": 5081040,
-    "published": "2026-06-29T14:57:24.409031+00:00"
+    "published": "2026-06-29T15:55:55.568000+00:00"
   },
   {
+    "key": "2606.22388",
     "date": "2026-06-23",
     "title": "PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems",
     "abstract": "LLM agents increasingly operate in large tool ecosystems, where real-world tasks require discovering relevant tools, inferring implicit sub-goals, and adapting to dynamic environments over long horizons. However, existing benchmarks rarely evaluate planning under retrieval-limited tool visibility. To address this gap, we introduce PlanBench-XL, an interactive benchmark of 327 retail tasks over 1,665 tools that tests whether agents can iteratively retrieve usable tools, invoke them to uncover intermediate evidence for subsequent calls toward the final goal. PlanBench-XL further features an optional blocking mechanism that simulates real-world unpredictability through missing, failing, or distracting tool functions, forcing agents to detect disrupted paths and adapt at runtime. Experiments on ten leading LLMs show that massive-tool planning remains challenging: while GPT-5.4 achieves 51.90% accuracy in block-free settings, it collapses to 11.36% under the most severe blocking condition. Further analysis shows that agents are especially vulnerable when failures lack explicit error signals or when recovery requires longer alternative tool-use paths. These results establish PlanBench-XL as a testbed for diagnosing agentic planning failures and highlight the need for robust adaptive planning in long-horizon tasks with large, imperfect tool environments.",
     "notes": "大型语言模型，也就是我们常说的LLM智能体，在真实世界中面临一个巨大挑战：当它们需要使用大量外部工具来完成复杂、多步骤的任务时，如何有效地规划和执行？尤其是在工具库庞大、工具信息不完全可见、甚至部分工具不可靠或失效的情况下，这几乎是所有实际应用场景都无法回避的难题。然而，目前的评估基准往往简化了这些复杂性，例如假设所有工具都可见、目标明确、工具描述清晰或者只需要一次性检索。这种理想化的设定，导致我们无法真正了解LLM智能体在这种现实约束下的规划能力。",
     "url": "https://arxiv.org/abs/2606.22388",
     "upvotes": 95,
-    "audio": "2026-06-23-planbench-xl-evaluating-long-horizon-planning-of-llm-tool-us.mp3",
-    "size": 4114368,
-    "published": "2026-06-29T14:56:13.052091+00:00"
+    "audio": "2026-06-23-planbench-xl-evaluating-long-horizon-planning-of-llm-tool-us-5e6a16ee.mp3",
+    "size": 6101280,
+    "published": "2026-06-29T15:55:45.730695+00:00"
   }
 ]

@@ -10,6 +10,7 @@ Usage:
 """
 from __future__ import annotations
 
+import hashlib
 import sys
 from datetime import datetime, timezone
 
@@ -49,10 +50,21 @@ def run(date_str: str | None = None) -> None:
             print(f"[script] {tag} target≈{mins}min")
             full_text = fetch_fulltext.fetch_fulltext(paper["arxiv_id"])
             script = make_script.make_script(paper, full_text)
+            if not script:
+                # LLM failed (e.g. 429). Skip — don't publish a broken episode;
+                # the paper still gets a (no-audio) library card via lib.build.
+                print(f"[run] SKIP — no script for {paper['arxiv_id']}")
+                continue
             script_path.write_text(script, encoding="utf-8")
 
-        audio_name = f"{base}.mp3"
+        # Content hash in the filename so a changed/regenerated digest gets a NEW
+        # url + guid -> podcast apps auto-fetch it without re-subscribing.
+        h = hashlib.sha1(script.encode("utf-8")).hexdigest()[:8]
+        audio_name = f"{base}-{h}.mp3"
         audio_path = config.AUDIO_DIR / audio_name
+        for stale in config.AUDIO_DIR.glob(f"{base}*.mp3"):
+            if stale.name != audio_name:
+                stale.unlink()  # drop older versions of this paper's audio
         if audio_path.exists():
             print(f"[tts] reuse {audio_name}")
         else:
@@ -64,6 +76,7 @@ def run(date_str: str | None = None) -> None:
 
         build_feed.add_episode(
             {
+                "key": paper["arxiv_id"],   # stable per-paper identity
                 "date": paper["date"],
                 "title": paper["title"],
                 "abstract": paper["abstract"],

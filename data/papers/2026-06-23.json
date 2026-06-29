@@ -231,6 +231,16 @@
   },
   {
     "date": "2026-06-23",
+    "arxiv_id": "2606.23610",
+    "title": "Vera: A Layered Diffusion Model for Content-Preserving Video Editing",
+    "abstract": "Video diffusion models have enabled remarkable progress in video generation and editing. However, content preservation remains a core challenge: existing methods regenerate every pixel and often alter elements that should remain unchanged, such as characters or background scenes. We introduce Vera, a layered diffusion framework for content-preserving video editing. Instead of regenerating the entire video, Vera generates an edit layer along with an alpha matte for compositing with the source video, separating creative editing from content preservation by design. To encourage coherent composition with the source video, we extend the text-to-video DiT into a Mixture-of-Transformers (MoT) architecture, with separate DiTs for each layer that interact through joint self-attention. To support the training of Vera, we further construct a high-quality layered dataset with accurate alpha mattes, diverse scenes and dynamics, and visual effects. Across our quantitative benchmark and human preference study, Vera outperforms leading open-source video editing models in content preservation while remaining competitive in edit quality, using 486K frames of layered training data.",
+    "upvotes": 10,
+    "url": "https://arxiv.org/abs/2606.23610",
+    "pdf": "https://arxiv.org/pdf/2606.23610",
+    "hf_url": "https://huggingface.co/papers/2606.23610"
+  },
+  {
+    "date": "2026-06-23",
     "arxiv_id": "2606.11075",
     "title": "Exploring the Design Space of Reward Backpropagation for Flow Matching",
     "abstract": "Aligning text-to-image flow matching models with human preferences via direct reward backpropagation is sample-efficient but hampered by two well-known pathologies: activations cannot be stored across the full sampling trajectory at modern model scale, and chained Jacobian products across steps inflate the reward gradient as it travels back to early indices. Connector-based methods, such as LeapAlign, address these issues by replacing the full backward trajectory with a short pinned path, highlighting a useful decoupling between sampling and optimization. However, the quality of the resulting gradient depends on how accurately this short path approximates the full rollout, especially over long intervals. We propose FlowBP, a unified surrogate-trajectory framework that treats the backward trajectory itself as the design object. FlowBP keeps a no-gradient cached rollout for sampling, then builds a lightweight backward surrogate from cached and selectively re-forwarded velocities. This view separates four choices: the reward-model input, active set, integration weights, and bridge coupling, and recovers prior direct-gradient methods as particular settings. Within this framework, we instantiate three variants: FlowBP-Sparse uses sparse Euler reconstruction, FlowBP-Bridge adds controlled bridge coupling, and FlowBP-Lagrange raises the order of leap quadrature. All three bound memory by the active-set size and limit gradient chaining to at most one Jacobian factor. Across SD3.5-M, FLUX.1-dev, and FLUX.2-Klein-base on preference, quality, and compositional metrics, the three variants improve over direct-gradient baselines on most metrics.",
@@ -238,16 +248,6 @@
     "url": "https://arxiv.org/abs/2606.11075",
     "pdf": "https://arxiv.org/pdf/2606.11075",
     "hf_url": "https://huggingface.co/papers/2606.11075"
-  },
-  {
-    "date": "2026-06-23",
-    "arxiv_id": "2606.23610",
-    "title": "Vera: A Layered Diffusion Model for Content-Preserving Video Editing",
-    "abstract": "Video diffusion models have enabled remarkable progress in video generation and editing. However, content preservation remains a core challenge: existing methods regenerate every pixel and often alter elements that should remain unchanged, such as characters or background scenes. We introduce Vera, a layered diffusion framework for content-preserving video editing. Instead of regenerating the entire video, Vera generates an edit layer along with an alpha matte for compositing with the source video, separating creative editing from content preservation by design. To encourage coherent composition with the source video, we extend the text-to-video DiT into a Mixture-of-Transformers (MoT) architecture, with separate DiTs for each layer that interact through joint self-attention. To support the training of Vera, we further construct a high-quality layered dataset with accurate alpha mattes, diverse scenes and dynamics, and visual effects. Across our quantitative benchmark and human preference study, Vera outperforms leading open-source video editing models in content preservation while remaining competitive in edit quality, using 486K frames of layered training data.",
-    "upvotes": 9,
-    "url": "https://arxiv.org/abs/2606.23610",
-    "pdf": "https://arxiv.org/pdf/2606.23610",
-    "hf_url": "https://huggingface.co/papers/2606.23610"
   },
   {
     "date": "2026-06-23",

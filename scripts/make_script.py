@@ -90,25 +90,33 @@ def _via_gemini(paper, full_text, minutes):
     max_tokens = min(16000, int(minutes * config.CHARS_PER_MIN * 2.0))
     last = None
     for name in _gemini_models():
-        try:
-            model = genai.GenerativeModel(name)
-            resp = model.generate_content(
-                prompt,
-                generation_config={"max_output_tokens": max_tokens, "temperature": 0.7},
-            )
-            fr = ""
+        for attempt in range(2):  # one retry on transient rate limits
             try:
-                fr = str(resp.candidates[0].finish_reason)
-            except Exception:
-                pass
-            if "MAX_TOKENS" in fr:
-                print(f"[script] WARNING: {name} hit MAX_TOKENS ({max_tokens}); "
-                      "trimming to last full sentence")
-            print(f"[script] gemini ok via {name}")
-            return resp.text.strip()
-        except Exception as e:
-            last = e
-            print(f"[script] gemini {name} failed: {str(e)[:140]}")
+                model = genai.GenerativeModel(name)
+                resp = model.generate_content(
+                    prompt,
+                    generation_config={"max_output_tokens": max_tokens, "temperature": 0.7},
+                )
+                fr = ""
+                try:
+                    fr = str(resp.candidates[0].finish_reason)
+                except Exception:
+                    pass
+                if "MAX_TOKENS" in fr:
+                    print(f"[script] WARNING: {name} hit MAX_TOKENS ({max_tokens}); "
+                          "trimming to last full sentence")
+                print(f"[script] gemini ok via {name}")
+                return resp.text.strip()
+            except Exception as e:
+                last, msg = e, str(e)
+                transient = any(s in msg for s in
+                                ("429", "503", "rate", "quota", "overloaded", "ResourceExhausted"))
+                print(f"[script] gemini {name} attempt {attempt+1} failed: {msg[:120]}")
+                if transient and attempt == 0:
+                    import time
+                    time.sleep(25)  # wait out a per-minute rate limit, then retry
+                    continue
+                break  # non-transient, or already retried -> next model
     raise last
 
 
@@ -151,17 +159,25 @@ def trim_to_sentence(text: str) -> str:
     return text  # no sane boundary found — leave as-is rather than gut it
 
 
-def make_script(paper: dict, full_text: str = "") -> str:
+def make_script(paper: dict, full_text: str = ""):
+    """Return the spoken script, or None when an LLM is configured but FAILS
+    (e.g. quota/429) — the caller then skips this paper instead of publishing a
+    broken episode. With LLM_BACKEND=none, returns the abstract reading, which
+    is the intended degraded mode (not a failure)."""
     minutes = target_minutes(paper)
     backend = config.LLM_BACKEND
+    if backend == "none":
+        return trim_to_sentence(_fallback(paper))
     try:
         if backend == "gemini" and config.GEMINI_API_KEY:
             return trim_to_sentence(_via_gemini(paper, full_text, minutes))
         if backend == "anthropic" and config.ANTHROPIC_API_KEY:
             return trim_to_sentence(_via_anthropic(paper, full_text, minutes))
     except Exception as e:
-        print(f"[script] LLM '{backend}' failed ({e}); falling back to abstract")
-    return _fallback(paper)
+        print(f"[script] {backend} FAILED ({str(e)[:160]}) — skipping this paper")
+        return None
+    print(f"[script] backend '{backend}' has no usable key — skipping")
+    return None
 
 
 if __name__ == "__main__":

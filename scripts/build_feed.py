@@ -29,10 +29,11 @@ def save_manifest(episodes: list[dict]) -> None:
 
 
 def add_episode(ep: dict) -> None:
-    """Append an episode, de-duplicating by audio filename."""
+    """Append an episode, de-duplicating by the stable per-paper `key` (so a
+    regenerated episode REPLACES the old one rather than adding a duplicate)."""
     episodes = load_manifest()
-    eps = {e["audio"]: e for e in episodes}
-    eps[ep["audio"]] = ep
+    eps = {e.get("key") or e["audio"]: e for e in episodes}
+    eps[ep.get("key") or ep["audio"]] = ep
     save_manifest(sorted(eps.values(), key=lambda e: e["published"], reverse=True))
 
 
