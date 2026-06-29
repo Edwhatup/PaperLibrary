@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
   <channel>
     <title>我的论文电台 · Paper Library Radio</title>
-    <link>https://edwhatup.github.io/PaperLibrary</link>
+    <link>https://example.com</link>
     <description>每日 HuggingFace Daily Papers 的中文/英文导读，开车也能听。</description>
     <language>zh-cn</language>
     <itunes:author>Paper Library</itunes:author>
@@ -14,7 +14,7 @@
       <guid isPermaLink="false">2026-06-26-in-context-world-modeling-for-robotic-control-e0d36561.mp3</guid>
       <pubDate>Mon, 29 Jun 2026 16:00:12 +0000</pubDate>
       <itunes:duration>672</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-in-context-world-modeling-for-robotic-control-e0d36561.mp3" length="4033584" type="audio/mpeg"/>
+      <enclosure url="audio/2026-06-26-in-context-world-modeling-for-robotic-control-e0d36561.mp3" length="4033584" type="audio/mpeg"/>
     </item>
     <item>
       <title>DanceOPD: On-Policy Generative Field Distillation</title>
@@ -23,7 +23,7 @@
       <guid isPermaLink="false">2026-06-26-danceopd-on-policy-generative-field-distillation-5a5ba75b.mp3</guid>
       <pubDate>Mon, 29 Jun 2026 16:00:06 +0000</pubDate>
       <itunes:duration>725</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-26-danceopd-on-policy-generative-field-distillation-5a5ba75b.mp3" length="4354272" type="audio/mpeg"/>
+      <enclosure url="audio/2026-06-26-danceopd-on-policy-generative-field-distillation-5a5ba75b.mp3" length="4354272" type="audio/mpeg"/>
     </item>
     <item>
       <title>Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models</title>
@@ -32,7 +32,7 @@
       <guid isPermaLink="false">2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio-ad252d59.mp3</guid>
       <pubDate>Mon, 29 Jun 2026 15:59:55 +0000</pubDate>
       <itunes:duration>335</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio-ad252d59.mp3" length="2014992" type="audio/mpeg"/>
+      <enclosure url="audio/2026-06-25-wan-streamer-v0-1-end-to-end-real-time-interactive-foundatio-ad252d59.mp3" length="2014992" type="audio/mpeg"/>
     </item>
     <item>
       <title>Are We Ready For An Agent-Native Memory System?</title>
@@ -41,7 +41,7 @@
       <guid isPermaLink="false">2026-06-25-are-we-ready-for-an-agent-native-memory-system-dd26bd35.mp3</guid>
       <pubDate>Mon, 29 Jun 2026 15:59:51 +0000</pubDate>
       <itunes:duration>1167</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-25-are-we-ready-for-an-agent-native-memory-system-dd26bd35.mp3" length="7005456" type="audio/mpeg"/>
+      <enclosure url="audio/2026-06-25-are-we-ready-for-an-agent-native-memory-system-dd26bd35.mp3" length="7005456" type="audio/mpeg"/>
     </item>
     <item>
       <title>NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers?</title>
@@ -50,7 +50,7 @@
       <guid isPermaLink="false">2026-06-24-naturebench-can-coding-agents-match-the-published-sota-of-na-fbef4af1.mp3</guid>
       <pubDate>Mon, 29 Jun 2026 15:59:38 +0000</pubDate>
       <itunes:duration>2109</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-24-naturebench-can-coding-agents-match-the-published-sota-of-na-fbef4af1.mp3" length="12659472" type="audio/mpeg"/>
+      <enclosure url="audio/2026-06-24-naturebench-can-coding-agents-match-the-published-sota-of-na-fbef4af1.mp3" length="12659472" type="audio/mpeg"/>
     </item>
     <item>
       <title>Qwen-AgentWorld: Language World Models for General Agents</title>
@@ -59,7 +59,7 @@
       <guid isPermaLink="false">2026-06-24-qwen-agentworld-language-world-models-for-general-agents-4c7b3076.mp3</guid>
       <pubDate>Mon, 29 Jun 2026 15:56:11 +0000</pubDate>
       <itunes:duration>1301</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-24-qwen-agentworld-language-world-models-for-general-agents-4c7b3076.mp3" length="7809408" type="audio/mpeg"/>
+      <enclosure url="audio/2026-06-24-qwen-agentworld-language-world-models-for-general-agents-4c7b3076.mp3" length="7809408" type="audio/mpeg"/>
     </item>
     <item>
       <title>EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions</title>
@@ -68,7 +68,7 @@
       <guid isPermaLink="false">2026-06-23-enterpriseclawbench-benchmarking-agents-from-real-workplace--af103a1d.mp3</guid>
       <pubDate>Mon, 29 Jun 2026 15:55:55 +0000</pubDate>
       <itunes:duration>846</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-23-enterpriseclawbench-benchmarking-agents-from-real-workplace--af103a1d.mp3" length="5081040" type="audio/mpeg"/>
+      <enclosure url="audio/2026-06-23-enterpriseclawbench-benchmarking-agents-from-real-workplace--af103a1d.mp3" length="5081040" type="audio/mpeg"/>
     </item>
     <item>
       <title>PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems</title>
@@ -77,7 +77,7 @@
       <guid isPermaLink="false">2026-06-23-planbench-xl-evaluating-long-horizon-planning-of-llm-tool-us-5e6a16ee.mp3</guid>
       <pubDate>Mon, 29 Jun 2026 15:55:45 +0000</pubDate>
       <itunes:duration>1016</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-23-planbench-xl-evaluating-long-horizon-planning-of-llm-tool-us-5e6a16ee.mp3" length="6101280" type="audio/mpeg"/>
+      <enclosure url="audio/2026-06-23-planbench-xl-evaluating-long-horizon-planning-of-llm-tool-us-5e6a16ee.mp3" length="6101280" type="audio/mpeg"/>
     </item>
   </channel>
 </rss>

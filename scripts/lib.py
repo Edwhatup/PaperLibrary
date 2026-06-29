@@ -238,6 +238,18 @@ def _edit_meta(aid: str, **changes) -> dict:
     return meta
 
 
+def note_once(aid: str, text: str) -> None:
+    """Append a note only if that exact text isn't already in the card
+    (idempotent — safe to call on every re-run)."""
+    text = (text or "").strip()
+    if not text:
+        return
+    path = CARDS / f"{aid}.md"
+    if not path.exists() or text in path.read_text(encoding="utf-8"):
+        return
+    _append_section(aid, "笔记", f"- {text}")
+
+
 def _append_section(aid: str, section: str, block: str) -> None:
     path = _card_path(aid)
     text = path.read_text(encoding="utf-8")

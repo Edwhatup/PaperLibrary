@@ -1,0 +1,65 @@
+# Generate audio for the curated reading list (data/curated/reading.json).
+# Resumable: re-run to pick up papers skipped on 429. Trigger by pushing this
+# file, or via "Run workflow". Keep until the list is fully done, then remove.
+name: _add papers
+
+on:
+  push:
+    branches: [claude/paper-library-tts-ub68qn]
+    paths: [".github/workflows/_addpapers.yml", "data/curated/reading.json"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      DIGEST_LANG: zh
+      LLM_BACKEND: auto
+      FEED_BASE_URL: https://edwhatup.github.io/PaperLibrary
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      RCLONE_REMOTE: ${{ vars.RCLONE_REMOTE }}
+      RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+          if [ -n "$GEMINI_API_KEY" ]; then pip install google-generativeai; fi
+      - name: Generate curated reading-list audio (resumable)
+        run: python scripts/add_papers.py
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data public library
+          git diff --cached --quiet || git commit -m "chore: curated reading-list audio batch"
+          git push
+      - name: Sync to cloud drive (VLC)
+        if: ${{ vars.RCLONE_REMOTE != '' }}
+        run: |
+          curl -s https://rclone.org/install.sh | sudo bash
+          mkdir -p ~/.config/rclone
+          printf '%s\n' "$RCLONE_CONF" > ~/.config/rclone/rclone.conf
+          rclone copy public "$RCLONE_REMOTE" --include "audio/**" --include "playlist.m3u8"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deployment
+        uses: actions/deploy-pages@v4
