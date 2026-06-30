@@ -5,8 +5,8 @@ date: "2010-06-19"
 arxiv: "https://dl.acm.org/doi/10.1145/1822348.1822369"
 pdf: ""
 upvotes: 0
-audio: null
-digest: null
+audio: "public/audio/2010-06-19-analyzing-the-expressive-range-of-a-level-generator-ff1eb5d5.mp3"
+digest: "data/scripts/2010-06-19-analyzing-the-expressive-range-of-a-level-generator.txt"
 tags: ["levelbench", "reading-list", "t2"]
 listened: false
 read: false
@@ -14,11 +14,11 @@ read: false
 
 # Analyzing the Expressive Range of a Level Generator
 
-> Smith & Whitehead (FDG 2010) introduce 'expressive range' analysis: instead of judging a procedural level generator only
+> 我们通常评价一个游戏关卡生成器好坏，往往是看它单独生成的某个关卡能不能玩、玩起来怎么样。这种评价方式虽然直观，但它有一个很大的局限性：就像我们不能只凭一幅画就判断一位画家的整体风格和能力一样，仅仅看一两个生成的关卡，我们也很难真正了解这个关
 
 **摘要 (EN):** Smith & Whitehead (FDG 2010) introduce 'expressive range' analysis: instead of judging a procedural level generator only by whether individual outputs are playable, characterize the generator by the distribution of its outputs over structural metrics — for platformers, linearity, leniency, and density — visualized as 2-D heatmaps. This reveals a generator's biases, coverage, and the effect of its parameters, giving a principled way to compare generators by what regions of design space they actually reach.
 
-**arXiv:** https://dl.acm.org/doi/10.1145/1822348.1822369
+**导读全文:** `data/scripts/2010-06-19-analyzing-the-expressive-range-of-a-level-generator.txt`　**音频:** `public/audio/2010-06-19-analyzing-the-expressive-range-of-a-level-generator-ff1eb5d5.mp3`　**arXiv:** https://dl.acm.org/doi/10.1145/1822348.1822369
 
 ---
 ## 笔记
