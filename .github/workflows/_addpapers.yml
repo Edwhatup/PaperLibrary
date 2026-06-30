@@ -1,10 +1,15 @@
 # Generate audio for the curated reading list (data/curated/reading.json).
 # Resumable: re-run to pick up papers skipped on 429. Trigger by pushing this
 # file, or via "Run workflow". Keep until the list is fully done, then remove.
-# batch 2: retry the 15 papers that hit quota in batch 1
+# batch 3: daily auto-retry — converges the 15 quota-skipped papers over a few
+# days on the free Gemini tier (~9 token-heavy papers/day), no manual re-runs.
 name: _add papers
 
 on:
+  schedule:
+    # 09:00 UTC = 17:00 Beijing; offset from daily.yml (23:00 UTC) to use a
+    # fresh slice of the free daily quota.
+    - cron: "0 9 * * *"
   push:
     branches: [claude/paper-library-tts-ub68qn]
     paths: [".github/workflows/_addpapers.yml", "data/curated/reading.json"]
