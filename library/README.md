@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-06-30
+
+- **ReFreeKV: Towards Threshold-Free KV Cache Compression** · 43★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-30-refreekv-towards-threshold-free-kv-cache-compression-c3e9e318.mp3) [arXiv](https://arxiv.org/abs/2502.16886)
+- **TUA-Bench: A Benchmark for General-Purpose Terminal-Use Agents** · 44★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-30-tua-bench-a-benchmark-for-general-purpose-terminal-use-agent-f0cc4c4d.mp3) [arXiv](https://arxiv.org/abs/2606.28480)
+- **Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent** · 67★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-30-scaling-the-horizon-not-the-parameters-reaching-trillion-par-2e3e6112.mp3) [arXiv](https://arxiv.org/abs/2606.30616)
+- **LiveEdit: Towards Real-Time Diffusion-Based Streaming Video Editing** · 70★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-30-liveedit-towards-real-time-diffusion-based-streaming-video-e-a8abf55e.mp3) [arXiv](https://arxiv.org/abs/2606.26740)
+- **Agentic Abstention: Do Agents Know When to Stop Instead of Act?** · 120★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-30-agentic-abstention-do-agents-know-when-to-stop-instead-of-ac-4af954f1.mp3) [arXiv](https://arxiv.org/abs/2606.28733)
+
 ## 2026-06-29
 
 - **Qwen-Image-2.0-RL Technical Report** · 27★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-29-qwen-image-2-0-rl-technical-report-db097d83.mp3) [arXiv](https://arxiv.org/abs/2606.27608)

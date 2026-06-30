@@ -1,5 +1,65 @@
 [
   {
+    "key": "2502.16886",
+    "date": "2026-06-30",
+    "title": "ReFreeKV: Towards Threshold-Free KV Cache Compression",
+    "abstract": "To reduce memory consumption during LLM inference, a handful of methods have been proposed for KV cache pruning. While these techniques can accomplish lossless memory reduction on many datasets, they often hinge on an under-emphasized condition: an input/domain-specific threshold for KV cache budget needs to be pre-determined to achieve the optimal performance. However, such input-sensitive design may be considerably limited in real-world scenarios, as open-domain inputs span diverse domains, lengths and difficulty levels, without clear boundaries for threshold selection. As a result, the dependence of such input-sensitive threshold can be a fundamental limitation that causes large degradation on arbitrary inputs. In this work, we propose a new objective that lifts the threshold constraints for robust KV compression, advocating for \"threshold-free\" methods that adaptively adjust budget allocation while preserving full-cache performance. We then propose a novel method, ReFreeKV, serving as the first instantiation of this objective. Extensive experiments across 13 datasets with diverse context lengths, task types, and model sizes demonstrate its efficacy and efficiency. Our code is publicly released at https://github.com/Patrick-Ni/ReFreeKV.",
+    "notes": "大型语言模型在推理过程中，为了加速文本生成，会使用一种叫做“KV缓存”的机制，它存储了模型在处理过往词元时产生的关键信息，也就是键（Key）和值（Value）向量。这些KV向量在后续的注意力计算中被反复调用。然而，随着模型规模的增大和输入序列长度的增加，KV缓存会占用巨大的GPU内存。比如，Llama3-70B模型处理两万个词元时，可能就需要高达50GB的内存，这无疑是模型推理效率和成本的一个巨大瓶颈。",
+    "url": "https://arxiv.org/abs/2502.16886",
+    "upvotes": 43,
+    "audio": "2026-06-30-refreekv-towards-threshold-free-kv-cache-compression-c3e9e318.mp3",
+    "size": 6857856,
+    "published": "2026-06-30T23:36:50.455327+00:00"
+  },
+  {
+    "key": "2606.28480",
+    "date": "2026-06-30",
+    "title": "TUA-Bench: A Benchmark for General-Purpose Terminal-Use Agents",
+    "abstract": "As large language models and harness frameworks continue to advance, agents operating in terminals are increasingly capable of performing a broader range of general computer-use tasks beyond coding. However, existing benchmarks do not adequately evaluate general-purpose terminal computer-use agents (TUAs): general computer-use benchmarks primarily target graphical user interfaces (GUIs), whereas terminal-based benchmarks largely emphasize technical and programming-centric workflows historically native to the shell. We introduce TUA-Bench, a general-purpose benchmark for terminal-use agents. TUA-Bench includes 120 real-world tasks across five task families, covering routine digital activities-including document editing, email management, and live-web information seeking-as well as scientific and engineering workflows co-designed with PhD-level domain experts that require specialized software. This breadth distinguishes TUA-Bench from prior shell-focused or domain-specific benchmarks. Each task is manually designed, runs in a real terminal with a deterministic setup script, and is evaluated by an execution-based scoring protocol. We find that the strongest frontier agent, Claude Code with Claude Opus 4.8 max reasoning effort, achieves 65.8% overall performance, with substantial gaps across both tracks. By providing a broad and realistic evaluation of terminal-use capabilities, TUA-Bench aims to accelerate the transition from narrow, task-specific assistants to general-purpose agents capable of operating reliably across diverse digital environments.",
+    "notes": "大型语言模型在终端环境中的应用越来越广泛，但我们发现，现有的基准测试并不能充分评估这些通用终端使用代理的能力。我们平时使用电脑，大部分都是通过图形用户界面，也就是我们点击图标、操作鼠标的这种界面。所以，现在大多数评估AI代理的基准，也都集中在图形界面上，比如让AI去浏览网页、操作桌面应用等等。但问题是，图形界面的操作对AI来说，需要结合语言推理和视觉感知，它要看懂屏幕截图，把动作精确地对应到屏幕上的特定位置，还得适应布局、分辨率、渲染的变化。这些都引入了额外的感知和定位挑战，使得这些基于图形界面的评估，在某种程度上更多地衡量了AI的视觉理解和坐标级控制能力，而不是它核心的规划、推理和工具使用能",
+    "url": "https://arxiv.org/abs/2606.28480",
+    "upvotes": 44,
+    "audio": "2026-06-30-tua-bench-a-benchmark-for-general-purpose-terminal-use-agent-f0cc4c4d.mp3",
+    "size": 7386192,
+    "published": "2026-06-30T23:34:59.043733+00:00"
+  },
+  {
+    "key": "2606.30616",
+    "date": "2026-06-30",
+    "title": "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent",
+    "abstract": "We introduce Agents-A1, a 35B Mixture-of-Experts Agentic Model that reaches trillion-parameter-level performance by scaling the agent horizon. We investigate agent-horizon scaling from two perspectives: scaling long-horizon trajectories and scaling heterogeneous agent abilities. To support this goal, we build a long-horizon knowledge-action infrastructure that connects external knowledge, actions, observations, and verifier outcomes, producing agentic trajectories with an average length of 45K tokens. Based on this, we train Agents-A1 with a three-stage recipe. First, we perform full-domain supervised fine-tuning to align the base model with broad agentic behaviors. Second, we train domain-level teacher models to capture specialized expertise in each domain. Third, we propose a multi-teacher domain-routed on-policy distillation with salient vocabulary alignment to improve knowledge transfer efficiency across different domains, unifying six heterogeneous domains into one deployable student model. Agents-A1 achieves strong and broad performance for long-horizon agent benchmarks. Compared with 1T-parameter model such as Kimi-K2.6 and DeepSeek-V4-pro, Agents-A1 achieves leading results on SEAL-0 (56.4), IFBench (80.6), HiPhO (46.4), FrontierScience-Olympiad (79.0), and MolBench-Bind (56.8), and remains highly competitive on SciCode (44.3), HLE (47.6) and BrowseComp (75.5). We hope this work provides the community with a practical path for scaling the horizon using a 35B agent that can reach or match the performance of 1T models on long-horizon tasks.",
+    "notes": "我们今天要聊的这篇论文，它要解决的核心问题是：如何在不依赖万亿参数这种巨型模型的前提下，让一个相对小巧的350亿参数模型，也能在处理那些需要长时间思考、多步骤交互的复杂任务时，达到甚至超越万亿参数模型的性能。",
+    "url": "https://arxiv.org/abs/2606.30616",
+    "upvotes": 67,
+    "audio": "2026-06-30-scaling-the-horizon-not-the-parameters-reaching-trillion-par-2e3e6112.mp3",
+    "size": 2648448,
+    "published": "2026-06-30T23:33:16.467718+00:00"
+  },
+  {
+    "key": "2606.26740",
+    "date": "2026-06-30",
+    "title": "LiveEdit: Towards Real-Time Diffusion-Based Streaming Video Editing",
+    "abstract": "Streaming video editing has made rapid progress, yet practical deployment is still limited by two core issues: maintaining stable backgrounds and non-edited regions over time, and achieving the low latency required for real-time interactive scenarios. Meanwhile, recent streaming video generation methods are mostly developed for synthesis and cannot be directly applied to editing due to the strict preservation requirement and region-specific control. In this work, we present a novel streaming video editing framework that performs causal, frame-by-frame editing with strong content preservation and real-time responsiveness. Our key design is a three-stage distillation pipeline that progressively transfers editing capability from a powerful bidirectional foundation model to an efficient unidirectional streaming editor, enabling stable long-horizon edits without sacrificing visual fidelity. To further support real-time deployment, we introduce an AR-oriented mask cache that reuses region-related computation across frames, substantially reducing redundant processing and accelerating inference. Finally, we establish a dedicated benchmark for streaming video editing. Extensive evaluations demonstrate that our method achieves state-of-the-art visual quality among streaming baselines while drastically boosting inference speed to 12.66 FPS, making it suitable for interactive and augmented reality applications.",
+    "notes": "您好。今天我们要聊的这篇论文，它要解决的核心问题是，如何才能做到实时、流畅地编辑正在播放的视频流。这听起来可能有点抽象，但您可以想象一下，在增强现实（AR）应用或者直播场景中，我们希望能够即时地修改视频中的某个物体，比如改变它的颜色、纹理，甚至替换掉它，同时又不能让视频背景发生抖动或者闪烁，而且整个过程必须是低延迟、实时响应的。",
+    "url": "https://arxiv.org/abs/2606.26740",
+    "upvotes": 70,
+    "audio": "2026-06-30-liveedit-towards-real-time-diffusion-based-streaming-video-e-a8abf55e.mp3",
+    "size": 6938496,
+    "published": "2026-06-30T23:31:47.212576+00:00"
+  },
+  {
+    "key": "2606.28733",
+    "date": "2026-06-30",
+    "title": "Agentic Abstention: Do Agents Know When to Stop Instead of Act?",
+    "abstract": "LLM agents are expected to act over multiple turns, using search, browsing interfaces, and terminal tools to complete user goals. Yet not every goal is well specified or achievable in the available environment. In such cases, a reliable agent should recognize that further interaction is unlikely to help and abstain from additional tool calls. We define Agentic Abstention, the problem of deciding when an agent should stop acting under uncertainty. Unlike standard LLM abstention, which is usually evaluated as a single-turn answer-or-abstain decision, agentic abstention is a sequential decision problem: an agent can answer, abstain, or gather more information at each turn, and the need to abstain may only become clear after interacting with the environment. We study this problem across web shopping, terminal environments, and question answering, evaluating 13 LLM-as-agent systems and 2 agent scaffolds on more than 28,000 tasks. Our results show that the main challenge is not only whether agents can abstain, but also when they abstain. Some agents never abstain when they should, while others do so only after many unnecessary interactions. This gap is especially large on tasks where the instruction appears feasible until the environment reveals otherwise (e.g., no valid result matches the instruction). We further find that model scale, reasoning, and agent scaffolding affect abstention in different ways, where larger or more capable models sometimes perform worse at timely abstention. Finally, we introduce CONVOLVE, a context engineering method for improving agentic abstention that distills full interaction trajectories into reusable stopping rules. On WebShop, CONVOLVE substantially improves timely abstention without updating model parameters, raising Llama-3.3-70B's timely recall rate from 26.7 to 57.4. Our dataset and code are available at https://lhannnn.github.io/agentic-abstention",
+    "notes": "大型语言模型（LLM）驱动的智能体，也就是我们常说的“Agent”，它们被设计用来执行多步骤任务，通过搜索、浏览界面或者调用终端工具来帮助用户达成目标。然而，并非所有的用户目标都明确无误，或者在当前的环境下是可实现的。想象一下，如果一个智能体接到了一个无法完成的任务，它会怎么做？是会一直尝试下去，浪费时间和资源，还是能够聪明地识别出继续行动无益，并及时“收手”呢？这正是我们今天这篇论文《Agentic Abstention: Do Agents Know When to Stop Instead of Act?》要解决的核心问题：智能体在不确定性下，是否知道何时应该停止行动，而不是盲目地继续下",
+    "url": "https://arxiv.org/abs/2606.28733",
+    "upvotes": 120,
+    "audio": "2026-06-30-agentic-abstention-do-agents-know-when-to-stop-instead-of-ac-4af954f1.mp3",
+    "size": 7172064,
+    "published": "2026-06-30T23:29:49.224413+00:00"
+  },
+  {
     "key": "2212.04356",
     "date": "2022-12-06",
     "title": "Robust Speech Recognition via Large-Scale Weak Supervision",

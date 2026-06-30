@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>ReFreeKV: Towards Threshold-Free KV Cache Compression</title>
+      <description>大型语言模型在推理过程中，为了加速文本生成，会使用一种叫做“KV缓存”的机制，它存储了模型在处理过往词元时产生的关键信息，也就是键（Key）和值（Value）向量。这些KV向量在后续的注意力计算中被反复调用。然而，随着模型规模的增大和输入序列长度的增加，KV缓存会占用巨大的GPU内存。比如，Llama3-70B模型处理两万个词元时，可能就需要高达50GB的内存，这无疑是模型推理效率和成本的一个巨大瓶颈。</description>
+      <link>https://arxiv.org/abs/2502.16886</link>
+      <guid isPermaLink="false">2026-06-30-refreekv-towards-threshold-free-kv-cache-compression-c3e9e318.mp3</guid>
+      <pubDate>Tue, 30 Jun 2026 23:36:50 +0000</pubDate>
+      <itunes:duration>1142</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-30-refreekv-towards-threshold-free-kv-cache-compression-c3e9e318.mp3" length="6857856" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>TUA-Bench: A Benchmark for General-Purpose Terminal-Use Agents</title>
+      <description>大型语言模型在终端环境中的应用越来越广泛，但我们发现，现有的基准测试并不能充分评估这些通用终端使用代理的能力。我们平时使用电脑，大部分都是通过图形用户界面，也就是我们点击图标、操作鼠标的这种界面。所以，现在大多数评估AI代理的基准，也都集中在图形界面上，比如让AI去浏览网页、操作桌面应用等等。但问题是，图形界面的操作对AI来说，需要结合语言推理和视觉感知，它要看懂屏幕截图，把动作精确地对应到屏幕上的特定位置，还得适应布局、分辨率、渲染的变化。这些都引入了额外的感知和定位挑战，使得这些基于图形界面的评估，在某种程度上更多地衡量了AI的视觉理解和坐标级控制能力，而不是它核心的规划、推理和工具使用能</description>
+      <link>https://arxiv.org/abs/2606.28480</link>
+      <guid isPermaLink="false">2026-06-30-tua-bench-a-benchmark-for-general-purpose-terminal-use-agent-f0cc4c4d.mp3</guid>
+      <pubDate>Tue, 30 Jun 2026 23:34:59 +0000</pubDate>
+      <itunes:duration>1231</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-30-tua-bench-a-benchmark-for-general-purpose-terminal-use-agent-f0cc4c4d.mp3" length="7386192" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent</title>
+      <description>我们今天要聊的这篇论文，它要解决的核心问题是：如何在不依赖万亿参数这种巨型模型的前提下，让一个相对小巧的350亿参数模型，也能在处理那些需要长时间思考、多步骤交互的复杂任务时，达到甚至超越万亿参数模型的性能。</description>
+      <link>https://arxiv.org/abs/2606.30616</link>
+      <guid isPermaLink="false">2026-06-30-scaling-the-horizon-not-the-parameters-reaching-trillion-par-2e3e6112.mp3</guid>
+      <pubDate>Tue, 30 Jun 2026 23:33:16 +0000</pubDate>
+      <itunes:duration>441</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-30-scaling-the-horizon-not-the-parameters-reaching-trillion-par-2e3e6112.mp3" length="2648448" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>LiveEdit: Towards Real-Time Diffusion-Based Streaming Video Editing</title>
+      <description>您好。今天我们要聊的这篇论文，它要解决的核心问题是，如何才能做到实时、流畅地编辑正在播放的视频流。这听起来可能有点抽象，但您可以想象一下，在增强现实（AR）应用或者直播场景中，我们希望能够即时地修改视频中的某个物体，比如改变它的颜色、纹理，甚至替换掉它，同时又不能让视频背景发生抖动或者闪烁，而且整个过程必须是低延迟、实时响应的。</description>
+      <link>https://arxiv.org/abs/2606.26740</link>
+      <guid isPermaLink="false">2026-06-30-liveedit-towards-real-time-diffusion-based-streaming-video-e-a8abf55e.mp3</guid>
+      <pubDate>Tue, 30 Jun 2026 23:31:47 +0000</pubDate>
+      <itunes:duration>1156</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-30-liveedit-towards-real-time-diffusion-based-streaming-video-e-a8abf55e.mp3" length="6938496" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Agentic Abstention: Do Agents Know When to Stop Instead of Act?</title>
+      <description>大型语言模型（LLM）驱动的智能体，也就是我们常说的“Agent”，它们被设计用来执行多步骤任务，通过搜索、浏览界面或者调用终端工具来帮助用户达成目标。然而，并非所有的用户目标都明确无误，或者在当前的环境下是可实现的。想象一下，如果一个智能体接到了一个无法完成的任务，它会怎么做？是会一直尝试下去，浪费时间和资源，还是能够聪明地识别出继续行动无益，并及时“收手”呢？这正是我们今天这篇论文《Agentic Abstention: Do Agents Know When to Stop Instead of Act?》要解决的核心问题：智能体在不确定性下，是否知道何时应该停止行动，而不是盲目地继续下</description>
+      <link>https://arxiv.org/abs/2606.28733</link>
+      <guid isPermaLink="false">2026-06-30-agentic-abstention-do-agents-know-when-to-stop-instead-of-ac-4af954f1.mp3</guid>
+      <pubDate>Tue, 30 Jun 2026 23:29:49 +0000</pubDate>
+      <itunes:duration>1195</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-06-30-agentic-abstention-do-agents-know-when-to-stop-instead-of-ac-4af954f1.mp3" length="7172064" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Robust Speech Recognition via Large-Scale Weak Supervision</title>
       <description>目前语音识别系统面临的一个核心痛点是，尽管它们在特定训练数据集上能达到“超人”的表现，但一旦部署到真实世界中，遇到训练数据之外的语音环境、口音或语言，性能就会大幅下降，缺乏我们常说的鲁棒性，也就是泛化能力差。这就像一个学生，只会做模拟题，一到真题就傻眼。</description>
       <link>https://arxiv.org/abs/2212.04356</link>
