@@ -124,9 +124,12 @@ def _via_anthropic(paper, full_text, minutes):
     import anthropic
 
     client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
+    # Match the Gemini headroom: a 20-min zh digest is ~6800 chars (~10-13k
+    # tokens), so 8192 truncated mid-sentence. Cap at 16000 like _via_gemini.
+    max_tokens = min(16000, int(minutes * config.CHARS_PER_MIN * 2.0))
     msg = client.messages.create(
         model=config.ANTHROPIC_MODEL,
-        max_tokens=8192,
+        max_tokens=max_tokens,
         messages=[{"role": "user", "content": _prompt(paper, full_text, minutes)}],
     )
     return "".join(b.text for b in msg.content if b.type == "text").strip()

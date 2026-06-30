@@ -32,8 +32,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       DIGEST_LANG: zh
-      LLM_BACKEND: auto
+      # Use the paid Anthropic API (no free-tier daily quota wall) so one run
+      # finishes the whole curated list instead of ~9/day on Gemini's free tier.
+      LLM_BACKEND: anthropic
       FEED_BASE_URL: https://edwhatup.github.io/PaperLibrary
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       RCLONE_REMOTE: ${{ vars.RCLONE_REMOTE }}
       RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
@@ -47,6 +50,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           if [ -n "$GEMINI_API_KEY" ]; then pip install google-generativeai; fi
+          if [ -n "$ANTHROPIC_API_KEY" ]; then pip install anthropic; fi
       - name: Generate curated reading-list audio (resumable)
         run: python scripts/add_papers.py
       - name: Commit results
