@@ -1,5 +1,65 @@
 [
   {
+    "key": "2606.19297",
+    "date": "2026-07-01",
+    "title": "Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models",
+    "abstract": "Embodied Vision-Language-Action (VLA) models are typically obtained by fine-tuning powerful pretrained VLMs on robotics data, yet it is unclear how much commonsense and factual knowledge they retain after adaptation. Failures on knowledge-sensitive tasks are ambiguous, conflating missing knowledge with poor generalization of low-level control. We introduce Act2Answer, a lightweight protocol that adapts VLM knowledge benchmarks to VLA evaluation by requiring agents to answer through action. Each question becomes a short tabletop episode where the agent performs a single object-placement action to select among candidate answers, yielding an action-grounded success rate with reduced control confounds. We curate a test suite of such environments across diverse commonsense and world-knowledge categories and introduce layerwise intent probing to localize answer-relevant information across the VLM backbone and action head. In a large-scale study of 7 VLA models and 9 VLM baselines, we systematically rank models across categories, finding that VLAs show solid performance on simple concepts while exhibiting larger gaps on richer semantic categories relative to their source VLMs, that VQA co-training is associated with better knowledge retention, and that answer-relevant signals peak in middle VLA layers but attenuate in upper layers. Act2Answer is available at https://tttonyalpha.github.io/act2answer/.",
+    "notes": "目前，我们在具身视觉-语言-动作（VLA）模型领域面临一个核心挑战：这些模型通常通过在机器人数据上对强大的预训练视觉-语言模型（VLM）进行微调而获得，但我们并不清楚它们在适应之后，究竟保留了多少常识和世界知识。当这些模型在需要知识的任务上表现不佳时，我们很难判断失败的原因究竟是知识缺失，还是底层控制泛化能力差，这两者往往混淆在一起，难以区分。",
+    "url": "https://arxiv.org/abs/2606.19297",
+    "upvotes": 41,
+    "audio": "2026-07-01-does-vla-even-know-the-basics-measuring-commonsense-and-worl-91a3178c.mp3",
+    "size": 7950960,
+    "published": "2026-07-01T23:38:22.676723+00:00"
+  },
+  {
+    "key": "2606.31315",
+    "date": "2026-07-01",
+    "title": "BlockPilot: Instance-Adaptive Policy Learning for Diffusion-based Speculative Decoding",
+    "abstract": "Speculative decoding accelerates inference by using a lightweight draft model to generate candidate tokens in parallel, and are then verified by the target model, enabling lossless acceleration. Recently, diffusion-based speculative decoding further improves parallelism by generating multiple tokens per forward pass via block-level diffusion, achieving state-of-the-art (SOTA) performance. However, existing methods adopt a fixed inference block size and assume a uniform optimal decoding strategy across all inputs. In this paper, we show that this assumption is suboptimal, as the optimal block size varies across samples and plays a critical role in speculative decoding performance. Moreover, these values exhibit a clear local structure, concentrating around the training block size, which reduces the problem to a low-dimensional and structured decision space. Based on these insights, we propose BlockPilot, a sample-adaptive policy that predicts the optimal block size from the prefilling representation. Specifically, we formulate block size selection as a lightweight policy learning problem and propose an instance-adaptive decision mechanism that predicts the optimal block size based on the representation of the prefilling stage. The prediction is performed only once after prefilling, allowing for seamless integration. Extensive experiments demonstrate that our method is plug-and-play, introduces minimal overhead, and consistently improves efficiency, achieving an acceptance length of 5.92 and a 4.20times speedup on Qwen3-4B under temperature T=1.",
+    "notes": "大型语言模型，也就是我们常说的LLM，在处理各种任务时展现了惊人的能力，无论是推理、代码生成还是开放式对话，都表现得非常出色。然而，它们在推理阶段的效率却一直是个老大难问题。这主要是因为LLM采用的是“逐词自回归”的生成方式，也就是说，模型必须先生成一个词，再以这个词为基础生成下一个，如此循环。这种串行化的过程导致了高延迟和低并行度，尤其是在生成长文本时，效率瓶颈就更加明显了。",
+    "url": "https://arxiv.org/abs/2606.31315",
+    "upvotes": 67,
+    "audio": "2026-07-01-blockpilot-instance-adaptive-policy-learning-for-diffusion-b-e2c71884.mp3",
+    "size": 7058160,
+    "published": "2026-07-01T23:36:52.618354+00:00"
+  },
+  {
+    "key": "2606.30626",
+    "date": "2026-07-01",
+    "title": "DOPD: Dual On-policy Distillation",
+    "abstract": "On-policy distillation (OPD) offers superior capacity transfer by supervising student-sampled trajectories with dense token-level signals. To furnish high-quality supervision sources and thereby elevate the performance frontier of distillation, an intuitive direction is to infuse privileged information to either teacher or student itself. However, this additional input induces a potential failure mode we dub privilege illusion: a pattern that conflates the transferable capability gap that students are meant to close, and the information asymmetry gap that can only be mimicked but never replicated. This issue is further amplified by the inherent non-uniformity of token-level supervision, where only a small subset of tokens carries pivotal capability-bearing signals. To this end, we propose DOPD, an advantage-aware dual distillation paradigm that dynamically routes token-level supervision between privileged teacher and privileged student policies based on their advantage gap and relative probabilities. Each token receives supervision of different strength, objective, and strategy from either teacher or student itself, which transfers credible capability while simultaneously receiving auxiliary signals, to alleviate privilege illusion. Extensive experiments on both large language model (LLM) and vision-language model (VLM) settings demonstrate that DOPD consistently outperforms Vanilla OPD and other counterparts. Further results on stability, robustness, continual learning, and out-of-distribution tasks validate its superiority.",
+    "notes": "今天我们要聊的这篇论文《DOPD: Dual On-policy Distillation》解决了一个在大型模型知识蒸馏领域非常核心的问题。我们知道，知识蒸馏是一种非常有效的技术，它能把一个性能强大的大模型，我们称之为“教师模型”的能力，迁移到一个更小、更高效的模型，也就是“学生模型”身上。这就像一位经验丰富的老师傅，把他的绝活儿传授给徒弟。近年来，一种叫做“策略蒸馏”（On-policy Distillation，简称OPD）的方法越来越受到关注。它和传统的离线蒸馏不同，不是提前准备好一套固定的数据让学生去模仿，而是在学生模型生成轨迹的过程中，教师模型实时地提供逐词的、密集的监督信号。这种方",
+    "url": "https://arxiv.org/abs/2606.30626",
+    "upvotes": 75,
+    "audio": "2026-07-01-dopd-dual-on-policy-distillation-f4f7ad5c.mp3",
+    "size": 6744960,
+    "published": "2026-07-01T23:34:59.818060+00:00"
+  },
+  {
+    "key": "2606.28436",
+    "date": "2026-07-01",
+    "title": "Dockerless: Environment-Free Program Verifier for Coding Agents",
+    "abstract": "Program verifiers play a central role in training coding agents, including selecting trajectories for supervised fine-tuning (SFT) and providing rewards for reinforcement learning (RL). Standard execution-based verification requires running unit tests inside per-repository environments such as Docker images, incurring substantial environment setup costs. We propose Dockerless, an environment-free agentic patch verifier that evaluates generated code patches without executing them. Rather than simply matching candidate patches to references, Dockerless judges patch correctness using evidence gathered through agentic repository exploration. On a verifier evaluation benchmark, Dockerless outperforms the strongest open-source verifier by 14.3 AUC points. Using Dockerless as both the SFT trajectory filter and the RL reward enables a fully environment-free post-training pipeline. The resulting model reaches 62.0%, 50.0%, and 35.2% resolve rate on SWE-bench Verified, Multilingual, and Pro, respectively. It surpasses the Qwen3.5-9B baseline by 2.4, 8.7, and 2.9 points, matching environment-based post-training.",
+    "notes": "自动化编程代理，也就是我们常说的编码智能体，在训练过程中，程序验证器扮演着一个至关重要的角色。无论是为监督微调，也就是SFT，筛选高质量的训练轨迹，还是为强化学习，简称RL，提供准确的奖励信号，验证器都决定着智能体解决问题的尝试是否成功。",
+    "url": "https://arxiv.org/abs/2606.28436",
+    "upvotes": 86,
+    "audio": "2026-07-01-dockerless-environment-free-program-verifier-for-coding-agen-77e4fc63.mp3",
+    "size": 7588080,
+    "published": "2026-07-01T23:32:54.314263+00:00"
+  },
+  {
+    "key": "2606.30534",
+    "date": "2026-07-01",
+    "title": "Orca: The World is in Your Mind",
+    "abstract": "We introduce Orca, an initial instantiation of a general world foundation model. Orca learns a unified world latent space from multimodal world signals and exposes it through multimodal readout interfaces. Rather than optimizing isolated next-token, next-frame, or next-action prediction, we are centered on Next-State-Prediction modeling, offering a unified state-transition modeling route toward understanding, predicting, and acting upon the world. Orca learns through two complementary paradigms: unconscious learning captures dense natural state transitions from continuous videos, and conscious learning models sparse meaningful state transitions by language-described events and VQA supervision. For pre-training, we construct a large-scale world-learning inventory data, including 125K hours of video data and 160M event annotations. After pre-training, Orca learns a unified world latent space. To examine whether the learned latent supports downstream, we evaluate it by three representative downstream readouts: text generation, image prediction, and embodied action generation. Orca's backbone is frozen, and only the lightweight modality-specific decoders are trainable. Experiments show the scalability of the proposed paradigm and verify that stronger world latent enables stronger downstream readouts. Orca outperforms similar-sized specialized baselines. These results show that Orca, as a general world foundation model, presents a promising approach to understanding, predicting, and acting upon the world. Finally, we discuss the current limitations, aiming to provide useful insights and inspiration for the community.",
+    "notes": "目前人工智能领域面临的核心挑战，是如何构建一个能够像人类一样持续学习和自我演化，最终超越人类认知边界的通用智能体。传统的AI模型往往专注于单一任务，比如仅仅预测下一个词元、下一帧图像或者下一个动作。虽然它们在各自领域取得了显著的进步，但这种“各自为战”的模式，使得模型难以真正理解世界的深层规律、因果关系和动态演化。我们真正需要的，是一个能够持续吸收多模态世界信号、构建世界潜在状态表示、并以此为基础进行理解、预测和行动的模型。",
+    "url": "https://arxiv.org/abs/2606.30534",
+    "upvotes": 176,
+    "audio": "2026-07-01-orca-the-world-is-in-your-mind-22b6b483.mp3",
+    "size": 6483312,
+    "published": "2026-07-01T23:30:07.061892+00:00"
+  },
+  {
     "key": "2212.04356",
     "date": "2022-12-06",
     "title": "Robust Speech Recognition via Large-Scale Weak Supervision",

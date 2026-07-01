@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models</title>
+      <description>目前，我们在具身视觉-语言-动作（VLA）模型领域面临一个核心挑战：这些模型通常通过在机器人数据上对强大的预训练视觉-语言模型（VLM）进行微调而获得，但我们并不清楚它们在适应之后，究竟保留了多少常识和世界知识。当这些模型在需要知识的任务上表现不佳时，我们很难判断失败的原因究竟是知识缺失，还是底层控制泛化能力差，这两者往往混淆在一起，难以区分。</description>
+      <link>https://arxiv.org/abs/2606.19297</link>
+      <guid isPermaLink="false">2026-07-01-does-vla-even-know-the-basics-measuring-commonsense-and-worl-91a3178c.mp3</guid>
+      <pubDate>Wed, 01 Jul 2026 23:38:22 +0000</pubDate>
+      <itunes:duration>1325</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-01-does-vla-even-know-the-basics-measuring-commonsense-and-worl-91a3178c.mp3" length="7950960" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>BlockPilot: Instance-Adaptive Policy Learning for Diffusion-based Speculative Decoding</title>
+      <description>大型语言模型，也就是我们常说的LLM，在处理各种任务时展现了惊人的能力，无论是推理、代码生成还是开放式对话，都表现得非常出色。然而，它们在推理阶段的效率却一直是个老大难问题。这主要是因为LLM采用的是“逐词自回归”的生成方式，也就是说，模型必须先生成一个词，再以这个词为基础生成下一个，如此循环。这种串行化的过程导致了高延迟和低并行度，尤其是在生成长文本时，效率瓶颈就更加明显了。</description>
+      <link>https://arxiv.org/abs/2606.31315</link>
+      <guid isPermaLink="false">2026-07-01-blockpilot-instance-adaptive-policy-learning-for-diffusion-b-e2c71884.mp3</guid>
+      <pubDate>Wed, 01 Jul 2026 23:36:52 +0000</pubDate>
+      <itunes:duration>1176</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-01-blockpilot-instance-adaptive-policy-learning-for-diffusion-b-e2c71884.mp3" length="7058160" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>DOPD: Dual On-policy Distillation</title>
+      <description>今天我们要聊的这篇论文《DOPD: Dual On-policy Distillation》解决了一个在大型模型知识蒸馏领域非常核心的问题。我们知道，知识蒸馏是一种非常有效的技术，它能把一个性能强大的大模型，我们称之为“教师模型”的能力，迁移到一个更小、更高效的模型，也就是“学生模型”身上。这就像一位经验丰富的老师傅，把他的绝活儿传授给徒弟。近年来，一种叫做“策略蒸馏”（On-policy Distillation，简称OPD）的方法越来越受到关注。它和传统的离线蒸馏不同，不是提前准备好一套固定的数据让学生去模仿，而是在学生模型生成轨迹的过程中，教师模型实时地提供逐词的、密集的监督信号。这种方</description>
+      <link>https://arxiv.org/abs/2606.30626</link>
+      <guid isPermaLink="false">2026-07-01-dopd-dual-on-policy-distillation-f4f7ad5c.mp3</guid>
+      <pubDate>Wed, 01 Jul 2026 23:34:59 +0000</pubDate>
+      <itunes:duration>1124</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-01-dopd-dual-on-policy-distillation-f4f7ad5c.mp3" length="6744960" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Dockerless: Environment-Free Program Verifier for Coding Agents</title>
+      <description>自动化编程代理，也就是我们常说的编码智能体，在训练过程中，程序验证器扮演着一个至关重要的角色。无论是为监督微调，也就是SFT，筛选高质量的训练轨迹，还是为强化学习，简称RL，提供准确的奖励信号，验证器都决定着智能体解决问题的尝试是否成功。</description>
+      <link>https://arxiv.org/abs/2606.28436</link>
+      <guid isPermaLink="false">2026-07-01-dockerless-environment-free-program-verifier-for-coding-agen-77e4fc63.mp3</guid>
+      <pubDate>Wed, 01 Jul 2026 23:32:54 +0000</pubDate>
+      <itunes:duration>1264</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-01-dockerless-environment-free-program-verifier-for-coding-agen-77e4fc63.mp3" length="7588080" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Orca: The World is in Your Mind</title>
+      <description>目前人工智能领域面临的核心挑战，是如何构建一个能够像人类一样持续学习和自我演化，最终超越人类认知边界的通用智能体。传统的AI模型往往专注于单一任务，比如仅仅预测下一个词元、下一帧图像或者下一个动作。虽然它们在各自领域取得了显著的进步，但这种“各自为战”的模式，使得模型难以真正理解世界的深层规律、因果关系和动态演化。我们真正需要的，是一个能够持续吸收多模态世界信号、构建世界潜在状态表示、并以此为基础进行理解、预测和行动的模型。</description>
+      <link>https://arxiv.org/abs/2606.30534</link>
+      <guid isPermaLink="false">2026-07-01-orca-the-world-is-in-your-mind-22b6b483.mp3</guid>
+      <pubDate>Wed, 01 Jul 2026 23:30:07 +0000</pubDate>
+      <itunes:duration>1080</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-01-orca-the-world-is-in-your-mind-22b6b483.mp3" length="6483312" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Robust Speech Recognition via Large-Scale Weak Supervision</title>
       <description>目前语音识别系统面临的一个核心痛点是，尽管它们在特定训练数据集上能达到“超人”的表现，但一旦部署到真实世界中，遇到训练数据之外的语音环境、口音或语言，性能就会大幅下降，缺乏我们常说的鲁棒性，也就是泛化能力差。这就像一个学生，只会做模拟题，一到真题就傻眼。</description>
       <link>https://arxiv.org/abs/2212.04356</link>

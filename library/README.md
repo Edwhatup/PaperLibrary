@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-01
+
+- **Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models** · 41★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-01-does-vla-even-know-the-basics-measuring-commonsense-and-worl-91a3178c.mp3) [arXiv](https://arxiv.org/abs/2606.19297)
+- **BlockPilot: Instance-Adaptive Policy Learning for Diffusion-based Speculative Decoding** · 67★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-01-blockpilot-instance-adaptive-policy-learning-for-diffusion-b-e2c71884.mp3) [arXiv](https://arxiv.org/abs/2606.31315)
+- **DOPD: Dual On-policy Distillation** · 75★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-01-dopd-dual-on-policy-distillation-f4f7ad5c.mp3) [arXiv](https://arxiv.org/abs/2606.30626)
+- **Dockerless: Environment-Free Program Verifier for Coding Agents** · 86★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-01-dockerless-environment-free-program-verifier-for-coding-agen-77e4fc63.mp3) [arXiv](https://arxiv.org/abs/2606.28436)
+- **Orca: The World is in Your Mind** · 176★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-01-orca-the-world-is-in-your-mind-22b6b483.mp3) [arXiv](https://arxiv.org/abs/2606.30534)
+
 ## 2026-06-30
 
 - **ReFreeKV: Towards Threshold-Free KV Cache Compression** · 43★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-30-refreekv-towards-threshold-free-kv-cache-compression-c3e9e318.mp3) [arXiv](https://arxiv.org/abs/2502.16886)
