@@ -5,7 +5,7 @@ date: "2024-08-13"
 arxiv: "https://openai.com/index/introducing-swe-bench-verified/"
 pdf: ""
 upvotes: 0
-audio: "public/audio/2024-08-13-swe-bench-verified-c8c477cd.mp3"
+audio: "public/audio/2024-08-13-swe-bench-verified-f772e2fa.mp3"
 digest: "data/scripts/2024-08-13-swe-bench-verified.txt"
 tags: ["levelbench", "reading-list", "t1"]
 listened: false
@@ -18,7 +18,7 @@ read: false
 
 **摘要 (EN):** OpenAI's human-validated subset of SWE-bench: 500 task instances screened by 93 professional software engineers to remove unsolvable or under-specified problems and broken/insufficient test oracles. It fixes the finding that ~8% of nominal 'passes' on the original SWE-bench were false positives, so measured resolve rates reflect real capability rather than test-suite artifacts. The 93-reviewer screening protocol is a template for pre-launch benchmark auditing.
 
-**导读全文:** `data/scripts/2024-08-13-swe-bench-verified.txt`　**音频:** `public/audio/2024-08-13-swe-bench-verified-c8c477cd.mp3`　**arXiv:** https://openai.com/index/introducing-swe-bench-verified/
+**导读全文:** `data/scripts/2024-08-13-swe-bench-verified.txt`　**音频:** `public/audio/2024-08-13-swe-bench-verified-f772e2fa.mp3`　**arXiv:** https://openai.com/index/introducing-swe-bench-verified/
 
 ---
 ## 笔记

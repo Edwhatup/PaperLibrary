@@ -5,7 +5,7 @@ date: "2010-06-19"
 arxiv: "https://dl.acm.org/doi/10.1145/1822348.1822369"
 pdf: ""
 upvotes: 0
-audio: "public/audio/2010-06-19-analyzing-the-expressive-range-of-a-level-generator-ff1eb5d5.mp3"
+audio: "public/audio/2010-06-19-analyzing-the-expressive-range-of-a-level-generator-9b4d8dbe.mp3"
 digest: "data/scripts/2010-06-19-analyzing-the-expressive-range-of-a-level-generator.txt"
 tags: ["levelbench", "reading-list", "t2"]
 listened: false
@@ -18,7 +18,7 @@ read: false
 
 **摘要 (EN):** Smith & Whitehead (FDG 2010) introduce 'expressive range' analysis: instead of judging a procedural level generator only by whether individual outputs are playable, characterize the generator by the distribution of its outputs over structural metrics — for platformers, linearity, leniency, and density — visualized as 2-D heatmaps. This reveals a generator's biases, coverage, and the effect of its parameters, giving a principled way to compare generators by what regions of design space they actually reach.
 
-**导读全文:** `data/scripts/2010-06-19-analyzing-the-expressive-range-of-a-level-generator.txt`　**音频:** `public/audio/2010-06-19-analyzing-the-expressive-range-of-a-level-generator-ff1eb5d5.mp3`　**arXiv:** https://dl.acm.org/doi/10.1145/1822348.1822369
+**导读全文:** `data/scripts/2010-06-19-analyzing-the-expressive-range-of-a-level-generator.txt`　**音频:** `public/audio/2010-06-19-analyzing-the-expressive-range-of-a-level-generator-9b4d8dbe.mp3`　**arXiv:** https://dl.acm.org/doi/10.1145/1822348.1822369
 
 ---
 ## 笔记
