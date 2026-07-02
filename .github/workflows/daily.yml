@@ -51,6 +51,12 @@ jobs:
       - name: Build episodes
         run: python scripts/run_daily.py ${{ github.event.inputs.date }}
 
+      # Self-healing: re-clean scripts + re-synthesize any episode whose audio
+      # is stale (TTS settings changed) or truncated (duration check). Free —
+      # edge-tts only, no LLM calls; no-op when everything already matches.
+      - name: Refresh existing audio
+        run: python scripts/resynth.py
+
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"

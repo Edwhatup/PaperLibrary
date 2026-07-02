@@ -35,9 +35,16 @@ def process_paper(paper: dict, label: str = "", full_text: str | None = None) ->
     script_path = config.SCRIPTS_DIR / f"{base}.txt"
 
     # A hand-written / previously generated script wins (idempotent re-runs).
+    # Reused scripts still get de-markdown'd (older ones contain ** etc. that
+    # TTS reads aloud); the file is rewritten so the card's digest is clean too.
     if script_path.exists():
-        script = script_path.read_text(encoding="utf-8")
-        print(f"[script] reuse {script_path.name}")
+        raw = script_path.read_text(encoding="utf-8")
+        script = make_script.clean_for_tts(raw)
+        if script != raw.strip():
+            script_path.write_text(script, encoding="utf-8")
+            print(f"[script] reuse {script_path.name} (cleaned markdown)")
+        else:
+            print(f"[script] reuse {script_path.name}")
     else:
         mins = make_script.target_minutes(paper)
         tag = "相关·长" if make_script.is_relevant(paper) else "概览·短"
@@ -50,18 +57,27 @@ def process_paper(paper: dict, label: str = "", full_text: str | None = None) ->
             return False
         script_path.write_text(script, encoding="utf-8")
 
-    # Content hash in the filename so a changed digest gets a NEW url + guid ->
-    # podcast apps auto-fetch it without re-subscribing.
-    h = hashlib.sha1(script.encode("utf-8")).hexdigest()[:8]
+    # Hash covers the script AND the TTS settings, so changing either yields a
+    # NEW url + guid -> podcast apps auto-fetch it without re-subscribing.
+    h = hashlib.sha1(f"{script}|{synth_audio.signature()}".encode("utf-8")).hexdigest()[:8]
     audio_name = f"{base}-{h}.mp3"
     audio_path = config.AUDIO_DIR / audio_name
     for stale in config.AUDIO_DIR.glob(f"{base}*.mp3"):
         if stale.name != audio_name:
             stale.unlink()
+    # Guard against a previously truncated synthesis (tail dropped by edge-tts).
+    if audio_path.exists() and not synth_audio.duration_ok(script, audio_path):
+        print("[tts] existing audio fails duration check — re-synthesizing")
+        audio_path.unlink()
     if audio_path.exists():
         print(f"[tts] reuse {audio_name}")
     else:
-        synth_audio.synth(script, audio_path)
+        try:
+            synth_audio.synth(script, audio_path)
+        except Exception as e:
+            print(f"[tts] FAILED ({str(e)[:120]}) — skipping, retry next run")
+            audio_path.unlink(missing_ok=True)
+            return False
 
     notes = next((p.strip() for p in script.split("\n") if p.strip()), "")[:300]
     build_feed.add_episode({

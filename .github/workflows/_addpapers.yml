@@ -1,8 +1,9 @@
 # Generate audio for the curated reading list (data/curated/reading.json).
 # Resumable: re-run to pick up papers skipped on 429. Trigger by pushing this
 # file, or via "Run workflow". Keep until the list is fully done, then remove.
-# batch 3: daily auto-retry — converges the 15 quota-skipped papers over a few
-# days on the free Gemini tier (~9 token-heavy papers/day), no manual re-runs.
+# batch 4: back on the free Gemini tier (the Anthropic account has no credit
+# balance — every call 400'd), converging the remaining papers daily. Also
+# runs resynth.py so volume/markdown/truncation fixes reach existing audio.
 name: _add papers
 
 on:
@@ -32,9 +33,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       DIGEST_LANG: zh
-      # Use the paid Anthropic API (no free-tier daily quota wall) so one run
-      # finishes the whole curated list instead of ~9/day on Gemini's free tier.
-      LLM_BACKEND: anthropic
+      # auto -> Gemini free tier (Anthropic key has no funded credit balance).
+      LLM_BACKEND: auto
       FEED_BASE_URL: https://edwhatup.github.io/PaperLibrary
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -53,6 +53,8 @@ jobs:
           if [ -n "$ANTHROPIC_API_KEY" ]; then pip install anthropic; fi
       - name: Generate curated reading-list audio (resumable)
         run: python scripts/add_papers.py
+      - name: Refresh existing audio (volume/markdown/truncation fixes)
+        run: python scripts/resynth.py
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"

@@ -75,7 +75,8 @@ FULLTEXT_MIN_CHARS = int(os.getenv("FULLTEXT_MIN_CHARS", "8000"))
 # `edge-tts --list-voices` shows the full list.
 TTS_VOICE_ZH = os.getenv("TTS_VOICE_ZH", "zh-CN-YunxiNeural")
 TTS_VOICE_EN = os.getenv("TTS_VOICE_EN", "en-US-AndrewNeural")
-TTS_RATE = os.getenv("TTS_RATE", "+8%")   # a touch faster for podcast feel
+TTS_RATE = os.getenv("TTS_RATE", "+8%")     # a touch faster for podcast feel
+TTS_VOLUME = os.getenv("TTS_VOLUME", "+15%")  # louder for in-car listening
 
 # --- Feed metadata -------------------------------------------------------
 # Set FEED_BASE_URL to where `public/` is served (e.g. GitHub Pages URL),

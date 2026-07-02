@@ -30,10 +30,17 @@ def save_manifest(episodes: list[dict]) -> None:
 
 def add_episode(ep: dict) -> None:
     """Append an episode, de-duplicating by the stable per-paper `key` (so a
-    regenerated episode REPLACES the old one rather than adding a duplicate)."""
+    regenerated episode REPLACES the old one rather than adding a duplicate).
+    A replacement keeps the ORIGINAL `published` timestamp: the new GUID makes
+    podcast apps re-fetch the audio, but the episode stays in its old slot
+    instead of flooding the top of the feed."""
     episodes = load_manifest()
     eps = {e.get("key") or e["audio"]: e for e in episodes}
-    eps[ep.get("key") or ep["audio"]] = ep
+    key = ep.get("key") or ep["audio"]
+    old = eps.get(key)
+    if old and old.get("published"):
+        ep = {**ep, "published": old["published"]}
+    eps[key] = ep
     save_manifest(sorted(eps.values(), key=lambda e: e["published"], reverse=True))
 
 

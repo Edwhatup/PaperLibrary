@@ -56,6 +56,8 @@ def _prompt(paper: dict, full_text: str, minutes: int) -> str:
 - 第一句话就直接切入这篇论文要解决的问题，禁止任何开场白、问候语、自我介绍、报播客名/栏目名，
   绝对不要出现"各位""大家好""欢迎收听""我是主播""通勤路上""本期节目"这类套话。
 - 全程是可以直接朗读的连续口语，不要小标题、不要分点编号、不要"第一部分"这种字样，段落之间自然过渡。
+- 输出必须是纯文本，严禁任何 Markdown 记号：不要星号加粗、不要井号标题、不要反引号、不要列表符号。
+  这些符号会被语音合成逐字念出来（语音里不存在"加粗"），想强调就用语气词和句式来强调。
 - {depth}
 - 适当解释专业术语，用类比帮助理解；宁可多讲清楚一个机制，也不要泛泛而谈，但点到为止、不要无限展开。
 - 结尾直接给一句结论和启发收住，不要"以上就是""感谢收听"这类结束语。
@@ -132,6 +134,9 @@ def _via_anthropic(paper, full_text, minutes):
         max_tokens=max_tokens,
         messages=[{"role": "user", "content": _prompt(paper, full_text, minutes)}],
     )
+    if msg.stop_reason == "max_tokens":
+        print(f"[script] WARNING: anthropic hit max_tokens ({max_tokens}) — "
+              "output may be cut off (length check will decide)")
     return "".join(b.text for b in msg.content if b.type == "text").strip()
 
 
@@ -141,6 +146,24 @@ def _fallback(paper: dict) -> str:
     if config.DIGEST_LANG == "zh":
         return (f"下面这篇论文标题是：{paper['title']}。以下是它的英文摘要。 {paper['abstract']}")
     return f"{paper['title']}. {paper['abstract']}"
+
+
+def clean_for_tts(text: str) -> str:
+    """Strip Markdown the LLM sneaks in despite the prompt. TTS reads the
+    symbols literally ("星号星号…") — there is no such thing as bold in audio."""
+    t = text.replace("\r\n", "\n")
+    t = re.sub(r"```[^\n]*", "", t)                              # code fences
+    t = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", t)               # [text](url)
+    t = re.sub(r"^\s{0,3}#{1,6}\s*", "", t, flags=re.M)          # # headings
+    t = re.sub(r"^\s*[-*•·]\s+", "", t, flags=re.M)              # bullets
+    t = re.sub(r"^\s*>\s?", "", t, flags=re.M)                   # blockquotes
+    t = re.sub(r"^\s*\|.*\|\s*$", "", t, flags=re.M)             # table rows
+    t = re.sub(r"(?<![A-Za-z0-9])_([^_\n]+)_(?![A-Za-z0-9])", r"\1", t)  # _em_
+    t = t.replace("**", "").replace("__", "")
+    for ch in ("*", "＊", "`", "#"):                              # leftovers
+        t = t.replace(ch, "")
+    t = re.sub(r"\n{3,}", "\n\n", t)
+    return t.strip()
 
 
 _SENT_END = "。！？.!?”\"’'）)"
@@ -164,23 +187,34 @@ def trim_to_sentence(text: str) -> str:
 
 def make_script(paper: dict, full_text: str = ""):
     """Return the spoken script, or None when an LLM is configured but FAILS
-    (e.g. quota/429) — the caller then skips this paper instead of publishing a
-    broken episode. With LLM_BACKEND=none, returns the abstract reading, which
-    is the intended degraded mode (not a failure)."""
+    (e.g. quota/429) OR returns a cut-off script — the caller then skips this
+    paper instead of publishing a broken episode. With LLM_BACKEND=none,
+    returns the abstract reading, which is the intended degraded mode."""
     minutes = target_minutes(paper)
     backend = config.LLM_BACKEND
     if backend == "none":
-        return trim_to_sentence(_fallback(paper))
+        return trim_to_sentence(clean_for_tts(_fallback(paper)))
+    raw = None
     try:
         if backend == "gemini" and config.GEMINI_API_KEY:
-            return trim_to_sentence(_via_gemini(paper, full_text, minutes))
-        if backend == "anthropic" and config.ANTHROPIC_API_KEY:
-            return trim_to_sentence(_via_anthropic(paper, full_text, minutes))
+            raw = _via_gemini(paper, full_text, minutes)
+        elif backend == "anthropic" and config.ANTHROPIC_API_KEY:
+            raw = _via_anthropic(paper, full_text, minutes)
+        else:
+            print(f"[script] backend '{backend}' has no usable key — skipping")
+            return None
     except Exception as e:
         print(f"[script] {backend} FAILED ({str(e)[:160]}) — skipping this paper")
         return None
-    print(f"[script] backend '{backend}' has no usable key — skipping")
-    return None
+    script = trim_to_sentence(clean_for_tts(raw))
+    # Completeness gate: a script well below the prompt's minimum length means
+    # the model was cut off (max_tokens etc.) — skip rather than publish it.
+    min_chars = int(minutes * config.CHARS_PER_MIN * 0.75)
+    if len(script) < min_chars:
+        print(f"[script] INCOMPLETE ({len(script)} chars < {min_chars}) — "
+              "likely cut off; skipping this paper")
+        return None
+    return script
 
 
 if __name__ == "__main__":
