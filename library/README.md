@@ -3,6 +3,12 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-02
+
+- **MemSyco-Bench: Benchmarking Sycophancy in Agent Memory** · 18★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-02-memsyco-bench-benchmarking-sycophancy-in-agent-memory-582cf8c4.mp3) [arXiv](https://arxiv.org/abs/2607.01071)
+- **ELDR: Expert-Locality-Aware Decode Routing for PD-Disaggregated MoE Serving** · 19★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-02-eldr-expert-locality-aware-decode-routing-for-pd-disaggregat-70d18ab0.mp3) [arXiv](https://arxiv.org/abs/2607.00466)
+- **PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception** · 33★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-02-perceptionrubrics-calibrating-multimodal-evaluation-to-human-f9fb83ea.mp3) [arXiv](https://arxiv.org/abs/2606.28322)
+
 ## 2026-07-01
 
 - **Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models** · 41★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-01-does-vla-even-know-the-basics-measuring-commonsense-and-worl-409bfa28.mp3) [arXiv](https://arxiv.org/abs/2606.19297)

@@ -1,5 +1,41 @@
 [
   {
+    "key": "2607.01071",
+    "date": "2026-07-02",
+    "title": "MemSyco-Bench: Benchmarking Sycophancy in Agent Memory",
+    "abstract": "Memory has emerged as a cornerstone of modern LLM-based agents, supporting their evolution from single-turn assistants to long-term collaborators. However, memory is not always beneficial: retrieved memories often induce a critical issue of sycophancy, causing agents to over-align with the user at the cost of factual accuracy or objective reasoning. Despite this emerging risk, existing memory benchmarks primarily evaluate whether memories are correctly stored, retrieved, or updated, while overlooking how retrieved memories influence downstream reasoning and decision-making. To bridge this gap, we propose MemSyco-Bench, a comprehensive benchmark for evaluating memory-induced sycophancy in agent systems. MemSyco-Bench measures when memory should influence a decision and how valid memory should be used. Specifically, it covers five tasks that assess whether agents can reject memory as factual evidence, respect its applicable scope, resolve conflicts between memory and objective evidence, track memory updates, and use valid memory for personalization. All related resources are collected for the community at https://github.com/XMUDeepLIT/MemSyco-Bench.",
+    "notes": "好的，没问题。这是一段约 20 分钟的口播稿，将论文 MemSyco-Bench: Benchmarking Sycophancy in Agent Memory 的核心内容进行深入讲解，希望能帮到你。",
+    "url": "https://arxiv.org/abs/2607.01071",
+    "upvotes": 18,
+    "audio": "2026-07-02-memsyco-bench-benchmarking-sycophancy-in-agent-memory-582cf8c4.mp3",
+    "size": 7319808,
+    "published": "2026-07-03T00:04:15.164081+00:00"
+  },
+  {
+    "key": "2607.00466",
+    "date": "2026-07-02",
+    "title": "ELDR: Expert-Locality-Aware Decode Routing for PD-Disaggregated MoE Serving",
+    "abstract": "In prefill-decode (PD) disaggregated LLM serving, each request is assigned to a decode worker after prefill. Existing decode routers balance only load; for mixture-of-experts (MoE) models this is incomplete: equally loaded workers can differ in latency, since each decode step loads the weights of every distinct expert its batch activates. We present ELDR, an expert-locality-aware decode router for PD-disaggregated MoE serving. From a request's prefill expert activations, ELDR builds an expert signature predicting the experts it will activate during generation. Offline, balanced K-means partitions signature space across decode workers; online, locality-band routing sends each request to the least-loaded worker among those best matching its signature. A signature cache, co-indexed with the KV cache at KV-block granularity, keeps signatures exact under prefix caching. Implemented in vLLM and evaluated on deployments of up to 40 GPUs, ELDR reduces median TPOT by 5.9-13.9% over the strongest of four load-balancing baselines across three MoE models and two workloads, with model outputs unchanged.",
+    "notes": "大型语言模型服务正面临一个新挑战：当我们将模型预填充（prefill）和令牌生成（decode）两个阶段分离，并分别在不同的计算池上运行时，现有的解码阶段路由策略只关注负载均衡，也就是简单地把请求分发到空闲的解码器。但对于混合专家模型，也就是我们常说的MoE模型来说，这种做法是不完整的。即使两个解码器负载相同，它们实际处理请求的延迟也可能大相径庭。",
+    "url": "https://arxiv.org/abs/2607.00466",
+    "upvotes": 19,
+    "audio": "2026-07-02-eldr-expert-locality-aware-decode-routing-for-pd-disaggregat-70d18ab0.mp3",
+    "size": 5554944,
+    "published": "2026-07-03T00:00:09.828417+00:00"
+  },
+  {
+    "key": "2606.28322",
+    "date": "2026-07-02",
+    "title": "PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception",
+    "abstract": "We introduce PerceptionRubrics, a rubric-based evaluation framework that addresses the gap between saturated benchmark scores and real-world brittleness. Shifting evaluation from holistic semantic matching to rigorous atomic auditing, PerceptionRubrics pairs 1,038 information-dense images with over 12,000 instance-specific rubrics. These criteria are derived from golden captions constructed via a novel Circular Peer-Review consensus pipeline and then distilled into a dual-stream system of Must-Right (essential facts) and Easy-Wrong (fine-grained details) rubrics. Crucially, PerceptionRubrics implements a Gated Scoring mechanism: unlike linear averages, failure on mandatory visual facts triggers sharp binary penalties. Extensive evaluation yields critical insights: (1) The Reliability Gap: models often verify fragmented elements correctly yet fail strict conjunctive constraints, exposing brittleness in dense domains; (2) Open-Closed Stratification: contrary to reasoning trends, we reveal a persistent 8% perception deficit between open-source and proprietary frontiers; and (3) Human-Aligned Rigor: our gated metrics substantially out-align conventional benchmarks, validating that strict perceptual fidelity is the prerequisite for reliable generation.",
+    "notes": "当前多模态大语言模型，也就是我们常说的 MLLM，在评估上正面临一个根本性的危机：现有的感知基准测试已经不能可靠地反映它们真正的感知能力了。这导致了一个评估悖论：一方面，各种模型在排行榜上的分数越来越高，几乎达到了“饱和”状态；但另一方面，这些模型在真实世界的部署中却表现出惊人的脆弱性，经常出现一些低级错误。比如，模型可能数错了物体数量，或者颠倒了空间关系，这些错误对用户来说非常明显，但在传统的评估指标下，它们的分数却依然很高。这种差异表明，现有的基准测试奖励机制与人类的感知敏感度是脱节的，它给人一种虚假的进步感，并且无法提供诊断性的信息来指导下一代 MLLM 的发展。",
+    "url": "https://arxiv.org/abs/2606.28322",
+    "upvotes": 33,
+    "audio": "2026-07-02-perceptionrubrics-calibrating-multimodal-evaluation-to-human-f9fb83ea.mp3",
+    "size": 5586336,
+    "published": "2026-07-02T23:58:52.335344+00:00"
+  },
+  {
     "key": "2002.03862",
     "date": "2020-02-10",
     "title": "Cross-modal variational inference for bijective signal-symbol translation",

@@ -8,6 +8,33 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>MemSyco-Bench: Benchmarking Sycophancy in Agent Memory</title>
+      <description>好的，没问题。这是一段约 20 分钟的口播稿，将论文 MemSyco-Bench: Benchmarking Sycophancy in Agent Memory 的核心内容进行深入讲解，希望能帮到你。</description>
+      <link>https://arxiv.org/abs/2607.01071</link>
+      <guid isPermaLink="false">2026-07-02-memsyco-bench-benchmarking-sycophancy-in-agent-memory-582cf8c4.mp3</guid>
+      <pubDate>Fri, 03 Jul 2026 00:04:15 +0000</pubDate>
+      <itunes:duration>1219</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-02-memsyco-bench-benchmarking-sycophancy-in-agent-memory-582cf8c4.mp3" length="7319808" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ELDR: Expert-Locality-Aware Decode Routing for PD-Disaggregated MoE Serving</title>
+      <description>大型语言模型服务正面临一个新挑战：当我们将模型预填充（prefill）和令牌生成（decode）两个阶段分离，并分别在不同的计算池上运行时，现有的解码阶段路由策略只关注负载均衡，也就是简单地把请求分发到空闲的解码器。但对于混合专家模型，也就是我们常说的MoE模型来说，这种做法是不完整的。即使两个解码器负载相同，它们实际处理请求的延迟也可能大相径庭。</description>
+      <link>https://arxiv.org/abs/2607.00466</link>
+      <guid isPermaLink="false">2026-07-02-eldr-expert-locality-aware-decode-routing-for-pd-disaggregat-70d18ab0.mp3</guid>
+      <pubDate>Fri, 03 Jul 2026 00:00:09 +0000</pubDate>
+      <itunes:duration>925</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-02-eldr-expert-locality-aware-decode-routing-for-pd-disaggregat-70d18ab0.mp3" length="5554944" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception</title>
+      <description>当前多模态大语言模型，也就是我们常说的 MLLM，在评估上正面临一个根本性的危机：现有的感知基准测试已经不能可靠地反映它们真正的感知能力了。这导致了一个评估悖论：一方面，各种模型在排行榜上的分数越来越高，几乎达到了“饱和”状态；但另一方面，这些模型在真实世界的部署中却表现出惊人的脆弱性，经常出现一些低级错误。比如，模型可能数错了物体数量，或者颠倒了空间关系，这些错误对用户来说非常明显，但在传统的评估指标下，它们的分数却依然很高。这种差异表明，现有的基准测试奖励机制与人类的感知敏感度是脱节的，它给人一种虚假的进步感，并且无法提供诊断性的信息来指导下一代 MLLM 的发展。</description>
+      <link>https://arxiv.org/abs/2606.28322</link>
+      <guid isPermaLink="false">2026-07-02-perceptionrubrics-calibrating-multimodal-evaluation-to-human-f9fb83ea.mp3</guid>
+      <pubDate>Thu, 02 Jul 2026 23:58:52 +0000</pubDate>
+      <itunes:duration>931</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-02-perceptionrubrics-calibrating-multimodal-evaluation-to-human-f9fb83ea.mp3" length="5586336" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Cross-modal variational inference for bijective signal-symbol translation</title>
       <description>我们今天要聊的这篇论文，它关注的是一个在音乐信息检索领域非常核心的问题：如何实现音频信号和音乐符号之间的双向转换。想象一下，我们想把一段音乐录音自动转换成乐谱，或者反过来，从一个乐谱生成一段逼真的音乐。这听起来好像很直接，但实际上，现有的方法往往存在不少局限。</description>
       <link>https://arxiv.org/abs/2002.03862</link>
