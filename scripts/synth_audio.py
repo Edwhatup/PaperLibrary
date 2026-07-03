@@ -52,20 +52,31 @@ async def _synth(text: str, out_path: Path) -> None:
 
 
 def synth(text: str, out_path: Path, attempts: int = 3) -> Path:
+    """Synthesize and VERIFY: duration must be plausible AND an STT pass must
+    hear the script's ending at the end of the audio. No verified ending ->
+    the file is deleted and the episode does not ship."""
+    import stt_check  # deferred: keeps edge-tts usable without whisper installed
+
     out_path.parent.mkdir(parents=True, exist_ok=True)
     want = expected_seconds(text)
     for i in range(1, attempts + 1):
         asyncio.run(_synth(text, out_path))
         got = duration_seconds(out_path)
-        if duration_ok(text, out_path):
-            print(f"[tts] {out_path}  ({out_path.stat().st_size // 1024} KB, "
-                  f"~{got/60:.1f}min / expected ~{want/60:.1f}min)")
-            return out_path
-        print(f"[tts] WARNING: audio too short (~{got/60:.1f}min, expected "
-              f"~{want/60:.1f}min) — tail dropped? attempt {i}/{attempts}")
-        out_path.unlink(missing_ok=True)
+        if not duration_ok(text, out_path):
+            print(f"[tts] WARNING: audio too short (~{got/60:.1f}min, expected "
+                  f"~{want/60:.1f}min) — tail dropped? attempt {i}/{attempts}")
+            out_path.unlink(missing_ok=True)
+            continue
+        if not stt_check.check_and_record(text, out_path):
+            print(f"[tts] WARNING: STT did not hear the script's ending — "
+                  f"attempt {i}/{attempts}")
+            out_path.unlink(missing_ok=True)
+            continue
+        print(f"[tts] {out_path}  ({out_path.stat().st_size // 1024} KB, "
+              f"~{got/60:.1f}min / expected ~{want/60:.1f}min, ending verified)")
+        return out_path
     raise RuntimeError(
-        f"TTS kept truncating: audio << expected for {out_path.name}"
+        f"TTS kept truncating (duration/STT check failed) for {out_path.name}"
     )
 
 

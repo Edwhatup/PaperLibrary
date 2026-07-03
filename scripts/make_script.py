@@ -185,36 +185,50 @@ def trim_to_sentence(text: str) -> str:
     return text  # no sane boundary found — leave as-is rather than gut it
 
 
+def _backend_chain() -> list[tuple[str, callable]]:
+    """Primary backend first, then the other one as fallback if its key is
+    set — a Gemini quota failure falls through to Claude instead of skipping."""
+    chain = []
+    if config.LLM_BACKEND == "anthropic":
+        order = [("anthropic", _via_anthropic), ("gemini", _via_gemini)]
+    else:
+        order = [("gemini", _via_gemini), ("anthropic", _via_anthropic)]
+    for name, fn in order:
+        key = config.GEMINI_API_KEY if name == "gemini" else config.ANTHROPIC_API_KEY
+        if key:
+            chain.append((name, fn))
+    return chain
+
+
 def make_script(paper: dict, full_text: str = ""):
-    """Return the spoken script, or None when an LLM is configured but FAILS
-    (e.g. quota/429) OR returns a cut-off script — the caller then skips this
+    """Return the spoken script, or None when every configured LLM FAILS
+    (e.g. quota/429) or returns a cut-off script — the caller then skips this
     paper instead of publishing a broken episode. With LLM_BACKEND=none,
     returns the abstract reading, which is the intended degraded mode."""
     minutes = target_minutes(paper)
-    backend = config.LLM_BACKEND
-    if backend == "none":
+    if config.LLM_BACKEND == "none":
         return trim_to_sentence(clean_for_tts(_fallback(paper)))
-    raw = None
-    try:
-        if backend == "gemini" and config.GEMINI_API_KEY:
-            raw = _via_gemini(paper, full_text, minutes)
-        elif backend == "anthropic" and config.ANTHROPIC_API_KEY:
-            raw = _via_anthropic(paper, full_text, minutes)
-        else:
-            print(f"[script] backend '{backend}' has no usable key — skipping")
-            return None
-    except Exception as e:
-        print(f"[script] {backend} FAILED ({str(e)[:160]}) — skipping this paper")
-        return None
-    script = trim_to_sentence(clean_for_tts(raw))
     # Completeness gate: a script well below the prompt's minimum length means
-    # the model was cut off (max_tokens etc.) — skip rather than publish it.
+    # the model was cut off (max_tokens etc.) — try the next backend / skip.
     min_chars = int(minutes * config.CHARS_PER_MIN * 0.75)
-    if len(script) < min_chars:
-        print(f"[script] INCOMPLETE ({len(script)} chars < {min_chars}) — "
-              "likely cut off; skipping this paper")
+    chain = _backend_chain()
+    if not chain:
+        print(f"[script] backend '{config.LLM_BACKEND}' has no usable key — skipping")
         return None
-    return script
+    for name, fn in chain:
+        try:
+            raw = fn(paper, full_text, minutes)
+        except Exception as e:
+            print(f"[script] {name} FAILED ({str(e)[:160]}) — trying next backend")
+            continue
+        script = trim_to_sentence(clean_for_tts(raw))
+        if len(script) < min_chars:
+            print(f"[script] {name} INCOMPLETE ({len(script)} chars < {min_chars}) "
+                  "— likely cut off; trying next backend")
+            continue
+        return script
+    print("[script] all backends failed — skipping this paper")
+    return None
 
 
 if __name__ == "__main__":

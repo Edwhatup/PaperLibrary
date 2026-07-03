@@ -3,6 +3,8 @@ requests>=2.31
 edge-tts>=6.1.9          # free Microsoft TTS, supports zh + en, no API key
 python-slugify>=8.0
 pypdf>=4.0              # PDF full-text fallback (pure-python, no native build)
+faster-whisper>=1.0     # STT gate: verify the audio actually reads to the end
+opencc-python-reimplemented>=0.1.7  # whisper emits traditional zh; normalize to simplified
 # RSS is hand-rolled with the stdlib (no lxml/feedgen native build needed).
 
 # Optional LLM backends for generating Chinese "导读" scripts.

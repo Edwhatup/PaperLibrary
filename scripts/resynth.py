@@ -43,6 +43,8 @@ def main() -> None:
         skipped += not ok
     build_feed.build_all()
     lib.build_library()
+    import stt_check
+    stt_check.prune({p.name for p in config.AUDIO_DIR.glob("*.mp3")})
     print(f"\n[resynth] done. up to date: {done}, skipped: {skipped}")
 
 

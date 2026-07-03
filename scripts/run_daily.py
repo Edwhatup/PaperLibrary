@@ -65,10 +65,16 @@ def process_paper(paper: dict, label: str = "", full_text: str | None = None) ->
     for stale in config.AUDIO_DIR.glob(f"{base}*.mp3"):
         if stale.name != audio_name:
             stale.unlink()
-    # Guard against a previously truncated synthesis (tail dropped by edge-tts).
-    if audio_path.exists() and not synth_audio.duration_ok(script, audio_path):
-        print("[tts] existing audio fails duration check — re-synthesizing")
-        audio_path.unlink()
+    # Guard against a previously truncated synthesis: plausible duration AND
+    # an STT pass must hear the script's ending (cached per hashed filename).
+    if audio_path.exists():
+        import stt_check
+        if not synth_audio.duration_ok(script, audio_path):
+            print("[tts] existing audio fails duration check — re-synthesizing")
+            audio_path.unlink()
+        elif not stt_check.check_and_record(script, audio_path):
+            print("[tts] existing audio fails STT ending check — re-synthesizing")
+            audio_path.unlink()
     if audio_path.exists():
         print(f"[tts] reuse {audio_name}")
     else:
