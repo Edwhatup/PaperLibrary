@@ -8,6 +8,15 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Program-as-Weights: A Programming Paradigm for Fuzzy Functions</title>
+      <description>您好！今天我们来聊一篇很有意思的论文，标题叫做 Program-as-Weights：一种模糊函数编程范式。这篇论文要解决的核心问题是：很多日常编程任务，比如从海量日志中筛选出关键信息、修复格式错误的 JSON 文件、或者根据用户意图对搜索结果进行排序，这些任务很难用传统的、基于精确规则的代码来实现。</description>
+      <link>https://arxiv.org/abs/2607.02512</link>
+      <guid isPermaLink="false">2026-07-03-program-as-weights-a-programming-paradigm-for-fuzzy-function-93094902.mp3</guid>
+      <pubDate>Sat, 04 Jul 2026 00:00:28 +0000</pubDate>
+      <itunes:duration>1586</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-03-program-as-weights-a-programming-paradigm-for-fuzzy-function-93094902.mp3" length="9516672" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>MemSyco-Bench: Benchmarking Sycophancy in Agent Memory</title>
       <description>好的，没问题。这是一段约 20 分钟的口播稿，将论文 MemSyco-Bench: Benchmarking Sycophancy in Agent Memory 的核心内容进行深入讲解，希望能帮到你。</description>
       <link>https://arxiv.org/abs/2607.01071</link>

@@ -1,5 +1,17 @@
 [
   {
+    "key": "2607.02512",
+    "date": "2026-07-03",
+    "title": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions",
+    "abstract": "Many everyday programming tasks resist clean rule-based implementation, such as alerting on important log lines, repairing malformed JSON, or ranking search results by intent, and are increasingly outsourced to large language model APIs at the cost of locality, reproducibility, and price. We propose fuzzy-function programming: compiling such a function from a natural-language specification into a compact, locally-executable neural artifact. We instantiate this paradigm with Program-as-Weights (PAW), in which a 4B compiler trained on FuzzyBench, a 10M-example dataset we release, emits parameter-efficient adapters for a frozen, lightweight interpreter. A 0.6B Qwen3 interpreter executing PAW programs matches the performance of direct prompting of Qwen3-32B, while using roughly one fiftieth of the inference memory and running at 30 tokens/s on a MacBook M3. PAW reframes the foundation model from a per-input problem solver into a tool builder: invoked once per function definition, it produces a small reusable artifact whose subsequent calls per function application are cheap and offline.",
+    "notes": "您好！今天我们来聊一篇很有意思的论文，标题叫做 Program-as-Weights：一种模糊函数编程范式。这篇论文要解决的核心问题是：很多日常编程任务，比如从海量日志中筛选出关键信息、修复格式错误的 JSON 文件、或者根据用户意图对搜索结果进行排序，这些任务很难用传统的、基于精确规则的代码来实现。",
+    "url": "https://arxiv.org/abs/2607.02512",
+    "upvotes": 56,
+    "audio": "2026-07-03-program-as-weights-a-programming-paradigm-for-fuzzy-function-93094902.mp3",
+    "size": 9516672,
+    "published": "2026-07-04T00:00:28.532670+00:00"
+  },
+  {
     "key": "2607.01071",
     "date": "2026-07-02",
     "title": "MemSyco-Bench: Benchmarking Sycophancy in Agent Memory",

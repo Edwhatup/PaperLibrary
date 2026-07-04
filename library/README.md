@@ -3,6 +3,10 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-03
+
+- **Program-as-Weights: A Programming Paradigm for Fuzzy Functions** · 56★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-03-program-as-weights-a-programming-paradigm-for-fuzzy-function-93094902.mp3) [arXiv](https://arxiv.org/abs/2607.02512)
+
 ## 2026-07-02
 
 - **MemSyco-Bench: Benchmarking Sycophancy in Agent Memory** · 18★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-02-memsyco-bench-benchmarking-sycophancy-in-agent-memory-582cf8c4.mp3) [arXiv](https://arxiv.org/abs/2607.01071)
