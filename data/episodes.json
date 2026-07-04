@@ -1,5 +1,17 @@
 [
   {
+    "key": "campbell-fiske-1959",
+    "date": "1959-03-01",
+    "title": "Convergent and Discriminant Validation by the Multitrait-Multimethod Matrix",
+    "abstract": "Campbell & Fiske (1959, Psychological Bulletin) is the foundational psychometrics paper on construct validity. It introduces the multitrait-multimethod (MTMM) matrix: a construct is validated when different methods measuring the SAME trait agree (convergent validity) and measures of DIFFERENT traits stay distinct even when measured by the same method (discriminant validity). This convergent/discriminant logic is the standard for arguing that a test measures the intended construct rather than method artifacts.",
+    "notes": "我们如何才能确信一个心理学量表，比如测量人格特质、智力水平或者抑郁程度的问卷，它真正测量的是我们所宣称的那个抽象概念，而不是别的什么东西，或者仅仅是测量方法本身带来的误差？这就是心理学研究中一个核心且复杂的问题：构念效度，也就是我们常说的“结构效度”。它关系到我们所有心理学测量结果的可靠性和科学性。",
+    "url": "https://psycnet.apa.org/doi/10.1037/h0046016",
+    "upvotes": 0,
+    "audio": "1959-03-01-convergent-and-discriminant-validation-by-the-multitrait-mul-f4a28d55.mp3",
+    "size": 5623200,
+    "published": "2026-07-04T10:53:25.637004+00:00"
+  },
+  {
     "key": "2607.02512",
     "date": "2026-07-03",
     "title": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions",

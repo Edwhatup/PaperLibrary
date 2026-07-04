@@ -141,3 +141,7 @@
 ## 2010-06-19
 
 - **Analyzing the Expressive Range of a Level Generator** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2010-06-19-analyzing-the-expressive-range-of-a-level-generator-9b4d8dbe.mp3) [arXiv](https://dl.acm.org/doi/10.1145/1822348.1822369)
+
+## 1959-03-01
+
+- **Convergent and Discriminant Validation by the Multitrait-Multimethod Matrix** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/1959-03-01-convergent-and-discriminant-validation-by-the-multitrait-mul-f4a28d55.mp3) [arXiv](https://psycnet.apa.org/doi/10.1037/h0046016)
