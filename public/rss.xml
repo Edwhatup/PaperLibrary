@@ -8,6 +8,15 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Osu2MIR: Beat Tracking Dataset Derived From Osu! Data</title>
+      <description>当前深度学习在节拍跟踪领域占据主导地位，但它的进一步发展却受到了现有数据集质量和规模的严重制约。传统上，节拍和下拍的标注工作往往依赖于专业人士，这导致了数据集普遍存在规模小、体裁受限、更新缓慢的问题。这些数据集通常由单一标注者完成，不可避免地引入了潜在的个人偏见，并且其中存在的错误往往在缺乏仔细审查的情况下难以被发现，这无疑成为了模型性能提升的一个瓶颈。</description>
+      <link>https://arxiv.org/abs/2509.12667</link>
+      <guid isPermaLink="false">2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-b4f170ee.mp3</guid>
+      <pubDate>Mon, 06 Jul 2026 12:43:17 +0000</pubDate>
+      <itunes:duration>813</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-b4f170ee.mp3" length="4882896" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Convergent and Discriminant Validation by the Multitrait-Multimethod Matrix</title>
       <description>我们如何才能确信一个心理学量表，比如测量人格特质、智力水平或者抑郁程度的问卷，它真正测量的是我们所宣称的那个抽象概念，而不是别的什么东西，或者仅仅是测量方法本身带来的误差？这就是心理学研究中一个核心且复杂的问题：构念效度，也就是我们常说的“结构效度”。它关系到我们所有心理学测量结果的可靠性和科学性。</description>
       <link>https://psycnet.apa.org/doi/10.1037/h0046016</link>

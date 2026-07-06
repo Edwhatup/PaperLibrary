@@ -58,6 +58,10 @@
 
 - **Measuring what Matters: Construct Validity in Large Language Model Benchmarks** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-11-03-measuring-what-matters-construct-validity-in-large-language--9347ad2c.mp3) [arXiv](https://arxiv.org/abs/2511.04703)
 
+## 2025-09-16
+
+- **Osu2MIR: Beat Tracking Dataset Derived From Osu! Data** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-b4f170ee.mp3) [arXiv](https://arxiv.org/abs/2509.12667)
+
 ## 2025-06-14
 
 - **CMI-Bench: A Comprehensive Benchmark for Evaluating Music Instruction Following** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-06-14-cmi-bench-a-comprehensive-benchmark-for-evaluating-music-ins-507002f1.mp3) [arXiv](https://arxiv.org/abs/2506.12285)

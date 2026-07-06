@@ -1,5 +1,17 @@
 [
   {
+    "key": "2509.12667",
+    "date": "2025-09-16",
+    "title": "Osu2MIR: Beat Tracking Dataset Derived From Osu! Data",
+    "abstract": "In this work, we explore the use of Osu!, a community-based rhythm game, as an alternative source of beat and downbeat annotations. Osu! beatmaps are created and refined by a large, diverse community and span underrepresented genres such as anime, Vocaloid, and video game music. We introduce a pipeline for extracting annotations from Osu! beatmaps and partition them into meaningful subsets. Through manual analysis, we find that beatmaps with a single timing point or widely spaced multiple timing points (>=5 seconds apart) provide reliable annotations, while closely spaced timing points (<5 seconds apart) often require additional curation. We also observe high consistency across multiple annotations of the same song. This study demonstrates the potential of Osu! data as a scalable, diverse, and community-driven resource for MIR research. We release our pipeline and a high-quality subset osu2beat2025 to support further exploration: https://github.com/ziyunliu4444/osu2mir.",
+    "notes": "当前深度学习在节拍跟踪领域占据主导地位，但它的进一步发展却受到了现有数据集质量和规模的严重制约。传统上，节拍和下拍的标注工作往往依赖于专业人士，这导致了数据集普遍存在规模小、体裁受限、更新缓慢的问题。这些数据集通常由单一标注者完成，不可避免地引入了潜在的个人偏见，并且其中存在的错误往往在缺乏仔细审查的情况下难以被发现，这无疑成为了模型性能提升的一个瓶颈。",
+    "url": "https://arxiv.org/abs/2509.12667",
+    "upvotes": 0,
+    "audio": "2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-b4f170ee.mp3",
+    "size": 4882896,
+    "published": "2026-07-06T12:43:17.270261+00:00"
+  },
+  {
     "key": "campbell-fiske-1959",
     "date": "1959-03-01",
     "title": "Convergent and Discriminant Validation by the Multitrait-Multimethod Matrix",
