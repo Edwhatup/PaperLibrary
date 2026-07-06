@@ -41,7 +41,7 @@ def main() -> None:
                 continue
             config.ANTHROPIC_MODEL = model  # _via_anthropic reads this at call time
             try:
-                raw = make_script._via_anthropic(paper, full_text, minutes)
+                raw, _truncated = make_script._via_anthropic(paper, full_text, minutes)
                 script = make_script.trim_to_sentence(make_script.clean_for_tts(raw))
                 dest.write_text(script, encoding="utf-8")
                 print(f"[exp] {dest.name}: {len(script)} chars")

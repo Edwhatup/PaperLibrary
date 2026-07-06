@@ -104,11 +104,11 @@ def _via_gemini(paper, full_text, minutes):
                     fr = str(resp.candidates[0].finish_reason)
                 except Exception:
                     pass
-                if "MAX_TOKENS" in fr:
-                    print(f"[script] WARNING: {name} hit MAX_TOKENS ({max_tokens}); "
-                          "trimming to last full sentence")
+                truncated = "MAX_TOKENS" in fr
+                if truncated:
+                    print(f"[script] WARNING: {name} hit MAX_TOKENS ({max_tokens})")
                 print(f"[script] gemini ok via {name}")
-                return resp.text.strip()
+                return resp.text.strip(), truncated
             except Exception as e:
                 last, msg = e, str(e)
                 transient = any(s in msg for s in
@@ -134,10 +134,10 @@ def _via_anthropic(paper, full_text, minutes):
         max_tokens=max_tokens,
         messages=[{"role": "user", "content": _prompt(paper, full_text, minutes)}],
     )
-    if msg.stop_reason == "max_tokens":
-        print(f"[script] WARNING: anthropic hit max_tokens ({max_tokens}) — "
-              "output may be cut off (length check will decide)")
-    return "".join(b.text for b in msg.content if b.type == "text").strip()
+    truncated = msg.stop_reason == "max_tokens"
+    if truncated:
+        print(f"[script] WARNING: anthropic hit max_tokens ({max_tokens})")
+    return "".join(b.text for b in msg.content if b.type == "text").strip(), truncated
 
 
 def _fallback(paper: dict) -> str:
@@ -208,25 +208,37 @@ def make_script(paper: dict, full_text: str = ""):
     minutes = target_minutes(paper)
     if config.LLM_BACKEND == "none":
         return trim_to_sentence(clean_for_tts(_fallback(paper)))
-    # Completeness gate: a script well below the prompt's minimum length means
-    # the model was cut off (max_tokens etc.) — try the next backend / skip.
+    # Completeness gate. Two different "short" cases:
+    #   - TRUNCATED (hit max_tokens): never publish; try the next backend.
+    #   - finished naturally but short: the source is too thin to sustain the
+    #     target — accept above a relaxed floor rather than skip forever.
     min_chars = int(minutes * config.CHARS_PER_MIN * 0.75)
+    floor_chars = int(minutes * config.CHARS_PER_MIN * 0.45)
     chain = _backend_chain()
     if not chain:
         print(f"[script] backend '{config.LLM_BACKEND}' has no usable key — skipping")
         return None
+    best = None
     for name, fn in chain:
         try:
-            raw = fn(paper, full_text, minutes)
+            raw, truncated = fn(paper, full_text, minutes)
         except Exception as e:
             print(f"[script] {name} FAILED ({str(e)[:160]}) — trying next backend")
             continue
         script = trim_to_sentence(clean_for_tts(raw))
-        if len(script) < min_chars:
-            print(f"[script] {name} INCOMPLETE ({len(script)} chars < {min_chars}) "
-                  "— likely cut off; trying next backend")
+        if truncated:
+            print(f"[script] {name} TRUNCATED at {len(script)} chars — "
+                  "trying next backend")
             continue
-        return script
+        if len(script) >= min_chars:
+            return script
+        print(f"[script] {name} finished short ({len(script)} < {min_chars} chars)"
+              " — source may be too thin for the target length")
+        if len(script) >= floor_chars and (best is None or len(script) > len(best)):
+            best = script
+    if best is not None:
+        print(f"[script] accepting best complete-but-short script ({len(best)} chars)")
+        return best
     print("[script] all backends failed — skipping this paper")
     return None
 
