@@ -75,7 +75,15 @@ FULLTEXT_MIN_CHARS = int(os.getenv("FULLTEXT_MIN_CHARS", "8000"))
 # `edge-tts --list-voices` shows the full list.
 TTS_VOICE_ZH = os.getenv("TTS_VOICE_ZH", "zh-CN-YunxiNeural")
 TTS_VOICE_EN = os.getenv("TTS_VOICE_EN", "en-US-AndrewNeural")
-TTS_RATE = os.getenv("TTS_RATE", "+8%")   # a touch faster for podcast feel
+TTS_RATE = os.getenv("TTS_RATE", "+8%")     # a touch faster for podcast feel
+TTS_VOLUME = os.getenv("TTS_VOLUME", "+15%")  # louder for in-car listening
+
+# --- STT verification (faster-whisper, free/local) -------------------------
+# Before an episode ships, the END of its audio is transcribed and must
+# contain the script's final sentence(s) — no dropped endings, ever.
+STT_MODEL = os.getenv("STT_MODEL", "base")          # whisper size: tiny/base/small
+STT_TAIL_SECONDS = float(os.getenv("STT_TAIL_SECONDS", "30"))
+STT_MIN_COVERAGE = float(os.getenv("STT_MIN_COVERAGE", "0.6"))
 
 # --- Feed metadata -------------------------------------------------------
 # Set FEED_BASE_URL to where `public/` is served (e.g. GitHub Pages URL),

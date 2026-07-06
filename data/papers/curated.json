@@ -1,0 +1,242 @@
+[
+  {
+    "date": "2023-10-10",
+    "arxiv_id": "2310.06770",
+    "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+    "abstract": "Language models have outpaced our ability to evaluate them effectively, but for their future development it is essential to study the frontier of their capabilities. We find real-world software engineering to be a rich, sustainable, and challenging testbed for evaluating the next generation of language models. To this end, we introduce SWE-bench, an evaluation framework consisting of $2,294$ software engineering problems drawn from real GitHub issues and corresponding pull requests across $12$ popular Python repositories. Given a codebase along with a description of an issue to be resolved, a language model is tasked with editing the codebase to address the issue. Resolving issues in SWE-bench frequently requires understanding and coordinating changes across multiple functions, classes, and even files simultaneously, calling for models to interact with execution environments, process extremely long contexts and perform complex reasoning that goes far beyond traditional code generation tasks. Our evaluations show that both state-of-the-art proprietary models and our fine-tuned model SWE-Llama can resolve only the simplest issues. The best-performing model, Claude 2, is able to solve a mere $1.96$% of the issues. Advances on SWE-bench represent steps towards LMs that are more practical, intelligent, and autonomous.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2310.06770",
+    "pdf": "https://arxiv.org/pdf/2310.06770",
+    "hf_url": ""
+  },
+  {
+    "date": "2024-08-13",
+    "arxiv_id": "swebench-verified-openai-2024",
+    "title": "SWE-bench Verified",
+    "abstract": "OpenAI's human-validated subset of SWE-bench: 500 task instances screened by 93 professional software engineers to remove unsolvable or under-specified problems and broken/insufficient test oracles. It fixes the finding that ~8% of nominal 'passes' on the original SWE-bench were false positives, so measured resolve rates reflect real capability rather than test-suite artifacts. The 93-reviewer screening protocol is a template for pre-launch benchmark auditing.",
+    "upvotes": 0,
+    "url": "https://openai.com/index/introducing-swe-bench-verified/",
+    "pdf": "",
+    "hf_url": ""
+  },
+  {
+    "date": "2019-11-05",
+    "arxiv_id": "1911.01547",
+    "title": "On the Measure of Intelligence",
+    "abstract": "To make deliberate progress towards more intelligent and more human-like artificial systems, we need to be following an appropriate feedback signal: we need to be able to define and evaluate intelligence in a way that enables comparisons between two systems, as well as comparisons with humans. Over the past hundred years, there has been an abundance of attempts to define and measure intelligence, across both the fields of psychology and AI. We summarize and critically assess these definitions and evaluation approaches, while making apparent the two historical conceptions of intelligence that have implicitly guided them. We note that in practice, the contemporary AI community still gravitates towards benchmarking intelligence by comparing the skill exhibited by AIs and humans at specific tasks such as board games and video games. We argue that solely measuring skill at any given task falls short of measuring intelligence, because skill is heavily modulated by prior knowledge and experience: unlimited priors or unlimited training data allow experimenters to \"buy\" arbitrary levels of skills for a system, in a way that masks the system's own generalization power. We then articulate a new formal definition of intelligence based on Algorithmic Information Theory, describing intelligence as skill-acquisition efficiency and highlighting the concepts of scope, generalization difficulty, priors, and experience. Using this definition, we propose a set of guidelines for what a general AI benchmark should look like. Finally, we present a benchmark closely following these guidelines, the Abstraction and Reasoning Corpus (ARC), built upon an explicit set of priors designed to be as close as possible to innate human priors. We argue that ARC can be used to measure a human-like form of general fluid intelligence and that it enables fair general intelligence comparisons between AI systems and humans.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/1911.01547",
+    "pdf": "https://arxiv.org/pdf/1911.01547",
+    "hf_url": ""
+  },
+  {
+    "date": "2021-07-07",
+    "arxiv_id": "2107.03374",
+    "title": "Evaluating Large Language Models Trained on Code",
+    "abstract": "We introduce Codex, a GPT language model fine-tuned on publicly available code from GitHub, and study its Python code-writing capabilities. A distinct production version of Codex powers GitHub Copilot. On HumanEval, a new evaluation set we release to measure functional correctness for synthesizing programs from docstrings, our model solves 28.8% of the problems, while GPT-3 solves 0% and GPT-J solves 11.4%. Furthermore, we find that repeated sampling from the model is a surprisingly effective strategy for producing working solutions to difficult prompts. Using this method, we solve 70.2% of our problems with 100 samples per problem. Careful investigation of our model reveals its limitations, including difficulty with docstrings describing long chains of operations and with binding operations to variables. Finally, we discuss the potential broader impacts of deploying powerful code generation technologies, covering safety, security, and economics.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2107.03374",
+    "pdf": "https://arxiv.org/pdf/2107.03374",
+    "hf_url": ""
+  },
+  {
+    "date": "2025-11-03",
+    "arxiv_id": "2511.04703",
+    "title": "Measuring what Matters: Construct Validity in Large Language Model Benchmarks",
+    "abstract": "Evaluating large language models (LLMs) is crucial for both assessing their capabilities and identifying safety or robustness issues prior to deployment. Reliably measuring abstract and complex phenomena such as 'safety' and 'robustness' requires strong construct validity, that is, having measures that represent what matters to the phenomenon. With a team of 29 expert reviewers, we conduct a systematic review of 445 LLM benchmarks from leading conferences in natural language processing and machine learning. Across the reviewed articles, we find patterns related to the measured phenomena, tasks, and scoring metrics which undermine the validity of the resulting claims. To address these shortcomings, we provide eight key recommendations and detailed actionable guidance to researchers and practitioners in developing LLM benchmarks.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2511.04703",
+    "pdf": "https://arxiv.org/pdf/2511.04703",
+    "hf_url": ""
+  },
+  {
+    "date": "2025-03-20",
+    "arxiv_id": "2503.16416",
+    "title": "Survey on Evaluation of LLM-based Agents",
+    "abstract": "LLM-based agents represent a paradigm shift in AI, enabling autonomous systems to plan, reason, and use tools while interacting with dynamic environments. This paper provides the first comprehensive survey of evaluation methods for these increasingly capable agents. We analyze the field of agent evaluation across five perspectives: (1) Core LLM capabilities needed for agentic workflows, like planning, and tool use; (2) Application-specific benchmarks such as web and SWE agents; (3) Evaluation of generalist agents; (4) Analysis of agent benchmarks' core dimensions; and (5) Evaluation frameworks and tools for agent developers. Our analysis reveals current trends, including a shift toward more realistic, challenging evaluations with continuously updated benchmarks. We also identify critical gaps that future research must address, particularly in assessing cost-efficiency, safety, and robustness, and in developing fine-grained, scalable evaluation methods.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2503.16416",
+    "pdf": "https://arxiv.org/pdf/2503.16416",
+    "hf_url": ""
+  },
+  {
+    "date": "2024-10-21",
+    "arxiv_id": "2410.15644",
+    "title": "Procedural Content Generation in Games: A Survey with Insights on Emerging LLM Integration",
+    "abstract": "Procedural Content Generation (PCG) is defined as the automatic creation of game content using algorithms. PCG has a long history in both the game industry and the academic world. It can increase player engagement and ease the work of game designers. While recent advances in deep learning approaches in PCG have enabled researchers and practitioners to create more sophisticated content, it is the arrival of Large Language Models (LLMs) that truly disrupted the trajectory of PCG advancement. This survey explores the differences between various algorithms used for PCG, including search-based methods, machine learning-based methods, other frequently used methods (e.g., noise functions), and the newcomer, LLMs. We also provide a detailed discussion on combined methods. Furthermore, we compare these methods based on the type of content they generate and the publication dates of their respective papers. Finally, we identify gaps in the existing academic work and suggest possible directions for future research.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2410.15644",
+    "pdf": "https://arxiv.org/pdf/2410.15644",
+    "hf_url": ""
+  },
+  {
+    "date": "2010-06-19",
+    "arxiv_id": "smith-whitehead-fdg-2010",
+    "title": "Analyzing the Expressive Range of a Level Generator",
+    "abstract": "Smith & Whitehead (FDG 2010) introduce 'expressive range' analysis: instead of judging a procedural level generator only by whether individual outputs are playable, characterize the generator by the distribution of its outputs over structural metrics — for platformers, linearity, leniency, and density — visualized as 2-D heatmaps. This reveals a generator's biases, coverage, and the effect of its parameters, giving a principled way to compare generators by what regions of design space they actually reach.",
+    "upvotes": 0,
+    "url": "https://dl.acm.org/doi/10.1145/1822348.1822369",
+    "pdf": "",
+    "hf_url": ""
+  },
+  {
+    "date": "2017-02-02",
+    "arxiv_id": "1702.00539",
+    "title": "Procedural Content Generation via Machine Learning (PCGML)",
+    "abstract": "This survey explores Procedural Content Generation via Machine Learning (PCGML), defined as the generation of game content using machine learning models trained on existing content. As the importance of PCG for game development increases, researchers explore new avenues for generating high-quality content with or without human involvement; this paper addresses the relatively new paradigm of using machine learning (in contrast with search-based, solver-based, and constructive methods). We focus on what is most often considered functional game content such as platformer levels, game maps, interactive fiction stories, and cards in collectible card games, as opposed to cosmetic content such as sprites and sound effects. In addition to using PCG for autonomous generation, co-creativity, mixed-initiative design, and compression, PCGML is suited for repair, critique, and content analysis because of its focus on modeling existing content. We discuss various data sources and representations that affect the resulting generated content. Multiple PCGML methods are covered, including neural networks, long short-term memory (LSTM) networks, autoencoders, and deep convolutional networks; Markov models, $n$-grams, and multi-dimensional Markov chains; clustering; and matrix factorization. Finally, we discuss open problems in the application of PCGML, including learning from small datasets, lack of training data, multi-layered learning, style-transfer, parameter tuning, and PCG as a game mechanic.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/1702.00539",
+    "pdf": "https://arxiv.org/pdf/1702.00539",
+    "hf_url": ""
+  },
+  {
+    "date": "2024-06-17",
+    "arxiv_id": "2406.12045",
+    "title": "$τ$-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+    "abstract": "Existing benchmarks do not test language agents on their interaction with human users or ability to follow domain-specific rules, both of which are vital for deploying them in real world applications. We propose $τ$-bench, a benchmark emulating dynamic conversations between a user (simulated by language models) and a language agent provided with domain-specific API tools and policy guidelines. We employ an efficient and faithful evaluation process that compares the database state at the end of a conversation with the annotated goal state. We also propose a new metric (pass^k) to evaluate the reliability of agent behavior over multiple trials. Our experiments show that even state-of-the-art function calling agents (like gpt-4o) succeed on <50% of the tasks, and are quite inconsistent (pass^8 <25% in retail). Our findings point to the need for methods that can improve the ability of agents to act consistently and follow rules reliably.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2406.12045",
+    "pdf": "https://arxiv.org/pdf/2406.12045",
+    "hf_url": ""
+  },
+  {
+    "date": "2024-11-01",
+    "arxiv_id": "2411.00640",
+    "title": "Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations",
+    "abstract": "Evaluations are critical for understanding the capabilities of large language models (LLMs). Fundamentally, evaluations are experiments; but the literature on evaluations has largely ignored the literature from other sciences on experiment analysis and planning. This article shows researchers with some training in statistics how to think about and analyze data from language model evaluations. Conceptualizing evaluation questions as having been drawn from an unseen super-population, we present formulas for analyzing evaluation data, measuring differences between two models, and planning an evaluation experiment. We make a number of specific recommendations for running language model evaluations and reporting experiment results in a way that minimizes statistical noise and maximizes informativeness.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2411.00640",
+    "pdf": "https://arxiv.org/pdf/2411.00640",
+    "hf_url": ""
+  },
+  {
+    "date": "2023-05-02",
+    "arxiv_id": "2305.01210",
+    "title": "Is Your Code Generated by ChatGPT Really Correct? Rigorous Evaluation of Large Language Models for Code Generation",
+    "abstract": "Program synthesis has been long studied with recent approaches focused on directly using the power of Large Language Models (LLMs) to generate code. Programming benchmarks, with curated synthesis problems and test-cases, are used to measure the performance of various LLMs on code synthesis. However, these test-cases can be limited in both quantity and quality for fully assessing the functional correctness of the generated code. Such limitation in the existing benchmarks begs the following question: In the era of LLMs, is the code generated really correct? To answer this, we propose EvalPlus -- a code synthesis evaluation framework to rigorously benchmark the functional correctness of LLM-synthesized code. EvalPlus augments a given evaluation dataset with large amounts of test-cases newly produced by an automatic test input generator, powered by both LLM- and mutation-based strategies. While EvalPlus is general, we extend the test-cases of the popular HumanEval benchmark by 80x to build HumanEval+. Our extensive evaluation across 26 popular LLMs (e.g., GPT-4 and ChatGPT) demonstrates that HumanEval+ is able to catch significant amounts of previously undetected wrong code synthesized by LLMs, reducing the pass@k by up-to 19.3-28.9%. We also surprisingly found that test insufficiency can lead to mis-ranking. For example, both WizardCoder-CodeLlama and Phind-CodeLlama now outperform ChatGPT on HumanEval+, while none of them could on HumanEval. Our work not only indicates that prior popular code synthesis evaluation results do not accurately reflect the true performance of LLMs for code synthesis, but also opens up a new direction to improve such programming benchmarks through automated testing. We have open-sourced our tools, enhanced datasets as well as all LLM-generated code at https://github.com/evalplus/evalplus to facilitate and accelerate future LLM-for-code research.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2305.01210",
+    "pdf": "https://arxiv.org/pdf/2305.01210",
+    "hf_url": ""
+  },
+  {
+    "date": "2024-07-01",
+    "arxiv_id": "2407.01502",
+    "title": "AI Agents That Matter",
+    "abstract": "AI agents are an exciting new research direction, and agent development is driven by benchmarks. Our analysis of current agent benchmarks and evaluation practices reveals several shortcomings that hinder their usefulness in real-world applications. First, there is a narrow focus on accuracy without attention to other metrics. As a result, SOTA agents are needlessly complex and costly, and the community has reached mistaken conclusions about the sources of accuracy gains. Our focus on cost in addition to accuracy motivates the new goal of jointly optimizing the two metrics. We design and implement one such optimization, showing its potential to greatly reduce cost while maintaining accuracy. Second, the benchmarking needs of model and downstream developers have been conflated, making it hard to identify which agent would be best suited for a particular application. Third, many agent benchmarks have inadequate holdout sets, and sometimes none at all. This has led to agents that are fragile because they take shortcuts and overfit to the benchmark in various ways. We prescribe a principled framework for avoiding overfitting. Finally, there is a lack of standardization in evaluation practices, leading to a pervasive lack of reproducibility. We hope that the steps we introduce for addressing these shortcomings will spur the development of agents that are useful in the real world and not just accurate on benchmarks.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2407.01502",
+    "pdf": "https://arxiv.org/pdf/2407.01502",
+    "hf_url": ""
+  },
+  {
+    "date": "2023-06-18",
+    "arxiv_id": "2306.10548",
+    "title": "MARBLE: Music Audio Representation Benchmark for Universal Evaluation",
+    "abstract": "In the era of extensive intersection between art and Artificial Intelligence (AI), such as image generation and fiction co-creation, AI for music remains relatively nascent, particularly in music understanding. This is evident in the limited work on deep music representations, the scarcity of large-scale datasets, and the absence of a universal and community-driven benchmark. To address this issue, we introduce the Music Audio Representation Benchmark for universaL Evaluation, termed MARBLE. It aims to provide a benchmark for various Music Information Retrieval (MIR) tasks by defining a comprehensive taxonomy with four hierarchy levels, including acoustic, performance, score, and high-level description. We then establish a unified protocol based on 14 tasks on 8 public-available datasets, providing a fair and standard assessment of representations of all open-sourced pre-trained models developed on music recordings as baselines. Besides, MARBLE offers an easy-to-use, extendable, and reproducible suite for the community, with a clear statement on copyright issues on datasets. Results suggest recently proposed large-scale pre-trained musical language models perform the best in most tasks, with room for further improvement. The leaderboard and toolkit repository are published at https://marble-bm.shef.ac.uk to promote future music AI research.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2306.10548",
+    "pdf": "https://arxiv.org/pdf/2306.10548",
+    "hf_url": ""
+  },
+  {
+    "date": "2025-09-16",
+    "arxiv_id": "2509.12667",
+    "title": "Osu2MIR: Beat Tracking Dataset Derived From Osu! Data",
+    "abstract": "In this work, we explore the use of Osu!, a community-based rhythm game, as an alternative source of beat and downbeat annotations. Osu! beatmaps are created and refined by a large, diverse community and span underrepresented genres such as anime, Vocaloid, and video game music. We introduce a pipeline for extracting annotations from Osu! beatmaps and partition them into meaningful subsets. Through manual analysis, we find that beatmaps with a single timing point or widely spaced multiple timing points (>=5 seconds apart) provide reliable annotations, while closely spaced timing points (<5 seconds apart) often require additional curation. We also observe high consistency across multiple annotations of the same song. This study demonstrates the potential of Osu! data as a scalable, diverse, and community-driven resource for MIR research. We release our pipeline and a high-quality subset osu2beat2025 to support further exploration: https://github.com/ziyunliu4444/osu2mir.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2509.12667",
+    "pdf": "https://arxiv.org/pdf/2509.12667",
+    "hf_url": ""
+  },
+  {
+    "date": "2017-03-20",
+    "arxiv_id": "1703.06891",
+    "title": "Dance Dance Convolution",
+    "abstract": "Dance Dance Revolution (DDR) is a popular rhythm-based video game. Players perform steps on a dance platform in synchronization with music as directed by on-screen step charts. While many step charts are available in standardized packs, players may grow tired of existing charts, or wish to dance to a song for which no chart exists. We introduce the task of learning to choreograph. Given a raw audio track, the goal is to produce a new step chart. This task decomposes naturally into two subtasks: deciding when to place steps and deciding which steps to select. For the step placement task, we combine recurrent and convolutional neural networks to ingest spectrograms of low-level audio features to predict steps, conditioned on chart difficulty. For step selection, we present a conditional LSTM generative model that substantially outperforms n-gram and fixed-window approaches.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/1703.06891",
+    "pdf": "https://arxiv.org/pdf/1703.06891",
+    "hf_url": ""
+  },
+  {
+    "date": "2021-05-03",
+    "arxiv_id": "2105.01051",
+    "title": "SUPERB: Speech processing Universal PERformance Benchmark",
+    "abstract": "Self-supervised learning (SSL) has proven vital for advancing research in natural language processing (NLP) and computer vision (CV). The paradigm pretrains a shared model on large volumes of unlabeled data and achieves state-of-the-art (SOTA) for various tasks with minimal adaptation. However, the speech processing community lacks a similar setup to systematically explore the paradigm. To bridge this gap, we introduce Speech processing Universal PERformance Benchmark (SUPERB). SUPERB is a leaderboard to benchmark the performance of a shared model across a wide range of speech processing tasks with minimal architecture changes and labeled data. Among multiple usages of the shared model, we especially focus on extracting the representation learned from SSL due to its preferable re-usability. We present a simple framework to solve SUPERB tasks by learning task-specialized lightweight prediction heads on top of the frozen shared model. Our results demonstrate that the framework is promising as SSL representations show competitive generalizability and accessibility across SUPERB tasks. We release SUPERB as a challenge with a leaderboard and a benchmark toolkit to fuel the research in representation learning and general speech processing.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2105.01051",
+    "pdf": "https://arxiv.org/pdf/2105.01051",
+    "hf_url": ""
+  },
+  {
+    "date": "2023-05-31",
+    "arxiv_id": "2306.00107",
+    "title": "MERT: Acoustic Music Understanding Model with Large-Scale Self-supervised Training",
+    "abstract": "Self-supervised learning (SSL) has recently emerged as a promising paradigm for training generalisable models on large-scale data in the fields of vision, text, and speech. Although SSL has been proven effective in speech and audio, its application to music audio has yet to be thoroughly explored. This is partially due to the distinctive challenges associated with modelling musical knowledge, particularly tonal and pitched characteristics of music. To address this research gap, we propose an acoustic Music undERstanding model with large-scale self-supervised Training (MERT), which incorporates teacher models to provide pseudo labels in the masked language modelling (MLM) style acoustic pre-training. In our exploration, we identified an effective combination of teacher models, which outperforms conventional speech and audio approaches in terms of performance. This combination includes an acoustic teacher based on Residual Vector Quantisation - Variational AutoEncoder (RVQ-VAE) and a musical teacher based on the Constant-Q Transform (CQT). Furthermore, we explore a wide range of settings to overcome the instability in acoustic language model pre-training, which allows our designed paradigm to scale from 95M to 330M parameters. Experimental results indicate that our model can generalise and perform well on 14 music understanding tasks and attain state-of-the-art (SOTA) overall scores.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2306.00107",
+    "pdf": "https://arxiv.org/pdf/2306.00107",
+    "hf_url": ""
+  },
+  {
+    "date": "2025-01-02",
+    "arxiv_id": "2501.01108",
+    "title": "MuQ: Self-Supervised Music Representation Learning with Mel Residual Vector Quantization",
+    "abstract": "Recent years have witnessed the success of foundation models pre-trained with self-supervised learning (SSL) in various music informatics understanding tasks, including music tagging, instrument classification, key detection, and more. In this paper, we propose a self-supervised music representation learning model for music understanding. Distinguished from previous studies adopting random projection or existing neural codec, the proposed model, named MuQ, is trained to predict tokens generated by Mel Residual Vector Quantization (Mel-RVQ). Our Mel-RVQ utilizes residual linear projection structure for Mel spectrum quantization to enhance the stability and efficiency of target extraction and lead to better performance. Experiments in a large variety of downstream tasks demonstrate that MuQ outperforms previous self-supervised music representation models with only 0.9K hours of open-source pre-training data. Scaling up the data to over 160K hours and adopting iterative training consistently improve the model performance. To further validate the strength of our model, we present MuQ-MuLan, a joint music-text embedding model based on contrastive learning, which achieves state-of-the-art performance in the zero-shot music tagging task on the MagnaTagATune dataset. Code and checkpoints are open source in https://github.com/tencent-ailab/MuQ.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2501.01108",
+    "pdf": "https://arxiv.org/pdf/2501.01108",
+    "hf_url": ""
+  },
+  {
+    "date": "2022-12-06",
+    "arxiv_id": "2212.04356",
+    "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
+    "abstract": "We study the capabilities of speech processing systems trained simply to predict large amounts of transcripts of audio on the internet. When scaled to 680,000 hours of multilingual and multitask supervision, the resulting models generalize well to standard benchmarks and are often competitive with prior fully supervised results but in a zero-shot transfer setting without the need for any fine-tuning. When compared to humans, the models approach their accuracy and robustness. We are releasing models and inference code to serve as a foundation for further work on robust speech processing.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2212.04356",
+    "pdf": "https://arxiv.org/pdf/2212.04356",
+    "hf_url": ""
+  },
+  {
+    "date": "2025-06-14",
+    "arxiv_id": "2506.12285",
+    "title": "CMI-Bench: A Comprehensive Benchmark for Evaluating Music Instruction Following",
+    "abstract": "Recent advances in audio-text large language models (LLMs) have opened new possibilities for music understanding and generation. However, existing benchmarks are limited in scope, often relying on simplified tasks or multi-choice evaluations that fail to reflect the complexity of real-world music analysis. We reinterpret a broad range of traditional MIR annotations as instruction-following formats and introduce CMI-Bench, a comprehensive music instruction following benchmark designed to evaluate audio-text LLMs on a diverse set of music information retrieval (MIR) tasks. These include genre classification, emotion regression, emotion tagging, instrument classification, pitch estimation, key detection, lyrics transcription, melody extraction, vocal technique recognition, instrument performance technique detection, music tagging, music captioning, and (down)beat tracking: reflecting core challenges in MIR research. Unlike previous benchmarks, CMI-Bench adopts standardized evaluation metrics consistent with previous state-of-the-art MIR models, ensuring direct comparability with supervised approaches. We provide an evaluation toolkit supporting all open-source audio-textual LLMs, including LTU, Qwen-audio, SALMONN, MusiLingo, etc. Experiment results reveal significant performance gaps between LLMs and supervised models, along with their culture, chronological and gender bias, highlighting the potential and limitations of current models in addressing MIR tasks. CMI-Bench establishes a unified foundation for evaluating music instruction following, driving progress in music-aware LLMs.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2506.12285",
+    "pdf": "https://arxiv.org/pdf/2506.12285",
+    "hf_url": ""
+  },
+  {
+    "date": "2022-03-06",
+    "arxiv_id": "2203.03022",
+    "title": "HEAR: Holistic Evaluation of Audio Representations",
+    "abstract": "What audio embedding approach generalizes best to a wide range of downstream tasks across a variety of everyday domains without fine-tuning? The aim of the HEAR benchmark is to develop a general-purpose audio representation that provides a strong basis for learning in a wide variety of tasks and scenarios. HEAR evaluates audio representations using a benchmark suite across a variety of domains, including speech, environmental sound, and music. HEAR was launched as a NeurIPS 2021 shared challenge. In the spirit of shared exchange, each participant submitted an audio embedding model following a common API that is general-purpose, open-source, and freely available to use. Twenty-nine models by thirteen external teams were evaluated on nineteen diverse downstream tasks derived from sixteen datasets. Open evaluation code, submitted models and datasets are key contributions, enabling comprehensive and reproducible evaluation, as well as previously impossible longitudinal studies. It still remains an open question whether one single general-purpose audio representation can perform as holistically as the human ear.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2203.03022",
+    "pdf": "https://arxiv.org/pdf/2203.03022",
+    "hf_url": ""
+  },
+  {
+    "date": "1959-03-01",
+    "arxiv_id": "campbell-fiske-1959",
+    "title": "Convergent and Discriminant Validation by the Multitrait-Multimethod Matrix",
+    "abstract": "Campbell & Fiske (1959, Psychological Bulletin) is the foundational psychometrics paper on construct validity. It introduces the multitrait-multimethod (MTMM) matrix: a construct is validated when different methods measuring the SAME trait agree (convergent validity) and measures of DIFFERENT traits stay distinct even when measured by the same method (discriminant validity). This convergent/discriminant logic is the standard for arguing that a test measures the intended construct rather than method artifacts.",
+    "upvotes": 0,
+    "url": "https://psycnet.apa.org/doi/10.1037/h0046016",
+    "pdf": "",
+    "hf_url": ""
+  },
+  {
+    "date": "2020-02-10",
+    "arxiv_id": "2002.03862",
+    "title": "Cross-modal variational inference for bijective signal-symbol translation",
+    "abstract": "Extraction of symbolic information from signals is an active field of research enabling numerous applications especially in the Musical Information Retrieval domain. This complex task, that is also related to other topics such as pitch extraction or instrument recognition, is a demanding subject that gave birth to numerous approaches, mostly based on advanced signal processing-based algorithms. However, these techniques are often non-generic, allowing the extraction of definite physical properties of the signal (pitch, octave), but not allowing arbitrary vocabularies or more general annotations. On top of that, these techniques are one-sided, meaning that they can extract symbolic data from an audio signal, but cannot perform the reverse process and make symbol-to-signal generation. In this paper, we propose an bijective approach for signal/symbol translation by turning this problem into a density estimation task over signal and symbolic domains, considered both as related random variables. We estimate this joint distribution with two different variational auto-encoders, one for each domain, whose inner representations are forced to match with an additive constraint, allowing both models to learn and generate separately while allowing signal-to-symbol and symbol-to-signal inference. In this article, we test our models on pitch, octave and dynamics symbols, which comprise a fundamental step towards music transcription and label-constrained audio generation. In addition to its versatility, this system is rather light during training and generation while allowing several interesting creative uses that we outline at the end of the article.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2002.03862",
+    "pdf": "https://arxiv.org/pdf/2002.03862",
+    "hf_url": ""
+  }
+]

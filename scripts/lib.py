@@ -121,12 +121,13 @@ def _collect_papers() -> list[dict]:
 
 
 def _assets(paper: dict) -> tuple[str | None, str | None]:
-    """Return (digest_path, audio_path) relative to repo root, if present."""
+    """Return (digest_path, audio_path) relative to repo root, if present.
+    Audio carries a content hash in the name, so match by prefix."""
     base = f"{paper['date']}-{slugify(paper['title'])[:60]}"
     d = SCRIPTS_DATA / f"{base}.txt"
-    a = AUDIO_DIR / f"{base}.mp3"
+    auds = sorted(AUDIO_DIR.glob(f"{base}*.mp3"))
     return (str(d.relative_to(ROOT)) if d.exists() else None,
-            str(a.relative_to(ROOT)) if a.exists() else None)
+            str(auds[0].relative_to(ROOT)) if auds else None)
 
 
 def _summary(paper: dict, digest_path: str | None) -> str:
@@ -235,6 +236,18 @@ def _edit_meta(aid: str, **changes) -> dict:
     path.write_text(render_card(meta, abstract, summary, tail), encoding="utf-8")
     write_index()
     return meta
+
+
+def note_once(aid: str, text: str) -> None:
+    """Append a note only if that exact text isn't already in the card
+    (idempotent — safe to call on every re-run)."""
+    text = (text or "").strip()
+    if not text:
+        return
+    path = CARDS / f"{aid}.md"
+    if not path.exists() or text in path.read_text(encoding="utf-8"):
+        return
+    _append_section(aid, "笔记", f"- {text}")
 
 
 def _append_section(aid: str, section: str, block: str) -> None:

@@ -47,19 +47,20 @@ def _prompt(paper: dict, full_text: str, minutes: int) -> str:
         else "这篇虽然和听众方向不完全对口，但也要讲得清楚扎实、有信息量：研究背景与问题、"
         "核心方法和它的直觉、关键设计、主要实验结论、以及它的意义和局限，都要覆盖，不要只停在一句话概括。"
     )
-    lo, hi = int(chars * 0.9), int(chars * 1.25)
-    return f"""请把下面这篇论文写成一段至少 {minutes} 分钟、用{lang}讲解、适合开车时收听的连续口播稿。
-目标字数 {lo} 到 {hi} 字，**务必不少于 {lo} 字**——这是硬性要求，宁可长一点也不要短。
+    lo, hi = int(chars * 0.9), int(chars * 1.2)
+    return f"""请把下面这篇论文写成一段约 {minutes} 分钟、用{lang}讲解、适合开车时收听的连续口播稿。
+总字数 {lo} 到 {hi} 字之间：不少于 {lo}（要讲得扎实有料），但**也不要超过 {hi}**——
+讲到位就收尾，不要为了凑长度而注水或重复。**最重要：必须把话讲完、用完整的句子自然结束，绝不能停在半句话。**
 
 要求：
 - 第一句话就直接切入这篇论文要解决的问题，禁止任何开场白、问候语、自我介绍、报播客名/栏目名，
   绝对不要出现"各位""大家好""欢迎收听""我是主播""通勤路上""本期节目"这类套话。
 - 全程是可以直接朗读的连续口语，不要小标题、不要分点编号、不要"第一部分"这种字样，段落之间自然过渡。
+- 输出必须是纯文本，严禁任何 Markdown 记号：不要星号加粗、不要井号标题、不要反引号、不要列表符号。
+  这些符号会被语音合成逐字念出来（语音里不存在"加粗"），想强调就用语气词和句式来强调。
 - {depth}
-- 如果讲完感觉字数还不够，就继续补充：更多背景与动机、和相关工作的对比、方法每一步的直觉、
-  具体的例子和类比、实验设置与结果的解读、潜在局限和未来方向——靠这些真内容把长度撑够，而不是重复空话注水。
-- 适当解释专业术语，用类比帮助理解；宁可多讲清楚一个机制，也不要泛泛而谈。
-- 结尾直接给结论和启发，不要"以上就是""感谢收听"这类结束语。
+- 适当解释专业术语，用类比帮助理解；宁可多讲清楚一个机制，也不要泛泛而谈，但点到为止、不要无限展开。
+- 结尾直接给一句结论和启发收住，不要"以上就是""感谢收听"这类结束语。
 - 只输出口播正文本身。
 
 论文标题：{paper['title']}
@@ -85,22 +86,39 @@ def _via_gemini(paper, full_text, minutes):
 
     genai.configure(api_key=config.GEMINI_API_KEY)
     prompt = _prompt(paper, full_text, minutes)
-    # Give the model room to reach the (now higher) target length; 8192 output
-    # tokens ≈ ~9500 Chinese chars ≈ ~28 min, the practical ceiling.
-    max_tokens = min(8192, int(minutes * config.CHARS_PER_MIN * 1.3))
+    # Generous headroom so the model can FINISH its closing sentence well within
+    # budget (target is bounded in the prompt). gemini-2.5-flash supports large
+    # output; ~1.6 tokens/Chinese-char with buffer, capped high.
+    max_tokens = min(16000, int(minutes * config.CHARS_PER_MIN * 2.0))
     last = None
     for name in _gemini_models():
-        try:
-            model = genai.GenerativeModel(name)
-            resp = model.generate_content(
-                prompt,
-                generation_config={"max_output_tokens": max_tokens, "temperature": 0.7},
-            )
-            print(f"[script] gemini ok via {name}")
-            return resp.text.strip()
-        except Exception as e:
-            last = e
-            print(f"[script] gemini {name} failed: {str(e)[:140]}")
+        for attempt in range(2):  # one retry on transient rate limits
+            try:
+                model = genai.GenerativeModel(name)
+                resp = model.generate_content(
+                    prompt,
+                    generation_config={"max_output_tokens": max_tokens, "temperature": 0.7},
+                )
+                fr = ""
+                try:
+                    fr = str(resp.candidates[0].finish_reason)
+                except Exception:
+                    pass
+                if "MAX_TOKENS" in fr:
+                    print(f"[script] WARNING: {name} hit MAX_TOKENS ({max_tokens}); "
+                          "trimming to last full sentence")
+                print(f"[script] gemini ok via {name}")
+                return resp.text.strip()
+            except Exception as e:
+                last, msg = e, str(e)
+                transient = any(s in msg for s in
+                                ("429", "503", "rate", "quota", "overloaded", "ResourceExhausted"))
+                print(f"[script] gemini {name} attempt {attempt+1} failed: {msg[:120]}")
+                if transient and attempt == 0:
+                    import time
+                    time.sleep(25)  # wait out a per-minute rate limit, then retry
+                    continue
+                break  # non-transient, or already retried -> next model
     raise last
 
 
@@ -108,11 +126,17 @@ def _via_anthropic(paper, full_text, minutes):
     import anthropic
 
     client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
+    # Match the Gemini headroom: a 20-min zh digest is ~6800 chars (~10-13k
+    # tokens), so 8192 truncated mid-sentence. Cap at 16000 like _via_gemini.
+    max_tokens = min(16000, int(minutes * config.CHARS_PER_MIN * 2.0))
     msg = client.messages.create(
         model=config.ANTHROPIC_MODEL,
-        max_tokens=8192,
+        max_tokens=max_tokens,
         messages=[{"role": "user", "content": _prompt(paper, full_text, minutes)}],
     )
+    if msg.stop_reason == "max_tokens":
+        print(f"[script] WARNING: anthropic hit max_tokens ({max_tokens}) — "
+              "output may be cut off (length check will decide)")
     return "".join(b.text for b in msg.content if b.type == "text").strip()
 
 
@@ -124,17 +148,87 @@ def _fallback(paper: dict) -> str:
     return f"{paper['title']}. {paper['abstract']}"
 
 
-def make_script(paper: dict, full_text: str = "") -> str:
+def clean_for_tts(text: str) -> str:
+    """Strip Markdown the LLM sneaks in despite the prompt. TTS reads the
+    symbols literally ("星号星号…") — there is no such thing as bold in audio."""
+    t = text.replace("\r\n", "\n")
+    t = re.sub(r"```[^\n]*", "", t)                              # code fences
+    t = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", t)               # [text](url)
+    t = re.sub(r"^\s{0,3}#{1,6}\s*", "", t, flags=re.M)          # # headings
+    t = re.sub(r"^\s*[-*•·]\s+", "", t, flags=re.M)              # bullets
+    t = re.sub(r"^\s*>\s?", "", t, flags=re.M)                   # blockquotes
+    t = re.sub(r"^\s*\|.*\|\s*$", "", t, flags=re.M)             # table rows
+    t = re.sub(r"(?<![A-Za-z0-9])_([^_\n]+)_(?![A-Za-z0-9])", r"\1", t)  # _em_
+    t = t.replace("**", "").replace("__", "")
+    for ch in ("*", "＊", "`", "#"):                              # leftovers
+        t = t.replace(ch, "")
+    t = re.sub(r"\n{3,}", "\n\n", t)
+    return t.strip()
+
+
+_SENT_END = "。！？.!?”\"’'）)"
+
+
+def trim_to_sentence(text: str) -> str:
+    """Drop any dangling half-sentence so TTS never ends mid-word.
+
+    Cut everything after the last sentence-ending punctuation. Only applied
+    when there's a real tail to drop (avoids nibbling clean endings)."""
+    text = text.rstrip()
+    if not text or text[-1] in _SENT_END:
+        return text
+    cut = max(text.rfind(p) for p in _SENT_END)
+    if cut > len(text) * 0.5:  # keep most of the script; only trim a true tail
+        trimmed = text[: cut + 1].rstrip()
+        print(f"[script] trimmed dangling tail: …{text[cut+1:cut+30]!r}")
+        return trimmed
+    return text  # no sane boundary found — leave as-is rather than gut it
+
+
+def _backend_chain() -> list[tuple[str, callable]]:
+    """Primary backend first, then the other one as fallback if its key is
+    set — a Gemini quota failure falls through to Claude instead of skipping."""
+    chain = []
+    if config.LLM_BACKEND == "anthropic":
+        order = [("anthropic", _via_anthropic), ("gemini", _via_gemini)]
+    else:
+        order = [("gemini", _via_gemini), ("anthropic", _via_anthropic)]
+    for name, fn in order:
+        key = config.GEMINI_API_KEY if name == "gemini" else config.ANTHROPIC_API_KEY
+        if key:
+            chain.append((name, fn))
+    return chain
+
+
+def make_script(paper: dict, full_text: str = ""):
+    """Return the spoken script, or None when every configured LLM FAILS
+    (e.g. quota/429) or returns a cut-off script — the caller then skips this
+    paper instead of publishing a broken episode. With LLM_BACKEND=none,
+    returns the abstract reading, which is the intended degraded mode."""
     minutes = target_minutes(paper)
-    backend = config.LLM_BACKEND
-    try:
-        if backend == "gemini" and config.GEMINI_API_KEY:
-            return _via_gemini(paper, full_text, minutes)
-        if backend == "anthropic" and config.ANTHROPIC_API_KEY:
-            return _via_anthropic(paper, full_text, minutes)
-    except Exception as e:
-        print(f"[script] LLM '{backend}' failed ({e}); falling back to abstract")
-    return _fallback(paper)
+    if config.LLM_BACKEND == "none":
+        return trim_to_sentence(clean_for_tts(_fallback(paper)))
+    # Completeness gate: a script well below the prompt's minimum length means
+    # the model was cut off (max_tokens etc.) — try the next backend / skip.
+    min_chars = int(minutes * config.CHARS_PER_MIN * 0.75)
+    chain = _backend_chain()
+    if not chain:
+        print(f"[script] backend '{config.LLM_BACKEND}' has no usable key — skipping")
+        return None
+    for name, fn in chain:
+        try:
+            raw = fn(paper, full_text, minutes)
+        except Exception as e:
+            print(f"[script] {name} FAILED ({str(e)[:160]}) — trying next backend")
+            continue
+        script = trim_to_sentence(clean_for_tts(raw))
+        if len(script) < min_chars:
+            print(f"[script] {name} INCOMPLETE ({len(script)} chars < {min_chars}) "
+                  "— likely cut off; trying next backend")
+            continue
+        return script
+    print("[script] all backends failed — skipping this paper")
+    return None
 
 
 if __name__ == "__main__":
