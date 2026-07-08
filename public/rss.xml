@@ -8,6 +8,42 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>ResearchStudio-Idea: An Evidence-Grounded Research-Ideation Skill Suite from ML Conference Outcomes</title>
+      <description>好的，这篇论文我们将用大约15分钟的中文口播形式来讲解，适合开车时收听。我会直接切入主题，没有任何开场白或问候语，并确保所有句子都完整自然地结束。</description>
+      <link>https://arxiv.org/abs/2607.04439</link>
+      <guid isPermaLink="false">2026-07-07-researchstudio-idea-an-evidence-grounded-research-ideation-s-49bbdec7.mp3</guid>
+      <pubDate>Wed, 08 Jul 2026 00:06:38 +0000</pubDate>
+      <itunes:duration>1494</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-researchstudio-idea-an-evidence-grounded-research-ideation-s-49bbdec7.mp3" length="8969328" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ResearchStudio-Reel: Automate the Last Mile of Research from Paper to Poster, Video, and Blog</title>
+      <description>当前研究论文的传播，也就是把一篇论文变成海报、演讲视频和博客文章，仍然是研究工作中的“最后一公里”，而且这一公里目前依然是手动完成的。尽管我们已经看到了一些自动化工具的出现，比如专门针对海报、视频或长篇摘要的系统，但它们普遍存在三个核心问题：</description>
+      <link>https://arxiv.org/abs/2607.04438</link>
+      <guid isPermaLink="false">2026-07-07-researchstudio-reel-automate-the-last-mile-of-research-from--625b1aed.mp3</guid>
+      <pubDate>Wed, 08 Jul 2026 00:00:25 +0000</pubDate>
+      <itunes:duration>2957</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-researchstudio-reel-automate-the-last-mile-of-research-from--625b1aed.mp3" length="17743104" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>UI-MOPD: Multi-Platform On-Policy Distillation for Continual GUI Agent Learning</title>
+      <description>今天我们来聊一篇关于图形用户界面，也就是 GUI 智能体持续学习的论文，它提出了一种名为 UI-MOPD 的方法，来解决跨平台 GUI 智能体面临的核心难题：如何在适应不同平台（比如电脑桌面和手机）的同时，还能保留住每个平台独特的交互习惯，并且避免灾难性遗忘。</description>
+      <link>https://arxiv.org/abs/2607.04425</link>
+      <guid isPermaLink="false">2026-07-07-ui-mopd-multi-platform-on-policy-distillation-for-continual--27a2e93f.mp3</guid>
+      <pubDate>Tue, 07 Jul 2026 23:55:10 +0000</pubDate>
+      <itunes:duration>1250</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-ui-mopd-multi-platform-on-policy-distillation-for-continual--27a2e93f.mp3" length="7501536" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>OmniOpt: Taxonomy, Geometry, and Benchmarking of Modern Optimizers</title>
+      <description>在大型模型训练中，优化器选择已经成为一个系统级的决策，它不仅受到计算资源、内存、超参数调优预算和任务多样性的限制，还面临着上百种优化方法所构成的碎片化局面。要在这个快速发展的领域中做出明智的选择，变得异常困难。我们看到，优化器相关的研究论文通常只围绕一个局部机制展开，比如一个新的动量估计器、预处理器、投影方法、量化器或者后更新校正。这种命名方式虽然方便实现，但却无法揭示两种优化器是否在更新过程的同一阶段进行干预，它们的组件是否正交，或者它们是否能够兼容组合。</description>
+      <link>https://arxiv.org/abs/2607.04033</link>
+      <guid isPermaLink="false">2026-07-07-omniopt-taxonomy-geometry-and-benchmarking-of-modern-optimiz-997d3857.mp3</guid>
+      <pubDate>Tue, 07 Jul 2026 23:52:59 +0000</pubDate>
+      <itunes:duration>1019</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-omniopt-taxonomy-geometry-and-benchmarking-of-modern-optimiz-997d3857.mp3" length="6114096" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Osu2MIR: Beat Tracking Dataset Derived From Osu! Data</title>
       <description>当前深度学习在节拍跟踪领域占据主导地位，但它的进一步发展却受到了现有数据集质量和规模的严重制约。传统上，节拍和下拍的标注工作往往依赖于专业人士，这导致了数据集普遍存在规模小、体裁受限、更新缓慢的问题。这些数据集通常由单一标注者完成，不可避免地引入了潜在的个人偏见，并且其中存在的错误往往在缺乏仔细审查的情况下难以被发现，这无疑成为了模型性能提升的一个瓶颈。</description>
       <link>https://arxiv.org/abs/2509.12667</link>

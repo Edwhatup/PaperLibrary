@@ -3,6 +3,13 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-07
+
+- **ResearchStudio-Idea: An Evidence-Grounded Research-Ideation Skill Suite from ML Conference Outcomes** · 38★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-researchstudio-idea-an-evidence-grounded-research-ideation-s-49bbdec7.mp3) [arXiv](https://arxiv.org/abs/2607.04439)
+- **ResearchStudio-Reel: Automate the Last Mile of Research from Paper to Poster, Video, and Blog** · 47★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-researchstudio-reel-automate-the-last-mile-of-research-from--625b1aed.mp3) [arXiv](https://arxiv.org/abs/2607.04438)
+- **UI-MOPD: Multi-Platform On-Policy Distillation for Continual GUI Agent Learning** · 62★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-ui-mopd-multi-platform-on-policy-distillation-for-continual--27a2e93f.mp3) [arXiv](https://arxiv.org/abs/2607.04425)
+- **OmniOpt: Taxonomy, Geometry, and Benchmarking of Modern Optimizers** · 64★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-omniopt-taxonomy-geometry-and-benchmarking-of-modern-optimiz-997d3857.mp3) [arXiv](https://arxiv.org/abs/2607.04033)
+
 ## 2026-07-03
 
 - **Program-as-Weights: A Programming Paradigm for Fuzzy Functions** · 56★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-03-program-as-weights-a-programming-paradigm-for-fuzzy-function-93094902.mp3) [arXiv](https://arxiv.org/abs/2607.02512)
