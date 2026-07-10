@@ -1,5 +1,65 @@
 [
   {
+    "key": "2607.07508",
+    "date": "2026-07-09",
+    "title": "Single-Rollout Asynchronous Optimization for Agentic Reinforcement Learning",
+    "abstract": "Reinforcement learning (RL) is becoming increasingly important for post-training large language models (LLMs). Previous RL pipelines for LLMs were mostly synchronous and batch-interleaved, which is inefficient for long-horizon agentic tasks. Recently, asynchronous RL has emerged as a more efficient alternative by updating the model as rollouts arrive. However, existing asynchronous RL systems often emphasize throughput, while leaving training stability and task effectiveness largely underexplored. For example, a key challenge is that group-wise sampling in the widely-used GRPO framework does not naturally fit asynchronous agentic training. In this paper, we present Single-rollout Asynchronous Optimization (SAO) to address the stability and off-policy challenges in asynchronous RL. To reduce off-policy effects and improve generalization, we replace group-wise sampling with single-rollout sampling, that is, using one rollout per prompt. We further improve this single-rollout strategy with practical value-model training designs. To improve optimization stability, we introduce a strict double-side token-level clipping strategy. SAO is able to train stably for one thousand steps and consistently outperform GRPO and its variants on agentic coding and reasoning benchmarks, such as SWE-Bench Verified, BeyondAIME, and IMOAnswerBench. We also demonstrate that single-rollout RL is particularly effective in a simulated online learning setting, where the model must adapt to changing evolving environments. To this end, SAO is successfully deployed in the agentic RL pipeline for training the open GLM-5.2 model (750B-A40B).",
+    "notes": "好的，下面是为您准备的口播稿。请注意，为了满足字数要求和口播的流畅性，我对原文的结构进行了重组和语言的润色，确保内容深入且易于理解。",
+    "url": "https://arxiv.org/abs/2607.07508",
+    "upvotes": 6,
+    "audio": "2026-07-09-single-rollout-asynchronous-optimization-for-agentic-reinfor-f26bc785.mp3",
+    "size": 5518800,
+    "published": "2026-07-10T00:08:57.441556+00:00"
+  },
+  {
+    "key": "2607.07534",
+    "date": "2026-07-09",
+    "title": "Infinite Worlds with Versatile Interactions",
+    "abstract": "We present LingBot-World 2.0 (also known as LingBot-World-Infinity), an advanced iteration of LingBot-World featuring four distinct upgrades. (1) Our model achieves an unbounded interaction horizon while maintaining consistent output quality, benefiting from a carefully crafted causal pretraining paradigm. (2) Through distilling a real-time variant from the base model, our system guarantees rapid response time, sufficient to drive 720p video streams at 60 fps. (3) Compared to the previous version, this update introduces highly diverse interactive elements, comprising a broader spectrum of actions (e.g., attacking, archery, spell-casting, and shooting) alongside a richer variety of text-driven events. (4) We pioneer the integration of an agentic harness within the domain of world modeling, wherein a pilot agent is tasked with planning and executing character behaviors, while a director agent is responsible for synthesizing novel environmental elements as the scene progresses. Additionally, to facilitate a shared experience, we develop an interface that permits multiple players to simultaneously immerse themselves in this vivid world simulator. We pair our primary 14B model with a lightweight 1.3B counterpart, which supports effortless deployment on a single GPU.",
+    "notes": "当前交互式世界模型面临两个核心挑战：首先是长时间运行的稳定性问题。因为这类模型每一帧的生成都依赖于前一帧，错误会不断累积，导致画面出现纹理模糊、几何变形，场景也会逐渐变得不真实，最终在短短几秒到几分钟内就彻底崩坏，这远达不到我们期望一个可供“生活”的世界所应有的持久性。其次，是在保持高保真度的同时实现实时交互。生成精细的视频并对实时输入做出响应，对计算资源来说是巨大的负担。以往的工作通常为了实现交互性，不得不牺牲分辨率、流畅度或控制精度，用户体验往往只停留在粗糙的摄像机移动，场景本身却死气沉沉。",
+    "url": "https://arxiv.org/abs/2607.07534",
+    "upvotes": 21,
+    "audio": "2026-07-09-infinite-worlds-with-versatile-interactions-b23ab83a.mp3",
+    "size": 9068976,
+    "published": "2026-07-10T00:07:40.616878+00:00"
+  },
+  {
+    "key": "2607.07675",
+    "date": "2026-07-09",
+    "title": "Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence",
+    "abstract": "Despite the recent promise in robot control, video generative models suffer from a domain mismatch due to their primary focus on content creation. For example, their design inherently prioritizes visual fidelity and creativity over computational efficiency and physical realism. In this work, we present LingBot-Video, a DiT-based video pretraining paradigm specifically tailored for embodied intelligence. From the architecture perspective, we adopt the Mixture-of-Experts (MoE), instead of dense, framework to achieve a better trade-off between modeling capacity and inference efficiency, and manage to scale it up from scratch. From the data perspective, we construct a data profiling engine that augments standard internet videos with extensive robot-oriented footage, encompassing manipulation, navigation, and egocentric perspectives, to equip the base model with an intrinsic understanding of actions and world dynamics. From the training perspective, we develop a multi-dimensional reward system to enforce the alignment regarding physical rationality and task completion, going beyond standard criteria such as aesthetics, prompt-following, and motion consistency. Comprehensive evaluations validate its performance and efficiency as a video foundation model. We contribute LingBot-Video as the inaugural large-scale, open-source MoE video foundation model to the community, in a pioneering effort to bridge digital creativity and physical actuation.",
+    "notes": "现有视频生成模型在内容创作上取得了巨大成功，但它们在应用于具身智能，也就是像机器人控制、自动驾驶这类需要与物理世界交互的任务时，面临着一个根本性的难题。这些模型的设计初衷往往是追求视觉逼真度和创意，而不是计算效率和物理世界的真实感，这就导致它们无法很好地理解和模拟物理世界的复杂交互。具体来说，目前的视频模型通常不强制遵守物理约束，比如物体接触时的稳定性、刚体动力学，或者在机器人进行干预操作时，长时间保持状态的一致性。这就形成了一个关键的矛盾：互联网上的海量视频虽然提供了丰富的视觉多样性，但并不能保证它们对具身交互的物理约束有足够的忠实度。",
+    "url": "https://arxiv.org/abs/2607.07675",
+    "upvotes": 39,
+    "audio": "2026-07-09-scaling-mixture-of-experts-video-pretraining-for-embodied-in-ad1dbf50.mp3",
+    "size": 11182608,
+    "published": "2026-07-10T00:05:18.155054+00:00"
+  },
+  {
+    "key": "2607.07608",
+    "date": "2026-07-09",
+    "title": "Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation",
+    "abstract": "Mainstream Vision-Language-Action (VLA) models predict actions primarily from the current observation under a Markovian assumption, thus struggling with long-horizon, temporally dependent tasks. Existing memory-augmented VLAs either expand the observation window or retrieve history from the memory bank as auxiliary policy-side context. However, they leave memory outside the native latent embedding space of VLA reasoning, preventing historical experience from being fluidly interleaved with multimodal reasoning and action formation. To this end, we introduce LaMem-VLA, a latent-memory-native framework that reconstructs historical experience into latent memory tokens and directly interweaves them with VLA reasoning. At its core, LaMem-VLA introduces four coordinated components: (i) a curator that organizes historical experience into two complementary short-term and long-term memory vaults; (ii) a seeker that queries both vaults using the multimodal cognition to retrieve context-relevant evidence; (iii) a condenser that reconstructs the retrieved evidence into compact short-term and long-term latent memory tokens; and (iv) a weaver that injects these memory tokens with the current observation and instruction into one continuous embedding sequence. By representing, retrieving, and consuming historical experience entirely in the same continuous latent space, LaMem-VLA enables memory to directly participate in VLA reasoning and guide action generation under a bounded context. Extensive experiments on SimplerEnv and LIBERO demonstrate the superiority of our LaMem-VLA.",
+    "notes": "目前主流的视觉-语言-动作模型，也就是我们常说的VLA模型，在预测机器人动作时，大多都基于一个马尔可夫假设，也就是说，它们主要依赖于当前的视觉观察来决定下一步动作，而很少考虑时间上的前后关联。这种简化导致了一个问题，我们称之为“时间短视偏差”。这意味着VLA模型虽然能对当前可见的状态做出反应，但它们很难理解过去的状态是如何变化的，任务的哪些步骤已经完成了，以及当前多步骤任务处于哪个阶段。因此，这些模型在处理那些需要长期规划和记忆的复杂操作任务时，往往会力不从心。",
+    "url": "https://arxiv.org/abs/2607.07608",
+    "upvotes": 44,
+    "audio": "2026-07-09-dual-latent-memory-in-vision-language-action-models-for-robo-1f5ddb0d.mp3",
+    "size": 6370704,
+    "published": "2026-07-10T00:02:40.348777+00:00"
+  },
+  {
+    "key": "2607.07708",
+    "date": "2026-07-09",
+    "title": "Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning",
+    "abstract": "Structure-property relationships are foundational to biology, chemistry and materials science, where function, reactivity and physical response emerge from spatial, chemical and periodic organization. Mechanistically explaining these relationships requires interpreting structural evidence through scientific principles and physical constraints, from stereochemistry and bonding to symmetry, energetics and periodic order. However, applying artificial intelligence to this process presents a joint challenge of representation and reasoning: models must preserve domain-native structural information while showing how specific evidence supports predictions under these constraints. Here we introduce SciReasoner, a multimodal scientific foundation model for native structural reasoning across proteins, small molecules and inorganic crystals. SciReasoner discretizes coordinates, topologies and periodic connectivities into a unified structure-aware vocabulary, treating structural tokens as addressable evidence units during reasoning. In homology-controlled Gene Ontology prediction, SciReasoner improves Cellular Component annotation for low-homology and orphan-like proteins, increasing F_{max} from 0.42 to 0.55. In chemistry, it raises single-step retrosynthesis accuracy from 0.63 to 0.72 while generating fragment-level disconnection and precursor-verification traces. In materials science, its representations separate elemental and compound phases and resolve high- and low-band-gap regimes. Across 86 benchmarks, SciReasoner achieves state-of-the-art performance on 67 tasks. Double-blind expert evaluation rates its reasoning traces as preferred or at least comparable to those of a frontier large language model in 98% of cases. By making structure an inspectable substrate for reasoning under scientific constraints, SciReasoner connects accurate prediction with interpretable scientific inference.",
+    "notes": "好的，我们今天来聊一篇非常前沿的论文，标题叫做“Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning”，中文可以理解为“通过深度原生结构推理实现准确、跨学科、透明的结构-性质理解”。这篇论文的核心目标，就是要解决一个在生物、化学和材料科学领域都至关重要的问题：如何深入理解物质的结构是如何决定其功能的。",
+    "url": "https://arxiv.org/abs/2607.07708",
+    "upvotes": 71,
+    "audio": "2026-07-09-accurate-interdisciplinary-and-transparent-structure-propert-e58a5db1.mp3",
+    "size": 6107760,
+    "published": "2026-07-10T00:00:47.110580+00:00"
+  },
+  {
     "key": "2607.04439",
     "date": "2026-07-07",
     "title": "ResearchStudio-Idea: An Evidence-Grounded Research-Ideation Skill Suite from ML Conference Outcomes",

@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-09
+
+- **Single-Rollout Asynchronous Optimization for Agentic Reinforcement Learning** · 6★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-single-rollout-asynchronous-optimization-for-agentic-reinfor-f26bc785.mp3) [arXiv](https://arxiv.org/abs/2607.07508)
+- **Infinite Worlds with Versatile Interactions** · 21★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-infinite-worlds-with-versatile-interactions-b23ab83a.mp3) [arXiv](https://arxiv.org/abs/2607.07534)
+- **Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence** · 39★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-scaling-mixture-of-experts-video-pretraining-for-embodied-in-ad1dbf50.mp3) [arXiv](https://arxiv.org/abs/2607.07675)
+- **Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation** · 44★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-dual-latent-memory-in-vision-language-action-models-for-robo-1f5ddb0d.mp3) [arXiv](https://arxiv.org/abs/2607.07608)
+- **Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning** · 71★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-accurate-interdisciplinary-and-transparent-structure-propert-e58a5db1.mp3) [arXiv](https://arxiv.org/abs/2607.07708)
+
 ## 2026-07-07
 
 - **ResearchStudio-Idea: An Evidence-Grounded Research-Ideation Skill Suite from ML Conference Outcomes** · 38★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-researchstudio-idea-an-evidence-grounded-research-ideation-s-49bbdec7.mp3) [arXiv](https://arxiv.org/abs/2607.04439)

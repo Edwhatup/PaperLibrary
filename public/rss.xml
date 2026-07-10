@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Single-Rollout Asynchronous Optimization for Agentic Reinforcement Learning</title>
+      <description>好的，下面是为您准备的口播稿。请注意，为了满足字数要求和口播的流畅性，我对原文的结构进行了重组和语言的润色，确保内容深入且易于理解。</description>
+      <link>https://arxiv.org/abs/2607.07508</link>
+      <guid isPermaLink="false">2026-07-09-single-rollout-asynchronous-optimization-for-agentic-reinfor-f26bc785.mp3</guid>
+      <pubDate>Fri, 10 Jul 2026 00:08:57 +0000</pubDate>
+      <itunes:duration>919</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-single-rollout-asynchronous-optimization-for-agentic-reinfor-f26bc785.mp3" length="5518800" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Infinite Worlds with Versatile Interactions</title>
+      <description>当前交互式世界模型面临两个核心挑战：首先是长时间运行的稳定性问题。因为这类模型每一帧的生成都依赖于前一帧，错误会不断累积，导致画面出现纹理模糊、几何变形，场景也会逐渐变得不真实，最终在短短几秒到几分钟内就彻底崩坏，这远达不到我们期望一个可供“生活”的世界所应有的持久性。其次，是在保持高保真度的同时实现实时交互。生成精细的视频并对实时输入做出响应，对计算资源来说是巨大的负担。以往的工作通常为了实现交互性，不得不牺牲分辨率、流畅度或控制精度，用户体验往往只停留在粗糙的摄像机移动，场景本身却死气沉沉。</description>
+      <link>https://arxiv.org/abs/2607.07534</link>
+      <guid isPermaLink="false">2026-07-09-infinite-worlds-with-versatile-interactions-b23ab83a.mp3</guid>
+      <pubDate>Fri, 10 Jul 2026 00:07:40 +0000</pubDate>
+      <itunes:duration>1511</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-infinite-worlds-with-versatile-interactions-b23ab83a.mp3" length="9068976" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence</title>
+      <description>现有视频生成模型在内容创作上取得了巨大成功，但它们在应用于具身智能，也就是像机器人控制、自动驾驶这类需要与物理世界交互的任务时，面临着一个根本性的难题。这些模型的设计初衷往往是追求视觉逼真度和创意，而不是计算效率和物理世界的真实感，这就导致它们无法很好地理解和模拟物理世界的复杂交互。具体来说，目前的视频模型通常不强制遵守物理约束，比如物体接触时的稳定性、刚体动力学，或者在机器人进行干预操作时，长时间保持状态的一致性。这就形成了一个关键的矛盾：互联网上的海量视频虽然提供了丰富的视觉多样性，但并不能保证它们对具身交互的物理约束有足够的忠实度。</description>
+      <link>https://arxiv.org/abs/2607.07675</link>
+      <guid isPermaLink="false">2026-07-09-scaling-mixture-of-experts-video-pretraining-for-embodied-in-ad1dbf50.mp3</guid>
+      <pubDate>Fri, 10 Jul 2026 00:05:18 +0000</pubDate>
+      <itunes:duration>1863</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-scaling-mixture-of-experts-video-pretraining-for-embodied-in-ad1dbf50.mp3" length="11182608" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation</title>
+      <description>目前主流的视觉-语言-动作模型，也就是我们常说的VLA模型，在预测机器人动作时，大多都基于一个马尔可夫假设，也就是说，它们主要依赖于当前的视觉观察来决定下一步动作，而很少考虑时间上的前后关联。这种简化导致了一个问题，我们称之为“时间短视偏差”。这意味着VLA模型虽然能对当前可见的状态做出反应，但它们很难理解过去的状态是如何变化的，任务的哪些步骤已经完成了，以及当前多步骤任务处于哪个阶段。因此，这些模型在处理那些需要长期规划和记忆的复杂操作任务时，往往会力不从心。</description>
+      <link>https://arxiv.org/abs/2607.07608</link>
+      <guid isPermaLink="false">2026-07-09-dual-latent-memory-in-vision-language-action-models-for-robo-1f5ddb0d.mp3</guid>
+      <pubDate>Fri, 10 Jul 2026 00:02:40 +0000</pubDate>
+      <itunes:duration>1061</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-dual-latent-memory-in-vision-language-action-models-for-robo-1f5ddb0d.mp3" length="6370704" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning</title>
+      <description>好的，我们今天来聊一篇非常前沿的论文，标题叫做“Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning”，中文可以理解为“通过深度原生结构推理实现准确、跨学科、透明的结构-性质理解”。这篇论文的核心目标，就是要解决一个在生物、化学和材料科学领域都至关重要的问题：如何深入理解物质的结构是如何决定其功能的。</description>
+      <link>https://arxiv.org/abs/2607.07708</link>
+      <guid isPermaLink="false">2026-07-09-accurate-interdisciplinary-and-transparent-structure-propert-e58a5db1.mp3</guid>
+      <pubDate>Fri, 10 Jul 2026 00:00:47 +0000</pubDate>
+      <itunes:duration>1017</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-accurate-interdisciplinary-and-transparent-structure-propert-e58a5db1.mp3" length="6107760" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>ResearchStudio-Idea: An Evidence-Grounded Research-Ideation Skill Suite from ML Conference Outcomes</title>
       <description>好的，这篇论文我们将用大约15分钟的中文口播形式来讲解，适合开车时收听。我会直接切入主题，没有任何开场白或问候语，并确保所有句子都完整自然地结束。</description>
       <link>https://arxiv.org/abs/2607.04439</link>
