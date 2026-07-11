@@ -1,5 +1,65 @@
 [
   {
+    "key": "2607.08758",
+    "date": "2026-07-10",
+    "title": "Ideas Have Genomes: Benchmarking Scientific Lineage Reasoning and Lineage-Grounded Idea Generation",
+    "abstract": "Scientific ideas rarely start from a blank page. They inherit mechanisms, repair known limitations, and recombine pieces of earlier work, much like biological genomes. Current benchmarks still say little about whether AI systems can follow this inheritance structure. We present IdeaGene-Bench (IG-Bench), a benchmark for scientific lineage reasoning and lineage-grounded idea generation. IG-Bench is organized around the IdeaGene framework: each paper or proposal is represented as a set of minimal, typed, evidence-grounded Idea Genome objects, and a GenomeDiff aligns these objects to record inheritance, mutation, loss, external import, and novel insertion under six operational evolutionary dynamics. The benchmark contains 1,961 golden lineage traces, 1,085 curated Idea Genome objects, and 920 pairwise GenomeDiff records across 10 scientific domains. It supports two evaluations. IG-Exam (42 task types, 1,029 instances) tests closed-form lineage reasoning across Idea Genome abstraction, inheritance tracing, evolutionary reasoning, and lineage verification. IG-Arena evaluates generation with a lineage-conditioned Population-Evolution Score(PES), asking whether a proposal can be inserted as a coherent descendant of a given lineage population: it should inherit the right Idea Genome objects, vary meaningfully from nearby work, and offer selection value for future research. Experiments on 14 LLM-based scientists expose a compositional bottleneck. The strongest system reaches only 27.3% exact accuracy on lineage reasoning, and structured lineage context reshuffles system rankings rather than helping every participant uniformly.",
+    "notes": "好的，这是一段约 20 分钟的连续口播稿，总字数在 6120 到 8160 之间，旨在深入讲解论文《Ideas Have Genomes: Benchmarking Scientific Lineage Reasoning and Lineage-Grounded Idea Generation》。",
+    "url": "https://arxiv.org/abs/2607.08758",
+    "upvotes": 20,
+    "audio": "2026-07-10-ideas-have-genomes-benchmarking-scientific-lineage-reasoning-fcea50aa.mp3",
+    "size": 9940896,
+    "published": "2026-07-11T00:01:20.014089+00:00"
+  },
+  {
+    "key": "2607.08768",
+    "date": "2026-07-10",
+    "title": "UniClawBench: A Universal Benchmark for Proactive Agents on Real-World Tasks",
+    "abstract": "The rapid development of large language models and multimodal large language models has accelerated the emergence of proactive agents capable of operating everyday tools and assisting users in real-world environments. However, existing benchmarks struggle to evaluate such agents effectively, as they often rely on sandboxed environments and single-turn evaluation paradigms. Moreover, their scenario-based task taxonomies mix multiple model capabilities within the same task category, making it difficult to identify the root causes of agent failures. To address these limitations, we introduce UniClawBench, the first capability-driven benchmark designed to evaluate proactive agents in dynamic, real-world settings. UniClawBench is built around five foundational model capabilities: Skill Usage, Exploration, Long-Context Reasoning, Multimodal Understanding, and Cross-Platform Coordination. Based on these capabilities, we design 400 bilingual real-world tasks. Unlike previous benchmarks that rely on static, pre-recorded answers, our benchmark evaluates agents in live Docker containers using fine-grained, step-by-step completion checkpoints. Furthermore, we design a closed-loop evaluation strategy comprising an executor agent, a hidden supervisor agent, and a user agent to simulate realistic multi-turn human feedback without leaking grading criteria. To disentangle base model capabilities from framework-level design choices, we evaluate state-of-the-art models under multiple agent frameworks. Through comprehensive comparisons across both models and frameworks, we show how base model capabilities and agent framework designs jointly shape performance in real-world environments. To facilitate future research, we make our benchmark and code publicly available at https://github.com/HKU-MMLab/UniClawBench.",
+    "notes": "当前大语言模型和多模态大语言模型发展迅猛，催生了能够操作日常工具、在真实世界环境中协助用户的主动式智能体。然而，现有的基准测试在评估这类智能体时却面临诸多挑战。",
+    "url": "https://arxiv.org/abs/2607.08768",
+    "upvotes": 22,
+    "audio": "2026-07-10-uniclawbench-a-universal-benchmark-for-proactive-agents-on-r-dcf1a151.mp3",
+    "size": 8134848,
+    "published": "2026-07-10T23:59:13.866791+00:00"
+  },
+  {
+    "key": "2601.16211",
+    "date": "2026-07-10",
+    "title": "Why Can't I Open My Drawer? Mitigating Object-Driven Shortcuts in Zero-Shot Compositional Action Recognition",
+    "abstract": "Zero-Shot Compositional Action Recognition (ZS-CAR) requires recognizing novel verb-object combinations composed of previously observed primitives. In this work, we tackle a key failure mode: models predict verbs via object-driven shortcuts (i.e., relying on the labeled object class) rather than temporal evidence. We argue that sparse compositional supervision and verb-object learning asymmetry can promote object-driven shortcut learning. Our analysis with proposed diagnostic metrics shows that existing methods overfit to training co-occurrence patterns and underuse temporal verb cues, resulting in weak generalization to unseen compositions. To address object-driven shortcuts, we propose Robust COmpositional REpresentations (RCORE) with two components. Co-occurrence Prior Regularization (CPR) adds explicit supervision for unseen compositions and regularizes the model against frequent co-occurrence priors by treating them as hard negatives. Temporal Order Regularization for Composition (TORC) enforces temporal-order sensitivity to learn temporally grounded verb representations. Across Sth-com and EK100-com, RCORE reduces shortcut diagnostics and consequently improves compositional generalization.",
+    "notes": "这篇论文要解决的核心问题是：在零样本组合动作识别任务中，模型经常会走捷径，过度依赖视频中的“物体”信息来预测“动作”，而不是真正理解动作随时间变化的动态过程。这导致模型在识别从未见过的动作-物体组合时表现很差。",
+    "url": "https://arxiv.org/abs/2601.16211",
+    "upvotes": 42,
+    "audio": "2026-07-10-why-can-t-i-open-my-drawer-mitigating-object-driven-shortcut-212fac0f.mp3",
+    "size": 3535920,
+    "published": "2026-07-10T23:57:31.970519+00:00"
+  },
+  {
+    "key": "2603.29616",
+    "date": "2026-07-10",
+    "title": "Video-Oasis: Rethinking Evaluation of Video Understanding",
+    "abstract": "The inherent complexity of video understanding makes it difficult to determine whether Video-LLM benchmark performance stems from visual perception, linguistic reasoning, or knowledge priors. While many benchmarks have emerged to assess high-level reasoning, shared criteria for evaluating video understanding remain largely overlooked. Instead of introducing yet another benchmark, we take a step back to re-examine the criteria for evaluating video understanding. In this work, we introduce Video-Oasis, a sustainable diagnostic suite for systematically auditing existing video understanding benchmarks. This audit reveals that 55\\% of existing benchmark samples are solvable without visual input or temporal context. After filtering these shortcuts, the remaining video-native challenges expose a substantial capability gap: state-of-the-art models perform only marginally above random guessing. Building on these findings, we use the distilled challenges as a testbed to investigate which algorithmic design choices contribute to robust video understanding. We hope our work provides a practical foundation for constructing rigorous video benchmarks and evaluating future Video-LLMs. Code is available at https://github.com/sejong-rcv/Video-Oasis.",
+    "notes": "当前视频理解领域面临一个核心问题：我们很难真正判断一个视频大语言模型在基准测试中表现出色，究竟是因为它具备了强大的视觉感知能力、精妙的语言推理能力，还是仅仅依赖了某种先验知识或数据中的捷径。虽然我们看到了各种评估高级推理能力的基准测试层出不穷，但一个共同的、用于评估“真正的”视频理解能力的标准，却在很大程度上被忽视了。",
+    "url": "https://arxiv.org/abs/2603.29616",
+    "upvotes": 43,
+    "audio": "2026-07-10-video-oasis-rethinking-evaluation-of-video-understanding-b44d6000.mp3",
+    "size": 6753024,
+    "published": "2026-07-10T23:56:19.729197+00:00"
+  },
+  {
+    "key": "2607.03118",
+    "date": "2026-07-10",
+    "title": "Vidu S1: A Real-Time Interactive Video Generation Model",
+    "abstract": "We introduce Vidu S1, a real-time interactive video generation model supporting voice control of digital characters. Users can control video generation content at any moment through voice instructions. Vidu S1 supports infinite-length real-time video generation without blurring, drift, or visual distortion. Built with TurboDiffusion and TurboServe, Vidu S1 outputs 540p real-time videos at up to 42 FPS on regular consumer GPUs. Users can upload custom images of real people, anime, and pets, and choose different voice tones for personalized experiences. Experiments show that Vidu S1 achieves the best performance across all test metrics while fully meeting real-time inference requirements. A playable online demo is available at https://vidu.com/vidu-stream.",
+    "notes": "目前主流的视频生成模型，比如我们熟知的Sora，虽然能产出高质量视频，但它们普遍遵循一种离线、一次性的生成模式。这意味着用户输入一个指令后，需要等待几分钟甚至几十分钟，才能收到完整的视频。在这个过程中，用户只能被动等待，无法主动介入或实时互动。这种局限性源于当前主流的离线扩散模型范式，它需要同步地对整个视频进行多步去噪，直到最后才生成一个完整的、清晰的视频。",
+    "url": "https://arxiv.org/abs/2607.03118",
+    "upvotes": 108,
+    "audio": "2026-07-10-vidu-s1-a-real-time-interactive-video-generation-model-f0cdec08.mp3",
+    "size": 7709616,
+    "published": "2026-07-10T23:54:23.997945+00:00"
+  },
+  {
     "key": "2607.07508",
     "date": "2026-07-09",
     "title": "Single-Rollout Asynchronous Optimization for Agentic Reinforcement Learning",

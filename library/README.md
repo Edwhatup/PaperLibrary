@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-10
+
+- **Ideas Have Genomes: Benchmarking Scientific Lineage Reasoning and Lineage-Grounded Idea Generation** · 20★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-10-ideas-have-genomes-benchmarking-scientific-lineage-reasoning-fcea50aa.mp3) [arXiv](https://arxiv.org/abs/2607.08758)
+- **UniClawBench: A Universal Benchmark for Proactive Agents on Real-World Tasks** · 22★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-10-uniclawbench-a-universal-benchmark-for-proactive-agents-on-r-dcf1a151.mp3) [arXiv](https://arxiv.org/abs/2607.08768)
+- **Why Can't I Open My Drawer? Mitigating Object-Driven Shortcuts in Zero-Shot Compositional Action Recognition** · 42★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-10-why-can-t-i-open-my-drawer-mitigating-object-driven-shortcut-212fac0f.mp3) [arXiv](https://arxiv.org/abs/2601.16211)
+- **Video-Oasis: Rethinking Evaluation of Video Understanding** · 43★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-10-video-oasis-rethinking-evaluation-of-video-understanding-b44d6000.mp3) [arXiv](https://arxiv.org/abs/2603.29616)
+- **Vidu S1: A Real-Time Interactive Video Generation Model** · 108★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-10-vidu-s1-a-real-time-interactive-video-generation-model-f0cdec08.mp3) [arXiv](https://arxiv.org/abs/2607.03118)
+
 ## 2026-07-09
 
 - **Single-Rollout Asynchronous Optimization for Agentic Reinforcement Learning** · 6★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-single-rollout-asynchronous-optimization-for-agentic-reinfor-f26bc785.mp3) [arXiv](https://arxiv.org/abs/2607.07508)
