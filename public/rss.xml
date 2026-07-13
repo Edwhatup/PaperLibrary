@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>KronQ: LLM Quantization via Kronecker-Factored Hessian</title>
+      <description>大型语言模型在部署时面临的核心挑战，是如何在保持高性能的同时，显著降低其庞大的内存占用和计算需求。传统的量化方法，特别是训练后量化，也就是我们常说的PTQ，虽然能有效压缩模型，但它们往往只关注模型输入端的统计信息，比如输入激活的协方差。这就导致了一个潜在的问题：这些方法默认模型的输出端，也就是模型的每个输出通道，对量化误差的贡献是均等的。但实际上，这并非总是如此。</description>
+      <link>https://arxiv.org/abs/2607.07964</link>
+      <guid isPermaLink="false">2026-07-13-kronq-llm-quantization-via-kronecker-factored-hessian-dfdd65db.mp3</guid>
+      <pubDate>Mon, 13 Jul 2026 23:53:38 +0000</pubDate>
+      <itunes:duration>468</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-13-kronq-llm-quantization-via-kronecker-factored-hessian-dfdd65db.mp3" length="2808576" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Trust Region Policy Distillation</title>
+      <description>大型语言模型在经过初步监督微调后，我们通常会进行后续的策略优化，而策略蒸馏就是其中一种非常流行的方法。其中，链上策略蒸馏，也就是On-Policy Distillation，简称OPD，已经迅速成为一种主流范式。它通过一个更强大的教师模型，为学生模型提供细致到每个词元的信号，让学生模型进行学习。从数学上讲，这等同于一种强化学习过程，其中即时奖励被定义为教师策略和学生策略之间对数概率的比值。OPD之所以受到青睐，是因为它能有效避免监督微调后可能出现的灾难性遗忘问题，并且通过提供密集的奖励信号，克服了传统基于可验证奖励的强化学习在样本效率和稳定性方面的不足。</description>
+      <link>https://arxiv.org/abs/2607.04751</link>
+      <guid isPermaLink="false">2026-07-13-trust-region-policy-distillation-4b8c483e.mp3</guid>
+      <pubDate>Mon, 13 Jul 2026 23:51:45 +0000</pubDate>
+      <itunes:duration>660</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-13-trust-region-policy-distillation-4b8c483e.mp3" length="3961872" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Video Generation Models are General-Purpose Vision Learners</title>
+      <description>当前计算机视觉领域面临一个核心挑战：我们虽然在图像分割、深度估计等特定任务上取得了显著进展，但这些成就往往依赖于为每个任务量身定制的专用模型。这与自然语言处理领域形成了鲜明对比。在自然语言处理中，大语言模型通过“下一个词预测”这种通用预训练范式，将数千种不同的语言任务统一成了一个单一的通用智能体，并展现出如链式思考、上下文学习等惊人的涌现能力。那么，在计算机视觉领域，我们究竟需要什么样的催化剂，才能实现一个像大语言模型那样，能够进行通用视觉感知的模型呢？</description>
+      <link>https://arxiv.org/abs/2607.09024</link>
+      <guid isPermaLink="false">2026-07-13-video-generation-models-are-general-purpose-vision-learners-33832a54.mp3</guid>
+      <pubDate>Mon, 13 Jul 2026 23:50:32 +0000</pubDate>
+      <itunes:duration>1099</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-13-video-generation-models-are-general-purpose-vision-learners-33832a54.mp3" length="6595488" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Scalable Visual Pretraining for Language Intelligence</title>
+      <description>好的，没问题。这是一段为你定制的，时长约 20 分钟的口播稿，将这篇论文的核心内容深入浅出地讲解出来，适合在开车时收听，并且严格遵循了你提出的所有要求。</description>
+      <link>https://arxiv.org/abs/2607.09657</link>
+      <guid isPermaLink="false">2026-07-13-scalable-visual-pretraining-for-language-intelligence-1f49bff1.mp3</guid>
+      <pubDate>Mon, 13 Jul 2026 23:48:34 +0000</pubDate>
+      <itunes:duration>1343</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-13-scalable-visual-pretraining-for-language-intelligence-1f49bff1.mp3" length="8061840" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading</title>
+      <description>目前，AI智能体在完成那些短小、明确的任务上表现出色，比如修复一个代码库问题，或者执行几条简单的shell命令，但当面对需要长时间规划、多步骤执行的复杂任务时，它们的极限究竟在哪里？现有的基准测试，往往只关注那些几分钟内就能完成的简单问题，并且通常只根据最终结果进行评估。这种过于简化的评估方式，不仅忽略了智能体在中间过程的进展和局部解决方案，也导致了稀疏的奖励信号，使得我们无法全面准确地衡量智能体的真实能力。</description>
+      <link>https://arxiv.org/abs/2607.08964</link>
+      <guid isPermaLink="false">2026-07-13-long-horizon-terminal-bench-testing-the-limits-of-agents-on--76efd180.mp3</guid>
+      <pubDate>Mon, 13 Jul 2026 23:46:38 +0000</pubDate>
+      <itunes:duration>1270</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-13-long-horizon-terminal-bench-testing-the-limits-of-agents-on--76efd180.mp3" length="7624512" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Ideas Have Genomes: Benchmarking Scientific Lineage Reasoning and Lineage-Grounded Idea Generation</title>
       <description>好的，这是一段约 20 分钟的连续口播稿，总字数在 6120 到 8160 之间，旨在深入讲解论文《Ideas Have Genomes: Benchmarking Scientific Lineage Reasoning and Lineage-Grounded Idea Generation》。</description>
       <link>https://arxiv.org/abs/2607.08758</link>

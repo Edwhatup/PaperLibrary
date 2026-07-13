@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-13
+
+- **KronQ: LLM Quantization via Kronecker-Factored Hessian** · 16★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-13-kronq-llm-quantization-via-kronecker-factored-hessian-dfdd65db.mp3) [arXiv](https://arxiv.org/abs/2607.07964)
+- **Trust Region Policy Distillation** · 17★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-13-trust-region-policy-distillation-4b8c483e.mp3) [arXiv](https://arxiv.org/abs/2607.04751)
+- **Video Generation Models are General-Purpose Vision Learners** · 40★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-13-video-generation-models-are-general-purpose-vision-learners-33832a54.mp3) [arXiv](https://arxiv.org/abs/2607.09024)
+- **Scalable Visual Pretraining for Language Intelligence** · 41★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-13-scalable-visual-pretraining-for-language-intelligence-1f49bff1.mp3) [arXiv](https://arxiv.org/abs/2607.09657)
+- **Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading** · 46★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-13-long-horizon-terminal-bench-testing-the-limits-of-agents-on--76efd180.mp3) [arXiv](https://arxiv.org/abs/2607.08964)
+
 ## 2026-07-10
 
 - **Ideas Have Genomes: Benchmarking Scientific Lineage Reasoning and Lineage-Grounded Idea Generation** · 20★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-10-ideas-have-genomes-benchmarking-scientific-lineage-reasoning-fcea50aa.mp3) [arXiv](https://arxiv.org/abs/2607.08758)
