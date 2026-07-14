@@ -46,6 +46,15 @@ frontmatter and the index.
 3. **Record the exchange**: `lib.py qa <id> -q "<their question>" -a "<answer>"`
    so the Q&A is persisted in the card.
 
+## Course episodes (教学课)
+
+Besides paper digests, the radio carries hand-written COURSE episodes (e.g.
+the Agent Benchmark design course). They are curated lists in
+`data/curated/course_*.json` with ids like `course-ab-01`; their scripts in
+`data/scripts/` are authored by Claude Code (grounded in web sources listed
+in each card's 笔记) — never LLM-pipeline-generated. Cards carry the
+`course` tag; treat them like papers for search/QA/quiz.
+
 ## When the user wants to be quizzed (测验/quiz me)
 
 Use the **`quiz-me` skill** (`.claude/skills/quiz-me`). It reads the paper's card

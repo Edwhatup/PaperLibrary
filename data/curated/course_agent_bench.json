@@ -1,0 +1,38 @@
+[
+ {
+  "id": "course-ab-01",
+  "title": "Benchmark 设计课 第1讲:什么是好的基准——构念效度与质量框架",
+  "date": "2026-07-06",
+  "url": "",
+  "abstract": "课程第1讲。以 BetterBench(斯坦福,46条最佳实践,MMLU 质量评分垫底 5.5 vs GPQA 11.0)与牛津 Measuring what Matters(445个基准系统综述)为骨架,讲清构念效度:你测的真的是你声称的现象吗。覆盖:现象定义-任务-指标-结论四环节检查、失效率数字(仅16%做统计检验、81%依赖精确匹配)、GSM8K 反面案例、基准的四阶段生命周期(设计/实现/文档/维护)、地板分/天花板/人类基线三锚点、Goodhart 定律引入,并给出针对关卡生成基准的三个起点问题。",
+  "tags": [
+   "course",
+   "agent-benchmark"
+  ],
+  "note": "来源: BetterBench arXiv:2411.12990 / Measuring what Matters arXiv:2511.04703 / Stanford HAI 解读 hai.stanford.edu/policy/what-makes-a-good-ai-benchmark"
+ },
+ {
+  "id": "course-ab-02",
+  "title": "Benchmark 设计课 第2讲:静态基准解剖——从 MMLU 到 SWE-bench",
+  "date": "2026-07-07",
+  "url": "",
+  "abstract": "课程第2讲。解剖三代静态基准的设计演化:题库型 MMLU(三种实现同模型差15个百分点、格式波动5%、污染与标注错误四宗罪;BBQ 偏见得分为0实为模型没作答的警世故事)→ 执行验证型 HumanEval(pass@k 无偏估计器、从零手写抗污染;EvalPlus 测试扩充80倍分数集体跳水15分的弱 oracle 教训)→ 真实工件型 SWE-bench(fail-to-pass、时间切分;Verified 审核发现68.3%坏题、GPT-4o 分数翻倍)。收尾讲饱和与 headroom:WebArena 人78% vs GPT-4 14%。",
+  "tags": [
+   "course",
+   "agent-benchmark"
+  ],
+  "note": "来源: HuggingFace open-llm-leaderboard-mmlu 博客 / Anthropic Challenges in evaluating AI systems / HumanEval arXiv:2107.03374 / EvalPlus arXiv:2305.01210 / SWE-bench arXiv:2310.06770 / OpenAI Introducing SWE-bench Verified"
+ },
+ {
+  "id": "course-ab-03",
+  "title": "Benchmark 设计课 第3讲:错误分析——一线团队的评测基本功",
+  "date": "2026-07-08",
+  "url": "",
+  "abstract": "课程第3讲。产品级 evals 教义如何服务公共基准设计:Hamel Husain 评测三层级(断言/人工+模型评审/A-B测试)、Rechat 打地鼠泥潭案例、错误分析三步法(开放式编码→主轴编码→量化,初始读100条trace、约20条无新类别即饱和、60-80%预算花在评测)、NurtureBoss 日期处理33%→95% 案例、二元 pass/fail 优于 Likert、仁慈独裁者标注模式、合理通过率约70%、合成数据只造输入不造输出,以及 Anthropic 数量优先与 Hamel 人肉精读的张力调和:先定性发现、再定量规模化。",
+  "tags": [
+   "course",
+   "agent-benchmark"
+  ],
+  "note": "来源: hamel.dev/blog/posts/evals / hamel.dev/blog/posts/field-guide / hamel.dev/blog/posts/evals-faq (Hamel & Shreya Shankar) / OpenAI Evaluation Best Practices / Anthropic docs Create strong empirical evaluations"
+ }
+]
