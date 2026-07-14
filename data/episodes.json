@@ -268,11 +268,11 @@
     "date": "2025-09-16",
     "title": "Osu2MIR: Beat Tracking Dataset Derived From Osu! Data",
     "abstract": "In this work, we explore the use of Osu!, a community-based rhythm game, as an alternative source of beat and downbeat annotations. Osu! beatmaps are created and refined by a large, diverse community and span underrepresented genres such as anime, Vocaloid, and video game music. We introduce a pipeline for extracting annotations from Osu! beatmaps and partition them into meaningful subsets. Through manual analysis, we find that beatmaps with a single timing point or widely spaced multiple timing points (>=5 seconds apart) provide reliable annotations, while closely spaced timing points (<5 seconds apart) often require additional curation. We also observe high consistency across multiple annotations of the same song. This study demonstrates the potential of Osu! data as a scalable, diverse, and community-driven resource for MIR research. We release our pipeline and a high-quality subset osu2beat2025 to support further exploration: https://github.com/ziyunliu4444/osu2mir.",
-    "notes": "当前深度学习在节拍跟踪领域占据主导地位，但它的进一步发展却受到了现有数据集质量和规模的严重制约。传统上，节拍和下拍的标注工作往往依赖于专业人士，这导致了数据集普遍存在规模小、体裁受限、更新缓慢的问题。这些数据集通常由单一标注者完成，不可避免地引入了潜在的个人偏见，并且其中存在的错误往往在缺乏仔细审查的情况下难以被发现，这无疑成为了模型性能提升的一个瓶颈。",
+    "notes": "节拍追踪（beat tracking）这个任务听起来简单——就是让机器听音乐、找出每一拍在哪一秒——但它在音乐信息检索领域一直是个硬骨头，而制约它进步的核心瓶颈，不是算法不够强，而是数据不够好、不够多、不够多样。这篇论文想解决的正是这个问题：能不能从一个意想不到的地方找到高质量的节拍标注数据？他们的答案是：去音游里挖。",
     "url": "https://arxiv.org/abs/2509.12667",
     "upvotes": 0,
-    "audio": "2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-b4f170ee.mp3",
-    "size": 4882896,
+    "audio": "2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-cd770c44.mp3",
+    "size": 5626512,
     "published": "2026-07-06T12:43:17.270261+00:00"
   },
   {
@@ -280,11 +280,11 @@
     "date": "1959-03-01",
     "title": "Convergent and Discriminant Validation by the Multitrait-Multimethod Matrix",
     "abstract": "Campbell & Fiske (1959, Psychological Bulletin) is the foundational psychometrics paper on construct validity. It introduces the multitrait-multimethod (MTMM) matrix: a construct is validated when different methods measuring the SAME trait agree (convergent validity) and measures of DIFFERENT traits stay distinct even when measured by the same method (discriminant validity). This convergent/discriminant logic is the standard for arguing that a test measures the intended construct rather than method artifacts.",
-    "notes": "我们如何才能确信一个心理学量表，比如测量人格特质、智力水平或者抑郁程度的问卷，它真正测量的是我们所宣称的那个抽象概念，而不是别的什么东西，或者仅仅是测量方法本身带来的误差？这就是心理学研究中一个核心且复杂的问题：构念效度，也就是我们常说的“结构效度”。它关系到我们所有心理学测量结果的可靠性和科学性。",
+    "notes": "心理学里有一个长期困扰研究者的问题：我们用问卷或测验测出来的分数，到底测的是我们真正想测的那个心理特质，还是只不过反映了测量工具本身的特性？换句话说，高分是因为这个人真的具备某种能力或特质，还是因为他碰巧擅长填问卷、擅长应对这种题目格式？这个问题听起来有点哲学，但它直接决定了心理学测量能不能被认真对待。1959年，美国心理学家坎贝尔和菲斯克在《心理学公报》上发表了一篇文章，题目是《多特质多方法矩阵的聚合效度与区分效度》。这篇文章后来成为心理测量学领域引用次数最多的经典论文之一，它提出的那套逻辑框架，至今仍然是判断一个心理测验是否真的测到了它声称要测的东西的核心标准。",
     "url": "https://psycnet.apa.org/doi/10.1037/h0046016",
     "upvotes": 0,
-    "audio": "1959-03-01-convergent-and-discriminant-validation-by-the-multitrait-mul-f4a28d55.mp3",
-    "size": 5623200,
+    "audio": "1959-03-01-convergent-and-discriminant-validation-by-the-multitrait-mul-53b1b082.mp3",
+    "size": 4695552,
     "published": "2026-07-04T10:53:25.637004+00:00"
   },
   {
@@ -340,11 +340,11 @@
     "date": "2020-02-10",
     "title": "Cross-modal variational inference for bijective signal-symbol translation",
     "abstract": "Extraction of symbolic information from signals is an active field of research enabling numerous applications especially in the Musical Information Retrieval domain. This complex task, that is also related to other topics such as pitch extraction or instrument recognition, is a demanding subject that gave birth to numerous approaches, mostly based on advanced signal processing-based algorithms. However, these techniques are often non-generic, allowing the extraction of definite physical properties of the signal (pitch, octave), but not allowing arbitrary vocabularies or more general annotations. On top of that, these techniques are one-sided, meaning that they can extract symbolic data from an audio signal, but cannot perform the reverse process and make symbol-to-signal generation. In this paper, we propose an bijective approach for signal/symbol translation by turning this problem into a density estimation task over signal and symbolic domains, considered both as related random variables. We estimate this joint distribution with two different variational auto-encoders, one for each domain, whose inner representations are forced to match with an additive constraint, allowing both models to learn and generate separately while allowing signal-to-symbol and symbol-to-signal inference. In this article, we test our models on pitch, octave and dynamics symbols, which comprise a fundamental step towards music transcription and label-constrained audio generation. In addition to its versatility, this system is rather light during training and generation while allowing several interesting creative uses that we outline at the end of the article.",
-    "notes": "我们今天要聊的这篇论文，它关注的是一个在音乐信息检索领域非常核心的问题：如何实现音频信号和音乐符号之间的双向转换。想象一下，我们想把一段音乐录音自动转换成乐谱，或者反过来，从一个乐谱生成一段逼真的音乐。这听起来好像很直接，但实际上，现有的方法往往存在不少局限。",
+    "notes": "音乐转录这件事，长期以来都是一个单向的问题：给你一段音频，你从里面提取出音符信息。但这篇论文问的是另一个问题——能不能让这个过程双向都走通？既能从音频推出符号，也能从符号生成音频？而且两边共用同一套底层表示？这就是这篇论文的核心出发点。",
     "url": "https://arxiv.org/abs/2002.03862",
     "upvotes": 0,
-    "audio": "2020-02-10-cross-modal-variational-inference-for-bijective-signal-symbo-5f50d332.mp3",
-    "size": 5569632,
+    "audio": "2020-02-10-cross-modal-variational-inference-for-bijective-signal-symbo-29012f22.mp3",
+    "size": 5472720,
     "published": "2026-07-02T17:56:08.760555+00:00"
   },
   {
@@ -352,11 +352,11 @@
     "date": "2022-03-06",
     "title": "HEAR: Holistic Evaluation of Audio Representations",
     "abstract": "What audio embedding approach generalizes best to a wide range of downstream tasks across a variety of everyday domains without fine-tuning? The aim of the HEAR benchmark is to develop a general-purpose audio representation that provides a strong basis for learning in a wide variety of tasks and scenarios. HEAR evaluates audio representations using a benchmark suite across a variety of domains, including speech, environmental sound, and music. HEAR was launched as a NeurIPS 2021 shared challenge. In the spirit of shared exchange, each participant submitted an audio embedding model following a common API that is general-purpose, open-source, and freely available to use. Twenty-nine models by thirteen external teams were evaluated on nineteen diverse downstream tasks derived from sixteen datasets. Open evaluation code, submitted models and datasets are key contributions, enabling comprehensive and reproducible evaluation, as well as previously impossible longitudinal studies. It still remains an open question whether one single general-purpose audio representation can perform as holistically as the human ear.",
-    "notes": "我们今天聊的这篇论文是“HEAR：音频表示的整体评估”。它要解决的核心问题是：我们能不能找到一种通用的音频表示方法，能够像人耳一样，对各种日常场景下的音频任务都表现出色，而且不需要针对每个任务进行专门的微调？",
+    "notes": "音频领域长期以来有一个根本性的困境：我们有成百上千种音频任务，语音识别、环境声音分类、音乐流派判断、音高检测、说话人计数……但每次做新任务的时候，研究者往往得从头训练或者精调一个专门的模型。这就引出了一个核心问题：有没有一种通用的音频表示，不需要对下游任务做任何微调，就能在各种不同类型的音频任务上都表现得足够好？",
     "url": "https://arxiv.org/abs/2203.03022",
     "upvotes": 0,
-    "audio": "2022-03-06-hear-holistic-evaluation-of-audio-representations-8832ab28.mp3",
-    "size": 8051616,
+    "audio": "2022-03-06-hear-holistic-evaluation-of-audio-representations-90f1323c.mp3",
+    "size": 5666976,
     "published": "2026-07-02T17:54:14.535468+00:00"
   },
   {
@@ -364,11 +364,11 @@
     "date": "2025-06-14",
     "title": "CMI-Bench: A Comprehensive Benchmark for Evaluating Music Instruction Following",
     "abstract": "Recent advances in audio-text large language models (LLMs) have opened new possibilities for music understanding and generation. However, existing benchmarks are limited in scope, often relying on simplified tasks or multi-choice evaluations that fail to reflect the complexity of real-world music analysis. We reinterpret a broad range of traditional MIR annotations as instruction-following formats and introduce CMI-Bench, a comprehensive music instruction following benchmark designed to evaluate audio-text LLMs on a diverse set of music information retrieval (MIR) tasks. These include genre classification, emotion regression, emotion tagging, instrument classification, pitch estimation, key detection, lyrics transcription, melody extraction, vocal technique recognition, instrument performance technique detection, music tagging, music captioning, and (down)beat tracking: reflecting core challenges in MIR research. Unlike previous benchmarks, CMI-Bench adopts standardized evaluation metrics consistent with previous state-of-the-art MIR models, ensuring direct comparability with supervised approaches. We provide an evaluation toolkit supporting all open-source audio-textual LLMs, including LTU, Qwen-audio, SALMONN, MusiLingo, etc. Experiment results reveal significant performance gaps between LLMs and supervised models, along with their culture, chronological and gender bias, highlighting the potential and limitations of current models in addressing MIR tasks. CMI-Bench establishes a unified foundation for evaluating music instruction following, driving progress in music-aware LLMs.",
-    "notes": "我们今天要探讨的这篇论文，它直接切入了一个核心问题：目前用来评估大型语言模型在音乐理解能力上的基准测试，往往范围太窄，要么依赖于过于简化的任务，要么就是多项选择题的格式，这都无法真正反映现实世界中音乐分析的复杂性。",
+    "notes": "当前最主流的音频大语言模型在音乐理解上到底做得怎么样？这个问题听起来简单，但在这篇论文之前，学界其实没有一套真正硬核的评测标准来回答它。现有的基准要么任务太窄，要么用多选题格式来回避开放式输出的难题，要么评测指标和音乐信息检索领域几十年积累下来的标准根本对不上号。这篇论文——CMI-Bench——就是要补上这个缺口，用一套覆盖十四个任务、横跨二十个数据集的综合基准，把音频大语言模型放到和传统监督模型同等严苛的考场上去考一考。",
     "url": "https://arxiv.org/abs/2506.12285",
     "upvotes": 0,
-    "audio": "2025-06-14-cmi-bench-a-comprehensive-benchmark-for-evaluating-music-ins-507002f1.mp3",
-    "size": 7306992,
+    "audio": "2025-06-14-cmi-bench-a-comprehensive-benchmark-for-evaluating-music-ins-75ea820d.mp3",
+    "size": 5701968,
     "published": "2026-07-02T17:52:08.928703+00:00"
   },
   {
@@ -376,11 +376,11 @@
     "date": "2025-01-02",
     "title": "MuQ: Self-Supervised Music Representation Learning with Mel Residual Vector Quantization",
     "abstract": "Recent years have witnessed the success of foundation models pre-trained with self-supervised learning (SSL) in various music informatics understanding tasks, including music tagging, instrument classification, key detection, and more. In this paper, we propose a self-supervised music representation learning model for music understanding. Distinguished from previous studies adopting random projection or existing neural codec, the proposed model, named MuQ, is trained to predict tokens generated by Mel Residual Vector Quantization (Mel-RVQ). Our Mel-RVQ utilizes residual linear projection structure for Mel spectrum quantization to enhance the stability and efficiency of target extraction and lead to better performance. Experiments in a large variety of downstream tasks demonstrate that MuQ outperforms previous self-supervised music representation models with only 0.9K hours of open-source pre-training data. Scaling up the data to over 160K hours and adopting iterative training consistently improve the model performance. To further validate the strength of our model, we present MuQ-MuLan, a joint music-text embedding model based on contrastive learning, which achieves state-of-the-art performance in the zero-shot music tagging task on the MagnaTagATune dataset. Code and checkpoints are open source in https://github.com/tencent-ailab/MuQ.",
-    "notes": "大家有没有遇到过这样的情况：在音乐领域，我们想让机器理解音乐的含义，比如这首歌是什么风格、什么乐器演奏的、表达了什么情绪等等。为了解决这个问题，研究人员通常会训练一些基础模型，让它们从大量的无标签音乐数据中学习，然后把学到的“音乐常识”应用到各种具体的任务上。",
+    "notes": "好的，现在我们来聊聊一篇非常有意思的论文，它提出了一种全新的音乐自监督学习模型，叫做 MuQ。这篇论文要解决的核心问题是：如何才能更好地让机器理解音乐？",
     "url": "https://arxiv.org/abs/2501.01108",
     "upvotes": 0,
-    "audio": "2025-01-02-muq-self-supervised-music-representation-learning-with-mel-r-7d99a1f6.mp3",
-    "size": 6667344,
+    "audio": "2025-01-02-muq-self-supervised-music-representation-learning-with-mel-r-5930ddf5.mp3",
+    "size": 5422752,
     "published": "2026-07-02T17:48:16.794145+00:00"
   },
   {
@@ -388,11 +388,11 @@
     "date": "2023-05-31",
     "title": "MERT: Acoustic Music Understanding Model with Large-Scale Self-supervised Training",
     "abstract": "Self-supervised learning (SSL) has recently emerged as a promising paradigm for training generalisable models on large-scale data in the fields of vision, text, and speech. Although SSL has been proven effective in speech and audio, its application to music audio has yet to be thoroughly explored. This is partially due to the distinctive challenges associated with modelling musical knowledge, particularly tonal and pitched characteristics of music. To address this research gap, we propose an acoustic Music undERstanding model with large-scale self-supervised Training (MERT), which incorporates teacher models to provide pseudo labels in the masked language modelling (MLM) style acoustic pre-training. In our exploration, we identified an effective combination of teacher models, which outperforms conventional speech and audio approaches in terms of performance. This combination includes an acoustic teacher based on Residual Vector Quantisation - Variational AutoEncoder (RVQ-VAE) and a musical teacher based on the Constant-Q Transform (CQT). Furthermore, we explore a wide range of settings to overcome the instability in acoustic language model pre-training, which allows our designed paradigm to scale from 95M to 330M parameters. Experimental results indicate that our model can generalise and perform well on 14 music understanding tasks and attain state-of-the-art (SOTA) overall scores.",
-    "notes": "长期以来，音乐信息检索，也就是我们常说的MIR任务，一直面临着一个棘手的问题：由于音乐音频标注成本高昂，加上各国版权法律的限制，我们很难获得大规模、高质量的标注数据。这就导致了针对不同音乐理解任务，比如音乐标签、节拍跟踪、音乐转录或音源分离，往往需要开发特定的模型和特征，难以形成统一、通用的解决方案。",
+    "notes": "音乐理解领域长期面临一个根本性的困境：要训练一个能处理各种任务的通用模型，你需要大量标注好的音乐数据，但音乐数据的标注成本极高，而且受版权法律的严格限制。与此同时，自然语言处理领域的大规模预训练模型已经彻底改变了那个领域的格局——BERT、GPT这些模型通过无监督或自监督的方式，在海量数据上学到了极其通用的表示，下游任务只需要少量标注数据就能达到很好的效果。那么，音乐领域能不能走同样的路？这篇论文提出的MERT模型，就是在系统性地回答这个问题。",
     "url": "https://arxiv.org/abs/2306.00107",
     "upvotes": 0,
-    "audio": "2023-05-31-mert-acoustic-music-understanding-model-with-large-scale-sel-eab91c7c.mp3",
-    "size": 5766048,
+    "audio": "2023-05-31-mert-acoustic-music-understanding-model-with-large-scale-sel-d7394c2b.mp3",
+    "size": 5735232,
     "published": "2026-07-02T17:46:55.641171+00:00"
   },
   {
@@ -400,11 +400,11 @@
     "date": "2021-05-03",
     "title": "SUPERB: Speech processing Universal PERformance Benchmark",
     "abstract": "Self-supervised learning (SSL) has proven vital for advancing research in natural language processing (NLP) and computer vision (CV). The paradigm pretrains a shared model on large volumes of unlabeled data and achieves state-of-the-art (SOTA) for various tasks with minimal adaptation. However, the speech processing community lacks a similar setup to systematically explore the paradigm. To bridge this gap, we introduce Speech processing Universal PERformance Benchmark (SUPERB). SUPERB is a leaderboard to benchmark the performance of a shared model across a wide range of speech processing tasks with minimal architecture changes and labeled data. Among multiple usages of the shared model, we especially focus on extracting the representation learned from SSL due to its preferable re-usability. We present a simple framework to solve SUPERB tasks by learning task-specialized lightweight prediction heads on top of the frozen shared model. Our results demonstrate that the framework is promising as SSL representations show competitive generalizability and accessibility across SUPERB tasks. We release SUPERB as a challenge with a leaderboard and a benchmark toolkit to fuel the research in representation learning and general speech processing.",
-    "notes": "语音处理领域一直缺乏一个统一的标准来系统地评估自监督学习模型的性能，这使得研究人员很难公平地比较不同模型，也难以真正理解这些模型在各种任务上的泛化能力和可重用性。这就好比我们有各种各样的新型跑车，但却没有一条标准的赛道和统一的比赛规则，大家都在各自的场地里跑，成绩自然就不好比较了。为了解决这个问题，研究人员提出了 SUPERB，也就是“语音处理通用性能基准”。",
+    "notes": "语音领域的自监督学习研究有一个长期存在的痛点：同样是自监督预训练，在自然语言处理里有GLUE基准，在计算机视觉里有VISSL基准，各路模型可以在同一套标准下公平比较、相互借鉴；但在语音处理这个领域，却一直缺少这样一个统一的测评框架。不同的论文用不同的数据集、不同的下游模型、不同的评估协议，你的wav2vec在这个数据集上测，我的HuBERT在另一个数据集上测，根本没法比。这篇论文要解决的就是这个问题。SUPERB，全称Speech processing Universal PERformance Benchmark，语音处理通用性能基准，就是为了填补这个空白而生的。",
     "url": "https://arxiv.org/abs/2105.01051",
     "upvotes": 0,
-    "audio": "2021-05-03-superb-speech-processing-universal-performance-benchmark-e15d6319.mp3",
-    "size": 5236272,
+    "audio": "2021-05-03-superb-speech-processing-universal-performance-benchmark-72061951.mp3",
+    "size": 6506784,
     "published": "2026-07-02T17:45:14.328931+00:00"
   },
   {
@@ -412,11 +412,11 @@
     "date": "2017-03-20",
     "title": "Dance Dance Convolution",
     "abstract": "Dance Dance Revolution (DDR) is a popular rhythm-based video game. Players perform steps on a dance platform in synchronization with music as directed by on-screen step charts. While many step charts are available in standardized packs, players may grow tired of existing charts, or wish to dance to a song for which no chart exists. We introduce the task of learning to choreograph. Given a raw audio track, the goal is to produce a new step chart. This task decomposes naturally into two subtasks: deciding when to place steps and deciding which steps to select. For the step placement task, we combine recurrent and convolutional neural networks to ingest spectrograms of low-level audio features to predict steps, conditioned on chart difficulty. For step selection, we present a conditional LSTM generative model that substantially outperforms n-gram and fixed-window approaches.",
-    "notes": "这篇论文要解决的问题，是自动生成跳舞机，也就是 Dance Dance Revolution，简称 DDR 的舞步图。对于玩过 DDR 的朋友来说，应该对舞步图不陌生，它就是屏幕上那些指示你什么时候踩、踩哪个方向箭头的序列。这个游戏在全球有数百万玩家，但它有一个痛点：玩家们可能会玩腻现有的舞步图，或者想为自己喜欢的歌曲制作舞步图，但苦于没有。虽然玩家社区里有人会自己制作和分享舞步图包，但这个过程非常耗时，而且需要专业的知识和经验。",
+    "notes": "如何让神经网络学会给跳舞机编舞——这就是这篇论文要解决的核心问题。",
     "url": "https://arxiv.org/abs/1703.06891",
     "upvotes": 0,
-    "audio": "2017-03-20-dance-dance-convolution-c39d59f9.mp3",
-    "size": 6037920,
+    "audio": "2017-03-20-dance-dance-convolution-109a0de5.mp3",
+    "size": 5661072,
     "published": "2026-07-02T17:43:45.296080+00:00"
   },
   {
@@ -424,11 +424,11 @@
     "date": "2023-06-18",
     "title": "MARBLE: Music Audio Representation Benchmark for Universal Evaluation",
     "abstract": "In the era of extensive intersection between art and Artificial Intelligence (AI), such as image generation and fiction co-creation, AI for music remains relatively nascent, particularly in music understanding. This is evident in the limited work on deep music representations, the scarcity of large-scale datasets, and the absence of a universal and community-driven benchmark. To address this issue, we introduce the Music Audio Representation Benchmark for universaL Evaluation, termed MARBLE. It aims to provide a benchmark for various Music Information Retrieval (MIR) tasks by defining a comprehensive taxonomy with four hierarchy levels, including acoustic, performance, score, and high-level description. We then establish a unified protocol based on 14 tasks on 8 public-available datasets, providing a fair and standard assessment of representations of all open-sourced pre-trained models developed on music recordings as baselines. Besides, MARBLE offers an easy-to-use, extendable, and reproducible suite for the community, with a clear statement on copyright issues on datasets. Results suggest recently proposed large-scale pre-trained musical language models perform the best in most tasks, with room for further improvement. The leaderboard and toolkit repository are published at https://marble-bm.shef.ac.uk to promote future music AI research.",
-    "notes": "各位听众，我们今天要聊的这篇论文，叫做 MARBLE，全称是 Music Audio Representation Benchmark for Universal Evaluation，也就是“音乐音频表征通用评估基准”。这篇论文要解决的核心问题，是当前音乐人工智能领域，特别是音乐理解方面，缺乏一个统一、全面且社区驱动的评估基准。",
+    "notes": "音乐领域的人工智能研究面临一个根本性的困境：没有人知道哪个预训练模型真的好用。不同的论文用不同的数据集、不同的评测指标、不同的实验设置来汇报自己的结果，导致模型之间根本没有办法做横向对比。你看这篇论文说自己在情感识别上达到了最优，那篇论文说自己在风格分类上最强，但它们用的数据集不一样，评测协议不一样，有的甚至连数据划分方式都不同。这个问题在自然语言处理和计算机视觉领域早就被解决了，GLUE、SuperGLUE、VTAB这些基准测试把整个社区的研究推上了快车道。但音乐领域一直没有类似的东西。MARBLE这篇论文就是要填上这个空缺。",
     "url": "https://arxiv.org/abs/2306.10548",
     "upvotes": 0,
-    "audio": "2023-06-18-marble-music-audio-representation-benchmark-for-universal-ev-3980a7a2.mp3",
-    "size": 8057520,
+    "audio": "2023-06-18-marble-music-audio-representation-benchmark-for-universal-ev-21a338e9.mp3",
+    "size": 6035472,
     "published": "2026-07-02T17:41:27.857560+00:00"
   },
   {
@@ -436,11 +436,11 @@
     "date": "2024-07-01",
     "title": "AI Agents That Matter",
     "abstract": "AI agents are an exciting new research direction, and agent development is driven by benchmarks. Our analysis of current agent benchmarks and evaluation practices reveals several shortcomings that hinder their usefulness in real-world applications. First, there is a narrow focus on accuracy without attention to other metrics. As a result, SOTA agents are needlessly complex and costly, and the community has reached mistaken conclusions about the sources of accuracy gains. Our focus on cost in addition to accuracy motivates the new goal of jointly optimizing the two metrics. We design and implement one such optimization, showing its potential to greatly reduce cost while maintaining accuracy. Second, the benchmarking needs of model and downstream developers have been conflated, making it hard to identify which agent would be best suited for a particular application. Third, many agent benchmarks have inadequate holdout sets, and sometimes none at all. This has led to agents that are fragile because they take shortcuts and overfit to the benchmark in various ways. We prescribe a principled framework for avoiding overfitting. Finally, there is a lack of standardization in evaluation practices, leading to a pervasive lack of reproducibility. We hope that the steps we introduce for addressing these shortcomings will spur the development of agents that are useful in the real world and not just accurate on benchmarks.",
-    "notes": "当前AI智能体领域正经历一场激动人心的变革，但其核心的基准测试方法却存在诸多严重缺陷，这些缺陷正阻碍着智能体在真实世界中发挥其应有的作用。传统的语言模型评估往往关注单一模型的性能，而智能体则被设计用于处理更复杂、更贴近现实、更具实用价值的任务，并且通常没有唯一的正确答案。例如，智能体可以通过命令行执行任务，甚至像SWE-Agent那样，拥有自己的智能体-计算机接口。然而，智能体的运行成本可能远高于一次简单的模型调用，例如SWE-Agent每次运行的上限是四美元，这相当于数十万个语言模型令牌的消耗。正是这种根本性的差异，使得智能体的基准测试面临着独特的挑战。这篇论文正是通过实证分析，揭示了这些挑",
+    "notes": "当前AI智能体领域有一个根本性的问题：我们用来衡量智能体进步的那些基准测试，很可能正在把整个领域引向错误的方向。这篇来自普林斯顿大学的论文，就是要正面回答这个问题——现有的智能体评测体系到底出了什么问题，以及我们应该怎么修正它。",
     "url": "https://arxiv.org/abs/2407.01502",
     "upvotes": 0,
-    "audio": "2024-07-01-ai-agents-that-matter-908d8d4b.mp3",
-    "size": 6871968,
+    "audio": "2024-07-01-ai-agents-that-matter-6b915aba.mp3",
+    "size": 6238944,
     "published": "2026-07-02T17:39:47.881930+00:00"
   },
   {
@@ -448,11 +448,11 @@
     "date": "2024-11-01",
     "title": "Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations",
     "abstract": "Evaluations are critical for understanding the capabilities of large language models (LLMs). Fundamentally, evaluations are experiments; but the literature on evaluations has largely ignored the literature from other sciences on experiment analysis and planning. This article shows researchers with some training in statistics how to think about and analyze data from language model evaluations. Conceptualizing evaluation questions as having been drawn from an unseen super-population, we present formulas for analyzing evaluation data, measuring differences between two models, and planning an evaluation experiment. We make a number of specific recommendations for running language model evaluations and reporting experiment results in a way that minimizes statistical noise and maximizes informativeness.",
-    "notes": "好的，下面是根据您的要求撰写的口播稿：",
+    "notes": "当我们评估一个大型语言模型的能力时，最常见的做法是跑一批测试题，算出一个正确率，然后把最高的那个数字加粗，宣布\"我们的模型达到了最新水平\"。但这里有一个根本性的问题被忽视了：这个数字本身有多可靠？它有多大的误差范围？两个模型之间看似明显的差距，究竟是真实的能力差异，还是随机波动带来的噪声？Anthropic的研究员Evan Miller在这篇论文里做的事情，就是把统计学里那套成熟的实验分析方法，系统性地搬进语言模型评估的领域。",
     "url": "https://arxiv.org/abs/2411.00640",
     "upvotes": 0,
-    "audio": "2024-11-01-adding-error-bars-to-evals-a-statistical-approach-to-languag-b74a87bd.mp3",
-    "size": 4037616,
+    "audio": "2024-11-01-adding-error-bars-to-evals-a-statistical-approach-to-languag-c8091898.mp3",
+    "size": 4080528,
     "published": "2026-07-02T17:37:06.325736+00:00"
   },
   {
@@ -460,11 +460,11 @@
     "date": "2017-02-02",
     "title": "Procedural Content Generation via Machine Learning (PCGML)",
     "abstract": "This survey explores Procedural Content Generation via Machine Learning (PCGML), defined as the generation of game content using machine learning models trained on existing content. As the importance of PCG for game development increases, researchers explore new avenues for generating high-quality content with or without human involvement; this paper addresses the relatively new paradigm of using machine learning (in contrast with search-based, solver-based, and constructive methods). We focus on what is most often considered functional game content such as platformer levels, game maps, interactive fiction stories, and cards in collectible card games, as opposed to cosmetic content such as sprites and sound effects. In addition to using PCG for autonomous generation, co-creativity, mixed-initiative design, and compression, PCGML is suited for repair, critique, and content analysis because of its focus on modeling existing content. We discuss various data sources and representations that affect the resulting generated content. Multiple PCGML methods are covered, including neural networks, long short-term memory (LSTM) networks, autoencoders, and deep convolutional networks; Markov models, $n$-grams, and multi-dimensional Markov chains; clustering; and matrix factorization. Finally, we discuss open problems in the application of PCGML, including learning from small datasets, lack of training data, multi-layered learning, style-transfer, parameter tuning, and PCG as a game mechanic.",
-    "notes": "我们今天来聊聊一个在游戏开发和研究领域越来越热门的话题，那就是如何利用机器学习来生成游戏内容，也就是所谓的“机器学习驱动的程序化内容生成”，简称PCGML。传统的程序化内容生成方法，比如基于语法规则、噪声函数、搜索算法或者求解器的方法，它们的核心在于算法、参数、约束和目标通常都是由设计师或研究人员手动设定的。虽然这些方法也会从现有游戏中汲取灵感，但它们很少直接从大量的现有游戏内容中学习数据，然后用学到的模型来生成新的内容。而PCGML正是要解决这个痛点。",
+    "notes": "游戏内容生成一直有一个根本矛盾：设计师想要大量高质量、风格一致的内容，但手工制作每一个关卡、每一张地图、每一张卡牌的成本极高。传统的程序化内容生成方法——不管是用进化算法搜索内容空间、用约束求解器保证可玩性，还是用语法规则直接构建——都有一个共同的硬伤：算法本身的参数、规则、目标函数，全都需要人来手工设计。你想让机器生成关卡，先得用代码告诉机器什么叫\"好关卡\"。这篇2017年发表的综述论文，就是要系统性地回答另一个问题：如果我们直接把已有的游戏内容喂给机器学习模型，让模型自己去学习什么叫\"好内容\"，然后用这个模型来生成新内容，会怎么样？这就是论文定义的PCGML，Procedural Cont",
     "url": "https://arxiv.org/abs/1702.00539",
     "upvotes": 0,
-    "audio": "2017-02-02-procedural-content-generation-via-machine-learning-pcgml-bdaacac4.mp3",
-    "size": 9720144,
+    "audio": "2017-02-02-procedural-content-generation-via-machine-learning-pcgml-61037055.mp3",
+    "size": 6278832,
     "published": "2026-07-02T17:34:55.037955+00:00"
   },
   {
@@ -532,11 +532,11 @@
     "date": "2022-12-06",
     "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
     "abstract": "We study the capabilities of speech processing systems trained simply to predict large amounts of transcripts of audio on the internet. When scaled to 680,000 hours of multilingual and multitask supervision, the resulting models generalize well to standard benchmarks and are often competitive with prior fully supervised results but in a zero-shot transfer setting without the need for any fine-tuning. When compared to humans, the models approach their accuracy and robustness. We are releasing models and inference code to serve as a foundation for further work on robust speech processing.",
-    "notes": "目前语音识别系统面临的一个核心痛点是，尽管它们在特定训练数据集上能达到“超人”的表现，但一旦部署到真实世界中，遇到训练数据之外的语音环境、口音或语言，性能就会大幅下降，缺乏我们常说的鲁棒性，也就是泛化能力差。这就像一个学生，只会做模拟题，一到真题就傻眼。",
+    "notes": "语音识别系统长期以来有一个根本性的困境：在标准测试集上表现惊艳，但换一个真实场景就会大幅退步。这篇论文要解决的正是这个问题——怎样训练出一个不需要针对特定场景做微调、就能在各种真实环境下可靠工作的语音识别系统。这个系统叫做 Whisper，是 OpenAI 在 2022 年发布的工作，发表在 ICML 上。",
     "url": "https://arxiv.org/abs/2212.04356",
     "upvotes": 0,
-    "audio": "2022-12-06-robust-speech-recognition-via-large-scale-weak-supervision-356b92e1.mp3",
-    "size": 13310496,
+    "audio": "2022-12-06-robust-speech-recognition-via-large-scale-weak-supervision-317ab117.mp3",
+    "size": 6005088,
     "published": "2026-07-01T10:21:53.812125+00:00"
   },
   {
@@ -544,11 +544,11 @@
     "date": "2023-05-02",
     "title": "Is Your Code Generated by ChatGPT Really Correct? Rigorous Evaluation of Large Language Models for Code Generation",
     "abstract": "Program synthesis has been long studied with recent approaches focused on directly using the power of Large Language Models (LLMs) to generate code. Programming benchmarks, with curated synthesis problems and test-cases, are used to measure the performance of various LLMs on code synthesis. However, these test-cases can be limited in both quantity and quality for fully assessing the functional correctness of the generated code. Such limitation in the existing benchmarks begs the following question: In the era of LLMs, is the code generated really correct? To answer this, we propose EvalPlus -- a code synthesis evaluation framework to rigorously benchmark the functional correctness of LLM-synthesized code. EvalPlus augments a given evaluation dataset with large amounts of test-cases newly produced by an automatic test input generator, powered by both LLM- and mutation-based strategies. While EvalPlus is general, we extend the test-cases of the popular HumanEval benchmark by 80x to build HumanEval+. Our extensive evaluation across 26 popular LLMs (e.g., GPT-4 and ChatGPT) demonstrates that HumanEval+ is able to catch significant amounts of previously undetected wrong code synthesized by LLMs, reducing the pass@k by up-to 19.3-28.9%. We also surprisingly found that test insufficiency can lead to mis-ranking. For example, both WizardCoder-CodeLlama and Phind-CodeLlama now outperform ChatGPT on HumanEval+, while none of them could on HumanEval. Our work not only indicates that prior popular code synthesis evaluation results do not accurately reflect the true performance of LLMs for code synthesis, but also opens up a new direction to improve such programming benchmarks through automated testing. We have open-sourced our tools, enhanced datasets as well as all LLM-generated code at https://github.com/evalplus/evalplus to facilitate and accelerate future LLM-for-code research.",
-    "notes": "当前评估大型语言模型生成代码正确性的方法，面临着一个核心问题：我们真的能相信这些代码是正确的吗？现有基准测试，比如广受欢迎的HumanEval，通常只包含少量测试用例，这导致我们对LLM生成代码的实际功能正确性产生了过度乐观的估计。",
+    "notes": "好的，这就为您生成一段约20分钟、适合开车时收听的连续口播稿，深入讲解这篇论文。",
     "url": "https://arxiv.org/abs/2305.01210",
     "upvotes": 0,
-    "audio": "2023-05-02-is-your-code-generated-by-chatgpt-really-correct-rigorous-ev-bccf7ef8.mp3",
-    "size": 8050032,
+    "audio": "2023-05-02-is-your-code-generated-by-chatgpt-really-correct-rigorous-ev-69937cee.mp3",
+    "size": 8015472,
     "published": "2026-07-01T10:21:51.176163+00:00"
   },
   {
@@ -556,11 +556,11 @@
     "date": "2024-06-17",
     "title": "$τ$-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
     "abstract": "Existing benchmarks do not test language agents on their interaction with human users or ability to follow domain-specific rules, both of which are vital for deploying them in real world applications. We propose $τ$-bench, a benchmark emulating dynamic conversations between a user (simulated by language models) and a language agent provided with domain-specific API tools and policy guidelines. We employ an efficient and faithful evaluation process that compares the database state at the end of a conversation with the annotated goal state. We also propose a new metric (pass^k) to evaluate the reliability of agent behavior over multiple trials. Our experiments show that even state-of-the-art function calling agents (like gpt-4o) succeed on <50% of the tasks, and are quite inconsistent (pass^8 <25% in retail). Our findings point to the need for methods that can improve the ability of agents to act consistently and follow rules reliably.",
-    "notes": "现有的语言智能体基准测试在评估它们与人类用户的互动能力以及遵循特定领域规则的能力方面存在明显不足，而这两点对于将智能体部署到真实世界的应用中至关重要。想象一下，一个航空公司的订票智能体，当用户想要更改航班目的地时，它不仅需要通过多轮对话从用户那里收集必要信息，还要根据航空公司复杂的政策指南来检查规则，然后通过复杂的预订API查找新航班并完成改签。在这个过程中，智能体必须在不同的用户和相似请求下保持行为一致性，并且能够稳健地应对对话流程中的细微变化，确保最终结果不受影响。然而，目前大多数语言智能体基准，例如ToolBench、WebShop等，通常采用简化的指令遵循设置，智能体在预先提供所有信息",
+    "notes": "现有的语言智能体评测基准，几乎全都把人类用户这个环节给省掉了。典型的设置是：给智能体一个完整的任务描述，让它自己去操作网页、执行代码、调用API，然后看结果。这种设置的问题在于，它和真实世界的客服、助手场景差距太大。真实场景里，用户不会一次性把所有信息说清楚，对话是渐进式的，智能体需要一边问一边推断；同时，智能体还必须遵守一套复杂的领域规则，比如航空公司的行李政策、退款政策、不同会员等级的差异化处理。这两件事——和人交互、遵守规则——恰恰是部署真实智能体最核心的能力，但现有基准对它们的测试几乎是空白的。",
     "url": "https://arxiv.org/abs/2406.12045",
     "upvotes": 0,
-    "audio": "2024-06-17-t-bench-a-benchmark-for-tool-agent-user-interaction-in-real--6314fefb.mp3",
-    "size": 9499104,
+    "audio": "2024-06-17-t-bench-a-benchmark-for-tool-agent-user-interaction-in-real--fec8b5e2.mp3",
+    "size": 5843520,
     "published": "2026-07-01T10:21:50.478971+00:00"
   },
   {
@@ -568,11 +568,11 @@
     "date": "2010-06-19",
     "title": "Analyzing the Expressive Range of a Level Generator",
     "abstract": "Smith & Whitehead (FDG 2010) introduce 'expressive range' analysis: instead of judging a procedural level generator only by whether individual outputs are playable, characterize the generator by the distribution of its outputs over structural metrics — for platformers, linearity, leniency, and density — visualized as 2-D heatmaps. This reveals a generator's biases, coverage, and the effect of its parameters, giving a principled way to compare generators by what regions of design space they actually reach.",
-    "notes": "我们通常评价一个游戏关卡生成器好坏，往往是看它单独生成的某个关卡能不能玩、玩起来怎么样。这种评价方式虽然直观，但它有一个很大的局限性：就像我们不能只凭一幅画就判断一位画家的整体风格和能力一样，仅仅看一两个生成的关卡，我们也很难真正了解这个关卡生成器到底有什么样的本事，它能生成多少种不同风格的关卡，它有没有自己的偏好，或者它在哪些方面表现得特别突出。",
+    "notes": "做游戏关卡的程序化生成，最让人头疼的问题从来不是\"能不能生成\"，而是\"生成出来的东西到底好不好、够不够多样\"。过去大家评价一个关卡生成器，通常就是拿几张图看看，或者跑一遍游戏确认没有穿模、没有死路，能玩就算过关。但这个标准太粗糙了——一个生成器可能每次都能出一张\"可玩\"的关卡，但这几百张关卡其实长得差不多，全是同一个调性，玩家玩三关就厌了。怎么系统地衡量一个生成器到底能表达多少种不同的关卡风格？这正是这篇论文要回答的核心问题。",
     "url": "https://dl.acm.org/doi/10.1145/1822348.1822369",
     "upvotes": 0,
-    "audio": "2010-06-19-analyzing-the-expressive-range-of-a-level-generator-9b4d8dbe.mp3",
-    "size": 3492864,
+    "audio": "2010-06-19-analyzing-the-expressive-range-of-a-level-generator-17c32bdb.mp3",
+    "size": 4116384,
     "published": "2026-07-01T10:21:49.557294+00:00"
   },
   {
@@ -580,11 +580,11 @@
     "date": "2024-10-21",
     "title": "Procedural Content Generation in Games: A Survey with Insights on Emerging LLM Integration",
     "abstract": "Procedural Content Generation (PCG) is defined as the automatic creation of game content using algorithms. PCG has a long history in both the game industry and the academic world. It can increase player engagement and ease the work of game designers. While recent advances in deep learning approaches in PCG have enabled researchers and practitioners to create more sophisticated content, it is the arrival of Large Language Models (LLMs) that truly disrupted the trajectory of PCG advancement. This survey explores the differences between various algorithms used for PCG, including search-based methods, machine learning-based methods, other frequently used methods (e.g., noise functions), and the newcomer, LLMs. We also provide a detailed discussion on combined methods. Furthermore, we compare these methods based on the type of content they generate and the publication dates of their respective papers. Finally, we identify gaps in the existing academic work and suggest possible directions for future research.",
-    "notes": "游戏内容自动生成，也就是我们常说的PCG，它要解决的核心问题，就是当前游戏开发中内容生产耗时巨大、成本高昂，却又要不断满足玩家对新鲜内容永无止境的需求这个痛点。在过去，开发一款大型游戏可能需要数年时间，投入海量人力物力，而PCG技术的目标，就是利用算法自动生成游戏内容，从而提高游戏的可玩性、降低开发成本，并减少开发人员的工作量。这项技术从上世纪80年代的《Beneath Apple Manor》和《Rogue》这类Roguelike游戏开始，就已经在业内和学术界有了很长的历史。而近些年，随着深度学习技术的飞速发展，PCG能够生成的内容变得越来越复杂精妙。但真正颠覆这一领域发展轨迹的，是大型语言",
+    "notes": "我们今天来聊聊游戏里的程序化内容生成，也就是PCG。这个技术简单来说，就是用算法来自动创造游戏内容。为什么它这么重要呢？因为现在的游戏产业发展得太快了，市场对新内容的需求是巨大的。想想看，一款大作的开发周期动辄几年，成本更是天文数字。PCG就能在这方面帮上大忙，它能大大减少游戏的开发时间和成本，同时还能增加游戏的重复可玩性，让玩家每次玩都有新鲜感。",
     "url": "https://arxiv.org/abs/2410.15644",
     "upvotes": 0,
-    "audio": "2024-10-21-procedural-content-generation-in-games-a-survey-with-insight-61821c8d.mp3",
-    "size": 6918768,
+    "audio": "2024-10-21-procedural-content-generation-in-games-a-survey-with-insight-39449d96.mp3",
+    "size": 6290208,
     "published": "2026-07-01T10:21:49.555865+00:00"
   },
   {
@@ -592,11 +592,11 @@
     "date": "2025-03-20",
     "title": "Survey on Evaluation of LLM-based Agents",
     "abstract": "LLM-based agents represent a paradigm shift in AI, enabling autonomous systems to plan, reason, and use tools while interacting with dynamic environments. This paper provides the first comprehensive survey of evaluation methods for these increasingly capable agents. We analyze the field of agent evaluation across five perspectives: (1) Core LLM capabilities needed for agentic workflows, like planning, and tool use; (2) Application-specific benchmarks such as web and SWE agents; (3) Evaluation of generalist agents; (4) Analysis of agent benchmarks' core dimensions; and (5) Evaluation frameworks and tools for agent developers. Our analysis reveals current trends, including a shift toward more realistic, challenging evaluations with continuously updated benchmarks. We also identify critical gaps that future research must address, particularly in assessing cost-efficiency, safety, and robustness, and in developing fine-grained, scalable evaluation methods.",
-    "notes": "大型语言模型（LLM）驱动的智能体，也就是我们常说的LLM Agent，正在彻底改变人工智能的范式，让AI系统能够自主规划、推理并利用工具与动态环境互动。但随之而来的一个核心挑战是：我们该如何有效地评估这些日益强大的智能体？传统的LLM评估方法，比如仅仅测量文本输出的质量，已经远远不足以衡量智能体在动态环境中进行序列决策和操作的能力。我们需要全新的评估范式和基准，它们不仅要能评估智能体完成多步骤任务的能力，还要能适应智能体能力的不断演进，覆盖新的任务类型和应用领域。今天，我们就来深入探讨这篇关于LLM智能体评估的综述论文，它全面梳理了当前的评估格局，并指出了未来研究的关键方向。",
+    "notes": "我们要解决的核心问题，是如何评价一个基于大语言模型的智能体——它究竟有多能干、哪里出了问题、用什么标准衡量它、又怎么确保它安全可靠。这听起来像是一个工程问题，但它背后藏着真正深刻的方法论困境，而这篇来自IBM研究院、耶鲁大学和希伯来大学合作团队的综述，试图给整个领域画一张清晰的地图。",
     "url": "https://arxiv.org/abs/2503.16416",
     "upvotes": 0,
-    "audio": "2025-03-20-survey-on-evaluation-of-llm-based-agents-b7d45164.mp3",
-    "size": 7229088,
+    "audio": "2025-03-20-survey-on-evaluation-of-llm-based-agents-0ca5f931.mp3",
+    "size": 6707664,
     "published": "2026-07-01T10:21:49.554447+00:00"
   },
   {
@@ -604,11 +604,11 @@
     "date": "2025-11-03",
     "title": "Measuring what Matters: Construct Validity in Large Language Model Benchmarks",
     "abstract": "Evaluating large language models (LLMs) is crucial for both assessing their capabilities and identifying safety or robustness issues prior to deployment. Reliably measuring abstract and complex phenomena such as 'safety' and 'robustness' requires strong construct validity, that is, having measures that represent what matters to the phenomenon. With a team of 29 expert reviewers, we conduct a systematic review of 445 LLM benchmarks from leading conferences in natural language processing and machine learning. Across the reviewed articles, we find patterns related to the measured phenomena, tasks, and scoring metrics which undermine the validity of the resulting claims. To address these shortcomings, we provide eight key recommendations and detailed actionable guidance to researchers and practitioners in developing LLM benchmarks.",
-    "notes": "现在，大型语言模型的评估是理解它们能力、发现潜在安全和鲁棒性问题的关键一步，这直接关系到它们能否被安全可靠地部署。但是，我们真的在有效地测量我们想测量的东西吗？比如，当我们说一个模型“安全”或者“鲁棒”，我们用来评估这些抽象概念的基准测试，真的能够准确地代表这些概念本身吗？这正是这篇论文《测量真正重要的：大型语言模型基准测试中的建构效度》所要解决的核心问题。它指出，如果我们的评估工具，也就是这些基准测试，缺乏“建构效度”，那么我们对模型能力的所有判断都可能是不准确的，甚至会误导研究方向。",
+    "notes": "思必驰科技股份有限公司，专注于语音识别、语义理解、语音合成以及自然语言处理等人工智能技术。",
     "url": "https://arxiv.org/abs/2511.04703",
     "upvotes": 0,
-    "audio": "2025-11-03-measuring-what-matters-construct-validity-in-large-language--9347ad2c.mp3",
-    "size": 7176672,
+    "audio": "2025-11-03-measuring-what-matters-construct-validity-in-large-language--d1c8ea4a.mp3",
+    "size": 7265808,
     "published": "2026-07-01T10:21:49.553071+00:00"
   },
   {
@@ -616,11 +616,11 @@
     "date": "2021-07-07",
     "title": "Evaluating Large Language Models Trained on Code",
     "abstract": "We introduce Codex, a GPT language model fine-tuned on publicly available code from GitHub, and study its Python code-writing capabilities. A distinct production version of Codex powers GitHub Copilot. On HumanEval, a new evaluation set we release to measure functional correctness for synthesizing programs from docstrings, our model solves 28.8% of the problems, while GPT-3 solves 0% and GPT-J solves 11.4%. Furthermore, we find that repeated sampling from the model is a surprisingly effective strategy for producing working solutions to difficult prompts. Using this method, we solve 70.2% of our problems with 100 samples per problem. Careful investigation of our model reveals its limitations, including difficulty with docstrings describing long chains of operations and with binding operations to variables. Finally, we discuss the potential broader impacts of deploying powerful code generation technologies, covering safety, security, and economics.",
-    "notes": "今天我们要聊的这篇论文，关注的核心问题是如何准确评估大型语言模型在生成代码方面的能力。我们都知道，像GPT-3这样的大语言模型在处理自然语言任务上表现出色，但当它们被用来编写代码时，我们该如何判断它们写出的代码是否真的“好用”呢？这篇论文引入了一个名为Codex的模型，它是GPT语言模型的一个变体，经过了大量GitHub上公开代码的微调训练。同时，论文还发布了一个全新的评估数据集HumanEval，专门用来衡量模型根据函数文档字符串来合成程序的功能正确性。",
+    "notes": "如何让语言模型真正学会写代码，这是这篇论文要解决的核心问题。",
     "url": "https://arxiv.org/abs/2107.03374",
     "upvotes": 0,
-    "audio": "2021-07-07-evaluating-large-language-models-trained-on-code-76d81ace.mp3",
-    "size": 4341168,
+    "audio": "2021-07-07-evaluating-large-language-models-trained-on-code-e1787965.mp3",
+    "size": 3810240,
     "published": "2026-07-01T10:21:49.551667+00:00"
   },
   {
@@ -628,11 +628,11 @@
     "date": "2019-11-05",
     "title": "On the Measure of Intelligence",
     "abstract": "To make deliberate progress towards more intelligent and more human-like artificial systems, we need to be following an appropriate feedback signal: we need to be able to define and evaluate intelligence in a way that enables comparisons between two systems, as well as comparisons with humans. Over the past hundred years, there has been an abundance of attempts to define and measure intelligence, across both the fields of psychology and AI. We summarize and critically assess these definitions and evaluation approaches, while making apparent the two historical conceptions of intelligence that have implicitly guided them. We note that in practice, the contemporary AI community still gravitates towards benchmarking intelligence by comparing the skill exhibited by AIs and humans at specific tasks such as board games and video games. We argue that solely measuring skill at any given task falls short of measuring intelligence, because skill is heavily modulated by prior knowledge and experience: unlimited priors or unlimited training data allow experimenters to \"buy\" arbitrary levels of skills for a system, in a way that masks the system's own generalization power. We then articulate a new formal definition of intelligence based on Algorithmic Information Theory, describing intelligence as skill-acquisition efficiency and highlighting the concepts of scope, generalization difficulty, priors, and experience. Using this definition, we propose a set of guidelines for what a general AI benchmark should look like. Finally, we present a benchmark closely following these guidelines, the Abstraction and Reasoning Corpus (ARC), built upon an explicit set of priors designed to be as close as possible to innate human priors. We argue that ARC can be used to measure a human-like form of general fluid intelligence and that it enables fair general intelligence comparisons between AI systems and humans.",
-    "notes": "我们今天来聊聊一个对人工智能领域至关重要的问题：到底什么是智能，我们又该如何有效地衡量它？长期以来，人工智能领域一直致力于开发出拥有媲美人类智能的机器。然而，尽管我们在特定任务上取得了惊人的成就，比如下棋、玩游戏，但这些系统往往非常脆弱，对数据需求巨大，难以理解与训练数据稍有偏差的情况，更无法在没有人类大量干预的情况下自主适应新任务。这背后的一个核心原因，就是我们缺乏一个精确、可操作的智能定义和衡量标准，尤其是针对类人通用智能的标准。",
+    "notes": "人工智能领域有一个悬而未决的根本问题：我们到底在测量什么？当一个AI系统在围棋上击败世界冠军，当另一个系统在《星际争霸》里战胜职业选手，我们是否真的在测量智能本身？还是说，我们只是在测量一种非常昂贵、非常专门的技能？这篇论文，François Chollet在2019年写的《论智能的度量》，试图彻底厘清这个问题，并给出一个可操作的、形式化的智能定义，同时提出一个配套的测试基准。",
     "url": "https://arxiv.org/abs/1911.01547",
     "upvotes": 0,
-    "audio": "2019-11-05-on-the-measure-of-intelligence-ec62b9b9.mp3",
-    "size": 4272768,
+    "audio": "2019-11-05-on-the-measure-of-intelligence-79ed511b.mp3",
+    "size": 5658624,
     "published": "2026-07-01T10:21:49.550316+00:00"
   },
   {
@@ -640,11 +640,11 @@
     "date": "2024-08-13",
     "title": "SWE-bench Verified",
     "abstract": "OpenAI's human-validated subset of SWE-bench: 500 task instances screened by 93 professional software engineers to remove unsolvable or under-specified problems and broken/insufficient test oracles. It fixes the finding that ~8% of nominal 'passes' on the original SWE-bench were false positives, so measured resolve rates reflect real capability rather than test-suite artifacts. The 93-reviewer screening protocol is a template for pre-launch benchmark auditing.",
-    "notes": "我们今天来聊聊一个在人工智能领域，尤其是在大型语言模型（LLM）评估中，常常被忽视但又极其关键的问题：我们用来衡量模型能力的那些基准测试，它们本身真的可靠吗？具体来说，我们今天要深入探讨的是一篇来自OpenAI的研究，它聚焦于SWE-bench这个著名的软件工程基准测试。",
+    "notes": "软件工程领域有一个非常经典的痛点：我们想用基准测试来衡量AI系统真正解决代码问题的能力，但如果基准测试本身就有缺陷，那么测出来的数字根本不能信。SWE-bench Verified这篇工作，核心就是在解决这个问题——原始SWE-bench里大约有8%的\"通过\"其实是假阳性，是测试套件的漏洞造成的幻觉，而不是模型真的修好了代码。",
     "url": "https://openai.com/index/introducing-swe-bench-verified/",
     "upvotes": 0,
-    "audio": "2024-08-13-swe-bench-verified-f772e2fa.mp3",
-    "size": 3877776,
+    "audio": "2024-08-13-swe-bench-verified-9d0659b0.mp3",
+    "size": 5947632,
     "published": "2026-07-01T10:21:49.548943+00:00"
   },
   {
@@ -652,11 +652,11 @@
     "date": "2023-10-10",
     "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
     "abstract": "Language models have outpaced our ability to evaluate them effectively, but for their future development it is essential to study the frontier of their capabilities. We find real-world software engineering to be a rich, sustainable, and challenging testbed for evaluating the next generation of language models. To this end, we introduce SWE-bench, an evaluation framework consisting of $2,294$ software engineering problems drawn from real GitHub issues and corresponding pull requests across $12$ popular Python repositories. Given a codebase along with a description of an issue to be resolved, a language model is tasked with editing the codebase to address the issue. Resolving issues in SWE-bench frequently requires understanding and coordinating changes across multiple functions, classes, and even files simultaneously, calling for models to interact with execution environments, process extremely long contexts and perform complex reasoning that goes far beyond traditional code generation tasks. Our evaluations show that both state-of-the-art proprietary models and our fine-tuned model SWE-Llama can resolve only the simplest issues. The best-performing model, Claude 2, is able to solve a mere $1.96$% of the issues. Advances on SWE-bench represent steps towards LMs that are more practical, intelligent, and autonomous.",
-    "notes": "当前大型语言模型在代码生成方面的进步速度，已经超越了我们有效评估它们的能力。现有的代码生成基准测试，比如HumanEval，大多只涉及一些独立、几行代码就能解决的简单问题。然而，真实的软件工程任务远比这复杂：它可能需要你在一个庞大的代码库中穿梭，理解不同文件、不同函数之间的相互作用，甚至要从一大堆代码里找出那个不起眼的小错误。这些任务需要模型具备复杂的推理能力、处理超长上下文的能力，并且能与执行环境进行交互，这远远超出了传统代码生成的范畴。",
+    "notes": "真正难住顶级语言模型的，不是写一个排序函数，而是像真实软件工程师那样，面对一个有几千个文件的代码库，读懂一个用户提交的 bug 报告，然后找到问题所在，改对它，还不能破坏其他功能。这篇论文要解决的问题就是：我们怎么评测语言模型在这个层面上的真实能力？",
     "url": "https://arxiv.org/abs/2310.06770",
     "upvotes": 0,
-    "audio": "2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-ccb88557.mp3",
-    "size": 4174992,
+    "audio": "2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-1ced6e74.mp3",
+    "size": 3834576,
     "published": "2026-07-01T10:21:49.547545+00:00"
   },
   {

@@ -96,96 +96,96 @@
 
 ## 2025-11-03
 
-- **Measuring what Matters: Construct Validity in Large Language Model Benchmarks** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-11-03-measuring-what-matters-construct-validity-in-large-language--9347ad2c.mp3) [arXiv](https://arxiv.org/abs/2511.04703)
+- **Measuring what Matters: Construct Validity in Large Language Model Benchmarks** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-11-03-measuring-what-matters-construct-validity-in-large-language--d1c8ea4a.mp3) [arXiv](https://arxiv.org/abs/2511.04703)
 
 ## 2025-09-16
 
-- **Osu2MIR: Beat Tracking Dataset Derived From Osu! Data** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-b4f170ee.mp3) [arXiv](https://arxiv.org/abs/2509.12667)
+- **Osu2MIR: Beat Tracking Dataset Derived From Osu! Data** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-cd770c44.mp3) [arXiv](https://arxiv.org/abs/2509.12667)
 
 ## 2025-06-14
 
-- **CMI-Bench: A Comprehensive Benchmark for Evaluating Music Instruction Following** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-06-14-cmi-bench-a-comprehensive-benchmark-for-evaluating-music-ins-507002f1.mp3) [arXiv](https://arxiv.org/abs/2506.12285)
+- **CMI-Bench: A Comprehensive Benchmark for Evaluating Music Instruction Following** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-06-14-cmi-bench-a-comprehensive-benchmark-for-evaluating-music-ins-75ea820d.mp3) [arXiv](https://arxiv.org/abs/2506.12285)
 
 ## 2025-03-20
 
-- **Survey on Evaluation of LLM-based Agents** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-03-20-survey-on-evaluation-of-llm-based-agents-b7d45164.mp3) [arXiv](https://arxiv.org/abs/2503.16416)
+- **Survey on Evaluation of LLM-based Agents** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-03-20-survey-on-evaluation-of-llm-based-agents-0ca5f931.mp3) [arXiv](https://arxiv.org/abs/2503.16416)
 
 ## 2025-01-02
 
-- **MuQ: Self-Supervised Music Representation Learning with Mel Residual Vector Quantization** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-01-02-muq-self-supervised-music-representation-learning-with-mel-r-7d99a1f6.mp3) [arXiv](https://arxiv.org/abs/2501.01108)
+- **MuQ: Self-Supervised Music Representation Learning with Mel Residual Vector Quantization** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-01-02-muq-self-supervised-music-representation-learning-with-mel-r-5930ddf5.mp3) [arXiv](https://arxiv.org/abs/2501.01108)
 
 ## 2024-11-01
 
-- **Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-11-01-adding-error-bars-to-evals-a-statistical-approach-to-languag-b74a87bd.mp3) [arXiv](https://arxiv.org/abs/2411.00640)
+- **Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-11-01-adding-error-bars-to-evals-a-statistical-approach-to-languag-c8091898.mp3) [arXiv](https://arxiv.org/abs/2411.00640)
 
 ## 2024-10-21
 
-- **Procedural Content Generation in Games: A Survey with Insights on Emerging LLM Integration** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-10-21-procedural-content-generation-in-games-a-survey-with-insight-61821c8d.mp3) [arXiv](https://arxiv.org/abs/2410.15644)
+- **Procedural Content Generation in Games: A Survey with Insights on Emerging LLM Integration** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-10-21-procedural-content-generation-in-games-a-survey-with-insight-39449d96.mp3) [arXiv](https://arxiv.org/abs/2410.15644)
 
 ## 2024-08-13
 
-- **SWE-bench Verified** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-08-13-swe-bench-verified-f772e2fa.mp3) [arXiv](https://openai.com/index/introducing-swe-bench-verified/)
+- **SWE-bench Verified** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-08-13-swe-bench-verified-9d0659b0.mp3) [arXiv](https://openai.com/index/introducing-swe-bench-verified/)
 
 ## 2024-07-01
 
-- **AI Agents That Matter** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-07-01-ai-agents-that-matter-908d8d4b.mp3) [arXiv](https://arxiv.org/abs/2407.01502)
+- **AI Agents That Matter** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-07-01-ai-agents-that-matter-6b915aba.mp3) [arXiv](https://arxiv.org/abs/2407.01502)
 
 ## 2024-06-17
 
-- **$τ$-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-06-17-t-bench-a-benchmark-for-tool-agent-user-interaction-in-real--6314fefb.mp3) [arXiv](https://arxiv.org/abs/2406.12045)
+- **$τ$-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2024-06-17-t-bench-a-benchmark-for-tool-agent-user-interaction-in-real--fec8b5e2.mp3) [arXiv](https://arxiv.org/abs/2406.12045)
 
 ## 2023-10-10
 
-- **SWE-bench: Can Language Models Resolve Real-World GitHub Issues?** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-ccb88557.mp3) [arXiv](https://arxiv.org/abs/2310.06770)
+- **SWE-bench: Can Language Models Resolve Real-World GitHub Issues?** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-1ced6e74.mp3) [arXiv](https://arxiv.org/abs/2310.06770)
 
 ## 2023-06-18
 
-- **MARBLE: Music Audio Representation Benchmark for Universal Evaluation** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2023-06-18-marble-music-audio-representation-benchmark-for-universal-ev-3980a7a2.mp3) [arXiv](https://arxiv.org/abs/2306.10548)
+- **MARBLE: Music Audio Representation Benchmark for Universal Evaluation** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2023-06-18-marble-music-audio-representation-benchmark-for-universal-ev-21a338e9.mp3) [arXiv](https://arxiv.org/abs/2306.10548)
 
 ## 2023-05-31
 
-- **MERT: Acoustic Music Understanding Model with Large-Scale Self-supervised Training** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2023-05-31-mert-acoustic-music-understanding-model-with-large-scale-sel-eab91c7c.mp3) [arXiv](https://arxiv.org/abs/2306.00107)
+- **MERT: Acoustic Music Understanding Model with Large-Scale Self-supervised Training** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2023-05-31-mert-acoustic-music-understanding-model-with-large-scale-sel-d7394c2b.mp3) [arXiv](https://arxiv.org/abs/2306.00107)
 
 ## 2023-05-02
 
-- **Is Your Code Generated by ChatGPT Really Correct? Rigorous Evaluation of Large Language Models for Code Generation** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2023-05-02-is-your-code-generated-by-chatgpt-really-correct-rigorous-ev-bccf7ef8.mp3) [arXiv](https://arxiv.org/abs/2305.01210)
+- **Is Your Code Generated by ChatGPT Really Correct? Rigorous Evaluation of Large Language Models for Code Generation** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2023-05-02-is-your-code-generated-by-chatgpt-really-correct-rigorous-ev-69937cee.mp3) [arXiv](https://arxiv.org/abs/2305.01210)
 
 ## 2022-12-06
 
-- **Robust Speech Recognition via Large-Scale Weak Supervision** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2022-12-06-robust-speech-recognition-via-large-scale-weak-supervision-356b92e1.mp3) [arXiv](https://arxiv.org/abs/2212.04356)
+- **Robust Speech Recognition via Large-Scale Weak Supervision** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2022-12-06-robust-speech-recognition-via-large-scale-weak-supervision-317ab117.mp3) [arXiv](https://arxiv.org/abs/2212.04356)
 
 ## 2022-03-06
 
-- **HEAR: Holistic Evaluation of Audio Representations** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2022-03-06-hear-holistic-evaluation-of-audio-representations-8832ab28.mp3) [arXiv](https://arxiv.org/abs/2203.03022)
+- **HEAR: Holistic Evaluation of Audio Representations** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2022-03-06-hear-holistic-evaluation-of-audio-representations-90f1323c.mp3) [arXiv](https://arxiv.org/abs/2203.03022)
 
 ## 2021-07-07
 
-- **Evaluating Large Language Models Trained on Code** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2021-07-07-evaluating-large-language-models-trained-on-code-76d81ace.mp3) [arXiv](https://arxiv.org/abs/2107.03374)
+- **Evaluating Large Language Models Trained on Code** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2021-07-07-evaluating-large-language-models-trained-on-code-e1787965.mp3) [arXiv](https://arxiv.org/abs/2107.03374)
 
 ## 2021-05-03
 
-- **SUPERB: Speech processing Universal PERformance Benchmark** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2021-05-03-superb-speech-processing-universal-performance-benchmark-e15d6319.mp3) [arXiv](https://arxiv.org/abs/2105.01051)
+- **SUPERB: Speech processing Universal PERformance Benchmark** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2021-05-03-superb-speech-processing-universal-performance-benchmark-72061951.mp3) [arXiv](https://arxiv.org/abs/2105.01051)
 
 ## 2020-02-10
 
-- **Cross-modal variational inference for bijective signal-symbol translation** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2020-02-10-cross-modal-variational-inference-for-bijective-signal-symbo-5f50d332.mp3) [arXiv](https://arxiv.org/abs/2002.03862)
+- **Cross-modal variational inference for bijective signal-symbol translation** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2020-02-10-cross-modal-variational-inference-for-bijective-signal-symbo-29012f22.mp3) [arXiv](https://arxiv.org/abs/2002.03862)
 
 ## 2019-11-05
 
-- **On the Measure of Intelligence** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2019-11-05-on-the-measure-of-intelligence-ec62b9b9.mp3) [arXiv](https://arxiv.org/abs/1911.01547)
+- **On the Measure of Intelligence** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2019-11-05-on-the-measure-of-intelligence-79ed511b.mp3) [arXiv](https://arxiv.org/abs/1911.01547)
 
 ## 2017-03-20
 
-- **Dance Dance Convolution** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2017-03-20-dance-dance-convolution-c39d59f9.mp3) [arXiv](https://arxiv.org/abs/1703.06891)
+- **Dance Dance Convolution** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2017-03-20-dance-dance-convolution-109a0de5.mp3) [arXiv](https://arxiv.org/abs/1703.06891)
 
 ## 2017-02-02
 
-- **Procedural Content Generation via Machine Learning (PCGML)** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2017-02-02-procedural-content-generation-via-machine-learning-pcgml-bdaacac4.mp3) [arXiv](https://arxiv.org/abs/1702.00539)
+- **Procedural Content Generation via Machine Learning (PCGML)** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2017-02-02-procedural-content-generation-via-machine-learning-pcgml-61037055.mp3) [arXiv](https://arxiv.org/abs/1702.00539)
 
 ## 2010-06-19
 
-- **Analyzing the Expressive Range of a Level Generator** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2010-06-19-analyzing-the-expressive-range-of-a-level-generator-9b4d8dbe.mp3) [arXiv](https://dl.acm.org/doi/10.1145/1822348.1822369)
+- **Analyzing the Expressive Range of a Level Generator** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2010-06-19-analyzing-the-expressive-range-of-a-level-generator-17c32bdb.mp3) [arXiv](https://dl.acm.org/doi/10.1145/1822348.1822369)
 
 ## 1959-03-01
 
-- **Convergent and Discriminant Validation by the Multitrait-Multimethod Matrix** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/1959-03-01-convergent-and-discriminant-validation-by-the-multitrait-mul-f4a28d55.mp3) [arXiv](https://psycnet.apa.org/doi/10.1037/h0046016)
+- **Convergent and Discriminant Validation by the Multitrait-Multimethod Matrix** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/1959-03-01-convergent-and-discriminant-validation-by-the-multitrait-mul-53b1b082.mp3) [arXiv](https://psycnet.apa.org/doi/10.1037/h0046016)

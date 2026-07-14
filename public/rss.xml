@@ -207,21 +207,21 @@
     </item>
     <item>
       <title>Osu2MIR: Beat Tracking Dataset Derived From Osu! Data</title>
-      <description>当前深度学习在节拍跟踪领域占据主导地位，但它的进一步发展却受到了现有数据集质量和规模的严重制约。传统上，节拍和下拍的标注工作往往依赖于专业人士，这导致了数据集普遍存在规模小、体裁受限、更新缓慢的问题。这些数据集通常由单一标注者完成，不可避免地引入了潜在的个人偏见，并且其中存在的错误往往在缺乏仔细审查的情况下难以被发现，这无疑成为了模型性能提升的一个瓶颈。</description>
+      <description>节拍追踪（beat tracking）这个任务听起来简单——就是让机器听音乐、找出每一拍在哪一秒——但它在音乐信息检索领域一直是个硬骨头，而制约它进步的核心瓶颈，不是算法不够强，而是数据不够好、不够多、不够多样。这篇论文想解决的正是这个问题：能不能从一个意想不到的地方找到高质量的节拍标注数据？他们的答案是：去音游里挖。</description>
       <link>https://arxiv.org/abs/2509.12667</link>
-      <guid isPermaLink="false">2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-b4f170ee.mp3</guid>
+      <guid isPermaLink="false">2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-cd770c44.mp3</guid>
       <pubDate>Mon, 06 Jul 2026 12:43:17 +0000</pubDate>
-      <itunes:duration>813</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-b4f170ee.mp3" length="4882896" type="audio/mpeg"/>
+      <itunes:duration>937</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-cd770c44.mp3" length="5626512" type="audio/mpeg"/>
     </item>
     <item>
       <title>Convergent and Discriminant Validation by the Multitrait-Multimethod Matrix</title>
-      <description>我们如何才能确信一个心理学量表，比如测量人格特质、智力水平或者抑郁程度的问卷，它真正测量的是我们所宣称的那个抽象概念，而不是别的什么东西，或者仅仅是测量方法本身带来的误差？这就是心理学研究中一个核心且复杂的问题：构念效度，也就是我们常说的“结构效度”。它关系到我们所有心理学测量结果的可靠性和科学性。</description>
+      <description>心理学里有一个长期困扰研究者的问题：我们用问卷或测验测出来的分数，到底测的是我们真正想测的那个心理特质，还是只不过反映了测量工具本身的特性？换句话说，高分是因为这个人真的具备某种能力或特质，还是因为他碰巧擅长填问卷、擅长应对这种题目格式？这个问题听起来有点哲学，但它直接决定了心理学测量能不能被认真对待。1959年，美国心理学家坎贝尔和菲斯克在《心理学公报》上发表了一篇文章，题目是《多特质多方法矩阵的聚合效度与区分效度》。这篇文章后来成为心理测量学领域引用次数最多的经典论文之一，它提出的那套逻辑框架，至今仍然是判断一个心理测验是否真的测到了它声称要测的东西的核心标准。</description>
       <link>https://psycnet.apa.org/doi/10.1037/h0046016</link>
-      <guid isPermaLink="false">1959-03-01-convergent-and-discriminant-validation-by-the-multitrait-mul-f4a28d55.mp3</guid>
+      <guid isPermaLink="false">1959-03-01-convergent-and-discriminant-validation-by-the-multitrait-mul-53b1b082.mp3</guid>
       <pubDate>Sat, 04 Jul 2026 10:53:25 +0000</pubDate>
-      <itunes:duration>937</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/1959-03-01-convergent-and-discriminant-validation-by-the-multitrait-mul-f4a28d55.mp3" length="5623200" type="audio/mpeg"/>
+      <itunes:duration>782</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/1959-03-01-convergent-and-discriminant-validation-by-the-multitrait-mul-53b1b082.mp3" length="4695552" type="audio/mpeg"/>
     </item>
     <item>
       <title>Program-as-Weights: A Programming Paradigm for Fuzzy Functions</title>
@@ -261,102 +261,102 @@
     </item>
     <item>
       <title>Cross-modal variational inference for bijective signal-symbol translation</title>
-      <description>我们今天要聊的这篇论文，它关注的是一个在音乐信息检索领域非常核心的问题：如何实现音频信号和音乐符号之间的双向转换。想象一下，我们想把一段音乐录音自动转换成乐谱，或者反过来，从一个乐谱生成一段逼真的音乐。这听起来好像很直接，但实际上，现有的方法往往存在不少局限。</description>
+      <description>音乐转录这件事，长期以来都是一个单向的问题：给你一段音频，你从里面提取出音符信息。但这篇论文问的是另一个问题——能不能让这个过程双向都走通？既能从音频推出符号，也能从符号生成音频？而且两边共用同一套底层表示？这就是这篇论文的核心出发点。</description>
       <link>https://arxiv.org/abs/2002.03862</link>
-      <guid isPermaLink="false">2020-02-10-cross-modal-variational-inference-for-bijective-signal-symbo-5f50d332.mp3</guid>
+      <guid isPermaLink="false">2020-02-10-cross-modal-variational-inference-for-bijective-signal-symbo-29012f22.mp3</guid>
       <pubDate>Thu, 02 Jul 2026 17:56:08 +0000</pubDate>
-      <itunes:duration>928</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2020-02-10-cross-modal-variational-inference-for-bijective-signal-symbo-5f50d332.mp3" length="5569632" type="audio/mpeg"/>
+      <itunes:duration>912</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2020-02-10-cross-modal-variational-inference-for-bijective-signal-symbo-29012f22.mp3" length="5472720" type="audio/mpeg"/>
     </item>
     <item>
       <title>HEAR: Holistic Evaluation of Audio Representations</title>
-      <description>我们今天聊的这篇论文是“HEAR：音频表示的整体评估”。它要解决的核心问题是：我们能不能找到一种通用的音频表示方法，能够像人耳一样，对各种日常场景下的音频任务都表现出色，而且不需要针对每个任务进行专门的微调？</description>
+      <description>音频领域长期以来有一个根本性的困境：我们有成百上千种音频任务，语音识别、环境声音分类、音乐流派判断、音高检测、说话人计数……但每次做新任务的时候，研究者往往得从头训练或者精调一个专门的模型。这就引出了一个核心问题：有没有一种通用的音频表示，不需要对下游任务做任何微调，就能在各种不同类型的音频任务上都表现得足够好？</description>
       <link>https://arxiv.org/abs/2203.03022</link>
-      <guid isPermaLink="false">2022-03-06-hear-holistic-evaluation-of-audio-representations-8832ab28.mp3</guid>
+      <guid isPermaLink="false">2022-03-06-hear-holistic-evaluation-of-audio-representations-90f1323c.mp3</guid>
       <pubDate>Thu, 02 Jul 2026 17:54:14 +0000</pubDate>
-      <itunes:duration>1341</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2022-03-06-hear-holistic-evaluation-of-audio-representations-8832ab28.mp3" length="8051616" type="audio/mpeg"/>
+      <itunes:duration>944</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2022-03-06-hear-holistic-evaluation-of-audio-representations-90f1323c.mp3" length="5666976" type="audio/mpeg"/>
     </item>
     <item>
       <title>CMI-Bench: A Comprehensive Benchmark for Evaluating Music Instruction Following</title>
-      <description>我们今天要探讨的这篇论文，它直接切入了一个核心问题：目前用来评估大型语言模型在音乐理解能力上的基准测试，往往范围太窄，要么依赖于过于简化的任务，要么就是多项选择题的格式，这都无法真正反映现实世界中音乐分析的复杂性。</description>
+      <description>当前最主流的音频大语言模型在音乐理解上到底做得怎么样？这个问题听起来简单，但在这篇论文之前，学界其实没有一套真正硬核的评测标准来回答它。现有的基准要么任务太窄，要么用多选题格式来回避开放式输出的难题，要么评测指标和音乐信息检索领域几十年积累下来的标准根本对不上号。这篇论文——CMI-Bench——就是要补上这个缺口，用一套覆盖十四个任务、横跨二十个数据集的综合基准，把音频大语言模型放到和传统监督模型同等严苛的考场上去考一考。</description>
       <link>https://arxiv.org/abs/2506.12285</link>
-      <guid isPermaLink="false">2025-06-14-cmi-bench-a-comprehensive-benchmark-for-evaluating-music-ins-507002f1.mp3</guid>
+      <guid isPermaLink="false">2025-06-14-cmi-bench-a-comprehensive-benchmark-for-evaluating-music-ins-75ea820d.mp3</guid>
       <pubDate>Thu, 02 Jul 2026 17:52:08 +0000</pubDate>
-      <itunes:duration>1217</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-06-14-cmi-bench-a-comprehensive-benchmark-for-evaluating-music-ins-507002f1.mp3" length="7306992" type="audio/mpeg"/>
+      <itunes:duration>950</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-06-14-cmi-bench-a-comprehensive-benchmark-for-evaluating-music-ins-75ea820d.mp3" length="5701968" type="audio/mpeg"/>
     </item>
     <item>
       <title>MuQ: Self-Supervised Music Representation Learning with Mel Residual Vector Quantization</title>
-      <description>大家有没有遇到过这样的情况：在音乐领域，我们想让机器理解音乐的含义，比如这首歌是什么风格、什么乐器演奏的、表达了什么情绪等等。为了解决这个问题，研究人员通常会训练一些基础模型，让它们从大量的无标签音乐数据中学习，然后把学到的“音乐常识”应用到各种具体的任务上。</description>
+      <description>好的，现在我们来聊聊一篇非常有意思的论文，它提出了一种全新的音乐自监督学习模型，叫做 MuQ。这篇论文要解决的核心问题是：如何才能更好地让机器理解音乐？</description>
       <link>https://arxiv.org/abs/2501.01108</link>
-      <guid isPermaLink="false">2025-01-02-muq-self-supervised-music-representation-learning-with-mel-r-7d99a1f6.mp3</guid>
+      <guid isPermaLink="false">2025-01-02-muq-self-supervised-music-representation-learning-with-mel-r-5930ddf5.mp3</guid>
       <pubDate>Thu, 02 Jul 2026 17:48:16 +0000</pubDate>
-      <itunes:duration>1111</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-01-02-muq-self-supervised-music-representation-learning-with-mel-r-7d99a1f6.mp3" length="6667344" type="audio/mpeg"/>
+      <itunes:duration>903</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-01-02-muq-self-supervised-music-representation-learning-with-mel-r-5930ddf5.mp3" length="5422752" type="audio/mpeg"/>
     </item>
     <item>
       <title>MERT: Acoustic Music Understanding Model with Large-Scale Self-supervised Training</title>
-      <description>长期以来，音乐信息检索，也就是我们常说的MIR任务，一直面临着一个棘手的问题：由于音乐音频标注成本高昂，加上各国版权法律的限制，我们很难获得大规模、高质量的标注数据。这就导致了针对不同音乐理解任务，比如音乐标签、节拍跟踪、音乐转录或音源分离，往往需要开发特定的模型和特征，难以形成统一、通用的解决方案。</description>
+      <description>音乐理解领域长期面临一个根本性的困境：要训练一个能处理各种任务的通用模型，你需要大量标注好的音乐数据，但音乐数据的标注成本极高，而且受版权法律的严格限制。与此同时，自然语言处理领域的大规模预训练模型已经彻底改变了那个领域的格局——BERT、GPT这些模型通过无监督或自监督的方式，在海量数据上学到了极其通用的表示，下游任务只需要少量标注数据就能达到很好的效果。那么，音乐领域能不能走同样的路？这篇论文提出的MERT模型，就是在系统性地回答这个问题。</description>
       <link>https://arxiv.org/abs/2306.00107</link>
-      <guid isPermaLink="false">2023-05-31-mert-acoustic-music-understanding-model-with-large-scale-sel-eab91c7c.mp3</guid>
+      <guid isPermaLink="false">2023-05-31-mert-acoustic-music-understanding-model-with-large-scale-sel-d7394c2b.mp3</guid>
       <pubDate>Thu, 02 Jul 2026 17:46:55 +0000</pubDate>
-      <itunes:duration>961</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2023-05-31-mert-acoustic-music-understanding-model-with-large-scale-sel-eab91c7c.mp3" length="5766048" type="audio/mpeg"/>
+      <itunes:duration>955</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2023-05-31-mert-acoustic-music-understanding-model-with-large-scale-sel-d7394c2b.mp3" length="5735232" type="audio/mpeg"/>
     </item>
     <item>
       <title>SUPERB: Speech processing Universal PERformance Benchmark</title>
-      <description>语音处理领域一直缺乏一个统一的标准来系统地评估自监督学习模型的性能，这使得研究人员很难公平地比较不同模型，也难以真正理解这些模型在各种任务上的泛化能力和可重用性。这就好比我们有各种各样的新型跑车，但却没有一条标准的赛道和统一的比赛规则，大家都在各自的场地里跑，成绩自然就不好比较了。为了解决这个问题，研究人员提出了 SUPERB，也就是“语音处理通用性能基准”。</description>
+      <description>语音领域的自监督学习研究有一个长期存在的痛点：同样是自监督预训练，在自然语言处理里有GLUE基准，在计算机视觉里有VISSL基准，各路模型可以在同一套标准下公平比较、相互借鉴；但在语音处理这个领域，却一直缺少这样一个统一的测评框架。不同的论文用不同的数据集、不同的下游模型、不同的评估协议，你的wav2vec在这个数据集上测，我的HuBERT在另一个数据集上测，根本没法比。这篇论文要解决的就是这个问题。SUPERB，全称Speech processing Universal PERformance Benchmark，语音处理通用性能基准，就是为了填补这个空白而生的。</description>
       <link>https://arxiv.org/abs/2105.01051</link>
-      <guid isPermaLink="false">2021-05-03-superb-speech-processing-universal-performance-benchmark-e15d6319.mp3</guid>
+      <guid isPermaLink="false">2021-05-03-superb-speech-processing-universal-performance-benchmark-72061951.mp3</guid>
       <pubDate>Thu, 02 Jul 2026 17:45:14 +0000</pubDate>
-      <itunes:duration>872</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2021-05-03-superb-speech-processing-universal-performance-benchmark-e15d6319.mp3" length="5236272" type="audio/mpeg"/>
+      <itunes:duration>1084</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2021-05-03-superb-speech-processing-universal-performance-benchmark-72061951.mp3" length="6506784" type="audio/mpeg"/>
     </item>
     <item>
       <title>Dance Dance Convolution</title>
-      <description>这篇论文要解决的问题，是自动生成跳舞机，也就是 Dance Dance Revolution，简称 DDR 的舞步图。对于玩过 DDR 的朋友来说，应该对舞步图不陌生，它就是屏幕上那些指示你什么时候踩、踩哪个方向箭头的序列。这个游戏在全球有数百万玩家，但它有一个痛点：玩家们可能会玩腻现有的舞步图，或者想为自己喜欢的歌曲制作舞步图，但苦于没有。虽然玩家社区里有人会自己制作和分享舞步图包，但这个过程非常耗时，而且需要专业的知识和经验。</description>
+      <description>如何让神经网络学会给跳舞机编舞——这就是这篇论文要解决的核心问题。</description>
       <link>https://arxiv.org/abs/1703.06891</link>
-      <guid isPermaLink="false">2017-03-20-dance-dance-convolution-c39d59f9.mp3</guid>
+      <guid isPermaLink="false">2017-03-20-dance-dance-convolution-109a0de5.mp3</guid>
       <pubDate>Thu, 02 Jul 2026 17:43:45 +0000</pubDate>
-      <itunes:duration>1006</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2017-03-20-dance-dance-convolution-c39d59f9.mp3" length="6037920" type="audio/mpeg"/>
+      <itunes:duration>943</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2017-03-20-dance-dance-convolution-109a0de5.mp3" length="5661072" type="audio/mpeg"/>
     </item>
     <item>
       <title>MARBLE: Music Audio Representation Benchmark for Universal Evaluation</title>
-      <description>各位听众，我们今天要聊的这篇论文，叫做 MARBLE，全称是 Music Audio Representation Benchmark for Universal Evaluation，也就是“音乐音频表征通用评估基准”。这篇论文要解决的核心问题，是当前音乐人工智能领域，特别是音乐理解方面，缺乏一个统一、全面且社区驱动的评估基准。</description>
+      <description>音乐领域的人工智能研究面临一个根本性的困境：没有人知道哪个预训练模型真的好用。不同的论文用不同的数据集、不同的评测指标、不同的实验设置来汇报自己的结果，导致模型之间根本没有办法做横向对比。你看这篇论文说自己在情感识别上达到了最优，那篇论文说自己在风格分类上最强，但它们用的数据集不一样，评测协议不一样，有的甚至连数据划分方式都不同。这个问题在自然语言处理和计算机视觉领域早就被解决了，GLUE、SuperGLUE、VTAB这些基准测试把整个社区的研究推上了快车道。但音乐领域一直没有类似的东西。MARBLE这篇论文就是要填上这个空缺。</description>
       <link>https://arxiv.org/abs/2306.10548</link>
-      <guid isPermaLink="false">2023-06-18-marble-music-audio-representation-benchmark-for-universal-ev-3980a7a2.mp3</guid>
+      <guid isPermaLink="false">2023-06-18-marble-music-audio-representation-benchmark-for-universal-ev-21a338e9.mp3</guid>
       <pubDate>Thu, 02 Jul 2026 17:41:27 +0000</pubDate>
-      <itunes:duration>1342</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2023-06-18-marble-music-audio-representation-benchmark-for-universal-ev-3980a7a2.mp3" length="8057520" type="audio/mpeg"/>
+      <itunes:duration>1005</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2023-06-18-marble-music-audio-representation-benchmark-for-universal-ev-21a338e9.mp3" length="6035472" type="audio/mpeg"/>
     </item>
     <item>
       <title>AI Agents That Matter</title>
-      <description>当前AI智能体领域正经历一场激动人心的变革，但其核心的基准测试方法却存在诸多严重缺陷，这些缺陷正阻碍着智能体在真实世界中发挥其应有的作用。传统的语言模型评估往往关注单一模型的性能，而智能体则被设计用于处理更复杂、更贴近现实、更具实用价值的任务，并且通常没有唯一的正确答案。例如，智能体可以通过命令行执行任务，甚至像SWE-Agent那样，拥有自己的智能体-计算机接口。然而，智能体的运行成本可能远高于一次简单的模型调用，例如SWE-Agent每次运行的上限是四美元，这相当于数十万个语言模型令牌的消耗。正是这种根本性的差异，使得智能体的基准测试面临着独特的挑战。这篇论文正是通过实证分析，揭示了这些挑</description>
+      <description>当前AI智能体领域有一个根本性的问题：我们用来衡量智能体进步的那些基准测试，很可能正在把整个领域引向错误的方向。这篇来自普林斯顿大学的论文，就是要正面回答这个问题——现有的智能体评测体系到底出了什么问题，以及我们应该怎么修正它。</description>
       <link>https://arxiv.org/abs/2407.01502</link>
-      <guid isPermaLink="false">2024-07-01-ai-agents-that-matter-908d8d4b.mp3</guid>
+      <guid isPermaLink="false">2024-07-01-ai-agents-that-matter-6b915aba.mp3</guid>
       <pubDate>Thu, 02 Jul 2026 17:39:47 +0000</pubDate>
-      <itunes:duration>1145</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-07-01-ai-agents-that-matter-908d8d4b.mp3" length="6871968" type="audio/mpeg"/>
+      <itunes:duration>1039</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-07-01-ai-agents-that-matter-6b915aba.mp3" length="6238944" type="audio/mpeg"/>
     </item>
     <item>
       <title>Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations</title>
-      <description>好的，下面是根据您的要求撰写的口播稿：</description>
+      <description>当我们评估一个大型语言模型的能力时，最常见的做法是跑一批测试题，算出一个正确率，然后把最高的那个数字加粗，宣布"我们的模型达到了最新水平"。但这里有一个根本性的问题被忽视了：这个数字本身有多可靠？它有多大的误差范围？两个模型之间看似明显的差距，究竟是真实的能力差异，还是随机波动带来的噪声？Anthropic的研究员Evan Miller在这篇论文里做的事情，就是把统计学里那套成熟的实验分析方法，系统性地搬进语言模型评估的领域。</description>
       <link>https://arxiv.org/abs/2411.00640</link>
-      <guid isPermaLink="false">2024-11-01-adding-error-bars-to-evals-a-statistical-approach-to-languag-b74a87bd.mp3</guid>
+      <guid isPermaLink="false">2024-11-01-adding-error-bars-to-evals-a-statistical-approach-to-languag-c8091898.mp3</guid>
       <pubDate>Thu, 02 Jul 2026 17:37:06 +0000</pubDate>
-      <itunes:duration>672</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-11-01-adding-error-bars-to-evals-a-statistical-approach-to-languag-b74a87bd.mp3" length="4037616" type="audio/mpeg"/>
+      <itunes:duration>680</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-11-01-adding-error-bars-to-evals-a-statistical-approach-to-languag-c8091898.mp3" length="4080528" type="audio/mpeg"/>
     </item>
     <item>
       <title>Procedural Content Generation via Machine Learning (PCGML)</title>
-      <description>我们今天来聊聊一个在游戏开发和研究领域越来越热门的话题，那就是如何利用机器学习来生成游戏内容，也就是所谓的“机器学习驱动的程序化内容生成”，简称PCGML。传统的程序化内容生成方法，比如基于语法规则、噪声函数、搜索算法或者求解器的方法，它们的核心在于算法、参数、约束和目标通常都是由设计师或研究人员手动设定的。虽然这些方法也会从现有游戏中汲取灵感，但它们很少直接从大量的现有游戏内容中学习数据，然后用学到的模型来生成新的内容。而PCGML正是要解决这个痛点。</description>
+      <description>游戏内容生成一直有一个根本矛盾：设计师想要大量高质量、风格一致的内容，但手工制作每一个关卡、每一张地图、每一张卡牌的成本极高。传统的程序化内容生成方法——不管是用进化算法搜索内容空间、用约束求解器保证可玩性，还是用语法规则直接构建——都有一个共同的硬伤：算法本身的参数、规则、目标函数，全都需要人来手工设计。你想让机器生成关卡，先得用代码告诉机器什么叫"好关卡"。这篇2017年发表的综述论文，就是要系统性地回答另一个问题：如果我们直接把已有的游戏内容喂给机器学习模型，让模型自己去学习什么叫"好内容"，然后用这个模型来生成新内容，会怎么样？这就是论文定义的PCGML，Procedural Cont</description>
       <link>https://arxiv.org/abs/1702.00539</link>
-      <guid isPermaLink="false">2017-02-02-procedural-content-generation-via-machine-learning-pcgml-bdaacac4.mp3</guid>
+      <guid isPermaLink="false">2017-02-02-procedural-content-generation-via-machine-learning-pcgml-61037055.mp3</guid>
       <pubDate>Thu, 02 Jul 2026 17:34:55 +0000</pubDate>
-      <itunes:duration>1620</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2017-02-02-procedural-content-generation-via-machine-learning-pcgml-bdaacac4.mp3" length="9720144" type="audio/mpeg"/>
+      <itunes:duration>1046</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2017-02-02-procedural-content-generation-via-machine-learning-pcgml-61037055.mp3" length="6278832" type="audio/mpeg"/>
     </item>
     <item>
       <title>Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models</title>
@@ -405,102 +405,102 @@
     </item>
     <item>
       <title>Robust Speech Recognition via Large-Scale Weak Supervision</title>
-      <description>目前语音识别系统面临的一个核心痛点是，尽管它们在特定训练数据集上能达到“超人”的表现，但一旦部署到真实世界中，遇到训练数据之外的语音环境、口音或语言，性能就会大幅下降，缺乏我们常说的鲁棒性，也就是泛化能力差。这就像一个学生，只会做模拟题，一到真题就傻眼。</description>
+      <description>语音识别系统长期以来有一个根本性的困境：在标准测试集上表现惊艳，但换一个真实场景就会大幅退步。这篇论文要解决的正是这个问题——怎样训练出一个不需要针对特定场景做微调、就能在各种真实环境下可靠工作的语音识别系统。这个系统叫做 Whisper，是 OpenAI 在 2022 年发布的工作，发表在 ICML 上。</description>
       <link>https://arxiv.org/abs/2212.04356</link>
-      <guid isPermaLink="false">2022-12-06-robust-speech-recognition-via-large-scale-weak-supervision-356b92e1.mp3</guid>
+      <guid isPermaLink="false">2022-12-06-robust-speech-recognition-via-large-scale-weak-supervision-317ab117.mp3</guid>
       <pubDate>Wed, 01 Jul 2026 10:21:53 +0000</pubDate>
-      <itunes:duration>2218</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2022-12-06-robust-speech-recognition-via-large-scale-weak-supervision-356b92e1.mp3" length="13310496" type="audio/mpeg"/>
+      <itunes:duration>1000</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2022-12-06-robust-speech-recognition-via-large-scale-weak-supervision-317ab117.mp3" length="6005088" type="audio/mpeg"/>
     </item>
     <item>
       <title>Is Your Code Generated by ChatGPT Really Correct? Rigorous Evaluation of Large Language Models for Code Generation</title>
-      <description>当前评估大型语言模型生成代码正确性的方法，面临着一个核心问题：我们真的能相信这些代码是正确的吗？现有基准测试，比如广受欢迎的HumanEval，通常只包含少量测试用例，这导致我们对LLM生成代码的实际功能正确性产生了过度乐观的估计。</description>
+      <description>好的，这就为您生成一段约20分钟、适合开车时收听的连续口播稿，深入讲解这篇论文。</description>
       <link>https://arxiv.org/abs/2305.01210</link>
-      <guid isPermaLink="false">2023-05-02-is-your-code-generated-by-chatgpt-really-correct-rigorous-ev-bccf7ef8.mp3</guid>
+      <guid isPermaLink="false">2023-05-02-is-your-code-generated-by-chatgpt-really-correct-rigorous-ev-69937cee.mp3</guid>
       <pubDate>Wed, 01 Jul 2026 10:21:51 +0000</pubDate>
-      <itunes:duration>1341</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2023-05-02-is-your-code-generated-by-chatgpt-really-correct-rigorous-ev-bccf7ef8.mp3" length="8050032" type="audio/mpeg"/>
+      <itunes:duration>1335</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2023-05-02-is-your-code-generated-by-chatgpt-really-correct-rigorous-ev-69937cee.mp3" length="8015472" type="audio/mpeg"/>
     </item>
     <item>
       <title>$τ$-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains</title>
-      <description>现有的语言智能体基准测试在评估它们与人类用户的互动能力以及遵循特定领域规则的能力方面存在明显不足，而这两点对于将智能体部署到真实世界的应用中至关重要。想象一下，一个航空公司的订票智能体，当用户想要更改航班目的地时，它不仅需要通过多轮对话从用户那里收集必要信息，还要根据航空公司复杂的政策指南来检查规则，然后通过复杂的预订API查找新航班并完成改签。在这个过程中，智能体必须在不同的用户和相似请求下保持行为一致性，并且能够稳健地应对对话流程中的细微变化，确保最终结果不受影响。然而，目前大多数语言智能体基准，例如ToolBench、WebShop等，通常采用简化的指令遵循设置，智能体在预先提供所有信息</description>
+      <description>现有的语言智能体评测基准，几乎全都把人类用户这个环节给省掉了。典型的设置是：给智能体一个完整的任务描述，让它自己去操作网页、执行代码、调用API，然后看结果。这种设置的问题在于，它和真实世界的客服、助手场景差距太大。真实场景里，用户不会一次性把所有信息说清楚，对话是渐进式的，智能体需要一边问一边推断；同时，智能体还必须遵守一套复杂的领域规则，比如航空公司的行李政策、退款政策、不同会员等级的差异化处理。这两件事——和人交互、遵守规则——恰恰是部署真实智能体最核心的能力，但现有基准对它们的测试几乎是空白的。</description>
       <link>https://arxiv.org/abs/2406.12045</link>
-      <guid isPermaLink="false">2024-06-17-t-bench-a-benchmark-for-tool-agent-user-interaction-in-real--6314fefb.mp3</guid>
+      <guid isPermaLink="false">2024-06-17-t-bench-a-benchmark-for-tool-agent-user-interaction-in-real--fec8b5e2.mp3</guid>
       <pubDate>Wed, 01 Jul 2026 10:21:50 +0000</pubDate>
-      <itunes:duration>1583</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-06-17-t-bench-a-benchmark-for-tool-agent-user-interaction-in-real--6314fefb.mp3" length="9499104" type="audio/mpeg"/>
+      <itunes:duration>973</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-06-17-t-bench-a-benchmark-for-tool-agent-user-interaction-in-real--fec8b5e2.mp3" length="5843520" type="audio/mpeg"/>
     </item>
     <item>
       <title>Analyzing the Expressive Range of a Level Generator</title>
-      <description>我们通常评价一个游戏关卡生成器好坏，往往是看它单独生成的某个关卡能不能玩、玩起来怎么样。这种评价方式虽然直观，但它有一个很大的局限性：就像我们不能只凭一幅画就判断一位画家的整体风格和能力一样，仅仅看一两个生成的关卡，我们也很难真正了解这个关卡生成器到底有什么样的本事，它能生成多少种不同风格的关卡，它有没有自己的偏好，或者它在哪些方面表现得特别突出。</description>
+      <description>做游戏关卡的程序化生成，最让人头疼的问题从来不是"能不能生成"，而是"生成出来的东西到底好不好、够不够多样"。过去大家评价一个关卡生成器，通常就是拿几张图看看，或者跑一遍游戏确认没有穿模、没有死路，能玩就算过关。但这个标准太粗糙了——一个生成器可能每次都能出一张"可玩"的关卡，但这几百张关卡其实长得差不多，全是同一个调性，玩家玩三关就厌了。怎么系统地衡量一个生成器到底能表达多少种不同的关卡风格？这正是这篇论文要回答的核心问题。</description>
       <link>https://dl.acm.org/doi/10.1145/1822348.1822369</link>
-      <guid isPermaLink="false">2010-06-19-analyzing-the-expressive-range-of-a-level-generator-9b4d8dbe.mp3</guid>
+      <guid isPermaLink="false">2010-06-19-analyzing-the-expressive-range-of-a-level-generator-17c32bdb.mp3</guid>
       <pubDate>Wed, 01 Jul 2026 10:21:49 +0000</pubDate>
-      <itunes:duration>582</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2010-06-19-analyzing-the-expressive-range-of-a-level-generator-9b4d8dbe.mp3" length="3492864" type="audio/mpeg"/>
+      <itunes:duration>686</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2010-06-19-analyzing-the-expressive-range-of-a-level-generator-17c32bdb.mp3" length="4116384" type="audio/mpeg"/>
     </item>
     <item>
       <title>Procedural Content Generation in Games: A Survey with Insights on Emerging LLM Integration</title>
-      <description>游戏内容自动生成，也就是我们常说的PCG，它要解决的核心问题，就是当前游戏开发中内容生产耗时巨大、成本高昂，却又要不断满足玩家对新鲜内容永无止境的需求这个痛点。在过去，开发一款大型游戏可能需要数年时间，投入海量人力物力，而PCG技术的目标，就是利用算法自动生成游戏内容，从而提高游戏的可玩性、降低开发成本，并减少开发人员的工作量。这项技术从上世纪80年代的《Beneath Apple Manor》和《Rogue》这类Roguelike游戏开始，就已经在业内和学术界有了很长的历史。而近些年，随着深度学习技术的飞速发展，PCG能够生成的内容变得越来越复杂精妙。但真正颠覆这一领域发展轨迹的，是大型语言</description>
+      <description>我们今天来聊聊游戏里的程序化内容生成，也就是PCG。这个技术简单来说，就是用算法来自动创造游戏内容。为什么它这么重要呢？因为现在的游戏产业发展得太快了，市场对新内容的需求是巨大的。想想看，一款大作的开发周期动辄几年，成本更是天文数字。PCG就能在这方面帮上大忙，它能大大减少游戏的开发时间和成本，同时还能增加游戏的重复可玩性，让玩家每次玩都有新鲜感。</description>
       <link>https://arxiv.org/abs/2410.15644</link>
-      <guid isPermaLink="false">2024-10-21-procedural-content-generation-in-games-a-survey-with-insight-61821c8d.mp3</guid>
+      <guid isPermaLink="false">2024-10-21-procedural-content-generation-in-games-a-survey-with-insight-39449d96.mp3</guid>
       <pubDate>Wed, 01 Jul 2026 10:21:49 +0000</pubDate>
-      <itunes:duration>1153</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-10-21-procedural-content-generation-in-games-a-survey-with-insight-61821c8d.mp3" length="6918768" type="audio/mpeg"/>
+      <itunes:duration>1048</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-10-21-procedural-content-generation-in-games-a-survey-with-insight-39449d96.mp3" length="6290208" type="audio/mpeg"/>
     </item>
     <item>
       <title>Survey on Evaluation of LLM-based Agents</title>
-      <description>大型语言模型（LLM）驱动的智能体，也就是我们常说的LLM Agent，正在彻底改变人工智能的范式，让AI系统能够自主规划、推理并利用工具与动态环境互动。但随之而来的一个核心挑战是：我们该如何有效地评估这些日益强大的智能体？传统的LLM评估方法，比如仅仅测量文本输出的质量，已经远远不足以衡量智能体在动态环境中进行序列决策和操作的能力。我们需要全新的评估范式和基准，它们不仅要能评估智能体完成多步骤任务的能力，还要能适应智能体能力的不断演进，覆盖新的任务类型和应用领域。今天，我们就来深入探讨这篇关于LLM智能体评估的综述论文，它全面梳理了当前的评估格局，并指出了未来研究的关键方向。</description>
+      <description>我们要解决的核心问题，是如何评价一个基于大语言模型的智能体——它究竟有多能干、哪里出了问题、用什么标准衡量它、又怎么确保它安全可靠。这听起来像是一个工程问题，但它背后藏着真正深刻的方法论困境，而这篇来自IBM研究院、耶鲁大学和希伯来大学合作团队的综述，试图给整个领域画一张清晰的地图。</description>
       <link>https://arxiv.org/abs/2503.16416</link>
-      <guid isPermaLink="false">2025-03-20-survey-on-evaluation-of-llm-based-agents-b7d45164.mp3</guid>
+      <guid isPermaLink="false">2025-03-20-survey-on-evaluation-of-llm-based-agents-0ca5f931.mp3</guid>
       <pubDate>Wed, 01 Jul 2026 10:21:49 +0000</pubDate>
-      <itunes:duration>1204</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-03-20-survey-on-evaluation-of-llm-based-agents-b7d45164.mp3" length="7229088" type="audio/mpeg"/>
+      <itunes:duration>1117</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-03-20-survey-on-evaluation-of-llm-based-agents-0ca5f931.mp3" length="6707664" type="audio/mpeg"/>
     </item>
     <item>
       <title>Measuring what Matters: Construct Validity in Large Language Model Benchmarks</title>
-      <description>现在，大型语言模型的评估是理解它们能力、发现潜在安全和鲁棒性问题的关键一步，这直接关系到它们能否被安全可靠地部署。但是，我们真的在有效地测量我们想测量的东西吗？比如，当我们说一个模型“安全”或者“鲁棒”，我们用来评估这些抽象概念的基准测试，真的能够准确地代表这些概念本身吗？这正是这篇论文《测量真正重要的：大型语言模型基准测试中的建构效度》所要解决的核心问题。它指出，如果我们的评估工具，也就是这些基准测试，缺乏“建构效度”，那么我们对模型能力的所有判断都可能是不准确的，甚至会误导研究方向。</description>
+      <description>思必驰科技股份有限公司，专注于语音识别、语义理解、语音合成以及自然语言处理等人工智能技术。</description>
       <link>https://arxiv.org/abs/2511.04703</link>
-      <guid isPermaLink="false">2025-11-03-measuring-what-matters-construct-validity-in-large-language--9347ad2c.mp3</guid>
+      <guid isPermaLink="false">2025-11-03-measuring-what-matters-construct-validity-in-large-language--d1c8ea4a.mp3</guid>
       <pubDate>Wed, 01 Jul 2026 10:21:49 +0000</pubDate>
-      <itunes:duration>1196</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-11-03-measuring-what-matters-construct-validity-in-large-language--9347ad2c.mp3" length="7176672" type="audio/mpeg"/>
+      <itunes:duration>1210</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2025-11-03-measuring-what-matters-construct-validity-in-large-language--d1c8ea4a.mp3" length="7265808" type="audio/mpeg"/>
     </item>
     <item>
       <title>Evaluating Large Language Models Trained on Code</title>
-      <description>今天我们要聊的这篇论文，关注的核心问题是如何准确评估大型语言模型在生成代码方面的能力。我们都知道，像GPT-3这样的大语言模型在处理自然语言任务上表现出色，但当它们被用来编写代码时，我们该如何判断它们写出的代码是否真的“好用”呢？这篇论文引入了一个名为Codex的模型，它是GPT语言模型的一个变体，经过了大量GitHub上公开代码的微调训练。同时，论文还发布了一个全新的评估数据集HumanEval，专门用来衡量模型根据函数文档字符串来合成程序的功能正确性。</description>
+      <description>如何让语言模型真正学会写代码，这是这篇论文要解决的核心问题。</description>
       <link>https://arxiv.org/abs/2107.03374</link>
-      <guid isPermaLink="false">2021-07-07-evaluating-large-language-models-trained-on-code-76d81ace.mp3</guid>
+      <guid isPermaLink="false">2021-07-07-evaluating-large-language-models-trained-on-code-e1787965.mp3</guid>
       <pubDate>Wed, 01 Jul 2026 10:21:49 +0000</pubDate>
-      <itunes:duration>723</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2021-07-07-evaluating-large-language-models-trained-on-code-76d81ace.mp3" length="4341168" type="audio/mpeg"/>
+      <itunes:duration>635</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2021-07-07-evaluating-large-language-models-trained-on-code-e1787965.mp3" length="3810240" type="audio/mpeg"/>
     </item>
     <item>
       <title>On the Measure of Intelligence</title>
-      <description>我们今天来聊聊一个对人工智能领域至关重要的问题：到底什么是智能，我们又该如何有效地衡量它？长期以来，人工智能领域一直致力于开发出拥有媲美人类智能的机器。然而，尽管我们在特定任务上取得了惊人的成就，比如下棋、玩游戏，但这些系统往往非常脆弱，对数据需求巨大，难以理解与训练数据稍有偏差的情况，更无法在没有人类大量干预的情况下自主适应新任务。这背后的一个核心原因，就是我们缺乏一个精确、可操作的智能定义和衡量标准，尤其是针对类人通用智能的标准。</description>
+      <description>人工智能领域有一个悬而未决的根本问题：我们到底在测量什么？当一个AI系统在围棋上击败世界冠军，当另一个系统在《星际争霸》里战胜职业选手，我们是否真的在测量智能本身？还是说，我们只是在测量一种非常昂贵、非常专门的技能？这篇论文，François Chollet在2019年写的《论智能的度量》，试图彻底厘清这个问题，并给出一个可操作的、形式化的智能定义，同时提出一个配套的测试基准。</description>
       <link>https://arxiv.org/abs/1911.01547</link>
-      <guid isPermaLink="false">2019-11-05-on-the-measure-of-intelligence-ec62b9b9.mp3</guid>
+      <guid isPermaLink="false">2019-11-05-on-the-measure-of-intelligence-79ed511b.mp3</guid>
       <pubDate>Wed, 01 Jul 2026 10:21:49 +0000</pubDate>
-      <itunes:duration>712</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2019-11-05-on-the-measure-of-intelligence-ec62b9b9.mp3" length="4272768" type="audio/mpeg"/>
+      <itunes:duration>943</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2019-11-05-on-the-measure-of-intelligence-79ed511b.mp3" length="5658624" type="audio/mpeg"/>
     </item>
     <item>
       <title>SWE-bench Verified</title>
-      <description>我们今天来聊聊一个在人工智能领域，尤其是在大型语言模型（LLM）评估中，常常被忽视但又极其关键的问题：我们用来衡量模型能力的那些基准测试，它们本身真的可靠吗？具体来说，我们今天要深入探讨的是一篇来自OpenAI的研究，它聚焦于SWE-bench这个著名的软件工程基准测试。</description>
+      <description>软件工程领域有一个非常经典的痛点：我们想用基准测试来衡量AI系统真正解决代码问题的能力，但如果基准测试本身就有缺陷，那么测出来的数字根本不能信。SWE-bench Verified这篇工作，核心就是在解决这个问题——原始SWE-bench里大约有8%的"通过"其实是假阳性，是测试套件的漏洞造成的幻觉，而不是模型真的修好了代码。</description>
       <link>https://openai.com/index/introducing-swe-bench-verified/</link>
-      <guid isPermaLink="false">2024-08-13-swe-bench-verified-f772e2fa.mp3</guid>
+      <guid isPermaLink="false">2024-08-13-swe-bench-verified-9d0659b0.mp3</guid>
       <pubDate>Wed, 01 Jul 2026 10:21:49 +0000</pubDate>
-      <itunes:duration>646</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-08-13-swe-bench-verified-f772e2fa.mp3" length="3877776" type="audio/mpeg"/>
+      <itunes:duration>991</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2024-08-13-swe-bench-verified-9d0659b0.mp3" length="5947632" type="audio/mpeg"/>
     </item>
     <item>
       <title>SWE-bench: Can Language Models Resolve Real-World GitHub Issues?</title>
-      <description>当前大型语言模型在代码生成方面的进步速度，已经超越了我们有效评估它们的能力。现有的代码生成基准测试，比如HumanEval，大多只涉及一些独立、几行代码就能解决的简单问题。然而，真实的软件工程任务远比这复杂：它可能需要你在一个庞大的代码库中穿梭，理解不同文件、不同函数之间的相互作用，甚至要从一大堆代码里找出那个不起眼的小错误。这些任务需要模型具备复杂的推理能力、处理超长上下文的能力，并且能与执行环境进行交互，这远远超出了传统代码生成的范畴。</description>
+      <description>真正难住顶级语言模型的，不是写一个排序函数，而是像真实软件工程师那样，面对一个有几千个文件的代码库，读懂一个用户提交的 bug 报告，然后找到问题所在，改对它，还不能破坏其他功能。这篇论文要解决的问题就是：我们怎么评测语言模型在这个层面上的真实能力？</description>
       <link>https://arxiv.org/abs/2310.06770</link>
-      <guid isPermaLink="false">2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-ccb88557.mp3</guid>
+      <guid isPermaLink="false">2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-1ced6e74.mp3</guid>
       <pubDate>Wed, 01 Jul 2026 10:21:49 +0000</pubDate>
-      <itunes:duration>695</itunes:duration>
-      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-ccb88557.mp3" length="4174992" type="audio/mpeg"/>
+      <itunes:duration>639</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-1ced6e74.mp3" length="3834576" type="audio/mpeg"/>
     </item>
     <item>
       <title>ReFreeKV: Towards Threshold-Free KV Cache Compression</title>
