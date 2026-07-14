@@ -1,16 +1,20 @@
-"""Ingest a CURATED list of papers (data/curated/reading.json) — not from HF
-Daily — and run them through the full pipeline (digest -> hashed audio -> feed
--> card), then apply their tags + a one-time note.
+"""Ingest CURATED lists (data/curated/*.json) — papers by arXiv id, non-arXiv
+papers, or hand-written course lessons — and run them through the full
+pipeline (digest -> hashed audio -> feed -> card), then apply tags + a
+one-time note. A pre-existing script in data/scripts/ always wins, so course
+lessons authored by hand never touch an LLM.
 
 Resumable: papers whose script already exists are reused; papers whose LLM
 generation fails (e.g. 429) are skipped and picked up on the next run.
 
-Usage:  python scripts/add_papers.py [path/to/list.json]
+Usage:  python scripts/add_papers.py [path/to/list.json]   # default: all of
+        data/curated/*.json
 """
 from __future__ import annotations
 
 import json
 import sys
+from pathlib import Path
 
 import build_feed
 import config
@@ -19,10 +23,6 @@ import lib
 import run_daily
 
 CURATED = config.DATA / "curated"
-LIST = CURATED / "reading.json"
-# Persisted here so lib.build_library() makes a card for every paper, even ones
-# whose audio generation hasn't succeeded yet.
-PAPERS_OUT = config.PAPERS_DIR / "curated.json"
 
 
 def _paper_from_entry(entry: dict, meta: dict) -> tuple[dict, str | None]:
@@ -43,7 +43,7 @@ def _paper_from_entry(entry: dict, meta: dict) -> tuple[dict, str | None]:
     return paper, (entry.get("fulltext") or entry.get("abstract") or "")
 
 
-def main(list_path=LIST):
+def _process_list(list_path: Path) -> tuple[int, int]:
     entries = json.loads(open(list_path, encoding="utf-8").read())
     meta = fetch_arxiv.fetch_many([e["arxiv_id"] for e in entries if e.get("arxiv_id")])
 
@@ -56,10 +56,12 @@ def main(list_path=LIST):
         papers.append(paper)
         plan.append((paper, full_text, e.get("tags", []), e.get("note", "")))
 
-    # Persist all papers first so every one gets a (possibly no-audio) card.
-    PAPERS_OUT.parent.mkdir(parents=True, exist_ok=True)
-    PAPERS_OUT.write_text(json.dumps(papers, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[add] {len(papers)} curated papers -> {PAPERS_OUT.name}")
+    # Persist all papers (named after the source list) so lib.build_library()
+    # makes a card for every one, even before its audio succeeds.
+    out = config.PAPERS_DIR / f"curated-{Path(list_path).stem}.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(papers, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"[add] {len(papers)} curated entries -> {out.name}")
 
     done = skipped = 0
     for paper, full_text, _tags, _note in plan:
@@ -79,8 +81,19 @@ def main(list_path=LIST):
                 lib._edit_meta(cid, tags=sorted(cur | set(tags)))
             lib.note_once(cid, note)
     lib.write_index()
+    return done, skipped
+
+
+def main(list_path=None):
+    paths = [Path(list_path)] if list_path else sorted(CURATED.glob("*.json"))
+    done = skipped = 0
+    for p in paths:
+        print(f"\n[add] ==== list: {p.name} ====")
+        d, s = _process_list(p)
+        done += d
+        skipped += s
     print(f"\n[add] done. audio published: {done}, skipped (retry next run): {skipped}")
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else LIST)
+    main(sys.argv[1] if len(sys.argv) > 1 else None)

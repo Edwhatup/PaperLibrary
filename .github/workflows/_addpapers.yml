@@ -13,7 +13,7 @@ on:
     - cron: "0 9 * * *"
   push:
     branches: [claude/paper-library-tts-ub68qn]
-    paths: [".github/workflows/_addpapers.yml", "data/curated/reading.json"]
+    paths: [".github/workflows/_addpapers.yml", "data/curated/*.json"]
   workflow_dispatch:
 
 permissions:
