@@ -8,6 +8,33 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Benchmark 设计课 第3讲:错误分析——一线团队的评测基本功</title>
+      <description>这一讲我们暂时把公共基准放一放,去看工业界一线是怎么评测自己的AI产品的。你可能会问,我要设计的是公开的agent基准,为什么要学产品评测?原因很直接:公共基准的每一个组件,任务、打分器、失败分类,本质上都是产品评测方法论的规模化版本,而产品评测这个领域这两年沉淀出了一套极其扎实的实战教义,不学是巨大的浪费。这套教义最有影响力的布道者是Hamel Husain,一位做过GitHub和Airbnb机器学习工程师的独立顾问,他有一句被引用到烂的口号:迭代快就等于成功。而迭代速度取决于三件事:你能不能评估质量,能不能定位问题,能不能改变系统行为。评测系统就是这三件事的引擎。</description>
+      <link>https://edwhatup.github.io/PaperLibrary/audio/2026-07-08-benchmark-she-ji-ke-di-3jiang-cuo-wu-fen-xi-yi-xian-tuan-dui-244489f7.mp3</link>
+      <guid isPermaLink="false">2026-07-08-benchmark-she-ji-ke-di-3jiang-cuo-wu-fen-xi-yi-xian-tuan-dui-244489f7.mp3</guid>
+      <pubDate>Tue, 14 Jul 2026 08:36:36 +0000</pubDate>
+      <itunes:duration>655</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-08-benchmark-she-ji-ke-di-3jiang-cuo-wu-fen-xi-yi-xian-tuan-dui-244489f7.mp3" length="3935664" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Benchmark 设计课 第2讲:静态基准解剖——从 MMLU 到 SWE-bench</title>
+      <description>同一个模型,同一个基准,三个评测框架跑出来的分数,最大能差多少?答案是十五个百分点。2023年,HuggingFace的开放大模型排行榜闹过一次著名的乌龙:社区发现LLaMA六百五十亿参数模型在榜上的MMLU分数,远低于Meta论文里自己报的数字。排查下来,根因让所有人出了一身冷汗:市面上同时存在三种MMLU的实现。原版实现,是把A、B、C、D四个选项字母喂给模型,比较这四个字母的输出概率;斯坦福HELM的实现,是让模型自由生成完整答案再做匹配;而EleutherAI评测框架的实现,是计算每个完整答案文本的对数似然。再叠加提示词格式的细节差异,比如有没有主题行、有没有Question冒号这样的</description>
+      <link>https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-benchmark-she-ji-ke-di-2jiang-jing-tai-ji-zhun-jie-pou-cong--d95869b9.mp3</link>
+      <guid isPermaLink="false">2026-07-07-benchmark-she-ji-ke-di-2jiang-jing-tai-ji-zhun-jie-pou-cong--d95869b9.mp3</guid>
+      <pubDate>Tue, 14 Jul 2026 08:35:53 +0000</pubDate>
+      <itunes:duration>719</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-benchmark-she-ji-ke-di-2jiang-jing-tai-ji-zhun-jie-pou-cong--d95869b9.mp3" length="4314528" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Benchmark 设计课 第1讲:什么是好的基准——构念效度与质量框架</title>
+      <description>如果让你猜,整个大模型领域被引用最多、影响力最大的那个基准测试,在专门评估基准质量的研究里会得多少分,你大概不会想到答案是垫底。斯坦福团队在2024年做了一项叫BetterBench的研究,用四十六条最佳实践去审查二十四个主流基准,结果被引用最广的MMLU,加权可用性得分只有五点五分,在所有被审查的基准里排最后,而相对小众的GPQA拿到了十一分。这个反差就是我们这门课要解决的核心问题:一个基准测试,到底什么叫好,什么叫不好?为什么最流行的反而可能是质量最差的?今天是这门Benchmark设计课的第一讲,我们先把最底层的两个概念立起来:构念效度,和基准的质量生命周期。</description>
+      <link>https://edwhatup.github.io/PaperLibrary/audio/2026-07-06-benchmark-she-ji-ke-di-1jiang-shi-yao-shi-hao-de-ji-zhun-gou-a129ad28.mp3</link>
+      <guid isPermaLink="false">2026-07-06-benchmark-she-ji-ke-di-1jiang-shi-yao-shi-hao-de-ji-zhun-gou-a129ad28.mp3</guid>
+      <pubDate>Tue, 14 Jul 2026 08:34:53 +0000</pubDate>
+      <itunes:duration>807</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-06-benchmark-she-ji-ke-di-1jiang-shi-yao-shi-hao-de-ji-zhun-gou-a129ad28.mp3" length="4847040" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>KronQ: LLM Quantization via Kronecker-Factored Hessian</title>
       <description>大型语言模型在部署时面临的核心挑战，是如何在保持高性能的同时，显著降低其庞大的内存占用和计算需求。传统的量化方法，特别是训练后量化，也就是我们常说的PTQ，虽然能有效压缩模型，但它们往往只关注模型输入端的统计信息，比如输入激活的协方差。这就导致了一个潜在的问题：这些方法默认模型的输出端，也就是模型的每个输出通道，对量化误差的贡献是均等的。但实际上，这并非总是如此。</description>
       <link>https://arxiv.org/abs/2607.07964</link>

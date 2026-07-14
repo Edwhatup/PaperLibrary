@@ -27,12 +27,21 @@
 - **Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation** · 44★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-dual-latent-memory-in-vision-language-action-models-for-robo-1f5ddb0d.mp3) [arXiv](https://arxiv.org/abs/2607.07608)
 - **Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning** · 71★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-09-accurate-interdisciplinary-and-transparent-structure-propert-e58a5db1.mp3) [arXiv](https://arxiv.org/abs/2607.07708)
 
+## 2026-07-08
+
+- **Benchmark 设计课 第3讲:错误分析——一线团队的评测基本功** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-08-benchmark-she-ji-ke-di-3jiang-cuo-wu-fen-xi-yi-xian-tuan-dui-244489f7.mp3) 
+
 ## 2026-07-07
 
+- **Benchmark 设计课 第2讲:静态基准解剖——从 MMLU 到 SWE-bench** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-benchmark-she-ji-ke-di-2jiang-jing-tai-ji-zhun-jie-pou-cong--d95869b9.mp3) 
 - **ResearchStudio-Idea: An Evidence-Grounded Research-Ideation Skill Suite from ML Conference Outcomes** · 38★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-researchstudio-idea-an-evidence-grounded-research-ideation-s-49bbdec7.mp3) [arXiv](https://arxiv.org/abs/2607.04439)
 - **ResearchStudio-Reel: Automate the Last Mile of Research from Paper to Poster, Video, and Blog** · 47★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-researchstudio-reel-automate-the-last-mile-of-research-from--625b1aed.mp3) [arXiv](https://arxiv.org/abs/2607.04438)
 - **UI-MOPD: Multi-Platform On-Policy Distillation for Continual GUI Agent Learning** · 62★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-ui-mopd-multi-platform-on-policy-distillation-for-continual--27a2e93f.mp3) [arXiv](https://arxiv.org/abs/2607.04425)
 - **OmniOpt: Taxonomy, Geometry, and Benchmarking of Modern Optimizers** · 64★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-07-omniopt-taxonomy-geometry-and-benchmarking-of-modern-optimiz-997d3857.mp3) [arXiv](https://arxiv.org/abs/2607.04033)
+
+## 2026-07-06
+
+- **Benchmark 设计课 第1讲:什么是好的基准——构念效度与质量框架** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-06-benchmark-she-ji-ke-di-1jiang-shi-yao-shi-hao-de-ji-zhun-gou-a129ad28.mp3) 
 
 ## 2026-07-03
 
