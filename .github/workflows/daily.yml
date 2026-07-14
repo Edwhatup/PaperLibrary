@@ -26,7 +26,8 @@ jobs:
     env:
       DIGEST_LANG: ${{ vars.DIGEST_LANG || 'zh' }}
       # "auto" picks gemini/anthropic by whichever key secret is set.
-      LLM_BACKEND: ${{ vars.LLM_BACKEND || 'auto' }}
+      # anthropic (Sonnet 4.6) primary; make_script falls back to Gemini on failure.
+      LLM_BACKEND: ${{ vars.LLM_BACKEND || 'anthropic' }}
       MAX_PAPERS: ${{ github.event.inputs.max || vars.MAX_PAPERS || '5' }}
       # Where `public/` is served (GitHub Pages). Absolute URLs in rss.xml /
       # playlist.m3u8 come from this, so VLC / podcast apps can stream them.

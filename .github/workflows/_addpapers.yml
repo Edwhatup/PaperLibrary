@@ -33,8 +33,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       DIGEST_LANG: zh
-      # auto -> Gemini free tier (Anthropic key has no funded credit balance).
-      LLM_BACKEND: auto
+      # Sonnet 4.6 primary (funded; won the blind quality panel); Gemini = fallback.
+      LLM_BACKEND: anthropic
       FEED_BASE_URL: https://edwhatup.github.io/PaperLibrary
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

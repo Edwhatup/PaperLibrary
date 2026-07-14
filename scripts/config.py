@@ -31,7 +31,9 @@ DIGEST_LANG = os.getenv("DIGEST_LANG", "zh")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
-ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001")
+# Sonnet 4.6 won the blind quality panel decisively (most faithful numbers,
+# best depth); Haiku badly undershoots length and fabricates figures.
+ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6")
 
 LLM_BACKEND = os.getenv("LLM_BACKEND", "auto").lower()
 if LLM_BACKEND in ("auto", "", "none"):
