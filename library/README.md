@@ -102,6 +102,10 @@
 - **EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions** · 79★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-23-enterpriseclawbench-benchmarking-agents-from-real-workplace--12e97a7d.mp3) [arXiv](https://arxiv.org/abs/2606.23654)
 - **PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems** · 95★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-23-planbench-xl-evaluating-long-horizon-planning-of-llm-tool-us-5e69fddf.mp3) [arXiv](https://arxiv.org/abs/2606.22388)
 
+## 2026-06-08
+
+- **OmniGameArena: A Unified UE5 Benchmark for VLM Game Agents with Improvement Dynamics** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-06-08-omnigamearena-a-unified-ue5-benchmark-for-vlm-game-agents-wi-5ad204e5.mp3) [arXiv](https://arxiv.org/abs/2606.09826)
+
 ## 2025-11-03
 
 - **Measuring what Matters: Construct Validity in Large Language Model Benchmarks** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2025-11-03-measuring-what-matters-construct-validity-in-large-language--d1c8ea4a.mp3) [arXiv](https://arxiv.org/abs/2511.04703)

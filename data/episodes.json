@@ -1,5 +1,17 @@
 [
   {
+    "key": "2606.09826",
+    "date": "2026-06-08",
+    "title": "OmniGameArena: A Unified UE5 Benchmark for VLM Game Agents with Improvement Dynamics",
+    "abstract": "Vision-language model (VLM) agents are increasingly deployed in interactive game environments. Yet game benchmarks for VLM agents typically report a single first-attempt score per (agent, game) pair, focus on single-agent Solo play, and lack unified protocols for evaluating heterogeneous agent classes (commercial VLMs, open-weight VLMs, and specialized game policies) on the same footing. We address these gaps with OmniGameArena, a real-time benchmark of twelve newly built Unreal Engine 5 games spanning Solo (7), PvP (3), and Coop (2) with unified action interfaces, and the Improvement Dynamics Curve (IDC), an agentic-reflection harness in which a tool-using reflector LLM autonomously refines a bounded skill prompt across multiple rounds. Beyond cold-start leaderboard scores, IDC exposes two additional observables for each (agent, game) pair: how the score evolves across reflection rounds, and how the learned skill behaves on held-out task variants. We report these observables for twelve VLM agents on the cold-start leaderboard and four top agents under IDC.",
+    "notes": "当前，视觉语言模型智能体在游戏环境中的应用越来越广泛。这些智能体需要能够读取不断变化的视觉场景，在时间压力下选择行动，规划延迟奖励，并在环境产生阻力时进行适应。游戏基准测试是推动视觉语言游戏智能体快速发展的重要工具。然而，我们发现现有的游戏基准测试在评估这些智能体时，存在几个显著的不足。",
+    "url": "https://arxiv.org/abs/2606.09826",
+    "upvotes": 0,
+    "audio": "2026-06-08-omnigamearena-a-unified-ue5-benchmark-for-vlm-game-agents-wi-5ad204e5.mp3",
+    "size": 5349456,
+    "published": "2026-07-15T05:14:55.046627+00:00"
+  },
+  {
     "key": "2607.11487",
     "date": "2026-07-14",
     "title": "LightMem-Ego: Your AI Memory for Everyday Life",
