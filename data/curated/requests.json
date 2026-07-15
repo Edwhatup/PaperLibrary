@@ -1,0 +1,11 @@
+[
+ {
+  "arxiv_id": "2606.09826",
+  "tags": [
+   "requested",
+   "game",
+   "benchmark"
+  ],
+  "note": "点播(2026-07-07)。UE5 统一环境的 VLM 游戏 agent 基准,含 improvement dynamics——和 levelbench 的环境设计、以及课程第5讲讲的'可复现模拟世界'范式直接相关。"
+ }
+]
