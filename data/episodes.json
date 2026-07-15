@@ -1,5 +1,65 @@
 [
   {
+    "key": "2607.11487",
+    "date": "2026-07-14",
+    "title": "LightMem-Ego: Your AI Memory for Everyday Life",
+    "abstract": "Personal AI assistants on mobile and wearable devices continuously perceive users' daily lives through visual and audio streams. However, answering queries about past experiences requires lightweight multimodal memory that can continuously accumulate, organize, and retrieve long-term experiences, which remains challenging. To address this challenge, we present LightMem-Ego, a lightweight streaming multimodal memory system for everyday-life assistance. The system continuously captures egocentric visual and audio streams, aligns them on a shared timeline, and organizes them into a hierarchical memory consisting of current, short-term, and long-term memory. Given a user query, LightMem-Ego dynamically routes retrieval to the appropriate memory level and generates answers grounded in multimodal evidence. The demonstration can be deployed on smartphones and AI glasses, supporting object finding, conversation recall, life summarization, routine discovery, and personalized assistance. Code is available at https://github.com/zjunlp/LightMem-Ego.",
+    "notes": "我们都知道，现在智能手机和AI眼镜这些可穿戴设备越来越普及，它们能持续捕捉我们日常生活中的视觉和音频流。但问题是，如果我们要问它们一些关于过去经历的问题，比如“我上次把钥匙放哪儿了？”或者“上次开会医生都说了些什么？”，这些设备就显得力不从心了。它们缺乏一种轻量级、能持续积累、有效组织并能快速检索长期记忆的多模态系统。这正是我们今天要深入探讨的论文LightMem-Ego想要解决的核心痛点。",
+    "url": "https://arxiv.org/abs/2607.11487",
+    "upvotes": 33,
+    "audio": "2026-07-14-lightmem-ego-your-ai-memory-for-everyday-life-7032e915.mp3",
+    "size": 7677936,
+    "published": "2026-07-15T00:00:51.011093+00:00"
+  },
+  {
+    "key": "2607.09125",
+    "date": "2026-07-14",
+    "title": "4D Human-Scene Reconstruction from Low-Overlap Captures",
+    "abstract": "Existing volumetric capture of dynamic human performance achieves high fidelity with dense camera arrays. However, in real-world scenarios, only a handful of low-overlap cameras are available, which degrades the output quality and leaves large areas unobserved. Recent 4D reconstruction methods have focused on low-overlap settings, yet they still produce noticeable artifacts in under-observed regions. Video diffusion models have emerged as another option, but they show geometrically inconsistent results for humans. To address these limitations, we propose StudioRecon, a pipeline that reconstructs 4D human scenes from sparse, low-overlap cameras by decoupling background and humans. We densify background supervision by synthesizing hundreds of camera-controlled novel views with a video diffusion model. We also robustly initialize deformable Gaussian humans with cross-view identity association and triangulated multi-view keypoint fitting. Finally, our recursive enhancement module with motion-adaptive consistency injection harmonizes the composed output, thereby further avoiding remaining artifacts. We achieve state-of-the-art novel view synthesis across four real-world datasets and demonstrate applications such as novel trajectory rendering and human replacement.",
+    "notes": "好的，这是一篇约20分钟的口播稿，将论文“4D Human-Scene Reconstruction from Low-Overlap Captures”的核心内容深入浅出地讲解给听众。",
+    "url": "https://arxiv.org/abs/2607.09125",
+    "upvotes": 41,
+    "audio": "2026-07-14-4d-human-scene-reconstruction-from-low-overlap-captures-8eda9d8a.mp3",
+    "size": 6142032,
+    "published": "2026-07-14T23:56:48.883635+00:00"
+  },
+  {
+    "key": "2607.10350",
+    "date": "2026-07-14",
+    "title": "ABot-AgentOS: A General Robotic Agent OS with Lifelong Multi-modal Memory",
+    "abstract": "Recent VLM and VLA systems have improved robotic perception and action prediction, yet long-horizon embodied agents still require a general runtime layer for reasoning, memory, tool use, verification, and cross-embodiment execution. We present ABot-AgentOS, a general robotic Agent Operating System that sits above low-level controllers and provides a deliberative agent layer for scene-conditioned planning, context-isolated skill execution, multi-stage verification, multi-modal memory, and edge-cloud collaboration. To evaluate such systems, we introduce EmbodiedWorldBench, an executable benchmark with 16 indoor, outdoor, and hybrid scenes, four difficulty levels, and over 200 tasks involving navigation, object search, NPC dialogue, dynamic events, and trace-grounded scoring. ABot-AgentOS further introduces Universal Multi-modal Graph Memory, a persistent source-grounded substrate that converts dialogue, visual observations, spatial context, temporal relations, and task traces into typed nodes and edges. A failure-driven self-evolution loop converts diagnosed memory failures into gated runtime evo-assets that are promoted only to later evaluation splits, preventing current-split ground-truth leakage while enabling continual improvement. On an initial EmbodiedWorldBench subset, ABot-AgentOS improves over a single-controller baseline in both task success and goal completion. Across memory benchmarks, ABot-AgentOS Static achieves 87.5 on LoCoMo, 59.9 on OpenEQA EM-EQA, 88.6 on Mem-Gallery, and 76.5 Acc@All on NExT-QA; self-evolution further improves LoCoMo to 88.7, OpenEQA to 60.4, and Mem-Gallery to 89.0. These results suggest that a general Agent OS layer can improve long-horizon embodied execution while providing persistent, auditable memory for continual interaction.",
+    "notes": "机器人要真正走进现实世界，面临的核心难题不是感知，也不是单步动作预测，而是怎样把高层的语义推理可靠地转化成跨越多个步骤、多个场景、持续很长时间的物理执行。这篇论文要解决的就是这个问题。它提出的系统叫做ABot-AgentOS，一个通用的机器人智能体操作系统，同时配套推出了一个可执行的评测基准EmbodiedWorldBench，以及一套叫做Universal Multi-modal Graph Memory的终身多模态记忆机制。",
+    "url": "https://arxiv.org/abs/2607.10350",
+    "upvotes": 68,
+    "audio": "2026-07-14-abot-agentos-a-general-robotic-agent-os-with-lifelong-multi--3759b9d8.mp3",
+    "size": 6423552,
+    "published": "2026-07-14T23:53:35.442622+00:00"
+  },
+  {
+    "key": "2607.10383",
+    "date": "2026-07-14",
+    "title": "ABot-N1: Toward a General Visual Language Navigation Foundation Model",
+    "abstract": "Visual Language Navigation foundation models aim to unify deep reasoning for grounded spatial decisions with broad versatility for diverse embodied tasks. Current approaches typically achieve this integration via monolithic policies that map observations directly to actions, yet they often suffer from coordinate drift and poor handling of long-tail semantics. Furthermore, these black-box mappings lack interpretability, hindering the simultaneous achievement of generality, robustness, and transparency. We present ABot-N1, a step toward a general Visual Language Navigation foundation model, that addresses these challenges by decoupling cognition from control via a slow-fast architecture guided by dual visual-language signals. More specifically, a slow vision-language reasoner performs explicit Chain-of-Thought reasoning while producing a pixel goal. This compact set of image-space anchor points serves as a universal interface for diverse tasks, including point-goal, object-goal, poi-goal, instruction-following, and person-following. Subsequently, a fast action expert leverages both the textual cues and the pixel guidance to generate continuous waypoints at the native control frequency. By bridging high-level intents and low-level control through pixel-grounded anchors paired with explicit linguistic traces, our approach ensures robust, generalizable, and interpretable navigation across simulation and real-world benchmarks. ABot-N1 establishes new state-of-the-art records, delivering massive gains specifically in urban-scale navigation: boosting POI arrival by 35.0% (to 77.3%) and achieving 95.4%/92.9% SR in complex indoor and outdoor scenes. It also maintains superior robustness across object-reaching, person-following, and instruction-following tasks. New Point-Goal/POI-Goal benchmarks are released as open source to advance the field of urban-scale navigation.",
+    "notes": "有一类导航系统的失败，你在路上可能真实遭遇过：机器人或者自动导引小车到了目的地附近，却一头扎进了花坛，或者停在了非机动车道上，就是进不到正确的门口。这背后是一个非常具体的技术痛点——当坐标精度不够、语义理解又是个黑盒的时候，再强的导航模型也会在最后几步栽跟头。今天要讲的这篇论文，ABot-N1，直接冲着这个问题去的，而且它的解法在架构层面有一些很值得深想的东西。",
+    "url": "https://arxiv.org/abs/2607.10383",
+    "upvotes": 81,
+    "audio": "2026-07-14-abot-n1-toward-a-general-visual-language-navigation-foundati-8f0a59ca.mp3",
+    "size": 5656608,
+    "published": "2026-07-14T23:50:09.305588+00:00"
+  },
+  {
+    "key": "2607.05394",
+    "date": "2026-07-14",
+    "title": "Weak-to-Strong Generalization via Direct On-Policy Distillation",
+    "abstract": "Reinforcement learning with verifiable rewards (RLVR) is a powerful recipe for improving language-model reasoning, but it is expensive to repeat on every new strong model because the target model must generate many rollouts during training. As models scale, post-training itself becomes a bottleneck. We study a weak-to-strong alternative: run RL on a smaller model where rollouts are cheaper, then reuse what that RL run learned to improve a stronger target model. Directly distilling the post-RL weak teacher is not enough, because the teacher's final policy mixes useful RL gains with the limitations of the smaller model. We propose Direct On-Policy Distillation (Direct-OPD), which transfers the teacher's RL-induced policy shift instead. Direct-OPD compares the post-RL teacher with its own pre-RL reference and treats their log-ratio as a dense implicit reward for the student. In plain terms, the checkpoint pair tells us which actions RL made the weak model more or less likely to take, and Direct-OPD applies that signal on the stronger student's own on-policy states. This directly reuses the weak model's RL supervision signal without running sparse-reward RL on the target model. Empirically, Direct-OPD consistently leverages weaker teachers to improve stronger target models; notably, it boosts Qwen3-1.7B from 48.3% to 58.3% on AIME 2024 in just 4 hours on 8 A100 GPUs. It outperforms step-matched direct RL and enables the sequential composition of multiple policy shifts. Our results show that RL outcomes can be reused across model scales as implicit reward signals, not merely as final models to imitate.",
+    "notes": "大型语言模型在通过可验证奖励强化学习，也就是我们常说的RLVR，来提升推理能力时，效果非常显著。但随着模型规模越来越大，每次训练迭代都需要当前策略生成大量的轨迹数据，再接收可验证的结果分数，并根据这些轨迹来更新模型，这个过程的成本也水涨船高。因此，当推理模型持续扩展时，为每个新的强大模型从头开始运行RLVR，很可能让后训练本身成为一个巨大的瓶颈。",
+    "url": "https://arxiv.org/abs/2607.05394",
+    "upvotes": 93,
+    "audio": "2026-07-14-weak-to-strong-generalization-via-direct-on-policy-distillat-bb87aeb5.mp3",
+    "size": 4018176,
+    "published": "2026-07-14T23:47:14.579720+00:00"
+  },
+  {
     "key": "course-ab-03",
     "date": "2026-07-08",
     "title": "Benchmark 设计课 第3讲:错误分析——一线团队的评测基本功",

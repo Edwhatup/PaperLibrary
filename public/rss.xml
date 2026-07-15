@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>LightMem-Ego: Your AI Memory for Everyday Life</title>
+      <description>我们都知道，现在智能手机和AI眼镜这些可穿戴设备越来越普及，它们能持续捕捉我们日常生活中的视觉和音频流。但问题是，如果我们要问它们一些关于过去经历的问题，比如“我上次把钥匙放哪儿了？”或者“上次开会医生都说了些什么？”，这些设备就显得力不从心了。它们缺乏一种轻量级、能持续积累、有效组织并能快速检索长期记忆的多模态系统。这正是我们今天要深入探讨的论文LightMem-Ego想要解决的核心痛点。</description>
+      <link>https://arxiv.org/abs/2607.11487</link>
+      <guid isPermaLink="false">2026-07-14-lightmem-ego-your-ai-memory-for-everyday-life-7032e915.mp3</guid>
+      <pubDate>Wed, 15 Jul 2026 00:00:51 +0000</pubDate>
+      <itunes:duration>1279</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-14-lightmem-ego-your-ai-memory-for-everyday-life-7032e915.mp3" length="7677936" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>4D Human-Scene Reconstruction from Low-Overlap Captures</title>
+      <description>好的，这是一篇约20分钟的口播稿，将论文“4D Human-Scene Reconstruction from Low-Overlap Captures”的核心内容深入浅出地讲解给听众。</description>
+      <link>https://arxiv.org/abs/2607.09125</link>
+      <guid isPermaLink="false">2026-07-14-4d-human-scene-reconstruction-from-low-overlap-captures-8eda9d8a.mp3</guid>
+      <pubDate>Tue, 14 Jul 2026 23:56:48 +0000</pubDate>
+      <itunes:duration>1023</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-14-4d-human-scene-reconstruction-from-low-overlap-captures-8eda9d8a.mp3" length="6142032" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ABot-AgentOS: A General Robotic Agent OS with Lifelong Multi-modal Memory</title>
+      <description>机器人要真正走进现实世界，面临的核心难题不是感知，也不是单步动作预测，而是怎样把高层的语义推理可靠地转化成跨越多个步骤、多个场景、持续很长时间的物理执行。这篇论文要解决的就是这个问题。它提出的系统叫做ABot-AgentOS，一个通用的机器人智能体操作系统，同时配套推出了一个可执行的评测基准EmbodiedWorldBench，以及一套叫做Universal Multi-modal Graph Memory的终身多模态记忆机制。</description>
+      <link>https://arxiv.org/abs/2607.10350</link>
+      <guid isPermaLink="false">2026-07-14-abot-agentos-a-general-robotic-agent-os-with-lifelong-multi--3759b9d8.mp3</guid>
+      <pubDate>Tue, 14 Jul 2026 23:53:35 +0000</pubDate>
+      <itunes:duration>1070</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-14-abot-agentos-a-general-robotic-agent-os-with-lifelong-multi--3759b9d8.mp3" length="6423552" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ABot-N1: Toward a General Visual Language Navigation Foundation Model</title>
+      <description>有一类导航系统的失败，你在路上可能真实遭遇过：机器人或者自动导引小车到了目的地附近，却一头扎进了花坛，或者停在了非机动车道上，就是进不到正确的门口。这背后是一个非常具体的技术痛点——当坐标精度不够、语义理解又是个黑盒的时候，再强的导航模型也会在最后几步栽跟头。今天要讲的这篇论文，ABot-N1，直接冲着这个问题去的，而且它的解法在架构层面有一些很值得深想的东西。</description>
+      <link>https://arxiv.org/abs/2607.10383</link>
+      <guid isPermaLink="false">2026-07-14-abot-n1-toward-a-general-visual-language-navigation-foundati-8f0a59ca.mp3</guid>
+      <pubDate>Tue, 14 Jul 2026 23:50:09 +0000</pubDate>
+      <itunes:duration>942</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-14-abot-n1-toward-a-general-visual-language-navigation-foundati-8f0a59ca.mp3" length="5656608" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Weak-to-Strong Generalization via Direct On-Policy Distillation</title>
+      <description>大型语言模型在通过可验证奖励强化学习，也就是我们常说的RLVR，来提升推理能力时，效果非常显著。但随着模型规模越来越大，每次训练迭代都需要当前策略生成大量的轨迹数据，再接收可验证的结果分数，并根据这些轨迹来更新模型，这个过程的成本也水涨船高。因此，当推理模型持续扩展时，为每个新的强大模型从头开始运行RLVR，很可能让后训练本身成为一个巨大的瓶颈。</description>
+      <link>https://arxiv.org/abs/2607.05394</link>
+      <guid isPermaLink="false">2026-07-14-weak-to-strong-generalization-via-direct-on-policy-distillat-bb87aeb5.mp3</guid>
+      <pubDate>Tue, 14 Jul 2026 23:47:14 +0000</pubDate>
+      <itunes:duration>669</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-14-weak-to-strong-generalization-via-direct-on-policy-distillat-bb87aeb5.mp3" length="4018176" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Benchmark 设计课 第3讲:错误分析——一线团队的评测基本功</title>
       <description>这一讲我们暂时把公共基准放一放,去看工业界一线是怎么评测自己的AI产品的。你可能会问,我要设计的是公开的agent基准,为什么要学产品评测?原因很直接:公共基准的每一个组件,任务、打分器、失败分类,本质上都是产品评测方法论的规模化版本,而产品评测这个领域这两年沉淀出了一套极其扎实的实战教义,不学是巨大的浪费。这套教义最有影响力的布道者是Hamel Husain,一位做过GitHub和Airbnb机器学习工程师的独立顾问,他有一句被引用到烂的口号:迭代快就等于成功。而迭代速度取决于三件事:你能不能评估质量,能不能定位问题,能不能改变系统行为。评测系统就是这三件事的引擎。</description>
       <link>https://edwhatup.github.io/PaperLibrary/audio/2026-07-08-benchmark-she-ji-ke-di-3jiang-cuo-wu-fen-xi-yi-xian-tuan-dui-244489f7.mp3</link>

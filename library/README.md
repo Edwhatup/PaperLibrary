@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-14
+
+- **LightMem-Ego: Your AI Memory for Everyday Life** · 33★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-14-lightmem-ego-your-ai-memory-for-everyday-life-7032e915.mp3) [arXiv](https://arxiv.org/abs/2607.11487)
+- **4D Human-Scene Reconstruction from Low-Overlap Captures** · 41★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-14-4d-human-scene-reconstruction-from-low-overlap-captures-8eda9d8a.mp3) [arXiv](https://arxiv.org/abs/2607.09125)
+- **ABot-AgentOS: A General Robotic Agent OS with Lifelong Multi-modal Memory** · 68★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-14-abot-agentos-a-general-robotic-agent-os-with-lifelong-multi--3759b9d8.mp3) [arXiv](https://arxiv.org/abs/2607.10350)
+- **ABot-N1: Toward a General Visual Language Navigation Foundation Model** · 81★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-14-abot-n1-toward-a-general-visual-language-navigation-foundati-8f0a59ca.mp3) [arXiv](https://arxiv.org/abs/2607.10383)
+- **Weak-to-Strong Generalization via Direct On-Policy Distillation** · 93★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-14-weak-to-strong-generalization-via-direct-on-policy-distillat-bb87aeb5.mp3) [arXiv](https://arxiv.org/abs/2607.05394)
+
 ## 2026-07-13
 
 - **KronQ: LLM Quantization via Kronecker-Factored Hessian** · 16★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-13-kronq-llm-quantization-via-kronecker-factored-hessian-dfdd65db.mp3) [arXiv](https://arxiv.org/abs/2607.07964)
