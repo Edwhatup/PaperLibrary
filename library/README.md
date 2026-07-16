@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-15
+
+- **Function-Aware Fill-in-the-Middle as Mid-Training for Coding Agent Foundation Models** · 12★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-15-function-aware-fill-in-the-middle-as-mid-training-for-coding-0612dd30.mp3) [arXiv](https://arxiv.org/abs/2607.12463)
+- **Blind-Spots-Bench: Evaluating Blind Spots in Multimodal Models** · 22★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-15-blind-spots-bench-evaluating-blind-spots-in-multimodal-model-d5c22734.mp3) [arXiv](https://arxiv.org/abs/2607.08317)
+- **Search Beyond What Can Be Taught: Evolving the Knowledge Boundary in Agentic Visual Generation** · 28★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-15-search-beyond-what-can-be-taught-evolving-the-knowledge-boun-44f080fc.mp3) [arXiv](https://arxiv.org/abs/2607.05382)
+- **Read It Back: Pretrained MLLMs Are Zero-Shot Reward Models for Text-to-Image Generation** · 42★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-15-read-it-back-pretrained-mllms-are-zero-shot-reward-models-fo-ed5552d5.mp3) [arXiv](https://arxiv.org/abs/2607.11886)
+- **SynthDocBench: Controlled Benchmark for Long-Context Visual Document Understanding** · 52★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-15-synthdocbench-controlled-benchmark-for-long-context-visual-d-d00f3d00.mp3) [arXiv](https://arxiv.org/abs/2607.10400)
+
 ## 2026-07-14
 
 - **LightMem-Ego: Your AI Memory for Everyday Life** · 33★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-14-lightmem-ego-your-ai-memory-for-everyday-life-7032e915.mp3) [arXiv](https://arxiv.org/abs/2607.11487)
