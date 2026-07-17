@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-16
+
+- **OvisOCR2 Technical Report** · 42★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-16-ovisocr2-technical-report-c915a890.mp3) [arXiv](https://arxiv.org/abs/2607.13639)
+- **KnowAct-GUIClaw: Know Deeply, Act Perfectly, Personal GUI Assistant with Self-Evolving Memory and Skill** · 44★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-16-knowact-guiclaw-know-deeply-act-perfectly-personal-gui-assis-92065f44.mp3) [arXiv](https://arxiv.org/abs/2607.12625)
+- **Ring-Zero: Scaling Zero RL to a Trillion Parameters for Emergent Reasoning** · 79★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-16-ring-zero-scaling-zero-rl-to-a-trillion-parameters-for-emerg-24ac9283.mp3) [arXiv](https://arxiv.org/abs/2607.12395)
+- **Boogu-Image-0.1: Boosting Open-Source Unified Multimodal Understanding and Generation** · 107★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-16-boogu-image-0-1-boosting-open-source-unified-multimodal-unde-3307e187.mp3) [arXiv](https://arxiv.org/abs/2607.13125)
+- **Harness Handbook: Making Evolving Agent Harnesses Readable,Navigable, and Editable** · 163★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-16-harness-handbook-making-evolving-agent-harnesses-readable-na-226a8e01.mp3) [arXiv](https://arxiv.org/abs/2607.13285)
+
 ## 2026-07-15
 
 - **Function-Aware Fill-in-the-Middle as Mid-Training for Coding Agent Foundation Models** · 12★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-15-function-aware-fill-in-the-middle-as-mid-training-for-coding-0612dd30.mp3) [arXiv](https://arxiv.org/abs/2607.12463)

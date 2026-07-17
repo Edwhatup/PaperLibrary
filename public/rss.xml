@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>OvisOCR2 Technical Report</title>
+      <description>文档解析这件事，听起来只是把一页纸上的内容读出来，但它真正想解决的问题远比"识别文字"复杂得多。一张文档图像里，可能同时包含正文段落、数学公式、表格、图表、页眉页脚、多栏布局、手写批注——模型不仅要把这些内容一字不差地转录出来，还要维持正确的阅读顺序，用机器可以处理的格式把整页结构重建出来。这个格式通常是Markdown，因为Markdown既能表达结构，又能被下游的检索、索引和大语言模型直接使用。OvisOCR2这篇技术报告要解决的核心矛盾，就是：能不能用一个只有0.8B参数的单一端到端模型，在这个任务上超过那些依赖多个专门模块串联起来的流水线方法？</description>
+      <link>https://arxiv.org/abs/2607.13639</link>
+      <guid isPermaLink="false">2026-07-16-ovisocr2-technical-report-c915a890.mp3</guid>
+      <pubDate>Fri, 17 Jul 2026 00:11:06 +0000</pubDate>
+      <itunes:duration>1144</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-16-ovisocr2-technical-report-c915a890.mp3" length="6867072" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>KnowAct-GUIClaw: Know Deeply, Act Perfectly, Personal GUI Assistant with Self-Evolving Memory and Skill</title>
+      <description>当前主流的大语言模型智能体框架，比如OpenClaw，已经能够处理很多复杂的自动化任务，但它们有两个根本性的短板：第一，它们对图形用户界面也就是GUI的操作支持非常有限，很多真实用户任务需要点击屏幕、滑动列表、处理弹窗，这些视觉交互它们根本做不好；第二，它们没有内建的自我进化机制，每次执行任务都是从零开始，跑过的成功路径、踩过的坑，全都白白丢掉了。这篇论文要解决的，正是这两个问题。</description>
+      <link>https://arxiv.org/abs/2607.12625</link>
+      <guid isPermaLink="false">2026-07-16-knowact-guiclaw-know-deeply-act-perfectly-personal-gui-assis-92065f44.mp3</guid>
+      <pubDate>Fri, 17 Jul 2026 00:07:30 +0000</pubDate>
+      <itunes:duration>929</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-16-knowact-guiclaw-know-deeply-act-perfectly-personal-gui-assis-92065f44.mp3" length="5574528" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Ring-Zero: Scaling Zero RL to a Trillion Parameters for Emergent Reasoning</title>
+      <description>有一个问题困扰了AI推理研究社区很久：把零样本强化学习——也就是不用任何人工标注数据、直接从预训练基座模型出发做强化学习——扩展到超大规模模型上，会发生什么？现有的研究几乎全部停留在几十亿参数的小模型上，一方面是算力限制，另一方面也是因为没人知道在更大规模上训练动态会怎么演化、模型会不会自发涌现出更复杂的推理能力。这篇来自蚂蚁集团的论文《Ring-Zero》就是专门回答这个问题的——他们把零样本强化学习一路推到了一万亿参数的量级，并且把整个训练过程、涌现现象和评估框架都详细记录了下来。</description>
+      <link>https://arxiv.org/abs/2607.12395</link>
+      <guid isPermaLink="false">2026-07-16-ring-zero-scaling-zero-rl-to-a-trillion-parameters-for-emerg-24ac9283.mp3</guid>
+      <pubDate>Fri, 17 Jul 2026 00:04:15 +0000</pubDate>
+      <itunes:duration>1004</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-16-ring-zero-scaling-zero-rl-to-a-trillion-parameters-for-emerg-24ac9283.mp3" length="6026112" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Boogu-Image-0.1: Boosting Open-Source Unified Multimodal Understanding and Generation</title>
+      <description>如何用不到四十万美元的预算训练出一个在人类偏好排行榜上碾压所有开源对手、并接近GPT-Image-2水准的多模态图像生成系统——这正是Boogu-Image-0.1这篇论文试图回答的核心问题。</description>
+      <link>https://arxiv.org/abs/2607.13125</link>
+      <guid isPermaLink="false">2026-07-16-boogu-image-0-1-boosting-open-source-unified-multimodal-unde-3307e187.mp3</guid>
+      <pubDate>Fri, 17 Jul 2026 00:00:22 +0000</pubDate>
+      <itunes:duration>1042</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-16-boogu-image-0-1-boosting-open-source-unified-multimodal-unde-3307e187.mp3" length="6256080" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Harness Handbook: Making Evolving Agent Harnesses Readable,Navigable, and Editable</title>
+      <description>现代AI智能体系统的能力，从来不只取决于它背后那个大语言模型本身。决定一个智能体系统最终能做什么、做得好不好的，还有另一个关键层——它的"线束"，英文叫harness。这个词本来是驾驭马车用的挽具，放在这里非常形象：harness是包裹在模型外面的那一套软件基础设施，负责构造提示词、管理状态、调用工具、控制执行流程。模型是引擎，harness是整套传动系统。没有harness，模型的能力就没办法变成真实可用的系统行为。</description>
+      <link>https://arxiv.org/abs/2607.13285</link>
+      <guid isPermaLink="false">2026-07-16-harness-handbook-making-evolving-agent-harnesses-readable-na-226a8e01.mp3</guid>
+      <pubDate>Thu, 16 Jul 2026 23:56:48 +0000</pubDate>
+      <itunes:duration>1142</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-16-harness-handbook-making-evolving-agent-harnesses-readable-na-226a8e01.mp3" length="6853968" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Function-Aware Fill-in-the-Middle as Mid-Training for Coding Agent Foundation Models</title>
       <description>编写AI软件工程代理的研究者面临一个共同的困境：这些代理需要在执行任务的过程中不断调用工具、接收工具返回的结果，然后根据这些结果继续推进任务。但主流的代码语言模型是用从左到右的下一个词预测目标训练出来的，这个训练方式天然地偏重"往前看"，而不擅长"根据外部返回的结果来决定下一步怎么走"。这篇来自滑铁卢大学等机构的论文，就是在正面回答这个问题：在基础模型预训练完成之后、智能体专项的后训练开始之前，能不能插入一个专门的中间训练阶段，把这种"根据外部返回值推断后续行为"的结构性先验装进模型？他们的答案不仅是肯定的，而且实现方式出人意料地简洁：直接用普通代码中无处不在的函数调用结构来做。</description>
       <link>https://arxiv.org/abs/2607.12463</link>
