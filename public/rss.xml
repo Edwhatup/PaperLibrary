@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>BadWAM: When World-Action Models Dream Right but Act Wrong</title>
+      <description>有一类机器人控制系统正在快速崛起，它不只是"看到当前状态、输出下一步动作"，而是同时生成动作和对未来世界的想象画面。研究者相信，让机器人"边想边做"会让它更安全、更可靠——因为如果它能预见自己行动的后果，那么一旦想象的结果看起来不对劲，就可以在真正执行前叫停。这篇论文要拆解的，就是这个直觉背后隐藏的一个裂缝：一个攻击者能不能在不破坏机器人"想象"的情况下，悄悄把它的"动作"引向失败？答案是，可以。</description>
+      <link>https://arxiv.org/abs/2607.15207</link>
+      <guid isPermaLink="false">2026-07-17-badwam-when-world-action-models-dream-right-but-act-wrong-1a42b3c0.mp3</guid>
+      <pubDate>Sat, 18 Jul 2026 00:01:14 +0000</pubDate>
+      <itunes:duration>736</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-17-badwam-when-world-action-models-dream-right-but-act-wrong-1a42b3c0.mp3" length="4416912" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget</title>
+      <description>当前，AI智能体在处理复杂任务时，正从简单的单次问答，转向使用工具、检查代码和文档，并在长时间的轨迹中进行行动和决策。这就意味着它们需要处理的上下文信息越来越长。举个例子，一个智能体可能需要回顾数百万个token的历史对话、工具输出或文档内容，才能做出下一个正确的决策。然而，我们目前在模型推理阶段，也就是模型生成答案的时候，已经能够支持百万级别的上下文长度了，但在强化学习的后训练阶段，也就是我们根据智能体的表现来优化模型参数的时候，上下文长度却常常停留在二十五万六千个token甚至更短。这意味着在部署智能体时，我们不得不依赖模型对长上下文的泛化能力，也就是希望它在训练时没见过那么长的上下文，但</description>
+      <link>https://arxiv.org/abs/2607.14952</link>
+      <guid isPermaLink="false">2026-07-17-longstraw-long-context-rl-beyond-2m-tokens-under-a-fixed-gpu-b901c6df.mp3</guid>
+      <pubDate>Fri, 17 Jul 2026 23:58:53 +0000</pubDate>
+      <itunes:duration>955</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-17-longstraw-long-context-rl-beyond-2m-tokens-under-a-fixed-gpu-b901c6df.mp3" length="5735088" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration</title>
+      <description>当一个AI智能体被要求"帮我找出全球排名前五十的GPU云服务商，并整理出它们的价格、延迟、可用区域和客户评价"时，现有系统会遭遇一个根本性的困难：随着搜索历史越积越长，智能体开始忘记自己已经找到了什么、还缺少什么，一旦某条搜索路径遇阻，它就会在原地打转，反复发出几乎一样的查询，白白耗尽预算，最终交出一份残缺的答案。这篇来自人民大学和蚂蚁集团的论文，正是要从系统层面解决这个问题，他们给出的框架叫做SearchOS。</description>
+      <link>https://arxiv.org/abs/2607.15257</link>
+      <guid isPermaLink="false">2026-07-17-searchos-v1-towards-robust-open-domain-information-seeking-a-7e2e02d8.mp3</guid>
+      <pubDate>Fri, 17 Jul 2026 23:55:32 +0000</pubDate>
+      <itunes:duration>1005</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-17-searchos-v1-towards-robust-open-domain-information-seeking-a-7e2e02d8.mp3" length="6031872" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning</title>
+      <description>用强化学习训练语言模型智能体，有一个根本性的困难：奖励信号太稀疏了。想象一个智能体要在虚拟房间里找到一根蜡烛，放到指定位置，这个任务可能要走二三十步。环境只在最后告诉你成功还是失败，中间每一步做得对不对，全靠你自己猜。这就是所谓的轨迹级稀疏奖励问题，也是这篇论文要正面解决的核心痛点。</description>
+      <link>https://arxiv.org/abs/2607.14777</link>
+      <guid isPermaLink="false">2026-07-17-seed-self-evolving-on-policy-distillation-for-agentic-reinfo-08bc4135.mp3</guid>
+      <pubDate>Fri, 17 Jul 2026 23:52:12 +0000</pubDate>
+      <itunes:duration>861</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-17-seed-self-evolving-on-policy-distillation-for-agentic-reinfo-08bc4135.mp3" length="5169312" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>VideoChat3: Fully Open Video MLLM for Efficient and Generalist Video Understanding</title>
+      <description>当前多模态大语言模型在视频理解领域面临着三个核心挑战：首先，现有模型往往难以在不同视频类型之间进行泛化，比如针对短视频优化的模型，在长视频理解或实时流媒体交互场景下表现不佳；其次，视频理解本身计算开销巨大，如果简单地将图像处理方法扩展到视频，会导致视觉令牌数量激增，使得处理长视频和实时流媒体的成本高得令人望而却步；最后，许多高性能模型并非完全开源，其训练数据、策略或代码不公开，这极大地阻碍了社区的复现和进一步研究。为了解决这些问题，今天我们要深入探讨一篇名为“VideoChat3”的论文，它提出了一套完全开源、高效且通用的视频多模态大语言模型框架。</description>
+      <link>https://arxiv.org/abs/2607.14935</link>
+      <guid isPermaLink="false">2026-07-17-videochat3-fully-open-video-mllm-for-efficient-and-generalis-a1b8204f.mp3</guid>
+      <pubDate>Fri, 17 Jul 2026 23:49:27 +0000</pubDate>
+      <itunes:duration>2099</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-17-videochat3-fully-open-video-mllm-for-efficient-and-generalis-a1b8204f.mp3" length="12595392" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>OvisOCR2 Technical Report</title>
       <description>文档解析这件事，听起来只是把一页纸上的内容读出来，但它真正想解决的问题远比"识别文字"复杂得多。一张文档图像里，可能同时包含正文段落、数学公式、表格、图表、页眉页脚、多栏布局、手写批注——模型不仅要把这些内容一字不差地转录出来，还要维持正确的阅读顺序，用机器可以处理的格式把整页结构重建出来。这个格式通常是Markdown，因为Markdown既能表达结构，又能被下游的检索、索引和大语言模型直接使用。OvisOCR2这篇技术报告要解决的核心矛盾，就是：能不能用一个只有0.8B参数的单一端到端模型，在这个任务上超过那些依赖多个专门模块串联起来的流水线方法？</description>
       <link>https://arxiv.org/abs/2607.13639</link>

@@ -1,5 +1,65 @@
 [
   {
+    "key": "2607.15207",
+    "date": "2026-07-17",
+    "title": "BadWAM: When World-Action Models Dream Right but Act Wrong",
+    "abstract": "World-action models (WAMs) are emerging as a promising foundation for embodied control: rather than predicting actions alone, they learn representations that couple action generation with future world prediction. This coupling is often viewed as a source of robustness, interpretability, and safety, as a robot's action can in principle be checked against its imagined future. In this paper, we show that this assumption is fragile. We introduce BadWAM, a unified framework for modeling and evaluating World-Action Drift Attacks: a new class of WAM-specific adversarial attacks that use small visual perturbations to break the alignment between what a WAM imagines and what it executes. BadWAM characterizes this attack surface along two natural criteria: attack strength and stealthiness. When the adversary prioritizes disruption, BadWAM instantiates an action-only adversarial attack, which directly drives the model toward task-failing actions. When the adversary additionally prioritizes stealth, BadWAM instantiates an imagination-preserving adversarial attack, which seeks to induce harmful action shifts while keeping the model's predicted future close to its clean imagination. Together, these two attacks capture a spectrum of WAM-specific failures: from overt action hijacking to stealthier cases where the model appears to imagine a plausible future but executes a desynchronized action. We evaluate BadWAM across different variants of WAMs. Results show that our attacks substantially reduce task success rates under closed-loop execution. For example, our action-only attack reduces the model performance from 96.5% to 43.1% success. The results of our imagination-preserving attack further exposes a WAM-specific vulnerability: moderate future-preserving regularization can maintain strong attack performance while reducing future imagination drift.",
+    "notes": "有一类机器人控制系统正在快速崛起，它不只是\"看到当前状态、输出下一步动作\"，而是同时生成动作和对未来世界的想象画面。研究者相信，让机器人\"边想边做\"会让它更安全、更可靠——因为如果它能预见自己行动的后果，那么一旦想象的结果看起来不对劲，就可以在真正执行前叫停。这篇论文要拆解的，就是这个直觉背后隐藏的一个裂缝：一个攻击者能不能在不破坏机器人\"想象\"的情况下，悄悄把它的\"动作\"引向失败？答案是，可以。",
+    "url": "https://arxiv.org/abs/2607.15207",
+    "upvotes": 36,
+    "audio": "2026-07-17-badwam-when-world-action-models-dream-right-but-act-wrong-1a42b3c0.mp3",
+    "size": 4416912,
+    "published": "2026-07-18T00:01:14.330380+00:00"
+  },
+  {
+    "key": "2607.14952",
+    "date": "2026-07-17",
+    "title": "LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget",
+    "abstract": "A growing gap separates inference context lengths from RL post-training: inference systems are approaching million-token contexts, while post-training workloads often remain at 256K tokens or below and rely on length generalization at deployment. The gap is especially important for AI agents, whose observations, tool outputs, documents, and prior decisions accumulate over long trajectories. LongStraw is an architecture-aware execution stack for million-token RL post-training under a fixed GPU budget, instantiated with Group Relative Policy Optimization (GRPO). It evaluates the shared prompt without autograd, retains only model-specific state needed by later tokens, and replays short response branches one at a time, reducing the live training graph at the cost of additional replay time. We implement it for the hybrid recurrent and full-attention Qwen3.6-27B and the compressed-attention mixture-of-experts GLM-5.2. On eight H20 GPUs, LongStraw completes grouped Qwen scoring and response backward at 2.1M positions for groups of 2 and 8; increasing the group size adds only 0.21 GB of peak allocated memory, while a separate stress test reaches 4.46M positions. On 32 H20 GPUs, we validate the end-to-end LongStraw execution path for a 2.1M-token prompt across all 78 layers of GLM-5.2. These experiments establish execution capacity rather than complete training correctness because the captured prompt state is detached and some distributed forward and gradient composition paths remain incomplete.",
+    "notes": "当前，AI智能体在处理复杂任务时，正从简单的单次问答，转向使用工具、检查代码和文档，并在长时间的轨迹中进行行动和决策。这就意味着它们需要处理的上下文信息越来越长。举个例子，一个智能体可能需要回顾数百万个token的历史对话、工具输出或文档内容，才能做出下一个正确的决策。然而，我们目前在模型推理阶段，也就是模型生成答案的时候，已经能够支持百万级别的上下文长度了，但在强化学习的后训练阶段，也就是我们根据智能体的表现来优化模型参数的时候，上下文长度却常常停留在二十五万六千个token甚至更短。这意味着在部署智能体时，我们不得不依赖模型对长上下文的泛化能力，也就是希望它在训练时没见过那么长的上下文，但",
+    "url": "https://arxiv.org/abs/2607.14952",
+    "upvotes": 40,
+    "audio": "2026-07-17-longstraw-long-context-rl-beyond-2m-tokens-under-a-fixed-gpu-b901c6df.mp3",
+    "size": 5735088,
+    "published": "2026-07-17T23:58:53.443669+00:00"
+  },
+  {
+    "key": "2607.15257",
+    "date": "2026-07-17",
+    "title": "SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration",
+    "abstract": "Recent advances in Tool-Integrated Large Language Models have made web search a core capability of information-seeking agents. However, as interaction histories grow, agents increasingly struggle to track task progress. When search attempts fail to yield useful evidence, current single- and multi-agent systems can become trapped in repetitive loops, wasting search budgets and ultimately compromising the quality and completeness of the final output. We introduce SearchOS, a system-level multi-agent framework that turns fragile, implicit search progress into explicit, persistent, and shared state. First, we formulate open-domain information seeking as relational schema completion with grounded citations, where agents discover entities, populate attributes across linked tables, and anchor each value to source evidence. Then we design Search-Oriented Context Management (SOCM), which externalizes the evolving state into Frontier Task, an Evidence Graph, a Coverage Map, and Failure Memory. Built on SOCM, SearchOS applies a pipeline-parallel scheduling mechanism that overlaps the execution of sub-agents and continuously refills freed slots with tasks targeting unresolved coverage gaps to improve utilization and throughput. To schedule and control the execution of search agents, SearchOS introduces a Search Tool Middleware Harness that intercepts model and tool interactions to record grounded evidence and react to stalls or budget exhaustion, and provides a reusable hierarchical skill system comprising strategy and access skills to augment the agents' search process and avoid repeating failed search patterns across runs. On WideSearch and GISA, SearchOS leads all metrics among the evaluated single- and multi-agent baselines, paving the way toward robust information-seeking collaboration.",
+    "notes": "当一个AI智能体被要求\"帮我找出全球排名前五十的GPU云服务商，并整理出它们的价格、延迟、可用区域和客户评价\"时，现有系统会遭遇一个根本性的困难：随着搜索历史越积越长，智能体开始忘记自己已经找到了什么、还缺少什么，一旦某条搜索路径遇阻，它就会在原地打转，反复发出几乎一样的查询，白白耗尽预算，最终交出一份残缺的答案。这篇来自人民大学和蚂蚁集团的论文，正是要从系统层面解决这个问题，他们给出的框架叫做SearchOS。",
+    "url": "https://arxiv.org/abs/2607.15257",
+    "upvotes": 49,
+    "audio": "2026-07-17-searchos-v1-towards-robust-open-domain-information-seeking-a-7e2e02d8.mp3",
+    "size": 6031872,
+    "published": "2026-07-17T23:55:32.740685+00:00"
+  },
+  {
+    "key": "2607.14777",
+    "date": "2026-07-17",
+    "title": "SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning",
+    "abstract": "Large language models are increasingly trained as interactive agents for long-horizon tasks involving multi-turn interaction, tool use, and environment feedback. Outcome-based reinforcement learning (RL) provides a practical optimization paradigm, but its sparse trajectory-level rewards offer limited guidance on intermediate decisions, leaving a supervision gap between episode-level outcomes and token-level policy learning. We propose SEED (SElf-Evolving On-Policy Distillation), a self-evolving framework that converts completed on-policy trajectories into training-time hindsight skills and distills their behavioral effect back into the policy model. SEED first fine-tunes the policy to analyze completed trajectories and generate natural-language skills that capture reusable workflows, decisive observations, or failure-avoidance rules. During RL, the current policy both collects trajectories and serves as the analyzer that extracts hindsight skills from them. Policy updates therefore improve subsequent decision making and skill analysis together, allowing hindsight supervision to evolve with the policy. SEED then re-scores the sampled actions under ordinary and skill-augmented contexts, converting the skill-induced probability shift into a dense token-level on-policy distillation signal. This signal is jointly optimized with outcome-based RL, keeping the auxiliary supervision aligned with the current trajectory distribution. Extensive experiments on text-based and vision-based agentic tasks show that SEED consistently improves performance and sample efficiency, exhibiting robust generalization to unseen scenarios. Our code is available at https://github.com/jinyangwu/SEED.",
+    "notes": "用强化学习训练语言模型智能体，有一个根本性的困难：奖励信号太稀疏了。想象一个智能体要在虚拟房间里找到一根蜡烛，放到指定位置，这个任务可能要走二三十步。环境只在最后告诉你成功还是失败，中间每一步做得对不对，全靠你自己猜。这就是所谓的轨迹级稀疏奖励问题，也是这篇论文要正面解决的核心痛点。",
+    "url": "https://arxiv.org/abs/2607.14777",
+    "upvotes": 66,
+    "audio": "2026-07-17-seed-self-evolving-on-policy-distillation-for-agentic-reinfo-08bc4135.mp3",
+    "size": 5169312,
+    "published": "2026-07-17T23:52:12.752067+00:00"
+  },
+  {
+    "key": "2607.14935",
+    "date": "2026-07-17",
+    "title": "VideoChat3: Fully Open Video MLLM for Efficient and Generalist Video Understanding",
+    "abstract": "Recent advances in video understanding have spanned motion, long video, and streaming interaction, driving this field toward real-world applications. Despite this progress, current open-source models remain limited in several ways. They often struggle to generalize across diverse video types, making them effective only in specific domains. High computational demands further restrict their efficiency and scalability. Moreover, most models are only partially open, with key components such as training code, strategy, or datasets unavailable, which hinders reproducibility and slows community-driven development. To address these issues, we introduce VideoChat3, a fully open, efficient, and generalist video-centric MLLM. VideoChat3 advances video understanding through two complementary designs. For efficiency, we introduce Inflated 3D Vision Transformer (I3D-ViT) and Adaptive Frame Resolution for Streaming Video Perception, which enables efficient spatiotemporal representation and reduces the cost of processing video inputs during training and inference. For effectiveness, we develop a scalable video data synthesis pipeline that curates three diverse, high-quality training datasets: VideoChat3-Academic2M, VideoChat3-LV116K, and VideoChat3-OL617K, covering general, long-form, and streaming video scenarios, improving the model's generalization across domains. By integrating these designs, VideoChat3 achieves a rare balance of broad generalization and computational efficiency. Experiments across general, long-form, and streaming benchmarks demonstrate that VideoChat3 surpasses prior open-source models with equal or larger parameter counts with only 4B parameters and higher efficiency.",
+    "notes": "当前多模态大语言模型在视频理解领域面临着三个核心挑战：首先，现有模型往往难以在不同视频类型之间进行泛化，比如针对短视频优化的模型，在长视频理解或实时流媒体交互场景下表现不佳；其次，视频理解本身计算开销巨大，如果简单地将图像处理方法扩展到视频，会导致视觉令牌数量激增，使得处理长视频和实时流媒体的成本高得令人望而却步；最后，许多高性能模型并非完全开源，其训练数据、策略或代码不公开，这极大地阻碍了社区的复现和进一步研究。为了解决这些问题，今天我们要深入探讨一篇名为“VideoChat3”的论文，它提出了一套完全开源、高效且通用的视频多模态大语言模型框架。",
+    "url": "https://arxiv.org/abs/2607.14935",
+    "upvotes": 108,
+    "audio": "2026-07-17-videochat3-fully-open-video-mllm-for-efficient-and-generalis-a1b8204f.mp3",
+    "size": 12595392,
+    "published": "2026-07-17T23:49:27.904286+00:00"
+  },
+  {
     "key": "2607.13639",
     "date": "2026-07-16",
     "title": "OvisOCR2 Technical Report",

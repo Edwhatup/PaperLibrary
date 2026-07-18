@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-17
+
+- **BadWAM: When World-Action Models Dream Right but Act Wrong** · 36★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-17-badwam-when-world-action-models-dream-right-but-act-wrong-1a42b3c0.mp3) [arXiv](https://arxiv.org/abs/2607.15207)
+- **LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget** · 40★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-17-longstraw-long-context-rl-beyond-2m-tokens-under-a-fixed-gpu-b901c6df.mp3) [arXiv](https://arxiv.org/abs/2607.14952)
+- **SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration** · 49★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-17-searchos-v1-towards-robust-open-domain-information-seeking-a-7e2e02d8.mp3) [arXiv](https://arxiv.org/abs/2607.15257)
+- **SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning** · 66★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-17-seed-self-evolving-on-policy-distillation-for-agentic-reinfo-08bc4135.mp3) [arXiv](https://arxiv.org/abs/2607.14777)
+- **VideoChat3: Fully Open Video MLLM for Efficient and Generalist Video Understanding** · 108★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-17-videochat3-fully-open-video-mllm-for-efficient-and-generalis-a1b8204f.mp3) [arXiv](https://arxiv.org/abs/2607.14935)
+
 ## 2026-07-16
 
 - **OvisOCR2 Technical Report** · 42★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-16-ovisocr2-technical-report-c915a890.mp3) [arXiv](https://arxiv.org/abs/2607.13639)
