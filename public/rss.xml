@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>xHC: Expanded Hyper-Connections</title>
+      <description>大型语言模型架构在注意力机制、专家混合模型、模型宽度、深度和数据规模上都取得了飞速发展，但有一个核心组件——负责跨层信息传递的残差流——却长期保持不变。它仍然是一个单一的身份通路，对跨层信息流动的控制能力非常有限。超连接，也就是HC方法，挑战了这种设计，它把单一的残差流扩展成了多个并行的残差流，并通过可学习的混合矩阵来管理它们。在此基础上，流形约束超连接，也就是mHC，进一步稳定了大规模多流残差训练，成为了目前最先进的HC变体。</description>
+      <link>https://arxiv.org/abs/2607.14530</link>
+      <guid isPermaLink="false">2026-07-20-xhc-expanded-hyper-connections-4dba831b.mp3</guid>
+      <pubDate>Tue, 21 Jul 2026 00:04:53 +0000</pubDate>
+      <itunes:duration>732</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-20-xhc-expanded-hyper-connections-4dba831b.mp3" length="4392720" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories</title>
+      <description>机器人领域有一个根本性的瓶颈问题：怎么让一个通用机器人策略模型，在从未见过的环境里直接拿来就能用，同时又能用极少量数据快速适应新任务？这个问题的核心障碍不是模型结构，而是数据。小米机器人团队在这篇论文里给出了他们的答案：用超过十万小时的真实世界轨迹数据，配合一套精心设计的两阶段训练方案，训练出一个叫做 Xiaomi-Robotics-1 的视觉语言动作基础模型。</description>
+      <link>https://arxiv.org/abs/2607.15330</link>
+      <guid isPermaLink="false">2026-07-20-xiaomi-robotics-1-scaling-vision-language-action-models-with-b897f2a2.mp3</guid>
+      <pubDate>Tue, 21 Jul 2026 00:02:03 +0000</pubDate>
+      <itunes:duration>963</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-20-xiaomi-robotics-1-scaling-vision-language-action-models-with-b897f2a2.mp3" length="5780448" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Loop the Loopies!</title>
+      <description>人工智能领域有一个长期悬而未决的问题：让Transformer模型反复循环执行同一批参数，到底值不值？这篇论文的名字叫"Loop the Loopies"，来自IQuest Research团队，他们交出的答案是：值，但前提是你得用对方法。</description>
+      <link>https://arxiv.org/abs/2607.16051</link>
+      <guid isPermaLink="false">2026-07-20-loop-the-loopies-61e99f5f.mp3</guid>
+      <pubDate>Mon, 20 Jul 2026 23:58:17 +0000</pubDate>
+      <itunes:duration>742</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-20-loop-the-loopies-61e99f5f.mp3" length="4456512" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>RAGU: A Multi-Step GraphRAG Engine with a Compact Domain-Adapted LLM</title>
+      <description>现有的知识图谱增强生成系统有一个根本性的问题：它们在构建知识图谱的时候，只做一次性的提取，走一遍就算完了。这样做的后果是图谱里充满了重复的、噪声很多的实体，而且跨文档的信息没有任何整合机制。这篇论文要解决的，就是这个问题，以及由此衍生出来的另外两个麻烦。</description>
+      <link>https://arxiv.org/abs/2607.11683</link>
+      <guid isPermaLink="false">2026-07-20-ragu-a-multi-step-graphrag-engine-with-a-compact-domain-adap-11c5ac6f.mp3</guid>
+      <pubDate>Mon, 20 Jul 2026 23:55:40 +0000</pubDate>
+      <itunes:duration>718</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-20-ragu-a-multi-step-graphrag-engine-with-a-compact-domain-adap-11c5ac6f.mp3" length="4312656" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>RESOURCE2SKILL: Distilling Executable Agent Skills from Human-Created Multimodal Resources</title>
+      <description>你有没有想过，给AI智能体一个"技能库"，让它在操作软件时不用每次都从零开始推理？这篇论文要解决的，正是这个问题——而且它瞄准了一个几乎被所有前人忽视的知识来源：人类创作的教程视频和其他多模态资源。</description>
+      <link>https://arxiv.org/abs/2606.29538</link>
+      <guid isPermaLink="false">2026-07-20-resource2skill-distilling-executable-agent-skills-from-human-582db8d1.mp3</guid>
+      <pubDate>Mon, 20 Jul 2026 23:53:20 +0000</pubDate>
+      <itunes:duration>978</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-20-resource2skill-distilling-executable-agent-skills-from-human-582db8d1.mp3" length="5869296" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>BadWAM: When World-Action Models Dream Right but Act Wrong</title>
       <description>有一类机器人控制系统正在快速崛起，它不只是"看到当前状态、输出下一步动作"，而是同时生成动作和对未来世界的想象画面。研究者相信，让机器人"边想边做"会让它更安全、更可靠——因为如果它能预见自己行动的后果，那么一旦想象的结果看起来不对劲，就可以在真正执行前叫停。这篇论文要拆解的，就是这个直觉背后隐藏的一个裂缝：一个攻击者能不能在不破坏机器人"想象"的情况下，悄悄把它的"动作"引向失败？答案是，可以。</description>
       <link>https://arxiv.org/abs/2607.15207</link>

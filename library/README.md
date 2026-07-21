@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-20
+
+- **xHC: Expanded Hyper-Connections** · 47★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-20-xhc-expanded-hyper-connections-4dba831b.mp3) [arXiv](https://arxiv.org/abs/2607.14530)
+- **Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories** · 54★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-20-xiaomi-robotics-1-scaling-vision-language-action-models-with-b897f2a2.mp3) [arXiv](https://arxiv.org/abs/2607.15330)
+- **Loop the Loopies!** · 55★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-20-loop-the-loopies-61e99f5f.mp3) [arXiv](https://arxiv.org/abs/2607.16051)
+- **RAGU: A Multi-Step GraphRAG Engine with a Compact Domain-Adapted LLM** · 111★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-20-ragu-a-multi-step-graphrag-engine-with-a-compact-domain-adap-11c5ac6f.mp3) [arXiv](https://arxiv.org/abs/2607.11683)
+- **RESOURCE2SKILL: Distilling Executable Agent Skills from Human-Created Multimodal Resources** · 113★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-20-resource2skill-distilling-executable-agent-skills-from-human-582db8d1.mp3) [arXiv](https://arxiv.org/abs/2606.29538)
+
 ## 2026-07-17
 
 - **BadWAM: When World-Action Models Dream Right but Act Wrong** · 36★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-17-badwam-when-world-action-models-dream-right-but-act-wrong-1a42b3c0.mp3) [arXiv](https://arxiv.org/abs/2607.15207)
