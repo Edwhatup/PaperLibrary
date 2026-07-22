@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-21
+
+- **HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement** · 46★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-21-homie-human-object-centric-video-personalization-via-multimo-7d9af37a.mp3) [arXiv](https://arxiv.org/abs/2607.18217)
+- **SWE-Pruner Pro: The Coder LLM Already Knows What to Prune** · 64★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-21-swe-pruner-pro-the-coder-llm-already-knows-what-to-prune-1a8c0a33.mp3) [arXiv](https://arxiv.org/abs/2607.18213)
+- **DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment** · 71★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-21-deepsearch-world-self-distillation-for-deep-search-agents-in-2cf41fbb.mp3) [arXiv](https://arxiv.org/abs/2607.07820)
+- **EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World** · 73★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-21-evolvingworld-an-open-schema-framework-for-co-evolving-role--a27a62d6.mp3) [arXiv](https://arxiv.org/abs/2607.17250)
+- **TimeLens2: Generalist Video Temporal Grounding with Multimodal LLMs** · 139★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-21-timelens2-generalist-video-temporal-grounding-with-multimoda-24058fc2.mp3) [arXiv](https://arxiv.org/abs/2607.17423)
+
 ## 2026-07-20
 
 - **xHC: Expanded Hyper-Connections** · 47★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-20-xhc-expanded-hyper-connections-4dba831b.mp3) [arXiv](https://arxiv.org/abs/2607.14530)

@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement</title>
+      <description>怎么让AI生成的视频既能准确识别出"这是同一件物品的不同角度"，又能把Logo贴在语义上最合理的位置，还能同时让视频里的人和物都保持高度的外观一致性——这是当前视频个性化生成领域一个真实存在、而且相当棘手的问题。HOMIE这篇论文就是专门冲着这个痛点来的。</description>
+      <link>https://arxiv.org/abs/2607.18217</link>
+      <guid isPermaLink="false">2026-07-21-homie-human-object-centric-video-personalization-via-multimo-7d9af37a.mp3</guid>
+      <pubDate>Wed, 22 Jul 2026 00:06:32 +0000</pubDate>
+      <itunes:duration>936</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-21-homie-human-object-centric-video-personalization-via-multimo-7d9af37a.mp3" length="5616576" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SWE-Pruner Pro: The Coder LLM Already Knows What to Prune</title>
+      <description>编程智能体在处理真实代码库任务时，会反复调用工具去读取文件、搜索代码、执行脚本。每一次工具调用都会返回一大段文本，这些文本被原样塞进上下文窗口，随着对话轮次增加不断累积。问题就在这里：这些工具输出里充满了冗余信息，绝大多数内容要么已经看过，要么根本不会再被用到，但它们仍然占据着宝贵的上下文空间，让模型每次生成都要处理更长的提示词，既费钱又容易出现长上下文退化的问题——就是那种越到后面模型越"忘事"、注意力越散的现象。</description>
+      <link>https://arxiv.org/abs/2607.18213</link>
+      <guid isPermaLink="false">2026-07-21-swe-pruner-pro-the-coder-llm-already-knows-what-to-prune-1a8c0a33.mp3</guid>
+      <pubDate>Wed, 22 Jul 2026 00:03:37 +0000</pubDate>
+      <itunes:duration>841</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-21-swe-pruner-pro-the-coder-llm-already-knows-what-to-prune-1a8c0a33.mp3" length="5051520" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment</title>
+      <description>如何让一个只有九十亿参数的开源模型，不靠任何更强大模型提供的示范数据，纯粹通过自己和环境交互来持续进化，最终在深度搜索任务上达到和顶级开源系统相当的水平？这正是这篇论文想要回答的核心问题。</description>
+      <link>https://arxiv.org/abs/2607.07820</link>
+      <guid isPermaLink="false">2026-07-21-deepsearch-world-self-distillation-for-deep-search-agents-in-2cf41fbb.mp3</guid>
+      <pubDate>Wed, 22 Jul 2026 00:00:49 +0000</pubDate>
+      <itunes:duration>1036</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-21-deepsearch-world-self-distillation-for-deep-search-agents-in-2cf41fbb.mp3" length="6221088" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World</title>
+      <description>让大语言模型扮演一个文学角色说几句话，这件事技术上早就能做到了。但真正的难题在于：一个故事展开二十场、三十场戏之后，角色的内心还在不在？世界的状态还对不对？现有的角色扮演系统几乎全都回答不了这个问题，而这篇论文要解决的正是这个核心矛盾。</description>
+      <link>https://arxiv.org/abs/2607.17250</link>
+      <guid isPermaLink="false">2026-07-21-evolvingworld-an-open-schema-framework-for-co-evolving-role--a27a62d6.mp3</guid>
+      <pubDate>Tue, 21 Jul 2026 23:57:25 +0000</pubDate>
+      <itunes:duration>970</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-21-evolvingworld-an-open-schema-framework-for-co-evolving-role--a27a62d6.mp3" length="5823360" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>TimeLens2: Generalist Video Temporal Grounding with Multimodal LLMs</title>
+      <description>视频大模型能告诉你视频里发生了什么，但它通常没法告诉你这件事是什么时候发生的。这个"什么时候"的问题，就是这篇论文要解决的核心痛点。</description>
+      <link>https://arxiv.org/abs/2607.17423</link>
+      <guid isPermaLink="false">2026-07-21-timelens2-generalist-video-temporal-grounding-with-multimoda-24058fc2.mp3</guid>
+      <pubDate>Tue, 21 Jul 2026 23:54:24 +0000</pubDate>
+      <itunes:duration>1071</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-21-timelens2-generalist-video-temporal-grounding-with-multimoda-24058fc2.mp3" length="6428160" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>xHC: Expanded Hyper-Connections</title>
       <description>大型语言模型架构在注意力机制、专家混合模型、模型宽度、深度和数据规模上都取得了飞速发展，但有一个核心组件——负责跨层信息传递的残差流——却长期保持不变。它仍然是一个单一的身份通路，对跨层信息流动的控制能力非常有限。超连接，也就是HC方法，挑战了这种设计，它把单一的残差流扩展成了多个并行的残差流，并通过可学习的混合矩阵来管理它们。在此基础上，流形约束超连接，也就是mHC，进一步稳定了大规模多流残差训练，成为了目前最先进的HC变体。</description>
       <link>https://arxiv.org/abs/2607.14530</link>
