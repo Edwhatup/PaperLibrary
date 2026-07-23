@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing</title>
+      <description>有一类图像生成系统，它们能画出高质量的图、能按照指令精确修图，但你要用它们，要么得花巨大的算力，要么得接受不透明的闭源黑箱。这篇来自微软的论文想解决的，正是这个矛盾：能不能在参数量只有四十亿这个相对紧凑的规模上，造出一个生成质量和编辑能力都不输大模型、同时又快又省显存的视觉生成系统？这个系统叫 Mage-Flow，论文的核心主张是，真正的效率不是靠缩减某一个模块，而是把分词器、骨干网络、训练系统三个层面联合设计，才能把整个流水线的瓶颈都消除掉。</description>
+      <link>https://arxiv.org/abs/2607.19064</link>
+      <guid isPermaLink="false">2026-07-22-mage-flow-an-efficient-native-resolution-foundation-model-fo-473d23d8.mp3</guid>
+      <pubDate>Thu, 23 Jul 2026 00:12:12 +0000</pubDate>
+      <itunes:duration>1139</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-22-mage-flow-an-efficient-native-resolution-foundation-model-fo-473d23d8.mp3" length="6835680" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Generative World Renderer at the Speed of Play</title>
+      <description>我们今天要聊的这篇论文，解决了一个在生成式视觉世界中非常实际的问题：如何让复杂的生成式渲染器，以游戏般的实时速度运行起来。</description>
+      <link>https://arxiv.org/abs/2607.18703</link>
+      <guid isPermaLink="false">2026-07-22-generative-world-renderer-at-the-speed-of-play-56923aca.mp3</guid>
+      <pubDate>Thu, 23 Jul 2026 00:08:23 +0000</pubDate>
+      <itunes:duration>1046</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-22-generative-world-renderer-at-the-speed-of-play-56923aca.mp3" length="6277392" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Text Template Tokens Are Implicit Semantic Registers in Diffusion Transformers</title>
+      <description>文本生成模型在生成图像时，究竟是怎么"读懂"你给的文字提示的？这个问题听上去很基础，但实际上在现代扩散变换器里，这个问题的答案出乎意料地反常识。今天要讲的这篇论文，就揭示了一个让研究者自己都感到惊讶的发现：那些看上去毫无实质内容的"格式占位符"词符，才是模型在生成过程中真正维护物体身份的核心位置。</description>
+      <link>https://arxiv.org/abs/2607.19139</link>
+      <guid isPermaLink="false">2026-07-22-text-template-tokens-are-implicit-semantic-registers-in-diff-f6037bcc.mp3</guid>
+      <pubDate>Thu, 23 Jul 2026 00:05:34 +0000</pubDate>
+      <itunes:duration>672</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-22-text-template-tokens-are-implicit-semantic-registers-in-diff-f6037bcc.mp3" length="4036608" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>DataFlow-Harness: A Grounded Code-Agent Platform for Constructing Editable LLM Data Pipelines</title>
+      <description>有一个问题困扰着所有在生产环境中部署大模型数据流水线的工程师：你用自然语言告诉一个编程智能体"帮我构建一条数据处理流水线"，它确实能生成一段可以跑通的Python脚本，但这段脚本是一次性的、游离于平台之外的、无法可视化编辑的代码块。你没有得到一个真正意义上的"流水线资产"，你只是得到了一个临时脚本。这篇论文把这个问题命名为NL2Pipeline Gap，并且提出了一套叫做DataFlow-Harness的系统来解决它。</description>
+      <link>https://arxiv.org/abs/2607.16617</link>
+      <guid isPermaLink="false">2026-07-22-dataflow-harness-a-grounded-code-agent-platform-for-construc-41a89156.mp3</guid>
+      <pubDate>Thu, 23 Jul 2026 00:03:26 +0000</pubDate>
+      <itunes:duration>1001</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-22-dataflow-harness-a-grounded-code-agent-platform-for-construc-41a89156.mp3" length="6008256" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU</title>
+      <description>世界模型领域正在尝试解决一个非常具体的工程难题：如何让一台普通桌面显卡，在不借助云端服务器的情况下，实时运行一个可以被用户持续操控、画面连贯、动作响应灵敏的视觉世界模拟器。这篇论文提出的 ABot-World-0 就是对这个问题的一次完整的系统级回答。</description>
+      <link>https://arxiv.org/abs/2607.19191</link>
+      <guid isPermaLink="false">2026-07-22-abot-world-0-infinite-interactive-world-rollout-on-a-single--58037709.mp3</guid>
+      <pubDate>Wed, 22 Jul 2026 23:59:57 +0000</pubDate>
+      <itunes:duration>1096</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-22-abot-world-0-infinite-interactive-world-rollout-on-a-single--58037709.mp3" length="6576336" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement</title>
       <description>怎么让AI生成的视频既能准确识别出"这是同一件物品的不同角度"，又能把Logo贴在语义上最合理的位置，还能同时让视频里的人和物都保持高度的外观一致性——这是当前视频个性化生成领域一个真实存在、而且相当棘手的问题。HOMIE这篇论文就是专门冲着这个痛点来的。</description>
       <link>https://arxiv.org/abs/2607.18217</link>

@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-22
+
+- **Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing** · 55★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-22-mage-flow-an-efficient-native-resolution-foundation-model-fo-473d23d8.mp3) [arXiv](https://arxiv.org/abs/2607.19064)
+- **Generative World Renderer at the Speed of Play** · 64★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-22-generative-world-renderer-at-the-speed-of-play-56923aca.mp3) [arXiv](https://arxiv.org/abs/2607.18703)
+- **Text Template Tokens Are Implicit Semantic Registers in Diffusion Transformers** · 66★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-22-text-template-tokens-are-implicit-semantic-registers-in-diff-f6037bcc.mp3) [arXiv](https://arxiv.org/abs/2607.19139)
+- **DataFlow-Harness: A Grounded Code-Agent Platform for Constructing Editable LLM Data Pipelines** · 120★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-22-dataflow-harness-a-grounded-code-agent-platform-for-construc-41a89156.mp3) [arXiv](https://arxiv.org/abs/2607.16617)
+- **ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU** · 165★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-22-abot-world-0-infinite-interactive-world-rollout-on-a-single--58037709.mp3) [arXiv](https://arxiv.org/abs/2607.19191)
+
 ## 2026-07-21
 
 - **HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement** · 46★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-21-homie-human-object-centric-video-personalization-via-multimo-7d9af37a.mp3) [arXiv](https://arxiv.org/abs/2607.18217)

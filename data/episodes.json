@@ -1,5 +1,65 @@
 [
   {
+    "key": "2607.19064",
+    "date": "2026-07-22",
+    "title": "Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing",
+    "abstract": "Large-scale visual generators are increasingly capable but costly to train, fine-tune, and deploy. We introduce Mage-Flow, a compact 4B-scale generative stack for efficient text-to-image generation and instruction-based image editing. The stack is built from two co-designed components: Mage-VAE, a lightweight high-fidelity latent tokenizer, and a Native-Resolution Multimodal Diffusion Transformer trained with rectified flow matching. Mage-VAE uses one-step diffusion-style encoding and decoding with anchor-latent regularization, preserving the reconstruction quality of strong public VAEs while reducing tokenization cost by more than an order of magnitude. Together with native-resolution packing and stack-level CUDA kernel fusion, the stack supports flexible-resolution training and improves end-to-end training throughput by about 2.5times. Built on this foundation, we develop a complete model family with Base, RL-aligned, and Turbo variants for both generation and editing. Diffusion-NFT improves prompt following, text rendering, aesthetic quality, and editing fidelity, while few-step distillation with adversarial perceptual guidance produces 4-step Turbo models for low-latency inference. Despite its compact scale, Mage-Flow and Mage-Flow-Edit achieves competitive performance across standard generation and editing benchmarks. More importantly, the Turbo variants make high-resolution generation and editing practical for interactive use: at 1024^2 resolution on a single NVIDIA A100 GPU, Mage-Flow-Turbo generates an image in 0.59s, and Mage-Flow-Edit-Turbo edits an image in 1.02s, while maintaining a small memory footprint. These results show that careful tokenizer--backbone--system co-design can deliver strong high-resolution generation and editing within an efficient 4B model family.",
+    "notes": "有一类图像生成系统，它们能画出高质量的图、能按照指令精确修图，但你要用它们，要么得花巨大的算力，要么得接受不透明的闭源黑箱。这篇来自微软的论文想解决的，正是这个矛盾：能不能在参数量只有四十亿这个相对紧凑的规模上，造出一个生成质量和编辑能力都不输大模型、同时又快又省显存的视觉生成系统？这个系统叫 Mage-Flow，论文的核心主张是，真正的效率不是靠缩减某一个模块，而是把分词器、骨干网络、训练系统三个层面联合设计，才能把整个流水线的瓶颈都消除掉。",
+    "url": "https://arxiv.org/abs/2607.19064",
+    "upvotes": 55,
+    "audio": "2026-07-22-mage-flow-an-efficient-native-resolution-foundation-model-fo-473d23d8.mp3",
+    "size": 6835680,
+    "published": "2026-07-23T00:12:12.987851+00:00"
+  },
+  {
+    "key": "2607.18703",
+    "date": "2026-07-22",
+    "title": "Generative World Renderer at the Speed of Play",
+    "abstract": "Generative world renderer AlayaRenderer receives structured world states exported from physics engines and synthesizes RGB frames. Unlike models that generate frames from text/control-hints prompts, AlayaRenderer preserves scene structure without altering the underlying world dynamics. This demonstrates an alternative path toward interactive world modeling and user-controllable play. However, the original AlayaRenderer is too computationally expensive for real-time deployment. This technical report introduces AlayaRenderer-Flash, a real-time-oriented generative forward world renderer that pushes AlayaRenderer from 0.56 FPS to 31.54 FPS, reaching the speed of play. AlayaRenderer-Flash reformulates the original renderer as a few-step autoregressive streaming model and introduces lightweight distilled codecs for efficient latent encoding and frame reconstruction. It retains the teacher model's G-buffer and text-prompt interfaces while enabling continuous rendering over input streams of unbounded length. We evaluate AlayaRenderer-Flash on G-buffer streams across content preservation, temporal consistency, cross-window stability, prompt controllability, and runtime efficiency. Our results show that AlayaRenderer-Flash substantially reduces inference cost while preserving the core rendering capabilities of the teacher model. By integrating AlayaRenderer-Flash with a physics engine, we build a fully playable generative world running at 30 FPS.",
+    "notes": "我们今天要聊的这篇论文，解决了一个在生成式视觉世界中非常实际的问题：如何让复杂的生成式渲染器，以游戏般的实时速度运行起来。",
+    "url": "https://arxiv.org/abs/2607.18703",
+    "upvotes": 64,
+    "audio": "2026-07-22-generative-world-renderer-at-the-speed-of-play-56923aca.mp3",
+    "size": 6277392,
+    "published": "2026-07-23T00:08:23.312500+00:00"
+  },
+  {
+    "key": "2607.19139",
+    "date": "2026-07-22",
+    "title": "Text Template Tokens Are Implicit Semantic Registers in Diffusion Transformers",
+    "abstract": "Text-to-image diffusion transformers (DiTs) jointly process text and image tokens, yet their internal computation during denoising remains poorly understood. We introduce a causal interpretability framework for modern large-scale DiTs that combines attention decomposition with targeted interventions across token spans, heads, and layers. Using it to separate prompt-content tokens from structural template tokens, we find that the structural tokens carry little prompt-specific information at the encoder output. Yet surprisingly, they emerge as dominant image-to-text attention sinks and causally maintain object identity inside the DiT, acting as implicit semantic registers. We show that they acquire this identity indirectly, with prompt semantics first injected into the image latents and then read back into the template tokens rather than transferred directly from the prompt tokens. Inspired by the above findings, we design a training-free pruning rule for DiTs. Heads that attend most strongly to prompt tokens are dispensable, and pruning them removes 20% of attention FLOPs with only a 1.4-point drop on GenEval. We further reveal how generative computation in DiTs is organized across heads and depth, separating semantic routing from visual synthesis and progressing from identity formation to propagation and refinement. Our work not only reveals that the tokens encoding semantics at input need not be those that maintain it during generation, but also provides a causal view of internal mechanisms in DiTs.",
+    "notes": "文本生成模型在生成图像时，究竟是怎么\"读懂\"你给的文字提示的？这个问题听上去很基础，但实际上在现代扩散变换器里，这个问题的答案出乎意料地反常识。今天要讲的这篇论文，就揭示了一个让研究者自己都感到惊讶的发现：那些看上去毫无实质内容的\"格式占位符\"词符，才是模型在生成过程中真正维护物体身份的核心位置。",
+    "url": "https://arxiv.org/abs/2607.19139",
+    "upvotes": 66,
+    "audio": "2026-07-22-text-template-tokens-are-implicit-semantic-registers-in-diff-f6037bcc.mp3",
+    "size": 4036608,
+    "published": "2026-07-23T00:05:34.955295+00:00"
+  },
+  {
+    "key": "2607.16617",
+    "date": "2026-07-22",
+    "title": "DataFlow-Harness: A Grounded Code-Agent Platform for Constructing Editable LLM Data Pipelines",
+    "abstract": "Large language models (LLMs) are increasingly used to automate data-processing workflows, yet coding agents typically produce scripts that are not automatically materialized as persistent, editable platform artifacts. We call this disconnect the NL2Pipeline gap. To bridge it, we introduce DataFlow-Harness, a platform that guides an LLM agent to construct platform-native directed acyclic graphs (DAGs) through typed, incremental mutations rather than free-form scripts. The platform combines DataFlow-Skills for procedural guidance, a Model Context Protocol (MCP) layer that exposes the live operator registry and current pipeline state, and DataFlow-WebUI, which synchronizes conversational authoring with a visual DAG editor. On a 12-task data-engineering benchmark, DataFlow-Harness achieves a 93.3\\% observed end-to-end pass rate. Relative to Vanilla Claude Code, it reduces measured monetary cost by 72.5\\% and generation latency by 49.9\\%; its observed pass rate is within 0.9 percentage points of the Context-Aware Claude Code baseline while its cost is 42.8\\% lower. Per-task analysis indicates that Skills are most useful when construction depends on implicit procedural knowledge. These results show that live platform grounding can produce persistent, editable workflow artifacts with an observed reliability close to script-generation baselines and with lower measured construction cost and latency.",
+    "notes": "有一个问题困扰着所有在生产环境中部署大模型数据流水线的工程师：你用自然语言告诉一个编程智能体\"帮我构建一条数据处理流水线\"，它确实能生成一段可以跑通的Python脚本，但这段脚本是一次性的、游离于平台之外的、无法可视化编辑的代码块。你没有得到一个真正意义上的\"流水线资产\"，你只是得到了一个临时脚本。这篇论文把这个问题命名为NL2Pipeline Gap，并且提出了一套叫做DataFlow-Harness的系统来解决它。",
+    "url": "https://arxiv.org/abs/2607.16617",
+    "upvotes": 120,
+    "audio": "2026-07-22-dataflow-harness-a-grounded-code-agent-platform-for-construc-41a89156.mp3",
+    "size": 6008256,
+    "published": "2026-07-23T00:03:26.895843+00:00"
+  },
+  {
+    "key": "2607.19191",
+    "date": "2026-07-22",
+    "title": "ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU",
+    "abstract": "We present ABot-World-0, an action-conditioned video world model for real-time, long-horizon closed-loop interaction, supported by a multi-source data infrastructure spanning AAA games, simulation engines, and internet videos to learn controllable world dynamics. WorldExplorer performs agent-driven collection guided by training feedback, while a unified pipeline applies 14 deterministic quality checks, VLM-based assessment, and synchronized action and text annotation. We progressively distill a bidirectional action-conditioned teacher into a causal student through teacher forcing and ODE distillation, and introduce LongForcing to align long student self-rollouts with an extended-horizon teacher, mitigating accumulated distribution shift and autoregressive drift. Raw keyboard actions provide a unified control interface for scene roaming and third-person character interaction, while reference-character memory provides persistent appearance cues for identity consistency during third-person rollouts. For deployment, we co-design a streaming inference stack with a lightweight VAE decoder, efficient attention, memory-aware scheduling, and low-bit DiT inference. Across optimized low-bit configurations, ABot-World-0 streams 720P video at up to 16 FPS on a single NVIDIA RTX 5090 desktop GPU, with 1.2s action-to-first-frame latency and approximately 19GiB peak VRAM. Experiments on WorldRoamBench and extended interactive rollouts demonstrate competitive controllability and coherent long-horizon world evolution.",
+    "notes": "世界模型领域正在尝试解决一个非常具体的工程难题：如何让一台普通桌面显卡，在不借助云端服务器的情况下，实时运行一个可以被用户持续操控、画面连贯、动作响应灵敏的视觉世界模拟器。这篇论文提出的 ABot-World-0 就是对这个问题的一次完整的系统级回答。",
+    "url": "https://arxiv.org/abs/2607.19191",
+    "upvotes": 165,
+    "audio": "2026-07-22-abot-world-0-infinite-interactive-world-rollout-on-a-single--58037709.mp3",
+    "size": 6576336,
+    "published": "2026-07-22T23:59:57.140924+00:00"
+  },
+  {
     "key": "2607.18217",
     "date": "2026-07-21",
     "title": "HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement",
