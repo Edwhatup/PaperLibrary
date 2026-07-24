@@ -1,5 +1,65 @@
 [
   {
+    "key": "2607.19604",
+    "date": "2026-07-23",
+    "title": "Scaling Laws for Hypernetwork-Based Knowledge Injection in Large Language Models",
+    "abstract": "Injecting factual knowledge into large language models (LLMs) reliably and at scale remains an open challenge. Hypernetworks provide a promising solution to large-scale knowledge injection. Although hypernetworks are typically applied for test-time adaptation, we explore their use in train-time knowledge injection, where, given a large corpus of facts, we train a hypernetwork to generate a fixed LoRA adapter that, when inserted into the target model, enable the model to answer questions about those facts. In this work, we investigate whether hypernetworks can be used to perform train-time knowledge injection and how this ability varies with scale. The scaling behavior of hypernetworks remains largely unstudied. Our design decouples the hypernetwork's injection capacity from the target model's general capability, enabling, for the first time, a rigorous study of scaling laws for hypernetwork architectures. We characterize how loss, reasoning accuracy, and out-of-distribution (OOD) generalization vary with hypernetwork depth, width, and target network size. We construct a large-scale dataset, called MegaWikiQA, containing tens of millions of multi-hop question-answer examples across 39 domains constructed from examples in Wikidata5M. Our results reveal: (i) hypernetwork-based injection exhibits broadly predictive power law scaling along all architecture axes; and (ii) hypernetworks are capable of reliable OOD generalization at increasing scales, suggesting that hypernetwork provides a promising alternative to other train-time adaptation methods such as LoRA finetuning and full fine-tuning, exhibiting steeper scaling exponents in all OOD evaluations. Together, these results establish hypernetworks as a principled and scalable substrate for train-time adaptation, and provide the first empirically grounded scaling laws to guide hypernetworks for factual reasoning in large language models.",
+    "notes": "把知识注入大型语言模型这件事做好，一直是个没有被彻底解决的难题。今天要讲的这篇论文，核心问题就是：能不能用一种叫做超网络的机制，把大量事实性知识可靠地、可扩展地注入到语言模型里，并且搞清楚这个过程背后的规律到底是什么。",
+    "url": "https://arxiv.org/abs/2607.19604",
+    "upvotes": 11,
+    "audio": "2026-07-23-scaling-laws-for-hypernetwork-based-knowledge-injection-in-l-6da5a6b5.mp3",
+    "size": 5894784,
+    "published": "2026-07-24T00:10:10.311688+00:00"
+  },
+  {
+    "key": "2607.16165",
+    "date": "2026-07-23",
+    "title": "An Exam for Active Observers",
+    "abstract": "Human vision is a closed loop: gaze is continuously redirected by intermediate hypotheses rather than a single snapshot. Decades of psychophysics and cognitive science have argued that this active observation is essential for a wide range of tasks. Whether today's multimodal large language models (MLLMs) exercise active observation is an empirical question that current vision-language benchmarks do not answer. We introduce ActiveVision, a benchmark that makes active observation measurable for MLLMs, comprising 17 tasks across 3 categories. Tasks are designed to force repeated visual perception rather than a single static description. Frontier MLLMs collapse on ActiveVision: the highest-scoring model we evaluate, GPT-5.5 at the highest exposed reasoning-effort tier, solves only 10.6% of items and scores zero on 11 of the 17 tasks, and even Claude Fable 5, despite topping most reasoning and coding leaderboards, solves just 3.5%, far behind three human participants who average 96.1%. Furthermore, much of the gap persists even when models write and run their own vision code: such code is unreliable on realistic imagery, and catching its failures itself requires the active perception the models lack. Together, these results indicate that current MLLMs lack robust active visual observation, motivating architectures and training objectives that close the perception-reasoning loop.",
+    "notes": "当前最顶尖的多模态大语言模型，在视觉理解上究竟差在哪里？这篇论文给出了一个非常具体的答案：它们缺乏\"主动观察\"能力。研究者设计了一个叫做 ActiveVision 的基准测试，用 17 种任务把这个能力单独剥离出来测量，结果发现最好的模型 GPT-5.5，哪怕开到最高推理档位，也只能答对 10.6% 的题目，而三位普通人类参与者的平均正确率是 96.1%。这个差距足以说明，我们今天在视觉语言模型上看到的那些亮眼分数，并没有真正反映出一种关键的感知能力。",
+    "url": "https://arxiv.org/abs/2607.16165",
+    "upvotes": 18,
+    "audio": "2026-07-23-an-exam-for-active-observers-5dbe0ab3.mp3",
+    "size": 5265360,
+    "published": "2026-07-24T00:07:01.395946+00:00"
+  },
+  {
+    "key": "2607.19747",
+    "date": "2026-07-23",
+    "title": "Beyond Relevance-Centric Retrieval: Rubric-Oriented Document Set Selection and Ranking",
+    "abstract": "As large language models and AI agents become the primary consumers of search results, document set quality determines the upper bound of downstream generation. Yet existing evaluation systems remain confined to scoring documents independently and aggregating via nDCG, ignoring inter-document interactions (redundancy, conflict, complementarity) and unable to answer what makes one document set better than another. To address these issues, we propose a complete evaluate-diagnose-optimize framework. We design SetwiseEvalKit, a three-level, nine-dimension document set evaluation benchmark covering both short-form and long-form scenarios, comprising approximately 28K high-quality evaluation rubrics. We systematically evaluate 12 rerankers: even the best method achieves no more than 45% coverage, cross-document coordination dimensions are universally weak, and no single method maintains top performance across both settings. Building on this, we propose Rubric4Setwise, a training-free method that converts rubric-based evaluation criteria into document set selection signals, achieving the best downstream generation performance with fewer documents and search rounds. It is the only method that maintains state-of-the-art results across both scenarios, validating the effectiveness of closing the loop from evaluation to optimization.",
+    "notes": "大家好，今天我们来聊一篇关于信息检索领域的重要论文，它的标题是《超越以相关性为中心的检索：面向评分标准的文档集选择与排序》。这篇论文要解决的核心问题是：在当前大型语言模型和AI智能体成为搜索结果主要消费者的背景下，我们如何更准确地评估和优化检索到的文档集质量？",
+    "url": "https://arxiv.org/abs/2607.19747",
+    "upvotes": 24,
+    "audio": "2026-07-23-beyond-relevance-centric-retrieval-rubric-oriented-document--5be9b9cd.mp3",
+    "size": 8030448,
+    "published": "2026-07-24T00:04:16.472613+00:00"
+  },
+  {
+    "key": "2607.20368",
+    "date": "2026-07-23",
+    "title": "Self Gradient Forcing: Native Long Video Extrapolation",
+    "abstract": "Recent autoregressive video diffusion methods are increasingly built upon Self Forcing, where the student is trained on histories produced by its own rollout rather than ground-truth video contexts. This reduces exposure bias, but the historical key-value cache is still used by future frames only as frozen rollout state. As a result, future losses cannot supervise how earlier generated latents should be written into more useful keys and values for later video-latent generation. We call this the historical context-gradient gap. We propose Self Gradient Forcing (SGF), a two-pass training strategy that restores this missing supervision signal without backpropagating through the full serial rollout. Pass 1 performs a no-gradient autoregressive rollout matching inference and, at a sampled denoising exit step, records both the self-generated context and the noisy latents fed to the model. Pass 2 performs parallel context-gradient reconstruction for the recorded exit step. The generated context is used as stop-gradient clean-latent input, while the model recomputes the context KV representations and future-to-context causal attention. Thus, SGF provides the missing memory-writing supervision within the native autoregressive training objective, using losses on future video latents to train the model to encode context into more effective causal memory. Across extensive long-horizon frame-wise and chunk-wise experiments under different initializations, SGF achieves stronger native long-video extrapolation than Self Forcing, especially in subject identity, background/layout consistency, and temporal stability. Remarkably, using only a 5-second training window, SGF can extrapolate to videos lasting several minutes. Code and models will be released to advance research on autoregressive video generation.",
+    "notes": "视频生成模型在生成超过训练时长的长视频时，会出现人物身份飘移、背景突变、画面跳切等一系列一致性崩溃的问题。这篇论文要解决的，正是这个问题背后一个被长期忽视的根本原因：当模型用自己生成的历史帧作为记忆去预测未来帧时，那段历史记忆的写入过程本身，从未受到过任何来自未来的监督信号。",
+    "url": "https://arxiv.org/abs/2607.20368",
+    "upvotes": 29,
+    "audio": "2026-07-23-self-gradient-forcing-native-long-video-extrapolation-97c4a595.mp3",
+    "size": 3867552,
+    "published": "2026-07-23T23:59:47.842184+00:00"
+  },
+  {
+    "key": "2607.20145",
+    "date": "2026-07-23",
+    "title": "SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD",
+    "abstract": "Full-parameter post-training of trillion-parameter-scale MoE models introduces substantial system-level challenges for large-scale distributed training, including severe memory pressure, non-overlapped communication overhead, and inefficient kernel execution. While most large-scale LLM training systems are built around GPU-based clusters, this report presents an end-to-end optimization practice on the Ascend NPU SuperPOD. Using the DeepSeek-V4 model family as the target workload, we develop a hierarchical optimization framework spanning model-level parallelism, computation-communication orchestration, and low-level kernel execution. The resulting system achieves 34.22% Model FLOPs Utilization (MFU) with a 2.93x improvement over the open-source baseline recipe while maintaining training stability. Building on this optimized infrastructure, we further establish a CPT and SFT workflow for complex Operations Research (OR) tasks. We refer to the integrated framework as SLAI T-Rex. Using DeepSeek-V4-Flash, we develop OR-oriented CPT and SFT data pipelines that combine collected domain resources with solver-verified synthetic optimization documents. The resulting dataset contains 10K high-quality SFT samples spanning four task categories and three problem representations. The specialized model achieves the highest average zero-shot Pass@1 score among the evaluated models, reaching 71.81% and outperforming GPT-5.4-Mini and the base DeepSeek-V4-Flash model by 3.98 and 11.27 percentage points, respectively. Overall, this work demonstrates a full-stack pathway from efficient trillion-parameter model post-training on Ascend infra to domain-specialized Flash models for solver-grounded mathematical modeling, advancing frontier-model systems for complex reasoning.",
+    "notes": "在训练万亿参数规模的大语言模型时，工程团队面临的核心困境是：你不能简单地把为GPU设计的那套做法搬到华为昇腾NPU上，因为这两种硬件的底层执行模型有着本质的不同。这篇来自深圳环区研究院的技术报告，正是在这个真实痛点上展开工作的。他们把DeepSeek-V4系列模型作为目标负载，在昇腾CloudMatrix384 SuperPOD集群上做了一次从底层芯片内核到上层训练调度的全栈优化，最终把模型算力利用率MFU从11.67%提升到了34.22%，整整提高了2.93倍。同时，他们还在这套基础设施之上，把一个较小的Flash版本模型专门训练成了运筹优化领域的专家模型，最终在零样本Pass@1指标上达到",
+    "url": "https://arxiv.org/abs/2607.20145",
+    "upvotes": 45,
+    "audio": "2026-07-23-slai-t-rex-full-parameter-post-training-of-the-deepseek-v4-f-cd77ba33.mp3",
+    "size": 6164928,
+    "published": "2026-07-23T23:57:46.838277+00:00"
+  },
+  {
     "key": "2607.19064",
     "date": "2026-07-22",
     "title": "Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing",

@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-23
+
+- **Scaling Laws for Hypernetwork-Based Knowledge Injection in Large Language Models** · 11★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-23-scaling-laws-for-hypernetwork-based-knowledge-injection-in-l-6da5a6b5.mp3) [arXiv](https://arxiv.org/abs/2607.19604)
+- **An Exam for Active Observers** · 18★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-23-an-exam-for-active-observers-5dbe0ab3.mp3) [arXiv](https://arxiv.org/abs/2607.16165)
+- **Beyond Relevance-Centric Retrieval: Rubric-Oriented Document Set Selection and Ranking** · 24★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-23-beyond-relevance-centric-retrieval-rubric-oriented-document--5be9b9cd.mp3) [arXiv](https://arxiv.org/abs/2607.19747)
+- **Self Gradient Forcing: Native Long Video Extrapolation** · 29★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-23-self-gradient-forcing-native-long-video-extrapolation-97c4a595.mp3) [arXiv](https://arxiv.org/abs/2607.20368)
+- **SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD** · 45★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-23-slai-t-rex-full-parameter-post-training-of-the-deepseek-v4-f-cd77ba33.mp3) [arXiv](https://arxiv.org/abs/2607.20145)
+
 ## 2026-07-22
 
 - **Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing** · 55★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-22-mage-flow-an-efficient-native-resolution-foundation-model-fo-473d23d8.mp3) [arXiv](https://arxiv.org/abs/2607.19064)

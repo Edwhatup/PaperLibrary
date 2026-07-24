@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Scaling Laws for Hypernetwork-Based Knowledge Injection in Large Language Models</title>
+      <description>把知识注入大型语言模型这件事做好，一直是个没有被彻底解决的难题。今天要讲的这篇论文，核心问题就是：能不能用一种叫做超网络的机制，把大量事实性知识可靠地、可扩展地注入到语言模型里，并且搞清楚这个过程背后的规律到底是什么。</description>
+      <link>https://arxiv.org/abs/2607.19604</link>
+      <guid isPermaLink="false">2026-07-23-scaling-laws-for-hypernetwork-based-knowledge-injection-in-l-6da5a6b5.mp3</guid>
+      <pubDate>Fri, 24 Jul 2026 00:10:10 +0000</pubDate>
+      <itunes:duration>982</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-23-scaling-laws-for-hypernetwork-based-knowledge-injection-in-l-6da5a6b5.mp3" length="5894784" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>An Exam for Active Observers</title>
+      <description>当前最顶尖的多模态大语言模型，在视觉理解上究竟差在哪里？这篇论文给出了一个非常具体的答案：它们缺乏"主动观察"能力。研究者设计了一个叫做 ActiveVision 的基准测试，用 17 种任务把这个能力单独剥离出来测量，结果发现最好的模型 GPT-5.5，哪怕开到最高推理档位，也只能答对 10.6% 的题目，而三位普通人类参与者的平均正确率是 96.1%。这个差距足以说明，我们今天在视觉语言模型上看到的那些亮眼分数，并没有真正反映出一种关键的感知能力。</description>
+      <link>https://arxiv.org/abs/2607.16165</link>
+      <guid isPermaLink="false">2026-07-23-an-exam-for-active-observers-5dbe0ab3.mp3</guid>
+      <pubDate>Fri, 24 Jul 2026 00:07:01 +0000</pubDate>
+      <itunes:duration>877</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-23-an-exam-for-active-observers-5dbe0ab3.mp3" length="5265360" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Beyond Relevance-Centric Retrieval: Rubric-Oriented Document Set Selection and Ranking</title>
+      <description>大家好，今天我们来聊一篇关于信息检索领域的重要论文，它的标题是《超越以相关性为中心的检索：面向评分标准的文档集选择与排序》。这篇论文要解决的核心问题是：在当前大型语言模型和AI智能体成为搜索结果主要消费者的背景下，我们如何更准确地评估和优化检索到的文档集质量？</description>
+      <link>https://arxiv.org/abs/2607.19747</link>
+      <guid isPermaLink="false">2026-07-23-beyond-relevance-centric-retrieval-rubric-oriented-document--5be9b9cd.mp3</guid>
+      <pubDate>Fri, 24 Jul 2026 00:04:16 +0000</pubDate>
+      <itunes:duration>1338</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-23-beyond-relevance-centric-retrieval-rubric-oriented-document--5be9b9cd.mp3" length="8030448" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Self Gradient Forcing: Native Long Video Extrapolation</title>
+      <description>视频生成模型在生成超过训练时长的长视频时，会出现人物身份飘移、背景突变、画面跳切等一系列一致性崩溃的问题。这篇论文要解决的，正是这个问题背后一个被长期忽视的根本原因：当模型用自己生成的历史帧作为记忆去预测未来帧时，那段历史记忆的写入过程本身，从未受到过任何来自未来的监督信号。</description>
+      <link>https://arxiv.org/abs/2607.20368</link>
+      <guid isPermaLink="false">2026-07-23-self-gradient-forcing-native-long-video-extrapolation-97c4a595.mp3</guid>
+      <pubDate>Thu, 23 Jul 2026 23:59:47 +0000</pubDate>
+      <itunes:duration>644</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-23-self-gradient-forcing-native-long-video-extrapolation-97c4a595.mp3" length="3867552" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD</title>
+      <description>在训练万亿参数规模的大语言模型时，工程团队面临的核心困境是：你不能简单地把为GPU设计的那套做法搬到华为昇腾NPU上，因为这两种硬件的底层执行模型有着本质的不同。这篇来自深圳环区研究院的技术报告，正是在这个真实痛点上展开工作的。他们把DeepSeek-V4系列模型作为目标负载，在昇腾CloudMatrix384 SuperPOD集群上做了一次从底层芯片内核到上层训练调度的全栈优化，最终把模型算力利用率MFU从11.67%提升到了34.22%，整整提高了2.93倍。同时，他们还在这套基础设施之上，把一个较小的Flash版本模型专门训练成了运筹优化领域的专家模型，最终在零样本Pass@1指标上达到</description>
+      <link>https://arxiv.org/abs/2607.20145</link>
+      <guid isPermaLink="false">2026-07-23-slai-t-rex-full-parameter-post-training-of-the-deepseek-v4-f-cd77ba33.mp3</guid>
+      <pubDate>Thu, 23 Jul 2026 23:57:46 +0000</pubDate>
+      <itunes:duration>1027</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-23-slai-t-rex-full-parameter-post-training-of-the-deepseek-v4-f-cd77ba33.mp3" length="6164928" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing</title>
       <description>有一类图像生成系统，它们能画出高质量的图、能按照指令精确修图，但你要用它们，要么得花巨大的算力，要么得接受不透明的闭源黑箱。这篇来自微软的论文想解决的，正是这个矛盾：能不能在参数量只有四十亿这个相对紧凑的规模上，造出一个生成质量和编辑能力都不输大模型、同时又快又省显存的视觉生成系统？这个系统叫 Mage-Flow，论文的核心主张是，真正的效率不是靠缩减某一个模块，而是把分词器、骨干网络、训练系统三个层面联合设计，才能把整个流水线的瓶颈都消除掉。</description>
       <link>https://arxiv.org/abs/2607.19064</link>
