@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Show, Don't Tell: Evaluating Spatial Cognition in Generative Pixels Rather Than LLM Text</title>
+      <description>人工智能系统要真正走进物理世界，就必须具备空间智能。但问题是，我们现在评估模型空间能力的方式，对图像生成模型来说根本就不公平——甚至可以说是错误的。这篇论文就是在解决这个根本性的错配问题。</description>
+      <link>https://arxiv.org/abs/2607.21072</link>
+      <guid isPermaLink="false">2026-07-24-show-don-t-tell-evaluating-spatial-cognition-in-generative-p-e222e3ec.mp3</guid>
+      <pubDate>Sat, 25 Jul 2026 00:13:33 +0000</pubDate>
+      <itunes:duration>925</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-24-show-don-t-tell-evaluating-spatial-cognition-in-generative-p-e222e3ec.mp3" length="5554656" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Visual Contrastive Self-Distillation</title>
+      <description>现在的视觉语言模型有一个很顽固的毛病：它们在回答问题的时候，往往更依赖语言层面的统计规律，而不是真正去看图。比如你给它一张有七个积木块的图，它可能因为"六"这个词在训练数据里出现得更频繁，就直接说六个。这个问题在强化学习和知识蒸馏的后训练阶段同样存在，模型学到的是"怎么说话听起来像对的"，而不是"怎么从图里读出信息"。今天要讲的这篇论文，题目叫做视觉对比自蒸馏，英文缩写VCSD，它提出了一个很干净的思路来解决这个问题。</description>
+      <link>https://arxiv.org/abs/2607.21556</link>
+      <guid isPermaLink="false">2026-07-24-visual-contrastive-self-distillation-fc9eec84.mp3</guid>
+      <pubDate>Sat, 25 Jul 2026 00:10:36 +0000</pubDate>
+      <itunes:duration>965</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-24-visual-contrastive-self-distillation-fc9eec84.mp3" length="5792112" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs</title>
+      <description>现有的K-12教育基准测试存在一个根本性的缺陷——它们只测量模型能不能答对考题，却完全不测试模型是否真正理解课程本身的结构。这篇论文要解决的，就是这个被所有人忽视的问题。</description>
+      <link>https://arxiv.org/abs/2605.09635</link>
+      <guid isPermaLink="false">2026-07-24-k12-kgraph-a-curriculum-aligned-knowledge-graph-for-benchmar-1e40b442.mp3</guid>
+      <pubDate>Sat, 25 Jul 2026 00:07:41 +0000</pubDate>
+      <itunes:duration>994</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-24-k12-kgraph-a-curriculum-aligned-knowledge-graph-for-benchmar-1e40b442.mp3" length="5965488" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ReferTrack: Referring Then Tracking for Embodied Visual Tracking</title>
+      <description>具身视觉追踪这件事，听起来很直观——让机器人跟着一个人走——但真正做好它，需要同时解决两个在工程上彼此纠缠的难题：第一，在人群里准确认出你要跟的那个人；第二，在认出目标之后，还要规划出一条安全、流畅、不碰东西的运动轨迹。这两件事如果分开做，就会出现经典的误差传播问题：视觉识别模块认错了人，导航模块跟着跑偏，整个系统雪崩。如果想用一个端到端的神经网络把它们统一处理，又面临另一个问题：你怎么让这个网络在复杂拥挤的场景里精准定位目标？这篇论文要解决的，就是这个痛点。</description>
+      <link>https://arxiv.org/abs/2607.20061</link>
+      <guid isPermaLink="false">2026-07-24-refertrack-referring-then-tracking-for-embodied-visual-track-072b37a5.mp3</guid>
+      <pubDate>Sat, 25 Jul 2026 00:04:29 +0000</pubDate>
+      <itunes:duration>918</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-24-refertrack-referring-then-tracking-for-embodied-visual-track-072b37a5.mp3" length="5510160" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>AREX: Towards a Recursively Self-Improving Agent for Deep Research</title>
+      <description>深度研究这件事，难点不只是"找到信息"，而是找到一个能同时满足多个约束条件的答案。比如你要找的不是某一个事实，而是一个人物，他必须同时满足：在某个时间段活跃、发表过某类研究、获得过某个奖项、还和某个机构有关联。这四个条件缺一不可，任何一个没满足，答案就是错的。这种任务，现有的搜索增强型语言模型系统面对起来非常吃力，因为它们的基本逻辑是：搜得更多、想得更深、上下文拉得更长。但问题在于，拉长搜索轨迹并不等于系统性进步，早期的错误会一直被带着走，已经走投无路的方向会被反复尝试，部分正确的候选答案可能被过早接受。</description>
+      <link>https://arxiv.org/abs/2607.21461</link>
+      <guid isPermaLink="false">2026-07-24-arex-towards-a-recursively-self-improving-agent-for-deep-res-9546bd3f.mp3</guid>
+      <pubDate>Sat, 25 Jul 2026 00:01:38 +0000</pubDate>
+      <itunes:duration>1029</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-24-arex-towards-a-recursively-self-improving-agent-for-deep-res-9546bd3f.mp3" length="6176448" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Scaling Laws for Hypernetwork-Based Knowledge Injection in Large Language Models</title>
       <description>把知识注入大型语言模型这件事做好，一直是个没有被彻底解决的难题。今天要讲的这篇论文，核心问题就是：能不能用一种叫做超网络的机制，把大量事实性知识可靠地、可扩展地注入到语言模型里，并且搞清楚这个过程背后的规律到底是什么。</description>
       <link>https://arxiv.org/abs/2607.19604</link>

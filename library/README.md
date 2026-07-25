@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-24
+
+- **Show, Don't Tell: Evaluating Spatial Cognition in Generative Pixels Rather Than LLM Text** · 34★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-24-show-don-t-tell-evaluating-spatial-cognition-in-generative-p-e222e3ec.mp3) [arXiv](https://arxiv.org/abs/2607.21072)
+- **Visual Contrastive Self-Distillation** · 39★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-24-visual-contrastive-self-distillation-fc9eec84.mp3) [arXiv](https://arxiv.org/abs/2607.21556)
+- **K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs** · 40★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-24-k12-kgraph-a-curriculum-aligned-knowledge-graph-for-benchmar-1e40b442.mp3) [arXiv](https://arxiv.org/abs/2605.09635)
+- **ReferTrack: Referring Then Tracking for Embodied Visual Tracking** · 44★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-24-refertrack-referring-then-tracking-for-embodied-visual-track-072b37a5.mp3) [arXiv](https://arxiv.org/abs/2607.20061)
+- **AREX: Towards a Recursively Self-Improving Agent for Deep Research** · 116★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-24-arex-towards-a-recursively-self-improving-agent-for-deep-res-9546bd3f.mp3) [arXiv](https://arxiv.org/abs/2607.21461)
+
 ## 2026-07-23
 
 - **Scaling Laws for Hypernetwork-Based Knowledge Injection in Large Language Models** · 11★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-23-scaling-laws-for-hypernetwork-based-knowledge-injection-in-l-6da5a6b5.mp3) [arXiv](https://arxiv.org/abs/2607.19604)
