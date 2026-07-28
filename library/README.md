@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-27
+
+- **Interactive Training 2: Auditable Control Plane for Live Model Training** · 15★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-27-interactive-training-2-auditable-control-plane-for-live-mode-88367ea9.mp3) [arXiv](https://arxiv.org/abs/2607.18314)
+- **Agentic Context Management: Solving Agent Memory and Cost by Treating Them as Lifecycle and Architecture Problems** · 17★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-27-agentic-context-management-solving-agent-memory-and-cost-by--a73edb46.mp3) [arXiv](https://arxiv.org/abs/2607.21503)
+- **Molt: A Scalable PyTorch-Native Training Framework for Agentic Reinforcement Learning** · 23★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-27-molt-a-scalable-pytorch-native-training-framework-for-agenti-4e054f3c.mp3) [arXiv](https://arxiv.org/abs/2607.21653)
+- **Skill Self-Play: Pushing the Frontier of LLM Capability with Co-Evolving Skills** · 30★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-27-skill-self-play-pushing-the-frontier-of-llm-capability-with--dac0cbb9.mp3) [arXiv](https://arxiv.org/abs/2607.22529)
+- **DataPrep-Bench: Benchmarking LLMs as Training Data Preparators** · 40★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-27-dataprep-bench-benchmarking-llms-as-training-data-preparator-f561a84e.mp3) [arXiv](https://arxiv.org/abs/2607.20465)
+
 ## 2026-07-24
 
 - **Show, Don't Tell: Evaluating Spatial Cognition in Generative Pixels Rather Than LLM Text** · 34★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-24-show-don-t-tell-evaluating-spatial-cognition-in-generative-p-e222e3ec.mp3) [arXiv](https://arxiv.org/abs/2607.21072)

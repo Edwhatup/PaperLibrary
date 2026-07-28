@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Interactive Training 2: Auditable Control Plane for Live Model Training</title>
+      <description>有一个问题在机器学习研究里长期被忽视：我们花了大量时间盯着训练曲线，却几乎没有一套通用的方式去干预正在跑的训练。你看着loss在震荡，你想把学习率调低，你想保存一个检查点，你想让模型立刻跑一次验证——但要做到这些，你通常得去翻训练脚本，写一个针对这个任务、这个框架的回调函数，或者直接停掉训练，改参数，重新跑。这篇论文要解决的，就是这个"能看不能动"的困境。</description>
+      <link>https://arxiv.org/abs/2607.18314</link>
+      <guid isPermaLink="false">2026-07-27-interactive-training-2-auditable-control-plane-for-live-mode-88367ea9.mp3</guid>
+      <pubDate>Tue, 28 Jul 2026 00:13:23 +0000</pubDate>
+      <itunes:duration>863</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-27-interactive-training-2-auditable-control-plane-for-live-mode-88367ea9.mp3" length="5183712" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Agentic Context Management: Solving Agent Memory and Cost by Treating Them as Lifecycle and Architecture Problems</title>
+      <description>生产环境里的AI智能体，最常见的失败方式不是推理能力不够强，而是它根本不知道自己该记住什么、该忘掉什么、该在当前这一步把什么放进上下文窗口。这篇论文要解决的，正是这个问题。</description>
+      <link>https://arxiv.org/abs/2607.21503</link>
+      <guid isPermaLink="false">2026-07-27-agentic-context-management-solving-agent-memory-and-cost-by--a73edb46.mp3</guid>
+      <pubDate>Tue, 28 Jul 2026 00:10:31 +0000</pubDate>
+      <itunes:duration>968</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-27-agentic-context-management-solving-agent-memory-and-cost-by--a73edb46.mp3" length="5808816" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Molt: A Scalable PyTorch-Native Training Framework for Agentic Reinforcement Learning</title>
+      <description>现在的智能体强化学习研究面临一个非常具体的痛点：每当研究员想改一个算法细节——换一个优势估计器、加一个过滤步骤、改一下采样策略——他并不是真的只改了那一个东西，而是要跟着改训练器、分布式后端、推理引擎的胶水层，改完还得担心哪个环节悄悄引入了数值误差。这个代价在每一次迭代里都要重新付一遍，因为智能体强化学习本质上就是不停地改算法。这篇来自NVIDIA的论文要正面回答的问题是：这种复杂性是大规模强化学习基础设施的必然代价，还是从超大规模训练那边继承过来的一个选择？论文给出的答案是：这是一个可以拒绝的选择，并且他们用一个叫做Molt的框架来证明这一点。</description>
+      <link>https://arxiv.org/abs/2607.21653</link>
+      <guid isPermaLink="false">2026-07-27-molt-a-scalable-pytorch-native-training-framework-for-agenti-4e054f3c.mp3</guid>
+      <pubDate>Tue, 28 Jul 2026 00:07:09 +0000</pubDate>
+      <itunes:duration>1068</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-27-molt-a-scalable-pytorch-native-training-framework-for-agenti-4e054f3c.mp3" length="6413616" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Skill Self-Play: Pushing the Frontier of LLM Capability with Co-Evolving Skills</title>
+      <description>大语言模型的训练正在经历一场范式转变，从人工标注驱动转向模型自我进化驱动。但这条路上有一个根本性的两难困境：要让模型自己生成训练任务、自己验证答案，你就必须同时保证任务的多样性和验证的可靠性，而这两件事在现有方法里很难兼得。这篇来自阿里巴巴Qwen团队的论文，核心就是在解这道难题，他们提出的方法叫做Skill Self-Play，简称Skill-SP。</description>
+      <link>https://arxiv.org/abs/2607.22529</link>
+      <guid isPermaLink="false">2026-07-27-skill-self-play-pushing-the-frontier-of-llm-capability-with--dac0cbb9.mp3</guid>
+      <pubDate>Tue, 28 Jul 2026 00:03:49 +0000</pubDate>
+      <itunes:duration>871</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-27-skill-self-play-pushing-the-frontier-of-llm-capability-with--dac0cbb9.mp3" length="5230224" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>DataPrep-Bench: Benchmarking LLMs as Training Data Preparators</title>
+      <description>大型语言模型的能力，归根结底是由其训练数据的质量决定的。我们知道，精心策划的高质量数据，其效果甚至可以超越规模更大但质量较差的数据集。然而，随着对高质量训练数据需求的不断增长，仅仅依靠自然语料库已经远远不够了。于是，社区开始越来越多地利用大型语言模型本身，或者通过智能体，或者通过数据中心化的工作流，来生成训练数据。我们把这种新的范式称为“大型语言模型驱动的数据准备”。</description>
+      <link>https://arxiv.org/abs/2607.20465</link>
+      <guid isPermaLink="false">2026-07-27-dataprep-bench-benchmarking-llms-as-training-data-preparator-f561a84e.mp3</guid>
+      <pubDate>Tue, 28 Jul 2026 00:01:11 +0000</pubDate>
+      <itunes:duration>1330</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-27-dataprep-bench-benchmarking-llms-as-training-data-preparator-f561a84e.mp3" length="7985664" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Show, Don't Tell: Evaluating Spatial Cognition in Generative Pixels Rather Than LLM Text</title>
       <description>人工智能系统要真正走进物理世界，就必须具备空间智能。但问题是，我们现在评估模型空间能力的方式，对图像生成模型来说根本就不公平——甚至可以说是错误的。这篇论文就是在解决这个根本性的错配问题。</description>
       <link>https://arxiv.org/abs/2607.21072</link>
