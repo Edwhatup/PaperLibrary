@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation</title>
+      <description>好的，接下来，我们来聊一篇关于扩散模型（Diffusion Model）的最新研究。这篇论文的标题是《重新思考策略内扩散蒸馏中的无分类器引导》。</description>
+      <link>https://arxiv.org/abs/2607.24731</link>
+      <guid isPermaLink="false">2026-07-28-rethinking-classifier-free-guidance-in-on-policy-diffusion-d-ab202275.mp3</guid>
+      <pubDate>Wed, 29 Jul 2026 00:17:02 +0000</pubDate>
+      <itunes:duration>1012</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-28-rethinking-classifier-free-guidance-in-on-policy-diffusion-d-ab202275.mp3" length="6073488" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search</title>
+      <description>有一个真实的痛点贯穿着这篇论文的全部设计：我们手里有强大的专有模型，比如Claude、GPT、Gemini，它们在复杂推理上远超开源小模型；但我们又没有办法把它们的能力真正"灌"进一个开源学生模型里去。这个卡壳的地方，就是这篇论文要解决的核心问题。</description>
+      <link>https://arxiv.org/abs/2607.24280</link>
+      <guid isPermaLink="false">2026-07-28-from-proprietary-to-open-source-bridging-the-distribution-ga-4f9876b9.mp3</guid>
+      <pubDate>Wed, 29 Jul 2026 00:11:58 +0000</pubDate>
+      <itunes:duration>972</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-28-from-proprietary-to-open-source-bridging-the-distribution-ga-4f9876b9.mp3" length="5837472" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Progress Reward Modeling for Robotic Learning: A Comprehensive Survey</title>
+      <description>机器人在执行任务时，怎么知道自己是在往前走、原地踏步，还是把之前的进展给破坏掉了？这是机器人学习领域一个非常核心的痛点。今天要讲的这篇综述，正是系统梳理了"进度奖励建模"这个方向，来自西北大学、卡内基梅隆、威斯康星麦迪逊等多所高校的联合工作，发表于2026年7月。</description>
+      <link>https://arxiv.org/abs/2607.21655</link>
+      <guid isPermaLink="false">2026-07-28-progress-reward-modeling-for-robotic-learning-a-comprehensiv-dd120929.mp3</guid>
+      <pubDate>Wed, 29 Jul 2026 00:07:58 +0000</pubDate>
+      <itunes:duration>1319</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-28-progress-reward-modeling-for-robotic-learning-a-comprehensiv-dd120929.mp3" length="7918992" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>JarvisHub: An Open Harness for Canvas-Native Multimodal Creative Agents</title>
+      <description>现实中的创意工作从来不是一个提示词进去、一张图片出来那么简单。真正的创作流程里充满了参考图、草稿、备选方案、失败尝试、版本迭代、局部修改和人工反馈，这些中间过程共同构成了一个不断演化的项目状态。JarvisHub这篇论文要解决的核心问题，就是如何给AI创意代理提供一个它能真正读懂、写入、并持续维护的工作空间，而不是让它只会在孤立的提示词和工具调用之间打转。</description>
+      <link>https://arxiv.org/abs/2607.23588</link>
+      <guid isPermaLink="false">2026-07-28-jarvishub-an-open-harness-for-canvas-native-multimodal-creat-f4c94ddd.mp3</guid>
+      <pubDate>Wed, 29 Jul 2026 00:01:47 +0000</pubDate>
+      <itunes:duration>988</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-28-jarvishub-an-open-harness-for-canvas-native-multimodal-creat-f4c94ddd.mp3" length="5931648" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Kimi K3: Open Frontier Intelligence</title>
+      <description>如何在万亿参数规模上把开源模型做到接近闭源前沿，同时把训练效率提升两倍半——这是Kimi K3这篇技术报告试图回答的核心问题。</description>
+      <link>https://arxiv.org/abs/2607.24653</link>
+      <guid isPermaLink="false">2026-07-28-kimi-k3-open-frontier-intelligence-1b676f4b.mp3</guid>
+      <pubDate>Tue, 28 Jul 2026 23:57:56 +0000</pubDate>
+      <itunes:duration>927</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-28-kimi-k3-open-frontier-intelligence-1b676f4b.mp3" length="5564448" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Interactive Training 2: Auditable Control Plane for Live Model Training</title>
       <description>有一个问题在机器学习研究里长期被忽视：我们花了大量时间盯着训练曲线，却几乎没有一套通用的方式去干预正在跑的训练。你看着loss在震荡，你想把学习率调低，你想保存一个检查点，你想让模型立刻跑一次验证——但要做到这些，你通常得去翻训练脚本，写一个针对这个任务、这个框架的回调函数，或者直接停掉训练，改参数，重新跑。这篇论文要解决的，就是这个"能看不能动"的困境。</description>
       <link>https://arxiv.org/abs/2607.18314</link>

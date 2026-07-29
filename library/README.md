@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-28
+
+- **Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation** · 62★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-28-rethinking-classifier-free-guidance-in-on-policy-diffusion-d-ab202275.mp3) [arXiv](https://arxiv.org/abs/2607.24731)
+- **From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search** · 66★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-28-from-proprietary-to-open-source-bridging-the-distribution-ga-4f9876b9.mp3) [arXiv](https://arxiv.org/abs/2607.24280)
+- **Progress Reward Modeling for Robotic Learning: A Comprehensive Survey** · 67★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-28-progress-reward-modeling-for-robotic-learning-a-comprehensiv-dd120929.mp3) [arXiv](https://arxiv.org/abs/2607.21655)
+- **JarvisHub: An Open Harness for Canvas-Native Multimodal Creative Agents** · 104★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-28-jarvishub-an-open-harness-for-canvas-native-multimodal-creat-f4c94ddd.mp3) [arXiv](https://arxiv.org/abs/2607.23588)
+- **Kimi K3: Open Frontier Intelligence** · 261★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-28-kimi-k3-open-frontier-intelligence-1b676f4b.mp3) [arXiv](https://arxiv.org/abs/2607.24653)
+
 ## 2026-07-27
 
 - **Interactive Training 2: Auditable Control Plane for Live Model Training** · 15★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-27-interactive-training-2-auditable-control-plane-for-live-mode-88367ea9.mp3) [arXiv](https://arxiv.org/abs/2607.18314)
