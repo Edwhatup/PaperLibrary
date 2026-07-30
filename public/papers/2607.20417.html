@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATSplat: Compact Feed-forward 3D Gaussian Splatting with Adaptive Token Expansion · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 23, 2026</time> · <a href="https://arxiv.org/abs/2607.20417">arXiv</a> · <a href="https://arxiv.org/pdf/2607.20417">PDF</a></div>
+    <h1>ATSplat: Compact Feed-forward 3D Gaussian Splatting with Adaptive Token Expansion</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  
+  <details class="abstract" open><summary>Abstract</summary><p>3D Gaussian Splatting (3DGS) achieves high-quality novel-view synthesis by optimizing freely placed primitives in 3D and adaptively densifying them in under-reconstructed regions. However, this scene-adaptive capacity allocation is largely lost in existing feed-forward 3DGS methods, which commonly regress Gaussians at input pixels and lift them along camera rays. Such pixel-aligned formulations make the number and placement of primitives depend on image resolution and input viewpoints rather than scene complexity, resulting in dense and often redundant Gaussian sets. We present ATSplat, a feed-forward 3DGS framework that restores the adaptive allocation capability of 3DGS optimization through Adaptive 3D Tokens. ATSplat first lifts coarse patch-level depth and camera cues into sparse 3D anchor tokens, forming a compact scaffold of the scene. Each token is then regressed into local Gaussians with learnable 3D offsets, decoupling primitive placement from input image grids. An Adaptive Token Expansion module predicts a token-level uncertainty score, supervised by rendering error maps, and selectively expands high-uncertainty tokens through learnable expansion layers. This sparse-to-adaptive formulation enables ATSplat to concentrate primitives in challenging regions while maintaining a compact representation. Experiments on two representative datasets, RealEstate10K and DL3DV, show that ATSplat achieves state-of-the-art rendering quality while reducing the number of Gaussians by more than 5.7times compared with dense feed-forward 3DGS methods. From 12 input images at 512 times 960 resolution, ATSplat completes reconstruction in less than a second using a single commercial GPU, and renders high-quality novel views at 1136 FPS (512 times 960) with only 311K Gaussians.</p></details>
+  
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

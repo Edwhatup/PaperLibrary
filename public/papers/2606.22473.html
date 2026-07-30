@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interleaved Speech Language Models Latently Work In Text · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jun 30, 2026</time> · <a href="https://arxiv.org/abs/2606.22473">arXiv</a> · <a href="https://arxiv.org/pdf/2606.22473">PDF</a></div>
+    <h1>Interleaved Speech Language Models Latently Work In Text</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  
+  <details class="abstract" open><summary>Abstract</summary><p>Speech language models (SLMs) have been extensively studied, with the common paradigm incorporating text data and pre-trained text LMs. A leading approach is speech-text interleaving in which models are trained over sequences containing both speech and text tokens, aiming to boost even speech-only capabilities. Yet the way these two modalities interact in the model latent space remains unclear. In this work, we analyze interleaved speech-text LMs from different model families and sizes through the scope of the logit lens to provide such insight. We reveal that these models go through an implicit transcription phase in which the text token of the spoken word becomes decodable in intermediate layers, despite not being trained for speech recognition. The transcription of the word appears as one of the top candidate words for as much as 77\% of the data. Following this stage, the models proceed to predict the next word in the text space before transforming back to the speech domain. We finally analyze the role of interleaving data, and initializing from text LMs in eliciting this behavior, as well as seeing how this correlates with spoken knowledge abilities. Our analysis sheds light on the internal mechanisms underlying the relationship between speech and text modalities and could shape SLM optimization.</p></details>
+  
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

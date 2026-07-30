@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HEAR: Holistic Evaluation of Audio Representations · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Mar 06, 2022</time> · 1 min read · <a href="https://arxiv.org/abs/2203.03022">arXiv</a> · <a href="https://arxiv.org/pdf/2203.03022">PDF</a></div>
+    <h1>HEAR: Holistic Evaluation of Audio Representations</h1>
+    <div class="tags"><span class="tag">metro</span><span class="tag">reading-list</span><span class="tag">t3</span></div>
+  </header>
+  <section class="notes"><h2>Notes</h2><ul><li>冻结嵌入 + 含 onset/时间戳任务的评测，方法论表亲。</li></ul></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2022-03-06-hear-holistic-evaluation-of-audio-representations-90f1323c.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>What audio embedding approach generalizes best to a wide range of downstream tasks across a variety of everyday domains without fine-tuning? The aim of the HEAR benchmark is to develop a general-purpose audio representation that provides a strong basis for learning in a wide variety of tasks and scenarios. HEAR evaluates audio representations using a benchmark suite across a variety of domains, including speech, environmental sound, and music. HEAR was launched as a NeurIPS 2021 shared challenge. In the spirit of shared exchange, each participant submitted an audio embedding model following a common API that is general-purpose, open-source, and freely available to use. Twenty-nine models by thirteen external teams were evaluated on nineteen diverse downstream tasks derived from sixteen datasets. Open evaluation code, submitted models and datasets are key contributions, enabling comprehensive and reproducible evaluation, as well as previously impossible longitudinal studies. It still remains an open question whether one single general-purpose audio representation can perform as holistically as the human ear.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>音频领域长期以来有一个根本性的困境：我们有成百上千种音频任务，语音识别、环境声音分类、音乐流派判断、音高检测、说话人计数……但每次做新任务的时候，研究者往往得从头训练或者精调一个专门的模型。这就引出了一个核心问题：有没有一种通用的音频表示，不需要对下游任务做任何微调，就能在各种不同类型的音频任务上都表现得足够好？</p>
+<p>这正是 HEAR 这篇论文想要回答的问题。HEAR 是 Holistic Evaluation of Audio Representations 的缩写，翻译过来就是&quot;音频表示的整体评估&quot;。它在 2021 年 NeurIPS 大会上作为一个共享挑战赛推出，组织者来自多个顶级机构，包括 CMU、Imperial College、Queen Mary University 等。这篇论文记录了整个挑战赛的设计理念、参赛模型、评估结果和核心发现。</p>
+<p>要理解 HEAR 为什么重要，先得理解当时的背景。在自然语言处理领域，BERT、GPT 这类预训练模型出现之后，整个社区的工作方式发生了根本性的改变，大家不再从零开始训练，而是用预训练的通用表示做各种下游任务。这种范式的成功，离不开像 GLUE 和 SuperGLUE 这样的综合评估基准——正是这些基准让研究者能清楚地知道，哪个模型的表示更通用、泛化能力更强。视觉领域也有类似的工作，比如 FAIR 的自监督视觉基准和 VTAB。但在音频领域，这样的系统性综合评估基准几乎是空白的。</p>
+<p>音频之前也有一些评估体系，比如 MIREX、DCASE、INTERSPEECH 的 ComParE 挑战，但这些任务是一个个孤立的，每个任务有自己定制的工具链，参赛者要解决的是特定问题，而不是验证通用表示能力。更近一些的 SUPERB 基准关注的是语音任务的广谱评估，但它主要集中在语音处理方向，比如语音识别、说话人验证等，并不覆盖环境声音和音乐这些领域。还有一个叫 NOSS 的非语义语音基准，只有 6 个任务，而且其中几个数据集需要填写申请表或者自己去爬 YouTube，复现性很差。HEAR 的组织者观察到这些痛点，决定做一个覆盖更广、开放性更强、可复现性更好的基准。</p>
+<p>HEAR 的核心设计理念，可以用一句话概括：同一个冻结的表示模型，必须能应对所有任务。这个&quot;冻结&quot;二字非常关键。在 HEAR 的评估框架里，参赛者提交的音频嵌入模型的权重是完全固定的，不允许针对下游任务做任何微调。模型把音频输入转化成一个向量表示，然后这个向量被送入一个非常简单的下游预测器，也就是一个浅层的多层感知机，MLP，来完成分类任务。下游预测器是统一的，是 HEAR 组织方维护的，参赛者只需要负责让自己的嵌入模型生成尽可能有用的向量。</p>
+<p>这个设计有几个显而易见的好处。首先，它把&quot;表示质量&quot;和&quot;下游优化技巧&quot;解耦开来，评的是表示本身有多好用，而不是谁在下游任务上调参调得更好。其次，由于不需要微调，评估代码可以完全用 PyTorch 维护，不管提交的模型是 TensorFlow 还是 PyTorch 写的，都能统一处理。第三，所有提交的模型遵循一个公共 API，把自己的模型包装成 HEAR 兼容格式大概只需要 75 行代码，其中大部分还是模板代码，而切换到不同的模型只需要改一行代码。</p>
+<p>评估任务分两类。第一类叫场景级任务，就是对整段音频进行多类或多标签分类，比如判断这段声音是什么环境、什么乐器、什么情绪。第二类叫时间戳级任务，需要检测声音事件的精确起止时间，比如在一段钢琴录音里标注每个音符的开始和结束。时间戳任务本质上被转化成帧级序列标注，然后通过后处理步骤提取出离散的事件。</p>
+<p>任务的覆盖范围非常广。HEAR 共有 19 个下游任务，来自 16 个数据集。其中 5 个是&quot;开放任务&quot;，在比赛开始时就公开给参赛者，包括 Speech Commands v2 的完整版和 5 小时版，NSynth 音高任务的 50 小时和 5 小时版，以及 DCASE 2016 Task 2。这五个开放任务让参赛者能调试自己的实现，确认 API 对接没有问题。剩下 14 个是&quot;秘密任务&quot;，参赛者完全不知道，直到评估结束才揭晓。这些秘密任务覆盖的范围非常有趣：有 FSD50K 这种大型通用声音事件标注数据集，有 ESC-50 环境声音分类，有 GTZAN 音乐流派分类，有 CREMA-D 情绪语音识别，有 VoxLingua107 语言识别，有 LibriCount 说话人计数，有 Vocal Imitations 人声模仿识别，还有北京戏曲打击乐器分类、印度鼓 Mridangam 音符识别、蜂巢状态识别、枪声三角定位这样的极度小众任务。这种任务多样性是刻意设计的，因为组织者想测试的不是在某个已知任务上的性能，而是跨越完全不同音频现象时的泛化能力。</p>
+<p>数据集处理也是 HEAR 的一个重要贡献。所有数据集都被统一预处理成标准格式，支持常用的四种采样率，固定了音频时长，预先划分了训练和测试集，打包成 tarfile 发布到 Zenodo 上。这解决了音频研究中一个很常见的痛苦：很多数据集依赖 YouTube 视频，因为视频会被删除，几年后就无法复现当初的实验结果。HEAR 明确排除了需要爬 YouTube 的数据集，所有数据集都有开放许可证，很多还允许商业使用。</p>
+<p>来看参赛的模型。HEAR 设置了三个基线模型，代表三种不同的预训练方向。wav2vec2 是经典的自监督语音表示模型，用一维卷积加 Transformer，在 10 万小时的 VoxPopuli 语音数据上做自监督预训练。CREPE 是专门做音高估计的模型，用一维卷积在合成音乐数据上做监督训练，时长只有 16 小时。OpenL3 是一个宽领域模型，用二维卷积处理频谱图，通过音频和视频之间的对应关系做多模态对比自监督学习，预训练数据是 6000 小时的 AudioSet YouTube 内容。</p>
+<p>外部参赛团队一共 13 支，提交了 29 个模型。这里挑几个有代表性的讲一讲。</p>
+<p>CP-JKU 团队提交的是 PaSST，这是一个二维频谱图 Transformer 模型。它有一个很有趣的工程细节：它先从 ImageNet 训练的视觉 Transformer 初始化权重，然后再在 AudioSet 的 10 秒音频上做监督标注微调。这个思路利用了视觉 Transformer 强大的 patch 级别特征提取能力，通过迁移学习把视觉领域的表示能力搬到音频上。更进一步，它的 base2level 变体在生成时间戳嵌入时，会把 160 毫秒窗口和 800 毫秒窗口的特征拼接起来，捕捉不同时间尺度的信息，而 base2levelmel 版本还额外拼接了原始的梅尔频谱图特征。</p>
+<p>Descript 团队提交了 Wav2CLIP，这是一个非常有创意的模型。大家知道 OpenAI 的 CLIP 是用四亿个图文对训练的视觉语言模型，它对图像的理解非常丰富。Wav2CLIP 的思路是：视频同时有音频和视频帧，而 CLIP 能理解视频帧，所以可以用视频数据作为桥梁，把 CLIP 的知识蒸馏到音频模型里。具体来说，它用 VGGSound 这个包含 60 万段视频的数据集，训练一个二维 ResNet18，让它输出的音频嵌入尽量接近同一视频帧经过 CLIP 视觉编码器产生的嵌入。这样训练出来的音频模型，本质上继承了 CLIP 对视觉语义的理解，从而对丰富的语义内容有较强的表示能力。</p>
+<p>NTU-GURA 团队的策略是融合多个预训练模型，包括 HuBERT、wav2vec2 和 CREPE，用拼接或平均的方式组合它们的嵌入。他们还尝试了融合模型中间层的特征，而不只是最后一层，这一点非常值得关注。他们的消融实验结果明确支持了一个早已被讨论但在音频领域尚未被充分利用的结论：中间层往往包含了最终损失函数不需要的信息，但这些信息对下游任务可能恰恰有用。比如一个做语音识别的模型，它的最后一层已经高度专注于识别音素，把说话人身份、情绪、语调等信息丢掉了，但这些信息在倒数几层还可能保留着。</p>
+<p>Logitech AI 团队提交的 SERAB BYOL-S 是一个自监督音频模型，基于 BYOL 这个无需负样本的自监督学习框架，专门在 AudioSet 的语音子集上预训练。BYOL 的核心思路是训练两个结构相同但权重不完全同步的网络，一个是在线网络，一个是目标网络，让在线网络去预测目标网络对同一段音频的不同增强视图的输出。这样不需要负样本也不会坍缩，因为非对称的架构设计本身提供了足够的学习信号。</p>
+<p>Sony 团队的做法很有意思，他们训练了一个视觉 Transformer，但预训练任务是&quot;预测梅尔频谱图时间维度上的 patch 排列顺序&quot;，有点像音频版本的拼图游戏，完全是自监督的，用了 360 小时的 Librispeech 数据。</p>
+<p>现在来看结果，这部分是整篇论文最有信息量的地方。</p>
+<p>首先说音高相关任务。NSynth 音高识别和 MAESTRO 钢琴转录任务，两者的排名高度一致，而且包含 CREPE 嵌入的模型在这两个任务上遥遥领先。这完全符合直觉：CREPE 就是专门做音高估计的，它的表示对音高变化高度敏感，而很多其他模型，尤其是那些在 AudioSet 上做语义级别标注训练的模型，根本不需要区分不同音高，它们的表示对音高几乎是不可知的。但有趣的是，OpenL3 和 wav2vec2 在这两个任务上的表现比预想中要好，说明即使没有专门训练音高，这些模型的表示也对音高有一定的隐式编码。</p>
+<p>然后是宽领域语义声音标注任务。FSD50K、ESC-50 和 GTZAN 音乐流派分类这三个任务的排名高度相关。在 AudioSet 监督标注任务上预训练的模型，在这组任务上表现最好，这也非常合理，因为 AudioSet 本身就是一个大规模的语义级别声音标注数据集。一个重要的实验发现是：ESC-50 和 GTZAN 上的结果，对更复杂的 FSD50K 任务有很强的预测力，尽管 ESC-50 和 GTZAN 的数据量比 FSD50K 小了一个数量级。这对实际工程有很直接的启发意义：如果你在开发一个新的通用音频模型，可以先用这两个小数据集快速迭代，不用等到跑完整的 FSD50K 才能判断方向对不对。</p>
+<p>另外，CP-JKU 的 PaSST 模型在 FSD50K 上取得了当时的新的最优结果，平均精度 mAP 达到了 0.641，而且这是在完全不做微调的条件下取得的，仅靠冻结的嵌入加一个浅层 MLP 就超过了当时很多专门在 FSD50K 上精调的模型。这说明 PaSST 的预训练表示质量非常高。</p>
+<p>在语音相关任务的分析中，有一条很清晰的梯度线索。LibriCount 说话人计数和 Vocal Imitations 人声模仿与 CREMA-D 情绪识别最相似，然后 CREMA-D 与 VoxLingua107 语言识别最相似，再往下是 Speech Commands 关键词识别。从任务性质来看，这条线索从&quot;环境声音感知&quot;到&quot;副语言学理解&quot;到&quot;语义语音处理&quot;形成了一个连续的谱系，任务相关性的结构反映了人耳处理语音信息时从浅到深的层级。包含多个强语音模型融合的 NTU-GURA 系列在这组任务上普遍表现最好。</p>
+<p>接下来说最有意思的负面结果。有几个任务表现得很难以解释。DCASE 2016 Task 2 在直觉上应该和 FSD50K、ESC-50 类似，都是声音事件检测，但实验结果显示它和这两个任务的相关性很弱，完全是另一个行为。枪声三角定位任务只有 88 个样本，属于极度少样本场景，所有模型在这个任务上的表现都很有限。北京戏曲打击乐器分类和印度鼓 Mridangam 音符识别是非西方音乐任务，现有模型的预训练数据几乎都是西方音乐和西方语音，面对这些任务时基本上没有明显的优势策略。</p>
+<p>这些负面结果其实是 HEAR 最有价值的贡献之一，它告诉社区：不要以为在 AudioSet、ESC-50、Speech Commands 上训练出来的表示就已经足够通用了，在那些数据分布非常不同、样本极度稀少、或者文化背景迥异的任务面前，现有的最好模型依然非常脆弱。</p>
+<p>评分方法也值得介绍一下。为了跨任务比较，HEAR 对每个任务的分数做了归一化处理：先把每个任务的分数标准化到零均值单位方差，然后做一个叫 Winsorization 的截断操作，把极端的高分或低分限制在正负一个标准差范围内，避免某个任务上的异常表现主导总体排名。HEAR 的组织者明确拒绝给出一个单一的总分排名，因为他们认为那样会掩盖掉很多重要的细节，不同模型在不同任务类群上的表现差异，本身就是重要的信息。他们用了 t-SNE 可视化来展示任务之间和模型之间的相似度结构，还提供了相关系数矩阵，让读者能直观看到哪些任务倾向于被同一类模型解决，哪些模型的表现模式最相似。</p>
+<p>从工程角度来说，HEAR 也踩了一些真实的坑，值得后来者注意。比如原本以为要求所有模型都是 pip 可安装的 TensorFlow 或 PyTorch 就能确保依赖兼容性，结果参赛者提交的模型之间存在大量相互冲突的 TensorFlow 版本、CUDA 版本和 cuDNN 版本，导致在同一环境里运行多个模型非常困难。论文因此建议未来的 ML 挑战赛组织者应该指定所有深度学习包的具体微版本号，而不只是要求大版本兼容。另外，某些大规模场景嵌入任务和 CPU 瓶颈的时间戳嵌入任务，即使在不微调的情况下，单个模型和单个任务的评估也可能需要在 A100 GPU 上跑满 24 小时，这对评估基础设施的要求远比预想的高。</p>
+<p>对研究者的具体启发是什么？第一，如果你在做通用音频表示学习，一定要在多个不相关任务上评估，ESC-50 和 GTZAN 可以作为快速迭代的代理指标，但不要只看这两个，不然你会对模型的泛化能力过度乐观。第二，中间层特征往往比最后一层更有用，这在 NLP 里早有共识，HEAR 的 NTU-GURA 消融实验再次在音频领域证实了这一点，值得在自己的模型评估里系统地做层级分析。第三，预训练任务和下游任务的匹配程度依然是决定性因素，CREPE 在音高任务上的领先优势清楚地说明了这一点，即使是再大的通用模型，如果预训练信号里没有你需要的那种结构，它的表示对这个结构就是盲目的。第四，非西方音乐、极度少样本、以及跨文化的音频任务，是现有所有方法都尚未真正解决的难题，这里有很大的研究空间。</p>
+<p>HEAR 这个工作的核心贡献，不只是一次比赛的结果记录，而是它留下的整个基础设施：开放的数据集、开放的评估代码、开放的提交模型，以及一个统一的 API 设计。这些东西让纵向研究成为可能——未来的研究者可以把新模型插进同一个框架，和两年前、三年前的所有模型直接比较，无需重复实现。</p>
+<p>HEAR 最终留下的核心问题，也是它真正想问的问题，至今仍然开放：一个单一的通用音频表示，能否像人耳一样整体地处理所有声音？以现有的结果来看，答案还是否定的，而且距离这个目标的差距，在那些边界任务上显露得最为清晰。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

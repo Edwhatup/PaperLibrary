@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MERT: Acoustic Music Understanding Model with Large-Scale Self-supervised Training · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>May 31, 2023</time> · 1 min read · <a href="https://arxiv.org/abs/2306.00107">arXiv</a> · <a href="https://arxiv.org/pdf/2306.00107">PDF</a></div>
+    <h1>MERT: Acoustic Music Understanding Model with Large-Scale Self-supervised Training</h1>
+    <div class="tags"><span class="tag">metro</span><span class="tag">reading-list</span><span class="tag">t2</span></div>
+  </header>
+  <section class="notes"><h2>Notes</h2><ul><li>你的主力 encoder、项目名里的 MERT。必须懂它的 RVQ-VAE+CQT 双 teacher。</li></ul></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2023-05-31-mert-acoustic-music-understanding-model-with-large-scale-sel-d7394c2b.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Self-supervised learning (SSL) has recently emerged as a promising paradigm for training generalisable models on large-scale data in the fields of vision, text, and speech. Although SSL has been proven effective in speech and audio, its application to music audio has yet to be thoroughly explored. This is partially due to the distinctive challenges associated with modelling musical knowledge, particularly tonal and pitched characteristics of music. To address this research gap, we propose an acoustic Music undERstanding model with large-scale self-supervised Training (MERT), which incorporates teacher models to provide pseudo labels in the masked language modelling (MLM) style acoustic pre-training. In our exploration, we identified an effective combination of teacher models, which outperforms conventional speech and audio approaches in terms of performance. This combination includes an acoustic teacher based on Residual Vector Quantisation - Variational AutoEncoder (RVQ-VAE) and a musical teacher based on the Constant-Q Transform (CQT). Furthermore, we explore a wide range of settings to overcome the instability in acoustic language model pre-training, which allows our designed paradigm to scale from 95M to 330M parameters. Experimental results indicate that our model can generalise and perform well on 14 music understanding tasks and attain state-of-the-art (SOTA) overall scores.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>音乐理解领域长期面临一个根本性的困境：要训练一个能处理各种任务的通用模型，你需要大量标注好的音乐数据，但音乐数据的标注成本极高，而且受版权法律的严格限制。与此同时，自然语言处理领域的大规模预训练模型已经彻底改变了那个领域的格局——BERT、GPT这些模型通过无监督或自监督的方式，在海量数据上学到了极其通用的表示，下游任务只需要少量标注数据就能达到很好的效果。那么，音乐领域能不能走同样的路？这篇论文提出的MERT模型，就是在系统性地回答这个问题。</p>
+<p>在深入讲解之前，先理解一下现有方案的痛点到底在哪里。音乐信息检索，英文缩写MIR，涵盖的任务范围非常广：音乐标签分类、调性检测、节拍追踪、乐器识别、情绪分析、音源分离……这些任务性质各异，过去每个任务都需要专门设计的模型和特征。有没有一个统一的预训练模型，能同时泛化到所有这些任务上？答案目前是没有，或者说没有一个好用的开源方案。</p>
+<p>最接近这个目标的是一个叫JukeMIR的工作，它基于OpenAI的Jukebox模型。Jukebox是一个超大规模的音乐生成模型，参数量达到几十亿，用了复杂的层次化自回归Transformer解码器结构。它确实在MIR任务上展示了不错的性能，但问题是太重了。论文里给了一个具体数字：用一块消费级的3090显卡，在MTG这个数据集上跑推理，需要几个星期。这对于绝大多数研究者和工程师来说是完全不可接受的。</p>
+<p>另一批工作走的是有监督预训练路线，比如MusiCNN，或者用对比学习方案的CLMR和MULE。这些模型要么依赖大量标注数据，要么训练数据规模受限，要么根本不开源，可复现性很差。总结一句话：音乐领域需要一个通用的、轻量的、开源的、用自监督方式训练的预训练声学模型，但这个东西目前不存在。MERT就是来填这个空白的。</p>
+<p>那么MERT的设计思路从哪里来？它的起点是语音领域已经被验证非常有效的自监督学习范式，核心代表是HuBERT模型。HuBERT的思想本质上是把BERT的掩码语言建模搬到音频领域来。具体做法是：把一段音频序列随机遮住一部分帧，让模型去预测被遮住的那些位置对应的&quot;伪标签&quot;。这个伪标签不是原始波形，而是通过某种离散化方法得到的类别标签。HuBERT用的方法是K-means聚类——先提取MFCC特征，然后对这些特征做K-means聚类，每一帧就被归入某个聚类中心，聚类中心的编号就成了这一帧的伪标签。模型被训练成能从上下文推断被遮住帧的聚类标签，这个过程迫使模型学习到丰富的上下文表示。</p>
+<p>HuBERT在语音任务上效果极好，但MERT的作者们发现，把HuBERT原封不动地搬到音乐上表现很差。问题出在哪里？关键在于MFCC这个特征。MFCC是一种传统的语音特征，它的设计哲学是模拟人类听觉系统对单一音高信号的响应，擅长捕捉音色和音素信息。但音乐跟语音有一个本质区别：音乐是多音高的、有调性结构的。一段音乐里同时有多个乐器演奏不同音高，有和弦，有调式，这些信息MFCC根本捕捉不了。实验结果也验证了这一点——用MFCC的K-means聚类做伪标签，训练出来的模型在调性检测任务上极其糟糕，准确率很低。</p>
+<p>所以MERT面临的核心设计问题是：怎么设计&quot;教师模型&quot;，才能让伪标签同时包含声学信息和音乐特有的音高与调性信息？作者的解决方案是引入两类教师模型——一个声学教师，一个音乐教师，共同构成一个多任务自监督预训练框架。</p>
+<p>先讲声学教师。MERT最终版本采用的是EnCodec，这是Meta提出的一个高保真神经音频编解码器，内部使用了残差向量量化变分自编码器，简称RVQ-VAE。理解EnCodec的关键是理解残差量化这个概念。普通的向量量化是把一段连续特征向量映射到一个码本里最近的码字，就像把一片区域中每个点映射到最近的城市。残差量化则是分多层做这件事：第一层量化之后，计算残差，再对残差做第二层量化，再算残差，再做第三层……EnCodec用了8层残差量化。这样得到的离散表示非常丰富——每一帧音频对应一个8维的索引向量，每个维度对应一层码本的码字编号。</p>
+<p>为什么用EnCodec而不是K-means？有几个实际原因。K-means在大数据集上很难扩展，计算复杂度随聚类数目线性增长，内存需求也很大。而且K-means对初始化很敏感，结果不稳定。EnCodec是一个可学习的神经网络模型，扩展性好得多。更重要的是，EnCodec能重建出24kHz的高质量音频，这意味着它的中间表示确实保留了足够丰富的声学信息，包括音色细节。论文里还专门验证了一件有趣的事：EnCodec的8层码本中，只用最顶层或只用最底层单独做教师，都已经能提供相当有用的信息；但同时用全部8层的码本，学到的声学模式最丰富，收敛也最快。最终设计选择同时预测所有8个码本。</p>
+<p>再讲音乐教师，这是MERT区别于所有语音模型的关键创新点。作者引入了常数Q变换，也就是CQT，作为音乐教师，并设计了一个重建损失。让我解释一下CQT是什么。普通的傅里叶变换把音频分解到一组等间距的频率箱里，每个频率箱的宽度是一样的。但对于音乐来说，这不是最好的表示方式。音乐中的音高关系是对数的：从C3到C4是一个八度，频率翻倍；从C4到C5又是一个八度，频率再翻倍。等间距的频率箱对高频区域太密、对低频区域太粗，不能很好地表达音高之间的等比关系。CQT解决这个问题的方式是让每个频率箱的宽度与频率成正比，保证每个八度内有相同数量的频率箱。这样得到的时频谱，音高信息的分辨率在各个音区是均匀的，非常适合音乐分析任务，比如音高检测、和弦识别、乐谱转录等等。</p>
+<p>MERT对音乐教师的使用方式与声学教师不同。声学教师提供的是离散标签，模型做的是分类预测；而音乐教师提供的是连续的CQT频谱，模型做的是重建，用均方误差损失来衡量重建质量。最终的训练损失是声学分类损失和CQT重建损失的线性加权组合。作者做了一个超参数搜索，发现在基础版模型上，CQT损失权重设为0.1左右能得到最好的综合表现。</p>
+<p>这里值得深入理解的是：为什么双教师能带来好处？可以用一个直觉来理解。声学教师EnCodec让模型学会区分不同的音色、不同的音质细节，捕捉局部的声学模式；CQT音乐教师则给模型注入了音高和调性的归纳偏置，让模型知道&quot;这段音频里发生了哪些音高、它们处于什么调性体系里&quot;。这两种信息本质上是互补的。一首歌的调性是全局的音高结构信息，而音色是局部的声学质感信息。把两者结合起来，模型自然就能同时对音乐的底层声学结构和高层调性结构形成理解。</p>
+<p>消融实验非常清楚地验证了这个直觉。论文里有一张对比表格，展示了不同教师组合在一批核心任务上的表现。只用MFCC的K-means做教师，调性检测精度非常低。加入Chroma特征或者CQT特征的K-means，调性检测立刻大幅提升，同时流派分类和情绪识别也有改善。再引入CQT作为独立的音乐教师，不仅调性检测进一步提升，需要高层语义信息的任务表现也有显著改善。</p>
+<p>现在讲模型架构。MERT的主干网络跟HuBERT基本相同，是一个标准的Transformer编码器，前面接一个一维卷积的特征提取模块。有两个主要版本：基础版约9500万参数，大版本约3.3亿参数。相比之下，Jukebox有50亿参数，MERT-330M只有Jukebox的大约7%的参数量。</p>
+<p>训练数据方面，作者从网络上收集了16万小时的音乐录音，构建了一个大规模私有数据集。基础版模型用其中1000小时训练，大版本用全量16万小时。他们还专门提供了一个完全基于公开数据训练的版本，叫MERT-95M-public，用的是Music4All数据集，约910小时，主要是流行音乐。</p>
+<p>训练序列长度设定为5秒。这个选择背后有一个工程权衡。Transformer的计算复杂度随序列长度平方增长，序列越长，每批次能处理的样本数就越少。作者在初步实验里发现，增大批次大小比增加上下文长度对最终性能改善更大。5秒大约对应音乐中的2小节，能捕捉基本的旋律和节奏单元。好消息是模型用了卷积相对位置编码，推理时可以处理更长的音频，只是预训练时用的是5秒。</p>
+<p>然后有一个非常重要但容易被忽略的工程问题：训练稳定性。作者发现，音频领域的编码器预训练在规模扩大时，比文本或图像领域的同规模模型更容易出现训练不稳定。具体表现是梯度范数持续被截断，损失会出现突刺式的尖峰，严重时直接导致训练崩溃。他们在把模型扩展到3.3亿参数时遇到了严重的稳定性问题。从存档的检查点恢复训练不管用，降低学习率不但没改善反而让收敛变慢、性能下降。他们还尝试了一个理论上很强大的稳定性方案DeepNorm，也就是一种对残差连接和层归一化进行特殊缩放的方法，但发现对音频预训练无效。</p>
+<p>最终起作用的是两个方案。第一个是注意力松弛技术，源自WavLM这篇语音预训练工作，它在自注意力机制里引入了一个门控机制，让模型在需要时能减弱注意力的影响，避免某些注意力头产生极端的激活值。第二个是把后层归一化换成前层归一化。这两者的区别是归一化操作在残差块之前还是之后做。前层归一化的梯度流更平滑，已经被证明在很多大规模预训练场景下更稳定。把这两个技巧结合起来，才让3.3亿参数的大模型训练得以顺利进行。</p>
+<p>还有一个数据增强策略值得提一下，叫批内噪声混合。做法是：在一个训练批次里，随机取同批次的其他短音频片段，以一定概率叠加到当前样本上，形成一个加噪的新样本。这个操作迫使模型学会从混杂的音频信号里提取有用的音乐特征，提高表示的鲁棒性，也有点类似于鸡尾酒会问题的训练。有趣的是，这个操作对K-means版本和RVQ-VAE版本的效果方向不同，最终选定了对RVQ-VAE版本有利的混合概率。</p>
+<p>现在来看实验结果。MERT在14个MIR下游任务上与多个基线模型进行了对比评测，评测方式统一用探测协议——预训练模型的参数完全冻结，只训练下游任务的浅层预测头，通常是一层或两层的MLP。这种设置最能体现预训练表示本身的质量，而不是微调带来的性能。</p>
+<p>整体结论是：MERT-330M在综合评分上与此前10个不同模型各自最优结果的组合持平，在其中4个评估维度上成为新的最优；而更小的MERT-95M也有接近的表现。对照基线，MERT-330M的参数量是Jukebox的7%，但综合性能更好，计算效率完全不在一个量级。</p>
+<p>从任务类型来看，MERT在局部信息密集型任务上优势最明显，比如节拍追踪、音高分类、演唱者识别这类依赖帧级别精细信息的任务。这背后的逻辑是：双教师结合了CQT的音高信息和EnCodec的音色信息，这两种信息都是局部的、帧级别的，模型自然在这类任务上学得更扎实。</p>
+<p>在需要更多全局信息的任务上，比如音乐标签、调式检测、流派分类，MERT与强基线的差距更小，但依然有竞争力。作者认为这得益于Transformer的相对位置编码和多头自注意力带来的长程上下文建模能力，使得即便预训练只在5秒窗口里，模型也能学到一定的全局模式。</p>
+<p>值得单独提的一个任务是音源分离，这在以往的SSL音乐预训练评测里几乎没人涉及，因为大多数重量级模型在探测设置下根本无法以可接受的计算成本完成序列标注任务。MERT因为参数量适中、架构基于编码器而非自回归解码器，可以直接用LSTM作为下游头来做音源分离，并给出了合理的SDR结果。这说明MERT的表示不只是适合分类任务，也携带了足够的时序结构信息来支持密集预测任务。</p>
+<p>关于公开数据版本MERT-95M-public，它用910小时以流行音乐为主的Music4All数据集训练，风格多样性相当有限，但综合表现与用内部数据训练的同规模版本非常接近，主要差距出现在GTZAN流派分类上——这很好理解，因为训练数据在流派分布上极为偏向流行乐。这个结果告诉我们MERT的预训练范式在数据量和多样性都受限的情况下仍然能收敛到有用的表示，这对资源有限的研究者来说是个实用的好消息。</p>
+<p>还有一个值得关注的消融实验：作者直接评估了不经过MERT预训练、只用EnCodec编码器的连续表示作为特征，结果发现效果很差。这说明RVQ-VAE本身的表示并不足以直接用于音乐理解，MERT的Transformer主干通过MLM训练学到的上下文建模能力是必不可少的。原始的编解码器中间表示和经过自监督上下文训练之后的表示，是两回事。</p>
+<p>最后来说局限性和对未来工作的启示。最明显的局限是5秒的训练上下文。很多音乐理解任务，比如曲式分析、长程结构识别、完整情绪弧的建模，都需要理解分钟级别的音乐结构，5秒窗口天然有盲区。作者明确表示，一旦获得更多算力，会在更长上下文上继续训练。另一个局限是扩大到3.3亿参数时仍然存在一定的训练不稳定，在某些任务上出现了逆向缩放效应，也就是大模型反而比小模型表现差。这说明现有的稳定性技巧还不够完善，如何让音频编码器的自监督预训练在更大规模上稳定运行，是一个需要继续攻克的工程难题。</p>
+<p>对做相关研究的人来说，MERT有几个可以直接借鉴的地方。第一，双教师的设计思路是可以迁移的——用离散量化模型提供底层声学伪标签，同时用针对领域特点设计的连续谱图做重建目标，这种组合在其他模态上也值得尝试。第二，训练稳定性的那套工程经验——前层归一化加注意力松弛的组合——是音频编码器预训练的实用配方，DeepNorm这类在文本模型上有效的方法不一定适用于音频。第三，探测协议加上覆盖多样任务的评测集，是检验预训练表示通用性的正确姿势，单靠一两个任务是看不出真实泛化能力的。音乐自监督预训练的关键突破，在于找到能同时覆盖声学结构和音乐语义的训练信号，MERT给出了一个明确可行的方向。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

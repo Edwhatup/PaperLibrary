@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI-MOPD: Multi-Platform On-Policy Distillation for Continual GUI Agent Learning · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 07, 2026</time> · <a href="https://arxiv.org/abs/2607.04425">arXiv</a> · <a href="https://arxiv.org/pdf/2607.04425">PDF</a></div>
+    <h1>UI-MOPD: Multi-Platform On-Policy Distillation for Continual GUI Agent Learning</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-07-ui-mopd-multi-platform-on-policy-distillation-for-continual--27a2e93f.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Recent advances in multimodal foundation models and agent systems have driven GUI agents from single-platform task execution toward cross-platform interaction. However, building multi-platform GUI agents remains challenging. On one hand, high-quality and executable cross-platform interaction trajectories are still scarce, and existing data often suffer from limited platform coverage. On the other hand, different platforms exhibit distinct interaction conventions, making joint or continual training prone to behavioral pattern mixing, platform-specific capability degradation, and catastrophic forgetting. To address these challenges, we construct Uni-GUI, a high-quality cross-platform GUI interaction dataset, and propose UI-MOPD, the first method that incorporates multi-teacher on-policy distillation into continual learning for GUI agents. UI-MOPD dynamically selects a platform-specific teacher according to the current environment and transfers platform-specific behavioral priors to a shared policy through platform-conditioned distillation, enabling adaptation to new platforms while preserving capabilities on existing ones. Experiments on OSWorld and MobileWorld show that UI-MOPD achieves task success rates of 38.2% and 12.0%, respectively, demonstrating its effectiveness in balancing cross-platform capability retention and new-platform adaptation.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>今天我们来聊一篇关于图形用户界面，也就是 GUI 智能体持续学习的论文，它提出了一种名为 UI-MOPD 的方法，来解决跨平台 GUI 智能体面临的核心难题：如何在适应不同平台（比如电脑桌面和手机）的同时，还能保留住每个平台独特的交互习惯，并且避免灾难性遗忘。</p>
+<p>传统上，GUI 智能体大多专注于单一平台，比如只在网页浏览器里操作，或者只在手机应用里执行任务。但我们知道，实际工作流往往是跨平台的，比如你可能需要在电脑上启动一个任务，然后在手机上查看进度，或者反过来。这就要求智能体能够像人一样，在不同操作系统、不同应用之间无缝切换，并且理解每个平台的独特交互逻辑。然而，要构建这样的通用型跨平台 GUI 智能体，挑战重重。</p>
+<p>首先，高质量的跨平台交互轨迹数据非常稀缺。现有数据集往往只关注单一平台，而且数据质量参差不齐，可能包含无效操作、状态与动作不匹配，或者任务粒度不一致等问题。想象一下，一个智能体如果学习了大量混乱的操作示例，它如何能学会正确的行为模式呢？</p>
+<p>其次，也是更关键的一点，不同的平台有着截然不同的交互约定。比如说，在电脑上，要返回上一个界面可能意味着关闭一个窗口或者点击浏览器后退按钮；但在手机上，则通常是按返回键。如果我们将这些异构的信号简单地混合在一起进行训练，智能体很容易学到一个“平均化”的策略，导致行为模式混乱，既不能很好地适应电脑，也不能很好地适应手机。在持续学习的场景下，这意味着当智能体学习新平台的技能时，它很可能会“灾难性遗忘”掉之前已经掌握的旧平台技能。这种“行为模式混淆”和“灾难性遗忘”是构建真正通用型 GUI 智能体的两大障碍。</p>
+<p>为了解决这些痛点，这篇论文提出了两项主要贡献。第一，他们构建了一个高质量的跨平台 GUI 交互数据集，叫做 Uni-GUI。第二，他们提出了一种创新的方法，就是我们今天的主角 UI-MOPD，它首次将多教师在线策略蒸馏（Multi-Teacher On-Policy Distillation, MOPD）引入到 GUI 智能体的持续学习中。这套方法的核心思想是，根据智能体当前所处的环境，动态地选择一个平台专属的“教师模型”，然后通过“平台条件蒸馏”的方式，将这些平台专属的行为先验知识传递给一个共享的策略模型。这样一来，智能体在适应新平台的同时，也能很好地保留住它在现有平台上的能力。</p>
+<p>我们先从数据基础 Uni-GUI 聊起。高质量的数据是训练任何强大模型的基础，尤其是在这种复杂的跨平台场景。为了克服数据稀缺和质量问题，研究团队首先开发了一套统一的跨平台数据收集工具。这套工具能够从电脑和手机环境中收集交互数据，并且采用了一致的动作接口和日志格式，确保了数据的兼容性和统一性。</p>
+<p>这套数据收集工具的构建过程非常严谨，分为四个阶段：查询生成、轨迹收集、轨迹清洗和后处理。</p>
+<p>在查询生成阶段，他们并没有随意地生成任务指令，而是让强大的教师模型（比如桌面环境使用 Kimi-K2.6，移动环境使用 Gemini-3.1-Pro）去识别目标环境中真实可执行的功能点。基于这些功能点，再合成自然且可执行的用户查询。这种“环境接地”的查询生成方式，大大减少了收集到那些模糊不清、不可行或者与环境状态不匹配的任务轨迹的可能性。</p>
+<p>接着是轨迹收集。教师模型会根据生成的查询与目标 GUI 环境进行交互，生成执行轨迹。每条轨迹都记录了观察到的界面、执行的动作、中间的推理过程以及任务状态。重要的是，尽管桌面和移动轨迹是通过相同的高级接口收集的，但在后续的归一化之前，它们的动作是以各自平台的原生形式保存的。这样做是为了保留平台特定的交互模式，比如桌面特有的鼠标操作和窗口管理，或者移动设备特有的点击、滑动和应用导航行为。</p>
+<p>收集到的原始轨迹往往是嘈杂的，不能直接用于训练。所以，第三步是轨迹清洗。这包括多阶段的过滤：首先，移除结构不完整的轨迹，比如步骤索引不连续或重复的。其次，过滤掉那些动作无法映射到学生模型动作空间的轨迹，确保每个保留的示例都能被学生模型忠实地模仿。第三，丢弃过长的轨迹，因为它们更可能包含低效探索、错误累积或模糊的监督信号。第四，移除与原始环境不一致或功能点不支持的查询轨迹。最后，也是非常关键的一步，他们使用 Gemini-3.1-Pro 作为一个自动评判者，检查轨迹是否成功完成了预期任务。这个评判过程甚至细化到将每个任务查询分解成子任务列表，然后逐步检查每个执行步骤是否完成了对应的子任务。只有当所有子任务都被判定为完成时，轨迹才会被保留。这种细粒度的判断方式，避免了依赖对整个轨迹的单一长上下文判断，减少了噪声或冗余步骤的影响，并为失败的执行提供了更清晰的归因。</p>
+<p>最后是后处理。经过清洗的轨迹会被转换成 Qwen-VL 模型所需的训练格式。这包括将中间推理过程归一化为结构化的“思维链”格式，因为原始的推理痕迹在不同教师模型之间可能结构异构、长度差异大，并且与 Qwen3-VL 模型的推理风格不符。直接训练可能会干扰学生模型的原始输出分布。同时，对于引用视觉 UI 元素的动作，他们还会重新标注边界框，这些边界框在后续的基于规则的评估中，用于判断当前动作是否在正确的目标区域执行。</p>
+<p>通过这套严谨的流程，Uni-GUI 最终收集了大约 16 万个步骤和近 1.15 万条高质量的跨平台交互轨迹，其中既有他们自己收集的数据，也包含了经过清洗和处理的开源数据集，比如 OpenCUA 和 OpenMobile，从而拓宽了 GUI 状态、应用和任务类型的覆盖范围。这个高质量的数据集为 UI-MOPD 的训练奠定了坚实的基础。</p>
+<p>有了数据，我们就可以深入探讨 UI-MOPD 的核心方法了。UI-MOPD 的训练过程分为两个阶段。</p>
+<p>第一阶段是监督微调（SFT）。他们使用 Qwen3-VL-32B-Thinking 这个视觉语言基础模型，在 Uni-GUI 数据集上对每个平台进行单独的监督微调。这样就得到了两个平台专属的“专家教师模型”：一个桌面教师和一个移动教师。你可以把它们想象成两个在各自领域表现顶尖的专家。</p>
+<p>第二阶段是多教师在线策略蒸馏（MOPD）。这一阶段的目标是将这两个平台专属的专家能力整合到一个统一的学生模型（Qwen3-VL-8B-Thinking）中。这里的“学生模型”是一个共享的策略，它需要在所有平台上都表现良好。</p>
+<p>UI-MOPD 的核心原理是将多教师知识整合，看作是在线策略优化过程中的一种“条件行为约束”。这与直接合并多个专家模型，或者从静态的离线轨迹中进行蒸馏有所不同。它的关键在于，学生策略会在线地从其当前的策略中采样“轨迹”（rollouts），而教师的监督信号只作用于学生实际访问过的状态。这意味着蒸馏信号集中在学生策略真正做出决策的状态分布上，而不是要求学生模仿教师策略的所有行为模式。</p>
+<p>打个比方，这就像你在学习下棋。传统的离线蒸馏可能意味着你拿到一本棋谱，然后试图模仿棋谱里所有大师的走法。而在线策略蒸馏则更像你在实战中对弈，每当你走到一个局面，如果大师在这个局面有更好的走法，你就会向大师学习。这样，你的学习就更聚焦于你实际遇到的问题，效率更高。</p>
+<p>更精妙的是，教师监督是以“平台条件”的方式施加的。也就是说，来自不同平台的轨迹会与它们各自对应的平台专属教师进行对齐。具体来说，如果是从桌面环境采样的轨迹，它就会由桌面教师提供监督；如果是从移动环境采样的轨迹，就由移动教师提供监督。这意味着不同平台传来的教师信号不会简单地聚合到一个单一的惩罚项中，而是根据每个轨迹所属的平台，提供有针对性的行为约束。</p>
+<p>这个设计至关重要。它改变了 KL 散度（一种衡量两个概率分布差异的指标）在强化学习中的作用。在标准的从人类反馈中进行强化学习（RLHF）中，KL 项通常是一个保守的正则化器，用来限制策略漂移。而在 UI-MOPD 中，它变成了一个更具针对性的机制，用于在在线强化学习过程中，将平台专属的专家交互行为传递给共享的学生策略。由于教师监督作用于学生当前访问的状态分布，因此产生的蒸馏信号与学生策略当前的错误更好地匹配。这使得共享策略能够通过强化学习提高任务成功率，同时保留桌面和移动环境的平台专属行为锚点。</p>
+<p>在技术实现上，他们使用了“在线 KL 散度”来衡量学生策略和教师策略在给定状态下动作分布的差异。对于每个采样的响应，给定由平台路由的教师模型，他们计算学生到教师的在线 KL 散度。为了高效计算这个 KL 散度，他们采用了 K3 估计器。因为计算整个词汇表上的完整 KL 散度是非常昂贵的，K3 估计器只需要学生和教师对采样到的 token 的对数概率，大大降低了计算成本。这个估计器是非负的，并且在从学生策略中采样时是无偏的，经验上具有较低的方差，这保证了蒸馏过程的稳定性和有效性。</p>
+<p>此外，他们还引入了“自适应 KL 掩码”。教师约束在任务反馈较弱时最有用。如果一个任务组的轨迹已经获得了足够的奖励，那么强烈的 KL 正则化可能会不必要地限制探索。因此，他们设计了一个组级别的掩码，当任务反馈已经足以改善策略时，就移除教师的惩罚。这使得教师的指导作用集中在低奖励的轨迹上，而在高奖励的轨迹上，学生模型可以有更多的自由进行探索。</p>
+<p>我们再详细讲讲平台条件教师路由。跨平台 GUI 交互不仅在视觉布局上有所不同，在动作语义、可操作结构和执行上下文上也存在显著差异。桌面任务通常需要鼠标操作、键盘快捷键、滚动和窗口切换，而移动任务则依赖于点击、滑动、长按和应用导航。如果只使用一个教师模型，或者直接混合不同教师的预测概率，就会将这些异构行为压缩成一个平均化的分布，从而削弱平台特定的交互先验知识。</p>
+<p>UI-MOPD 的做法是，训练单独的专家教师模型，并根据轨迹的平台标签来路由每个轨迹。这个路由操作只影响教师对数概率的计算，学生模型仍然是一个单一的共享策略，这意味着在推理时不需要部署多个智能体或额外的教师模型，保持了模型的简洁性。</p>
+<p>在每次强化学习更新时，学生模型首先从混合平台的提示中采样轨迹。然后，这个 mini-batch 会按平台进行分区，每个子集由其对应的教师模型进行评估，教师的对数概率会合并回原始的批次顺序中。K3 估计器接着提供 token 级别的蒸馏信号用于计算损失。这个过程为每个平台在共享参数空间中提供了一个独特的行为锚点：强化学习推动策略朝着更高的任务奖励发展，而路由的教师模型则约束这种移动，确保原生交互模式不会被来自另一个平台的信号所覆盖。</p>
+<p>在奖励设计方面，他们为 GUI 动作设计了一种结构化的结果奖励。策略会输出一个 JSON 格式的动作，包含动作类型、坐标、文本或其他动作特定字段。对于每种动作类型，他们定义了一组必需的维度，比如动作类型是否正确、坐标是否在目标边界框内、滚动方向、按键集合是否相等，或者文本是否大小写不敏感匹配等。奖励是根据匹配维度的比例来计算的。这种中间惩罚机制能够区分部分有效但不正确的动作和完全无效的输出，从而为策略优化中使用的组相对优势估计保留了有用的奖励差距。</p>
+<p>最终的训练目标是将剪裁策略优化（一种标准的强化学习方法）与平台条件 MOPD 惩罚结合起来。它最大化一个正则化的目标函数，其中包含了与任务奖励相关的优势项，以及由平台选择的教师模型计算的 KL 散度项。这个目标函数既能通过在线强化学习提高长序列任务的完成度，又能通过路由的教师监督来保留平台特定的行为锚点。</p>
+<p>接下来，我们看看实验结果，验证 UI-MOPD 的有效性。</p>
+<p>实验主要围绕三个问题展开：第一，UI-MOPD 能否提高在 OSWorld（桌面环境）和 MobileWorld（移动环境）上的交互任务成功率？第二，平台条件蒸馏是否比直接混合监督微调或静态模型合并更有效？第三，由此产生的学生模型是否能保持通用的 GUI 理解和视觉接地能力？</p>
+<p>在实验设置上，他们使用了 OSWorld（361 个任务）和 MobileWorld（117 个任务）作为交互式基准测试平台。此外，为了评估静态 GUI 智能体的能力，他们还在 AndroidControl 的一个子集上进行了评估，并使用了 ScreenSpot-Pro、ScreenSpotV2 和 OSWorld-G 这三个基准来评估 GUI 的接地能力。主要指标是任务成功率。</p>
+<p>训练模型方面，学生策略初始化自 Qwen3-VL-8B-Thinking，而平台专属教师模型则初始化自 Qwen3-VL-32B-Thinking。所有训练都在 64 块 NVIDIA H100 GPU 上进行。</p>
+<p>与多种基线模型对比后，UI-MOPD 展现出了最佳的平衡跨平台性能。它在 OSWorld 上达到了 38.2% 的任务成功率，在 MobileWorld 上达到了 12.0%。与通用视觉语言模型相比，UI-MOPD 大幅提升了 MobileWorld 的性能，同时在 OSWorld 上也保持了竞争力。现有的 GUI 智能体基线模型往往在一侧表现出色，但在另一侧则表现不佳。例如，GELab-Zero-4B 在 MobileWorld 上获得了 10.9%，但在 OSWorld 上只有 31.9%；而 GUI-Owl-7B 在 OSWorld 上达到了 34.9%，但在 MobileWorld 上却下降到 4.5%。</p>
+<p>更重要的是，与“集成策略”基线（如直接在混合数据上进行监督微调的 Mixed-SFT，或者通过权重平均或 TIES 合并平台特定模型的 Model Merge）相比，UI-MOPD 的优势更加明显。Mixed-SFT 并没有持续改善任何一个平台的性能，而两种模型合并变体都明显不如 UI-MOPD，尤其是在 MobileWorld 上。这些结果强有力地表明，平台条件在线策略蒸馏在将桌面和移动专业知识整合到单个共享 GUI 智能体策略中时，是一种更有效的方法。</p>
+<p>为了更深入地分析跨平台能力迁移，研究团队进一步比较了不同训练策略的效果。平台专属的 32B 教师模型作为强大的单平台参考，在 OSWorld 上达到了 46.3%，在 MobileWorld 上达到了 16.2%。UI-MOPD 的目标不是在推理时部署多个教师模型，而是将它们平台专属的行为知识迁移到单个 8B 学生模型中。</p>
+<p>对比结果有三个关键发现。首先，单平台监督微调会导致不平衡的迁移。例如，将 8B 模型在 OSWorld 上微调后，桌面性能从 33.9% 提高到 35.8%，但其 MobileWorld 性能却下降到 0%。在 MobileWorld 上微调则提高了移动性能到 12.8%，但对桌面性能的提升不如 UI-MOPD。这表明，单平台监督可能会使模型专注于一种交互风格，同时削弱跨平台鲁棒性。</p>
+<p>其次，UI-MOPD 能够同时提升 8B 学生模型在两个平台上的性能。与原始的 8B 模型相比，它在 OSWorld 上提高了 4.3 个百分点，在 MobileWorld 上也提高了 4.3 个百分点。它甚至在 MobileWorld 上超越了 32B 的基础模型，这说明性能的提升并非简单地来源于模型规模的扩大。</p>
+<p>第三，UI-MOPD 在在线策略优化过程中引入了平台条件行为锚点。桌面轨迹与桌面教师对齐，移动轨迹与移动教师对齐。这种条件蒸馏防止了异构交互信号被压缩成一个单一的平均约束，使得共享的学生模型能够在提高任务成功率的同时，保持平台特定的交互模式。</p>
+<p>除了交互任务，研究团队还评估了跨平台策略优化是否能保留静态 GUI 理解和 GUI 接地能力。在 AndroidControl 的静态评估子集上，UI-MOPD 在所有报告的指标上都优于基础模型，包括动作类型预测、目标接地、祖先接地和整体准确性。相比之下，模型合并则持续降低这些指标，这表明在将跨平台行为迁移到共享学生模型时，多教师在线策略蒸馏在保留移动 GUI 理解方面比静态参数合并更稳定。</p>
+<p>在接地基准测试中，UI-MOPD 基本上保留了基础模型的接地能力，避免了模型合并中观察到的更大程度的性能下降。在 ScreenSpot-Pro 和 ScreenSpotV2 上，UI-MOPD 的表现接近基础模型，并在多个子类别（如创意、科学和桌面接地）上有所改进。在 OSWorld-G 上，UI-MOPD 取得了最佳的整体分数，并改进了布局理解。这些结果表明，多教师在线策略蒸馏可以在提高跨平台交互性能的同时，保留细粒度的 GUI 接地能力。</p>
+<p>论文中还展示了具体的案例研究。例如，一个移动 GUI 任务，UI-MOPD 模型能够解释用户指令，识别屏幕上的相关 UI 元素，并生成一系列可执行的动作来完成任务。这包括定位目标小部件、在屏幕之间导航以及将动作接地到适当的屏幕区域。对于桌面任务，UI-MOPD 也能遵循多步骤指令，在密集的界面中定位与任务相关的区域，并根据当前屏幕状态执行鼠标和键盘操作。这些案例定性地支持了 UI-MOPD 的跨平台能力，展示了它在处理不同布局、窗口操作、以及桌面更精确的基于光标的接地操作，和移动设备点击、滑动、导航行为方面的有效性。</p>
+<p>总的来说，UI-MOPD 这项工作深入研究了异构桌面和移动环境下，跨平台 GUI 智能体的持续学习问题。为了解决多平台训练中常见的行为模式混淆、平台特定能力退化和灾难性遗忘，他们首先构建了 Uni-GUI 这个高质量的跨平台 GUI 交互数据集，为学习跨桌面和移动环境的可执行轨迹提供了数据基础。</p>
+<p>在方法上，UI-MOPD 首次将多教师在线策略蒸馏引入到 GUI 智能体的跨平台持续学习中。共享的学生策略在强化学习过程中从其当前策略中采样轨迹，而来自不同平台的轨迹会根据其源平台，被路由到相应的平台专属教师模型进行监督。</p>
+<p>实验结果清晰地表明，UI-MOPD 在 OSWorld 和 MobileWorld 上分别实现了 38.2% 和 12.0% 的任务成功率，显著优于传统的模型合并或从静态离线轨迹蒸馏等方法。这些结果充分展示了 UI-MOPD 在平衡跨平台能力保留和新平台适应方面的强大能力。</p>
+<p>这项研究的发现对我们构建未来的 GUI 智能体具有重要的启发意义。它告诉我们，在处理异构环境下的持续学习问题时，简单地混合所有数据或模型参数是行不通的。我们需要更精细、更有针对性的方法来管理不同平台之间的知识迁移和冲突。UI-MOPD 通过引入平台条件的多教师在线蒸馏，有效地缓解了异构交互模式之间的干扰，为构建能够持续适应各种数字环境的统一 GUI 智能体，提供了一条切实可行的路径。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

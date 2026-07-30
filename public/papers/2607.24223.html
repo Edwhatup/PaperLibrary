@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A New Role for Relevance: Guiding Corpus Interaction in Agentic Search · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 29, 2026</time> · <a href="https://arxiv.org/abs/2607.24223">arXiv</a> · <a href="https://arxiv.org/pdf/2607.24223">PDF</a></div>
+    <h1>A New Role for Relevance: Guiding Corpus Interaction in Agentic Search</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-29-a-new-role-for-relevance-guiding-corpus-interaction-in-agent-f234bddd.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Relevance is a query-dependent estimate of whether a document or excerpt contains useful evidence. Existing retrieval agents use relevance to select top-k content, but document relevance alone cannot localize, compose, or verify the evidence required by complex questions. Direct Corpus Interaction (DCI) enables such fine-grained operations through grep-style exploration, but its relevance-agnostic search can expose useful clues late and delay convergence. Recent advances use relevance to narrow the corpus into a working space for interaction. Once interaction begins, however, relevance still does not directly guide which documents grep searches first or distinguish informative excerpts from a broad set of matches to let LLMs see them first. We introduce the Relevance-Aware RipGrep Search Agent (RARG), which turns relevance into an execution prior for corpus interaction. RARG provides coarse-to-fine relevance guidance: it orders documents for sequential &#x27;ripgrep&#x27; traversal to expose globally relevant clues earlier, initializes promising entry points with query-relevant paragraphs, and reranks grep matches to surface informative excerpts that document-level ranking may otherwise obscure. Across challenging browse question answering and reasoning-intensive retrieval, RARG improves the accuracy--efficiency frontier over retrieval-based and direct-interaction agents. These results demonstrate that relevance-aware interaction enables faster and more reliable search convergence.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>有一类搜索任务，光靠检索排名是解决不了的。你问的问题很复杂，需要跨多份文档拼接证据，需要精确定位某一段话里的关键事实，需要在发现一个中间实体之后再追踪下一跳。传统的检索增强生成，也就是RAG，给你排好序，把前几篇文档塞进上下文，然后让语言模型来回答。这条路走了很多年，但它有一个根本性的问题：文档级别的相关性分数，和真正的证据价值，并不总是一回事。一篇文档排名很靠前，但决定性的事实可能就藏在被截断的那几行里；另一篇文档乍看不相关，却恰好包含你需要的关键数字。这篇论文要解决的，就是这个相关性信号在智能搜索中被严重低估、被用错地方的问题。</p>
+<p>先说背景。过去几年，学界在RAG之上发展出了一类叫&quot;直接语料库交互&quot;的方法，英文缩写是DCI。它的思路很直白：不要再给模型一堆预选的文档片段，直接把整个语料库暴露给智能体，让它用grep这样的命令行工具去搜索原始文件。grep是Unix系统里的一个模式匹配工具，你给它一个关键词或者正则表达式，它就扫描文件找匹配项，返回匹配到的行。DCI的好处很明显：智能体可以自己拼关键词约束，可以跟着新发现的实体继续追查，可以精确看到匹配位置前后的上下文，不受预选片段的限制，交互粒度极细。</p>
+<p>但DCI有一个严重的缺陷：它完全不知道哪些文档更值得先看。grep扫文件的时候，是按某种固定顺序遍历的，对相关性一无所知，就好像在一个没有任何标记的巨大仓库里翻箱子，每个箱子翻开的概率都一样。有用的线索可能在第一次搜索里就出现，也可能在第八十次之后才冒出来。论文把这个问题叫做&quot;搜索收敛&quot;——也就是迭代交互能多快、多可靠地从开放式搜索收窄到被核实的答案。DCI的收敛性随着语料库的增大会迅速恶化：文档越多，噪音越多，无效的搜索步骤就越多，工具调用次数急剧上升，准确率下降。</p>
+<p>为了解决DCI的规模问题，学界又出现了几个改进方案，包括Pi-Serini、RISE、DR-DCI。它们的共同思路是：先用稀疏检索或稠密检索缩小语料库范围，构建一个有界的候选空间，然后在这个空间内让智能体进行grep式的交互。这确实比无限制的DCI好，避免了对全量语料库的反复扫描。但这篇论文的作者注意到，这些方法里，相关性信号只用在了&quot;构建这个候选空间&quot;这一步，之后在空间内部的交互里，相关性就沉默了。它不决定grep在遍历候选文档时的顺序，也不决定当grep命中太多匹配、输出被截断时，哪些片段应该优先展示给模型。</p>
+<p>这就是这篇论文真正的切入点。相关性应该不只是选门票的机制，它应该进入执行流程，直接指导每一次搜索交互的过程。论文把这个观点叫做&quot;相关性作为执行先验&quot;。要实现这一点，需要在两个粒度上同时引入相关性：一个是全局层面，决定grep搜索哪些文档，以什么顺序搜；另一个是局部层面，决定当grep返回大量匹配时，哪些匹配片段能进入模型的视野。</p>
+<p>基于这个原则，论文提出了RARG，全称是Relevance-Aware RipGrep Search Agent，翻译过来是&quot;相关性感知的RipGrep搜索智能体&quot;。这里的RipGrep，简称rg，是grep的一个现代高性能实现，速度很快，支持并行扫描。RARG有三个层级，对应三个版本：基础版RARG、加了入口点初始化的RARG加，以及加了匹配级重排序的RARG双加。下面逐一解释。</p>
+<p>先说基础版RARG。它的核心设计是引入一个新工具，叫embed_recall，接受一个由语言模型生成的查询字符串，然后用嵌入向量检索模型对语料库里的文档按相关性打分排序，把排好序的文档路径写到一个临时文件里，比如tmp_scope_1.txt。注意，这个工具不返回文档内容，只返回路径列表，以及一个路径文件到查询的映射关系。接下来，语言模型被要求把这个路径文件通过管道传给rg命令，格式大概是：cat tmp_scope_1.txt，然后用xargs把里面的路径作为参数传给rg，让rg按照这些路径依次搜索。</p>
+<p>这里有一个关键的工程细节。rg默认是多线程并行运行的，它会同时打开多个文件，哪个线程先跑完哪个文件就先输出结果，这样一来文档的顺序就乱了，相关性排名就没有意义了。论文的解决方案是：在后处理里用规则匹配rg的调用，自动注入一个参数&quot;-j1&quot;，强制rg用单线程顺序扫描。这样rg就会严格按照路径文件里的顺序遍历文档，排名靠前的、更相关的文档先被扫描，它们里面的匹配也先出现在输出里。相关性从&quot;内容选择&quot;变成了&quot;遍历顺序&quot;，这是一个非常简洁的设计。</p>
+<p>这个scope，也就是范围文件，默认最多收录排名前一万个文档的路径。为什么是一万？因为论文发现相关文档几乎总是排在前列，一万个路径已经能覆盖将近全部的证据文档，同时也把rg的扫描量控制在合理范围内。语言模型可以在当前scope的搜索角度都试过之后，再次调用embed_recall，用新的查询生成一个新的scope。</p>
+<p>第二层是RARG加，解决的是&quot;起点问题&quot;。智能体拿到scope之后，只有一个路径列表，没有任何内容，它必须先想出一个有用的grep关键词才能开始搜索，但在真正找到有用信息之前，前几次搜索可能都是在摸索方向，浪费工具调用。RARG加的做法是：在embed_recall返回的结果里，附上从排名靠前的文档里抽出来的、和查询最相关的若干段落，作为&quot;入口点&quot;。具体实现是：把scope里排名最靠前的几篇文档切成400到1000字符的段落，用嵌入模型给这些段落打分，取出最相关的前十个，用特殊标签包裹后追加在scope映射之后。这些段落不是答案，它们是提示，帮助智能体更快地找到有效的搜索关键词，直接从第一次rg调用开始就瞄准有价值的区域。</p>
+<p>第三层是RARG双加，引入了匹配级别的重排序。即使文档顺序对了，每篇文档里可能有几十甚至几百个匹配项，rg的输出会因为截断限制只保留前面一部分。如果一篇文档整体相关性不算特别高，但它里面恰好有一个极其关键的片段，那这个片段在文档级别的相关性排名下可能根本进不了视野。RARG双加的做法是扩大rg的匹配池，比如最多收集五百个匹配，然后用嵌入模型对这五百个匹配片段重排序，只把最相关的前三十或六十个展示给模型。</p>
+<p>这里有一个重排序用什么查询的问题。论文探索了两种方案：一种是构造式查询，把当前scope的全局查询和本次rg搜索的关键词拼接起来，格式是&quot;Instruct：...；Query：全局查询；RG focus：关键词1 关键词2……&quot;，这样既捕捉了全局目标，又包含了本次搜索的局部意图；另一种是生成式查询，直接让语言模型在调用bash工具时额外提供一个rerank_query字段，模型自己写一个体现最终目标和本次搜索意图的查询。实验结果是，生成式查询版本反而性能下降了，论文分析是因为强迫模型显式输出rerank_query字段打乱了它原本训练好的bash和rg使用行为，存在训练与评估之间的分布偏移。所以默认使用构造式查询。</p>
+<p>现在说实验。论文在两个完全不同的任务上测试。第一个是BrowseComp-Plus，这是一个极具挑战性的问答基准，语料库包含十万个文档，每个问题需要在多份文档里拼接多条证据才能回答，不是简单的单跳查找。论文从中取了一百个问题做评估，同时还把语料库扩展到一百万文档来测试规模鲁棒性。第二个是BRIGHT，这是一个推理密集型检索基准，覆盖生物学、地球科学、经济学、机器人学四个领域，每道题需要深度推理而不是浅层语义匹配，评估指标是nDCG@10，也就是前十名的归一化折损累积增益。</p>
+<p>先看BrowseComp-Plus上的结果。用GPT-5.4-mini做骨干，RARG双加达到84%的准确率，而RISE是78%，原版DCI也是78%，高出了6个百分点。更重要的是效率：RARG双加平均只需要23.9次工具调用，DCI需要99.1次，RISE需要28.7次。换句话说，准确率更高，工具调用次数还少了很多，尤其相比DCI少了四倍。用GPT-5.4这个更强的模型，RARG双加达到了91%的准确率，比RISE高出9个百分点。</p>
+<p>规模扩展的结果也很关键。把语料库从十万扩到一百万文档之后，所有方法都有下降，RISE-BM25从77%降到69%，RARG双加从84%降到79%，但仍然保持了对RISE大约10个百分点的领先优势。下降的原因论文分析是：新增的九十万文档来自FineWeb-Edu，都是很长的文章，会产生大量偶发性的词汇匹配，干扰rg的输出质量。论文特别指出，检索器本身（嵌入模型）受这些噪声文档影响不大，scope的召回率几乎没有下降，但rg的局部匹配质量显著降低，这是目前这个方法在规模上的主要瓶颈。</p>
+<p>在BRIGHT上的结果有一个有趣的翻转。RARG加的表现最好，平均nDCG@10是53.36，超过了专门做检索的NeMo智能体（52.89）。但RARG双加反而不如RARG加（50.55）。论文给出的解释很有道理：BrowseComp-Plus是&quot;深度优先&quot;任务，找到一条能验证答案的路径就够了，快速收敛有优势；而BRIGHT是&quot;广度优先&quot;任务，需要尽量召回多个相关文档，匹配级别的重排序把观察预算集中在局部最强的片段上，反而牺牲了对更多相关文档的覆盖。这说明相关性引导的最优粒度取决于任务性质。</p>
+<p>论文还做了一组非常有说服力的行为分析。他们把文档按scope排名分桶，统计每种方法在哪些排名区间的文档里找到了相关证据，画出命中分布曲线。纯嵌入检索方法的分布极度集中在前几名，命中的独特文档很少，说明高排名文档之间信息高度冗余，观察预算浪费在重复内容上；DCI的分布最平，而且很多命中来自scope范围之外的文档，这是相关性无关的grep的典型特征，证据密度低，收敛慢；RARG在scope靠前的文档里命中更多，但又不像纯检索方法那样只盯着前几名；RARG双加的分布最分散，它能从排名较低的文档里捞出局部信息量强的片段，这正好验证了设计意图：全局相关性控制遍历顺序，局部相关性控制可见性。</p>
+<p>再看一个案例来理解为什么这些机制起作用。论文展示了一道来自BrowseComp-Plus的题目，需要找到一个数学家，条件是：1983年拿了数学博士，在2005到2020年间成为AMS院士，和另外两个人共同发表了一篇1990到2005年之间的论文，其中一个合著者赢得了Rollo Davidson奖，另一个合著者发表了标题以&quot;Line&quot;结尾的论文。这是典型的多跳多约束问题，答案是Russell David Lyons。三个版本的RARG都答对了，但工具调用次数分别是33次、18次、10次。RARG在第7轮才第一次看到包含完整姓名的简历文档；RARG加在第2轮就看到了，因为入口点初始化直接把一篇相关段落推到了开头；RARG双加也是第2轮看到，并且用10次工具调用就完成了整个验证链。</p>
+<p>论文也诚实地讨论了局限性。第一个是嵌入模型的质量依赖问题：文档级排名需要给长文档打分，匹配级重排序需要给短片段打分，这两种粒度对模型的要求不同，同一个嵌入模型未必都擅长。论文在BRIGHT实验里就发现NV模型排文档很好，但排短匹配片段效果差，于是回退用另一个模型Qwen3-Embedding做匹配级重排序。第二个是单线程强制顺序扫描带来的延迟：-j1让rg顺序执行，比多线程慢，虽然通过提前停止来控制总量，但延迟开销仍然存在。第三个是骨干模型的指令遵从能力：如果模型不能可靠地执行&quot;先调用embed_recall、再按scope顺序用rg&quot;这套协议，整个机制的效果就会打折扣。论文发现GPT-5.4-nano在这方面明显比GPT-5.4-mini和GPT-5.4差，偏离指令的频率更高，导致RARG在nano上的行为统计更混乱。第四个是语料库噪声干扰：长文档里的偶发词汇匹配会降低rg的输出质量，匹配级重排序只能部分缓解这个问题，如何进一步减弱本地匹配对噪声的敏感性，是留给未来工作的方向。</p>
+<p>对于做信息检索、RAG或者智能体搜索方向的研究者，这篇论文有几个可以直接借鉴的地方。</p>
+<p>第一，&quot;相关性作为执行先验&quot;这个框架值得认真对待。很多系统花大量精力在提升检索质量上，却在检索之后的交互环节里丢掉了这个信号。如果你的系统允许智能体发出多轮查询或者遍历多个文档，把相关性分数传递到遍历顺序和观察预算的分配上，几乎是零成本的增益。</p>
+<p>第二，工具设计可以解耦相关性计算和内容传递。RARG的embed_recall工具只返回路径，不返回内容，把检索结果作为一个执行优先级的来源，而不是信息的来源，这避免了RISE里那种&quot;每次调用Search都返回内容片段，反而激励模型多调Search&quot;的问题。</p>
+<p>第三，任务类型决定相关性引导的最优粒度。如果你的任务是快速找到一个确定的答案，匹配级重排序很有用；如果你的任务是尽量覆盖多个相关文档，过度集中观察预算反而有害，入口点初始化这一步提供的开销更低、受益更广。</p>
+<p>第四，规模鲁棒性测试是必要的。在十万文档上好用，不代表在百万文档上也好用。论文里这个有趣的发现——检索器几乎不受噪声文档影响，但本地词汇匹配工具rg受影响很大——说明两类工具对噪声的鲁棒性根本不同，应该分别测试。</p>
+<p>这篇工作的本质贡献是把相关性从&quot;决定看什么&quot;提升到了&quot;决定怎么看&quot;，而这两件事的时间顺序和信息流都不一样，把它们分开、让相关性信号在搜索执行过程中持续发挥作用，是一个比看上去更深刻的设计转变。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

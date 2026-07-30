@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Self Gradient Forcing: Native Long Video Extrapolation · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 23, 2026</time> · <a href="https://arxiv.org/abs/2607.20368">arXiv</a> · <a href="https://arxiv.org/pdf/2607.20368">PDF</a></div>
+    <h1>Self Gradient Forcing: Native Long Video Extrapolation</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-23-self-gradient-forcing-native-long-video-extrapolation-97c4a595.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Recent autoregressive video diffusion methods are increasingly built upon Self Forcing, where the student is trained on histories produced by its own rollout rather than ground-truth video contexts. This reduces exposure bias, but the historical key-value cache is still used by future frames only as frozen rollout state. As a result, future losses cannot supervise how earlier generated latents should be written into more useful keys and values for later video-latent generation. We call this the historical context-gradient gap. We propose Self Gradient Forcing (SGF), a two-pass training strategy that restores this missing supervision signal without backpropagating through the full serial rollout. Pass 1 performs a no-gradient autoregressive rollout matching inference and, at a sampled denoising exit step, records both the self-generated context and the noisy latents fed to the model. Pass 2 performs parallel context-gradient reconstruction for the recorded exit step. The generated context is used as stop-gradient clean-latent input, while the model recomputes the context KV representations and future-to-context causal attention. Thus, SGF provides the missing memory-writing supervision within the native autoregressive training objective, using losses on future video latents to train the model to encode context into more effective causal memory. Across extensive long-horizon frame-wise and chunk-wise experiments under different initializations, SGF achieves stronger native long-video extrapolation than Self Forcing, especially in subject identity, background/layout consistency, and temporal stability. Remarkably, using only a 5-second training window, SGF can extrapolate to videos lasting several minutes. Code and models will be released to advance research on autoregressive video generation.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>视频生成模型在生成超过训练时长的长视频时，会出现人物身份飘移、背景突变、画面跳切等一系列一致性崩溃的问题。这篇论文要解决的，正是这个问题背后一个被长期忽视的根本原因：当模型用自己生成的历史帧作为记忆去预测未来帧时，那段历史记忆的写入过程本身，从未受到过任何来自未来的监督信号。</p>
+<p>要理解这件事，先得搞清楚现代视频扩散模型的自回归生成流程是怎么工作的。</p>
+<p>当前主流的做法是把视频生成拆成一帧接一帧、或者一段接一段的序列化过程。每生成完一帧，模型就把这帧的内容压缩成一组键值对，也就是所谓的KV缓存，然后把它存起来。下一帧生成的时候，模型会去读这个缓存，把它当成上下文，来决定接下来应该生成什么。这个流程的关键在于，每一帧的生成质量，高度依赖于之前那些帧被写进缓存的方式好不好用。</p>
+<p>训练这类模型时，早期方法用的是&quot;教师强迫&quot;，英文叫Teacher Forcing。简单说就是：训练时给模型看真实视频的历史帧，让它学会预测下一帧。但推理时，模型看到的历史是自己之前生成的内容，而不是真实视频。这种训练和推理之间的不匹配，叫做曝光偏差。模型在训练时从没见过自己的&quot;错误&quot;，一旦推理时出了一点偏差，就会沿着错误的方向越走越远。</p>
+<p>为了解决曝光偏差，2025年出现了一个叫做Self Forcing的方法。它的核心思路是：训练时不给模型看真实视频，而是让模型先自己做一次完整的自回归推演，生成一段视频，然后用这段自己生成的内容作为历史，再去训练模型如何读取这个历史、预测下一帧。这样，模型在训练时就暴露在了自己会犯的那类错误里，缩小了训练和推理的分布差距。</p>
+<p>这个方法确实是一大进步，在长视频生成领域引发了一批跟进工作。但是，这篇论文的作者发现，Self Forcing修的只是问题的一半。</p>
+<p>问题的另一半是这样的：Self Forcing让模型见到了自己生成的历史，但有一个关键的梯度通路被截断了。</p>
+<p>具体来说，在训练时，当模型做完自回归推演、生成了一段历史视频之后，这段历史被冻结起来，作为固定的KV缓存，提供给后续帧去读取。后续帧的损失函数，也就是衡量预测有多准的那个信号，确实可以训练模型如何更好地去读缓存里的内容。但是，这个损失信号没有办法传回到更早的时候，去告诉模型应该怎样把历史帧写进缓存，才能让后面的帧读起来更有用。</p>
+<p>打一个类比。想象你是一个记笔记的学生。Self Forcing的做法是：让你用自己写的笔记来复习，而不是用标准答案。这确实能帮你适应自己的笔记风格。但问题是，老师从来没有告诉你怎样写笔记才更容易复习。你可以越来越擅长读你自己写的烂笔记，但你写笔记的方式本身从未被纠正过。Self Gradient Forcing想做的，就是给这个&quot;写笔记&quot;的过程也加上监督。</p>
+<p>论文把这个缺失的监督通路叫做&quot;历史上下文梯度缺口&quot;，英文是historical context-gradient gap。</p>
+<p>更麻烦的是，负责&quot;写笔记&quot;和负责&quot;读笔记&quot;的其实是同一套神经网络参数。在Self Forcing训练过程中，当模型在有噪声的去噪步骤上更新参数时，这些更新也会影响到负责写KV缓存的那部分计算。但写缓存这个过程本身没有来自未来的纠正信号，所以它可能在训练中逐渐漂移，越来越不适合长序列的自回归生成。</p>
+<p>一个直接的修法是让历史KV缓存保持可微分，这样未来帧的损失就可以一路反向传播，追溯到历史帧是怎么被写进缓存的。但这在实践中根本行不通，因为你需要保存整个自回归推演过程中每一步写缓存时的计算图，而这个图随着视频长度、Transformer层数、缓存更新次数的增加，会呈爆炸式增长，内存直接撑不住。</p>
+<p>论文提出的解法叫Self Gradient Forcing，简称SGF。它的核心是一个两步训练策略，用有限的并行重算来代替无法扩展的串行反向传播。</p>
+<p>第一步，模型做一次完整的、不带梯度的自回归推演，这和普通推理完全一样，也不保存任何计算图。在推演过程中，模型在某个随机采样的去噪退出步骤，把当时的状态记录下来，包括自己生成的上下文帧，以及喂给模型的那些带噪声的潜变量。这一步结束后，推演产生的那个KV缓存就被丢掉了。</p>
+<p>第二步，也是SGF的关键创新所在。模型拿着第一步记录下来的那些数据，重新做一次并行的前向计算。具体来说：记录下来的上下文帧作为固定输入，不对它们本身求梯度，因为SGF不想优化已经生成的那段内容；但是，模型重新计算这些上下文帧对应的KV表示，这次计算是可以求梯度的；然后，让后续帧通过因果注意力机制去关注这些重新计算出来的KV表示，计算损失，反向传播。</p>
+<p>这样一来，损失信号就可以流入到&quot;把上下文帧写进KV缓存&quot;这个过程，训练模型把自己生成的历史内容编码成对未来更有用的记忆表示。</p>
+<p>第二步之所以能用并行计算，是因为记录下来的状态已经固定了，不需要维护串行的递归计算图。整个第二步的计算窗口是固定大小的，和视频总长度无关，所以内存开销是可控的。</p>
+<p>这个设计有一个很重要的前提：第二步的并行重算，必须能够准确重现第一步串行推演时，在那个退出步骤的局部计算。论文在附录里做了详细的数值验证，用二十四个提示词和四个不同的退出步骤做测试，发现两步之间的预测结果，余弦相似度平均达到0.999886，相对误差只有1.41%，基本就是bfloat16浮点格式下的数值精度误差范围，不存在实质性的计算偏差。</p>
+<p>在实现细节上，第二步的上下文与未来帧之间的注意力，用了一个叫FlexAttention的工具，配合编译好的静态块稀疏因果掩码，让这部分计算的内存效率也得到了保证。</p>
+<p>实验设置上，论文比较了一个很重要的控制变量：所有模型都在五秒的训练窗口上训练，然后分别在五秒、六十秒、两百四十秒三个长度上做推理测试。五秒的测试是正常范围内的质量检验，六十秒和两百四十秒才是真正测试原生外推能力的地方。</p>
+<p>实验对比用了多种不同的初始化方式，包括教师强迫初始化、因果一致性蒸馏初始化，以及因果ODE初始化，覆盖了当前主流的预训练路线。生成方式也分了逐帧和逐块两种。每一对比较里，SGF和Self Forcing使用完全相同的提示词、随机种子、上下文窗口策略和推理配置，唯一的区别就是训练时那个梯度边界的设置。</p>
+<p>评测指标用的是VBench-Long的标准指标集，包括美学质量、背景一致性、动态程度、画面质量、运动平滑度、主体一致性和画面闪烁七个维度。</p>
+<p>结果上，在五秒的短视频测试里，SGF和Self Forcing的表现大体相当，没有明显退步，说明加入上下文梯度没有破坏短期生成质量。这是一个重要的合理性检验。</p>
+<p>在六十秒和两百四十秒的长视频测试里，SGF在绝大多数指标上都优于匹配的Self Forcing基线，提升最明显的是主体一致性、背景一致性、运动平滑度和画面闪烁这几个维度，这些恰好是长视频中KV记忆写入质量最直接影响的方面。</p>
+<p>有一个例外值得注意：动态程度这个指标，Self Forcing有时候反而得分更高。但作者在定性分析里指出，这并不代表生成质量更好。Self Forcing的长视频里经常出现场景跳切、视角突变、物体变形这类不连贯的大动作，这些会让动态程度的自动评分虚高，但人眼看起来是明显的失真。</p>
+<p>在人工偏好评测上，论文收集了超过一千九百个成对判断，覆盖十个不同的对比设置，结果所有组合都显示人类评审更偏好SGF生成的长视频。</p>
+<p>计算开销方面，论文做了实测对比。直接给KV缓存加上梯度，在实验设置下直接内存溢出，确实走不通。相比之下，SGF把峰值显存从约七十九GB提升到约八十七GB，但稳定显存实际上有所下降；每五个训练步骤的总时间从约十点四秒增加到约十一点七秒，开销增加不到百分之十三。这个代价是合理的，因为SGF只在第二步中增加了一次完整的带梯度前向加反向计算，而第一步和其他去噪步骤都是无梯度的，不产生额外的计算图存储。</p>
+<p>论文还专门讨论了视频VAE的边界效应对流式生成的影响。他们使用的Wan视频编码器采用了非对称的时间分组策略，导致每段新编码视频的头几个潜变量和正常流内潜变量在数值上有系统性差异。实验发现，在流式上下文中保留四个&quot;锚点&quot;潜变量能够有效覆盖这个边界过渡区，太少会影响画面稳定性，太多则会挤占宝贵的近期上下文槽位。这个发现对于实际部署流式视频生成系统有一定参考价值。</p>
+<p>关于局限性，论文说得比较坦诚。SGF恢复的是一个有界的局部代理梯度，不是整个自回归推演的完整梯度。它能监督已经生成的历史帧如何被写入KV记忆，但不能反过来优化生成那段历史的去噪决策序列本身。第二步的并行重算和第一步的串行推演在注意力掩码、位置编码、上下文时间步等细节上必须严格对齐，任何偏差都可能导致恢复出的梯度是针对错误的注意力关系。此外，SGF也不是长视频生成的万能药，它和检索增强记忆、稀疏注意力、长上下文调优等方向是互补的，有望组合使用。</p>
+<p>这项工作的意义，在于它精准定位了当前自回归视频扩散训练范式中一个结构性的监督盲区，并给出了一个计算可行、效果显著的解法。它说明，让模型见到自己生成的历史还不够，还必须让未来的损失信号能够追溯到历史是如何被写入记忆的，这样模型才能真正学会为长序列生成构建有效的因果记忆。仅凭五秒的训练窗口就能外推到分钟级视频，而且一致性大幅优于之前的方法，这个结果表明写入质量而非上下文长度，在某些情况下才是长视频一致性的真正瓶颈。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read It Back: Pretrained MLLMs Are Zero-Shot Reward Models for Text-to-Image Generation · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 15, 2026</time> · <a href="https://arxiv.org/abs/2607.11886">arXiv</a> · <a href="https://arxiv.org/pdf/2607.11886">PDF</a></div>
+    <h1>Read It Back: Pretrained MLLMs Are Zero-Shot Reward Models for Text-to-Image Generation</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-15-read-it-back-pretrained-mllms-are-zero-shot-reward-models-fo-ed5552d5.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>In this paper, we propose SpectraReward, a training-free reward function that turns pretrained MLLMs into off-the-shelf reward models for image-generation reinforcement learning. Instead of asking the MLLM to judge a generated image or answer decomposed verification questions, SpectraReward measures how well the original prompt can be recovered from the generated image through a single image-conditioned, teacher-forced forward pass. We use the average image-conditioned prompt log-likelihood as the reward, directly reusing the MLLM&#x27;s pretrained image-text alignment ability without preference labels, reward-model fine-tuning. We further introduce Self-SpectraReward, a special case for unified multimodal models where the policy&#x27;s own understanding branch serves as the reward model for its generation branch, forming a closed-loop self-improving framework without external reward models or external knowledge. Extensive experiments validate SpectraReward through a broad image-generation RL study covering two diffusion models, three RL algorithms, nine reward MLLM backbones from four MLLM families spanning 4B to 235B parameters, and five out-of-distribution text-to-image benchmarks. Results show that both SpectraReward and Self-SpectraReward significantly and consistently improve generation performance and outperform prior MLLM-derived reward training methods. Further analysis reveals that larger reward MLLMs are not always better, while Self-SpectraReward can match or surpass much larger external reward models, suggesting that reward-policy alignment is a key factor for effective image-generation RL. Project Page: https://huangrh99.github.io/SpectraReward/</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>我们今天要聊的这篇论文，它要解决的核心问题是：在文本到图像生成领域，如何设计一个既高效又可靠的奖励模型，来指导强化学习过程，从而让生成的图像更好地符合我们的文字描述。</p>
+<p>大家知道，近几年图像生成技术发展得非常快，从最初专门的文本到图像模型，比如像SD3、FLUX这样的，到现在已经演进到了统一的多模态模型，也就是我们常说的UMM，像BAGEL、Chameleon这些，它们能在一个架构里同时处理图像理解和图像生成。与此同时，强化学习也成了一个非常有效的后训练阶段，它能持续提升图像的组合一致性，以及对指令的遵循能力。但是，一个成功的强化学习方案，它的基石有两个：一个是优化算法，它决定了长期训练的稳定性；另一个就是奖励模型，它决定了训练好的策略最终能达到的上限。然而，要设计一个既实用又高效，同时还非常可靠的奖励模型，这仍然是个巨大的挑战。</p>
+<p>目前，图像生成领域的奖励模型主要有几种做法。第一种，也是比较常见的一种，是基于大规模的人工偏好标注来构建奖励模型。它通过这些数据来把视觉和文本的表征，或者说是视觉语言模型，与人类的判断对齐。这种方法虽然有效，但它对昂贵的人工标注、困难的数据收集以及迭代成本都有很高的依赖。第二种做法，是为了避免偏好训练的开销，直接复用预训练好的多模态大语言模型，也就是MLLM，作为零样本的奖励源。这种方法直接输出一个标量分数或者基于Logit的反馈，虽然训练是免费的，但它对模型判别的校准和评分的噪声非常敏感，结果可能不太稳定。还有一种改进，是通过问题分解的流程来提高可靠性，把一个复杂的提示词拆解成一个个原子化的要求，让MLLM逐一验证。但这又引入了相当大的工程复杂性。所以，目前仍然缺乏一个既高效、又不需要偏好标签，而且能直接拿来用的开箱即用的奖励模型，来服务于开源的图像生成器。</p>
+<p>为了解决这个问题，这篇论文提出了一种全新的训练无关的奖励函数，叫做SpectraReward。它的核心思想，是把任何预训练好的MLLM变成一个图像生成的奖励模型，并且是零样本的。它不需要任何偏好标签，也不需要对奖励模型进行额外的微调。具体怎么做呢？它不是让MLLM直接去判断一张生成的图像好不好，也不是让它回答一系列分解后的验证问题。SpectraReward测量的是，从一张生成的图像中，我们能多好地“读回”或者说“恢复”出原始的提示词。它通过一个简单的过程实现：把生成的图像作为视觉条件输入给一个冻结的MLLM，然后对原始提示词的各个Token进行一次“教师强制”的前向传播。所谓“教师强制”，就是说，在预测下一个词的时候，我们不是用模型自己生成的词，而是直接喂给它真实的目标词，也就是原始提示词的下一个词，这样它就能计算出每个词在给定图像条件下的生成概率。</p>
+<p>最终，SpectraReward把所有提示词Token在给定图像条件下的平均对数似然作为奖励值。这个对数似然，我们可以理解为模型认为这个词出现的“可能性”或者“合理性”。对数似然越高，说明模型认为这个词在当前图像的条件下越容易被预测出来，也就意味着图像越好地体现了提示词的内容。论文里把这个Token级别的似然分布称为“语义谱”。这个语义谱反映了图像中的视觉证据如何支持提示词中每个Token的语义。通过这种方式，SpectraReward直接重用了MLLM在预训练阶段学到的强大的图文对齐能力，而不需要任何偏好标签或额外的奖励模型微调。它的优势在于，它直接调用了预训练MLLM最基本的能力，也就是理解图像并将其与相应的语言描述联系起来。所以，它避免了训练一个独立的奖励模型，也避免了提示MLLM来生成一个抽象的判断分数，而是直接利用了模型内在的视觉语言理解能力。</p>
+<p>更进一步，论文还为统一的多模态模型（UMMs）提出了一种特殊情况，叫做Self-SpectraReward，也就是“自光谱奖励”。既然UMM把图像理解和图像生成集成在一个框架里，那么它的理解分支，就完全可以直接为它的生成分支提供奖励信号。这样一来，模型就可以利用自身的理解能力来改进自己的生成效果，而不需要依赖任何外部模型或外部知识，形成了一个闭环的自我改进框架。这个设计除了消除了对外部依赖之外，还有一个结构上的巨大优势。因为UMM的理解分支和生成分支共享同一个分词器、同一个视觉编码器以及相同的预训练数据分布，所以理解分支“阅读”图像的方式，自然就与生成分支生成图像的分布是高度对齐的。论文作者因此假设，这种内在的对齐使得策略模型自身的理解分支，成为其自身生成过程的特别合适的奖励来源。</p>
+<p>为了深入理解SpectraReward的奖励信号特性，论文还进行了三方面的分析。 第一个问题是：语言先验会不会影响奖励信号的准确性？也就是说，有些词本身就比较常见，无论图像如何，MLLM预测这些词的似然都会比较高，这会不会引入偏差？论文的回答是，对于我们关注的组内相对强化学习方法来说，这种校正是不必要的。因为对于同一个提示词，这个文本独有的似然项，在同一个组内所有生成的图像中都是共享的。所以，当计算组内相对优势时，这个语言先验的影响就会被抵消掉。因此，像PMI（点互信息）那样去减去文本先验的归一化，可能确实会影响奖励的绝对校准，但它并不会为每个提示词组内的优化提供额外的信号。也就是说，对于排序和优化而言，原始的平均对数似然已经足够了。</p>
+<p>第二个问题是：Token级别的似然值是否对视觉上的不一致很敏感？换句话说，如果图像中某个细节错了，模型能否准确地在对应的提示词Token上体现出来？为了验证这一点，作者构建了一些正例和反例图像对，这些反例图像专门针对两种常见的提示词遵循失败情况：属性不匹配和物体身份不匹配。比如，提示词要求“两只猫”，但负例图像里有五只猫；或者提示词要求“吉他”，但图像里出现的是椅子。然后，他们用原始的正向提示词对这两类图像进行评估。结果显示，似然值的下降确实集中在语义不匹配的那个词上。比如，计数不匹配主要降低了“两”这个词的似然，而把吉他换成椅子则显著降低了“吉他”这个词的似然。同时，整个序列的奖励值，也就是我们最终使用的SpectraReward，对于正例图像也始终更高。这表明，Token级别的提示词似然对有针对性的语义错误是敏感的，并且它们的平均值，也就是SpectraReward的计算方式，仍然提供了一个可靠的标量奖励。</p>
+<p>第三个问题是：最终的标量奖励能否可靠地区分同一个提示词组内的不同样本？也就是说，对于同一个提示词生成的几张图像，SpectraReward能否准确地将好的图像排在前面，差的图像排在后面？实验结果表明，SpectraReward确实能给那些更好地满足提示词要求的图像更高的奖励，而给那些缺少物体、属性错误或者空间关系不正确的图像更低的奖励。这说明，图像条件下的提示词似然为文本到图像强化学习提供了一个可靠的组内排序信号。</p>
+<p>接下来，我们来看看实验部分，这部分非常关键，它验证了SpectraReward和Self-SpectraReward的有效性。 实验设置方面，论文默认使用AWM作为强化学习算法。AWM是经过消融实验后，在所测试的RL算法中表现最好的。策略模型，也就是图像生成器，使用的是BAGEL，这是一个原生的AR-Diffusion统一多模态模型，它既能理解图像也能生成图像。除非另有说明，SpectraReward默认使用Qwen3-VL-30B-A3B作为奖励MLLM的骨干网络。而Self-SpectraReward则直接使用BAGEL模型自身的理解分支来计算奖励。</p>
+<p>在训练设置上，他们使用了380个训练步，每个训练步使用64个提示词，组大小为4。训练图像分辨率是512x512。他们还在AlphaGRPO20k这个数据集上进行训练。</p>
+<p>评估方面，为了验证生成性能的真实提升，他们使用了五个分布外（out-of-distribution）的下游基准测试：GenEval、TIIF-Bench、DPG-Bench、GenEval2和WISE。这些基准测试都采用了不同的评估协议和测试集，确保了评估的全面性和泛化性。他们还与一些最先进的纯生成模型（如SD3 Medium和FLUX.1 dev）以及统一多模态模型（如Show-o、JanusPro和基线BAGEL）进行了比较。特别值得一提的是，他们还与AlphaGRPO进行了比较，AlphaGRPO也是在BAGEL上应用RL训练，并使用MLLM派生的DVReward奖励模型。</p>
+<p>实验结果非常令人鼓舞。总的来说，SpectraReward和Self-SpectraReward都取得了与现有最先进模型相当的性能，并且在所有评估基准上，都持续地改进了BAGEL基线模型和AlphaGRPO。 具体来看，在512分辨率下，SpectraReward在TIIF-Bench上对BAGEL的改进非常显著，在短提示词和长提示词上分别提升了+10.0和+6.2。Self-SpectraReward也取得了可比的成绩，在TIIF-Bench上达到了85.1/84.3，并在GenEval上带来了5.5的提升。与AlphaGRPO相比，SpectraReward在TIIF-Bench的短/长提示词上分别提升了+6.3/+5.3，在GenEval上提升了+3.3。Self-SpectraReward的提升更为明显，在TIIF-Bench上分别提升了+6.2/+4.8，在GenEval上提升了+4.5。 更重要的是，这些改进不仅限于512分辨率的训练，它们还能很好地泛化到1024分辨率的推理。Self-SpectraReward在GenEval上达到了89.8，在GenEval2上达到了34.3，都超越了BAGEL和AlphaGRPO。在WISE这个知识导向的基准测试上，Self-SpectraReward也达到了0.76。这些结果有力地表明，SpectraReward相比于之前那种通过问题分解验证的方法，为文本到图像的强化学习提供了更有效的监督信号。</p>
+<p>除了这些主要结果，论文还进行了一些深入的分析，特别是关于奖励MLLM的规模以及奖励-策略对齐的重要性。 一个非常有趣且重要的发现是：更大的奖励MLLM并不总是更好。这有点反直觉，因为我们通常会认为模型越大，能力越强。但是实验表明，奖励模型的规模带来的好处并不是单调递增的。 更令人惊讶的是，Self-SpectraReward，它使用的是模型自身相对较小的理解分支作为奖励模型，却能够匹配甚至超越那些比它大四倍甚至三十倍的外部MLLM奖励模型。具体数据上，相比于SpectraReward使用表现最好的外部MLLM骨干网络，Self-SpectraReward在GenEval上额外提升了+1.2，在GenEval2上额外提升了+2.1，在WISE上额外提升了+2。这些结果有力地支持了论文的核心假设：奖励模型与策略模型之间的分布对齐，对于有效的图像生成强化学习来说，可能与奖励模型本身的规模同等重要，甚至更为关键。</p>
+<p>总结来说，这篇论文提出了SpectraReward和Self-SpectraReward这两种创新性的训练无关奖励函数，它们能够将预训练的多模态大语言模型直接转化为文本到图像生成的奖励模型。SpectraReward通过计算图像条件下原始提示词的平均对数似然，巧妙地重用了MLLM强大的图文对齐能力，无需偏好标签，也无需额外的奖励模型微调。而Self-SpectraReward则更进一步，让统一多模态模型自身的理解分支充当奖励模型，形成了一个无需外部知识的闭环自我改进系统。通过广泛的实验，论文不仅验证了这两种方法在多种生成器、RL算法和MLLM骨干网络上的显著有效性，而且揭示了一个非常重要的洞见：在图像生成强化学习中，奖励模型与策略模型之间的分布对齐，其重要性可能不亚于甚至超过奖励模型本身的规模。对于正在从事文本到图像生成或多模态模型研究的听众来说，这意味着在设计奖励函数时，我们不应盲目追求更大的外部模型，而应该更多地关注奖励信号与生成策略之间的内在兼容性和对齐程度，这往往能带来更高效、更稳定的性能提升。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

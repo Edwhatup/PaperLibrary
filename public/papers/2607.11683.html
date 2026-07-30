@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAGU: A Multi-Step GraphRAG Engine with a Compact Domain-Adapted LLM · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 20, 2026</time> · <a href="https://arxiv.org/abs/2607.11683">arXiv</a> · <a href="https://arxiv.org/pdf/2607.11683">PDF</a></div>
+    <h1>RAGU: A Multi-Step GraphRAG Engine with a Compact Domain-Adapted LLM</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-20-ragu-a-multi-step-graphrag-engine-with-a-compact-domain-adap-11c5ac6f.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Graph retrieval-augmented generation (GraphRAG) enhances large language models with structured knowledge, yet existing systems construct knowledge graphs in a single extraction pass, producing noisy entities and brittle retrieval. RAGU, an open-source modular GraphRAG engine, addresses this by separating extraction from consolidation: entities and relations pass through two-stage typed extraction, DBSCAN-backed deduplication, LLM summarization, and Leiden community detection. A key insight motivates a compact extractor: the skills an in-pipeline LLM needs - comprehension, extraction, reasoning over context - are language skills that grow only weakly with model size, unlike factual world knowledge. Accordingly, we train Meno-Lite-0.1, a 7B model optimized for language skills, which outperforms Qwen2.5-32B on knowledge-graph construction (+12.5% relative harmonic mean) and matches it on English GraphRAG tasks. On GraphRAG-Bench (Medical), RAGU retrieves the most complete context at every factoid level (evidence recall up to 0.84 vs. leq0.76) and overtakes HippoRAG2 on synthesis tasks; on multi-hop factoid QA, the apparent HippoRAG2 advantage is shown to be largely an answer-format artifact. RAGU is installable via pip install graph_ragu, runs on a single GPU, and is released under MIT. The source code is publicly available at https://github.com/RaguTeam/RAGU, and the Meno-Lite-0.1 model can be obtained from https://huggingface.co/bond005/meno-lite-0.1.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>现有的知识图谱增强生成系统有一个根本性的问题：它们在构建知识图谱的时候，只做一次性的提取，走一遍就算完了。这样做的后果是图谱里充满了重复的、噪声很多的实体，而且跨文档的信息没有任何整合机制。这篇论文要解决的，就是这个问题，以及由此衍生出来的另外两个麻烦。</p>
+<p>先说清楚背景。所谓检索增强生成，英文缩写RAG，就是在语言模型回答问题之前，先去外部知识库里检索相关内容，把检索到的文本塞进上下文，让模型有据可查。传统RAG检索的是一段段孤立的文本块，没办法捕捉不同文档之间的实体关系。图谱RAG，也叫GraphRAG，就是在这个基础上更进一步——先把文档里的实体和关系抽取出来，构建一张知识图谱，然后在检索的时候沿着图谱的边做遍历，能找到更复杂的关联信息。</p>
+<p>但现有的GraphRAG系统面临三道坎。第一道，就是刚才说的单次提取问题。第二道，是对昂贵大模型的依赖。很多系统默认用GPT-4这个量级的商业API来做提取，因为大家默认&quot;模型越大，提取质量越好&quot;。第三道，是工程上的不成熟——很多开源框架安装容易出错，甚至有安全隐患，比如直接用Python的eval函数去执行模型输出的原始字符串，这是个代码注入漏洞。</p>
+<p>这篇论文提出的系统叫RAGU，同时还训练了一个配套的小型语言模型叫Meno-Lite-0.1，来一起解决这三道坎。</p>
+<p>先聊论文里一个核心的理论观察，作者称之为&quot;语言技能与世界知识假说&quot;。这个假说说的是：语言模型的世界知识，也就是它记住了多少事实，随着参数量的增大会急剧提升；但语言技能，也就是理解上下文、从文本里抽取信息、在给定材料基础上推理，这类能力随着参数量增大只会小幅提升。</p>
+<p>论文用Qwen2.5这个系列的模型做了一个测试来支撑这个观点。在一个纯世界知识的问答测试集上，从0.5B参数到72B参数，F1分数提升了21个百分点，涨得很明显。但在另一个测试集上，所有答案都已经在给定的上下文里了，模型只需要读懂并抽取，同样的参数量增长，F1只提升了4个百分点。</p>
+<p>这个观察非常关键。它意味着，在RAG流水线里面工作的那个语言模型，它需要的是读懂文本、提取实体关系、根据上下文生成回答，这些都是语言技能。既然语言技能不怎么随模型变大而提升，那就没必要用超大模型——一个针对语言技能专门训练过的小模型，完全可以胜任。这就是他们训练Meno-Lite-0.1的理论动机。</p>
+<p>接下来说RAGU的系统设计。整个知识图谱构建流程分六步。</p>
+<p>第一步是文本切块。RAGU提供三种策略：固定大小的重叠切块、基于嵌入向量的语义切分，以及用交叉编码器重排序的智能语义切分，复杂度依次递增，可以按需选择。</p>
+<p>第二步是两阶段提取，这是RAGU区别于单次提取系统最关键的地方。第一阶段只提取实体，按照NEREL这个俄语信息抽取数据集定义的模式来做分类，NEREL定义了29种实体类型和49种关系类型，提取出来的实体经过验证。第二阶段才提取关系，而且关系的源实体和目标实体必须来自第一阶段已经验证过的实体集合，不允许凭空出现新实体。这个约束机制消除了实体和关系之间的错误匹配。</p>
+<p>第三步是整合，这是单次提取系统完全缺失的环节。系统把名称和类型都相同的实体聚合在一起，当同一个实体在不同文档里被多次提到时，用DBSCAN算法做聚类，再用语言模型做摘要，生成一个干净的合并描述。关系也做同样的处理。这个整合步骤在后续的社区检测之前就清洗掉了噪声，生成更干净、连接更好的图谱。</p>
+<p>第四步到第六步是社区检测、摘要和精化。用Leiden算法对去重后的图谱做层级聚类，把关系紧密的实体划入同一个社区，然后用语言模型为每个社区生成结构化报告，包括标题、摘要和关键发现，最后可以用一些可插拔的模块做进一步精化，比如去除孤立节点。</p>
+<p>在检索端，RAGU提供五种搜索引擎：本地搜索，基于向量相似度找到相关实体然后扩展到关联关系和文本块；全局搜索，在社区报告层面做归纳；朴素搜索，就是普通的向量RAG；混合搜索，并行跑多个引擎；还有一个查询规划引擎，把复杂问题分解成有向无环图的子问题再逐个回答。</p>
+<p>工程层面，RAGU有几个值得一提的设计。存储层做了三层抽象，图存储、键值存储、向量存储各自独立，切换后端只需要改构造函数参数，比如从NetworkX换到Neo4j、从内存向量库换到Qdrant，不需要重写流水线。所有语言模型的输出都通过Pydantic v2做结构化验证，不做任何手工JSON解析，也杜绝了代码注入的风险。系统还带了374个自动化测试和一个确定性的模拟LLM服务器，可以在不调用任何真实API、不需要GPU的情况下跑完整个回归测试，这在开源GraphRAG框架里是独一份的能力。</p>
+<p>再说Meno-Lite-0.1这个模型本身。它基于RuadaptQwen2.5-7B这个针对俄语适配的基础模型，经过继续预训练（1.3亿个token，俄语加英语的教育和科学文本）和监督微调（5000万token，覆盖基于NEREL模式的信息提取、多跳问答、查询日志）。最重要的训练目标区别是：指令教模型使用上下文，而不是召回自身记忆里的事实。</p>
+<p>几个关键参数：128K的上下文窗口，在128K长度的passkey检索测试里准确率达到0.98；相比原版Qwen2.5，在俄语文本上的分词效率提升47%，每个token平均编码3.77个字符，而原版只有2.57个。可以在单张消费级GPU上通过vLLM部署。</p>
+<p>现在说实验结果。整个评测的设计有一个重要前提：所有系统用同一个语言模型（GPT-4o-mini）来生成最终答案，只有构建知识图谱时用的模型不同。这样设计是为了隔离图谱构建质量的影响，让对比更公平。</p>
+<p>在GraphRAG-Bench的医学领域数据集上，测试分四个难度级别：事实检索、复杂推理、情境摘要、创意生成。结果呈现出一个有趣的交叉走势。在事实检索这个最简单的级别，HippoRAG 2领先，它的个性化PageRank算法在追踪单一事实链条上很精准，答案正确率72.4对RAGU的54.2。但随着任务从精确事实查找转向宽泛综合，差距单调收窄，到情境摘要基本持平，到创意生成反转——RAGU赢了，答案正确率59.0对56.9，忠实度34.2对26.6。</p>
+<p>在覆盖率这个指标上，也就是检索到所有相关材料的能力，RAGU在每个难度级别都领先，创意生成任务上57.4对34.7，差距相当大。在证据召回率上，RAGU在每个事实级别都达到最高，84%对竞争系统的76%。LightRAG在所有级别都最弱，直接验证了单次自由提取比多步整合构建出的图谱质量差。</p>
+<p>多跳问答的结果更有意思，揭示了一个评测陷阱。这类测试集的标准答案都是很短的直接答案，而测评指标依赖文本重叠度。不同系统的默认提示词格式不同，HippoRAG 2默认输出简短答案，而RAGU默认输出详细答案。在不控制格式的情况下，HippoRAG 2在BioASQ数据集上答案正确率74.1，RAGU只有56.0；ROUGE-L分数12对49，差距触目惊心。但这个差距几乎全是格式导致的——详细的答案和简短的标准答案做字符串匹配，当然吃亏。</p>
+<p>一旦控制格式，让两个系统都用简短提示词输出直接答案，画风就变了。BioASQ上RAGU略微超过HippoRAG 2，72.9对72.4；2WikiMultiHopQA上差距从19.3个百分点缩小到5.5个百分点。HippoRAG 2只在MuSiQue这个最难的多跳数据集上保持了真实的优势，54.4对40.1。MuSiQue需要沿着多步推理链精确追踪，个性化PageRank的图遍历在这类任务上确实更有针对性，RAGU的宽泛整合检索方式在这里力不从心。</p>
+<p>这就描绘出一幅互补优势的图景，而不是某一方的全面碾压：HippoRAG 2擅长链式多跳和单一事实精确查找；RAGU在需要综合大范围上下文的任务上更强，而且控制格式之后在简单事实问答上也具有竞争力。</p>
+<p>在模型单独评测上，Meno-Lite-0.1在信息提取基准测试上的调和均值比Qwen2.5-32B高出12.5%。注意，Qwen2.5-32B是32B参数，Meno-Lite-0.1只有7B。差距主要来自关系提取，F1是0.347对0.239，因为关系提取最依赖语言理解能力，正好是这个模型重点训练的方向。</p>
+<p>有一个细节值得单独说。Meno-Lite-0.1在独立信息提取任务上比Qwen2.5-32B高出12.5%，但在端到端的GraphRAG问答任务上，用它和用其他模型的差距只有1到2个百分点。论文把这解释为：一旦有了整合流水线，下游答案质量对提取模型的选择已经相当鲁棒了。Meno-Lite-0.1贡献了32B量级的提取能力，但整合流水线本身消化了很多提取噪声。消融实验也证实，从3B到14B的各种提取模型，端到端答案正确率最多只差1.5个百分点。</p>
+<p>成本层面，每处理一份文档，用商业GPT-4o API做图谱构建的MS-GraphRAG大约花0.1美元；RAGU用Meno-Lite-0.1在本地GPU上跑，每份文档约0.001美元。十万份文档的语料库，前者需要一万美元，后者只需要一百美元，差了两个数量级。</p>
+<p>论文也诚实地列出了几条局限性。关于语言技能不随模型大小扩展的这个结论，目前只在Qwen2.5这一个模型家族上验证，不能算普遍定律。Meno-Lite-0.1把参数化的事实记忆换成了上下文驱动的能力，所以不能把它当独立知识库用；它的多跳推理能力在超过32K token之后开始退化，这是7B量级模型的普遍局限。在信息提取基准上，由于模型的微调数据和评测数据共享了NEREL这个标注模式和文本领域，尽管测试文档不重叠，仍然存在残余优势无法完全排除的可能。最后，RAGU默认的NetworkX图存储后端不适合千万级节点的超大语料库，大规模部署需要换用专用图数据库适配器。</p>
+<p>回到这项工作的核心洞察：在RAG流水线内部，语言模型需要的是读懂、抽取、在上下文基础上推理，这些都是语言技能，而不是需要记住海量事实的世界知识。语言技能不随模型变大而显著提升，所以在流水线里用一个专门针对语言技能训练的小模型，成本降到百分之一，效果却不输大模型。这个逻辑不只对GraphRAG成立——任何把LLM嵌入到有外部上下文的流水线里的场景，都值得认真考虑：你付出的那些额外算力，究竟在买世界知识，还是在买语言技能？如果是后者，小模型加专项训练可能才是更划算的路。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

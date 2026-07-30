@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DanceOPD: On-Policy Generative Field Distillation · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jun 26, 2026</time> · <a href="https://arxiv.org/abs/2606.27377">arXiv</a> · <a href="https://arxiv.org/pdf/2606.27377">PDF</a></div>
+    <h1>DanceOPD: On-Policy Generative Field Distillation</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-06-26-danceopd-on-policy-generative-field-distillation-9db539d1.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Modern image generation demands a single model that unifies diverse capabilities, including text-to-image (T2I), local editing, and global editing. However, these capabilities are rarely naturally aligned and often conflict. For instance, editing tends to degrade T2I performance, while global and local editing interfere with each other. Consequently, effectively composing these capabilities has become a central challenge for image generation model training. To tackle this, we introduce DanceOPD, an on-policy generative field distillation framework for flow-matching models that routes each sample to one capability field, queries one low-noise student-induced state, and trains with a simple velocity MSE objective. With each capability source defined as a velocity field over the shared flow state space, the student learns from fields queried on its own rollout states to compose expert capabilities. This formulation also absorbs operator-defined fields such as classifier-free guidance. Comprehensive experiments on T2I, editing, realism-field absorption, and CFG absorption show that our approach improves multi-capability composition, strengthening target capabilities while preserving anchor generation quality. We believe this work establishes a practical route for generative field distillation in flow-matching models.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>现代图像生成模型正面临一个核心挑战：我们期望一个模型能够同时拥有多种强大的功能，比如根据文字描述生成图像、对图像进行局部修改，以及进行全局性的风格或布局编辑。然而，这些能力在实际应用中往往难以兼容，甚至会相互冲突。举例来说，为了实现更精细的图像编辑，模型可能会牺牲文本到图像生成时的整体质量和对指令的遵循度；而局部编辑和全局编辑的目标本身就可能存在矛盾，一个要求尽可能保留原始图像的细节，另一个则要求大幅改变图像的整体外观或风格。因此，如何有效地整合这些多样的能力，让它们在同一个模型中和谐共存并发挥作用，成为了当前图像生成模型训练中的一个关键难题。</p>
+<p>目前的一些方法，比如简单地混合不同任务的数据进行联合训练，或者合并不同模型的参数，再或者在推理时结合多个模型的输出，都只能部分解决这个问题。它们往往会导致特定能力的稀释，或者在不同任务之间产生梯度冲突，最终得出的模型可能只是一个折衷方案，无法在所有能力上都达到最佳。这些方法都没有从根本上回答一个状态相关的问题：一个模型应该如何在生成过程中，根据它当前所处的状态，有效地组合多种生成能力？</p>
+<p>为了解决这个问题，研究人员提出了DanceOPD，一个基于“策略生成场蒸馏”的框架，专门为流匹配模型设计。它的核心思想是，将每一种生成能力，无论是文本到图像、局部编辑还是全局编辑，都看作是一个在共享生成状态空间中定义的速度场。你可以把这个速度场想象成一股引导图像从噪声状态逐渐演变为清晰状态的“力”，不同的能力就对应着不同的“力”的方向和大小。通过这种视角，能力组合的问题就转化为了一个“场查询”问题：对于一个给定的图像样本，学生模型应该向哪个能力场学习？应该在生成过程中的哪个阶段（也就是哪个“状态”）向这个场查询指导？以及应该从学生模型自己的生成轨迹中，查询多少个这样的状态来获取监督信号？</p>
+<p>DanceOPD的解决方案，就是通过精心设计这三个查询选择，来应对多能力蒸馏中的三个主要对齐挑战。</p>
+<p>第一个挑战是“目标场模糊性”。如果一个训练样本同时接收来自多个能力场的指导，比如既要生成又要做局部编辑，那么这些指导信号可能会被平均化，形成一个模糊不清的目标，使得学生模型不知道到底该学习哪种特定的能力。DanceOPD的解决方法是“硬路由的样本级场匹配”。这意味着，每一个训练样本都会被明确地分配给且只分配给一个冻结的能力场。比如，一个文本到图像的样本就只去查询文本到图像的能力场；一个编辑样本就只去查询编辑的能力场。这样，每个能力查询的语义身份都得到了明确的保留，避免了将不相关的能力方向注入到同一个样本的监督信号中，从而确保了学生模型学习到的每一个指导都是清晰且有意义的。能力组合的效果，是通过在统计上对不同路由的样本进行更新来实现的，而不是在单个样本内部强行融合。</p>
+<p>第二个挑战是“状态分布不匹配”。学生模型在生成图像时会沿着它自己独特的轨迹前进，访问一系列特定的状态。如果老师模型只在它自己生成过的、固定的、离线的轨迹上提供监督，那么学生模型在实际生成时访问的那些状态，可能就得不到充分的指导，导致训练和推理之间存在差距。DanceOPD通过“策略内场查询”来解决这个问题。它让老师模型在学生模型自己当前生成轨迹上产生的状态上提供监督。想象一下，学生模型从一个初始噪声开始，按照它当前的知识生成了一系列中间图像状态。DanceOPD会从这些学生模型自己生成的状态中，选择一个“停止梯度状态”来查询老师模型。这里的“停止梯度”意味着，我们只让老师模型在这个状态上给出指导，但我们不会让这个指导信号反向传播回去，去影响学生模型是如何生成这个特定状态的。这种做法确保了监督信号与学生模型在推理时实际访问的状态分布保持一致，从而更好地解决学习过程中的协变量偏移问题。</p>
+<p>第三个挑战是“轨迹查询相关性”。如果从同一个学生模型的生成轨迹中，密集地查询多个状态来获取监督信号，这些状态之间往往是高度相关的，因为它们都源自同一个初始噪声、同一个提示词、同一个学生模型动态以及相似的路径历史。在这种情况下，增加更多的查询点并不一定能提供更多独立的监督信息，反而可能引入偏差，甚至在梯度冲突时放大问题。DanceOPD的解决方案是“语义侧单次查询”。它不是监督整个轨迹，而是在轨迹的“语义侧”，也就是噪声较低、更接近最终清晰图像的阶段，选择一个单一的高信息量状态进行查询。这是因为，图像在低噪声状态下包含了更多关于风格、美学、局部属性和任务特定编辑指令的集中信息。通过这种方式，DanceOPD能够获得高信噪比的能力监督，同时避免了来自同一轨迹的、高度相关的样本带来的负面影响。</p>
+<p>在目标函数的设计上，DanceOPD采用了一个简单的“速度均方误差”（MSE）损失。由于老师模型的目标是一个确定的速度场，MSE自然地成为了衡量学生模型预测与老师模型指导之间差异的回归目标。研究发现，这种简单的MSE损失，比其他一些加权或更复杂的损失函数，在实践中表现得更稳定、效果也更好。值得一提的是，这个框架甚至可以吸收那些由操作符定义的速度场，比如在扩散模型中常用的“无分类器引导”（Classifier-Free Guidance, CFG）。CFG本身可以被看作是一个引导速度场，DanceOPD能够将这种引导效果内化到学生模型中，使得模型在推理时无需外部引导也能产生类似的效果。</p>
+<p>为了验证DanceOPD的有效性，研究人员在多种能力组合和场吸收场景下进行了全面的实验。主要包括：文本到图像生成与编辑能力的组合、局部编辑与全局编辑能力的组合、将一个“真实感”场吸收进基础的文本到图像模型以提升图像真实感，以及吸收“无分类器引导”场。</p>
+<p>在文本到图像生成与编辑能力组合的实验中，DanceOPD在编辑能力评估基准GEditBench上，比最好的策略内蒸馏基线模型提升了百分之七点六，甚至比单独的编辑模型源提升了百分之二点三。同时，它在文本到图像生成质量评估GenEval上，也略微超越了原始的文本到图像模型，这说明它在增强编辑能力的同时，并没有牺牲原有的生成质量。特别是在需要较大视觉变化的编辑类别中，比如背景改变、风格转换和颜色调整，DanceOPD的提升尤为显著。</p>
+<p>在局部编辑与全局编辑组合的场景中，DanceOPD同样表现出色。它在GEditBench上比最好的竞争组合基线模型提升了百分之五点二，并超越了单独的局部编辑源模型百分之三点六。在GenEval上的表现也优于所有比较的组合基线。这进一步支持了通过路由场查询来处理能力场组合，要优于简单的参数平均或混合监督。</p>
+<p>在真实感场吸收的实验中，DanceOPD展示了将一个旨在提升图像真实感、纹理和光照质量的场，融入到文本到图像模型中的能力。它将真实感奖励比离线蒸馏方法提升了百分之二十一点二，并弥补了学生模型与老师模型之间百分之四十八的奖励差距。同时，其文本到图像生成分数比学生锚点模型提升了百分之零点七，并与离线蒸馏方法持平。定性结果也显示，DanceOPD能够显著增强图像的细节、光照对比和摄影锐度，而不会改变原始场景的布局或主体。例如，在门票亭的例子中，光照对比和结构细节得到了增强；在肖像和面部例子中，皮肤纹理和水面反射细节更加逼真，而主体没有改变。这表明策略内查询不仅对任务组合有用，对吸收风格或质量导向的场也同样有效。</p>
+<p>最后是无分类器引导（CFG）场的吸收实验。DanceOPD成功地将CFG的引导效果内化到学生模型中。实验结果显示，最佳的组合模型在GEditBench上比仅在训练时吸收CFG的模型提升了百分之二点七，比仅在评估时使用CFG的模型提升了百分之八点四。但值得注意的是，如果模型已经内化了CFG，在推理时再施加额外的CFG，可能会导致“过度引导”，反而降低性能，这提醒我们在实际应用中需要注意指导强度。</p>
+<p>除了这些主要实验结果，研究还通过一系列消融实验，进一步验证了DanceOPD设计选择的合理性。 比如，关于“硬路由”与“软混合”的比较，结果明确显示硬路由优于软混合，因为软混合会使得目标场失去语义身份，导致学生模型学习效率下降。 关于“同一优化步多教师累积”的问题，即使每个样本都经过硬路由，但在同一个优化步骤中累积来自多个能力场的梯度，仍然会导致能力冲突，因为不同能力的梯度方向可能不一致，最终形成一个折衷的更新方向。 关于“密集查询的漂移控制”，研究发现从同一生成轨迹中密集查询多个状态，效果反而不如单一查询，主要原因是这些查询点之间存在高度相关性。即使尝试通过引入随机噪声来“去相关”，也未能完全弥补密集查询带来的性能损失，进一步证实了单一语义侧查询的优越性。 在查询时间步的选择上，实验表明在轨迹的“低噪声”或“语义侧”进行查询，能够提供最有效的特定能力监督，因为这些区域包含了最集中的风格、美学和编辑信息。 在目标函数方面，简单的速度均方误差（MSE）损失被证明是最稳定且性能最佳的选择，优于各种加权或替代方案。 最后，学生模型的初始化也很重要，以具有最强相关能力的检查点作为初始化，能够让后续的路由场匹配更加有效。</p>
+<p>总结来说，DanceOPD框架为流匹配模型提供了一种全新的方法，将异构的生成能力组合到一个单一的学生模型中。它的核心在于将每种能力视为一个速度场，并通过硬路由、策略内查询和语义侧单次查询，解决了目标场模糊性、状态分布不匹配和轨迹查询相关性这三大挑战。通过简单的速度均方误差目标，DanceOPD能够在不依赖联合训练、参数合并或外部分数组合的情况下，有效组合和吸收不同的能力场。实验结果有力地证明了DanceOPD能够增强目标能力，同时保持甚至提升基础生成质量，为可扩展的多能力视觉生成提供了一条实用的途径。</p>
+<p>当然，DanceOPD也存在一些局限性。首先，它假设不同的能力源，比如文本到图像模型和编辑模型，它们在生成图像的潜在空间中，能够提供兼容的速度场。这意味着这些模型最好是基于相似的架构、潜在表示和调度器来构建的。其次，目前DanceOPD的实现是采用预定义的硬路由，即训练样本的来源决定了它应该查询哪个能力场。这种设计在任务边界清晰时非常有效，但如果任务边界模糊，或者一个提示词同时需要多种能力时，这种预定义路由可能就不够灵活。未来的研究可以探索引入一个验证器或奖励模型，根据模型的行为或预测的编辑成功率来动态分配路由，从而进一步提升框架的灵活性。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

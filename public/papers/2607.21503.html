@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentic Context Management: Solving Agent Memory and Cost by Treating Them as Lifecycle and Architecture Problems · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 27, 2026</time> · <a href="https://arxiv.org/abs/2607.21503">arXiv</a> · <a href="https://arxiv.org/pdf/2607.21503">PDF</a></div>
+    <h1>Agentic Context Management: Solving Agent Memory and Cost by Treating Them as Lifecycle and Architecture Problems</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-27-agentic-context-management-solving-agent-memory-and-cost-by--a73edb46.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Production AI agents&#x27; failures are less often due to an inability to reason well and more often because they cannot manage what is in their reasoning context: conversation histories, large prompts, large tool definitions, and ballooning tool outputs. Agents drown in their own accumulating history while paying a token cost that grows every turn, producing missing recalls within and across conversations. The incumbent response treats this as a storage-and-retrieval problem. We argue that framing is too narrow. Actively managing what an agent holds in mind is a lifecycle, not merely a store: it spans deciding what to remember, extracting and structuring it, choosing the right store per data type, consolidating and forgetting while preserving provenance, deciding what is relevant now, anticipating what is needed next, and compacting context to a budget without losing what matters. In serious production this operates not over a single user but across an organizational scope hierarchy. We name this discipline Agentic Context Management (ACM) and decompose it into five primitives: architecting, ingesting, scoping, anticipating, and compacting &amp; consolidation. We then make the economic case: naive context accumulation grows token cost quadratically in conversation length, crude summarization buys linear cost at the price of an accuracy cliff, and only validated compaction achieves linear cost with preserved fidelity. We describe a reference implementation, Maximem Synap, that realizes the five primitives as a multi-tenant service and reports 92% on LongMemEval and 93.2% on LoCoMo under the configuration detailed in Section 6. We close with dimensions existing benchmarks do not yet capture, latency, token efficiency, and context-rot resistance, and the frontier of decision-level and organization-level context the category points toward.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>生产环境里的AI智能体，最常见的失败方式不是推理能力不够强，而是它根本不知道自己该记住什么、该忘掉什么、该在当前这一步把什么放进上下文窗口。这篇论文要解决的，正是这个问题。</p>
+<p>论文的题目叫&quot;智能体上下文管理&quot;，副标题是&quot;把智能体的记忆和成本问题当作生命周期和架构问题来解决&quot;。作者来自一家叫Maximem的公司，发表于2026年7月。它的核心主张是：现在整个行业对这个问题的定性方式就错了，而定性错误直接导致解决方案先天不足。</p>
+<p>先来说问题的规模有多严重。麦肯锡2025年的调查数据显示，大多数企业都在试验AI智能体，但真正把智能体规模化落地的只有大约四分之一，在任何单一业务职能里实现规模化的比例甚至不到10%。绝大多数智能体的试点项目，永远走不到生产环境。这个巨大的鸿沟，行业通常把它归因于推理能力，但作者的观点是：前沿模型的推理能力已经相当不错了，真正的瓶颈在上下文管理。</p>
+<p>一个没有上下文管理能力的智能体会出现什么状况？它会在长对话里忘记用户几十轮前说过的话；它会忘记自己刚刚调用某个工具拿回来的结果；它会跨会话失忆，上周告诉它的事情，这周从头来过；它会在多智能体协作的交接过程里自相矛盾；它会因为上下文塞得太满而开始产生幻觉；而且每多一轮对话，它的token成本就会增加。这些不是边缘情况，这是现实部署里的日常。</p>
+<p>现在主流的解法是给智能体配一个&quot;记忆&quot;系统，也就是一个外挂的存储和检索模块。你把对话内容存进去，需要的时候查出来。这个思路看起来合理，但作者认为这个框架本身就是问题所在。</p>
+<p>&quot;记忆&quot;这个词，定义的是一个存储位置，它优化的只有两个时刻：写入和读取。但一个生产级智能体平台，实际上需要在每一轮对话里做出五种完全不同的决策。第一，刚刚发生的这些信息，有哪些值得保留？第二，保留下来的内容，应该以什么结构存储？第三，所有存储的内容里，有哪一小部分真正属于当前这一轮的上下文？第四，下一轮对话可能需要什么？第五，当相关内容超出模型能有效使用的预算上限时，该怎么压缩，同时不丢掉关键信息？</p>
+<p>这五个决策发生在五个不同的时刻，一个存储系统一个都不做。存储只是生命周期里的一个环节，而不是全部。</p>
+<p>作者把这个更完整的学科命名为&quot;智能体上下文管理&quot;，英文缩写ACM，并把它分解为五个基本原语：架构设计、摄入、作用域、预判、压缩与整合。我们一个一个来理解。</p>
+<p>第一个原语叫&quot;架构设计&quot;（Architecting）。在存入第一条记忆之前，系统必须先决定这个智能体的记忆应该长什么样：应该捕获哪些类别的信息，如何提取，存在哪里，保留多久，怎么检索，怎么压缩。大多数现有系统用一个固定的通用模式来回答这些问题。作者的观点是，架构本身是一个一等公民的原语，而且应该根据每个智能体的用途来定制生成。一个客服智能体和一个代码辅助智能体，需要记住的类别、保留的时长、压缩的方式，全都不同。这个架构一旦生成，就会约束后面四个原语的行为，这是一个深度耦合的系统，不是五个独立工具的拼凑。</p>
+<p>第二个原语叫&quot;摄入&quot;（Ingesting）。原始信号，比如对话轮次、文件上传、工具调用结果，必须被转化成结构化的、可检索的记忆。这里有一个关键洞察，检索质量的上限是摄入质量。如果你存的是&quot;用户提到了一个定价方案&quot;，你永远无法在之后检索到&quot;用户在4月3日从入门版升级到了专业版&quot;。摄入的颗粒度和结构化程度，直接决定了后续一切的天花板。</p>
+<p>第三个原语叫&quot;作用域&quot;（Scoping）。这里涉及一个组织层级的问题，也是现有系统最容易忽视的地方。在一个企业级智能体平台里，信息存在于多个层级：单个用户、用户所在的客户组织、以及运营这个平台的服务商。检索时，应该从最窄的范围开始往外扩，先查这个用户自己的上下文，再查这个组织的上下文，最后才是平台级别的通用知识。而且这个层级必须严格隔离，一个用户的数据绝对不能出现在另一个用户的会话里。同时，同一个组织内部的多个用户，可以共享组织级别的上下文，这样整个组织的智能体会因为更多的使用而变得越来越聪明。大多数记忆工具只有用户这一个层级，要么丢失了组织上下文，要么就有数据泄漏的风险。</p>
+<p>第四个原语叫&quot;预判&quot;（Anticipating）。智能体有一个天然的盲点：它不知道自己不知道什么。如果它从来不主动去查某条信息，那条信息就永远不会出现在它的上下文里。预判这个原语借鉴了计算机系统里&quot;预取&quot;的古老思想，就像CPU会预先把可能用到的数据加载进缓存一样。一个上下文管理系统可以观察智能体的行为模式，在显式请求到来之前，提前把它可能需要的上下文准备好。这不是简单的缓存，缓存是对重复查询的回放，而预判是基于智能体的动态行为做出预测，把还没有被请求过的内容预先取回来。它的价值是把检索从智能体的关键路径上移开，把原本阻塞的网络往返变成一次本地缓存读取。作者透露他们目前实现了60%以上的命中率，这是个相当实用的数字，而且还在持续优化。</p>
+<p>第五个原语叫&quot;压缩与整合&quot;（Compacting and Consolidation）。当相关上下文超出模型能有效使用的token预算时，系统必须压缩它，同时不能丢掉关键信息。最重要的是，压缩必须是可验证的。一个悄悄丢掉关键事实的压缩，比没有压缩更糟糕，因为它会让模型用高置信度给出错误答案。作者提出，可验证的、无损的、有明确目标的压缩，在生产环境里是可行的，也是必要的。</p>
+<p>讲完了五个原语的概念，现在来看经济层面的论证，这是论文里非常有力的一个部分。</p>
+<p>假设每一轮对话大约增加k个token，对话进行了n轮。如果用最朴素的&quot;全量追加&quot;策略，也就是每一轮都把完整的历史记录重新发送给模型，那么第t轮的输入token数就是t乘以k。把所有轮次加起来，总token数是k乘以n的平方再除以2。也就是说，成本随对话长度的平方增长。</p>
+<p>举个具体的数字感受一下。假设每轮500个token，对话进行100轮，总token数大约是250万。对话进行200轮，总token数就变成了1000万，是100轮的四倍，而对话只延长了一倍。这个二次方的增长会让长对话的成本变得难以接受。</p>
+<p>那么，给上下文设一个固定预算上限怎么样？比如每轮最多只放B个token。那累计token数就是n乘以B，线性增长，成本可控。这个方向是对的，但关键在于你怎么把超出预算的内容处理掉。</p>
+<p>最常见的做法是粗暴摘要，让模型把长上下文总结成短文本。这能把成本压回线性，但代价是精度的悬崖式下跌。论文引用了一项具体研究：把一段18282个token的上下文一步压缩到122个token，任务准确率从66.7%跌到了57.1%，比完全不给上下文还要差。摘要模型把重要的东西扔掉了，因为它根本不知道下游任务需要什么。这就是&quot;自信地给出错误答案&quot;的场景，比&quot;不知道&quot;更危险。</p>
+<p>论文给出了一个三路对比。全量追加：精度保留，但成本是二次方增长，而且随着上下文越来越长，模型还会出现所谓&quot;迷失在中间&quot;的问题，也就是对上下文中间部分的信息处理明显变差。粗暴摘要：成本降为线性，但精度断崖。可验证压缩：目标是线性成本加上经过验证的精度保留，这才是真正的最优解。</p>
+<p>作者还算了一下可验证压缩的额外开销。压缩加验证本身需要花一些token。但因为压缩是增量进行的，每次只压缩&quot;已压缩内容加最近几轮&quot;这个有界范围，而不是重新处理完整历史，所以额外开销随对话轮数线性增长，而不是二次方。对比全量追加，在100轮对话里节省大约80%的token，200轮节省90%，500轮节省96%。而且这个节省比例随着对话越长越显著，也就是说最需要省钱的场景，节省幅度也最大。</p>
+<p>然后论文讲了检索侧的问题。光能存取还不够，检索回来的东西是否足够支撑推理，是另一个维度的问题。</p>
+<p>作者做了一个动机性的实验，跨五个领域的数据集：代码、网页、事实问答、多跳推理和科学知识，每个数据集一万篇文档，一千条查询，用MRR@10（也就是排名倒数的平均值，衡量相关文档排在前面的位置）来评估向量检索和关键词检索。</p>
+<p>结论是：两种检索方式在不同场景下各有优势，而且差距相当悬殊。向量检索在语义跨度最大的场景下占绝对优势，比如用自然语言查询代码片段，MRR是0.91对0.29，向量检索完胜。而关键词检索在涉及具体专有名词时更强，比如科学问答里查&quot;线粒体&quot;，MRR是0.81对0.61，关键词领先明显。事实问答基本持平，多跳推理略倾向关键词。</p>
+<p>除了准确率，还有一个实际的工程代价值得关注：用embedding生成来建索引，比关键词索引慢60到100倍。当智能体需要立刻读取新材料并马上用它来行动的时候，这个延迟差距是真实的约束。</p>
+<p>但这个实验更重要的发现，是它没有能力测量的东西。大多数检索评估，包括这个实验，用的都是单一黄金文档的评分标准：检索结果里有没有那篇正确的文档。但多跳推理问题需要两篇或更多篇文档配合才能回答。一个评估系统如果只要求其中一篇出现就算命中，它完全无法检测到最关键的失败场景：找到了相关文档，但漏掉了推理链条上的桥接文档，导致整个推理无法完成。作者把这个问题叫做&quot;推理充分性缺口&quot;。现有基准几乎只测检索命中，几乎没有人测推理充分性。</p>
+<p>基于这些发现，作者的结论是：检索必须同时使用词法信号和语义信号，混合关键词和向量搜索，因为它们各自覆盖对方的盲区。而且光有混合检索还不够，还需要结合知识图谱来保留实体关系和溯源信息。向量检索能找到相似内容，图谱能沿着关系边跳到关联实体，这两者组合才能真正接近推理充分性，而不只是检索命中率。</p>
+<p>讲完理论框架和经济论证，论文介绍了他们自己的参考实现系统Maximem Synap。我来讲几个设计选择里最值得关注的地方。</p>
+<p>架构是针对每个智能体定制生成的，不是通用固定模板。当一个新智能体接入系统时，系统会根据这个智能体的用途描述，自动生成一套专属的记忆架构，决定要捕获哪些类别的信息，用什么结构存储，设置什么保留期限。这个自动生成是用LLM推理完成的，还加了多智能体交叉验证。这个架构生成好之后，会约束后面所有原语的行为。</p>
+<p>摄入是异步非阻塞的。写入调用立刻返回一个摄入ID，不会阻塞调用方。繁重的提取、实体解析、多存储持久化工作在后台异步进行。这个设计是有意的，因为读远比写频繁。但这不会损害同一会话内的即时可用性，因为最近几轮对话会以原文形式携带在工作上下文里，不需要等摄入完成。</p>
+<p>实体解析是一个值得关注的细节。同一个人或事物，在不同地方会有不同的表述方式，比如&quot;Sarah&quot;、&quot;Sarah Chen&quot;、&quot;SC&quot;，或者同一份文档，一个团队叫&quot;PR FAQ&quot;，另一个团队叫&quot;6-pager&quot;。系统在摄入时会把这些不同表述解析到同一个规范身份，这对于组织级别的上下文来说尤其重要。</p>
+<p>作用域是存储层和查询层双重强制执行的，不只是建议。用户身份从凭证中派生，不是由客户端主张，这从根本上防止了身份伪造导致的数据泄漏。</p>
+<p>压缩带有质量契约。每次压缩都会返回一个验证分数和压缩比，低于阈值会自动以更保守的压缩率重试。这是一个有明确保证的操作，而不是&quot;压缩并祈祷&quot;。</p>
+<p>从应用开发者的角度看，整个集成模式被简化为每轮对话里的三次调用：一次作用域感知的检索，一次验证过的压缩，一次非阻塞的摄入。没有模式设计，没有embedding模型选择，没有索引管理，没有隔离逻辑，这些都是上下文管理系统的职责。</p>
+<p>在基准测试上，Maximem Synap在LongMemEval上达到了92%，在LoCoMo的类别1到4上达到了93.2%。LongMemEval是500道人工精心设计的问题，覆盖多种记忆能力类别；LoCoMo测试的是超长对话，平均超过300轮。</p>
+<p>但更有价值的是作者对自己的弱点的坦诚报告。最难的类别是LongMemEval里的&quot;跨会话&quot;问题，需要跨越多个独立会话的信息来做推理，准确率只有75.2%。这也是已知所有系统里最难的类别，直接对应的就是Section 3.3里的推理充分性问题。这个弱点不是遮掩的，是直接摆出来的。</p>
+<p>论文还特别指出，现有基准根本没有衡量对生产团队来说同样重要的指标：延迟、token效率，以及他们叫&quot;上下文腐烂&quot;（context rot）的现象，也就是随着检索出的上下文越来越多，模型的精度不升反降的问题。作者明确说他们不在这篇论文里报告延迟数字，打算单独写一篇论文并提出新基准。这种自我约束是值得肯定的。</p>
+<p>在相关工作方面，论文梳理了现有系统。MemGPT把LLM类比为操作系统，管理上下文窗口内和外部存储的虚拟内存层级，已经商业化为Letta。Mem0专注于动态提取和整合对话里的重要信息，有图谱后端。Zep构建了一个基于Graphiti的时态知识图谱，处理事实的时间有效性。Cognee是开源的AI记忆平台，用异构数据构建知识图谱。这些系统，按照作者的分析，都集中在摄入和存储原语上，在组织级别的作用域、预生成的每智能体架构、可预测的预取能力、以及带损失验证的压缩这四个维度上，都还没有完整覆盖。</p>
+<p>论文最后指向了一个更远的前沿：决策级别的上下文。现有的上下文管理处理的是&quot;发生了什么&quot;，下一个阶段要处理的是&quot;为什么这么决定&quot;，让智能体能够以组织的制度性判断而不只是制度性事实来进行推理。但作者对这个方向保持审慎，因为难题是真实的：大多数决策是隐性的，从来没有被记录；即使有记录，往往是事后合理化而非真实推理过程的还原；把决策和结果绑定需要因果归因，这连人类都做不好。这些挑战被如实列出，不是用来自我标榜，而是邀请整个领域一起面对。</p>
+<p>核心的启示可以用一句话来概括：如果你在构建需要持久化记忆的智能体，把&quot;加一个记忆模块&quot;这件事，从存储检索问题重新定位为生命周期架构问题，你的系统设计就会在起点上高出一个层次，而不是在成本二次方增长和精度断崖面前不断打补丁。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

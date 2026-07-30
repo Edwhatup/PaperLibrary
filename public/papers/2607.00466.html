@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ELDR: Expert-Locality-Aware Decode Routing for PD-Disaggregated MoE Serving · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 02, 2026</time> · <a href="https://arxiv.org/abs/2607.00466">arXiv</a> · <a href="https://arxiv.org/pdf/2607.00466">PDF</a></div>
+    <h1>ELDR: Expert-Locality-Aware Decode Routing for PD-Disaggregated MoE Serving</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-02-eldr-expert-locality-aware-decode-routing-for-pd-disaggregat-70d18ab0.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>In prefill-decode (PD) disaggregated LLM serving, each request is assigned to a decode worker after prefill. Existing decode routers balance only load; for mixture-of-experts (MoE) models this is incomplete: equally loaded workers can differ in latency, since each decode step loads the weights of every distinct expert its batch activates. We present ELDR, an expert-locality-aware decode router for PD-disaggregated MoE serving. From a request&#x27;s prefill expert activations, ELDR builds an expert signature predicting the experts it will activate during generation. Offline, balanced K-means partitions signature space across decode workers; online, locality-band routing sends each request to the least-loaded worker among those best matching its signature. A signature cache, co-indexed with the KV cache at KV-block granularity, keeps signatures exact under prefix caching. Implemented in vLLM and evaluated on deployments of up to 40 GPUs, ELDR reduces median TPOT by 5.9-13.9% over the strongest of four load-balancing baselines across three MoE models and two workloads, with model outputs unchanged.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>大型语言模型服务正面临一个新挑战：当我们将模型预填充（prefill）和令牌生成（decode）两个阶段分离，并分别在不同的计算池上运行时，现有的解码阶段路由策略只关注负载均衡，也就是简单地把请求分发到空闲的解码器。但对于混合专家模型，也就是我们常说的MoE模型来说，这种做法是不完整的。即使两个解码器负载相同，它们实际处理请求的延迟也可能大相径庭。</p>
+<p>这是因为MoE模型在每个解码步骤中，都需要从高速缓存（HBM）中加载其批次中所有活跃专家的权重。如果一个批次里的请求激活了大量不同的专家，那么就需要加载更多的权重，导致延迟增加。反之，如果批次里的请求激活了大量重叠的专家，那么加载的权重种类就少，延迟自然就低。这种“专家局部性”——即请求激活相似专家的特性——是影响延迟的关键因素，而当前的路由策略却完全忽视了它。</p>
+<p>为了解决这个问题，研究人员提出了ELDR，一个专家局部性感知的解码路由策略，专为分离式MoE服务设计。ELDR的核心思路是：通过分析请求在预填充阶段激活的专家信息，构建一个“专家签名”，这个签名可以预测它在生成阶段会激活哪些专家。然后，系统会离线地将这些专家签名空间划分为若干个平衡的区域，每个区域对应一个解码器。在线路由时，ELDR会根据请求的专家签名，将其发送到与其签名最匹配的、且负载最低的解码器。为了确保在“前缀缓存”场景下专家签名的准确性，ELDR还引入了一个与KV缓存一同索引的签名缓存机制。</p>
+<p>让我们更深入地了解一下这个问题的背景和动机。</p>
+<p>首先，MoE模型之所以流行，是因为它在不显著增加每次计算成本的前提下，大大提升了模型的容量。传统的大语言模型对每个令牌都使用相同的全连接网络（FFN），而MoE模型则将FFN替换为多个专家FFN和一个MoE门，每个令牌只激活其中一小部分专家。这种稀疏激活使得模型参数量巨大，但每次推理时实际使用的参数却很少，从而实现了高效扩展。然而，这种稀疏性也带来了新的问题：在解码阶段，它加剧了内存带宽瓶颈。</p>
+<p>在传统的密集模型中，一个解码批次中的所有令牌都执行相同的FFN，因此一次权重加载可以分摊到整个批次。但在MoE模型中，MoE门将批次中的令牌分配给不同的专家，权重复用只发生在共享同一专家的令牌之间。当专家数量越来越多、粒度越来越细时，这种碎片化会进一步降低算术强度。因此，MoE模型的解码成本主要由专家权重访问决定：每个步骤都需要获取批次中所有活跃专家的权重。</p>
+<p>实验数据也证实了这一点。在一台MI300X GPU上对多款MoE模型进行的测试表明，固定批次大小，当活跃专家数量从16增加到128时，MoE层的延迟会显著上升；而固定活跃专家数量，批次大小的变化对延迟影响却微乎其微。这清楚地表明，MoE解码效率的关键在于批次内部的专家重用。</p>
+<p>那么，我们如何才能利用这种专家重用呢？答案是：专家使用模式并非随机，而是由请求的领域结构决定的。MoE门会根据令牌的隐藏表示来选择专家，而隐藏表示编码了上下文特征，因此像代码、数学、医疗、法律等不同领域的请求，以及不同语言的请求，会激活不同的专家子集。例如，代码请求会激活一组专家，而医疗请求则会激活另一组。这意味着，将来自同一领域的请求放在同一个解码器上，可以显著减少每个解码步骤中活跃专家的种类，从而降低延迟。</p>
+<p>更关键的是，这种专家局部性是可以在解码开始之前就预测到的。在预填充-解码分离的部署中，路由策略必须在任何输出令牌生成之前，也就是在请求从预填充阶段传递到解码阶段时，就做出放置决策。虽然此时无法观察到解码阶段的精确专家使用情况，但预填充阶段已经通过相同的MoE层处理了提示，暴露了模型门控网络所做的专家选择。实验发现，预填充阶段和解码阶段的专家激活模式之间存在很强的相关性。这意味着，系统可以在请求从预填充阶段转到解码阶段的瞬间，获得一个预测解码阶段专家使用情况的信号。我们将这种每个请求的专家使用模式表示称为“专家签名”。</p>
+<p>总结一下，MoE解码延迟不仅取决于每个解码器的负载，还取决于请求的组成。将激活重叠专家的请求放在同一个解码器上，可以减少每个步骤中活跃专家的种类，从而降低延迟。而这种专家局部性信号可以在预填充-解码切换时观察到。这就为我们提供了一个新的路由维度：专家局部性。</p>
+<p>要将这个机会转化为一个可行的路由策略，我们需要克服三个主要挑战：</p>
+<p>第一个挑战是“设计专家签名”。专家签名需要根据预填充阶段的激活情况，预测请求在解码阶段的专家使用情况。它的设计目标是：两个签名之间的距离，应该能准确反映它们在解码阶段专家重叠的程度。原始的预填充数据可能包含噪音，比如一些“通用型”专家几乎在所有请求中都会被激活，它们会掩盖那些真正能区分不同工作负载的“专业型”专家。因此，我们需要一种方法来转换原始数据，使其成为一个适合聚类的向量空间。</p>
+<p>第二个挑战是“协调局部性和负载”。仅仅追求专家局部性是不够的。除了MoE模型的计算，还有注意力机制、QKV投影、归一化等非MoE计算，这些计算的成本与解码器上活跃请求的数量成正比，而不是与它们共享多少专家成正比。如果一个路由策略只关注局部性，它可能会把大量来自热门领域的请求集中到一个解码器上，导致该解码器过载，从而推高整体延迟。反之，如果只关注负载均衡，又会把相似的请求分散开，失去专家局部性带来的好处。所以，我们必须同时满足这两个目标。这很困难，因为局部性是一个聚合属性，需要从大量请求中才能看出模式；而负载则是一个瞬时属性，需要在做出决策的瞬间感知每个解码器的实时状态。</p>
+<p>第三个挑战是“在前缀缓存命中时保持签名一致性”。前缀缓存机制会重用共享提示前缀的KV块，从而跳过对共享部分的预填充。这意味着，对于命中缓存的请求，其缓存部分的专家激活信息不会在当前的预填充过程中重新计算。如果缺乏一种机制来恢复这部分专家信息，那么缓存命中的请求的签名就是不完整的，会导致错误的路由决策。简单的缓存每个请求的完整签名也不行，因为一个请求可能只部分命中缓存，或者缓存块会被动态驱逐和重用。</p>
+<p>ELDR的设计正是为了解决这些挑战。</p>
+<p>ELDR架构是一个轻量级层，集成到现有的预填充-解码分离服务堆栈中。它在预填充阶段记录每个KV块的专家签名，并在离线阶段进行路由状态的计算。整个系统分为两个阶段：离线阶段对请求的预填充签名进行分组，以减少专家激活；在线阶段则利用这些分组信息，在预填充-解码切换时路由每个请求。</p>
+<p>先说“专家签名”的设计。ELDR利用了预填充专家激活与解码专家激活高度相关的观察。它将每个请求的预填充专家激活总结为一个紧凑的“专家签名”，用于预测解码时将使用的专家。这个签名的设计目标是：两个签名之间的距离，能够准确预测两个请求在解码阶段专家使用情况的重叠程度。</p>
+<p>为了实现这个目标，ELDR遵循了三个设计原则：</p>
+<ol><li>离散而非连续：签名应该测量解码时每个MoE层中被选中的前K个专家的归一化计数。只有离散的前K个专家才真正加载权重，因此离散的预填充计数是专家激活的稀疏、同形式估计。而连续的门控分数会将softmax概率分散到所有专家，包括那些不会加载权重的专家，从而掩盖了请求之间的对比度。</li><li>降低通用专家权重：少数“通用型”专家几乎在所有预填充中都会被激活，它们携带的请求身份信息很少，但其巨大的计数会掩盖那些真正能区分工作负载的“专业型”专家。ELDR通过使用“逆文档频率”（IDF）来重新加权每个专家计数，从而缩小通用专家的权重，放大稀有专家的权重。</li><li>保留信息丰富的层：MoE模型中，不同的层对路由信号的贡献不均。有些层携带了将预填充映射到解码的强信号，而另一些层则添加了不区分请求的维度，稀释了签名的方向性。ELDR会选择一个最佳的层子集，以最大化签名距离与解码模式距离之间的秩相关性。</li></ol>
+<p>通过这三个原则，ELDR构建了一个高质量的专家签名。</p>
+<p>接下来是“解码聚类和路由”。ELDR需要同时满足两个目标：局部性（将相似请求放在一起）和负载均衡（避免单个解码器过载）。ELDR将这两个目标分解到两个阶段：</p>
+<ol><li>离线聚类：ELDR通过对校准签名进行聚类，为每个解码器生成一个“中心点”。这里使用的是“匈牙利平衡K均值算法”（Hungarian-balanced k-means）。传统的K均值算法只优化局部性，但可能导致聚类大小不均，进而造成解码器负载不均。而匈牙利平衡K均值算法则确保每个聚类的大小大致相等，从而在保证局部性的同时，实现解码器负载的宏观均衡。这样，每个解码器都会分配到一个大致相同数量的请求集合。</li><li>在线路由：在服务过程中，当一个请求从预填充阶段传递过来时，ELDR会计算它的专家签名与所有解码器中心点之间的相似度。然后，它会选择一个“局部性带”（locality band），这个带包含那些与请求签名最相似的几个解码器。最后，ELDR会从这个“局部性带”中，选择当前负载最低的解码器来处理请求。这个“局部性带”参数允许我们灵活地平衡局部性和负载：当签名强烈指向某个解码器时，局部性带会很窄，优先保证局部性；当签名模糊时，局部性带会更宽，允许更多地考虑负载均衡。</li></ol>
+<p>最后是“前缀缓存一致性”。为了解决前缀缓存导致签名不完整的问题，ELDR将专家签名与KV缓存以相同的“块粒度”进行跟踪。这意味着，每个KV块都会携带其令牌的专家足迹。当预填充将令牌的K/V值写入一个块时，该令牌在每个MoE层中选择的前K个专家也会被写入到匹配的签名行中。一个请求的完整签名，就是其所有KV块签名之和。这样，无论请求是完全命中、部分命中还是未命中缓存，ELDR都能恢复其完整的专家签名，而无需重新计算。这个签名缓存只占用少量内存，并且与KV缓存的生命周期绑定，因此不会引入额外的管理开销。</p>
+<p>ELDR在vLLM中实现，作为现有堆栈上的一个薄层。它只改变了哪个解码器服务哪个请求，而不触及模型、门控决策、内核或批处理，因此模型的输出与标准方法完全相同，是“无损”的。</p>
+<p>在评估阶段，ELDR在多款MoE模型和不同工作负载下进行了测试。结果显示，ELDR在所有场景下都显著降低了中位数“每输出令牌时间”（TPOT），降幅高达5.9%至13.9%，并且始终优于最强的负载均衡基线。在任务型工作负载中，ELDR将中位数TPOT降低了9.6%至13.9%，尾部TPOT降低了11.8%至15.7%。即使与一个使用“领域标签”作为完美局部性信号的朴素基线相比，ELDR也表现更优，因为它能通过更精细的专家签名聚类识别更细粒度的局部性，并通过局部性带路由来平衡实时负载。</p>
+<p>实验还证实了ELDR的TPOT改进确实来自于每个解码步骤中活跃专家数量的减少。与纯负载均衡策略相比，ELDR平均减少了17%的每步活跃专家数量。</p>
+<p>在设计验证方面： ELDR的离散、IDF加权、层选择的签名设计，比连续型签名表现更好，进一步证实了离散预填充计数是正确的原始信号。 “匈牙利平衡K均值算法”至关重要：虽然传统的K均值算法可以改善中位数TPOT，但由于负载不均，它会显著恶化尾部TPOT。而平衡K均值算法则能同时改善中位数和尾部TPOT。 “局部性带”的宽度也很重要：纯粹的“最近中心点”路由（即局部性带宽度为零）在某些工作负载下会恶化尾部TPOT，因为相似请求的瞬时爆发会集中到一个解码器上。一个小范围的局部性带（例如0.05）可以消除这种恶化，同时仍能保持中位数TPOT的降低。 前缀缓存的兼容性也得到了验证：ELDR的优势在启用和禁用前缀缓存时都保持不变，表明专家局部性带来的好处与前缀缓存的好处是叠加的。</p>
+<p>ELDR的泛化能力也得到了测试： 在不同解码器池大小下，ELDR的性能提升随着解码器数量的增加而单调增长，这符合其机制：更多的解码器可以将工作负载划分为更细粒度的集群，从而进一步缩小每个解码器的专家集合，降低延迟。 对于大型MoE模型，比如235B参数的模型，ELDR也表现出色。通过将聚类与每个解码器内部的专家放置相结合，ELDR在每秒24到56个请求的负载下，将中位数TPOT降低了5.9%到7.9%，尾部TPOT降低了5.1%到11.6%。</p>
+<p>ELDR的开销非常小。离线部分，签名采集和聚类拟合在CPU上几秒内即可完成。在线服务时，ELDR每请求仅增加约0.5毫秒的额外延迟，这在通常几十毫秒的TTFT中占比不到1%。签名缓存占用的HBM内存也微不足道。</p>
+<p>总之，ELDR为PD分离式MoE服务中的解码路由提供了一个新的维度：专家局部性。它通过一个从预填充阶段推导出的专家签名，实现了容忍负载的路由策略，并且与前缀缓存保持一致。这种方法是无损的，因为它只改变了哪个解码器服务请求，而不会改变令牌的专家选择，因此模型输出与标准方法完全一致。ELDR能有效降低中位数和尾部TPOT，并且能够推广到各种模型、工作负载和拓扑结构。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

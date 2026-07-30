@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skill Self-Play: Pushing the Frontier of LLM Capability with Co-Evolving Skills · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 27, 2026</time> · <a href="https://arxiv.org/abs/2607.22529">arXiv</a> · <a href="https://arxiv.org/pdf/2607.22529">PDF</a></div>
+    <h1>Skill Self-Play: Pushing the Frontier of LLM Capability with Co-Evolving Skills</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-27-skill-self-play-pushing-the-frontier-of-llm-capability-with--dac0cbb9.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>LLM training is shifting from manual design and annotation to interaction-driven self-evolution. However, existing self-evolutionary methods face a fundamental dilemma between task diversity and verification reliability: environment-bound methods obtain precise feedback but confine learning to narrow domains, while open-ended self-generation broadens the task space but lacks reliable verification, allowing misleading rewards to pollute the training loop. We identify agent skills as a powerful middle ground to reconcile this tension: each skill ensures deep, verifiable execution in a specific scenario, while dynamic routing across skills maintains open-ended task variety. Leveraging this insight, we introduce Skill Self-Play (Skill-SP), a co-evolutionary framework comprising a proposer, a solver, and a dynamic skill controller. Orchestrated via a reinforcement learning loop, these components co-evolve in a continuous self-play loop: the proposer generates challenging tasks conditioned on dynamically sampled skills; the solver explores candidate solutions to push its capability boundaries; and the skill controller collects execution feedback to update and expand the skill library. This interactive co-evolution effectively bridges the gap between structured verification and open-ended exploration. Empirical evaluations on tool-use and reasoning benchmarks demonstrate that Skill-SP, serving as a robust evolution engine, consistently pushes the performance ceiling of competent backbones while catalyzing striking turnarounds for initially misaligned models. Our code is available at https://github.com/Qwen-Applications/skill-self-play.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>大语言模型的训练正在经历一场范式转变，从人工标注驱动转向模型自我进化驱动。但这条路上有一个根本性的两难困境：要让模型自己生成训练任务、自己验证答案，你就必须同时保证任务的多样性和验证的可靠性，而这两件事在现有方法里很难兼得。这篇来自阿里巴巴Qwen团队的论文，核心就是在解这道难题，他们提出的方法叫做Skill Self-Play，简称Skill-SP。</p>
+<p>先把问题说清楚。现有的自我进化方法大致分两条路。第一条路是环境绑定的方法，就是把模型放进一个可以精确验证答案的外部环境里，比如代码执行器、游戏模拟器或者检索引擎。模型生成答案，环境给出对错反馈，信号非常可靠。AlphaGo走的就是这条路，最近很多LLM推理增强工作也是这个思路。问题在于，这类方法的任务空间被死死限制在那个特定环境里。代码执行器只能训代码，游戏模拟器只能训博弈推理，没有办法自然地泛化到更广泛的开放任务。</p>
+<p>第二条路是开放生成加事后过滤，让模型自由生成任务，然后用格式检查、多数投票之类的方法把不合格的过滤掉。这条路任务覆盖面广，但质量控制是硬伤。没有结构化引导，模型生成的任务很容易变成两类垃圾：一类是格式正确但逻辑不通的伪合法任务，另一类是过于简单、千篇一律的模板任务。更糟糕的是，这种过滤是被动的，只能事后拦截明显的格式错误，根本无法主动引导生成器产出有价值的新颖任务。随着迭代轮数增加，错误和偏差不断积累，就会出现所谓的合成数据崩塌，模型越训越差。</p>
+<p>这两条路的症结，作者用一个形象的说法概括：环境绑定是窄而准，开放生成是广而乱。有没有一种东西，既能给任务生成提供结构化的约束，保证可验证性，又不会把任务空间锁死在某个特定领域？</p>
+<p>论文的核心洞察是：技能，也就是skill，可以充当这个中间层。这里的skill不是泛泛而言的能力，而是Anthropic提出的一个具体概念：一个可复用的模块化程序知识单元，它把针对某类任务的操作规则、示例、验证逻辑打包在一起，形成一个自包含的结构块。你可以把skill理解成一张操作手册加上一套检验工具，它告诉任务生成器这类任务该怎么造、造出来怎么验，同时它本身可以不断更新迭代。</p>
+<p>这个抽象有几个关键特性。第一，每个skill都覆盖一类有结构的任务模式，所以生成的任务天然具有可验证性，不会产生无法判断对错的模糊任务。第二，skill库里可以有很多不同的skill，通过动态路由在不同skill之间切换，就保住了任务多样性。第三，skill本身可以根据训练过程中积累的经验自动更新、新增、淘汰，这就形成了一个持续进化的课程引擎。</p>
+<p>基于这个洞察，Skill-SP框架由三个核心角色组成：提议者、求解者、控制器，外加一个动态演化的技能库。</p>
+<p>提议者负责生成训练任务。它的生成过程分两条并行的流：技能流和探索流。技能流是主力，每次生成任务时从技能库里采样一个skill，把这个skill包含的规则、示例、验证逻辑注入到提议者的上下文里，作为结构化先验，引导它生成符合规范的任务。探索流则完全不加技能约束，让提议者自由发挥，目的是发现技能库里还没有覆盖到的新模式，防止整个系统陷入自我封闭的循环。这两条流的输出混合在一起，共同构成训练池。</p>
+<p>求解者负责尝试解决提议者生成的任务，它的表现直接决定哪些任务值得训练，因为一道题如果对当前模型来说太简单，或者根本无法解决，都不是好的训练信号。Skill-SP为此设计了一个前沿奖励的概念：任务难度要恰好处于模型当前能力边界附近，也就是求解者有大约一半概率解对、一半概率解错的区间。这个设计的灵感来自课程学习，道理很直观，人学习时也是在稍高于现有水平的难题上进步最快，太简单的题浪费时间，太难的题没有收益。形式上，前沿奖励定义为一减去两倍期望成功率与0.5之差的绝对值，当成功率恰好是0.5时这个值最大为1，偏离0.5越远值越小。</p>
+<p>但只用前沿奖励还不够，因为提议者可能会钻空子：生成一些逻辑上根本说不通的任务，或者验证合同本身就是错的，这样求解者永远答不对，成功率为零，前沿奖励反而变成一个被利用的漏洞，产生虚假的困难感。为了防止这种奖励劫持，Skill-SP在前沿奖励前加了一个二元有效性门控：只有通过三重检验的任务才能进入奖励计算。这三重检验分别是：全局格式是否合规、技能内置的验证器是否通过、以及探针一致性检验——就是用当前求解者跑若干次推理，看多数答案是否和提议者预设的参考答案吻合。如果任务本身就是无解的，探针一致性就会失败，这道任务就会被过滤掉，同时提议者得到负惩罚。这个设计的精妙之处在于，它把验证前置到任务生成阶段，而不是等到求解者训练完才发现数据有问题。</p>
+<p>控制器是整个框架里负责技能库演化的那个角色。它的工作分三部分：精炼、剪枝、归纳。</p>
+<p>精炼是指根据生成失败的轨迹，分析哪些结构性错误是系统性的，然后自动修改对应skill的规则和提示，让这个skill以后少犯同类错误。同时，每个skill都记录着历史使用统计，包括它生成的任务的平均前沿奖励，这些统计数据会影响后续的采样权重，高质量的skill被更多使用，低效的skill逐渐淡出。</p>
+<p>剪枝是指识别和淘汰已经饱和的skill。当一个skill持续生成对当前求解者来说过于简单的任务，它的平均前沿奖励就会持续低于某个阈值，系统就把它归档移出活跃库，把生成预算省下来用在更有价值的skill上。</p>
+<p>归纳是最有意思的部分。探索流里不受技能约束的自由生成，偶尔会产出一些新颖的、求解者觉得有挑战性的任务，这些任务的前沿奖励比较高，说明它们触及了当前能力边界但还没有被系统化覆盖。控制器把这类任务收集起来，让一个实例化为基础模型的技能控制器去抽象这些任务背后的共同模式，生成新的skill候选，再经过结构完整性检验和语义新颖性检验，确保不是重复已有skill，才正式加入技能库。这个机制保证了技能库是开放增长的，而不是一开始就封闭固定的。</p>
+<p>整个训练循环就是这三个角色的协同进化：提议者在skill引导下生成任务，求解者在精选出的前沿课程上学习，控制器根据执行反馈演化技能库，然后下一轮开始，提议者面对的是更新后的技能库，求解者面对的是更难的任务，如此迭代。这里还有一个重要的细节：提议者和求解者都通过强化学习更新，具体算法是GRPO，也就是分组相对策略优化，这是DeepSeekMath引入的算法，不需要单独的评判模型，直接用组内样本的相对奖励来估计优势函数，计算效率比较高。</p>
+<p>实验部分在两类任务上验证了这个框架：工具调用和逻辑推理。</p>
+<p>工具调用用了API-Bank和BFCL两个基准。API-Bank分三个难度等级，Level 1到Level 3，Level 3是最难的，考察多步骤、多工具的组合调用。BFCL则覆盖JavaScript、Python、Java三种语言的函数调用格式以及现实场景的接口调用。逻辑推理用ZebraLogic，这是一个斑马谜题风格的约束满足任务，规模从Small到X-Large四个等级，X-Large的搜索空间超过十的九次方，对推理能力要求非常高。</p>
+<p>测试的模型包括五个骨干：Qwen3-4B-Instruct、Qwen3-8B、Ministral-3-8B-Instruct、Ministral-3-14B-Instruct，还有IBM的Granite-4.1-3B，参数量从3B到14B。对照组是无引导自对弈，也就是去掉技能库，让提议者自由生成然后事后过滤。</p>
+<p>工具调用的结果最能说明问题。对于基础能力已经不错的模型，比如Qwen3-4B-Instruct，Skill-SP带来平均6.5个百分点的绝对提升，无引导自对弈只有3.9个点，而且无引导版本在某些子任务上还会掉点，显示出不稳定性。</p>
+<p>最戏剧性的案例是Ministral-3-8B。这个模型在工具调用上基础非常差，零样本条件下格式合规率极低，比如在BFCL的JavaScript子集上只有8.2分、Python上只有16.4分。无引导自对弈对它几乎完全没用，整体提升只有0.1个百分点，因为这个模型根本无法自己生成合格的任务，于是无引导的循环就陷入了数据饥荒，没有有效学习信号。但Skill-SP在这个模型上取得了整体42.9个百分点的提升，Python子集从16.4分飙升到90.8分，提升了74.4个百分点，这可以说是一次救援式的能力激活，而不只是锦上添花。Ministral-3-14B同样如此，整体提升42.3个百分点。这说明技能库预先提供的结构化先验，可以帮助初始能力不足的模型跨越冷启动的门槛。</p>
+<p>逻辑推理的结果同样令人印象深刻。Qwen3-8B在ZebraLogic整体准确率上提升了8.8个百分点，Ministral-3-14B提升12.0个百分点，在Small规模的谜题上提升超过35个百分点。不过在Large和X-Large规模上，进步有限甚至为零，作者对此的解释是纯自对弈需要一个最低能力门槛才能生成有效学习信号，对于搜索空间极大的谜题，模型连探索都无从下手，这是当前方法的一个边界。值得注意的是，无引导自对弈在逻辑推理任务上根本无法建立有效的训练循环，原因是自由生成的模型几乎不可能合成出结构正确的斑马谜题，所以逻辑推理基准上压根儿没有无引导自对弈的对照结果。</p>
+<p>消融实验系统地拆解了每个设计选择的贡献，值得仔细看。</p>
+<p>第一个消融去掉技能库，退化为无引导自对弈，整体下降2.6个百分点，并且学习曲线在早期就趋于平坦，说明结构化引导对于持续学习至关重要。</p>
+<p>第二个消融只用技能流，不用探索流，结果比双流混合差，在API-Bank的L2上下降了4.1个百分点。这验证了双流架构的必要性：技能流保证质量，探索流保证多样性，缺一不可，只靠技能驱动会导致过度专业化，泛化能力下降。</p>
+<p>第三个消融测试技能路由策略，把动态路由换成均匀采样，整体下降1.9个百分点；把技能库冻结不更新，整体下降2.3个百分点。这两个消融一起说明，性能提升来自技能库的动态进化和智能路由，而不仅仅是注入了一些静态的结构约束。</p>
+<p>第四组消融测试协同进化的必要性。固定提议者不更新，整体下降2.1个百分点；固定用于估算前沿奖励的求解者快照不更新，整体下降3.0个百分点；两者都固定，下降3.2个百分点。最值得注意的是固定求解者快照这个消融，它切断了前沿追踪机制，提议者得到的是过时的难度信号，会持续生成对旧版求解者来说困难但对新版求解者来说已经太简单的任务，导致课程停滞。这说明两个策略的协同实时更新是整个框架有效性的核心。</p>
+<p>数据循环诊断实验进一步验证了Skill-SP确实在做真正意义上的课程控制，而不只是碰运气式的数据过滤。跟踪求解者成功率的均值可以看到，技能流生成的任务平均成功率约为0.57，很接近0.5的理想前沿值，而无引导流和纯探索流的成功率分别飘到了0.70和0.75，说明它们生成的任务普遍对当前模型来说过于简单。用语言模型嵌入做主成分分析之后，Skill-SP生成的任务在语义空间里分布更广，而无引导方法的任务扎堆在几个窄区域，反映出模式多样性的差异。技能库生命周期图显示，在五轮迭代里，每轮大约新增20个skill包，同时有旧skill被更新或退役，最终活跃skill增长到86个，经过熵加权的有效skill数量稳定增长到46，说明多样性是真实的，不是少数几个主流技能在撑场面。</p>
+<p>说完方法和实验，再聊聊这篇工作的局限性和对实践的启发。</p>
+<p>局限性上，论文自己也承认，对于能力非常弱的模型在超高难度任务上，自对弈方法存在冷启动瓶颈，X-Large规模的逻辑推理任务对这些模型基本没有改善。此外，技能归纳依赖基础模型自身的抽象能力，如果模型本身无法从样本中提炼出可复用的模式，技能库的增长就会受限。实验也只覆盖了工具调用和逻辑推理两个领域，向更多任务类型的推广还需要验证。</p>
+<p>对于在做大模型训练和自对弈研究的人来说，这篇工作有几个具体的可借鉴点。第一，任务生成的结构化先验和事后过滤是两回事，把验证逻辑前置到生成阶段，远比生成之后再过滤高效，质量提升明显。第二，双流架构是一个通用设计模式：一条流保质，一条流求新，两者混合是防止模式崩塌的实用手段。第三，课程设计中的前沿奖励加有效性门控的组合，是防止提议者奖励劫持的有效工程实践，值得在其他需要提议者-求解者对抗训练的场景里借鉴。第四，对于初始能力不足的模型，预先提供一批结构良好的种子技能，可以帮助它跨越自对弈的冷启动门槛，这一点在迁移到新领域时尤其重要。</p>
+<p>自我进化的核心挑战从来不是让模型自由生成数据，而是在没有外部监督的情况下，如何保证生成数据的质量随着能力进化而同步提升，Skill-SP通过让技能库扮演持续演化的课程引擎这一角色，给出了一个有说服力的答案。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

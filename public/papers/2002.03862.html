@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cross-modal variational inference for bijective signal-symbol translation · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Feb 10, 2020</time> · 1 min read · <a href="https://arxiv.org/abs/2002.03862">arXiv</a> · <a href="https://arxiv.org/pdf/2002.03862">PDF</a></div>
+    <h1>Cross-modal variational inference for bijective signal-symbol translation</h1>
+    <div class="tags"><span class="tag">metro</span><span class="tag">reading-list</span><span class="tag">t4</span></div>
+  </header>
+  <section class="notes"><h2>Notes</h2><ul><li>共享隐空间双向建模，你 P3 audio↔chart 双向 的理论根基（已写进路线图）。</li></ul></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2020-02-10-cross-modal-variational-inference-for-bijective-signal-symbo-29012f22.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Extraction of symbolic information from signals is an active field of research enabling numerous applications especially in the Musical Information Retrieval domain. This complex task, that is also related to other topics such as pitch extraction or instrument recognition, is a demanding subject that gave birth to numerous approaches, mostly based on advanced signal processing-based algorithms. However, these techniques are often non-generic, allowing the extraction of definite physical properties of the signal (pitch, octave), but not allowing arbitrary vocabularies or more general annotations. On top of that, these techniques are one-sided, meaning that they can extract symbolic data from an audio signal, but cannot perform the reverse process and make symbol-to-signal generation. In this paper, we propose an bijective approach for signal/symbol translation by turning this problem into a density estimation task over signal and symbolic domains, considered both as related random variables. We estimate this joint distribution with two different variational auto-encoders, one for each domain, whose inner representations are forced to match with an additive constraint, allowing both models to learn and generate separately while allowing signal-to-symbol and symbol-to-signal inference. In this article, we test our models on pitch, octave and dynamics symbols, which comprise a fundamental step towards music transcription and label-constrained audio generation. In addition to its versatility, this system is rather light during training and generation while allowing several interesting creative uses that we outline at the end of the article.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>音乐转录这件事，长期以来都是一个单向的问题：给你一段音频，你从里面提取出音符信息。但这篇论文问的是另一个问题——能不能让这个过程双向都走通？既能从音频推出符号，也能从符号生成音频？而且两边共用同一套底层表示？这就是这篇论文的核心出发点。</p>
+<p>先说清楚痛点在哪里。传统的音乐信息检索，也就是MIR领域，做音高提取的主流做法是基于基频检测。最经典的算法叫YIN，它的原理是在时域里找信号的自相关峰值，从而估计基本频率。这类方法在单声部信号上效果不错，但到了多声部场景，比如两个乐器同时演奏，问题就复杂得多。多声部的处理往往要递归地做：先找最强的基频，然后把那个谐波成分减掉，再找下一个。这种减法策略本身就容易累积误差，而且一旦频率相近的乐器叠在一起，谐波结构就会互相干扰，识别率急剧下降。</p>
+<p>另一类方法是基于频谱分解的，比如非负矩阵分解，英文缩写NMF。NMF的思路是把一张频谱图分解成若干非负基向量的线性组合，每个基向量对应一种&quot;音色模板&quot;，组合系数对应响度随时间的变化。这个思路听起来很优雅，但实际上它很难找到全局最优解，而且对初始值非常敏感。研究者发现，要让NMF真正好用，往往需要注入外部知识，比如事先告诉模型每个乐器的谱型长什么样。这说明纯粹靠分解去解决问题，缺乏足够的约束，模型本身没有学到任何关于&quot;音乐符号&quot;的概念。</p>
+<p>深度学习进来之后，钢琴转录变成了一个相对成熟的任务，有了像Onsets and Frames这样的端到端模型，在MusicNet和MAESTRO数据集上取得了不错的成绩。但这些模型仍然是单向的分类器：输入频谱，输出音符标签。它们没有生成能力，不能从符号生成音频，也不能在一个统一的概率框架里同时处理两个方向。更关键的是，这些模型的符号词汇表是固定的，想换一套标注体系就得重新训练。</p>
+<p>这篇论文提出的解决思路，核心是把信号和符号的对应关系，建模成一个联合概率分布的估计问题。不是说&quot;给定音频x，输出标签y&quot;，而是说&quot;x和y是两个相关的随机变量，我要估计它们的联合分布p(x, y)&quot;。这个视角的转变非常重要，因为一旦你建立了联合分布，两个方向的推断就都是自然的：从x推y，或者从y生成x，都是边际化或条件化的操作，不需要两套独立的系统。</p>
+<p>怎么估计这个联合分布呢？这里用到了变分自编码器，也就是VAE。在展开方法之前，我们先把VAE的基本逻辑说清楚，因为整篇论文的架构都建立在这个基础上。</p>
+<p>VAE的出发点是变分推断。你有一批数据x，你想知道它背后的概率密度p(x)。你假设存在一组隐变量z，数据是通过某个生成过程p(x|z)从z生成的，而z本身服从一个先验分布p(z)，通常是标准正态分布。你想要的是后验分布p(z|x)，也就是给定数据，隐变量应该长什么样。但这个后验在复杂模型里是算不出来的，因为它需要对所有可能的z积分，这个积分一般没有解析解。</p>
+<p>变分推断的做法是用一个参数化的分布q(z|x)来近似这个真实后验，然后最大化所谓的证据下界ELBO。ELBO由两部分组成：一部分是重建项，衡量从z重建回x的质量；另一部分是KL散度正则项，要求q(z|x)不要偏离先验p(z)太远。当编码器和解码器都用神经网络来参数化时，就得到了标准的VAE。编码器把x映射到一个高斯分布的均值和方差，解码器把从这个高斯里采样出来的z还原成x。整个系统端到端训练，梯度通过重参数化技巧反传。</p>
+<p>VAE的好处在于隐空间是有结构的。先验是各向同性高斯，KL正则项把后验往先验方向推，使得隐空间的分布相对平滑。你可以在隐空间里插值，生成的样本也会平滑地在两个已知样本之间过渡。这个性质对生成任务非常有用。</p>
+<p>这篇论文的关键创新是：为信号和符号两个域分别训练一个VAE，然后通过一个额外的约束，强迫这两个VAE的隐空间表示互相匹配。灵感来自Higgins等人提出的SCAN框架，那是一个针对视觉概念和语言描述之间映射的工作。</p>
+<p>具体的做法是这样的。你有一对数据，x是音频的频谱表示，y是对应的符号信息，比如音高、音区和力度。你训练一个信号VAE，让它学会重建x；同时训练一个符号VAE，让它学会重建y。这两个VAE各有自己的编码器和解码器，完全独立地处理各自的域。但在它们的隐空间上，加上一个额外的KL散度约束：对于每一对匹配的(x, y)，要求符号编码器产生的隐分布q_s(z|y)和信号编码器产生的隐分布q_x(z|x)尽量接近。这个约束的写法很有讲究，KL散度的方向是用q_s去逼近q_x，也就是符号那边的分布被拉向信号那边，这样做的效果是保证符号编码器能覆盖信号编码器分布的全部质量，避免符号推断在信号分布的低概率区域出现盲区。</p>
+<p>这个约束在训练时被放大了十倍，按照Higgins推荐的做法来实现更强的隐空间对齐。此外还使用了warm-up策略，也就是在前一百个训练轮次里，把正则化系数从零慢慢增加到一，避免训练初期KL项太强导致隐空间坍缩。</p>
+<p>一旦两个隐空间被强制对齐，双向推断就自然实现了。从音频推符号的路径是：把x输入信号编码器，得到隐分布，从隐分布里采样，再通过符号解码器，输出符号概率分布。从符号生成音频的路径是反过来的：把y输入符号编码器，得到隐分布，采样，通过信号解码器，输出频谱。因为两边的隐空间被约束成一致的，这个跨域的推断就是有意义的。</p>
+<p>这里的符号表示也值得说清楚。论文把符号y建模成三元组：音高类别、音区、和力度。音高类别是十二个半音中的哪一个，音区是哪个八度，力度分为强、中、弱三档。每一个都用分类分布来建模，也就是categorical distribution，用softmax输出一个概率向量。对于二值标签用Bernoulli分布。符号VAE的解码器就是给定隐向量，输出这些分类分布的参数。</p>
+<p>实验用的数据库叫Studio One Line，简称SOL，是IRCAM的一个单音符录音库。收录了小提琴、中音萨克斯、长笛、C调小号和钢琴，每个乐器覆盖了整个音域，每个音符都有三个力度层次的录音，总共八百个文件。</p>
+<p>预处理方面，论文没有用标准的短时傅里叶变换，而是用了非平稳Gabor变换，英文是Non-Stationary Gabor Transform，缩写NSGT。这个变换的特点是可以自定义频率分辨率随频率变化的方式，而且是可逆的——这一点很重要，因为论文最终要从频谱重建回音频，可逆性是必须满足的条件。具体用的是常数Q尺度，每个八度48个频率bin，低频分辨率高、高频分辨率低，符合人耳对音高的感知特点。</p>
+<p>模型架构相对简单。单乐器情况下，信号VAE的编码器和解码器都是两层的多层感知机，每层两千个隐藏单元，隐空间维度是三十二。符号VAE的编码器和解码器也是两层MLP，但每层只有八百个隐藏单元。对于两个乐器混合的情况，信号处理的隐藏单元增加到五千。三个乐器混合时，信号端五千单元，符号端也增加到一千五百。整个模型规模不大，这是作者有意为之，想证明即使是轻量级架构也能完成这个任务。</p>
+<p>评估设置有两个层面。信号质量用对数似然和伊塔库拉-斋藤散度来量化，后者是一个感知意义更强的频谱差异度量。符号质量用分类准确率来衡量。还有一个基线模型作为对照：先对信号数据做PCA降维，再用和符号解码器同等规模的MLP做有监督分类，用交叉熵损失训练。这个基线代表的是&quot;不用生成模型、纯粹用判别式方法&quot;的传统思路。</p>
+<p>结果怎么样呢？在单乐器情况下，信号重建质量接近完美，音频听起来非常清晰自然。符号推断的准确率也很高，而且优于基线分类器。论文作者解释这个优势来自两方面：第一，VAE的重建任务迫使隐空间去捕捉信号的内在结构，这让隐空间本身就成了一个信息丰富的特征空间；第二，贝叶斯式的分布匹配比硬性的确定性映射更平滑，对于训练数据里没见过的样本泛化更好。</p>
+<p>到了两个乐器混合的情况，性能开始下降，但仍然在可接受范围内。到了三个乐器混合，问题就明显了。这里有一个很有意思的诊断实验：论文区分了&quot;严格分类率&quot;和&quot;宽松分类率&quot;两个指标。严格分类率要求预测出来的标签不仅正确，而且归到正确的乐器上。宽松分类率则不管归到哪个乐器，只要标签本身对了就算对。结果发现在三乐器情况下，宽松分类率比严格分类率高出很多。这说明模型确实&quot;感知&quot;到了正确的音符，但搞不清楚哪个音符属于哪个乐器。这是一个标签-乐器配对的组合爆炸问题。</p>
+<p>这个现象背后有一个深层原因：当多个乐器发出相近频率的声音时，频谱成分会互相重叠，模型很难把某个谐波峰值精确地分配给特定的乐器。而且目前的模型架构也没有任何机制来阻止不同乐器的符号解码器关注同一段频谱成分，从而产生冗余的预测，甚至出现排列问题——哪个解码器该对哪个乐器负责这件事，模型没有被显式约束。</p>
+<p>在外部数据集上的测试也揭示了一些泛化局限。论文用了一个包含长笛琶音、音阶和旋律录音的数据集来测试，发现音高类别的识别还算不错，但音区识别明显下降。分析之后发现，这批录音里有一个低八度的泛音成分，而训练数据里没有这种现象。这说明模型对训练集里乐器的声学特性产生了一定依赖，泛化能力在面对不同型号或演奏风格的同类乐器时会有所下降。作者建议解决办法是在训练时纳入更多同类乐器的多样化录音。</p>
+<p>另外一个值得注意的局限是时间维度。这个模型处理的是静态的频谱帧，没有考虑音符的时间演化。每一帧都是独立处理的，这意味着颤音、滑音、延音踏板效果、音符衔接这些时序特征全都无法被捕捉。作者承认这是目前最大的短板之一，认为引入时序建模可能是让模型适用于更丰富符号词汇的关键步骤。</p>
+<p>回到模型的优势面，有几点值得细讲。第一是半监督学习的能力。因为信号VAE和符号VAE是两个独立的模块，只在隐空间上有约束联系，所以即使训练数据里有些样本缺少符号标注，也可以只训练信号那一侧的编码解码器，不浪费任何数据。这在实际音乐数据里很有价值，因为大量录音没有精确的符号标注，但可以用来强化信号的重建能力，间接让隐空间更好。</p>
+<p>第二是词汇任意性。只要你能给符号建模成某种概率分布，理论上任何符号词汇都可以接入这个框架。论文里用的是音高加音区加力度，但完全可以换成演奏技巧、时值、音乐表情记号，甚至完全非音乐的语义标签。这个开放性是传统基频检测方法根本做不到的。</p>
+<p>第三是创作应用的可能性，这是论文专门用一节来讨论的部分。因为隐空间是一个连续的向量空间，而且信号和符号都能从同一个隐空间点生成，所以这个空间可以被当作一个&quot;创作控制台&quot;来使用。几种具体的用法：一是序列生成，把一串符号标签输入符号编码器，得到对应的隐分布序列，从里面采样，通过信号解码器生成音频；二是音色渐变，在隐空间里取两个目标点，沿两点之间画一条轨迹，每隔一段采样一次，就可以得到从一种声音平滑变换到另一种声音的序列；三是自由游走，在隐空间里做没有符号约束的随机游走，同时实时输出生成的音频和对应的符号推断；四是符号提取与在线学习，在实时处理外部音频信号的同时，把信号输入信号编码器推断符号，还可以继续用这批新数据更新信号编码解码器的权重，实现某种形式的在线适应。</p>
+<p>这些创作用例之所以可行，关键在于符号空间和信号空间共享同一个底层隐变量，不是两套独立的系统通过查表来关联，而是通过一个共同的分布来相互理解对方的结构。这种设计哲学和过去&quot;先分类再合成&quot;的两阶段流水线有根本区别。</p>
+<p>对于听这篇论文的研究者来说，可以从几个角度考虑怎么借鉴。如果你在做多模态学习或跨域表示，SCAN式的隐空间对齐是一个轻量级但有效的方案，不需要复杂的对抗训练，只需要在ELBO上加一个KL约束项。KL方向的选择有实际意义，决定了哪边的分布是被迫去覆盖哪边。如果你在做音乐或音频相关的任务，NSGT作为可逆的多分辨率变换是一个值得关注的工具，尤其是你最终需要从频谱重建波形的时候，相比STFT加Griffin-Lim那种近似重建，可逆变换能给你精确还原。如果你在研究多声部分离或多源识别，这篇论文关于宽松和严格分类率之间差距的发现，清楚地指出了标签-源配对的排列问题是当前方法的核心瓶颈，这个问题在现有架构里没有解，值得专门设计显式的约束或分配机制来处理。</p>
+<p>论文本身也是诚实的，它没有宣称在任何单项指标上超越了最强的专用系统。单乐器下的性能是有说服力的，多乐器下的性能只是&quot;尚可&quot;。但它提供的是一个统一框架，把原本碎片化的问题——音高识别、力度识别、音符生成、跨域翻译——整合进一个共同的概率语言里，而且训练开销相对较小。</p>
+<p>这说明一件事：在设计系统的时候，方向的对称性和框架的统一性本身就是一种价值，即使单方向的性能没有专用模型强，但双向可用、词汇任意可换、支持半监督训练这些属性加在一起，在真实应用场景里的灵活性要远超过一堆各自为政的专用工具。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

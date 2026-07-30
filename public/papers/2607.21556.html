@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visual Contrastive Self-Distillation · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 24, 2026</time> · <a href="https://arxiv.org/abs/2607.21556">arXiv</a> · <a href="https://arxiv.org/pdf/2607.21556">PDF</a></div>
+    <h1>Visual Contrastive Self-Distillation</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-24-visual-contrastive-self-distillation-fc9eec84.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>On-policy self-distillation (OPSD) is promising as it removes the external teacher required by on-policy distillation (OPD), yet it still needs asymmetric information between teacher and student to ensure that the self-teacher provides a stronger learning signal than the student. Existing methods create this asymmetry either through privileged answers or visual evidence. We ask whether both can be removed, yielding a simpler form of OPSD driven purely by input conditioning. For this purpose, we propose Visual Contrastive Self-Distillation, namely VCSD, which converts image-content removal into an on-policy self-distillation signal. At each student-generated response prefix, the EMA teacher produces two next-token distributions under the same prompt and prefix -- one conditioned on the original image and the other on a content-erased control. Their token-wise log-probability difference highlights candidates whose likelihood is specifically increased by the instance-level visual content. We use this contrast to sharpen the teacher&#x27;s original-image distribution within its plausible support, and distill the resulting full-distribution target into the student. Using ViRL39K dataset, VCSD consistently outperforms matched OPSD across Qwen3-VL and Qwen3.5 models. For example, on Qwen3-VL, it improves the seven-benchmark aggregate from 62.27% rightarrow 67.04% at 2B, 71.30% rightarrow 73.16% at 4B, and 72.51% rightarrow 76.26% at 8B. Furthermore, VCSD requires no external teacher, privileged answers, visual evidence signals, reasoning traces, or additional inference-time cost.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>现在的视觉语言模型有一个很顽固的毛病：它们在回答问题的时候，往往更依赖语言层面的统计规律，而不是真正去看图。比如你给它一张有七个积木块的图，它可能因为&quot;六&quot;这个词在训练数据里出现得更频繁，就直接说六个。这个问题在强化学习和知识蒸馏的后训练阶段同样存在，模型学到的是&quot;怎么说话听起来像对的&quot;，而不是&quot;怎么从图里读出信息&quot;。今天要讲的这篇论文，题目叫做视觉对比自蒸馏，英文缩写VCSD，它提出了一个很干净的思路来解决这个问题。</p>
+<p>要理解这篇论文，我们先从它所处的技术背景说起。</p>
+<p>在大模型的后训练领域，有一类方法叫做在线策略蒸馏，英文是on-policy distillation，简称OPD。它的核心想法是：让学生模型自己生成回答，然后用一个更强的外部教师模型来给出每个位置上的概率分布作为监督信号。为什么要用学生自己生成的回答做训练？因为这样训练分布和推理分布是对齐的，模型在训练时见到的状态就是它推理时会走到的状态，避免了分布漂移问题。但这类方法有个明显的成本：你需要一个更强的外部教师，这个教师本身可能比学生大很多，推理成本很高。</p>
+<p>为了去掉这个外部教师，研究者提出了在线策略自蒸馏，也就是on-policy self-distillation，OPSD。自蒸馏的意思是：教师和学生是同一个模型，通常的做法是维护一个EMA教师，EMA是指数移动平均，你可以把它理解成学生参数的一个历史加权平均版本，它比当前学生稍微&quot;老&quot;一点点，但结构完全相同。学生生成回答，EMA教师在同样的位置给出概率分布，学生去拟合这个分布。</p>
+<p>但这里有一个根本性的矛盾：如果教师和学生看到的是完全一样的信息，教师的分布凭什么比学生更有价值？在相同输入下，EMA教师给的信号可能和学生自己的预测差不多，相当于用自己来教自己，学不到什么新东西。这就是自蒸馏里的核心挑战，叫做目标不对称性问题，也就是你必须让教师比学生掌握某些学生没有的额外信息，这样教师的分布才能成为更强的学习信号。</p>
+<p>现有的解决方案大致分两类。第一类是给教师喂额外的语言侧信息，比如把正确答案直接告诉教师，或者给教师看一些推理轨迹、专家示范。这类方法的问题是依赖标注数据，很多场景下并不总是有这些东西。第二类是给教师提供视觉侧的额外信息，比如给教师看裁剪过的、聚焦于关键区域的图像，或者经过某种处理让答案相关区域更突出的图像。这类方法的问题是需要额外的标注流程或者外部定位模型，系统变复杂了。</p>
+<p>这篇论文的作者就问了一个问题：能不能什么额外信息都不提供，只靠输入条件本身的变化，就构造出自蒸馏所需要的目标不对称性？</p>
+<p>他们的答案是可以的，方法是：把图像内容擦除当成一个对照实验。</p>
+<p>具体的做法是这样的。训练的时候，学生模型在原始图像和问题提示词的条件下，自己生成一段回答。然后EMA教师在学生生成的每一个位置，分别做两次前向计算：第一次是用原始图像，第二次是用一张内容被擦除的控制图像。这个控制图像非常简单，就是一张同等分辨率的纯黑RGB图。这两次计算除了图像不同，其他一切都完全一样：提示词一样，回答前缀一样，模型参数一样，多模态的计算路径也一样。</p>
+<p>然后计算这两个分布在词表上的逐词对数概率差值。如果某个词在原始图像条件下的对数概率，比在纯黑图条件下高很多，就意味着这个词的预测强烈依赖于图像里的具体内容。反过来，如果一个词在两种条件下的概率差不多，说明模型主要靠语言先验在预测它，跟这张具体的图没什么关系。</p>
+<p>这个差值就叫做条件对比信号。它量化了每个候选词的预测对当前图像实例的依赖程度。</p>
+<p>但光有这个对比信号，还不够。作者指出了一个陷阱：某个词的概率变化可能很大，但它在原始图像条件下本来就是一个极低概率的词。如果你直接用这个对比信号来调整目标分布，就可能让一些本来几乎不可能出现的词，因为对比值高就被大幅提升，最终破坏了目标分布的合理性。</p>
+<p>所以VCSD给这两个信号分配了互补的角色。原始图像下的教师分布负责&quot;画出可信区间&quot;，也就是告诉我们哪些词是有可能出现的候选。对比信号负责在这个可信区间内，重新调整候选词的相对概率，让那些更依赖图像内容的词得到更高的权重。</p>
+<p>用一个类比来说：想象你是一个厨师在评分，原始图像分布告诉你哪些食材是今天厨房里有的，只有这些食材才能参与比赛；而对比信号告诉你在这些食材里，哪些是今天这道菜的特色食材，哪些是通用调料。VCSD会优先给特色食材更高的分量，因为它们是跟这道菜的具体内容相关的。</p>
+<p>技术上，这个&quot;可信区间&quot;的设定方式借鉴了对比解码领域的一个经典设计。具体来说，支撑集的定义是：某个词的原始图像概率，不低于词表中最大概率的一个固定比例。在论文里这个比例参数叫做alpha，默认值是0.1。也就是说，如果最高概率是0.5，那么概率低于0.05的词就被排除在外，对比调整只发生在剩下的候选词之间。这样就防止了低概率词因为对比值大而被过度放大。</p>
+<p>形成目标分布的公式大致是：对原始图像教师分布取对数，加上对比信号乘以一个强度系数beta，然后在支撑集内做softmax归一化，得到最终的目标分布。学生通过最小化对这个目标分布的前向KL散度来学习。</p>
+<p>前向KL散度这里值得多解释一句。前向KL会迫使学生在目标分布有概率质量的地方都去覆盖，换句话说，学生不能&quot;遗漏&quot;教师认为可能的输出。反向KL则更倾向于让学生只学最可能的那几个点，容易导致模式崩塌。在这个场景下，我们有一个经过对比调整的完整词表分布，希望把它完整地传授给学生，所以前向KL更合适。后面的消融实验也证实了这一点。</p>
+<p>训练循环的整体流程是：学生生成在线策略的回答，教师在每个位置做两次前向，计算对比调整后的目标分布，用前向KL更新学生参数，然后用EMA更新教师参数。训练只需要原始的问题、图像对，不需要任何标注答案，不需要额外的模型，不需要推理时的额外开销。推理阶段只用学生模型，教师和控制图像都不参与。</p>
+<p>从理论层面，作者还给这个设计提供了两个角度的解读。</p>
+<p>第一个角度是把目标构造理解成一个一步KL正则化策略优化问题。如果你把支撑集内归一化的原始图像教师分布看成参考策略，把对比信号看成隐式的视觉证据奖励，那么VCSD构造的目标分布，恰好就是在这个参考策略下，最大化期望奖励减去KL散度惩罚的唯一最优解。这个形式和强化学习里的KL正则化策略优化完全对应，给了整个方法一个清晰的优化语义。</p>
+<p>第二个角度是把对比信号理解成条件逐点互信息的近似。逐点互信息衡量的是，在给定文本上下文的情况下，一个候选词和观测到的图像之间的相关程度。对比信号的计算方式恰好就是：原始图像条件下的对数概率，减去没有图像内容时的对数概率，和互信息的定义形式高度一致。纯黑图作为控制条件，是对&quot;没有当前实例图像信息时模型会怎么预测&quot;的一个代理近似。因此，最大化对比信号等价于让模型的预测对当前图像保持更强的依赖性，而不只是靠语言先验来猜答案。这从理论上解释了为什么这个方法有助于改善视觉语言模型的视觉基础性。</p>
+<p>现在来看实验部分。</p>
+<p>论文在两个模型家族上做了测试：Qwen3-VL的2B、4B、8B，以及Qwen3.5的2B、4B、9B。训练数据使用ViRL39K，这是一个包含约三万九千条单图样本的数据集。基线是三个：原始基础模型，以及一个叫做答案提示OPSD的方法，也就是给教师提供正确答案的在线策略自蒸馏。</p>
+<p>评测用了七个基准测试，涵盖不同维度：BLINK和MMStar测一般视觉感知，MathVista测视觉数学推理，VBench和HRBench4K、HRBench8K测细粒度高分辨率感知，HallusionBench测幻觉。汇报的总分是这七个基准的不加权平均。</p>
+<p>主要结果非常清晰。在Qwen3-VL-2B上，VCSD把七基准汇总分从答案提示OPSD的基础上又提升了1.8个百分点；在4B上提升了1.5个百分点；在8B上提升了1.6个百分点。更重要的是，这个提升不是某一个基准在拉动整体分数，而是七个基准里每一个都有提升。这说明改进是系统性的，不是过拟合到某个特定能力。</p>
+<p>在Qwen3.5模型上，结果更能说明问题：答案提示OPSD相比基础模型并没有稳定提升，在某些配置下甚至有所下滑；但VCSD在所有三个尺度上都比基础模型有一致的提升，提升幅度在0.7到1.4个百分点之间。这说明在这个数据集和模型家族的组合下，提供正确答案给教师反而不如用视觉对比信号来得有效。</p>
+<p>消融实验给出了几个重要发现，我逐一来说。</p>
+<p>关于可信区间支撑集的作用，作者做了有没有这个过滤机制的对比。结果显示，在训练初期两者差别不大，但随着训练步数增加，没有支撑集限制的版本性能开始持续下降，而有限制的版本保持稳定。这是一个很值得注意的发现。自蒸馏是递归的，当前的目标是由当前的模型参数构造的，这个目标再去训练模型，模型参数变化了，下一轮的目标又是基于新的参数构造的。如果没有可信区间的约束，对比信号可能放大那些本来可能性极低的词，导致分布失真，这个失真会在每轮自蒸馏里被累积和放大，最终导致训练崩坏。可信区间的限制相当于在每一步给对比调整加了一个安全护栏，阻止了这个误差放大的过程。</p>
+<p>关于对比强度系数beta，实验发现在beta等于0.1到0.5的范围内，总分变化不超过0.5个百分点，说明方法对这个参数不敏感，有一定的鲁棒性。把beta设为0，也就是去掉对比信号只用原始图像教师分布，总分下降了0.6个百分点；把beta设得过大比如1.0，性能又下降到了跟beta等于0差不多的水平。这说明对比信号的贡献是真实的，但过强的对比会压倒原始图像分布的信息，反而不好。</p>
+<p>关于散度类型的选择，前向KL比JSD高0.5个百分点，比反向KL高1.3个百分点。这个差距支持了前面讲到的理论分析：对于一个调整过的全词表分布，前向KL的覆盖性优势更重要。</p>
+<p>关于控制图像的具体形式，作者测试了纯黑图、高斯噪声图、高斯模糊图和无图像这四种控制方式，结果差别很小，四种方式的汇总分非常接近。这说明方法的关键不是控制图像的具体形式，而是去掉了图像的实例特定内容这个操作本身。只要控制图像能让模型的视觉语义信息基本消失，对比信号就能起作用。</p>
+<p>关于原始图像分布作为锚点的作用，作者引入了一个锚点系数lambda，当lambda等于1时就是完整方法，lambda等于0时只用对比信号做目标而不锚定原始分布。实验显示两者总分接近，但有锚点时模型在训练过程中产生非目标语言词元的比例明显更低，也就是语言一致性更好。这说明原始图像分布的锚点作用主要是稳定训练过程，防止语言漂移，而不是直接贡献能力提升。</p>
+<p>训练动态曲线也很有说服力：在所有评测步骤上，VCSD的汇总分始终高于答案提示OPSD，而且在训练后期VCSD的下降幅度更小。OPSD在MathVista这个测试集上表现出明显的后期退化，而VCSD相对稳定。</p>
+<p>定性分析部分提供了一个很直观的案例。一道关于十进位积木的数学题，图里有七个千位积木块。基础模型数错了，答成了六个；答案提示OPSD把千位块数成了更多，答案也错了；VCSD正确数出了七个，给出了正确答案。作者还可视化了模型在生成回答时每个词对应的图像依赖对比分数，发现VCSD在&quot;屋顶&quot;&quot;瓦片&quot;&quot;食物&quot;&quot;米色&quot;&quot;标志&quot;这些视觉概念词上赋予了更高的对比分，而通用语言词的对比分很低。这说明对比训练确实让模型更聚焦于图像中的具体视觉信息，而不只是用语言先验在猜。</p>
+<p>我们现在来梳理一下这篇论文的局限性以及对实际工作的启发。</p>
+<p>局限性方面，论文没有明确讨论这个方法的天花板在哪里。从原理上看，对比信号的质量依赖于模型在纯黑图条件下确实能给出一个合理的&quot;语言先验预测&quot;。如果模型的视觉编码器处理纯黑图时产生了不稳定的特征，对比信号的质量就会受影响。实验里测试了多种控制图像形式，结果差别不大，这在一定程度上说明了方法的鲁棒性，但这个稳健性是否在所有模型架构上都成立还不清楚。另外，论文只测了单图场景，对于多图或视频这类输入，如何定义合适的控制条件还需要进一步探索。训练数据只用了ViRL39K，这是一个特定构造的视觉推理数据集，在更广泛或不同领域的数据上效果如何还需要验证。</p>
+<p>对实际工作的启发方面，我觉得有几点值得特别关注。</p>
+<p>第一，这篇论文展示了一个重要原则：不对称性可以从数据本身的内部构造中产生，而不必依赖外部标注。在自监督和自蒸馏的框架下，怎样设计输入条件的对比，是一个很有潜力的方向。这个思路不局限于图像内容擦除，可以类比到其他模态或其他形式的条件变化。</p>
+<p>第二，可信区间限制的设计非常值得借鉴。当你用对比信号来调整一个分布时，如果不加约束，高对比值的低概率候选词可能会主导目标分布，并在递归训练中被放大。这个问题在任何基于对比的训练信号中都可能出现，用原始分布来定义支撑集、限制对比调整的范围，是一个通用的稳定化策略。</p>
+<p>第三，前向KL和反向KL的选择在这类知识蒸馏场景下有明确的性能差异。当目标分布是一个精心调整过的全词表分布时，前向KL的覆盖性优势更重要，而不是反向KL的mode-seeking特性。这对于任何需要从一个软目标分布中做完整分布蒸馏的工作都有参考价值。</p>
+<p>第四，从工程角度看，VCSD每次只需要对EMA教师做两次前向传播，一次原图一次控制图，计算开销是OPD类方法的合理范围内，而且推理时不增加任何负担。如果你的工作需要在不引入外部教师的前提下改善视觉基础性，这是一个值得优先考虑的方案。</p>
+<p>视觉语言模型的视觉幻觉问题，根源在于模型训练时过度依赖语言先验。VCSD给出的解法很优雅：不是加更多标注，不是加更强的外部信号，而是让模型自己去问自己&quot;如果没有这张图，我会怎么预测&quot;，然后用这个自我对照来矫正训练方向，让模型学会真正去看图，而不是看语言。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

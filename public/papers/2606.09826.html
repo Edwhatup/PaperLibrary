@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OmniGameArena: A Unified UE5 Benchmark for VLM Game Agents with Improvement Dynamics · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jun 08, 2026</time> · 1 min read · <a href="https://arxiv.org/abs/2606.09826">arXiv</a> · <a href="https://arxiv.org/pdf/2606.09826">PDF</a></div>
+    <h1>OmniGameArena: A Unified UE5 Benchmark for VLM Game Agents with Improvement Dynamics</h1>
+    <div class="tags"><span class="tag">benchmark</span><span class="tag">game</span><span class="tag">requested</span></div>
+  </header>
+  <section class="notes"><h2>Notes</h2><ul><li>点播(2026-07-07)。UE5 统一环境的 VLM 游戏 agent 基准,含 improvement dynamics——和 levelbench 的环境设计、以及课程第5讲讲的&#x27;可复现模拟世界&#x27;范式直接相关。</li></ul></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-06-08-omnigamearena-a-unified-ue5-benchmark-for-vlm-game-agents-wi-5ad204e5.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Vision-language model (VLM) agents are increasingly deployed in interactive game environments. Yet game benchmarks for VLM agents typically report a single first-attempt score per (agent, game) pair, focus on single-agent Solo play, and lack unified protocols for evaluating heterogeneous agent classes (commercial VLMs, open-weight VLMs, and specialized game policies) on the same footing. We address these gaps with OmniGameArena, a real-time benchmark of twelve newly built Unreal Engine 5 games spanning Solo (7), PvP (3), and Coop (2) with unified action interfaces, and the Improvement Dynamics Curve (IDC), an agentic-reflection harness in which a tool-using reflector LLM autonomously refines a bounded skill prompt across multiple rounds. Beyond cold-start leaderboard scores, IDC exposes two additional observables for each (agent, game) pair: how the score evolves across reflection rounds, and how the learned skill behaves on held-out task variants. We report these observables for twelve VLM agents on the cold-start leaderboard and four top agents under IDC.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>当前，视觉语言模型智能体在游戏环境中的应用越来越广泛。这些智能体需要能够读取不断变化的视觉场景，在时间压力下选择行动，规划延迟奖励，并在环境产生阻力时进行适应。游戏基准测试是推动视觉语言游戏智能体快速发展的重要工具。然而，我们发现现有的游戏基准测试在评估这些智能体时，存在几个显著的不足。</p>
+<p>首先，大多数基准测试通常只报告每个智能体在每款游戏中的首次尝试得分，也就是所谓的“冷启动”表现。这使得我们无法看到智能体在与任务反复交互后，其性能是如何逐步提升的，也无法了解其学习和适应的轨迹。就好比我们只看一个学生第一次考试的成绩，却不知道他经过多次练习和反思后，能否取得进步。</p>
+<p>其次，现有的基准测试大多侧重于单智能体的“单人游戏”模式。虽然这类模式很重要，但它无法全面地评估智能体在对抗性（玩家对玩家，简称PvP）和协作性（合作游戏，简称Coop）环境中的能力。在PvP模式中，智能体需要建模对手的行为，预测其意图，并制定对抗策略；而在Coop模式中，智能体则需要理解队友的角色，协同配合，甚至在队友犯错时进行补救。这些能力是部署真实世界智能体时不可或缺的，但却在现有评估中严重缺失。</p>
+<p>第三，不同类型的智能体，比如商业级的视觉语言模型、开源的视觉语言模型，以及一些专门为游戏设计的策略，往往缺乏统一的评估协议。这意味着它们可能在不同的游戏或不同的接口下进行测试，导致结果难以直接比较，无法公平地衡量它们的性能。</p>
+<p>为了解决这些关键问题，研究人员提出了一个全新的统一基准测试平台，名为“OmniGameArena”，以及一个创新的智能体反思框架，叫做“改进动态曲线”，简称IDC。</p>
+<p>OmniGameArena 是一个实时基准测试平台，包含了十二款全新构建的虚幻引擎5游戏。这些游戏并非复用现有的商业游戏，而是专门为这个基准测试设计的，这大大降低了预训练数据泄露的风险。所谓预训练数据泄露，是指智能体在训练过程中可能已经接触过基准测试中的游戏数据，从而导致其在测试中表现出不真实的、过高的性能。通过构建全新游戏，OmniGameArena确保了评估的公平性。</p>
+<p>这十二款游戏涵盖了三种主要的互动模式：七款单人游戏，三款玩家对玩家游戏，以及两款合作游戏。这种设计确保了智能体在不同互动范式下的能力都能得到全面的考察。更重要的是，所有游戏都共享统一的动作接口，比如键盘鼠标或者游戏手柄操作。这意味着无论是商业视觉语言模型、开源视觉语言模型，还是专门的游戏策略，都可以在相同的环境条件下进行评估，从而实现真正意义上的统一比较。</p>
+<p>除了OmniGameArena这个游戏环境本身，另一个核心创新是“改进动态曲线”，也就是IDC。IDC是一个智能体反思框架，它不仅仅报告智能体在游戏中的“冷启动”分数，更重要的是，它揭示了智能体通过多轮反思和学习，其性能是如何逐步演变的动态过程。</p>
+<p>IDC框架的运作方式是这样的：智能体首先会根据当前的“技能提示词”进行多轮游戏。这里的“技能提示词”可以理解为给智能体的一段自然语言指令，指导它如何在游戏中行动。在玩完这些游戏回合后，一个扮演“反思者”角色的语言大模型会介入。这个反思者语言大模型被赋予了工具使用能力，它能够自主地检查智能体之前的游戏轨迹，比如查看游戏日志、屏幕截图序列或者其他性能指标。它会自主决定需要阅读哪些信息，以及何时停止检查。</p>
+<p>在完成检查后，反思者语言大模型会根据其分析结果，对智能体的“技能提示词”进行精炼和优化。这个“技能提示词”是有一个长度或复杂性限制的，我们称之为“有界技能提示词”，目的是为了鼓励反思者生成简洁而有效的指令。精炼后的新技能提示词会用于下一轮的游戏，智能体再次进行游戏，然后反思者再次进行检查和优化。这个过程会持续多轮，从而形成一个完整的性能改进轨迹。</p>
+<p>通过这种多轮迭代，IDC暴露了每个“智能体-游戏”组合的两个额外可观测指标：一是分数在反思轮次中是如何演变的，这直接构成了“改进动态曲线”本身；二是学习到的技能在未曾见过的任务变体上表现如何。后者是为了评估智能体学习到的技能是否具有泛化能力，而不仅仅是针对特定任务过拟合。</p>
+<p>这项工作总结起来有三大贡献： 第一，OmniGameArena，一个包含十二款虚幻引擎5游戏的基准测试，涵盖了单人、玩家对玩家和合作模式，具有统一的动作接口，并且所有游戏实例都是专门为这个基准测试构建的。 第二，IDC框架，一个智能体反思框架，其自主的工具使用反思者会通过多轮迭代精炼有界技能提示词，并带有持久记忆和最佳技能回滚机制。所谓最佳技能回滚，是指如果某一轮反思后的技能反而导致性能下降，系统可以回滚到之前表现最好的技能。 第三，一项针对十二个智能体进行的实证研究。这项研究不仅展示了在“冷启动”排行榜上，不同的智能体在不同游戏中各有千秋，没有一个智能体能够完全主导所有游戏，而且还揭示了一个关键发现：在原始任务上的性能提升并不一定能预测在未见过任务变体上的泛化能力。这是一个非常重要的洞察，因为单轮的排行榜分数是无法揭示这种差异的。</p>
+<p>让我们更深入地了解一下这项工作与现有研究的区别和联系。在游戏环境中的基准测试方面，人工智能自强化学习兴起以来，互动游戏就一直是重要的测试平台。早期的语言大模型评估主要在文本世界中进行，它们在逻辑推理方面表现出色，但缺乏视觉基础。后来出现了2D网格环境，比如BALROG和LVLM-Playground，它们增加了空间和多模态的需求。再到近期，基于Minecraft或通用视觉基准测试（如V-MAGE、Cradle、VideoGameBench）的套件将评估扩展到了3D开放世界，智能体需要在像素层面上进行长周期规划。</p>
+<p>虽然这些基准测试推动了很大的进展，但它们普遍存在两个局限性：大多数都重用了现有的商业游戏，这使得它们容易受到预训练数据泄露的影响；而且很少有基准测试能在单一的实时环境中涵盖单人、玩家对玩家和合作三种模式。OmniGameArena正是通过十二款全新构建的虚幻引擎5游戏解决了这两个问题，它在一个统一的实时环境中包含了所有三种互动模式。</p>
+<p>在游戏智能体方面，早期的语言大模型游戏智能体主要在文本或2D网格世界中操作。像Voyager和MineDojo这样的工作将语言大模型智能体扩展到了3D的Minecraft世界，但它们需要为每款游戏进行大量的工程定制，这限制了其跨游戏的通用性。当前的视觉语言模型智能体则能够直接控制多种3D世界中的图形用户界面或键盘鼠标接口，比如Game-TARS、NitroGen和Lumine等。这些智能体展现了强大的能力，但它们也反过来促使我们思考，需要更标准化、更具挑战性的跨游戏评估基础设施。OmniGameArena正是为了满足这种需求而诞生的。</p>
+<p>在反思和自我改进领域，大多数游戏智能体基准测试都只报告一次性得分，这使得我们无法了解智能体是否以及如何通过反复交互来提升性能。基于反思的方法通过积累过去经验的自然语言总结来解决这个问题，而无需进行模型权重的更新。例如，Reflexion将回合反馈转化为口头自我批评；Self-Refine迭代地重写模型输出；ExpeL提取任务层面的洞察；Voyager的技能库在Minecraft中积累可复用的代码技能；GameVerse则报告了每款游戏有无反思的单次比较。</p>
+<p>我们的工作与最近提出的“启发式学习”范式高度契合，该范式将语言大模型驱动的自我改进视为一个基于显式工件（如提示词、代码、记忆）而非模型权重进行学习的过程。IDC框架以三种具体方式实例化了这种范式： 第一，反思过程会运行多轮，生成完整的得分轨迹，而不仅仅是前后对比。这让我们能够观察到智能体学习的动态过程。 第二，反思者本身就是一个具有工具使用能力的语言大模型，它能够自主决定检查哪些信息，而不是执行一个固定的模板脚本。这赋予了反思者更大的灵活性和智能性。 第三，我们会在每款游戏的未见过任务变体上测试最终学习到的技能，这揭示了单次数字指标所隐藏的技能风格差异，帮助我们理解智能体泛化能力的强弱。</p>
+<p>接下来，我们来看看具体的实验设置和最重要的结果。研究人员评估了十二个不同的视觉语言模型智能体在OmniGameArena上的表现。这些智能体涵盖了商业视觉语言模型（如GPT-4V、Gemini Pro Vision）、开源视觉语言模型（如LLaVA、Qwen-VL-Max）以及一些专门的游戏策略。</p>
+<p>首先是“冷启动”排行榜的评估。结果显示，在所有十二个智能体中，没有一个单一的视觉语言模型能够在所有游戏中占据绝对优势，这表明不同智能体在不同类型的游戏和任务上各有侧重。然而，商业级的智能体，比如GPT-4V和Gemini Pro Vision，在整体表现上与开源视觉语言模型和专门的游戏策略之间存在明显的差距，商业模型通常表现出更强的泛化能力和鲁棒性。这说明了当前顶级商业模型的强大实力，但也为开源模型和研究指明了进一步提升的方向。</p>
+<p>更重要的是，研究人员选取了四个表现最好的智能体，让它们通过IDC框架进行多轮反思和学习。这四个智能体在IDC框架下的表现，揭示了“改进动态曲线”的真正价值。</p>
+<p>实验结果表明，所有四个智能体在经过反思后，其性能都比它们的“冷启动”基线有所提升。这证明了通过反思和提示词优化，智能体确实能够学习和改进。然而，一个值得注意的现象是，智能体的峰值性能通常在反思过程的中间阶段达到，而不是在最终轮次。这可能意味着过度反思或不当的提示词修改有时会导致性能下降，或者说，存在一个最佳的反思轮数，之后再进行修改可能带来负面影响。这提示我们在实际应用中，需要对反思的迭代次数进行权衡和优化。</p>
+<p>最值得关注的发现是，原始任务上的性能提升与在未见过任务变体上的迁移能力可能会出现分歧。举例来说，一个智能体可能通过反思在特定的游戏关卡中取得了显著进步，但当它面对该游戏的其他变体（比如地图布局不同、敌人类型不同或目标略有调整）时，其表现却不尽如人意，甚至可能不如没有经过反思的“冷启动”表现。这种分歧被单轮排行榜分数完全隐藏了，但却是IDC框架能够揭示的核心观察。</p>
+<p>这种分歧说明了什么呢？它意味着智能体通过反思学习到的“技能”可能过于具体，只针对它反复练习过的特定任务实例进行了优化，而缺乏足够的泛化性。反思过程可能让智能体在特定场景下变得非常“聪明”，但这种聪明并没有转化为对更广泛任务的深刻理解。这对于我们设计未来的视觉语言模型智能体具有重要的启示：我们不仅要关注智能体能否在特定任务上学会“玩得好”，更要关注它能否将所学知识泛化到新的、未知的场景中。如果一个智能体只能在训练过的关卡中表现出色，那么它的实用价值就会大打折扣。</p>
+<p>这项研究的局限性主要体现在，虽然IDC框架能够揭示学习的动态过程和泛化能力，但它目前主要依赖于语言大模型作为反思者，其反思的效率和质量仍然受到语言大模型自身能力的限制。未来的研究可以探索更高效、更鲁棒的反思机制，或者将语言大模型与传统的强化学习方法相结合，以实现更深层次的技能学习和泛化。</p>
+<p>对于我们从事相关研究或开发的听众来说，OmniGameArena和IDC框架提供了几个具体的借鉴之处。 首先，在设计和评估视觉语言模型游戏智能体时，我们应该跳出只看“冷启动”分数的思维定式。一个更全面的评估应该包括智能体在反复交互中学习和改进的动态过程，以及其学习到的技能在新环境中的泛化能力。IDC框架提供了一个非常好的范式，来衡量这些关键的“改进动态”和“泛化迁移”能力。 其次，在构建游戏基准测试时，要特别注意避免预训练数据泄露的问题。尽可能使用全新构建的游戏或任务，以确保评估的公平性和真实性。 第三，在智能体设计中，我们不仅要追求在特定任务上的高分，更要注重提升其技能的泛化性。反思机制的设计应该鼓励智能体学习更抽象、更通用的策略，而不是仅仅记忆特定任务的解决方案。当反思导致在原始任务上过度优化而损失泛化能力时，需要警惕并调整反思策略。 最后，多模态交互模式（单人、PvP、Coop）的全面评估是至关重要的。未来的智能体需要具备在各种复杂社交和对抗场景中有效运作的能力，而不仅仅是解决单人任务。</p>
+<p>总而言之，OmniGameArena和改进动态曲线IDC为视觉语言模型游戏智能体的评估树立了一个新的标准。它不仅提供了一个丰富、统一且无污染的实时游戏环境，更重要的是，它引入了衡量智能体学习、改进和泛化能力的动态评估框架。这项工作清晰地指出，仅仅在原始任务上取得高分并不足以证明智能体的智能，真正的挑战在于其在多轮反思中持续改进，并将其所学知识有效迁移到未见过任务变体的能力。未来的视觉语言模型智能体，必须在这两个维度上都表现出色，才能真正应对真实世界的复杂挑战。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

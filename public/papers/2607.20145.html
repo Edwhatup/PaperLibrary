@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 23, 2026</time> · <a href="https://arxiv.org/abs/2607.20145">arXiv</a> · <a href="https://arxiv.org/pdf/2607.20145">PDF</a></div>
+    <h1>SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-23-slai-t-rex-full-parameter-post-training-of-the-deepseek-v4-f-cd77ba33.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Full-parameter post-training of trillion-parameter-scale MoE models introduces substantial system-level challenges for large-scale distributed training, including severe memory pressure, non-overlapped communication overhead, and inefficient kernel execution. While most large-scale LLM training systems are built around GPU-based clusters, this report presents an end-to-end optimization practice on the Ascend NPU SuperPOD. Using the DeepSeek-V4 model family as the target workload, we develop a hierarchical optimization framework spanning model-level parallelism, computation-communication orchestration, and low-level kernel execution. The resulting system achieves 34.22% Model FLOPs Utilization (MFU) with a 2.93x improvement over the open-source baseline recipe while maintaining training stability. Building on this optimized infrastructure, we further establish a CPT and SFT workflow for complex Operations Research (OR) tasks. We refer to the integrated framework as SLAI T-Rex. Using DeepSeek-V4-Flash, we develop OR-oriented CPT and SFT data pipelines that combine collected domain resources with solver-verified synthetic optimization documents. The resulting dataset contains 10K high-quality SFT samples spanning four task categories and three problem representations. The specialized model achieves the highest average zero-shot Pass@1 score among the evaluated models, reaching 71.81% and outperforming GPT-5.4-Mini and the base DeepSeek-V4-Flash model by 3.98 and 11.27 percentage points, respectively. Overall, this work demonstrates a full-stack pathway from efficient trillion-parameter model post-training on Ascend infra to domain-specialized Flash models for solver-grounded mathematical modeling, advancing frontier-model systems for complex reasoning.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>在训练万亿参数规模的大语言模型时，工程团队面临的核心困境是：你不能简单地把为GPU设计的那套做法搬到华为昇腾NPU上，因为这两种硬件的底层执行模型有着本质的不同。这篇来自深圳环区研究院的技术报告，正是在这个真实痛点上展开工作的。他们把DeepSeek-V4系列模型作为目标负载，在昇腾CloudMatrix384 SuperPOD集群上做了一次从底层芯片内核到上层训练调度的全栈优化，最终把模型算力利用率MFU从11.67%提升到了34.22%，整整提高了2.93倍。同时，他们还在这套基础设施之上，把一个较小的Flash版本模型专门训练成了运筹优化领域的专家模型，最终在零样本Pass@1指标上达到71.81%，比GPT-5.4-Mini高出将近4个百分点。这篇报告是目前公开文献中极少见的、对万亿参数混合专家模型在SIMD架构NPU上做全参数后训练的完整工程记录。</p>
+<p>要理解这项工作的难度，先要理解DeepSeek-V4-Pro这个模型本身的特点。它有1.6万亿参数，采用了混合专家架构，也就是MoE，每个token只激活一部分专家网络，而不是让所有参数都参与计算。这种设计在推理效率上很有吸引力，但在训练时会引入非常复杂的通信模式：每一步前向传播，都需要把token分发给不同的专家，再把结果汇总回来，这对应的是All-to-All通信集合操作。与此同时，DeepSeek-V4还引入了稀疏注意力机制，也就是说注意力计算不是对所有位置进行的，而是有选择地访问部分键值对，这导致访存模式极不规则。把这样一个模型放到昇腾NPU上做全参数训练，等于同时面对三个维度的挑战：万亿参数规模带来的显存压力、细粒度专家路由带来的通信开销、以及稀疏注意力带来的算子执行低效。</p>
+<p>团队首先做了一件非常扎实的事情：在优化之前，先用profiling工具把训练过程中每一步的时间花到哪里了，彻底摸清楚。结论相当明确。在一个完整训练步骤里，通信时间占到了全部设备算子执行时间的52.2%，其中张量并行和数据并行产生的AllReduce等通信占了48.4%，流水线并行产生的点对点Send/Receive占36.7%，而MoE专家并行的All-to-All只占了14.5%。这个数字非常关键，因为它直接影响了后续的优化策略选择。</p>
+<p>在具体的算子层面，稀疏注意力反向传播那个核函数SparseAttnSharedkvGrad，单独就占了全部计算算子时间的16.86%，比稠密矩阵乘法MatMulV3的12.77%还要高。更麻烦的是，这个算子的计算核心利用率只有9.5%，也就是说它不是因为做了大量计算而变慢，而是因为需要根据稀疏索引去做不规则的内存访问，硬件的矩阵计算单元大部分时间都在等数据，是典型的访存密集型、控制流密集型算子。而矩阵乘法算子GroupedMatmul的Cube核利用率高达95.4%，是真正的计算密集型，两者的瓶颈性质完全不同。</p>
+<p>除了这些头部的大算子，还有一条长尾问题同样不容忽视。旋转位置编码RoPE、RMS归一化、SwiGLU激活、以及DeepSeek-V4特有的mHC超连接结构，这些模块在PyTorch的eager模式下，会被自动展开成大量小型算子，比如类型转换Cast、视图操作ViewCopy、张量移动TensorMove等等。数据显示，在profiling到的206503个计算算子中，非矩阵乘法的eager算子占了91.3%的启动次数，但只占66.7%的执行时间。Cast算子一共被调用了40063次，每次平均只有55微秒，但它的向量计算利用率只有1.7%，MTE2和MTE3的数据搬运管线利用率却分别高达89.7%和59.9%。这意味着每次调用，绝大多数时间都花在了读写内存上，而不是真正在做计算。大量这样的小算子叠加起来，既带来了频繁的算子启动开销，又带来了反复读写内存的冗余数据搬运，是另一种形式的效率损失。</p>
+<p>摸清楚这两类问题之后，团队设计了对应的两条优化路线。第一条针对头部大算子，用一个叫AuraKernel的智能优化Agent来处理。第二条针对长尾碎片算子，用算子融合和算子重写来解决。</p>
+<p>先说训练系统层面的优化。在并行策略上，由于每块昇腾910C NPU只有64GB的HBM显存，朴素的张量并行策略需要TP等于4才能装下模型，但TP越高通信越频繁。团队的解法是引入专家张量并行ETP，把注意力层的TP度降到2，减少稠密部分的通信次数，同时让MoE层使用ETP等于1，保留完整的专家宽度。这样注意力和MoE两个模块可以采用不同的并行策略，互相不干扰。</p>
+<p>在流水线并行方面，他们选择了虚拟流水线并行VPP，而不是DeepSeek自己在预训练中使用的DualPipeV方案。理由是经过profiling发现，DualPipe最擅长的是把MoE的All-to-All通信和计算重叠起来，但All-to-All在这里只占通信时间的14.5%，根本不是瓶颈。真正的瓶颈是流水线气泡和TP/DP通信，而DualPipe需要每张卡保存两份模型参数，会大幅增加显存占用，实测已经到了每卡51到54GB，接近上限，用DualPipe根本装不下。VPP通过细粒度的虚拟阶段交错，有效压缩了流水线气泡，同时不增加显存开销，是更务实的选择。</p>
+<p>在MoE token分发这个环节，团队做了一个精巧的调度优化。MoE层的处理流程是：先排列输入token，再做All-to-All分发，然后专家计算，再All-to-All汇总，最后还原。问题在于，分发之前需要知道每个专家要接收多少token，这个路由统计完成之前，设备会有一段同步等待的空隙。团队发现，共享专家的计算并不依赖这个路由结果，于是把共享专家的前向计算提前到这段空隙里执行，把原本白白浪费的同步等待时间填满了有用的计算，是一个典型的用计算覆盖同步开销的技巧。</p>
+<p>在显存管理上，万亿参数模型的优化器状态是显存占用的大头。分布式AdamW需要维护FP32格式的主参数副本以及一阶、二阶动量，比模型参数本身的显存需求还要高出很多。团队实现了一个双缓冲换出优化器，把优化器状态分批卸载到CPU内存，在更新第N块参数的时候，同时预取第N+1块并把第N-1块写回，三个操作流水线并行，把Host和Device之间的数据传输时间基本从关键路径上移除。这部分省出来的显存可以用来存放更多的激活值，减少梯度重算，进一步提升有效计算比例。</p>
+<p>再说AuraKernel这个针对头部大算子的优化Agent。昇腾NPU的编程语言AscendC和CUDA有本质差别。CUDA的开源社区积累了大量优化经验和案例，而AscendC相对小众，现有的Agent优化方案主要靠领域特定训练和启发式搜索，难以系统性地找到全局最优配置。AuraKernel的核心创新是把运筹优化引入到算子的分块策略搜索中。</p>
+<p>它的工作流程是三个阶段。第一阶段，给定一个算子的计算形状，AuraKernel先判断这个算子是计算密集型、访存密集型还是控制流密集型，然后建立一个硬件感知的性能模型。这个性能模型把分块参数，比如L0 tile的大小、L1的blocking因子、核心分配方式、流水线级数等，作为决策变量，把各个执行阶段的时钟周期数作为显式的代价函数，目标是最小化MTE1、MTE2、MAC、FixPipe、scalar这五个阶段里最慢的那个，也就是找到让各阶段时间最均衡、流水线效率最高的分块方案。每个阶段的代价函数不是一个黑盒的经验值，而是根据数据量乘以每单位时钟周期数得到的，不同存储层次GM、L2、L1、L0有各自独立测量的带宽参数。这个优化问题带有数据覆盖、片上存储容量、核心划分合法性、对齐等约束，可以用求解器直接求解。在一个普通矩阵乘法算子上的验证显示，仅靠优化分块策略，就能减少6.55%的执行时间，而且更重要的是，求解器的输出不只是一组分块参数，还会告诉你瓶颈出在哪个阶段，这个诊断信息直接指导了后续的代码优化方向。</p>
+<p>第二阶段是基于真实硬件反馈的迭代优化循环。AuraKernel维护一个沙箱系统，可以并行编译、执行、验证和profiling多个候选算子实现。每个候选先做精度验证，通过了才进入性能评估。性能改进的判定有噪声过滤机制，只有当新版本的执行时间比当前最优版本低2%以上，才认为是真实的改进，避免把测量噪声误判为进步。</p>
+<p>第三阶段是技能蒸馏，把每次验证成功的优化模式提炼成可复用的技巧，存入持久化的技能库，供后续优化其他算子时参考。</p>
+<p>这里有一个值得注意的设计选择。传统的kernel优化Agent往往依赖预先构建的静态知识库，但AuraKernel的团队发现，对于昇腾这样非主流的平台，静态知识库反而会限制探索空间，因为平台特定的优化规律不完整、不充分。AuraKernel选择让技能库完全通过硬件验证的反馈自我演化，而不是依赖预设的规则，这是针对非CUDA平台的一个有意义的设计判断。</p>
+<p>对于长尾碎片算子，团队采用的是算子融合和重写策略。核心思路是把那些被PyTorch eager模式拆成一大堆小算子的计算，重新合并成一个或少数几个AscendC算子，让中间结果常驻片上的Unified Buffer，不用每次都读写全局内存。以旋转位置编码为例，它在eager模式下会产生一连串的Cast、Slice、Mul、Add操作，每个操作都要从HBM读数据、算完再写回HBM，下一个操作再读。融合之后，整个计算只需要读一次输入、写一次输出，中间全部在片上完成，大幅削减了内存带宽消耗和算子启动次数。</p>
+<p>在实验结果上，团队展示了MFU从初始的11.67%逐步提升的过程。优化并行策略之后涨到一个新台阶，加入NPU-CPU协同优化之后再涨，再加上算子优化之后最终达到34.22%。训练过程中的损失曲线保持稳定，没有出现因为系统优化引入的训练不稳定问题。</p>
+<p>在这套优化好的基础设施之上，团队进一步做了面向运筹优化领域的模型专门化工作，目标是让DeepSeek-V4-Flash模型能够把自然语言描述的运筹问题，准确翻译成数学规划公式或者可执行的求解器代码。运筹优化是个很典型的工业决策领域，涵盖排班、运输、供应链、资源分配等等，但相比数学推理和代码生成，它在大模型训练中一直是个被忽视的长尾领域。</p>
+<p>为什么要同时做持续预训练CPT和监督微调SFT，而不是直接SFT？团队先做了一个能力边界分析。直接在基础模型上做SFT，能提升特定任务的对齐程度，但有两个局限：一是模型对运筹领域的数学结构、约束类型、变量关系等底层知识储备不足，导致生成的公式在语义上错误；二是模型倾向于产生能被求解器接受、但在结构上与问题描述不等价的&quot;可行但错误&quot;的方案。CPT的作用是在SFT之前，先让模型在大量运筹领域文档上做领域自适应，建立领域知识先验，为后续的SFT提供更好的初始化点。</p>
+<p>CPT数据的构建颇具创意。团队设计了一个求解器验证的合成数据引擎，以真实的运筹问题结构作为数学种子，包括约束类型、目标函数形式、变量范围等，然后用LLM从两个方向合成数据：一是从数学公式生成自然语言描述，二是从自然语言描述生成数学公式，两个方向都做，形成双向覆盖。合成出来的每个样本，都要用真实求解器，比如Gurobi，来验证公式的可行性和最优性，只有通过验证的才进入训练集。CPT数据以运筹领域数据为主导，同时混合少量通用数据，防止模型在持续训练过程中发生灾难性遗忘。</p>
+<p>SFT数据有10000条高质量样本，覆盖四类任务：自然语言到线性规划公式的转换、到整数规划的转换、到Python代码的生成，以及混合表示形式。清洗过程引入了一个&quot;契约感知&quot;的机制，不只检查代码能否被求解器接受，还检查生成的公式结构是否和原始问题的约束语义等价，从根源上过滤那些看起来可行但实际上建模错误的样本。</p>
+<p>SFT的训练过程采用渐进式策略，先用纯运筹数据微调，再混入通用能力数据做锚定，防止在获得领域专业化的同时损失基础能力。</p>
+<p>评测结果有几个值得细看的数字。在B4O-Feasible这个考察模型输出能否被求解器接受的指标上，直接SFT把基础模型的60.47%提升到了65.93%，而CPT初始化之后再做SFT进一步提升到71.22%。在B4O-ORGEval这个考察结构等价性的更严格指标上，直接SFT从34.26%提升到48.73%，但CPT加SFT达到了59.39%，提升幅度更大。这个差距说明，CPT提供的领域知识先验，对于模型真正理解运筹问题的数学结构有实质性的帮助，而不仅仅是提升了格式对齐。综合四个评测指标的平均准确率，SLAI T-Rex达到71.81%，超过GPT-5.4-Mini的3.98个百分点，超过基础DeepSeek-V4-Flash的11.27个百分点，而且使用的激活参数量还更小。</p>
+<p>从局限性来看，这项工作有几点值得正视。MFU 34.22%在SIMD架构上已经是很好的结果，但和GPU上主流大模型训练报告的40%到50%相比还有差距，说明Ascend平台的系统软件栈还有成熟空间。AuraKernel的搜索过程依赖真实硬件执行来获取反馈，这意味着每次迭代都有编译和运行的时间成本，探索效率受限于可并行的NPU数量。运筹优化领域的10000条SFT样本规模不大，在更复杂的工业场景下，这个数据集的覆盖度可能不足。此外，报告评测的基准集中在几个学术性质的OR数据集，和真实工业优化问题之间的差距有多大，还需要进一步验证。</p>
+<p>对于做大模型训练系统研究或者工程实践的人，这篇报告有几个具体的可借鉴之处。第一，在做系统优化之前，一定要先用profiling把时间分布彻底摸清楚，而不是基于经验猜测。这篇工作通过profiling发现MoE的All-to-All根本不是瓶颈，因此没有把精力浪费在加速它上面，这一步判断直接决定了后续优化路线的正确性。第二，针对非CUDA硬件的算子优化，把运筹优化引入分块参数搜索是一个有意思的思路，它能在迭代优化开始之前就给出一个接近最优的起点，同时提供清晰的瓶颈诊断，避免Agent在无效方向上浪费大量token。第三，双缓冲的优化器状态换出，是在显存受限环境下提升有效批大小的一个工程解法，原理简单但效果实用，值得在其他受显存约束的训练场景中参考。第四，在领域专门化训练中，CPT和SFT的分工是有意义的，CPT建立领域知识先验，SFT完成任务对齐，两者在结构等价性这类深层指标上的增益存在明显的互补性，不能简单地认为直接SFT可以完全替代先CPT再SFT的两阶段路线。</p>
+<p>从更宏观的角度看，这篇报告的价值不只在于它报告的那些具体数字，更在于它系统地记录了在非GPU、非TPU架构上做万亿参数模型全参数后训练所遇到的每一类问题，以及针对每类问题的工程选择和选择背后的量化依据。这种完整的工程记录，在目前以GPU为主导的大模型训练文献中是相对稀缺的，它真实地展示了在SIMD架构上做大模型训练既有的挑战，以及通过系统性优化能够达到的实际上界。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dockerless: Environment-Free Program Verifier for Coding Agents · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 01, 2026</time> · <a href="https://arxiv.org/abs/2606.28436">arXiv</a> · <a href="https://arxiv.org/pdf/2606.28436">PDF</a></div>
+    <h1>Dockerless: Environment-Free Program Verifier for Coding Agents</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-01-dockerless-environment-free-program-verifier-for-coding-agen-06b2741b.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Program verifiers play a central role in training coding agents, including selecting trajectories for supervised fine-tuning (SFT) and providing rewards for reinforcement learning (RL). Standard execution-based verification requires running unit tests inside per-repository environments such as Docker images, incurring substantial environment setup costs. We propose Dockerless, an environment-free agentic patch verifier that evaluates generated code patches without executing them. Rather than simply matching candidate patches to references, Dockerless judges patch correctness using evidence gathered through agentic repository exploration. On a verifier evaluation benchmark, Dockerless outperforms the strongest open-source verifier by 14.3 AUC points. Using Dockerless as both the SFT trajectory filter and the RL reward enables a fully environment-free post-training pipeline. The resulting model reaches 62.0%, 50.0%, and 35.2% resolve rate on SWE-bench Verified, Multilingual, and Pro, respectively. It surpasses the Qwen3.5-9B baseline by 2.4, 8.7, and 2.9 points, matching environment-based post-training.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>自动化编程代理，也就是我们常说的编码智能体，在训练过程中，程序验证器扮演着一个至关重要的角色。无论是为监督微调，也就是SFT，筛选高质量的训练轨迹，还是为强化学习，简称RL，提供准确的奖励信号，验证器都决定着智能体解决问题的尝试是否成功。</p>
+<p>当前业界公认的黄金标准是什么呢？它依赖于基于执行的验证。简单来说，就是在一个为每个代码仓库量身定制的隔离环境中，比如一个Docker镜像里，去运行单元测试，以此来判断智能体生成的代码是否正确解决了问题。</p>
+<p>然而，这种基于执行的验证方式带来了巨大的工程开销和实际挑战。想象一下，你需要为每个不同的代码仓库构建一个专属的Docker镜像，解决各种复杂的依赖关系，找出哪些单元测试是相关的，然后编写测试执行脚本，最后还得解析测试结果。这个过程极其繁琐，即使是最先进的自动化流水线，也只能在有限的候选代码仓库上成功。更根本的问题是，在现实世界中，尤其是面对私有、企业内部或者那些年久失修的遗留代码库时，很多项目根本就缺乏可复现的运行环境，或者压根就没有一套全面可靠的测试套件。这种情况下，基于执行的验证就变得不可靠甚至根本无法实现。</p>
+<p>为了降低这些环境搭建的成本，最近有一些研究尝试让智能体在单一的共享基础镜像中运行，而不是为每个仓库都创建一个Docker容器。但即便如此，程序验证器依然是整个流程中的一个关键瓶颈。现有的那些“环境无关”的验证器，它们在评估补丁时，往往只能依赖一些表面信息，根本不会深入检查代码仓库的内部结构。这种“肤浅”的方法，对于复杂的软件工程任务来说是远远不够的。比如，你需要判断一个被修改的函数是否真的被导致问题的行为所调用，或者一个替代实现方案是否能正确地与周围的模块集成。这些都需要对代码仓库有深入的上下文理解，仅仅依靠文本差异匹配是无法做到的。</p>
+<p>正是为了弥补这个空白，我们提出了Dockerless，一个环境无关的智能体式补丁验证器。它的核心思想是：不执行代码，而是通过主动探索代码仓库来判断代码补丁的正确性。Dockerless与传统方法最大的不同在于，它不是盲目地比较文本差异，而是将验证过程根植于对实际代码库的探索之中。想象一下，它就像一个经验丰富的代码审查专家，在接到一个问题描述、一个参考补丁和一个待审查补丁后，它会首先从问题描述和参考补丁中提炼出几个关键的验证问题。然后，它会派遣专门的子智能体去代码仓库中寻找证据来回答这些问题。最后，它会综合所有收集到的证据，给出一个关于候选补丁是否正确解决了问题的评分。这样一来，即使没有复杂的Docker环境和单元测试，我们也能对智能体生成的代码补丁进行可靠的评估，从而解锁一个完全环境无关的后训练流水线。</p>
+<p>接下来，我们深入了解一下Dockerless的具体架构和工作原理。整个验证器分为两个核心阶段。第一个阶段是“问题生成”。给定一个问题描述和一个参考补丁，我们的模型会生成一系列精炼的验证问题。这些问题设计得非常巧妙，它们会引导验证器去思考一些关键点，比如：这个修复应该在代码仓库的哪个具体位置生效？打过补丁的代码究竟应该实现什么功能？什么样的测试或者断言能够明确地证实这个补丁的正确性？以及，这个补丁有没有可能在修复当前问题的同时，意外地破坏了代码库的其他部分，产生新的边缘案例？提出这些问题的目的非常明确：它让验证器的最终判断能够真正地基于对代码仓库的探索和理解，而不是仅仅停留在候选补丁和参考补丁之间的表面文本比较上。这样，即使两个补丁的实现方式大相径庭，只要它们都能正确解决问题，Dockerless也能识别出来。</p>
+<p>进入第二个阶段，是“证据收集与聚合”。针对第一阶段生成的每一个验证问题，Dockerless都会派遣一个专门的“子智能体”去探索代码仓库。这些子智能体是并行运行的，大大提高了效率。它们通过使用只读的Shell工具，比如find（查找文件）、grep（在文件中搜索文本）或者rg（ripgrep，一个更快的grep替代品），在代码库中寻找问题的答案和相关的证据。当所有子智能体都返回了带有证据的简短答案后，Dockerless会把这些收集到的证据聚合起来，最终判断这个候选补丁是否确实解决了问题。具体来说，它会输出一个二元标记，表示补丁是正确的还是错误的。在推理时，我们会将这两个标记的对数几率，也就是机器学习模型输出的原始分数，通过softmax函数转换成一个介于0到1之间的连续分数，用来表示补丁的正确性概率。</p>
+<p>那么，Dockerless是如何学习这种复杂的推理能力的呢？我们采用了“拒绝采样”（Rejection Sampling）的方法来训练验证器。训练数据来源于带有真实执行标签的候选补丁。这里的“执行标签”是指通过运行单元测试得到的地面真值，明确告诉我们某个补丁是正确的还是错误的。训练过程大致是这样的：首先，我们用一个强大的教师模型驱动一个智能体，让它像Dockerless一样，经历问题生成、子智能体探索和最终判断的整个流程，为每个训练样本生成一套完整的轨迹。然后，我们进行“拒绝采样”：只保留那些智能体最终判断结果与真实执行标签完全匹配的轨迹。这样做的目的，是为了确保训练信号的一致性，让验证器真正学会如何一步步推理并得出正确的结论，而不是仅仅依靠碰巧的匹配。为了避免训练数据中正负样本比例严重失衡的问题，我们还额外限制了负样本与正样本的比例。最终，验证器在整个输出序列上，通过标准的下一个Token交叉熵损失进行训练。值得一提的是，问题生成、子智能体探索和最终判断这三个阶段，都共享同一个骨干模型，它们是联合训练的。</p>
+<p>Dockerless训练好之后，我们就可以将它应用到完全环境无关的后训练流水线中。这个流水线主要包含两个部分：环境无关的拒绝采样微调，也就是RFT，和环境无关的强化学习，简称RL。在传统的拒绝采样微调中，我们通过运行每个代码仓库的单元测试，来筛选出高质量的智能体轨迹，用于监督微调。但现在，有了Dockerless，我们就可以在一个最小化的Linux镜像中，收集大量的智能体Rollout，也就是智能体解决问题的过程记录，而无需实例化任何特定仓库的环境。然后，我们用Dockerless来评估每个Rollout最终生成的补丁，并根据Dockerless给出的分数，在全球范围内选出排名最高的K个Rollout，形成我们的高质量SFT训练数据。最后，我们用这些数据来微调模型。</p>
+<p>接下来，我们会在SFT模型的基础上，进一步使用Dockerless作为奖励模型来进行强化学习。同样，在强化学习阶段，智能体Rollout的收集也是在相同的最小Linux镜像中进行的，完全不需要特定仓库的环境。对于每个解决问题的Rollout，我们用Dockerless来评估其最终补丁的正确性，并将这个分数作为奖励信号。我们使用GRPO，也就是组归一化近端策略优化算法来优化模型。为了提高奖励的稳定性，我们不会只进行一次Dockerless评估，而是对同一个最终补丁进行多次独立的Dockerless评估，然后取这些评估结果的平均值作为最终奖励。这样，整个后训练流水线就真正实现了从数据收集、筛选到模型优化的全过程环境无关。</p>
+<p>为了全面评估Dockerless的性能，我们设计了一系列实验。在基准测试方面，对于评估编程智能体的解决率，我们使用了三个业界知名的SWE-bench系列基准：SWE-bench Verified、SWE-bench Multilingual和SWE-bench Pro。而对于验证器本身的评估，我们遵循了最新的研究实践，构建了一个平衡的轨迹级验证器评估基准，它包含了来自SWE-bench Verified和Multi-SWE-bench Flash的样本，确保了正负样本的平衡。在评估协议上，我们统一使用OpenHands作为默认的智能体框架，并设置了最多20轮的交互限制。对于“基于环境”的评估，智能体会在原始的、包含仓库依赖和测试运行器的Docker镜像中运行。而对于“环境无关”的评估，智能体则在一个最小化的Ubuntu 22.04 LTS镜像中运行，这个镜像只包含基础提交时的代码仓库检出，没有任何特定仓库的依赖或测试运行器。我们使用解决率（Pass@1）来衡量问题解决能力，对于验证器评估，我们则采用AUC（曲线下面积，一种衡量分类器性能的指标）作为衡量指标，因为它与SFT过滤和RL奖励的判别能力高度相关。</p>
+<p>在基线对比方面，对于智能体性能，我们与一系列同等规模（90亿参数以下）的开源SWE专业模型进行了比较，包括SWE-Gym-7B、SWE-Dev-7B、SWE-Lego-8B，以及我们的基础模型Qwen3.5-9B。对于验证器评估，我们对比了两大家族：一类是四个前沿大型语言模型（DeepSeek-V3.2、Kimi-K2.5、GLM-5、GPT-5.4），它们以零样本判官的形式参与评估；另一类是四个已训练的开源验证器，包括SWE-Gym Verifier、R2E-Gym Verifier、OpenHands Critic和DeepSWE Verifier。在实现细节上，我们选择Qwen3.5-9B作为Dockerless和下游后训练的骨干模型。Dockerless在来自SWE-Gym和Multi-SWE-RL的K个执行标签问题上，通过拒绝采样轨迹进行训练，并且在验证时生成2到4个验证问题。下游后训练的数据集我们使用的是SWE-Rebench-v2。我们收集环境无关的SFT轨迹，并从相同的任务池中采样RL的Rollout。</p>
+<p>现在，让我们来看看实验结果。首先是我们的主要发现：完全环境无关的后训练流水线，其性能达到了当前最强开源模型的水平。从Qwen3.5-9B基础模型出发，我们通过完全环境无关的后训练流水线训练出的Dockerless-RL-9B模型，在SWE-bench Verified、Multilingual和Pro这三个基准上，分别达到了百分之三十五点三、百分之二十六点八和百分之二十二点二的解决率。这比我们的基础模型提升了百分之十点六、百分之六点七和百分之七点二，并且超越了次优的开源SWE专业模型SWE-Lego-8B，分别提升了百分之三点六、百分之二点八和百分之三点二。这充分证明了我们的环境无关流水线在没有昂贵环境设置的情况下，也能训练出高性能的编程智能体。</p>
+<p>我们进一步探究了环境无关SFT和环境基础SFT的性能对比。我们比较了两个Qwen3.5-9B的SFT模型，它们唯一的区别在于训练轨迹的来源：Env-SFT-9B使用了在每个仓库特定环境中收集的轨迹，而Dockerless-SFT-9B则使用了由Dockerless筛选过的环境无关轨迹。令人惊喜的是，尽管Dockerless-SFT-9B在SFT数据过滤过程中移除了测试执行这一环节，它依然取得了与基于环境的基线模型相当的性能：在Verified上是百分之三十三点五对百分之三十三点七，在Multilingual上是百分之二十五点四对百分之二十五点五，在Pro上是百分之二十对百分之二十点一。这表明Dockerless作为SFT数据过滤器，能够高效地筛选出高质量的训练数据，使其在没有环境依赖的情况下也能达到与传统方法相同的效果。</p>
+<p>在强化学习阶段，我们也观察到了类似的结果。在相同的SFT初始化（Dockerless-SFT-9B）基础上，我们比较了三种RL变体：Dockerless-RL-9B使用了环境无关的Rollout和Dockerless奖励；DeepSWE-Verifier RL使用了DeepSWE Verifier的奖励；而Test-Execution RL则使用了基于每个仓库Docker环境的真实测试执行奖励。结果显示，Dockerless-RL-9B的性能非常接近Test-Execution RL，在Verified上是百分之三十五点三对百分之三十六点一，在Multilingual上是百分之二十六点八对百分之二十七点四，在Pro上是百分之二十二点二对百分之二十二点六。同时，它在三个基准上分别比DeepSWE-Verifier RL高出百分之三点一、百分之二点一和百分之二点一。这再次证明了Dockerless作为RL奖励模型的有效性，它成功地替代了昂贵的测试执行，为强化学习提供了可靠的奖励信号。</p>
+<p>接下来，我们评估了Dockerless作为独立验证器的性能。我们将Dockerless与两大家族共八个基线模型进行了对比。结果显示，Dockerless在SWE-bench Verified上达到了零点九六三的AUC，在Multi-SWE-bench Flash上达到了零点九六八的AUC，在这两个测试集上都超越了所有基线。与最强的已训练开源验证器相比，Dockerless在Verified上将AUC提升了百分之三点七，在Multi-SWE-bench Flash上提升了百分之三点三。即使与最强的前沿大型语言模型判官相比，它也分别提升了百分之六点二和百分之四点八。这些结果有力地证明了Dockerless独特的设计，即结合智能体式仓库探索和拒绝采样轨迹训练，确实能够产生一个更强大的补丁验证器。正是这个强大的验证器性能，使得Dockerless能够有效地过滤环境无关的SFT轨迹，并为环境无关的RL提供奖励，从而实现了无需特定仓库测试执行的后训练。</p>
+<p>我们还深入分析了SFT数据过滤器的效果。我们固定了SFT的骨干模型和训练方法，只改变训练数据的选择方式。在一个包含16K个环境无关轨迹的池子中，我们比较了四种情况：‘所有16K’（使用所有未过滤的轨迹），‘随机4K’（随机采样4K轨迹），‘Dockerless 4K’（Dockerless筛选出的排名最高的4K轨迹），以及作为环境基础对比的‘Env-based 4K’（通过基于环境的测试获得的4K轨迹）。结果非常清晰：直接使用所有16K环境无关轨迹进行训练，并不能提升模型性能，甚至在所有三个基准上都低于或持平于基础模型。这表明原始的环境无关Rollout不能直接用于SFT，低质量的轨迹必须被过滤掉。而‘Dockerless 4K’在所有三个基准上都显著优于‘随机4K’，例如在Verified上是百分之三十三点五对百分之二十九点七，这证明了Dockerless提供的筛选信号比随机采样更为有效。更重要的是，环境无关的轨迹收集结合Dockerless过滤，其性能与基于环境轨迹的SFT相当。‘Dockerless 4K’在三个基准上与‘Env-based 4K’几乎持平。这为拒绝采样微调提供了一条可扩展的路径：先不依赖特定仓库设置收集Rollout，然后使用强大的验证器来筛选出值得训练的轨迹。</p>
+<p>我们还研究了验证问题数量对Dockerless性能的影响。我们发现在SWE-bench Verified上，随着验证问题数量从0增加到4，Dockerless的性能逐渐提升，从没有验证问题的零点八九六AUC上升到4个问题时的零点九六三AUC。这明确表明，提出验证问题并收集仓库证据，确实有助于Dockerless更准确地判断补丁的正确性。然而，当问题数量超过4个时，性能开始出现波动，不再是单调提升，例如在5个问题时是零点九五九，在6个问题时是零点九五三。这可能意味着过多的问题有时会引入冗余或噪音证据。因此，在实际推理时，我们选择生成2到4个验证问题，以在验证器准确性和每次调用的探索成本之间取得平衡。</p>
+<p>由于Dockerless需要进行多步仓库探索才能给出奖励，我们对其延迟进行了分析。我们分解了RL训练步骤中的智能体Rollout时间和奖励评估时间。结果显示，智能体Rollout时间平均需要几十秒，占据了绝大部分的实际运行成本，而奖励评估时间只额外增加了几秒钟。尽管Dockerless比其他验证器的奖励评估时间要长一些，但它仍然只占每个Rollout总时间的约百分之十。这说明在强化学习场景下，智能体式验证所带来的额外成本，与生成Rollout的成本相比是微不足道的。整体的延迟分布也印证了这一点，不同奖励来源的总Rollout时间几乎完全重叠，因为吞吐量主要受接近超时限制的慢速Rollout影响，而不是奖励计算时间。</p>
+<p>最后，我们来看一个具体的案例研究。图7展示了一个matplotlib的offsetText颜色问题。在这个案例中，候选补丁通过了执行，但它的修复方式是将修改内联为条件语句，而不是像参考补丁那样使用辅助变量重构。传统的基线方法，比如文本相似度，只给出了零点五的低分，DeepSWE Verifier也只给了零点五四。而Dockerless则表现出色，它派遣了多个子智能体来回答验证问题。收集到的证据证实，这个修复同时应用于X轴和Y轴的初始化路径中，并且保留了‘继承’与‘显式labelcolor’的语义。基于这些扎根于代码仓库的证据，Dockerless给出了零点九九的高分，与实际的执行结果完全一致。这个案例生动地说明了，即使候选补丁在表面形式上与参考补丁存在显著差异，但通过问答式的证据收集，Dockerless依然能够做出正确的判断。</p>
+<p>在相关工作方面，大型语言模型在软件工程领域的应用发展迅速，从生成简单的代码片段到解决复杂的真实世界软件工程任务。SWE智能体通常通过SFT和RL的两阶段方法进行后训练，SFT依赖于经过筛选或执行过滤的轨迹，而RL则由测试执行奖励驱动。还有一些工作构建了环境无关的Rollout流水线，在不同代码仓库之间共享一个基础镜像，但它们往往限制了智能体的能力，比如只暴露一小部分静态工具，或者通过学习的模型模拟工具反馈。与这些不同，Dockerless允许智能体在最小化的Linux镜像中执行任何Shell命令，并接收真实的工具反馈，同时用一个统一的环境无关智能体式验证器取代了RFT阶段的过滤器和RL的奖励来源。在SWE智能体验证器方面，许多工作训练了语言模型验证器，通过固定的提示词对补丁进行评分，这些验证器从执行训练的分类器到基于规则的或RL蒸馏的变体都有。但这些方法在评分时都不会调用工具或检查代码仓库。虽然也有一些工作将验证器本身设计成智能体，但它们的应用场景通常远离SWE补丁结果评估，比如数学推理或竞技编程，或者专注于生成评估标准而非直接评分，或者评估中间轨迹步骤。Dockerless的独特之处在于，它将智能体直接置于SWE补丁结果评分这一核心任务上，通过主动探索代码仓库和调用真实工具来给出最终判断。</p>
+<p>总而言之，我们在这项工作中提出了Dockerless，一个环境无关的智能体式验证器，它通过主动探索代码仓库来评估代码补丁的正确性，而无需任何特定仓库的环境设置。我们证明了Dockerless能够同时作为监督微调的轨迹过滤器和强化学习的奖励信号，从而构建了一个完全环境无关的后训练流水线，用于训练编程智能体。实验结果表明，Dockerless在性能上超越了以往的开源验证器，而且，我们基于Dockerless训练出的模型，其性能与依赖于环境的传统后训练方法所达到的水平相当，但却完全不需要为每个代码仓库进行复杂的环境搭建。尽管在Rust和C这类重编译型语言上，由于环境基础训练能够利用编译器诊断信息，我们仍观察到轻微的性能差距，但这恰恰指明了未来工作的方向，即如何在环境无关的流水线中提供类似编译器的反馈，而不是进一步扩展基于环境的数据。我们相信，这种智能体式、证据驱动的验证方法，为代码奖励建模提供了全新的视角，并且为在大量缺乏可复现执行环境的真实世界代码仓库上进行大规模后训练，开辟了一条可扩展且切实可行的道路。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

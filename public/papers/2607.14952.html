@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 17, 2026</time> · <a href="https://arxiv.org/abs/2607.14952">arXiv</a> · <a href="https://arxiv.org/pdf/2607.14952">PDF</a></div>
+    <h1>LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-17-longstraw-long-context-rl-beyond-2m-tokens-under-a-fixed-gpu-b901c6df.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>A growing gap separates inference context lengths from RL post-training: inference systems are approaching million-token contexts, while post-training workloads often remain at 256K tokens or below and rely on length generalization at deployment. The gap is especially important for AI agents, whose observations, tool outputs, documents, and prior decisions accumulate over long trajectories. LongStraw is an architecture-aware execution stack for million-token RL post-training under a fixed GPU budget, instantiated with Group Relative Policy Optimization (GRPO). It evaluates the shared prompt without autograd, retains only model-specific state needed by later tokens, and replays short response branches one at a time, reducing the live training graph at the cost of additional replay time. We implement it for the hybrid recurrent and full-attention Qwen3.6-27B and the compressed-attention mixture-of-experts GLM-5.2. On eight H20 GPUs, LongStraw completes grouped Qwen scoring and response backward at 2.1M positions for groups of 2 and 8; increasing the group size adds only 0.21 GB of peak allocated memory, while a separate stress test reaches 4.46M positions. On 32 H20 GPUs, we validate the end-to-end LongStraw execution path for a 2.1M-token prompt across all 78 layers of GLM-5.2. These experiments establish execution capacity rather than complete training correctness because the captured prompt state is detached and some distributed forward and gradient composition paths remain incomplete.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>当前，AI智能体在处理复杂任务时，正从简单的单次问答，转向使用工具、检查代码和文档，并在长时间的轨迹中进行行动和决策。这就意味着它们需要处理的上下文信息越来越长。举个例子，一个智能体可能需要回顾数百万个token的历史对话、工具输出或文档内容，才能做出下一个正确的决策。然而，我们目前在模型推理阶段，也就是模型生成答案的时候，已经能够支持百万级别的上下文长度了，但在强化学习的后训练阶段，也就是我们根据智能体的表现来优化模型参数的时候，上下文长度却常常停留在二十五万六千个token甚至更短。这意味着在部署智能体时，我们不得不依赖模型对长上下文的泛化能力，也就是希望它在训练时没见过那么长的上下文，但实际用起来也能表现好。这种差距对于AI智能体来说尤其重要，因为它们的观察、工具输出、文档和之前的决策，都会在漫长的轨迹中不断积累。</p>
+<p>那么，为什么强化学习的后训练阶段难以处理长上下文呢？这主要是因为训练与推理在内存使用方式上存在根本差异。在推理时，服务器可以预填充一个很长的提示，缓存解码所需的中间状态，然后就可以丢弃掉前向计算图了。但训练不同，它需要对多个基于相同历史的响应进行评分，并且要进行反向传播来计算梯度。在这个过程中，注意力机制的计算复杂度是上下文长度的平方，而且反向传播过程中需要长时间保留大量的中间激活状态。这些都使得GPU内存成为了扩展训练上下文长度的主要瓶颈。</p>
+<p>为了解决这个痛点，LongStraw这篇论文提出了一种架构感知的执行堆栈，它能够在固定的GPU预算下，实现百万级别的强化学习后训练。这项工作以“组相对策略优化”，也就是GRPO为例进行了实例化。GRPO是一种强化学习的训练方法，它通过比较同一组内共享提示的多个响应来计算优势值。LongStraw的核心思想是，它只对共享的提示进行一次前向计算，并且不启用自动微分。这样做的目的是为了避免存储提示部分庞大的计算图和中间激活值。然后，它只保留模型特定、且后续token所需的那些状态。接着，它会一次只回放一个短的响应分支，并且在这个阶段启用自动微分。这种方法将实时的训练计算图从完整的提示和响应序列，缩小到了单个响应分支的大小。它通过增加额外的回放时间，来换取更低的GPU内存使用。</p>
+<p>我们来深入了解一下LongStraw的具体设计和动机。</p>
+<p>首先，我们得理解强化学习训练的依赖图。一个分组更新通常有五个逻辑上不同的阶段。 第一阶段是“提示捕获”。在这个阶段，模型会计算共享提示的前向传播，但不会启用自动微分。它只保留架构特定的条件状态，比如注意力机制需要的键值对，或者循环网络需要的隐藏状态。 第二阶段是“预步评分”。在策略回放之前，模型会评估旧策略和参考策略的响应对数概率。在这个过程中，模型的参数是固定不变的。 第三阶段是“优势构建”。这一阶段将分组奖励转换为策略优化所需的优势值。 第四阶段是“策略回放”。模型会一次重建一个短的响应计算图，计算其损失，进行反向传播，并将梯度累积到同一个适配器中。 第五阶段是“优化器事务”。在所有分组内的响应都完成反向传播并累积梯度后，模型会同步这些梯度，进行一次参数更新，然后清除梯度。</p>
+<p>这个执行顺序非常关键。如果在每个响应分支之间就进行参数更新，那么重要性比率和提示状态都会发生变化。而LongStraw的设计是，它将所有响应图的激活内存开销，从与分组大小G成正比，变成了仅仅与单个响应分支的长度成正比。也就是说，分组大小主要影响了总的训练时间，而不是峰值内存占用。</p>
+<p>这里有一个非常重要的概念区分，就是“条件回放”和“缺失的梯度项”。传统上，一个完整的序列损失函数会同时对显式的响应计算和提示状态中隐含的参数依赖进行微分。但LongStraw的实现是，它会将捕获到的提示状态视为“停止梯度”，也就是说，在反向传播时，不会计算通过提示状态对参数的梯度。这样做的结果是，LongStraw只计算了响应部分直接对参数的梯度，而忽略了提示状态对参数的梯度。所以，我们不能声称LongStraw实现了与完整序列训练完全等价的梯度。这是一个权衡：为了节省内存，我们牺牲了部分梯度信息的计算。因此，论文报告的实验结果，是关于“执行容量”的，而不是“完全训练正确性”的证明。</p>
+<p>为了验证LongStraw的有效性，研究人员在两种截然不同的模型家族上实现了它：一个是Qwen3.6-27B，它结合了混合循环层和全注意力层，并且使用了密集的前馈网络；另一个是GLM-5.2，它使用了压缩注意力机制和混合专家（MoE）结构。</p>
+<p>我们先来看看Qwen3.6-27B这个模型。它的配置是隐藏层宽度五千一百二十，有六十四个解码器层，其中四十八层是“线性注意力”，也就是通过门控Delta网络实现的循环机制，另外十六层是“全注意力”层。每层都带有一个密集的门控前馈网络。这两种注意力机制在处理提示状态时，对内存的需求是不同的。门控Delta网络层只需要一个固定形状的循环状态，它的存储大小与提示长度无关。而全注意力层则需要存储所有的提示键和值，所以它的存储会随着提示长度线性增长。因此，Qwen模型的大部分长上下文存储问题都集中在十六个全注意力层上，而另外四十八个循环层只贡献了紧凑的循环状态。</p>
+<p>Qwen的LongStraw实现采用了NF4 QLoRA技术，这是一种量化低秩适配器，它减少了可训练参数的数量，也降低了基模型的存储成本。但它并没有直接减少键值对的长度，也没有减少响应激活值的生命周期。LongStraw通过物理页压缩和条件回放来解决这些问题。</p>
+<p>在Qwen的LongStraw实现中，键值对的存储采用了上下文并行（CP8）的方式，将键值对页面分布到八个GPU上。每个GPU只保留它所拥有的页面，但会知道全局的逻辑键值对长度。这样，位置编码和因果掩码仍然使用原始的序列坐标。为了确保内存管理与页面所有权一致，LongStraw会将每个保留的页面分片复制到大小合适的物理分配中。</p>
+<p>对于全注意力机制的前向计算，Qwen的实现是全局的。每个GPU会计算它本地的键值对分片的局部输出和对数归一化项，然后通过一个全局的归约操作，包括一个最大值全归约和两个求和全归约，来重构出全局的注意力输出。这保证了在给定固定提示状态下，响应注意力操作的正确性。</p>
+<p>响应回放方面，Qwen的响应分支被分成四个两千零四十八个token的块。策略回放会以相反的顺序遍历这四个块。对于一个块，它会恢复相应的门控Delta网络输入状态，启用梯度追踪，然后重新计算所有六十四个解码器层。计算完成后，它会传播循环状态的梯度到前一个块，并释放临时键值对更新。这样，在任何时候，只有一个两千零四十八个token的响应图是活跃的，从而大大降低了内存峰值。</p>
+<p>实验结果显示，在八个H20 GPU的固定预算下，LongStraw能够处理二点一兆个位置的Qwen模型。当分组大小从二增加到八时，峰值内存分配仅增加了零点二一GB，这非常小，不到总内存的百分之零点二。这证明了LongStraw通过序列回放的方式，有效地将分组大小对内存的影响从线性降低到了几乎可以忽略不计。当然，分组大小的增加会线性增加总的训练时间，因为每个响应分支都需要单独回放。一个独立的压力测试甚至将执行范围扩展到了四点四六兆个位置。</p>
+<p>然而，Qwen的实现也存在局限性。虽然前向聚合是完整的，但模型并行的反向传播并不完全。具体来说，查询梯度会进行全归约，但键值对的梯度贡献仍然是局部于每个GPU的。这意味着，键值对投影的LoRA权重是复制的，它们正确的参数贡献需要跨不同token所有者的聚合。目前，LongStraw的Qwen路径并没有实现这种跨GPU的键值对参数梯度同步。因此，论文声明，它验证的是“执行容量”和“更新形状的执行容量”，而不是“连贯的分布式模型更新”。</p>
+<p>接下来，我们转向GLM-5.2模型。它的架构更为复杂。它的长距离token混合器既不是密集的注意力，也不是与提示长度无关的循环机制。每个解码器层都结合了多头隐式注意力（MLA）和动态稀疏注意力（DSA）索引，而且大多数前馈块都是路由的混合专家（MoE）层。这意味着，一个有效的提示边界必须保留两种注意力表示，复制跨层的IndexShare调度，并在自动微分下重新进入专家并行（EP）的尾部。</p>
+<p>GLM-5.2的配置是隐藏层宽度六千一百四十四，共有七十八个解码器层。注意力机制使用了六十四个MLA查询头，查询和键值隐式秩分别为两千零四十八和五百一十二。DSA索引器有三十二个头，每个头维度一百二十八，为每个查询最多选择两千零四十八个前序位置。并非所有层都会重新计算索引。GLM的配置中，只有二十一个层会计算索引，其余五十七个层会重用附近源层发布的索引选择，这被称为IndexShare。这改变了运行时契约：只有二十一个计算层需要持久化的提示索引器键页面。</p>
+<p>GLM的前馈网络结构也非均匀。前三个解码器层是密集的门控前馈网络，而其余七十五个层则有两百五十六个路由专家，采用Top-8路由，外加一个共享专家。MoE的稀疏性减少了单个token评估的专家数量，但它带来了分布式参数和数据移动的挑战。专家并行（EP）的GPU持有不同的专家，路由器将一个token分配给八个专家，并将这些行发送给各自的GPU，评估选定的专家路径，然后合并输出。</p>
+<p>GLM的LongStraw实现采用了TP1/CP32/EP32/ETP1/PP1的并行拓扑，运行在三十二个H20 GPU上。CP32负责分布长注意力状态，EP32负责分布两百五十六个路由专家。在这种配置下，CP和EP组的成员是相同的，但它们解决的是不同的所有权和通信问题。CP关注哪个GPU拥有哪个提示位置，而EP关注哪个GPU拥有哪个专家参数分片。</p>
+<p>GLM的LongStraw会将MLA的隐式页面和索引器键页面保留在CPU内存中。在响应回放期间，它会一次只将一个层所需的页面加载到GPU上，执行短响应层的计算，然后释放或返回这些加载的页面。这种CPU放置策略以传输时间换取了内存驻留边界，这只有在层级回放时才有效。</p>
+<p>GLM的响应回放还采用了“整层检查点”机制。激活检查点通常通过重新计算来减少内存占用。对于GLM复杂的MoE层，仅仅注意力检查点是不够的，因为MoE的尾部可能还会保留路由器输出、调度排列、专家输入等。所以，LongStraw会检查点整个解码器层。前向传播只保存短层的输入和最小元数据，反向传播则重新计算注意力投影、稀疏选择、路由器决策、专家分发/组合等所有操作，而不需要在反向传播过程中保留完整的层计算图。</p>
+<p>GLM的实验结果也验证了端到端的LongStraw执行路径，在三十二个H20 GPU上，成功处理了一个二点一兆token的提示，通过了GLM-5.2的所有七十八层。但是，GLM的实现也存在局限性。在接受的实验记录中，DSA的评分、Top-2048选择和稀疏注意力仍然局限于每个CP分片，并没有进行跨GPU的全局候选选择或注意力输出合并。此外，它的自定义常驻路径绕过了Megatron的梯度最终化，导致CP复制的非专家适配器梯度在分布式优化器步进之前没有进行归约。因此，GLM路径同样没有达到“连贯的分布式更新”水平。</p>
+<p>这项研究为我们带来了几个重要的系统层面的经验教训：</p>
+<p>第一，固定预算下的容量来自生命周期管理，而不仅仅是稀疏性。LongStraw通过精确控制张量的生命周期，在提示计算完成后立即释放瞬态激活值，只保留后续响应所需的最小状态，从而实现了长上下文。这比仅仅依靠模型稀疏性（如MoE）本身带来的内存节省更为根本。</p>
+<p>第二，物理所有权是算法的一部分。当一个保留的张量是更大分配的视图时，仅仅逻辑分片是不够的。分配器无法在任何视图仍然存在时释放父级分配。LongStraw通过将拥有的分片复制到大小合适的物理分配中，确保了内存分配器所有权与页面表所有权的一致性，从而真正实现了内存的释放。</p>
+<p>第三，密集模型和混合专家模型将内存峰值推向不同的位置。Qwen的密集前馈网络意味着每个token都会激活所有参数，其内存峰值主要在全注意力层的KV存储和密集的FFN激活。而GLM的MoE模型虽然减少了激活的专家数量，但其路由器、调度排列、专家输入等操作仍然会产生大量的中间张量，将内存峰值推向了这些MoE相关的操作。</p>
+<p>第四，上下文并行和专家并行是正交的。它们解决了不同的所有权和通信问题。上下文并行分布长注意力状态，而专家并行分布路由专家。即使在同一组GPU上运行，它们也需要各自独立的通信组和归约操作。</p>
+<p>第五，前向保真度、更新一致性和梯度等价性是不同的。LongStraw的实验证明了“执行容量”和“更新形状的执行容量”，即它能够完成前向计算、响应反向传播和本地优化器调用。但是，它并未完全达到“分布式更新一致性”或“与传统训练的完整梯度等价性”。这提醒我们在评估新的训练系统时，需要区分这些不同层次的正确性声明。</p>
+<p>第六，分组伸缩是调度结果。在LongStraw的设计下，分组大小的增加主要影响总训练时间，而不是峰值内存。这是因为响应分支是串行回放的，每个时间点只有一个响应图活跃。</p>
+<p>总的来说，LongStraw通过将长提示的计算与短响应的计算解耦，并在内存管理上进行精细控制，成功地在固定的GPU预算下，将强化学习后训练的上下文长度扩展到了两百万token以上。它降低了进入长上下文训练领域的硬件门槛，使得更多研究人员和小型团队能够在有限的加速器预算下探索这一前沿方向。这项工作为未来的AI智能体发展铺平了道路，让它们能够更好地理解和利用漫长的历史信息，从而做出更智能、更连贯的决策。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

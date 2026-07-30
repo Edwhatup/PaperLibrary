@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 13, 2026</time> · <a href="https://arxiv.org/abs/2607.08964">arXiv</a> · <a href="https://arxiv.org/pdf/2607.08964">PDF</a></div>
+    <h1>Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-13-long-horizon-terminal-bench-testing-the-limits-of-agents-on--76efd180.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>AI agents have become capable of autonomously completing short, well-specified tasks. However, existing terminal benchmarks largely focus on simple problems that finish within minutes and are evaluated only by their final outcome. This setup overlooks intermediate progress and partial solutions, yielding sparse reward signals and an incomplete picture of agent capability. We introduce Long-Horizon-Terminal-Bench, a terminal benchmark of 46 long-horizon tasks spanning nine categories, including experiment reproduction, software engineering, multimodal analysis, interactive games, and scientific computing. Each task follows a Terminal-Bench-style setup with a reference solution or simulation engine, but is further decomposed into fine-grained graded subtasks. This design enables dense intermediate rewards and partial credit, allowing evaluation to capture not only whether an agent reaches the final goal, but also how far it progresses on open-ended workflows. Tasks in Long-Horizon-Terminal-Bench typically require hundreds of episodes and minutes to hours of execution, stressing long-horizon planning, long-context management, and iterative debugging rather than one-shot problem solving. We evaluate 15 frontier models and find that agents consume on average 9.9M tokens per task, with roughly 231 episodes and 85.3 minutes of execution time per run, making Long-Horizon-Terminal-Bench more demanding than prior terminal-based benchmarks. Even the strongest tested model achieves 15.2% pass@1 at a partial-reward threshold of 0.95 and 10.9% at a perfect-reward threshold of 1.0, while the mean pass rate across models is 4.3% and 1.7% under the two thresholds, respectively. These results reveal headroom for improvement. We further analyze failure modes and error patterns, and release Long-Horizon-Terminal-Bench to support future progress on long-horizon terminal agents.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>目前，AI智能体在完成那些短小、明确的任务上表现出色，比如修复一个代码库问题，或者执行几条简单的shell命令，但当面对需要长时间规划、多步骤执行的复杂任务时，它们的极限究竟在哪里？现有的基准测试，往往只关注那些几分钟内就能完成的简单问题，并且通常只根据最终结果进行评估。这种过于简化的评估方式，不仅忽略了智能体在中间过程的进展和局部解决方案，也导致了稀疏的奖励信号，使得我们无法全面准确地衡量智能体的真实能力。</p>
+<p>为了解决这个问题，我们引入了一个名为 Long-Horizon-Terminal-Bench，简称 LHTB 的全新基准测试。这是一个极具挑战性的任务集，包含了四十六个横跨九大类别的长周期终端任务，其中包括实验复现、软件工程、多模态分析、交互式游戏以及科学计算等等。与以往的基准测试不同，LHTB 的每个任务都遵循终端基准测试的设置，提供一个参考解决方案或仿真引擎，但它最核心的创新在于，每个任务都被分解成了更细粒度、可评分的子任务。</p>
+<p>这种设计理念，使得我们的评估器能够提供密集的中间奖励和部分分数，即使任务没有完全完成，智能体也能获得相应的奖励。这意味着，我们不仅评估智能体是否达到了最终目标，更重要的是，我们评估它在整个复杂工作流中推进了多远。LHTB 的任务通常需要数百个回合，耗时从三十分钟到数小时不等，这极大地考验了智能体的规划能力、长上下文管理能力以及迭代调试和错误修正能力，而不仅仅是要求它一次性解决问题。</p>
+<p>在我们的实验中，我们评估了十五个前沿模型。结果显示，智能体平均每个任务需要消耗九点九百万个令牌，大约执行两百三十一个回合，耗时八十五点三分钟。这些数字比现有的终端基准测试，比如 Terminal-Bench 2，高出了一个数量级。Terminal-Bench 2 的任务平均执行时间通常在二十分钟到三十分钟之间，每个任务只有二三十个回合。这充分说明了 LHTB 在任务复杂度上带来的巨大提升。</p>
+<p>更令人深思的是，即使是我们测试的最强模型，在部分奖励阈值为零点九五时，通过率也仅为百分之十五点二，而在达到百分之百完美奖励时，通过率更是低至百分之零点七。所有模型的平均通过率，在部分奖励阈值为零点九五时仅为百分之四点三，在完美奖励阈值下更是只有百分之零点三。这些数据清晰地表明，当前智能体在处理长周期任务方面仍有巨大的提升空间。</p>
+<p>接下来，我们深入探讨一下 LHTB 的任务设计和评估机制。LHTB 建立在 Terminal-Bench 的基础上，每个任务都是一个容器化的终端环境，包含自然语言指令、所有相关文件和工具，以及一个可以完全通过命令行执行的参考解决方案。任务涵盖了各种领域，并且明确设计为需要智能体持续工作多个步骤才能取得进展，比如阅读和修改代码、运行长时间脚本、检查部分输出以及迭代调试。</p>
+<p>LHTB 与 Terminal-Bench 的核心区别在于其评分方式。Terminal-Bench 采用的是二元化的解决/未解决评估，而 LHTB 则通过基于子任务的方案进行评分。每个任务被分解成一组语义上有意义的子任务，每个子任务都有自己的检查点。智能体通过这些子任务的完成率来得分。这种设计提供了部分分数，并为长周期性能提供了更密集的信号，揭示了智能体在复杂工作流程中推进了多远，而不仅仅是它是否达到了最终目标。</p>
+<p>具体来说，LHTB 的任务遵循 Harbor 任务格式：它由自然语言指令、定义终端环境的 Docker 镜像、任务配置文件以及用于评分的预言机实现或模拟器组成。指令描述了整个长周期目标，比如复现一个图表、修复一个机器人 SLAM 管线、审计一个多模态数据集等等，这是智能体唯一能看到的任务规范。Docker 镜像包含了所有相关的资产、代码、数据、工具和辅助脚本，智能体可以完全通过终端完成任务。任务是交互式的：容器启动后，智能体发出 shell 命令、编辑文件、运行脚本并检查中间输出，直到成功或超时。</p>
+<p>LHTB 的长周期结构既源于底层领域本身，比如多阶段机器学习管线、战役式游戏或科学审计，也源于我们将目标分解为一系列必须随着时间推移被发现和执行的中间目标的方式。单个子任务通常就需要许多推理步骤，以及数分钟到数小时的工作和数十到数百次不同的操作。</p>
+<p>在子任务评分方面，LHTB 的每个任务都由一个在容器内部运行的确定性评分器进行评估。评分器不会返回严格的单一通过/失败结果，而是为一组共同描述预期工作流程的子任务计算分数。对于每个子任务，它会输出一个归一化分数，最终任务奖励是这些子任务分数的加权和。子任务的选择对应于工作流程中语义上有意义的中间目标，并且每个子任务都使用最终容器状态的客观证据进行评估，例如文件、输出、测试结果或模拟器响应。</p>
+<p>子任务主要有三种类型： 第一种是二元子任务。这些检查被实现为环境状态的严格布尔条件，例如所有单元测试是否成功退出，服务是否在预期端口响应，或者所需的实验脚本是否无错误运行。这些子任务根据相应的程序化检查是否通过返回一或零。 第二种是连续或阈值子任务。对于定量目标，比如复现图表、匹配指标或实现给定加速，我们使用连续分数。例如，如果复现的指标在参考值的容忍范围内，则得分为一，随着误差的增长线性下降到零；或者模型预测与预言机匹配的未保留示例的比例。这在智能体接近但不完美时提供了有意义的部分分数。 第三种是回合聚合子任务。战役式任务，比如游戏或重复审计，会在多个回合中进行聚合。一个典型的子任务是环境内部成功标志触发的回合或关卡比例，或者是模拟器报告的平均归一化奖励。这衡量了智能体是否能在许多回合中可靠地执行长周期行为，而不是仅凭运气成功一次。</p>
+<p>整体任务奖励用于所有报告的指标。当归一化奖励至少达到零点九五时，任务被视为成功解决。我们还报告了所有任务的平均归一化奖励，以捕捉智能体在无法完全解决的问题上取得了多大进展。</p>
+<p>在数据集构建方面，我们通过在多样化的真实世界长周期工作流中实例化一个通用配方来构建 LHTB。每个任务都始于一个真实的专业数据处理或工程问题，例如材料相图审计、机器人 SLAM 基准修复、气候 NetCDF 极端事件检测、音视频事件对齐、科学图表数据重建、卫星洪水变化检测、显微镜细胞计数质量控制或扫描文档表格重建。其中一些专业工作流任务是根据现有的长周期智能体基准 APEX-Agents 改编或受其启发，其他则是为 LHTB 新创建的。</p>
+<p>对于每个问题，我们都构建了一个完整但故意存在缺陷的纯终端项目。智能体必须完全通过终端工作：检查代码、运行命令并分析图像、音频、视频、表格和 NetCDF 文件等工件，以诊断和修复核心管线。每个任务都包含可复现的公共资产生成脚本、一个弱基线实现、一个官方黄金解决方案、一个多步骤的 solve.sh 脚本以及一个隐藏的验证器。为了避免智能体过度拟合表面化的公共测试，公共检查仅验证命令行行为、文件格式和少量简单示例，并且它们的奖励权重相对较低。大部分奖励是通过动态生成更难的输入和模式变体（例如嵌套清单、gzip-加-base64 封装器、重命名字段、缺失值、注入噪声、旋转或裁剪图像、异常帧以及替代坐标或时间维度约定）的隐藏压力案例分配的。因此，智能体无法通过硬编码输出或仅修补公共案例来获得高分；它们必须实现鲁棒的解析、核心算法和端到端工件生成，这些能力需要超越可见示例的泛化。官方黄金解决方案必须在完整的隐藏评估套件上达到百分之百的验证器分数。</p>
+<p>在难度校准和验证方面，我们通过在一点五小时的时间预算下反复运行 Deepseek-V4-Pro 模型，并调整任务设计，直到任务具有挑战性但原则上仍然可解决。我们生成了一百二十个候选任务，经过质量筛选，最终基准测试包含四十六个以 Harbor 格式实现的任务，所有任务都具有容器化环境和共享的智能体驱动程序。</p>
+<p>这四十六个任务分布在二十一个高级类别中，包括交互式游戏、多模态审计、软件工程、系统和性能、实验复现、地球和环境、科学计算、机器人技术、材料科学、健康和医学、气候科学以及芯片设计等等。没有单一类别主导整个基准测试，最大的类别是交互式游戏和多模态审计，其余任务则分布在广泛的科学和工程工作流中。</p>
+<p>接下来，我们来看看具体的实验设置和主要结果。我们使用 Harbor 框架与 Terminus-2 智能体驱动程序来评估模型，该驱动程序通过一个单一的长周期终端会话与每个任务环境进行交互。对于 GPT-5.3，我们则使用了 Codex 作为智能体驱动程序。这些框架使我们能够评估现有前沿模型在持续的基于终端的工作流中的表现。</p>
+<p>我们评估了十五个前沿模型，包括 GPT-5.5、GPT-5.4、GPT-5.3 Codex、DeepSeek V4 Pro、Gemini 3.1 Pro、GLM 5.1、GLM 5.2、Kimi K2.6、Kimi K2.7 Code、MiniMax M3、Qwen3.7 Max、Qwen3.6 Plus、Doubao Seed 2.1 Pro、Hy3 和 Grok 4.20。对于每个模型，我们报告了在通过率阈值为零点九五时的一通过率，即归一化奖励至少为零点九五的任务比例，以及所有任务的平均归一化奖励、完成任务所需的回合数、时间长度以及每个任务的估计美元成本和令牌使用量。</p>
+<p>总的来说，我们评估的前沿模型在长周期任务上仍然表现挣扎，即使是在提供部分分数的密集评分评估下也是如此。GPT-5.5 是表现最强的模型，但在通过率阈值为零点九五时，它也仅解决了百分之十五点二的任务，即四十六个任务中的七个。MiniMax M3、Kimi K2.7 Code 和 DeepSeek V4 Pro 以百分之六点五的通过率紧随其后，每个模型解决了四十六个任务中的三个。</p>
+<p>接下来是百分之四点三通过率的中等水平模型，包括 Qwen3.7 Max、Doubao Seed 2.1 Pro、Gemini 3.1 Pro、GLM 5.1 和 GPT-5.3 Codex。而 GLM 5.2、Qwen3.6 Plus、GPT-5.4 和 Hy3 每个模型只解决了一个任务。Kimi K2.6 和 Grok 4.20 在通过率阈值为零点九五时没有解决任何任务，其中 Grok 4.20 在所有报告模型中平均奖励最低，仅为零点零一。平均归一化奖励遵循类似的排序，这表明许多模型在难以完全解决的任务上取得了部分进展，但未能完全解决它们。这些结果表明，长周期执行不仅仅是局部推理任务，即使对于顶级前沿模型来说，它仍然是一个瓶颈。</p>
+<p>我们强调，在 LHTB 这种难度级别下，使用密集的、基于子任务的评分而非二元化的通过/失败是至关重要的。在严格的通过率阈值，即百分之百完美奖励下，十五个模型中有十个模型未能解决任何任务。即使在通过率阈值为零点九五时，也只有百分之六点一的运行通过，而百分之七十九点二的运行得分低于零点零五。剩下的百分之十四点七的运行取得了真实的部分进展，但如果采用二元评分，它们将被视为完全失败，得分与那些没有任何进展的运行相同。</p>
+<p>二元评分会掩盖模型之间的有意义差异。在二元通过/失败评估下，排行榜会崩溃成大的平局组；例如，在严格的百分之百奖励阈值下，十个模型都解决了零个任务。平均奖励通过量化模型在未能完全完成的任务上取得了多大进展来解决这些平局。在通过率阈值为零点九五时，在解决了一个任务的模型中，平均奖励从 GPT-5.4 的零点零三到 GLM 5.2 的零点三零不等。通过率和平均奖励呈正相关，但相关性仅为中等强度，它们可以产生不同的模型排名，因为它们衡量了长周期性能的不同方面：通过率衡量的是任务的完全完成，而平均奖励则衡量持续的部分进展。</p>
+<p>“近乎成功”的情况，也就是接近完成但未能通过最终检查的运行，比完全通过的运行多出两倍以上，这表明许多运行非常接近完全解决任务，但在最后几个步骤或检查中失败了。例如，Kimi K2.6 在通过率阈值为零点九五时解决了零个任务，但它有五次“近乎成功”，平均奖励为零点一六。它在“grammar-fuzz-coverage-hunt”任务上达到了零点九四的最高“近乎成功”分数，在“spot-scheduler-traces”任务上达到了零点八五，在“poc-exploit-craft”任务上达到了零点八零，在“nbody-accel-iterative”任务上达到了零点七五。在二元评分下，它看起来与那些没有取得任何有意义进展的模型无法区分，即使它反复接近成功完成。随着模型的改进，这种“近乎成功”的情况很可能提供重要的早期进展信号，通常在完全通过率反映出来之前，揭示出更清晰的能力提升。</p>
+<p>我们还进行了成本分析。平均每个任务的成本从大约二点五美元到二十八美元不等。尽管 GPT-5.5 取得了最高的通过率，但它也是最昂贵的模型之一，每个任务大约二十一美元。而 GPT-5.4 总体上最昂贵，每个任务大约二十八美元，但通过率却更低。这种差距的原因在于，GPT-5.4 是一个较弱的模型，但每个任务需要的回合数却远多于 GPT-5.5，分别是三百零二个回合对两百零八个回合，而每百万令牌的价格却相当。因此，它的成本更高，但通过率却更低。</p>
+<p>Hy3 位于成本效益曲线的低成本端，每个任务大约二点五美元。Doubao Seed 2.1 Pro 和 MiniMax M3 也在这条曲线上，它们在通过率阈值为零点九五时分别取得了百分之四点三和百分之六点五的通过率，每个任务成本分别约为四点五美元和六点五美元。DeepSeek V4 Pro 略微偏离这条曲线，它与 MiniMax M3 取得了相同的通过率，但成本也相似。其余的模型，包括 Kimi K2.7 Code、GPT-5.3 Codex、GLM5.1、Gemini3.1 Pro、Qwen3.7 Max、GLM5.2、Kimi K2.6 和 Grok 4.20，构成了一个中低层级，成本适中到高，但解决率较低，这表明单纯增加推理支出不足以保证更好的长周期性能。</p>
+<p>密集的奖励还揭示了不同的失败模式。在所有模型中，百分之八十六的未解决运行是因为九十分钟的时间预算耗尽，而智能体仍在积极工作。然而，这些超时运行并未接近完成，模型之间的平均奖励仅在零点一零到零点三五之间。相比之下，仅占未解决运行百分之六的提前退出，通常表明过度自信：智能体在尚未满足隐藏验证器的情况下自行停止。只有百分之八是由于评估驱动程序本身的错误，而不是模型提前停止或耗尽时间预算。</p>
+<p>这表明主要的瓶颈不是局部执行的正确性，而是长周期任务的完成能力。在 Terminal-Bench 2.0 上，大多数试验在二十分钟内完成，轨迹级错误分析发现许多失败与执行相关，包括不遵守规范、重复步骤和遗漏终止条件。但在 LHTB 上，更常见的失败模式是不同的：智能体通常可以串联许多局部正确的动作，但它们无法在时间耗尽之前可靠地将这些进展转化为最终的成果。短周期基准测试主要衡量智能体能否“正确行动”；LHTB 额外衡量它们能否“预算长周期”，而后者似乎是制约因素。这些结果表明，LHTB 上的排名不仅反映了任务解决能力，还反映了“时间效率”：模型在固定预算内可以积累多少奖励。因此，减少冗余探索、更有效地保存状态或避免重复验证循环的改进，可能会比单纯改进单步推理带来更大的收益。</p>
+<p>超时是模型失败的主要原因，但这并非故事的全部。在一百二十四次智能体在预算耗尽前自行终止的运行中，一个不同的局限性变得清晰：自我验证能力弱。我们将“虚假完成”定义为在奖励相对较高的情况下提前退出，即智能体在尚未满足隐藏验证器的情况下停止。我们识别出十四次这样的运行，其奖励在零点六到零点九五之间。在这些情况下，智能体已经完成了任务的大部分，自行判断为完成，并在剩余大量时间的情况下退出。例如，Kimi K2.7 Code 在“duckdb-optimizer-closure”任务上以零点九零的奖励停止，GLM 5.2 在“apex-ib244-matter”任务上以零点八七的奖励停止，七个不同的模型在“apex-law433-matter”任务上以零点七到零点九五的奖励停止，每个模型都剩余大约二十分钟。这些并非毫无希望的尝试，而是接近完成的尝试，智能体在满足隐藏验证器之前就停止了。</p>
+<p>密集奖励对于揭示这种模式至关重要。二元通过/失败指标会将所有这些运行归入相同的失败类别，而密集奖励则显示每个智能体在停止之前取得了多大的进展。这揭示了停止判断能力的一个明显差异轴。Kimi K2.7 Code 的提前退出平均奖励为零点七三，MiniMax M3 的平均奖励为零点六八，这表明这些模型倾向于比其他模型更晚停止，在完成任务的很大一部分之后。相比之下，Kimi K2.6 的提前退出平均奖励仅为零点零三，在大部分工作尚未完成时就放弃了任务。提前退出揭示了两种不同的能力：模型是否选择过早停止，以及它能否准确判断任务真正完成前还剩下多少工作。</p>
+<p>这种现象是 Terminal-Bench 2.0 中识别出的验证失败的长周期类比，例如过早终止、验证能力弱和遗漏最终检查。在修复了明显的公共错误之后，它们必须积极寻找没有可见信号揭示的残余缺陷。虚假完成模式表明，当前智能体系统性地高估了完成度，并对最终验证投入不足。弥补长周期任务的这一差距，不仅需要更强的局部推理能力，还需要更好的自我验证和更校准的停止决策。</p>
+<p>总结来说，LHTB 是一个由四十六个容器化终端任务组成的基准测试，涵盖九个领域，旨在强调长周期执行能力。与只关注最终结果的基准测试不同，LHTB 利用确定性的、以环境为基础的子任务来提供密集的、部分分数的信号，从而使评估能够捕捉到智能体是否完成了任务，以及它取得了多大进展。</p>
+<p>在十五个前沿模型在共享的 Terminus-2 智能体下进行评估时，LHTB 中的任务需要大量的努力，平均每个任务运行需要两百三十一个回合，消耗九点九百万个令牌，API 成本为十点五美元，耗时八十五点三分钟。然而，这个基准测试远未饱和：最强的模型 GPT-5.5 在通过率阈值为零点九五时仅取得了百分之十五点二的通过率，而所有模型的平均通过率仅为百分之四点三。密集的奖励进一步揭示，许多运行取得了有意义但未完成的进展，暴露了二元通过/失败评估会遗漏的失败模式。我们的分析表明，主要的瓶颈不仅是局部推理，更是可靠的长周期任务完成能力。当前智能体经常在取得部分进展后超时，即使是自愿的提前退出也常常反映出自我验证能力弱，而非真正的完成。这些结果凸显了在长周期任务中，对更好的规划、更强的记忆和进度跟踪以及更校准的停止决策的需求。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

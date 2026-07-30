@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Procedural Content Generation via Machine Learning (PCGML) · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Feb 02, 2017</time> · 1 min read · <a href="https://arxiv.org/abs/1702.00539">arXiv</a> · <a href="https://arxiv.org/pdf/1702.00539">PDF</a></div>
+    <h1>Procedural Content Generation via Machine Learning (PCGML)</h1>
+    <div class="tags"><span class="tag">levelbench</span><span class="tag">reading-list</span><span class="tag">t2</span></div>
+  </header>
+  <section class="notes"><h2>Notes</h2><ul><li>VGLC 的母体，也是&#x27;多层关卡表示&#x27;最早的论证——跟你 L0/L1/L2 跨流派描述语言野心直接对话。看前人怎么想多层表示、又为什么没扩展到跨流派。</li></ul></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2017-02-02-procedural-content-generation-via-machine-learning-pcgml-61037055.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>This survey explores Procedural Content Generation via Machine Learning (PCGML), defined as the generation of game content using machine learning models trained on existing content. As the importance of PCG for game development increases, researchers explore new avenues for generating high-quality content with or without human involvement; this paper addresses the relatively new paradigm of using machine learning (in contrast with search-based, solver-based, and constructive methods). We focus on what is most often considered functional game content such as platformer levels, game maps, interactive fiction stories, and cards in collectible card games, as opposed to cosmetic content such as sprites and sound effects. In addition to using PCG for autonomous generation, co-creativity, mixed-initiative design, and compression, PCGML is suited for repair, critique, and content analysis because of its focus on modeling existing content. We discuss various data sources and representations that affect the resulting generated content. Multiple PCGML methods are covered, including neural networks, long short-term memory (LSTM) networks, autoencoders, and deep convolutional networks; Markov models, $n$-grams, and multi-dimensional Markov chains; clustering; and matrix factorization. Finally, we discuss open problems in the application of PCGML, including learning from small datasets, lack of training data, multi-layered learning, style-transfer, parameter tuning, and PCG as a game mechanic.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>游戏内容生成一直有一个根本矛盾：设计师想要大量高质量、风格一致的内容，但手工制作每一个关卡、每一张地图、每一张卡牌的成本极高。传统的程序化内容生成方法——不管是用进化算法搜索内容空间、用约束求解器保证可玩性，还是用语法规则直接构建——都有一个共同的硬伤：算法本身的参数、规则、目标函数，全都需要人来手工设计。你想让机器生成关卡，先得用代码告诉机器什么叫&quot;好关卡&quot;。这篇2017年发表的综述论文，就是要系统性地回答另一个问题：如果我们直接把已有的游戏内容喂给机器学习模型，让模型自己去学习什么叫&quot;好内容&quot;，然后用这个模型来生成新内容，会怎么样？这就是论文定义的PCGML，Procedural Content Generation via Machine Learning，基于机器学习的程序化内容生成。</p>
+<p>先把这个定义说清楚，因为它有几个重要的边界需要划定。PCGML的核心是：训练数据是已有的游戏内容，生成过程是直接从模型的输出拿内容。这跟另外两种常见的&quot;机器学习加PCG&quot;的做法不一样。第一种是用机器学习来做内容评估器，然后用进化算法在内容空间里搜索——这不算PCGML，因为内容生成还是靠搜索，机器学习只是在打分。第二种是用机器学习建模玩家体验或玩家行为，然后用这个模型指导内容生成——这也不算，因为学习的对象是玩家而不是内容本身。PCGML要求：学习的是内容的分布，生成的是这个分布的新采样。</p>
+<p>论文还专门区分了功能性内容和装饰性内容。功能性内容是指如果你改变它，玩家的行动序列会产生不同的结果——关卡布局、地图结构、游戏规则、卡牌效果，都是功能性内容。而贴图、音效、角色外观这类装饰性内容，改了不影响游戏机制，不是这篇论文的重点。这个区分很重要，因为游戏内容有一个图像、音乐、文本都没有的特殊约束：它必须可玩。一张画难看，你可以说它风格独特；一首歌不好听，你可以说它前卫。但一个让玩家卡死过不去的关卡，无论视觉上多漂亮，都是失败的关卡。游戏是&quot;遍历性媒体&quot;，必须通过互动才能体验，这给内容生成带来了普通生成任务没有的硬约束。</p>
+<p>现在进入方法的核心部分。论文用两个维度来组织所有PCGML方法：数据表示方式，和训练算法类型。数据表示分三种：序列、网格、图。训练算法分五类：反向传播、进化算法、频率统计、期望最大化、矩阵分解。我们一个一个来过，重点讲清楚每种方法的动机和关键设计选择。</p>
+<p>先说序列表示加频率统计，也就是n-gram模型。这是最直觉的做法。Super Mario Bros.的关卡虽然是二维的，但玩家只能从左向右走，所以有天然的线性顺序。你把关卡按列切开，每一列就是一个状态，然后统计每种列在什么列之后出现的概率，这就是马尔可夫链。n-gram把这个概念推广：n代表你看多少个前置状态来预测下一个状态。论文引用的Dahlskog等人的实验结论非常直观：n等于1时，基本就是随机生成，关卡结构混乱；n等于8时，模型几乎只会复制原来的关卡，因为它记住了太长的上下文，几乎没有泛化；n等于2到4时，生成的关卡既有结构又有新意。这个甜点区间背后的原理是统计学上的偏差-方差权衡：n太小，模型欠拟合，生成太随机；n太大，模型过拟合，生成太死板。</p>
+<p>n-gram的一个扩展很重要：Summerville等人把Monte Carlo Tree Search加进来。纯n-gram生成的关卡来自训练集里真实出现过的列组合，但不能保证可玩性。MCTS的作用是在生成过程中做前瞻搜索，用n-gram的条件概率做rollout，同时用设计师指定的目标函数给整个关卡打分，然后选择得分更高的生成路径。这样就在数据驱动的生成和设计师控制之间找到了一个平衡点。</p>
+<p>序列加进化算法的代表是Hoover等人的工作，方法名叫Functional Scaffolding，功能性脚手架。这个方法的出发点很有意思：它最初是为音乐作曲设计的，思路是把音乐的不同声部看作时间的函数，用神经进化算法NEAT来进化这些函数。把这个框架迁移到游戏关卡时，就把关卡的不同图块类型——地面、敌人、问号砖块等等——也看作列位置的函数，每种图块类型都有一个独立进化的神经网络来预测它在每一列应该出现什么。进化的目标是让生成的关卡匹配训练集中人工设计的关卡。这种方法的好处是它有组合性：不同图块类型的网络可以独立进化，也可以组合，生成的关卡既符合设计原则，又能以新颖的方式偏离原有设计。</p>
+<p>序列加反向传播，重头戏是LSTM。长短期记忆网络是当时序列生成的最强基线，相比普通RNN，它能记住几百甚至几千步之前的信息，这对关卡生成至关重要，因为一个关卡早期放了什么图块，会影响后期应该放什么。Summerville和Mateas用LSTM训练Super Mario Bros.关卡生成器，但他们有几个关键设计选择值得细说。第一，他们在训练数据里加入了模拟的玩家路径信息，这样模型不仅学习关卡几何，也学习什么样的路径在关卡里是合理的，相当于把可玩性的隐含知识编码进了训练数据。第二，他们在输入里加入了关卡进度信息，也就是当前生成的位置在整个关卡里处于多早或多晚，让模型学会关卡的节奏感，知道什么时候该结束。他们后来还从YouTube实际录像里提取玩家路径，发现用特定玩家的路径训练出来的模型，生成的关卡会带有那个玩家的风格——一个喜欢收集所有金币的玩家的路径，会让生成的关卡里金币更多。</p>
+<p>同样是序列加LSTM，还有一个特别值得一提的应用：Magic the Gathering卡牌生成。游戏内容生成不等于关卡生成，这个例子说明了PCGML的范围更广。第一版是Twitter机器人RoboRosewater，把每张卡牌当成一段文本序列来生成，按照费用、名称、类型、效果的顺序依次生成。这有一个内在限制：序列是单向的，你没办法先指定效果再让模型补全费用，因为效果在序列里出现得更晚。Summerville等人的Mystical Tutor解决了这个问题，用了序列到序列的架构：编码器LSTM把输入序列压缩成固定长度向量，解码器LSTM从这个向量还原完整卡牌。训练时他们用了一个聪明的数据增强策略：把输入卡牌的某些字段随机替换成MISSING标记，让模型学会根据任意已知字段补全未知字段。这样一来，你可以先指定费用，让模型帮你生成合理的效果；也可以先有效果文本，让模型帮你平衡费用。这就把内容生成变成了真正的协同创作工具。</p>
+<p>现在转到网格表示。大多数2D游戏关卡是二维瓦片地图，自然用网格来表示。频率统计方法在这里的升级版是多维马尔可夫链，缩写MdMC。一维马尔可夫链只看前面一个或几个列；多维马尔可夫链则看当前瓦片周围的邻域，上下左右甚至对角线都可以作为条件，这样生成的关卡在二维空间里的局部一致性会好很多。Snodgrass和Ontañón在Super Mario Bros.和Kid Icarus上都做了实验，还发展出了层级MdMC来捕捉更高层次的结构，以及带约束的MdMC来保证关卡可玩性。</p>
+<p>还有一个受量子力学启发的有趣方法，叫Wave Function Collapse。它的核心思路是：每个位置的瓦片一开始处于所有可能类型的叠加态，然后从某个位置开始&quot;坍缩&quot;，也就是概率性地选定一种瓦片类型，这个选择会传播约束到相邻位置——某些相邻组合在训练数据里从未出现过，就被排除掉——然后继续坍缩其他位置，直到整个地图全部确定。这个方法的概率来自训练数据中各种n×n窗口的出现频率。它最初用于位图生成，后来扩展到了3D瓦片集和关卡生成。</p>
+<p>网格表示加反向传播，典型例子是自编码器。自编码器是一种神经网络，分编码器和解码器两部分：编码器把高维输入压缩成低维的潜在表示，解码器把潜在表示还原回原始维度。Jain等人用自编码器训练Mario关卡的竖直窗口，发现四格宽的窗口效果最好。自编码器的应用不只是生成，还可以用来修复不可玩的关卡：把一个有问题的关卡输入编码器，它会把关卡映射到训练集覆盖的合理区域，解码器输出的就是经过修复的版本。这是一个非常优雅的思路：因为模型只见过可玩的关卡，它的潜在空间本身就是&quot;可玩内容的流形&quot;，把任何输入投影到这个流形上，自然就得到更可玩的内容。</p>
+<p>还有Lee等人用卷积神经网络预测StarCraft II地图的资源点位置。这个任务的特点是资源位置稀疏但决定性强，而且资源位置和地图地形高度相关。他们把地图转成高度图，用深度卷积网络学习从地形到资源位置的映射。实验结果喜忧参半：在某些地图上效果好，在另一些上表现差，主要原因是训练数据集太小，过拟合严重。这个问题在PCGML里几乎无处不在。</p>
+<p>网格加矩阵分解，代表工作是非负矩阵分解NMF。Shaker和Abou-Zleikha的思路很有创意：他们先用五个已有的非机器学习关卡生成器产生几千个Mario关卡，然后对这些关卡做NMF，把它们分解成&quot;部分矩阵&quot;（代表全局出现的关卡模式）和&quot;系数矩阵&quot;（代表每个关卡是这些模式的什么组合）。有了这些基础模式，你可以用新的系数向量来生成以前五个生成器都无法生成的新关卡。这个方法的贡献是显著扩大了生成器的表达范围。类似地，Summerville等人用PCA——主成分分析——来表示Zelda系列的房间，找到房间内容的主要变化方向，然后通过在这些主成分方向上插值来生成新房间。</p>
+<p>图表示是最一般的数据结构，序列和网格都可以看作特殊的图。Summerville等人生成Zelda地牢的高层拓扑结构就用了图：房间是节点，门和炸墙是边，用贝叶斯网络来学习房间之间连接关系的联合概率分布。设计师可以指定地牢有多少间房、最优路径有多长，然后从这个约束条件下采样出整个房间连接图。这是一个自然的分层生成框架：先生成地牢的宏观拓扑，再生成每个房间的微观内容。</p>
+<p>还有一个完全不同领域的应用：互动叙事。Guzdial等人改造了Scheherazade系统，让它从故事样本里学习情节图，然后生成可互动的文字冒险游戏。训练数据来自Amazon Mechanical Turk众包的简单故事，聚类算法OPTICS负责从故事里提取事件类型和事件顺序，构建出情节图，玩家可以扮演故事里的任何角色，在学到的事件序列里做选择。</p>
+<p>综合来看所有这些方法，有几个对比维度值得明确。训练速度和推理速度上，n-gram类方法训练只需一遍过数据，LSTM则需要多个epoch。生成一步的计算量，LSTM远大于MdMC。内存占用上，矩阵分解方法需要把所有关卡同时加载进内存，其他方法相对友好。控制灵活性上，MCTS引导的n-gram和带约束的MdMC允许设计师施加更明确的控制，纯端到端的LSTM在这方面最弱。评估标准至今没有统一，不同论文用的指标各不相同，这是整个领域的一个痛点。</p>
+<p>论文花了相当大的篇幅讨论开放问题，这些问题对做相关研究的人有直接参考价值。</p>
+<p>最核心的问题是数据稀缺。论文做了一个非常具体的量级对比：英文文本语料库Gigaword大约27GB，用在了450多篇论文里；整个NES游戏库大约237MB，比语料库小了两个数量级；其中平台跳跃游戏大约是NES库的八分之一；最大的系列Mega Man是NES库的百分之0.6，比标准语言语料库小了整整四个数量级。而标准图像语料库ImageNet是155GB，甚至大于文本语料库。游戏内容数据的稀缺是结构性的，不会随着时间推移自动消失，因为每款游戏本身就只有有限数量的官方关卡。论文提到了几种缓解策略：数据增强，比如随机破坏训练数据、从YouTube录像里提取关卡信息；用玩家社区创作的Fan-made地图作为补充；以及One-Shot Learning这个研究方向，也就是从极少量样本快速泛化，这正是游戏内容生成的自然需求。</p>
+<p>可玩性保证是另一个根本性的开放问题。目前大多数方法要么是在生成后用约束检查器过滤，要么在生成过程中加约束引导，要么用玩家路径来偏置生成，但没有一种方法能从根本上保证生成的内容一定可玩。论文预判生成对抗网络GAN是一个有希望的方向，因为可以在训练时通过判别器的惩罚信号来引导生成器只生成可玩内容。</p>
+<p>多层次学习是更深的挑战。游戏是一个多模态动态系统：规则作用于关卡，玩家的行为又改变了规则的效果，规则和关卡共同塑造了玩家的审美体验。MDA框架把游戏拆成机制层、动态层、审美层，而目前所有PCGML工作基本都只在机制层工作——生成关卡几何、卡牌属性这些静态内容。如何同时在三个层次上学习和生成，是一个几乎还没人碰过的问题。</p>
+<p>风格迁移也是一个早期探索阶段的方向。Snodgrass等人做过跨平台跳跃游戏的关卡风格迁移，Guzdial等人做过Mario不同关卡主题之间的融合，但这些都还只是在关卡几何层面做风格转换，没有触及游戏机制的迁移。如何把一款游戏的机制移植到另一款游戏的美术风格里，这个问题在论文写作时基本上还是空白。</p>
+<p>潜在空间的设计控制也值得关注。GAN的一个副产品是有语义的潜在空间：把空白脸减去微笑脸，得到的向量就是&quot;微笑向量&quot;，可以用来给任意脸添加微笑。论文设想把这个思路用到游戏内容上：Mario 1-1减去Mario 1-2，得到&quot;地下关&quot;向量；Mario 1-1减去Mario 8-3，得到&quot;难度&quot;向量。如果训练时加入多款游戏的数据，理论上甚至可以在Mario和Sonic之间插值，生成两种风格的混合关卡。这是一个诱人的方向，但在论文写作时还没有实现。</p>
+<p>最后还有一个创意独特的方向：把PCGML本身当作游戏机制。大多数当前工作把PCGML用作幕后工具，玩家根本不知道内容是机器生成的。论文提出了一系列以PCGML为核心玩法的游戏设计模式。比如&quot;学徒模式&quot;：玩家通过给系统喂例子来训练系统，系统学会生成满足某些条件的内容，玩家的目标是成功调教这个系统。比如&quot;对抗模式&quot;：玩家生成内容，系统必须通过生成来复制；或者反过来，系统生成，玩家来辨别。比如&quot;协作者模式&quot;：玩家和系统轮流创作内容，朝着某个共同目标前进，系统从玩家的行为里实时学习。这些设计模式把PCGML从一个技术工具变成了一种全新的游戏体验，也意味着系统的可解释性和实时性会成为关键需求。</p>
+<p>从实际可借鉴的角度来总结几点。如果你在做关卡生成类的工作，数据表示的选择至关重要，同样的关卡用序列、网格还是图来表示，决定了你能用什么模型、能捕获什么结构。如果数据量不足，优先考虑n-gram类方法而不是LSTM，前者更抗过拟合，而且生成速度快。如果你需要设计师控制，在生成过程中显式加约束或者用MCTS引导，比事后过滤更高效。自编码器的潜在空间可以同时用来生成、修复和分类，是一个值得在自己的任务里尝试的多用途工具。训练数据的质量和多样性往往比模型架构更重要，论文里加入玩家路径信息这种&quot;把领域知识编码进数据&quot;的策略，在数据稀缺时特别有效。评估是整个领域最不成熟的一环，如果你的工作能提出一个有说服力的评估框架，本身就是一个重要贡献。</p>
+<p>PCGML的核心洞见是：与其让人类设计师用代码描述什么叫好内容，不如让机器直接从好内容的例子里学习，然后生成更多同类内容——这个范式转变把内容本身变成了唯一需要的专业知识来源，而机器负责将这些知识泛化，这对游戏开发、特别是小团队开发者来说，是一个真正值得认真对待的生产力思路。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

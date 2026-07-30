@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weak-to-Strong Generalization via Direct On-Policy Distillation · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 14, 2026</time> · <a href="https://arxiv.org/abs/2607.05394">arXiv</a> · <a href="https://arxiv.org/pdf/2607.05394">PDF</a></div>
+    <h1>Weak-to-Strong Generalization via Direct On-Policy Distillation</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-14-weak-to-strong-generalization-via-direct-on-policy-distillat-bb87aeb5.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Reinforcement learning with verifiable rewards (RLVR) is a powerful recipe for improving language-model reasoning, but it is expensive to repeat on every new strong model because the target model must generate many rollouts during training. As models scale, post-training itself becomes a bottleneck. We study a weak-to-strong alternative: run RL on a smaller model where rollouts are cheaper, then reuse what that RL run learned to improve a stronger target model. Directly distilling the post-RL weak teacher is not enough, because the teacher&#x27;s final policy mixes useful RL gains with the limitations of the smaller model. We propose Direct On-Policy Distillation (Direct-OPD), which transfers the teacher&#x27;s RL-induced policy shift instead. Direct-OPD compares the post-RL teacher with its own pre-RL reference and treats their log-ratio as a dense implicit reward for the student. In plain terms, the checkpoint pair tells us which actions RL made the weak model more or less likely to take, and Direct-OPD applies that signal on the stronger student&#x27;s own on-policy states. This directly reuses the weak model&#x27;s RL supervision signal without running sparse-reward RL on the target model. Empirically, Direct-OPD consistently leverages weaker teachers to improve stronger target models; notably, it boosts Qwen3-1.7B from 48.3% to 58.3% on AIME 2024 in just 4 hours on 8 A100 GPUs. It outperforms step-matched direct RL and enables the sequential composition of multiple policy shifts. Our results show that RL outcomes can be reused across model scales as implicit reward signals, not merely as final models to imitate.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>大型语言模型在通过可验证奖励强化学习，也就是我们常说的RLVR，来提升推理能力时，效果非常显著。但随着模型规模越来越大，每次训练迭代都需要当前策略生成大量的轨迹数据，再接收可验证的结果分数，并根据这些轨迹来更新模型，这个过程的成本也水涨船高。因此，当推理模型持续扩展时，为每个新的强大模型从头开始运行RLVR，很可能让后训练本身成为一个巨大的瓶颈。</p>
+<p>为了解决这个问题，我们提出了一种名为“直接在线策略蒸馏”（Direct On-Policy Distillation，简称Direct-OPD）的弱到强后训练新范式。这个设想很简单：我们可以在计算成本更低的小模型上运行强化学习，然后将小模型在RL训练中学到的东西，有效地迁移到更强大的目标模型上。这里特别要强调的是，我们并不假设这个弱模型在推理能力上比学生模型更强，它只是一个廉价的载体，用来传递RL信号已经塑造好的行为。Direct-OPD转移的是RL在弱模型上引起的“改进”，而不是弱模型本身。</p>
+<p>那么，究竟应该从弱模型的RL训练中转移什么呢？一个直接的想法是模仿经过RL训练的弱模型的最终策略。这种“在线策略蒸馏”方法会让学生模型采样自己的状态，然后训练它去匹配教师模型在这些状态上的行为。然而，对于“弱到强”的迁移来说，这通常不是一个好办法，因为弱模型的最终策略，将RL带来的有用变化与弱模型固有的能力限制纠缠在了一起。当学生模型本身已经超越了教师模型时，直接模仿这个策略反而可能覆盖掉学生模型已有的更强能力。举个例子，如果一个70亿参数的模型（R1-Distill-7B）初始准确率已经达到50%，而经过RL训练的15亿参数教师模型（JustRL-1.5B）只有40%，那么传统的蒸馏方法很可能会把70亿参数模型的表现拉低，使其接近40%。这说明，弱模型的RL训练确实带来了有用的监督信号，但它的最终策略却不是传递这种监督信号的理想载体。</p>
+<p>Direct-OPD采取了不同的策略。它通过对比弱模型自身在RL训练前和训练后的状态，来分离出RL带来的监督信号。具体来说，我们定义了一个“教师策略变化”：它是“后RL教师模型”的策略与“前RL参考模型”的策略之间的对数比。这个比值对于那些被RL鼓励的响应会是正值，而对于那些被RL抑制的响应会是负值。通过这种减法操作，我们摒弃了弱模型在RL训练前就已经偏好的行为，只保留了RL所带来的改变。</p>
+<p>更重要的是，在KL正则化的强化学习目标下，这个策略变化在数学上等同于训练弱模型所使用的奖励信号。这意味着，一对弱模型的检查点，也就是一个训练前的参考模型和一个训练后的教师模型，可以直接在策略空间中存储RL的监督信号。Direct-OPD将这个类奖励信号，应用到学生模型自身生成的在线策略状态上，并用一个KL项锚定学生模型到其自身的初始状态，从而避免了训练一个显式奖励模型，也不需要在目标模型上运行稀疏奖励的强化学习。</p>
+<p>这种机制将弱模型的RL训练成果，转化为一个可迁移的后训练信号。例如，我们发现将R1-Distill-1.5B到JustRL-1.5B的策略变化迁移到Qwen3-1.7B、Qwen3-4B和R1-Distill-7B这些学生模型上，都取得了改进，这其中甚至包括那些初始表现已经超过后RL教师模型的学生模型。而且，这种迁移的成本非常低：仅需8个A100 GPU大约4小时的训练，Direct-OPD就能将Qwen3-1.7B在AIME 2024任务上的准确率从48.3%提升到58.3%。这与一些其他方法直接在Qwen3-1.7B上运行RL，需要32个A100 GPU至少一周的训练才能达到的效果相当，效率优势非常明显。</p>
+<p>Direct-OPD在方法上的贡献主要有以下几点：第一，它提出了一个弱到强的后训练范式，将小模型RL训练看作是生成强大模型隐式奖励的廉价方式，我们评估的是RL引起的策略变化，而不是简单复制弱教师模型的最终策略。第二，它在不同的教师模型对和学生模型家族之间，都带来了持续的性能提升。无论是R1-Distill-7B还是Qwen3-4B，即使它们初始能力已经超越了后RL教师模型，Direct-OPD也能对其进行提升。第三，它比直接在大规模模型上进行RL训练更经济高效。在相同的RL步数预算下，先在15亿参数模型上运行RL，再通过Direct-OPD迁移，在准确率和计算量上都优于直接在70亿参数模型上运行RL。最后，我们还深入分析了这种信号的可靠性，发现Direct-OPD不需要教师和学生模型之间有很高的top-k token重叠度，并且可以跨思维模式进行迁移。</p>
+<p>现在我们来详细看看Direct-OPD的具体设计。我们考虑的是自回归语言模型的策略。一个策略可以分解为在给定前缀下生成下一个token的概率。这里我们区分四种策略：正在训练的学生策略，它的初始检查点；以及一对教师模型，包括一个RL训练前的参考模型，和对应的RL训练后的教师模型。我们的弱到强设置就是指，即使教师模型可能比学生模型更小或更弱，但从参考模型到教师模型的转变，仍然包含了值得迁移的信息。</p>
+<p>标准的在线策略蒸馏，也就是OPD，是在学生模型自身采样的轨迹上进行监督训练。给定一个提示词，学生模型会生成一系列的token，在每个访问到的前缀上，我们都会获取学生模型和教师模型预测下一个token的概率分布。标准的OPD目标是最小化学生模型在这些轨迹上与教师模型的序列级KL散度。这可以精确地分解为在学生模型实际访问的状态上，对每个token提供密集的监督信号。在实践中，教师模型只在学生模型top-k支持的范围内进行查询，这会产生一个密集的、逐token的训练信号，其中涉及到教师和学生模型概率的对数比。Direct-OPD沿用了这种在线策略和top-k的接口，它仅仅是在“从教师模型读取什么信号”这一点上与传统OPD有所不同。</p>
+<p>Direct-OPD的核心在于转移RL引起的“策略变化”，而不是模仿教师模型的绝对输出分布。我们定义这个策略变化为后RL教师模型与前RL参考模型之间的序列级对数比。这个变化隔离了教师模型在RL训练中被引导的方向，而不是其最终的绝对分布。这并非一个随意的启发式方法：在KL正则化RL的“策略即奖励”视角下，这个策略变化可以被解释为教师模型的隐式奖励。对于一个奖励函数、一个参考策略和一个惩罚系数，KL正则化的目标函数存在一个闭式最优解，其中策略与参考策略的对数比，在不考虑常数项的情况下，恰好恢复了奖励函数。这个性质也是直接偏好优化（DPO）的基础，DPO通过偏好数据直接拟合策略，而无需单独训练奖励模型。在这里，我们反向利用了这个性质：我们已经有了后RL教师模型及其前RL参考模型，我们直接从它们的策略比中读取出这种类奖励信号。因此，策略变化可以被解释为教师模型的隐式奖励，Direct-OPD正是将这个类奖励信号迁移给学生模型。</p>
+<p>我们先将Direct-OPD写成一个理想化的序列级目标函数。学生模型从其初始检查点开始训练，Direct-OPD优化学生模型，使其在教师策略变化信号上表现更好，同时通过KL惩罚项约束学生模型不要偏离其自身初始状态太远。在这种理想化的形式下，这个目标函数本身就是一个对学生模型进行的KL正则化RL目标。它的最优解意味着学生模型被优化，就好像它正在用小教师模型的隐式奖励运行KL正则化RL一样，只是它使用了自己的初始状态作为参考。最关键的是，它完全从检查点对中获取这种类奖励信号，而不需要查询可验证奖励或在目标模型上运行稀疏奖励的RL。</p>
+<p>由于两个教师模型都是自回归地对相同前缀进行分解，序列级的策略变化可以精确地分解为一系列token级的变化。因此，这个策略变化可以被视为一个密集的、即时的、逐token的奖励：当RL鼓励某个token时，奖励为正；当RL抑制某个token时，奖励为负。在实践中，我们使用相应的零折扣token级代理目标，通过其即时变化而不是未来回报来给每个候选token打分。这复用了我们之前提到的在线策略和top-k接口。为了将信号限制在学生模型实际考虑的动作上，在每个访问到的前缀，我们只考虑其top-k支持的动作空间，并重新归一化学生模型在该空间上的概率。由于逐token的即时奖励只依赖于教师模型对，我们可以直接将其用作局部优势。为了降低方差，我们对每个步骤的动作估计采用了Rao-Blackwellized策略梯度，用期望值代替单样本估计。同时，为了确保代理目标匹配策略梯度形式，我们对权重系数使用了梯度停止操作。</p>
+<p>Direct-OPD转移的奖励信号带有一个我们无法选择的尺度。根据理论，这个奖励信号的幅度是教师模型的奖励除以教师模型的KL预算，这两者在教师模型训练时就已经固定并编码在RL将策略从参考模型推开的距离中，但都无法从检查点对中直接恢复。因此，一个固定的KL惩罚系数不太可能在不同设置中稳健地迁移。KL系数控制的是对初始策略的锚定强度，它只有相对于奖励信号的尺度才有意义。由于教师模型的奖励单位和学生模型的KL系数没有先验的转换关系，我们无法预先校准一个单一的KL系数以适用于所有教师-学生模型对。因此，我们采用了一个轻量级的控制器，根据密集信号的运行尺度来调整KL系数。</p>
+<p>这个控制器旨在保持密集信号的平衡。当学生模型当前访问的前缀平均带有正向的教师策略变化时，它会提高KL系数，以阻止过度放大这个局部信号；当平均变化为负时，它会降低KL系数，削弱锚定，让密集梯度能够将概率从那些被教师RL降低可能性的token上移开。这与标准自适应控制器不同，后者通常是朝着一个目标KL值进行调整。我们这里的更新是由Direct-OPD密集奖励的符号驱动的，并作用于显式地演员KL损失系数。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 21, 2026</time> · <a href="https://arxiv.org/abs/2607.07820">arXiv</a> · <a href="https://arxiv.org/pdf/2607.07820">PDF</a></div>
+    <h1>DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-21-deepsearch-world-self-distillation-for-deep-search-agents-in-2cf41fbb.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Training tool-use agents to improve from their own experience remains challenging, as supervised fine-tuning relies on fixed teacher-distilled trajectories, while sparse-reward reinforcement learning provides weak supervision for long-horizon interactions. We present DeepSearch-Evolve, a self-distillation framework for web agents built on DeepSearch-World, a deterministic and verifiable environment with reproducible search and page-reading tools. DeepSearch-World contains 420K multi-hop QA tasks constructed from entity-level random walks and supports key agentic cognitive behaviors useful for self-evolving, including progress verification, grounded reflection, and failure recovery. DeepSearch-Evolve iteratively performs trajectory generation, filtering, data mixing, and fine-tuning to train stronger agents. Without distillation from more capable models, DeepSearch-World-9B achieves competitive performance compared with open-source agents, reaching 31.2% on BrowseComp, 61.5% on GAIA, and 93.4% on HotpotQA, showing that verifiable environments enable scalable self-evolution for long-horizon web agents. We will release the environment, 420K training pool, validation set, model, and code to facilitate future research on self-improving deep search agents.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>如何让一个只有九十亿参数的开源模型，不靠任何更强大模型提供的示范数据，纯粹通过自己和环境交互来持续进化，最终在深度搜索任务上达到和顶级开源系统相当的水平？这正是这篇论文想要回答的核心问题。</p>
+<p>要真正理解这个问题的难度，我们先要搞清楚训练&quot;工具使用智能体&quot;和训练普通语言模型有什么本质区别。普通的语言模型，你给它一段文字，它预测下一个词，整个过程非常干净。但一个深度搜索智能体完全不同——它面对的是一个需要持续交互的序列决策过程。它需要先把问题拆解，然后决定用什么关键词去搜索，看到搜索结果后决定要不要点开某个页面读全文，读完之后判断这条证据是不是真的有用，如果没找到就要改变搜索策略再试一遍，最终把所有证据综合起来给出答案。整个过程可能需要二三十步工具调用，每一步都在做决策，而且后面的决策依赖前面所有步骤积累的信息。</p>
+<p>训练这样的智能体，目前主要有三条路，这篇论文认为三条路都有本质缺陷，而它的工作就是提出一条新路。</p>
+<p>第一条路是有监督微调，也就是SFT。做法很直接：先让一个能力更强的模型或者人类专家把搜索过程的完整轨迹走一遍，把这些轨迹收集起来，然后用它们来训练你要优化的模型。问题在哪？首先，你的天花板被死死卡住了——你的训练数据来自哪个老师，你最多只能学到老师的水平，很难超越。其次，这些轨迹是固定的，不会自适应地随着你的能力提升而变化，多训几轮之后性能就会饱和，因为模型不断在看同样的轨迹，没有新东西可以学。更根本的是，这条路依赖比你更强的外部模型来提供监督，这本身就是一个很强的前提条件。</p>
+<p>第二条路是强化学习，最流行的方式是用类似GRPO这样的策略优化方法。让模型自己去搜索，搜完之后看答案对不对，对了给奖励，错了给惩罚。这条路看起来很优雅，因为模型在通过自己的行动来学习。但问题极其严重：奖励极度稀疏。想想看，一个二三十步的搜索交互，最终只有一个信号——答案对或者错。但失败的原因可能有很多：也许是第一步的搜索关键词就没选好，也许是中间某步本该去读某个页面但没读，也许是最后综合答案的时候推理出了错。这个终点的奖励信号完全没有办法告诉模型到底哪一步出了问题。更糟糕的是，对于长链条的多跳推理任务，很多时候模型随机探索的轨迹大部分都是错的，导致梯度信号极其微弱，训练非常不稳定。</p>
+<p>第三条路是一种叫做在策略自蒸馏的方法，缩写OPSD。这个思路是想用更细粒度的信号来替代稀疏的终点奖励——不只告诉你最终对不对，而是在每个生成步骤上，让一个教师模型的概率分布来监督学生。这样监督信号就从一个稀疏的标量变成了每一步都有的稠密分布，听起来好多了。但问题在于：这个方案的前提是教师模型在每一步都能提供可靠的分布。对于工具使用智能体来说，这个前提很难成立。搜索过程是高度随机的，同样的问题走不同的搜索路径，看到的中间状态完全不同，在一个特定的搜索状态下教师模型的分布很可能是噪声，而不是有意义的指导信号。</p>
+<p>所以论文总结：现有三条路，要么被静态模仿信号限制，要么被稀疏奖励困扰，要么受限于不可靠的稠密监督。这三条路有一个共同的缺失——它们都没有一个可验证的过程级环境，一个能在每一步工具调用之后都告诉你&quot;这步对了&quot;还是&quot;这步没找到目标&quot;的环境。</p>
+<p>这就是这篇论文的出发点，它的核心贡献是构建了这样一个环境，叫做DeepSearch-World，然后在这个环境上开发了一套自蒸馏训练框架，叫做DeepSearch-Evolve。</p>
+<p>先说DeepSearch-World这个环境本身，它的设计有几个关键特征。</p>
+<p>第一个关键特征：完全离线、完全确定性。这个环境不需要真实的互联网连接，所有的搜索和页面访问都在一个离线的维基百科语料库上进行。语料库大约包含一千万个词条。搜索工具基于BM25这种经典的关键词检索算法，给定一个查询词，每次都返回完全相同的结果，没有任何随机性。页面访问工具通过SQLite索引把URL直接映射到完整的文章内容，同样是完全确定的。为什么这一点这么重要？因为确定性意味着可重复——同样的问题，同样的搜索词，永远看到同样的结果，这让训练过程可以稳定地迭代，不会因为环境本身的随机性引入噪声。</p>
+<p>第二个关键特征：实体级别的过程验证。每道题在构建的时候，都记录了回答这道题需要找到的所有目标实体。比如一道题问的是&quot;莱昂纳多·迪卡普里奥扮演联邦探员的那部电影是从哪本书改编的，这本书的作者是谁&quot;，这道题的目标实体集合就包括&quot;无间行者&quot;这部电影、&quot;威廉·莫纳汉&quot;这个作者。智能体每次调用工具，环境会立刻检查这次调用的结果里有没有找到某个目标实体，有的话就把它标记为已完成。这样就有了不依赖语言模型判断的客观过程信号，计算成本极低，而且不会有幻觉。</p>
+<p>第三个关键特征：基于知识图谱随机游走构建的大规模任务池。整个DeepSearch-World包含四十二万道多跳问答题。构建方式是在维基百科的超链接图上做实体级别的随机游走，生成推理链，然后基于这些链生成问题，并且对问题中的具体值做模糊化处理——比如把&quot;2014年&quot;改成&quot;二零一零年代&quot;，把&quot;北京&quot;改成&quot;一个中国主要城市&quot;。这个模糊化操作非常关键，它逼着智能体真的去搜索和验证事实，而不是靠记忆回答。四十二万这个数字不是随意设定的，论文后来通过消融实验证明，数据池的多样性是自进化能否持续的关键因素，这个我们后面讲实验结果的时候会细说。</p>
+<p>有了这个环境，论文接下来要解决的问题是：怎么生成高质量的训练轨迹？这是DeepSearch-Evolve框架里教师智能体的设计，也就是脚手架教师的概念。</p>
+<p>脚手架教师的交互过程分三个阶段：规划阶段、行动阶段和结束阶段。</p>
+<p>规划阶段，教师智能体拿到问题之后，不是直接开始搜索，而是先初始化一个结构化的工作记忆状态。这个状态有四个字段：已完成列表，记录哪些子目标已经找到了证据；待办列表，记录还需要解决哪些子问题；经验字段，记录哪些搜索策略已经失败了，不要再用同样的词去搜；信息字段，存储从观察结果里提取出来的关键证据。这个结构化的工作记忆模拟了人类研究员做复杂调查时的思维过程——你不会漫无目的地搜索，你会有计划，会记录已知和未知，会从失败中学习。</p>
+<p>行动阶段，教师智能体反复调用搜索工具和页面访问工具，每次工具调用之后，环境会返回两种东西：一是工具调用的实际结果，二是基于过程验证信号生成的反思提示。如果这次工具调用成功找到了一个目标实体，状态就更新，把它移入已完成列表。如果没找到，环境会触发分级的规则反思——第一次失败给的是泛化的修改建议，多次失败之后环境会提供更强的引导，比如直接告诉你目标实体的规范名称或者模糊描述。这个&quot;搜索失败然后反思再重试&quot;的循环非常重要，因为它产生了包含失败和恢复行为的轨迹，而不只是成功轨迹。</p>
+<p>结束阶段，当证据足够或者预算耗尽时，教师智能体基于工作记忆中已经验证的证据生成答案，而不是靠语言模型自己凭空合成，这大大减少了幻觉。</p>
+<p>这里有一个非常重要的设计选择：脚手架格式只用于轨迹生成，最终训练学生智能体用的不是这种格式。为什么？因为部署的时候你不可能有这些外部的规划提示和环境反思信号，你需要一个标准的ReAct格式智能体——就是在每一步生成一段思考过程加一个工具调用。所以论文做了一个脚手架到ReAct的转换过程。</p>
+<p>转换的核心是把脚手架中的进度状态和环境反思重写进智能体的思考块里。具体来说，在每个工具调用步骤，思考块由三部分拼接而成：第一部分是从当前进度状态改写过来的，包括已完成的子目标、待解决的目标、失败过的搜索经验、已提取的证据；第二部分是把环境返回的反思信息改写成智能体自我纠错的语气，比如把&quot;[REFLECTION]：搜索失败&quot;改写成&quot;我刚才用的关键词没找到想要的东西，我应该换一个角度重新搜索&quot;；第三部分是保留原本的行动理由。这个转换让学生智能体学会的是：在自己的内心独白里主动维护规划状态、追踪进度、从失败中自我纠错，而不是被动等待外部提示。这是把脚手架中的认知能力内化到模型本身的关键机制。</p>
+<p>然后是迭代自进化训练循环。这个循环的逻辑是：当前轮次的模型同时扮演教师和学生——它在DeepSearch-World里用脚手架格式生成轨迹，然后对这些轨迹做两层筛选：第一层是拒绝采样，只保留最终答案正确的轨迹；第二层是质量过滤，用另一个语言模型去检查轨迹是否有冗余证据、目标对齐是否一致、推理是否连贯，把答案正确但过程混乱的轨迹也剔除掉。通过筛选的轨迹转换成ReAct格式，用来做有监督微调，得到下一轮的更强模型，然后这个更强的模型再去生成更难的、更高质量的轨迹。</p>
+<p>训练还有一个工程细节值得注意：轨迹生成和模型训练是异步进行的。当训练在进行的时候，生成器不会停下来等，它继续产出新轨迹。如果新生成的轨迹已经超过了当前训练更新的数量，系统会用重要性采样来混合不同轮次的数据，越近期的轨迹权重越高，但早期轨迹也以一个衰减系数保留，这是为了防止灾难性遗忘——让模型忘掉早期学到的有用技能。整个十一轮的自进化，在两个八卡H20节点上跑下来大约需要两到三天，效率是比较高的。</p>
+<p>最终做了一个小的调整：用GRPO在一千六百个真实搜索工具样本上再做一轮强化学习微调，弥合离线环境和真实互联网之间的分布差距，因为训练时用的是离线的维基百科搜索，而实际部署时要用真实的谷歌搜索和页面访问。</p>
+<p>现在来看实验结果，这些数字非常直观地说明了方法的有效性。</p>
+<p>DeepSearch-World-9B，也就是这篇论文训练出来的九十亿参数模型，在BrowseComp上达到了百分之三十一点二，在GAIA上达到了百分之六十一点五，在HotpotQA上达到了百分之九十三点四。来对比一下它的起点：同样的基础模型Qwen3.5-9B-Instruct在这三个测试集上只有百分之七点四、百分之二十三点九、百分之四十五点三。提升幅度分别是二十三点八个百分点、三十七点六个百分点、四十八点一个百分点。这些提升是在完全不依赖任何更强模型提供示范轨迹的前提下取得的，纯粹靠自己在可验证环境里迭代。</p>
+<p>横向对比来看，论文里列出了很多开源竞争对手：WebSailor在BrowseComp上是百分之六点七，WebExplorer是百分之十五点七，OffSeeker-DPO是百分之十二点八，而且这些系统很多都依赖了更强模型的蒸馏数据或者多智能体合成流水线。DeepSearch-World-9B的百分之三十一点二基本上和Marco-DR的百分之三十一点四、MiroThinker-v1.0的百分之三十一点一持平，而这两个系统明确依赖了更强的前沿模型来生成训练数据。所以这个结果最有说服力的地方不是绝对数字有多高，而是在同等甚至更苛刻的条件下实现了竞争力。当然和OpenAI的Deep Research的百分之五十一点五相比还有显著差距，这也说明方法本身还有很大的提升空间。</p>
+<p>工具使用行为的分析更加有趣。论文在DeepSearch-Val这个验证集上比较了训练前后模型的行为模式。训练前的Qwen3.5-9B-Instruct平均只进行四点七轮交互就停下来给答案了，而DeepSearch-World-9B平均进行十八轮交互。页面访问调用从平均零点九次增加到五点四次——这说明原始模型几乎不会去读完整的页面，只会看搜索结果摘要就下结论，而训练后的模型学会了在必要时深入阅读文章来获取详细证据。用语言模型评估高级能力得分，包括规划、记忆维护、推理、自我纠错和证据收集五个维度，训练前只有百分之十九，训练后达到百分之七十，提升极为显著。</p>
+<p>消融实验的结果揭示了每个设计选择的具体贡献，这部分对实际工作很有参考价值。</p>
+<p>关于轨迹筛选：拒绝采样和质量过滤都很重要，但贡献不对称。只做拒绝采样，在SearchQA上从基线的四十六点四分提升到五十四点九分，这是最大的单项贡献，说明答案正确性验证是自蒸馏的核心保障。只做质量过滤而不做拒绝采样，只能到四十八点一分。两者结合达到五十八点二分，比任何单独使用都好，也明显优于基于OPSD和Skill-SD的竞争方法。这说明在自蒸馏中，先用客观的验证信号保证基础质量，再用模型对轨迹的细粒度判断去进一步提纯，两者缺一不可。</p>
+<p>关于脚手架到ReAct的转换：论文把这个转换拆成两个组件分别测试。完整流程在DeepSearch-Val上得三十一点九分。去掉反思改写这个组件，分数跌到十六点七分，下降最为剧烈。原因是如果原封不动保留环境返回的反思标记，比如REFLECTION这样的特殊符号，它们会出现在思考块里，但学生模型在实际部署时不会有这些符号，导致模型学到了错误的输入输出对应关系，思维过程的分布被严重扭曲。去掉状态内化这个组件，分数是二十三点五分，下降幅度相对小一些，但仍然显著。这说明把规划状态和进度追踪内化进思考过程确实有帮助，只是相比反思改写这个组件贡献小一些。</p>
+<p>关于数据池规模：用四十二万道题的完整池子对比只用十万道题的缩减池子，差异随着训练轮次推进越来越明显。十万的池子在前几轮进步很快，但很快就饱和了，因为可用的未见样本耗尽，后续轮次只能反复利用之前被拒绝的低质量样本，这会导致性能波动甚至退步。四十二万的池子到第十一轮仍然有相对稳定的提升趋势，格式错误率更低，工具成功率和实体命中率都更稳定。这个结果说明，自进化训练的上限不只取决于训练方法，同样取决于任务池的多样性——你需要足够多样的任务来覆盖世界知识的不同侧面、不同的失败模式和恢复策略。</p>
+<p>这篇论文自己也坦诚了几个重要的局限性。第一，整个环境建立在维基百科上，覆盖面有限，很多专业领域的知识要么没有，要么不够深。现实中的深度搜索任务往往需要访问专业数据库、新闻报道、技术文档，这些都不在这个离线环境里。第二，训练只用了英文轨迹，在中文BrowseComp上的提升幅度明显小于英文版，说明跨语言迁移是有限的。第三，更新规则采用的是有监督微调而不是强化学习，这意味着探索行为受限，模型只能从自己生成并通过筛选的轨迹中学习，无法主动探索更新颖的搜索策略。论文指出，如何把规划、错误恢复和工具使用策略这些高阶能力注入强化学习训练，还是一个开放问题。</p>
+<p>对于在做类似工作的人来说，这篇论文有几点值得具体借鉴。第一，如果你在构建工具使用智能体的训练环境，确定性和可验证性是最重要的属性，而不是环境的真实性——一个可以稳定地给出过程级信号的离线环境，比一个嘈杂的真实环境更适合训练。第二，任务池的规模和多样性对自进化的持续性至关重要，这不是一个可以随意缩减的维度。第三，把脚手架格式的轨迹转换成标准推理格式这个思路有很强的普适性——你可以用任何辅助结构来生成高质量轨迹，但训练数据要让模型学会把这些认知过程内化成自己的推理习惯，而不是依赖外部提示。第四，在自蒸馏里，答案正确性验证是不可绕过的核心筛选环节，质量过滤是在这个基础上的锦上添花。</p>
+<p>这项工作最根本的启示是：当一个环境能够对中间步骤提供客观验证时，模型不需要更强的外部教师也能持续进化——可验证的环境本身就是一种监督信号。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

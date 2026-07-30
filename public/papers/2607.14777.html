@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 17, 2026</time> · <a href="https://arxiv.org/abs/2607.14777">arXiv</a> · <a href="https://arxiv.org/pdf/2607.14777">PDF</a></div>
+    <h1>SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-17-seed-self-evolving-on-policy-distillation-for-agentic-reinfo-08bc4135.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Large language models are increasingly trained as interactive agents for long-horizon tasks involving multi-turn interaction, tool use, and environment feedback. Outcome-based reinforcement learning (RL) provides a practical optimization paradigm, but its sparse trajectory-level rewards offer limited guidance on intermediate decisions, leaving a supervision gap between episode-level outcomes and token-level policy learning. We propose SEED (SElf-Evolving On-Policy Distillation), a self-evolving framework that converts completed on-policy trajectories into training-time hindsight skills and distills their behavioral effect back into the policy model. SEED first fine-tunes the policy to analyze completed trajectories and generate natural-language skills that capture reusable workflows, decisive observations, or failure-avoidance rules. During RL, the current policy both collects trajectories and serves as the analyzer that extracts hindsight skills from them. Policy updates therefore improve subsequent decision making and skill analysis together, allowing hindsight supervision to evolve with the policy. SEED then re-scores the sampled actions under ordinary and skill-augmented contexts, converting the skill-induced probability shift into a dense token-level on-policy distillation signal. This signal is jointly optimized with outcome-based RL, keeping the auxiliary supervision aligned with the current trajectory distribution. Extensive experiments on text-based and vision-based agentic tasks show that SEED consistently improves performance and sample efficiency, exhibiting robust generalization to unseen scenarios. Our code is available at https://github.com/jinyangwu/SEED.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>用强化学习训练语言模型智能体，有一个根本性的困难：奖励信号太稀疏了。想象一个智能体要在虚拟房间里找到一根蜡烛，放到指定位置，这个任务可能要走二三十步。环境只在最后告诉你成功还是失败，中间每一步做得对不对，全靠你自己猜。这就是所谓的轨迹级稀疏奖励问题，也是这篇论文要正面解决的核心痛点。</p>
+<p>论文提出的方法叫 SEED，全称是 Self-Evolving On-Policy Distillation，自进化的在线蒸馏框架。它要做的事情，用一句话说就是：把智能体自己跑完的轨迹，变成一种更稠密的训练信号，反过来指导智能体的决策，而且这个过程是随着训练一起进化的。</p>
+<p>要理解 SEED 为什么这么设计，先要把问题说清楚。</p>
+<p>在长时域智能体任务里，强化学习的标准做法是结果驱动的。智能体执行一整条轨迹，最后拿到一个标量奖励，然后通过 GRPO 这类算法，把轨迹里所有的动作都往奖励高的方向推。问题在于，这个奖励是轨迹级别的，它被广播给轨迹里的每一个 token，每一个决策步骤都得到完全相同的信用分配。一条失败的轨迹，可能前面二十步都做得很好，只是最后一步放错了位置，但所有步骤都会被一视同仁地惩罚。一条成功的轨迹，里面可能有好几步是绕弯路、走冤枉路，但它们同样会被强化。这种粗粒度的信用分配，是长时域任务里学习效率低下的根本原因。</p>
+<p>另一个直觉是：一条轨迹跑完之后，信息量其实大增了。在执行过程中，智能体不知道后面会发生什么，但轨迹完成之后，整个交互历史摆在那里，你能看出来哪个观察是关键的，哪个策略带来了突破，哪个错误导致了失败。这种&quot;事后视角&quot;在强化学习里叫做 hindsight，中文可以理解为&quot;马后炮知识&quot;，但这个马后炮是有价值的。</p>
+<p>问题是，以前的方法怎么用这个马后炮信息？大多数方法是把它存成记忆，推理时作为额外的 prompt 输入进去，或者作为静态的经验库让智能体检索。这些方法有两个缺陷：第一，推理时需要额外的上下文，增加部署复杂度；第二，这个经验库是静态的，随着策略不断进化，早期积累的经验越来越过时，和当前策略遇到的情况越来越脱节。</p>
+<p>SEED 的思路是：不要把 hindsight 信息存在外面，要把它蒸馏进策略模型的参数里。而且，蒸馏的来源要始终跟着当前策略走，不能是静态的。</p>
+<p>这就引出了 SEED 的三个核心设计原则。第一，在线性：蒸馏信号必须来自当前策略自己跑出来的轨迹，因为有用的纠正依赖于当前策略实际遇到的状态和失败模式。第二，稠密性：轨迹级别的事后知识要能指导每一个决策 token，而不是只影响最终结果。第三，自进化性：随着策略改进，策略的行为能力和对轨迹的分析能力要同步提升，固定的教师模型或静态技能库都不行。</p>
+<p>现在来看 SEED 的具体机制，分两个阶段。</p>
+<p>第一阶段叫做 hindsight 技能有监督微调，简称 SFT 阶段。目的是让模型学会一件事：看完一条轨迹，能用自然语言总结出可复用的行为技能。这个技能可能是&quot;遇到这类任务，先去柜子里找，再去桌子上找，效率更高&quot;，可能是&quot;如果在第三步还没找到目标物体，就需要扩大搜索范围&quot;，也可能是&quot;不要在已经确认没有目标的位置反复探索&quot;。这些技能被称为 hindsight skill，事后技能。</p>
+<p>具体操作是这样的：先用没有任何技能增强的基础策略，跑出一批离线轨迹。然后用一个外部分析器，论文里用的是 GLM-5.2，来分析这些轨迹，生成技能标注。成功的轨迹生成可复用策略的总结，失败的轨迹生成纠错性或规避性的指导。把这些轨迹-技能对用来做监督微调，让模型学会&quot;读轨迹、写技能&quot;这个能力。</p>
+<p>这个阶段非常关键，因为它给模型装上了一个初始的轨迹分析能力，这是后续自进化的基础。SFT 之后得到的 checkpoint，同时初始化了后面 RL 阶段的策略模型和轨迹分析器。注意，这是同一个模型，不是两个分开训练的模型。</p>
+<p>第二阶段叫做自进化的在线策略蒸馏，这是 SEED 最核心的部分。</p>
+<p>在每一轮更新开始时，SEED 把当前策略冻结一份，叫做行为策略快照。这个快照同时扮演两个角色：一是作为智能体在环境里跑轨迹；二是作为分析器，把跑完的轨迹分析成技能。因为两个角色共享同一套参数，策略更新之后，下一轮的两个角色都会同步更新。这就是自进化的来源。</p>
+<p>然后有一个非常精妙的蒸馏机制。SEED 把同一批采样到的动作，在两种不同的上下文下重新打分。一种是普通上下文，也就是智能体实际看到的交互历史；另一种是技能增强上下文，就是把刚才分析出来的 hindsight 技能插入到交互历史里。同一个动作，在这两种上下文下，模型给出的 log 概率会不同。技能增强版本的 log 概率减去普通版本的 log 概率，就是技能诱导的概率偏移量。</p>
+<p>这个偏移量的含义很直接：如果技能增强之后，某个 token 的概率升高了，说明这个技能支持这个动作；如果降低了，说明这个技能不赞成这个动作。SEED 把这个偏移量通过一个 sigmoid 函数转成一个置信门控值，用这个门控值来加权普通策略对这个 token 的负对数似然。梯度只通过普通策略那边流，技能增强那边是截断梯度的。</p>
+<p>直观地说，这相当于：我把做完某件任务之后总结出来的经验教训，用来告诉当前的普通策略，哪些 token 应该提高概率，哪些应该降低，而且这个指导在每个 token 级别上都是不同的，而不是整条轨迹得到同一个标量。这就实现了稠密的 token 级别信用分配。</p>
+<p>这个机制和知识蒸馏的关系是：经典知识蒸馏是用一个固定的教师模型来指导学生模型。SEED 里的&quot;教师&quot;是同一个模型在技能增强上下文下的输出，学生是同一个模型在普通上下文下的输出。这叫在线自蒸馏，没有单独的教师，不存在分布不匹配的问题。</p>
+<p>最终的训练目标是把 RL 损失和 OPD 损失加权求和。RL 那部分负责从环境奖励里学习任务完成能力，OPD 那部分负责从 hindsight 技能里学习决策级别的精细指导。两者互补，而不是互相干扰。</p>
+<p>值得特别强调的是推理时的干净性。训练结束之后，部署时只需要普通的策略模型，不需要任何技能库、不需要检索模块、不需要增强的 prompt。技能在训练阶段发挥作用，然后被内化进参数，推理时对用户完全透明。</p>
+<p>接下来说实验结果，数字很能说明问题。</p>
+<p>实验覆盖了四类任务。ALFWorld 是文本型具身交互，智能体在家庭环境里执行扩展动作序列，有六个任务类别。WebShop 是网页导航，智能体要按自然语言需求搜索商品、查看属性、完成购买，用128个测试任务。Search-based QA 是基于搜索的问答，智能体要通过调用搜索引擎来收集证据再回答问题，涵盖七个数据集包括 HotpotQA、TriviaQA、MuSiQue 等。骨干模型用了 Qwen2.5-3B、Qwen2.5-7B 和 Qwen3-1.7B 三种规模。</p>
+<p>和纯粹的 GRPO 相比，SEED 在 ALFWorld 宏平均成功率上提升了 14.9 到 45.9 个百分点，在 Search-based QA 上提升了 1.4 到 9.3 个百分点，在 WebShop 任务完成分上提升了 8.7 到 19.8 个百分点，精确成功率提升了 5.5 到 39.0 个百分点。这个提升幅度跨越三个模型规模都是一致的，说明不是某个特定规模的偶然现象。</p>
+<p>还有一个对比很有意思：Skill-GRPO 是在 RL 训练时把技能信息加进输入，但依然用轨迹级奖励广播给所有 token。SEED 相比 Skill-GRPO，在 ALFWorld 上进一步提升了 26.6 到 70.9 个百分点。这说明光有技能信息还不够，关键是要把技能信息转化成 token 级别的稠密信号。技能有了，但信用分配还是粗粒度的，学习效果就大打折扣。</p>
+<p>还有一个维度是：把技能蒸馏进参数，和推理时把技能作为 prompt 输入，哪个更有效？答案是前者。Skill-Prompt 方法，也就是只在评测时把技能放进上下文，在所有指标上都输给了 SEED。而且 SEED 在评测时根本不用技能，表现还更好。这说明内化了的知识比外部输入的提示更稳定、更可靠。</p>
+<p>训练动态方面，在 ALFWorld 上，SEED 和 GRPO 的成功率曲线很早就分叉了。到第40个训练步骤时，SEED 的成功率已经达到大约 57%，而 GRPO 还在 35% 附近。平均每条轨迹的步数，SEED 从大约28步压缩到了13步，而 GRPO 最终只压缩到16步左右。步数更少同时成功率更高，说明 SEED 学到的是更直接的解题路径，而不是更早放弃。</p>
+<p>样本效率实验更直接地说明了数据利用率的问题。在 WebShop 上，SEED 用 60% 的训练数据就能达到 80.7 分，而 GRPO 用全部数据只能达到 75.0 分。SEED 用 40% 数据能达到 58.9 分，接近 GRPO 用 80% 数据时的 58.6 分。每条轨迹能挖掘出更多的学习信号，自然不需要那么多数据。</p>
+<p>泛化能力实验在 ALFWorld 的 unseen split 上进行，就是在训练没见过的房间布局和任务上测试。SEED 训练的 3B 模型宏平均成功率从 70.9% 提升到 86.2%，比 GRPO 高出 15.3 个百分点，在六个任务家族中的五个上都更好。改善最大的是 Heat 任务，提升了 35 个百分点，其次是 Look 提升 18.3，Pick 提升 16.5。这说明 SEED 学到的技能确实是可复用的行为策略，而不是对训练环境的记忆。</p>
+<p>消融实验把 SEED 的三个核心组件逐个拆掉看效果。拆掉 hindsight 技能 SFT 阶段，性能从 91.8 下降到 86.0，掉了 5.8 个百分点，说明给模型装上初始的轨迹分析能力是必要的基础。拆掉自进化的 OPD，性能降到 87.0，掉了 4.8 个百分点，说明 SFT 阶段的一次性技能学习不够，训练过程中持续的蒸馏是必要的。把在线技能换成静态的离线技能库，性能降到 84.4，这是最大的单项损失，掉了 7.4 个百分点。这个结果最有力地支持了&quot;技能必须来自当前策略自己的轨迹&quot;这个设计选择，静态技能库会越来越过时。</p>
+<p>论文还做了一个定性分析，展示了一个具体例子。GRPO 训练的智能体去找蜡烛，先去了目标位置，但还没找到蜡烛，然后和无关物体交互，反复探索已经探过的地方，最终超时失败。SEED 训练的智能体则直接搜索可能存放蜡烛的地方，在第二个架子上找到了，然后把它放到正确位置，任务完成。这个行为差异和定量指标是一致的，更短的轨迹、更有目的性的行为。</p>
+<p>从理论角度看，论文附录里对 SEED 的三个性质做了形式化的论证，值得理解其直觉。第一，在线性保证了蒸馏方向和当前策略的轨迹分布对齐，用历史轨迹来提供技能，会导致和当前分布成比例的偏差，这个偏差可以用 Pinsker 不等式用 KL 散度来上界。第二，稠密性在奖励完全绑定，也就是一组轨迹结果全一样的极端情况下最能体现，此时 GRPO 的梯度完全为零，而 OPD 的梯度只要不同 token 的技能门控值有差异就非零，可以继续指导学习。第三，分析器同步性的意义是：如果用的是旧版本的分析器生成技能，OPD 梯度的偏差可以用分析器产生的 log 概率偏移量的差异来量化，越旧的分析器、偏差越大，而同步更新分析器把这个偏差压到零。</p>
+<p>理解这三点之后，SEED 的设计选择就显得非常连贯。每一个看起来可能显得复杂的机制，都是在解决一个具体的问题：在线采样解决分布漂移，token 级门控解决粗粒度信用分配，分析器与策略共享参数解决技能过时。</p>
+<p>从可借鉴的角度想，这篇论文对做智能体强化学习的研究有几个具体的启发。</p>
+<p>第一，稀疏奖励的补救方向不一定是设计更精细的奖励函数，也可以是从轨迹本身提取更丰富的监督信号。完成的轨迹是被严重低估的信息来源。</p>
+<p>第二，自蒸馏的核心价值在于让&quot;教师&quot;和&quot;学生&quot;保持同步。如果你在自己的工作里用到蒸馏，一定要考虑教师是否会随着训练而过时，以及如何同步更新。</p>
+<p>第三，把 hindsight 信息内化进参数而不是存在外部记忆里，这是一个值得认真对待的设计哲学。推理时的干净性，对于实际部署的价值不可低估。</p>
+<p>第四，技能本质上是对行为模式的自然语言抽象，它比密集人工标注更容易获得，但比纯粹的结果奖励携带的信息量大得多，这个中间地带值得继续挖掘。</p>
+<p>SEED 面临的局限性也值得点出来。它的 hindsight 技能依赖于模型自身分析轨迹的能力，如果模型太小或者分析能力不足，生成的技能质量就会打折扣，这个瓶颈在极小模型上会更明显。另外，SFT 阶段需要用外部强模型来生成初始技能标注，这个开销对资源有限的场景是一个约束。</p>
+<p>但核心洞见是清晰的：稀疏奖励之所以低效，是因为它丢弃了轨迹里绝大多数的结构信息，而那些信息完全可以通过让模型回头看自己做过什么来恢复。让策略自己成为自己的导师，并且随着训练同步进化，这个思路在长时域智能体任务里是真实有效的。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 22, 2026</time> · <a href="https://arxiv.org/abs/2607.19064">arXiv</a> · <a href="https://arxiv.org/pdf/2607.19064">PDF</a></div>
+    <h1>Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-22-mage-flow-an-efficient-native-resolution-foundation-model-fo-473d23d8.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Large-scale visual generators are increasingly capable but costly to train, fine-tune, and deploy. We introduce Mage-Flow, a compact 4B-scale generative stack for efficient text-to-image generation and instruction-based image editing. The stack is built from two co-designed components: Mage-VAE, a lightweight high-fidelity latent tokenizer, and a Native-Resolution Multimodal Diffusion Transformer trained with rectified flow matching. Mage-VAE uses one-step diffusion-style encoding and decoding with anchor-latent regularization, preserving the reconstruction quality of strong public VAEs while reducing tokenization cost by more than an order of magnitude. Together with native-resolution packing and stack-level CUDA kernel fusion, the stack supports flexible-resolution training and improves end-to-end training throughput by about 2.5times. Built on this foundation, we develop a complete model family with Base, RL-aligned, and Turbo variants for both generation and editing. Diffusion-NFT improves prompt following, text rendering, aesthetic quality, and editing fidelity, while few-step distillation with adversarial perceptual guidance produces 4-step Turbo models for low-latency inference. Despite its compact scale, Mage-Flow and Mage-Flow-Edit achieves competitive performance across standard generation and editing benchmarks. More importantly, the Turbo variants make high-resolution generation and editing practical for interactive use: at 1024^2 resolution on a single NVIDIA A100 GPU, Mage-Flow-Turbo generates an image in 0.59s, and Mage-Flow-Edit-Turbo edits an image in 1.02s, while maintaining a small memory footprint. These results show that careful tokenizer--backbone--system co-design can deliver strong high-resolution generation and editing within an efficient 4B model family.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>有一类图像生成系统，它们能画出高质量的图、能按照指令精确修图，但你要用它们，要么得花巨大的算力，要么得接受不透明的闭源黑箱。这篇来自微软的论文想解决的，正是这个矛盾：能不能在参数量只有四十亿这个相对紧凑的规模上，造出一个生成质量和编辑能力都不输大模型、同时又快又省显存的视觉生成系统？这个系统叫 Mage-Flow，论文的核心主张是，真正的效率不是靠缩减某一个模块，而是把分词器、骨干网络、训练系统三个层面联合设计，才能把整个流水线的瓶颈都消除掉。</p>
+<p>先来说说现有系统的问题在哪里。当前那些能打的开源图像生成模型，参数量普遍很大。Z-Image 是六十亿参数，Qwen-Image 是两百亿，FLUX.2 是三百二十亿，HunyuanImage 3.0 更是八百亿。闭源系统比如 GPT-Image、Seedream 效果很好但透明度为零。参数量大带来的问题是连锁反应：推理慢、显存占用高、你想在上面做微调或者受控消融实验，计算成本就高得难以承受。更关键的是，这些大模型并没有真正解决高分辨率生成时的系统瓶颈，因为大家优化的重心一直放在扩散骨干网络上，却忽视了图像分词器（也就是 VAE）在高分辨率下的开销问题。这就是 Mage-Flow 要正面突破的地方。</p>
+<p>整个 Mage-Flow 技术栈由两个核心组件构成。第一个叫 Mage-VAE，是一个轻量级高保真的潜空间分词器。第二个是一个四十亿参数的原生分辨率多模态扩散 Transformer，简称 NR-MMDiT，用修正流匹配方法来训练。这两个组件共同支撑起两个模型实例：Mage-Flow 用于文本生图，Mage-Flow-Edit 用于基于指令的图像编辑。我们先把这两个核心组件讲清楚，再聊训练流程和实验结果。</p>
+<p>先说 Mage-VAE，这是整个系统效率的第一道关口，也是论文最有意思的创新之一。</p>
+<p>通常我们说的 VAE，也就是变分自编码器，在图像生成流水线里扮演的角色是把像素图像压缩成一个紧凑的潜向量，供扩散模型在潜空间里做去噪生成，最后再解码回像素。现有的公开 VAE 比如 FLUX.2-VAE，架构上继承自 LDM 和 VQGAN 那个时代，最初是为低分辨率图像设计的。一旦图像分辨率升到一千像素甚至两千像素，这些 VAE 的编码器和解码器里的全局注意力模块会让计算量急剧膨胀。论文举了一个很直观的例子：用 FLUX.2-Klein 这个四十亿参数的模型做四步生成，在一千像素分辨率下，VAE 解码一步就占到了整个生成时间的百分之十四。四步生成本来就是为了提速的，结果有将近六分之一的时间全花在 VAE 解码上了，分词器本身成了流水线瓶颈。</p>
+<p>Mage-VAE 针对这个问题的解法有三个设计原则，每一个都很有意思。</p>
+<p>第一，把解码器设计成单步扩散模型。这个灵感来自论文团队之前做的 CoD-Lite 工作。CoD-Lite 的发现是：在小规模场景下，以压缩为导向来预训练扩散模型，比以生成为导向来预训练效果更好；而且经过单步蒸馏和对抗训练之后，纯卷积的解码器就已经足够，不需要全局注意力。Mage-VAE 的解码器就是一个只用卷积扩散块和解耦像素扩散头构成的单步扩散模型，直接从潜向量重建 RGB 像素。全卷积意味着计算量随分辨率几乎线性增长，而不是带全局注意力的平方增长。</p>
+<p>第二，把编码器设计成解码器的对称镜像。这一点设计上很优雅。通常大家优化解码速度，忽视编码速度，但在编辑场景里，每次你给模型一张源图像，都要编码一次；在大规模训练里，每一条数据都要过编码器。所以编码效率同样重要。Mage-VAE 的思路是：既然解码器是&quot;给定潜向量生成像素&quot;，那编码器就是&quot;给定像素生成潜向量&quot;，两者结构对称，都是单步扩散模型。这样编码的开销和解码相当，都轻量。</p>
+<p>第三，用锚点潜向量的 KL 正则化来代替标准高斯先验的 KL。这是 Mage-VAE 能够快速上手用于下游生成的关键。通常 VAE 训练时用的 KL 散度是把后验分布拉向标准高斯分布，保证生成的时候你从标准高斯采样能得到合理的潜向量。但 Mage-VAE 不用标准高斯作为锚点，而是用 FLUX.2-VAE 的潜向量分布作为锚点来正则化。这么做的好处是什么？FLUX.2-VAE 的潜空间已经被验证是对下游扩散生成友好的空间，Mage-VAE 通过向这个锚点分布对齐，可以在保持自身轻量架构的同时，继承一个对生成任务已经优化好的潜空间几何结构。论文还让 Mage-VAE 的空间下采样率和通道数与 FLUX.2-VAE 对应：空间下采样十六倍，一百二十八个通道。这意味着你甚至可以把 Mage-VAE 和 FLUX.2 的骨干网络互换使用，跨分词器兼容性非常好。</p>
+<p>训练分三阶段：第一阶段分别预训练编码器和解码器作为多步扩散模型；第二阶段把解码器蒸馏成单步，用重建损失、分布匹配蒸馏损失和 DINOv2 投影的 GAN 损失联合优化；第三阶段把单步编解码器联合微调，加入锚点潜向量 KL 正则，得到最终的 Mage-VAE。</p>
+<p>效果怎么样？在 CLIC 2020 高质量图像测试集和 FFHQ 人脸数据集上，Mage-VAE 的重建质量与 FLUX.2-VAE 相当，甚至在 FFHQ 上更好。但计算量方面，编码的 MAC（乘加操作数）减少了约百分之九十，解码的 MAC 减少了约百分之九十四，也就是分别降低了大约十倍和十六倍。在极高分辨率下，FLUX.2-VAE 会直接内存溢出，而 Mage-VAE 还能正常运行。更重要的是，论文做了一个跨分词器消融实验：把 Mage-VAE 换成 FLUX.2-VAE 接在 Mage-Flow 上，或者把 FLUX.2-VAE 换成 Mage-VAE 接在 FLUX.2-Klein 上，基准测试的性能都基本持平。这验证了锚点潜向量正则化确实成功保留了生成友好的潜空间几何，不是只重建好看却和生成脱节。</p>
+<p>接下来说第二个核心组件，NR-MMDiT，也就是原生分辨率多模态扩散 Transformer。</p>
+<p>骨干网络采用 SD3 提出的 MMDiT 块结构：文本 token 和图像 token 拼在一起，通过联合自注意力交互，每个模态有自己独立的归一化层和投影层。文本编码器用的是冻结的 Qwen3-VL-4B-Instruct 模型，把提示词映射成上下文嵌入向量。</p>
+<p>这里最关键的创新是&quot;原生分辨率打包&quot;训练策略，对应论文里的 NiT 方案。传统做法是把图像按分辨率和宽高比分成若干个桶，比如一个桶是 512×512，另一个是 768×1024，每个训练步骤只从一个桶里取样，保证所有样本的图像 token 数量和形状一致，这样 batch 好组织。这个方案的问题是：分辨率被离散化了，桶的宽高比覆盖有限，如果你想要一个非常极端的宽高比比如二十比一，那你得专门加这个桶，而且每个更新步骤里模型只能见到同一种分辨率，分辨率多样性被人为压制了。</p>
+<p>原生分辨率打包的做法是：给定一个固定的 token 预算，把不同分辨率、不同宽高比的图像潜向量序列直接拼在一起，塞进一个批次里。文本提示的嵌入序列也一样，不同长度的提示不补零对齐，直接打包。借助 FlashAttention 的可变长度内核，用每个样本的累积偏移量来限制注意力只在单个样本内部计算，不需要显式构造块对角掩码。这样一来，每个训练步骤里模型能同时见到各种分辨率和宽高比的图像，分辨率的多样性从被压制变成了训练信号本身。训练完成后，一个检查点自然而然就能处理任意输出尺寸，论文演示了从高度和宽度各自在 256 到 2048 像素之间随意组合，包括宽高比极端的横幅或竖条图像。</p>
+<p>原生分辨率打包还带来了一个推理侧的额外红利：Classifier-Free Guidance 也就是无分类器引导。CFG 的标准做法是每个去噪步骤要跑两次前向传播，一次有条件、一次无条件，然后用两者的差值放大引导方向。原生打包可以把有条件和无条件两路直接打进同一个批次，一次前向传播搞定，实测推理速度提升 1.09 到 1.15 倍，别看这个数字不大，在一千像素分辨率的高频推理场景里，这是实实在在的时间节省。</p>
+<p>再说训练基础设施层面的系统优化，这也是论文比较强调的贡献之一。</p>
+<p>Mage-VAE 的卷积扩散块、Qwen3-VL 文本编码器的 Transformer 块、NR-MMDiT 的 Transformer 块，这三套模块在训练过程中被反复调用。每个 Transformer 块里除了矩阵乘法和注意力这些算术密集的操作，还有大量访存密集的操作：归一化、自适应调制、旋转位置编码的应用、门控、激活函数、残差相加。如果这些操作分别作为独立的 CUDA kernel 启动，它们每次都要把中间结果写回显存再读出来，产生大量显存读写流量和 kernel 启动开销。</p>
+<p>论文的做法是把这些操作链融合成自定义 CUDA kernel，让中间值保留在片上缓存里，只把最终输出写回显存。Mage-VAE 融合卷积扩散块里的归一化激活残差链，Qwen3-VL 和 NR-MMDiT 融合自适应归一化、旋转嵌入应用、门控残差更新等操作。论文的消融数据很具体：单纯把 FLUX.2-VAE 替换成 Mage-VAE，每步训练时间就从某个基准降低了一大截，体现了轻量分词器的价值；再融合 Mage-VAE 和 Qwen3-VL 的 kernel，有额外提升但幅度相对小；融合 NR-MMDiT 的 kernel 提升幅度最大，因为四十亿参数的扩散骨干才是训练时间的主要消耗。最终，整个栈的 GPU 算力利用率 MFU 从约百分之三十八提升到约百分之五十一，每张卡的显存峰值从约七十二 GB 降到约五十八 GB，整体训练速度提升约百分之三十八。</p>
+<p>这里有个很值得关注的结论：做高效原生分辨率生成，不只是设计一个高效的模型结构就够了，你还得把训练系统里反复执行的那些访存密集操作逐一优化，否则这些开销会把理论上的效率优势都蚕食掉。</p>
+<p>现在说整个模型家族的训练流程。Mage-Flow 和 Mage-Flow-Edit 共用同一套 Mage-VAE 潜空间和 NR-MMDiT 骨干，分三个阶段走：预训练和监督微调产出基础检查点，Diffusion-NFT 后训练产出对齐模型，少步蒸馏产出 Turbo 变体。</p>
+<p>数据方面先快速介绍一下。生成数据从约一百亿原始图文对出发，经过样本级过滤去掉低质、不安全、格式异常的图像，跨样本去重（用 SSCD 哈希做最近邻检索），多粒度重新打标题（用 Qwen3-VL-32B 给每张图生成短语级、实体级、构图级、摄影风格级四种描述），以及概念感知合成补充长尾数据（比如多语言文字渲染、罕见物体、特殊构图），最终保留约七十亿高质量图文对。编辑数据的原始池约有七百万条三元组，来自开源数据集聚合约两百六十万条和内部合成约四百五十万条，经过三个独立的 VLM 专家投票过滤，至少两个通过才保留，最终留下约三百五十万条。</p>
+<p>预训练分三个阶段递进。第一阶段在五十亿图文对、固定 256 像素分辨率下做初步的视觉语言对齐，成本低；第二阶段换到高质量的五亿子集，采用原生宽高比、约一百万像素的预算，模型开始学习处理各种真实宽高比；第三阶段用更高质量的一亿子集继续提升细节、布局、文字渲染和审美质量。之后在精选的两千万高质量子集上做监督微调，得到 Mage-Flow-Base。编辑模型从 Mage-Flow-Base 初始化，用两阶段适配：第一阶段混合三百万编辑三元组和一百万生成对，第二阶段用更高质量的一百五十万编辑三元组和五十万生成对，得到 Mage-Flow-Edit-Base。这种生成数据和编辑数据混合训练的策略很重要，它能在让模型学会源图像条件下的指令跟随的同时，保留模型的开放式生成先验，避免微调后遗忘生成能力。</p>
+<p>后训练阶段采用 Diffusion-NFT 方法，这是一种工作在流匹配生成器前向过程上的负向感知微调技术。它不需要估计似然，不依赖特定的采样器，用在线采样的方式产生候选样本，打分后做强化学习风格的优化。</p>
+<p>对于 Mage-Flow，论文构建了一个约四万五千条提示的 RL 池，分三类：约一万五千条文字渲染提示、一万五千条审美质量提示、一万五千条语义理解提示。不同类型的提示配不同的打分器：文字渲染提示用 PaddleOCR 识别生成图像里的文字并和目标文字对比，给出 OCR 准确率分数；审美提示和语义提示用 Qwen3.5-27B 配置不同的评分 rubric 打分。为了避免不同打分器的分数量纲不同导致优化目标混乱，每种类型的提示只在同类提示里做优势归一化，不跨类型平均。这个设计很细心，保证三类能力的学习信号都是有效的。后训练分两个子阶段：第一阶段均衡混合三类提示，先攻字符级和词级的基础文字渲染；第二阶段提高难度更高的文字渲染提示权重，处理完整句子、多行排版、标点密集文字，同时保留审美和语义提示防止过度专化。</p>
+<p>对于 Mage-Flow-Edit 的后训练，按四比一的比例混合编辑更新和生成更新，共享同一套 Diffusion-NFT 目标。编辑流的打分器用 RationalRewards，一个推理型奖励模型，先产出多维度评语再给出标量偏好分，评价维度包括指令执行是否正确、非编辑区域是否保留、物理和感知合理性、生成文字质量。</p>
+<p>最后是少步蒸馏，产出 Mage-Flow-Turbo 和 Mage-Flow-Edit-Turbo，把推理步骤从多步压缩到四步。蒸馏框架结合了 Decoupled DMD 和对抗感知引导两个组件。Decoupled DMD 把 CFG 增强信号和分布匹配正则解耦，分别分配独立的噪声调度，提升少步蒸馏的稳定性。对抗感知引导用冻结的 DINOv2 和 CLIP 提取真实图和生成图的语义特征，训练一个轻量判别器给生成器提供对抗梯度，补偿四步轨迹下感知质量的退化。论文也坦诚指出，对抗感知引导对文字编辑任务的提升很明显，但在通用编辑基准上的效果并不均一，有的子集有提升有的几乎不变。对于编辑 Turbo 模型，蒸馏时真实图像分支用的是编辑三元组里的目标图，而不是另外找真实图，对齐了对抗信号和编辑图像的分布；同时保留约三分之一的生成数据混合训练，论文的消融实验显示这能把 Turbo 编辑模型在 ImgEdit 上的成绩从某个基准提升两三个百分点，体现了生成数据对四步压缩下编辑鲁棒性的积极作用。</p>
+<p>来看实验结果。在文本生图方面，Mage-Flow 在多个标准基准上达到了和 FLUX.2、Z-Image、Qwen-Image 等大得多的模型相当甚至更好的成绩。而在推理效率上，以一千像素分辨率、单张 NVIDIA A100 为基准：多步 Mage-Flow 生成一张图约需 3.9 秒，四步 Mage-Flow-Turbo 只需约 0.7 秒；多步 Mage-Flow-Edit 约需 6.5 秒，四步 Mage-Flow-Edit-Turbo 约需 1.0 秒。峰值显存保持在约 13 到 16 GB 之间，是对比模型里最低的。这个显存水平意味着一张消费级 24 GB 显卡就能流畅运行，对本地部署非常友好。</p>
+<p>几个值得关注的具体发现：其一，Mage-VAE 的锚点潜向量正则化让轻量 VAE 和大规模生成骨干保持了跨模型的兼容性，换掉分词器生成质量几乎不下降，说明这个设计不只是重建好看而且真正保留了生成有用的潜空间结构。其二，原生分辨率打包把分辨率多样性从训练的限制变成了训练的优势，同时一箭双雕地优化了推理时的 CFG 计算。其三，系统级的 kernel 融合带来的训练加速，和模型结构优化带来的加速加在一起才构成完整的效率增益，任何一块单独做都不够。其四，生成数据混合进编辑训练，尤其在四步 Turbo 蒸馏场景下，能提升模型在大幅度视觉变化编辑上的鲁棒性，这是一个对工程实践很有参考价值的结论。</p>
+<p>局限性方面，论文也有几处坦诚的承认。对抗感知引导在编辑基准上的效果不均一，说明少步编辑任务的优化信号设计还有改进空间。四步蒸馏在某些高保真细节场景下相比多步版本仍有质量差距，极端宽高比的生成虽然支持但在部分场景下的视觉连贯性也还有提升余地。另外，Mage-Flow-Edit 的多图编辑样本在训练数据里占比不超过百分之十，所以复杂的多参考图编辑场景可能不是它的强项。</p>
+<p>对你自己的研究最值得借鉴的点，我认为有以下几个。第一，如果你要做高分辨率扩散生成系统，记得把 VAE 的编解码开销单独 profile 一下，它在少步生成场景里可能远比你预期的占比高，轻量化分词器的收益会随分辨率和步数减少而快速放大。第二，原生分辨率打包方案是一个技术上很成熟可借鉴的训练策略，FlashAttention 的可变长度 kernel 是关键基础设施，这条路已经被验证可行。第三，锚点潜向量 KL 正则化是一个很有意思的思路，当你想训练一个新的轻量 VAE，但又需要它和已有生成模型的潜空间兼容时，对一个强参考 VAE 的潜分布做对齐，比从头训练到标准高斯然后靠运气与已有骨干兼容，要稳健得多。第四，编辑和生成数据混合训练，不论是在基础预训练阶段还是在蒸馏阶段，对防止编辑模型遗忘生成先验都有实质帮助，这个结论在少步压缩的极端场景下尤其显著。</p>
+<p>这篇论文告诉我们，在图像生成领域，规模扩张不是唯一的路径，把分词器、骨干网络、训练系统三个层面的设计决策统一起来打磨，一个四十亿参数的紧凑系统完全可以在质量、速度和显存三者之间找到一个更好的平衡点，让高分辨率生成和编辑真正走进本地部署和受限算力下的研究场景。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

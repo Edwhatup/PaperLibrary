@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BadWAM: When World-Action Models Dream Right but Act Wrong · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 17, 2026</time> · <a href="https://arxiv.org/abs/2607.15207">arXiv</a> · <a href="https://arxiv.org/pdf/2607.15207">PDF</a></div>
+    <h1>BadWAM: When World-Action Models Dream Right but Act Wrong</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-17-badwam-when-world-action-models-dream-right-but-act-wrong-1a42b3c0.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>World-action models (WAMs) are emerging as a promising foundation for embodied control: rather than predicting actions alone, they learn representations that couple action generation with future world prediction. This coupling is often viewed as a source of robustness, interpretability, and safety, as a robot&#x27;s action can in principle be checked against its imagined future. In this paper, we show that this assumption is fragile. We introduce BadWAM, a unified framework for modeling and evaluating World-Action Drift Attacks: a new class of WAM-specific adversarial attacks that use small visual perturbations to break the alignment between what a WAM imagines and what it executes. BadWAM characterizes this attack surface along two natural criteria: attack strength and stealthiness. When the adversary prioritizes disruption, BadWAM instantiates an action-only adversarial attack, which directly drives the model toward task-failing actions. When the adversary additionally prioritizes stealth, BadWAM instantiates an imagination-preserving adversarial attack, which seeks to induce harmful action shifts while keeping the model&#x27;s predicted future close to its clean imagination. Together, these two attacks capture a spectrum of WAM-specific failures: from overt action hijacking to stealthier cases where the model appears to imagine a plausible future but executes a desynchronized action. We evaluate BadWAM across different variants of WAMs. Results show that our attacks substantially reduce task success rates under closed-loop execution. For example, our action-only attack reduces the model performance from 96.5% to 43.1% success. The results of our imagination-preserving attack further exposes a WAM-specific vulnerability: moderate future-preserving regularization can maintain strong attack performance while reducing future imagination drift.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>有一类机器人控制系统正在快速崛起，它不只是&quot;看到当前状态、输出下一步动作&quot;，而是同时生成动作和对未来世界的想象画面。研究者相信，让机器人&quot;边想边做&quot;会让它更安全、更可靠——因为如果它能预见自己行动的后果，那么一旦想象的结果看起来不对劲，就可以在真正执行前叫停。这篇论文要拆解的，就是这个直觉背后隐藏的一个裂缝：一个攻击者能不能在不破坏机器人&quot;想象&quot;的情况下，悄悄把它的&quot;动作&quot;引向失败？答案是，可以。</p>
+<p>这类系统被称为世界-动作模型，英文缩写是WAM。理解它的工作方式，需要先对比一类更简单的老式机器人策略。传统的视觉运动策略只做一件事：给定当前的摄像头画面和语言指令，直接输出机器人要执行的一系列关节动作。这是一个纯粹的&quot;感知到动作&quot;的映射，没有对未来的任何预测。WAM则更进一步，它在输出动作的同时，还会生成一段对未来的预测，比如预测接下来几帧机器人和场景会变成什么样子。这个未来预测可以是显式的视频帧，也可以是藏在模型内部的隐变量表示。关键在于，动作生成和未来预测是耦合的——它们共享同一套内部表示，相互影响。</p>
+<p>这种耦合被认为是一种优势。一个经典的安全设想是这样的：你部署了一个WAM控制机器人，同时配备一个监控器，专门盯着WAM预测的未来画面。如果预测的未来看起来很正常，监控器就批准当前动作；如果预测的未来显示机器人要撞到什么或者做出危险行为，监控器就拦截。这个逻辑听起来很合理，也正因为如此，WAM被视为比传统策略更&quot;可解释&quot;、更&quot;可监督&quot;的系统。</p>
+<p>这篇论文的作者团队来自新加坡国立大学和香港理工大学，他们提出的核心问题是：这套想象-动作耦合机制，在对抗性攻击面前真的稳固吗？他们的发现是否定的，而且失效方式相当微妙。他们构建了一个叫做BadWAM的攻击框架，专门针对WAM设计，并引入了一种新型攻击类别，称为&quot;世界-动作漂移攻击&quot;。这种攻击的核心思想是：通过向摄像头画面注入微小的视觉扰动，在保持模型的未来想象基本不变的同时，把模型输出的动作推向任务失败的方向。换句话说，机器人还在&quot;想象&quot;一个合理的未来，但它实际执行的动作已经悄悄偏离了那个未来所对应的正确行为。</p>
+<p>这种失效模式和传统对抗样本攻击有本质区别。传统的对图像分类器的攻击，目的是让模型把猫认成狗，改变的是输出标签。针对普通机器人策略的攻击，是让输出的动作发生偏移。而BadWAM攻击的是&quot;想象&quot;和&quot;动作&quot;之间的同步关系。这两者的脱耦，是WAM特有的攻击面——普通策略根本没有这个接口，也就没有这个弱点。</p>
+<p>来具体说说BadWAM的两种攻击模式。第一种叫做&quot;纯动作对抗攻击&quot;。攻击者只能观察WAM输出的动作序列，不需要看模型内部的权重，也不需要梯度，就是黑盒查询接口。攻击目标是找到一个视觉扰动，让被攻击后的动作和干净状态下的动作尽可能偏离。这里有个重要细节：攻击者不需要知道&quot;正确的专家动作&quot;是什么，只需要测量攻击前后动作的差异，差异越大越好。这个目标函数非常简洁，但效果却相当暴力。实验显示，在LIBERO这个标准机器人操纵评测基准上，原本成功率高达96.5%的WAM，在这种攻击下成功率骤降到43.1%，下跌了超过53个百分点。</p>
+<p>第二种叫做&quot;保留想象的对抗攻击&quot;，这才是BadWAM真正体现WAM特异性的核心。在纯动作攻击的基础上，攻击者额外施加一个约束：被攻击后的未来预测，必须和干净状态下的未来预测保持接近。用数学语言说，目标函数是一个拉格朗日松弛形式，最大化动作偏移的同时，加入一个惩罚项来压制未来画面的漂移。这个权衡系数是可以调的：设为零时退化成纯动作攻击，设得越大，未来画面保留得越好，但动作干扰能力也会相应减弱。</p>
+<p>这个攻击的危险之处在于它的隐蔽性。如果你部署了一个基于未来预测的安全监控器，专门检查WAM想象的未来是否合理，那这个监控器在这种攻击下会被骗过去。监控器看到的未来画面和没被攻击时几乎一样，于是放行。但机器人实际执行的动作序列已经被篡改，任务失败了。安全机制形同虚设。</p>
+<p>再来说说攻击的实现机制。BadWAM采用零阶有限差分的方式来优化扰动，也就是不需要对模型求梯度。具体做法是：在每一个重规划时刻，随机采样一些扰动方向，分别在正方向和负方向上微小地扰动输入图像，然后查询模型输出，用输出值的差分来估计目标函数对扰动方向的梯度，再沿着这个估计梯度更新扰动，并将扰动投影回约束范围内。整个过程只需要反复查询WAM的输入输出接口，不需要任何内部信息。这种方法在对抗样本文献里有很长的历史，但被用来同时优化动作偏移和未来保留这两个目标，是这篇论文的新贡献。</p>
+<p>实验在两个基准上进行，一个是LIBERO，包含空间推理、物体操纵、目标条件操纵、长时程操纵四个子集，每个子集10个任务，每任务跑20次；另一个是RoboTwin，是一个双臂操纵的大规模基准。被测的WAM有三种变体：纯动作WAM，只输出动作序列；联合WAM，同时预测未来视觉状态和动作；以及IDM WAM，先构建未来想象表示，再从中解码动作。这三种变体代表了当前WAM设计空间的不同选择。</p>
+<p>实验结论非常清晰。纯动作攻击对所有三种WAM变体都造成了大幅度的成功率下滑，降幅在30%到53%之间。保留想象的攻击同样有效，而且在攻击强度相近的情况下，确实能让未来预测的漂移量更小。具体数字是：在40个LIBERO任务中，保留想象攻击在39个任务上都比纯动作攻击产生更小的未来预测漂移，而任务成功率的下降幅度却相差不大。这个结果直接证明了论文的核心论点：未来预测看起来没问题，不代表动作没问题。</p>
+<p>分suite的分析揭示了一个有意思的规律：失败最严重的是空间推理和长时程任务，而以物体为中心的任务相对有韧性。比如纯动作WAM在空间任务上成功率从96.5%掉到16%，在长时程任务上从92.5%掉到23.5%，但在物体操纵任务上仍保持在93%。这说明BadWAM不是在均匀地破坏视觉感知，而是在放大那些需要精确几何控制和动作时序的任务中的敏感性。小的动作偏差在物体操纵里可能无关紧要，因为只要最终到达目标区域就行；但在需要精确入路方向、特定抓取位置的空间任务里，偏差会随时间累积，最终导致失败。</p>
+<p>这种&quot;累积失败&quot;模式在执行轨迹的分析里也有体现。研究者发现，失败的执行轨迹在每一个重规划时刻都有持续的动作偏移，而且这个偏移会随时间积累。机器人并不是在第一步就完全崩溃，而是初期还在按照某种合理的策略行动，但随着时间推移动作越来越偏离任务意图，最终失败。这就是为什么必须在闭环执行下评估攻击效果，而不能只看单步的动作输出——单步看起来还好，但多步之后就不行了。</p>
+<p>攻击强度和各种超参数的关系也被仔细分析了。扰动幅度对攻击效果影响最大：在最小扰动预算下，成功率几乎不受影响；在默认扰动预算下，成功率大幅下降；在更大扰动预算下，两种WAM的成功率都跌到0%。查询预算则存在一个边际收益递减现象：从预算1增加到16时，攻击效果持续增强；但从16继续增加到32时，闭环成功率不再进一步下降，尽管计算时间继续增加。这个现象反映了一个深层问题：局部的每步优化目标和全局的闭环任务结果之间存在不可消除的鸿沟——在当前时刻让动作偏移最大，并不等于长期任务一定失败，因为后续的重规划可能会&quot;纠正&quot;一部分偏移。</p>
+<p>迁移实验显示，在一种WAM上优化的扰动，用到另一种WAM上依然有效。比如在联合WAM上优化的攻击，放到IDM WAM上，成功率从100%下降到60.8%；反过来也类似。这说明BadWAM利用的不是某个特定模型实现的奇特弱点，而是WAM在观测空间中共享的对动作生成敏感的方向。这对安全评估有重要含义：不能只测试你自己训练的那个模型变体，跨模型的共享脆弱性同样需要纳入考量。</p>
+<p>论文也评测了几种简单的防御手段。高斯模糊预处理和JPEG压缩噪声集成这两种方法都能部分恢复被攻击的成功率，比如JPEG噪声集成能让联合WAM的被攻击成功率从63%回升到89.2%。但作者特别强调，这些只是非自适应防御，也就是攻击者没有针对这些防御进行优化。一旦攻击者知道你在用JPEG压缩，就可以把这个步骤纳入优化目标，防御效果就会大打折扣。随机裁剪放大集成这种方法甚至得不偿失，干净状态下的成功率就从近100%跌到约50%，这样的防御完全不实用。</p>
+<p>异常检测的效果同样有限。研究者实现了一个基于增强一致性的检测器，思路是：同一张输入图像在JPEG增强前后，如果输出动作变化很大，就标记为可疑。这个检测器的整体AUC还算中等，但在5%误报率这个对机器人安全而言的实际约束下，它只能识别出13.4%的被攻击重规划步骤，漏报率高达86%以上。这个数字告诉我们，在机器人安全这个领域，单靠&quot;中等准确率&quot;的检测器根本不够用，因为实际部署中你不能频繁地误报，但又不能放过大多数攻击。</p>
+<p>这篇论文的贡献可以从三个层面来理解。第一层是发现了一个新的攻击面：WAM特有的动作-想象去耦攻击，这在理论上填补了过去对这类系统安全性分析的空白。第二层是方法论贡献：BadWAM框架给出了一套完整的攻击实例化方式和评估指标体系，包括任务成功率、动作偏移量、未来预测漂移量、去耦分数、分任务分布等，这套体系本身就可以成为未来WAM安全评估的标准参照。第三层是对WAM设计哲学的反思：把未来预测用作安全信号是有吸引力的，但这个信号的有效性依赖于一个隐含假设——想象和动作是同步的。BadWAM证明这个假设可以被对手精准破坏。</p>
+<p>这项工作也有一些值得注意的局限。实验所有结果都基于模拟环境，LIBERO和RoboTwin都是仿真器，物理世界中的实机实验有待验证。攻击本身是推断时在线优化的，每个重规划步骤需要17次WAM前向查询，在真实部署场景下是否能以足够快的速度完成，还需要进一步工程化探索。防御实验也只涉及简单的预处理方法，真正的自适应防御和有原则的对抗训练方案还没有被探索。更重要的是，论文揭示了&quot;动作-想象同步性&quot;这个安全目标，但如何设计一个在实践中高效、低误报率地检测这种去耦现象的监控器，是留给后续工作的开放问题。</p>
+<p>这篇论文最深刻的启示，不只是&quot;WAM可以被攻击&quot;这一事实本身，而是它揭示了一种更普遍的安全设计陷阱：当一个系统用内部一致性来保证安全时，攻击者可以选择性地破坏内部耦合，让系统在局部看来依然一致，但整体行为已经被劫持。对于任何把&quot;可解释的内部状态&quot;当作安全保障的AI系统，这都是一个值得认真对待的教训。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

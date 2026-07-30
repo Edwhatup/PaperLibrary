@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MARBLE: Music Audio Representation Benchmark for Universal Evaluation · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jun 18, 2023</time> · 1 min read · <a href="https://arxiv.org/abs/2306.10548">arXiv</a> · <a href="https://arxiv.org/pdf/2306.10548">PDF</a></div>
+    <h1>MARBLE: Music Audio Representation Benchmark for Universal Evaluation</h1>
+    <div class="tags"><span class="tag">metro</span><span class="tag">reading-list</span><span class="tag">t1</span></div>
+  </header>
+  <section class="notes"><h2>Notes</h2><ul><li>你 METRO 就是对标它做的探针型 benchmark，同时是你 #1 要正面区分的对象。读它 = 读你自己论文的模板。</li></ul></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2023-06-18-marble-music-audio-representation-benchmark-for-universal-ev-21a338e9.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>In the era of extensive intersection between art and Artificial Intelligence (AI), such as image generation and fiction co-creation, AI for music remains relatively nascent, particularly in music understanding. This is evident in the limited work on deep music representations, the scarcity of large-scale datasets, and the absence of a universal and community-driven benchmark. To address this issue, we introduce the Music Audio Representation Benchmark for universaL Evaluation, termed MARBLE. It aims to provide a benchmark for various Music Information Retrieval (MIR) tasks by defining a comprehensive taxonomy with four hierarchy levels, including acoustic, performance, score, and high-level description. We then establish a unified protocol based on 14 tasks on 8 public-available datasets, providing a fair and standard assessment of representations of all open-sourced pre-trained models developed on music recordings as baselines. Besides, MARBLE offers an easy-to-use, extendable, and reproducible suite for the community, with a clear statement on copyright issues on datasets. Results suggest recently proposed large-scale pre-trained musical language models perform the best in most tasks, with room for further improvement. The leaderboard and toolkit repository are published at https://marble-bm.shef.ac.uk to promote future music AI research.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>音乐领域的人工智能研究面临一个根本性的困境：没有人知道哪个预训练模型真的好用。不同的论文用不同的数据集、不同的评测指标、不同的实验设置来汇报自己的结果，导致模型之间根本没有办法做横向对比。你看这篇论文说自己在情感识别上达到了最优，那篇论文说自己在风格分类上最强，但它们用的数据集不一样，评测协议不一样，有的甚至连数据划分方式都不同。这个问题在自然语言处理和计算机视觉领域早就被解决了，GLUE、SuperGLUE、VTAB这些基准测试把整个社区的研究推上了快车道。但音乐领域一直没有类似的东西。MARBLE这篇论文就是要填上这个空缺。</p>
+<p>MARBLE是&quot;Music Audio Representation Benchmark for universaL Evaluation&quot;的缩写，中文可以理解为音乐音频表示的通用评测基准。它由来自卡内基梅隆、谢菲尔德大学、伦敦玛丽女王大学、曼彻斯特大学等十几个机构的研究者共同构建，发表于2023年。这个基准覆盖了18个下游任务，用到了12个公开可用的数据集，并对7个代表性的音乐自监督学习模型进行了全面评测。</p>
+<p>要理解这个基准为什么重要，得先搞清楚音乐信息检索这个领域的处境。音乐信息检索，英文缩写MIR，研究的是如何让机器自动从音频中提取有用信息，比如识别音乐风格、检测节拍、分析和弦、识别歌手，等等。这个领域有个特别头疼的问题：有标注的音乐数据极其稀缺。原因很直接，一是版权问题，音乐本身就受版权保护，大规模采集和标注都很麻烦；二是标注成本极高，你要让人给每一帧音频打上和弦标签，或者标注哪个时间点有节拍，这个工作量是巨大的。正因为标注数据少，所以自监督学习在音乐领域特别有潜力——它不需要人工标注，用音频本身的内在结构来学习表示。</p>
+<p>自监督学习的核心思路是这样的：让模型在没有人工标签的情况下，通过预测被遮蔽的部分、对比不同的增强视图、或者重建输入信号，来迫使它学到有意义的特征表示。这个思路在语音领域有wav2vec和HuBERT，在图像领域有SimCLR和MAE，在音乐领域也有越来越多的模型出现，比如CLMR、Music2Vec、MERT等等。但这些模型各自发表各自的结果，没有一个统一的擂台让它们公平地比较。这就是MARBLE要解决的核心问题。</p>
+<p>MARBLE的第一个重要设计是它的任务分类体系。论文没有简单地把18个任务堆在一起，而是按照音乐的四个层次来组织。最底层是声学层，关注的是音频信号的物理特性，比如识别乐器音色、识别歌手身份、把混合音频分离成不同的音轨。第二层是演奏层，关注的是演奏者的表现方式，比如识别歌唱技巧——是颤音还是直音，是假声还是真声。第三层是乐谱层，关注的是音乐的结构性信息，比如估计音高、检测节拍、提取旋律、识别和弦、转录歌词。最高层是高层语义描述，关注的是人对音乐的整体感知，比如判断音乐风格、识别情感、给音乐打标签。</p>
+<p>这个四层分类有什么意义？它不只是一种组织方式，它实际上反映了不同类型的模型能力。一个在声学层任务上表现好的模型，不一定在高层语义任务上也好；反过来，一个擅长分类音乐风格的模型，可能对音频的物理细节根本没有感知能力。用这个框架来评测，可以揭示模型能力的短板，而不是让它在自己擅长的几个任务上报喜不报忧。</p>
+<p>接下来说说这18个任务的具体构成，我挑几个最有代表性的展开讲。</p>
+<p>调性检测用的是Giantsteps数据集，包含604首电子舞曲，任务是预测歌曲的调性——比如C大调、A小调，一共24个类别。评测用的是带容错的加权准确率，因为音乐上有些错误是&quot;合理的错误&quot;，比如你把C大调预测成了A小调，这两个调是关系大小调，人耳感知上是相关的，所以会给部分分数。</p>
+<p>音乐标签任务用了两个数据集，MagnaTagATune和MTG-Jamendo。前者有将近2.6万条音频，后者有5.5万条，都只取最常见的50个标签来评测。标签内容非常多样，涵盖风格、情绪、乐器、节奏快慢等等，所以这其实是一个多标签分类问题，评测指标是ROC-AUC和平均精度。</p>
+<p>情感识别用了Emomusic数据集，有744段45秒的音乐片段，每段都标注了两个维度的情感分数：效价和唤醒度。效价是情绪的正负极性，唤醒度是情绪的强弱程度。这是个回归任务，评测指标是决定系数R方，衡量模型预测和人类标注之间的相关程度。</p>
+<p>音高分类用的是NSynth数据集，这个数据集非常大，340小时，每段4秒，单音演奏，任务是把音频分到0到127共128个MIDI音高类别里。这基本上是在测模型对音频最基础的音高感知能力。</p>
+<p>节拍追踪是个序列标注任务，它要求模型对每一帧音频都做判断：这一帧有没有节拍？用的数据集是GTZAN Rhythm，模型输出帧级别的预测后，还要经过一个动态贝叶斯网络做后处理，才能得到最终的节拍时间点。评测用F-measure，判断标准是预测的节拍点和真实节拍点之间的误差不超过20毫秒。</p>
+<p>旋律提取更有意思。模型要对每一帧音频估计主旋律的频率，频率范围是0到8000赫兹，被均匀切分成360个区间，所以实际上是个360类的分类问题。用的数据集是MedleyDB，有108首完整曲目，总时长7.3小时。</p>
+<p>歌词转录是这个基准里最复杂的任务。它用的是一个多语言数据集MulJam，包含六种语言：英语、法语、西班牙牙语、意大利语、德语和俄语，共6031首歌，15万多行歌词标注。预测头采用的是混合CTC加注意力机制的编解码结构，也就是ASR领域里常用的end-to-end框架。评测用字符错误率和词错误率，这两个指标是越低越好，和其他任务相反。</p>
+<p>音源分离任务用的是MUSDB18数据集，150首完整曲目，要把每首歌分离成人声、鼓、贝斯和其他四个音轨。评测用信噪比SDR，也就是信号失真比，值越高越好。这个任务的预测头比其他任务复杂很多，用的是三层线性层加三层双向LSTM的结构。</p>
+<p>现在说说评测协议，这是MARBLE另一个关键设计。整个框架分三个评测轨道。约束轨道是最严格的：预训练模型完全冻结，不允许微调，只能训练一个固定结构的轻量预测头——对于大多数分类任务是单层512维的MLP，对于旋律提取是单层双向LSTM，对于音源分离是三层双向LSTM，对于歌词转录是三层编码器加三层解码器的Transformer。超参数搜索空间也被严格限制，学习率从五个预设值里选，批大小固定64，dropout固定0.2。整个训练时间限制在单张RTX3090上一周以内。</p>
+<p>半约束轨道要求预训练模型冻结，但预测头的结构和超参数可以自由设计。完全非约束轨道则什么都可以动，包括对预训练模型本身进行微调。</p>
+<p>这个设计的核心逻辑是：在约束轨道下，预测头足够简单，模型表现的差异主要来自预训练特征本身的质量，而不是预测头的能力。这样才能真正比较不同预训练策略学到的表示有多好用。这个思路和NLP里用线性探测来评估BERT表示质量的做法是一样的，只不过在音乐领域，不同任务的最优预测头结构不同，所以稍作区分。</p>
+<p>论文选了7个代表性的基线模型，共9个版本，我来逐一介绍，因为理解这些模型的差异对于看懂结果至关重要。</p>
+<p>MusiCNN是最早的一批，基于卷积神经网络，用有监督的方式在百万歌曲数据集上做音乐标签预训练，参数量约800万。它代表的是传统的有监督预训练路线。</p>
+<p>CLMR是对比学习方法，用一维卷积网络作为特征提取器，通过数据增强构造正负样本对，在百万歌曲数据集和MagnaTagATune上训练，参数量约250万。它代表对比学习路线。</p>
+<p>Jukebox是个特殊的存在。它本质上是一个音乐生成模型，用了一种叫CALM的方法，在120万首私有歌曲上训练，规模极其巨大——假设平均每首歌3到6分钟，训练数据总时长大约在6万到12万小时之间。参数规模有不同版本，论文里用的是其中间层的表示，上下文窗口长达8192个采样点，对应大约24秒的音频。用Jukebox做音乐理解的直觉是：生成模型为了能生成高质量音乐，必须对音乐的结构有深刻理解，这些理解会隐含在模型的中间表示里。</p>
+<p>MULE全称是Musicnet-ULarge，基于SlowFast-NFNet架构，这个架构有两条路径，慢路径捕获空间信息，快路径捕获时间信息。它用对比学习在MusicSet这个私有高质量数据集上训练，在分类类任务上表现很强。</p>
+<p>MAP-Music2Vec是来自m-a-p团队的模型，采用bootstrap掩码预测预训练策略，也就是BYOL风格的学生-教师架构。学生模型接受遮蔽后的输入，目标是预测教师模型对未遮蔽输入的表示，教师模型的参数是学生模型参数的指数移动平均。模型有12层Transformer，在约1000小时的私有音乐数据上训练。输入30秒音频，每秒输出50个嵌入向量，这让它天然支持帧级别的序列任务。</p>
+<p>MAP-MERT是这批基线里最新也最有代表性的一组，分v0和v1两个版本。MERT的核心思路是把HuBERT的思想从语音迁移到音乐。HuBERT是语音领域的经典模型，它用K均值聚类对语音特征做离散化，得到伪标签，然后让模型预测被遮蔽位置的伪标签。MERT把这个框架搬到音乐领域，但用了更丰富的伪标签：v0版本用的是logmel特征、色度特征和CQT重建任务，v1版本进一步用EnCodec这个深度特征替代了K均值伪标签，允许模型规模进一步扩大。MERT-v1有两个变体，基础版95M参数，大版本330M参数。输入5秒音频，v1版每秒输出75个嵌入向量。</p>
+<p>现在来看结果。论文的核心发现可以从几个维度来理解。</p>
+<p>首先，在大多数任务上，MAP系列模型——特别是MERT系列——取得了最均衡的综合表现。这里有个关键原因：只有提供帧级别表示的模型才能参与序列标注任务，而MERT、Music2Vec这类每秒输出多个嵌入向量的模型才满足这个条件。MULE和Jukebox在某些分类任务上表现很好，但它们无法参与节拍追踪、旋律提取、音源分离这类需要帧级别输出的任务。</p>
+<p>在音乐标签任务上，Jukebox和MULE最强。Jukebox的优势来自两点：超大的参数量和训练数据规模，以及生成式预训练会迫使模型记住大量音乐细节。MULE的优势则来自MusicSet这个高质量私有数据集，加上对比学习产生的高度区分性表示——对比学习的本质是让相似的东西靠近，不相似的东西远离，这对分类任务特别有效。</p>
+<p>在音高相关任务上，有监督预训练的模型表现反而不如自监督方法，这个现象值得细说。有监督预训练的模型，比如MusiCNN，它的预训练目标是音乐标签，这个标签和绝对音高关系不大，所以模型没有动机去学习精细的音高表示。自监督方法没有这种偏向，它的表示更全面，对音高信息的保留更好。这说明预训练目标的选择会深刻影响表示的性质。</p>
+<p>NSynth音高分类任务上，最好的模型达到了94.4%的准确率，这是一个相当高的数字，说明对于单音的音高识别，现有模型已经有很强的能力。</p>
+<p>但音源分离任务的结果很惨，只有之前最优结果的一半左右。这说明音源分离需要的信息，现有预训练表示还没有充分捕获。音源分离要求模型不仅理解音乐，还要能精确地重建每一个音源的波形细节，这对表示的要求远高于分类任务。</p>
+<p>一个重要的大趋势是：随着训练数据量增大、模型参数量增大，跨任务的平均性能都在提升，而且这个趋势在四个层次的任务上都能观察到。有意思的是，在当前的规模下，数据量和模型大小带来的收益，似乎大于预训练范式的选择——也就是说，用生成式、对比式还是掩码预测，在同等规模下的差距，没有数据量和模型大小带来的差距大。</p>
+<p>作者还做了一个很直观的比较：MAP-Music2Vec，只用了1000小时数据、95M参数，就已经在整体性能上超过了MusiCNN和CLMR，而后两者的数据量和Music2Vec差不多，但用的是有监督和对比学习。这说明在数据量相近的情况下，掩码预测的自监督方法比有监督预训练和简单的对比学习更有效率。</p>
+<p>这背后的直觉是：掩码预测迫使模型理解音频信号的局部结构和全局上下文，学到的表示更加通用；有监督预训练则会过拟合到训练任务的标签空间，丢失那些和标签无关但对其他任务有用的信息；对比学习的表示虽然区分性强，但在细粒度的序列任务上不一定好用，因为它学的是整段音频的全局表示，而不是帧级别的精细特征。</p>
+<p>论文还有一个关于上下文长度的分析，虽然在正文里没有完整展开，但从附录的讨论可以看出，上下文长度和任务性能之间的关系并不是简单的越长越好。Jukebox用了24秒的超长上下文，这对需要全局理解的任务有帮助，但对于帧级别的精细任务，过长的上下文窗口反而可能引入噪声。MERT用5秒的输入窗口，在平衡全局和局部信息方面做了合理的折中。</p>
+<p>这个基准的局限性论文自己也承认了几点。第一，某些任务的评测指标不够全面，比如节拍追踪在学界通常用多个指标来评测，但MARBLE只用了一个，这可能遗漏一些模型能力的细节。第二，有些数据集规模太小，比如GTZAN不到10小时，统计上的偶然性比较大。第三，某些重要的MIR任务因为没有合适的公开数据集而没有纳入，比如翻唱歌曲检测和哼唱检索。第四，符号音乐，也就是MIDI格式的音乐分析，没有包含在这一版里。</p>
+<p>从可借鉴性的角度来说，这篇论文对做音频表示学习研究的人有几个直接的启发。</p>
+<p>第一，如果你在设计预训练模型，要想清楚你的预训练目标会偏向什么类型的知识，因为它会深刻影响你的模型在哪些下游任务上好用，在哪些上面不行。音高相关任务需要模型学到音频的精细频率结构，有监督地用音乐标签预训练的模型很可能在这类任务上吃亏。</p>
+<p>第二，帧级别的输出能力对于序列任务至关重要，这是一个在设计预训练模型时就要考虑的架构决策，不是事后能轻易补救的。如果你的模型只输出全局embedding，它就无法直接用于节拍追踪、旋律提取、音源分离这类任务。</p>
+<p>第三，在当前规模下，扩大数据量和模型参数的收益很显著，但不是无限的——音源分离任务说明，即使是最大的模型也远没有达到足够好的程度，这类任务需要的可能不只是更大的规模，而是更好的预训练目标设计。</p>
+<p>第四，评测框架本身的设计就是研究贡献。这篇论文花了大量精力在协议设计和数据集整理上，这些工作虽然不酷炫，但对整个社区的价值可能比一个性能领先两个点的新模型更大，因为它让所有人的研究都变得可比较、可复现。</p>
+<p>音乐AI的核心挑战不只是算法，还在于音乐本身的多层次性——从物理振动到情感体验之间有太多层次需要建模，而MARBLE的贡献在于为这条路径上的每一个层次都竖立了一个标杆，让我们第一次能够系统地看清楚，现有的模型在哪里已经够好、在哪里还差得很远。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

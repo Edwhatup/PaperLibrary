@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scaling Laws for Hypernetwork-Based Knowledge Injection in Large Language Models · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 23, 2026</time> · <a href="https://arxiv.org/abs/2607.19604">arXiv</a> · <a href="https://arxiv.org/pdf/2607.19604">PDF</a></div>
+    <h1>Scaling Laws for Hypernetwork-Based Knowledge Injection in Large Language Models</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-23-scaling-laws-for-hypernetwork-based-knowledge-injection-in-l-6da5a6b5.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Injecting factual knowledge into large language models (LLMs) reliably and at scale remains an open challenge. Hypernetworks provide a promising solution to large-scale knowledge injection. Although hypernetworks are typically applied for test-time adaptation, we explore their use in train-time knowledge injection, where, given a large corpus of facts, we train a hypernetwork to generate a fixed LoRA adapter that, when inserted into the target model, enable the model to answer questions about those facts. In this work, we investigate whether hypernetworks can be used to perform train-time knowledge injection and how this ability varies with scale. The scaling behavior of hypernetworks remains largely unstudied. Our design decouples the hypernetwork&#x27;s injection capacity from the target model&#x27;s general capability, enabling, for the first time, a rigorous study of scaling laws for hypernetwork architectures. We characterize how loss, reasoning accuracy, and out-of-distribution (OOD) generalization vary with hypernetwork depth, width, and target network size. We construct a large-scale dataset, called MegaWikiQA, containing tens of millions of multi-hop question-answer examples across 39 domains constructed from examples in Wikidata5M. Our results reveal: (i) hypernetwork-based injection exhibits broadly predictive power law scaling along all architecture axes; and (ii) hypernetworks are capable of reliable OOD generalization at increasing scales, suggesting that hypernetwork provides a promising alternative to other train-time adaptation methods such as LoRA finetuning and full fine-tuning, exhibiting steeper scaling exponents in all OOD evaluations. Together, these results establish hypernetworks as a principled and scalable substrate for train-time adaptation, and provide the first empirically grounded scaling laws to guide hypernetworks for factual reasoning in large language models.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>把知识注入大型语言模型这件事做好，一直是个没有被彻底解决的难题。今天要讲的这篇论文，核心问题就是：能不能用一种叫做超网络的机制，把大量事实性知识可靠地、可扩展地注入到语言模型里，并且搞清楚这个过程背后的规律到底是什么。</p>
+<p>先来说说背景，为什么这个问题值得认真研究。你在现实场景里部署大模型，经常会遇到一类很具体的困境：模型本身是通用的，但你需要它掌握某个特定领域的知识。比如医院里的临床信息系统，涉及病人隐私，不能把数据传给云端的API，必须在本地跑一个经过适配的模型。再比如金融机构里有新出台的监管法规，法律部门有内部政策文档，这些东西在模型预训练的时候根本不存在，模型自然不知道。你需要把这批知识塞进去，让模型能够根据这些知识来回答问题。</p>
+<p>最直接的做法是微调。把这些事实拿来，对模型进行继续训练，让它把这些东西记住。但问题来了，第一，全参数微调的计算成本极高，对于几十亿参数的模型来说，每次更新知识都要跑一次完整训练，代价太大；第二，更麻烦的是灾难性遗忘。模型在学新知识的时候，会把以前学过的东西给冲掉，就好像你为了记住一批新单词，把之前学的语法全忘了。第三，用微调注入的知识，往往在分布外的情况下泛化得很差，也就是说，模型记住了训练集里的那些具体问法，但换个表达方式或者问到训练集里没见过的实体组合，它就不行了。</p>
+<p>参数高效微调方法，其中最有代表性的就是LoRA，可以降低微调的成本。LoRA的思路是，不去更新模型全部参数，而是在每个权重矩阵旁边插入一对低秩矩阵，只训练这两个小矩阵，用它们来表示参数的变化量。这样参数量大幅减少。但LoRA同样面临遗忘问题，泛化能力的短板也没有根本改善。</p>
+<p>有一篇专门研究这个问题的论文甚至发现，通过监督微调向模型注入新的事实性知识，本身就是一件很困难的事情：那些和预训练分布不一致的新事实，学得很慢，而且随着学习深入，模型反而越来越容易产生幻觉，把没有的东西给编出来。这说明微调路线在知识注入这件事上存在根本性的局限。</p>
+<p>那这篇论文选择的是另一条路：超网络。先解释一下什么是超网络。通常我们说的神经网络，是用数据来训练，输入一个特征向量，输出一个预测结果。超网络的思路是不一样的：它的输出不是一个预测结果，而是另一个网络的权重。你可以把超网络想象成一个&quot;权重生成器&quot;，你给它一些信息作为输入，它输出一套参数，用来调整另一个目标网络的行为。这个目标网络本身是冻住的，不更新，超网络根据输入的信息，动态地为目标网络生成一套适配。</p>
+<p>在知识注入的场景里，这个逻辑就变成：你把一批事实喂给超网络，超网络读取这些事实，然后生成一套LoRA风格的权重适配，把这套适配插到冻住的语言模型里，语言模型就能根据这些事实来回答问题。整个过程中，语言模型的基础参数完全不动，只有超网络本身在训练。</p>
+<p>这和以前超网络的典型用法有个关键区别。以前大家用超网络，主要是做测试时适配，就是在推理的时候，每来一条新知识，实时生成一套适配。这更接近于知识编辑的范式，每次编辑影响的是个别事实。而这篇论文研究的是训练时知识内化，意思是你有一个大的固定知识库，把整个知识库压缩进超网络，训练完之后，推理时不再看原始知识库，完全靠生成出来的适配来回答问题。评估的时候也不给模型看原文，完全考验知识有没有真正被内化。</p>
+<p>以前做过类似超网络知识编辑的工作有MEND和PropMEND，但它们是在梯度空间上操作的，就是把损失函数关于某个事实的梯度，通过超网络做一个变换，然后把变换后的梯度更新到基础模型参数上。这个做法有个严重的问题：当你要注入的事实数量一多，模型就会变得不稳定，甚至崩溃。这篇论文的做法完全不修改基础模型参数，从根源上规避了这个不稳定性。</p>
+<p>这篇论文最核心的贡献，不只是提出超网络做知识注入，而是第一次系统地研究了超网络知识注入的规模律。规模律是什么意思？这个概念来自于Kaplan等人2020年的工作，他们发现语言模型的性能和模型大小、数据量、训练计算量之间，存在幂律关系，就是说你在对数坐标轴上画出来，它是一条直线，性能会平滑地随着规模增大而可预测地提升。这篇论文要回答的是，超网络自己的规模如何影响它的能力，以及目标语言模型变大之后超网络的表现如何变化。</p>
+<p>具体来说，他们研究了四个维度：超网络的宽度，也就是隐藏层的维度大小；超网络的深度，也就是Transformer层数；目标语言模型的大小；以及每个训练样本里注入的事实条数。超网络的参数量从1.67亿到28亿都跑了实验。目标模型用的是Qwen2.5系列，从0.5B到14B，选这个系列是因为它在不同大小上架构一致，适合做受控的规模对比。</p>
+<p>为了支撑这些实验，他们还构建了一个大规模数据集，叫MegaWikiQA。这个数据集是从Wikidata5M里构建出来的。Wikidata5M是一个大规模知识图谱，包含大约460万个实体、822种关系、超过2200万条三元组。三元组的格式是主体-关系-客体，比如&quot;德国-首都-柏林&quot;。</p>
+<p>数据集构建的方式是在知识图谱上做随机游走。从一个三元组出发，比如&quot;居里夫人-国籍-法国&quot;，然后从法国出发找下一条边，比如&quot;法国-政府首脑-弗朗索瓦·拜鲁&quot;，再从拜鲁出发，比如&quot;弗朗索瓦·拜鲁-出生地-博尔代尔&quot;，这样就得到了一条多跳推理链。然后用基于语法模板的方式，把这条链转换成自然语言问题：&quot;居里夫人的所在国的政府首脑的出生地是什么？&quot;答案就是&quot;博尔代尔&quot;。这个过程完全不用大模型生成问题，是确定性的，不会引入神经生成带来的噪声和偏见。他们为Wikidata里的822种关系都手工设计了最合适的问题模板。</p>
+<p>最终生成的数据集，每种跳数大约有1000万个样本，最多到4跳。经过按领域分层采样和平衡，最终训练集有125万个样本，覆盖39个知识领域。</p>
+<p>评估集分三类。第一类是分布内验证集，从同样的领域随机抽取，但保证三元组和训练集完全不重叠。第二类是分布外评估，从三个没有出现在训练中的领域里抽样：哲学、语言学和土木工程。这三个领域被选中，是因为它们内部多样性高，而且和其他领域的距离最大。在分布外评估里，还额外加了两个变体：一个是用GPT-4.1把问题改写成不同表达方式，测试模型对语言表面形式变化的鲁棒性；另一个是多选题格式，给出四个选项，测试模型在候选集受限的情况下能否选出正确答案。</p>
+<p>现在来讲超网络的具体设计。输入的时候，把每条事实序列化成自然语言句子，用和目标模型同样的分词器处理，最长128个token，多条事实拼接在一起送进超网络的Transformer编码器。编码器输出之后，用带掩码的均值池化，把所有非填充位置的表示平均一下，得到一个固定大小的向量。这个池化是没有参数的，对每个位置一视同仁。</p>
+<p>超网络的Transformer用了旋转位置编码RoPE，在每个注意力层的查询和键上面施加。使用后归一化结构，就是残差连接之后再做层归一化，实验发现这在不同深度配置下训练更稳定。</p>
+<p>生成LoRA权重的方式是这样的：对目标模型里每一个需要被适配的权重矩阵，超网络都维护两个专用的线性投影头，分别把那个池化后的向量投影成LoRA的A矩阵和B矩阵，也就是那两个低秩矩阵。所有实验里LoRA的秩固定为4，缩放因子也固定。适配被加到目标模型后面几层的所有线性层上，包括注意力投影和前馈层，覆盖后三分之二的Transformer层。选后面几层，是因为已有研究表明事实性知识主要存储在模型的高层语义表示里。</p>
+<p>训练目标是最小化交梯度熵损失，计算的是在加了LoRA适配之后的目标模型上，对答案token的交叉熵。梯度会从目标模型流回到超网络的参数，但目标模型自己的参数始终不更新。</p>
+<p>还有一个很重要的设计决策：超网络完全从随机初始化开始训练，不用任何预训练权重。为什么？因为如果用预训练权重初始化超网络，那超网络表现好，你就分不清楚到底是因为超网络架构容量够大，还是因为预训练给它带来了知识。只有从零开始训练，才能干净地研究架构规模对性能的影响。</p>
+<p>训练时，每个样本里会注入若干条事实，其中有一条是和问题相关的正例事实，其余都是从知识库里随机抽取的负例。这种设计让超网络必须学会从一堆无关信息里识别出有用的那一条，模拟了现实场景中信息检索的难度，同时也有助于提高泛化能力。</p>
+<p>下面来看实验结果，这是论文最有信息量的部分。</p>
+<p>超网络宽度规模律：把隐藏维度从64扩到1024，在对数坐标轴上，四个评估指标的损失都呈现出平滑的幂律下降。分布内验证损失的幂律指数大约是负0.26，分布外不改写版本的指数也差不多，说明宽度扩展对分布内和分布外的非改写情况贡献相当。但是，分布外改写版本的指数明显更平，大约是负0.10，意思是单纯扩宽度，对提升模型适应语言表面变化的能力帮助不大。多选题的指数介于两者之间。</p>
+<p>超网络深度规模律：把Transformer层数从1扩到16，四个指标同样呈现幂律关系。分布内验证损失的指数是负0.28，和宽度的负0.26非常接近。这个对比说明一件重要的事：在研究的范围内，加深和加宽对超网络知识注入性能的贡献是差不多的，没有哪个维度明显更高效。实验还发现深度规模实验基本上是等算力的，因为各层的参数量里LoRA投影头占主导，层数从1到16，每个样本的浮点运算量只增加不到2%，所以深度不同带来的性能差异，纯粹来自架构容量的变化，而不是算力的增加。</p>
+<p>目标模型规模律：这是最关键的发现。把目标语言模型从0.5B扩到14B，分布内验证损失的指数是负0.59，分布外不改写的指数是负0.49，这两个数字都远远高于超网络自身宽度或深度扩展带来的效果。这说明：如果你有固定的计算预算，要在扩大超网络还是扩大目标模型之间做选择，扩大目标模型的回报要大得多。另外有一个细节值得注意：0.5B的目标模型在曲线上明显偏离幂律拟合线，表现比预期差很多，说明目标模型可能存在一个最低容量门槛，低于这个门槛，超网络生成的LoRA适配根本发挥不了作用，语言模型本身的能力不足以利用这些适配信息。</p>
+<p>事实条数规模律：把每个样本注入的事实数量从2条增加到52条，性能也遵循幂律改善，但指数相对最小，分布内大约是负0.13，改写版本依然是最平的。这个结果说明，更多的上下文事实确实有帮助，超网络能从更多事实里更好地识别出有用的那一条，但这个维度的收益是最有限的。</p>
+<p>接下来是和基线方法的对比，也是论文最重要的结论之一。他们拿超网络和LoRA微调、全参数微调在目标模型规模这个维度上做了头对头的比较。</p>
+<p>LoRA微调在分布内验证损失上的规模律指数是负0.64，比超网络的负0.59略陡，说明在拟合训练分布这件事上，直接微调随着模型变大，进步稍微快一点。但是，在三个分布外评估上，情况完全反转。分布外不改写版本：超网络的指数是负0.49，LoRA是负0.36；分布外改写版本：超网络是负0.38，LoRA只有负0.14；多选题：超网络是负0.46，LoRA是负0.24。超网络在所有OOD指标上的规模律斜率都更陡，而且最关键的是，这个差距随着目标模型变大而不断拉大，不是一个固定的偏移，而是越来越大的优势。</p>
+<p>全参数微调的情况类似，分布内指数也是负0.63，和LoRA差不多，在分布外改写和多选题上比超网络差得更多。</p>
+<p>用更直觉的语言来描述这个结论：微调方法随着模型变大，越来越擅长把训练分布里的问题答对，但对于分布外的问题，改善很有限；而超网络随着目标模型变大，在训练分布上的进步略微慢一点，但在分布外问题上的进步却快得多。如果你部署知识注入的目的是让模型在真实场景中泛化，而不只是在测试集里刷分，那超网络在大规模目标模型上是更好的选择，而且这个优势会随着模型规模的增大变得越来越显著。</p>
+<p>这个现象背后的直觉是什么？微调直接修改了模型参数，让它过度适应训练数据的表达方式，所以泛化差。而超网络的适配是从事实内容出发动态生成的，不直接改变基础模型的知识表示，保留了语言模型原本的泛化能力。而且随着语言模型本身变大，它的表示能力更强，超网络生成的适配能被更高质量地利用，这就形成了一个双重收益：语言模型自身更强，加上超网络适配被使用得更好，所以在分布外情况下进步更快。</p>
+<p>当然，这篇论文也有值得正视的局限性。第一，超网络本身的参数量在最大的实验配置里已经达到25亿，而目标语言模型只有15亿，超网络比目标模型还大，这在实际部署里会带来很大的参数开销。第二，目标模型最大只跑到了14B，70B及以上的规律是否成立还不知道，在更大规模下，超网络容量和目标模型容量之间的关系可能会有质的变化。第三，当前的评估里，多跳问题的跳数最多到4跳，对于需要同时用到很多事实来推理的更复杂查询，超网络是否还能支撑，还是未知数。第四，关于语言表面泛化的问题，无论是宽度、深度还是事实数量的规模扩展，改写版本的OOD指数始终是最平的，说明对语言表达变化的鲁棒性是所有维度扩展都没法很好解决的一个短板，这需要专门的设计，而不只是简单地堆规模。</p>
+<p>对于实际做相关研究或工程的人，这篇论文有几个具体的可借鉴之处。首先，如果你在做知识注入，需要模型在分布外情况下表现好，超网络值得认真考虑，尤其是当你打算用更大的目标模型时，优势会更明显。其次，关于怎么分配计算预算：超网络的宽度和深度对性能的贡献差不多，但都不如目标模型变大带来的收益，所以如果有钱，优先买一个更大的目标模型，而不是把超网络堆得很大。第三，事实条数增加有帮助，但回报是最有限的，不用在这个维度上过度投资。第四，如果你要研究这类问题，MegaWikiQA作为一个公开数据集，可以直接拿来用，它的确定性问题生成、多跳结构和显式OOD划分，对评估分布外泛化能力是比较合适的工具。</p>
+<p>这篇论文给出的最核心判断是：超网络不只是一个理论上有趣的想法，它在知识注入场景里的规模律是可预测的、平滑的，而且在越来越大的语言模型上，它对分布外泛化的优势会越来越突出，这使它成为一种随着大模型时代持续演进而愈发有价值的知识注入范式。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

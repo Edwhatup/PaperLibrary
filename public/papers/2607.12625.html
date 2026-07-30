@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KnowAct-GUIClaw: Know Deeply, Act Perfectly, Personal GUI Assistant with Self-Evolving Memory and Skill · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 16, 2026</time> · <a href="https://arxiv.org/abs/2607.12625">arXiv</a> · <a href="https://arxiv.org/pdf/2607.12625">PDF</a></div>
+    <h1>KnowAct-GUIClaw: Know Deeply, Act Perfectly, Personal GUI Assistant with Self-Evolving Memory and Skill</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-16-knowact-guiclaw-know-deeply-act-perfectly-personal-gui-assis-92065f44.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>OpenClaw has emerged as a leading agent framework for complex task automation, yet it faces insufficient cross-platform GUI interaction support and a well-built self-evolution mechanism. These flaws limit its adaptation to diverse device ecosystems and prevent performance improvements through continuous learning from execution experience. To resolve these issues, we propose the Know Deeply, Act Perfectly paradigm for personal assistants, which holds that accumulated user interaction and task-running experience directly improve execution accuracy and efficiency, unifying cognitive comprehension and operational execution. Based on this paradigm, we introduce KnowAct-GUIClaw, a novel Know-Route-Act-Reflect framework designed to address OpenClaw&#x27;s GUI manipulation deficits and break through its cross-platform and recursive self-improvement constraints. First, the host agent leverages accumulated interaction experience and task-relevant knowledge for long-horizon task decomposition and allocation (Know). Second, a pluggable GUI subagent with an experience-attributable memory system (Know) and self-evolving skill library (Act), enabling seamless cross-platform migration and fast-path integration. Especially, this framework continuously stores user profiles and feedback to improve the accuracy of task decomposition and tool calls. Extensive experiments across Android, iOS, HarmonyOS and Windows show that KnowAct-GUIClaw achieves superior efficiency, accuracy and cross-platform adaptability. Especially, the GUIClaw with open-source Kimi-2.6 models achieves the best performance (64.1%) on the long-horizon MobileWorld benchmark, beating all agentical frameworks and closed-source agentical models, e.g., Seed-2.0-Pro and GPT-5.5. Additionally, the knowledgeable memory and execution skills supported by our framework are transferable across diverse base models, improving by 8.5% with Kimi-2.6.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>当前主流的大语言模型智能体框架，比如OpenClaw，已经能够处理很多复杂的自动化任务，但它们有两个根本性的短板：第一，它们对图形用户界面也就是GUI的操作支持非常有限，很多真实用户任务需要点击屏幕、滑动列表、处理弹窗，这些视觉交互它们根本做不好；第二，它们没有内建的自我进化机制，每次执行任务都是从零开始，跑过的成功路径、踩过的坑，全都白白丢掉了。这篇论文要解决的，正是这两个问题。</p>
+<p>论文提出的系统叫做KnowAct-GUIClaw，来自哈尔滨工业大学深圳校区的团队。它的核心理念用一句话概括就是&quot;深度认知，完美执行&quot;，英文是&quot;Know Deeply, Act Perfectly&quot;。这个理念背后有一个很直接的直觉：一个真正好用的个人助手，应该能够从每一次人机交互和任务执行的经验中积累知识，而不是每次都当作第一次见面。认知能力和执行能力应该是统一的、相互增强的，而不是两套互不相干的模块。</p>
+<p>要理解为什么这个问题这么难，先得搞清楚GUI任务的本质挑战。论文把GUI自动化形式化为一个部分可观测马尔可夫决策过程，也就是POMDP。简单说就是：智能体永远看不到设备的完整内部状态，它能获取的只是当前屏幕截图、可访问性树、当前前台应用ID、历史操作轨迹这些片段信息。就好比你被蒙着眼睛去操作一台陌生的手机，每次只能摘开眼罩看一眼当前屏幕，然后再做一个动作，再蒙上。登录状态、权限弹窗、异步加载、页面跳转——这些都是隐藏状态，智能体必须在这种不确定性下做决策并从错误中恢复。</p>
+<p>在这个背景下，如果你想把一个独立的GUI智能体直接塞进OpenClaw这样的框架里，会碰到四个具体的麻烦。第一，用户的指令经常跨越多个不相关的应用。比如&quot;把我邮件里提到的地址发给我妈&quot;，这涉及邮件应用和短信应用，如果只用一段模糊的自然语言摘要来传递中间数据，很容易丢失关键信息，或者在分配应用时产生幻觉。第二，GUI观测本身是不完整的，没有任何单一数据来源能告诉你完整的设备状态，这就要求上层编排者必须追踪历史轨迹，给执行层提供有意义的指导。第三，任务结束后成功和失败的执行轨迹都被直接丢掉了，下次遇到类似任务又得重走一遍，重新打开应用，重新导航，重新踩一遍已知的坑。第四，很多GUI工作流其实可以用更快的非视觉捷径替代，比如安卓的深链接、系统意图、预定义操作序列，但这些捷径如果没有经过实时界面状态的验证就直接复用，很容易失效。</p>
+<p>KnowAct-GUIClaw的整体架构是一个四阶段的闭环流水线，叫做Know-Route-Act-Reflect，分别对应认知、路由、行动、反思。整个系统有两个核心角色：宿主智能体负责用户侧的任务编排和长期上下文维护，GUI子智能体专门负责低层次的视觉设备控制。这两者之间有一个严格定义的任务接口：宿主给GUI子智能体下发任务，子智能体返回结构化的输出，包括完成状态（全部完成、部分完成、或者被阻塞）、简要执行摘要、以及任务结束时的最终屏幕状态。这个设计的关键在于职责分离：宿主知道要做什么、用哪些工具，子智能体知道怎么在屏幕上操作。</p>
+<p>认知阶段也就是Know阶段，发生在任何GUI动作执行之前。这个阶段干两件事：主动检索和策略注入。检索是通过语义相似度把历史经验记忆和可用技能候选列表拿出来，作为参考建议，但这些建议绝不会覆盖当前的指令，只是辅助参考。策略记忆则是直接注入的，不经过排序筛选。论文里举了一个很好的例子，有个Mastodon的邀请链接任务：如果没有检索到历史记忆，智能体会在移动应用的设置页面里转圈，走错路；有了记忆，它就能回忆起上次的教训——生成邀请链接需要去网页管理员面板而不是移动端设置——直接走对的路。这个记忆的作用是修正应用选择和路径选择，而不是替代实时屏幕证据，这个边界划得很清晰。</p>
+<p>另一个值得注意的设计是宿主的选择性委托原则。宿主智能体并不会把所有子任务都转给GUI子智能体，如果某个子任务用对话上下文、历史记忆或者非GUI工具就能回答，它会自己直接处理，只有当子任务真正需要实时应用会话、视觉定位、跨应用操作或者设备本地验证时，才启动GUI子智能体。这个设计减少了不必要的视觉追踪开销，也降低了token消耗。</p>
+<p>路由阶段的核心任务是任务分解。路由器会判断用户请求是单应用任务还是跨多个应用的复合工作流。对于跨应用的情况，每个子任务被定义为一个四元组：目标、目标应用（可选）、需要的输入、需要返回的输出。这里有一个非常重要的机制叫做黑板信息传递。可以把它想象成一块公告栏，每个子任务只能看到已经写在黑板上的声明输入，执行完之后只能往黑板上写自己声明的输出，而且如果某个必需输入或者声明输出缺失，整个工作流会直接失败停止，而不是用猜测的值继续跑。这个设计的意义在于：跨应用数据传递从模糊的自然语言摘要变成了类型化的明确合约，消除了数据传递过程中的信息损失和幻觉风险。</p>
+<p>论文里有个具体案例很好地说明了这个机制。在一个邮件到地图的工作流里，邮件应用提取出酒店名称作为输出写入黑板，但这个名称比较模糊，只有&quot;Harvard Square Hotel&quot;。宿主智能体在把这个信息传给下游地图任务之前，先通过网络搜索工具把完整街道地址解析出来，然后再把精确地址作为输入传给地图应用。这体现了宿主作为协调者的主动参与，而不是被动转发。</p>
+<p>行动阶段采用混合动作空间。GUI子智能体的动作空间分为四类：第一类是基础的人类式交互原语，比如点击、滑动、文字输入、导航、打开或关闭应用；第二类是从可复用GUI行为中提炼出来的技能；第三类是安卓深链接和系统意图快捷方式；第四类是需要用户干预或授权的操作。这四类动作在效率和可靠性之间有不同的取舍，所以执行器在使用技能和快捷方式之前，必须对照当前界面状态做验证，确认契合才用，不契合就回退到基础操作。</p>
+<p>技能这个概念是这个系统里非常核心的抽象。每个存储的技能包含一个标识符、适用的应用和平台范围、描述、参数、可靠性计数器、以及一个有序的操作步骤序列。技能里有些字段是固定的，比如应用包名、按钮坐标、组件路径、意图参数；另一些字段是占位符，在运行时根据具体任务填入。在执行每个子任务之前，系统会根据词法和语义信号检索出与当前应用相关的候选技能，取前五个，然后用一个轻量级的适用性判断来选择一个有用的技能前缀或者拒绝所有候选。技能执行时，每一步都会检查预期状态：如果有确定性状态契约就用契约检查，否则就做视觉有效状态验证。状态不匹配时，系统会尝试有界恢复子目标、跳过可选的障碍步骤，或者回退到普通GUI执行。</p>
+<p>深链接和系统意图快捷方式是另一个效率来源。比如在实验展示的一个京东购物案例里，一个经过验证的深链接直接把用户带到商品搜索结果页面，而同等功能在淘宝上因为没有验证通过的深链接，需要走五步普通GUI操作。这个对比直接量化了快捷方式的价值。深链接的有效性是通过实际启动候选深链接、记录前台应用、ADB输出、UI树和屏幕截图，再由验证器判断可用性和页面状态来确认的，只有通过页面验证的记录才会被提升为可直接使用的一步技能。</p>
+<p>反思阶段发生在每次GUI任务结束之后，干三件主要的事：后处理摘要、技能提取和演化、以及经验记忆归纳。首先，反思会把执行轨迹压缩成一个简短的注释，记录执行在哪里结束了、还剩什么没做，这样部分完成或者被阻塞的任务就变成了可以恢复的检查点，下次宿主可以直接从断点继续，而不是从头来过。空轨迹、被取消的、超时前没有任何进展的、或者完全靠已有技能完成的轨迹，不会写入长期存储。</p>
+<p>技能提取不是简单地把原始操作序列存起来重放，而是把GUI事件重写成结构化的证据，包括任务、平台、观察到的应用、操作序列、操作参数、截图、目标控件提示和推断出的状态契约，然后用一个视觉大语言模型在受限提示下生成一个参数化的可复用过程。生成的候选技能需要通过一系列检查：支持的操作类型、声明的参数、可执行的固定字段、合理的应用范围、以及有效的状态覆盖。技能演化和新提取是分开的：如果某次轨迹显示一个已有技能在执行中失败了，反思优先修复这个技能，方法是让演化提示在原地更新那个技能，可以缩小描述范围、添加可选障碍处理、或者刷新过期的目标和状态契约，但不能用一个完全不同的工作流替换它，也不能添加破坏性的终止操作。只有在没有发现已有技能失败的情况下，系统才会去挖掘新技能。</p>
+<p>经验记忆则是从执行轨迹中归纳出文本形式的策略性知识，比如某个应用的布局特点、某个快捷方式的可靠性、某类任务的恢复方法。这些记忆会分别触发成功提示和失败提示，每个任务最多保留有限数量的记忆条目，同一应用内的近似重复条目会被过滤掉。这些经验记忆会在路由阶段影响应用选择和分解模式，也会在GUI执行阶段作为布局提示和恢复提示使用。</p>
+<p>现在说实验结果。论文主要在MobileWorld基准测试上评估，这个基准包含201个任务，涵盖20个移动应用，强调长周期多应用任务，论文使用其中的117个纯GUI任务子集，用基准自带的确定性评估器打分，主要指标是单次运行成功率也就是pass@1。</p>
+<p>基线比较的数字非常清晰。以Qwen3.5-35B-A3B作为GUI执行器为例，单独使用它的成功率是24.8%。把它放进KnowAct-GUIClaw框架，加上宿主智能体和经验记忆，成功率提升到34.5%。再加上技能库，提升到37.9%。如果把Kimi-K2.6生成的经验记忆和技能迁移给这个35B执行器用，成功率进一步跳到41.0%，比标准的35B主机加记忆加技能配置高出3.1个百分点，比裸执行器高出16.2个百分点。而使用Kimi-K2.6作为宿主和执行器，加上经验记忆达到61.5%，再加技能达到64.1%，是榜单上的最高成绩，超过了Seed-2.0-Pro和GPT-5.5等闭源商业模型。</p>
+<p>消融实验里有几个发现特别值得注意。技能对步数和token的节省效果在实际使用技能的任务上更加突出：使用了技能的任务平均减少约三个GUI操作步骤，总token和提示token各降低大约25%到30%，同时成功率还有所提升。这说明技能的价值不只是提高准确率，还在于显著压缩了执行成本。宿主智能体的选择性参与策略在配置F中体现得最明显：397B宿主直接回答符合条件的信息查询子任务，而不是把每个子任务都转给35B执行器，结果GUI任务调用次数从约2.4次降到约1.9次，总token从约55000降到约47000，宿主总开销也从约9000降到约7000，成功率却是消融组里最高的。这印证了那个设计原则：能不走视觉的路就不走视觉的路。</p>
+<p>经验记忆和技能的跨模型迁移实验尤为有说服力。Kimi-K2.6生成的轨迹蒸馏出的经验记忆和技能，被迁移给Qwen3.5-35B-A3B使用，成功率从24.8%直接提升到41.0%，提升幅度达到16.2个百分点。这意味着文本形式的经验知识和经过状态验证的可执行技能，确实携带了任务知识，而不是只对生成它们的那个模型有用。这对实际应用有很强的启发意义：你可以用一个大模型跑一批任务积累知识，然后把这些知识迁移给一个小模型用，在成本和性能之间取得更好的平衡。</p>
+<p>论文也在Android之外做了跨平台测试。在鸿蒙OS上，系统解决了10个测试案例中的8个，成功率80%。在Windows桌面上，解决了10个案例中的7个，成功率70%。失败案例很能说明当前技术边界在哪里。在鸿蒙OS上，闹钟时间设置失败是因为分钟字段用的是惯性滚轮选择器，智能体反复滑动但无法精确定位到25分钟，最终耗尽步骤预算。还有一个案例是智能体在订单确认页面就停下来了，误以为任务完成，其实&quot;立即支付&quot;按钮还没点，真正的支付页面还没出现——这个错误反映的是应用层UI语义的多样性带来的理解歧义。在Windows上，失败案例包括：发表情包时选了外形相似的错误表情（说明自然语言情感标签到未标注图标的映射还很弱）；需要捕捉短暂出现的通知提示并立即点击（时间上的精确定位很难）；以及需要处理视口之外元素的操作（画面外的信息无法感知）。这些失败模式对于做GUI智能体研究的人来说，是非常有价值的错误类型清单，指向了接下来需要突破的具体技术点。</p>
+<p>从这篇论文对实际研究工作最有借鉴价值的几点来看，首先是POMDP加结构化信息合约的组合：把跨应用数据流从模糊的自然语言描述变成类型化的黑板合约，这个工程决策消除了一大类信息丢失和幻觉问题，值得在任何需要多步骤多工具协作的智能体系统里借鉴。其次是技能的状态契约机制：不是存储原始操作序列直接重放，而是为每一步推断预期状态并在执行前验证，这让技能的复用变得可靠而不是脆弱，是比简单的轨迹记忆更稳健的设计。第三是经验记忆的跨模型迁移实验：这个结果提示我们，知识的载体可以和生成知识的模型解耦，这为知识蒸馏和模型协作提供了一条实用路径。最后是选择性委托原则：智能体系统不应该强迫所有子任务走同一条执行路径，能用轻量工具解决的就不要动用重型感知流水线，这个原则在系统设计层面的效果非常显著。</p>
+<p>这篇工作本质上说明了一件事：对于真实部署的个人智能助手，积累下来的经验知识本身就是一种可以被精确工程化的资产，而不只是统计意义上的训练信号，能深度认知才能完美执行，这两者在系统设计层面是可以真正统一起来的。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

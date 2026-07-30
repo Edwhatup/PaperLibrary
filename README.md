@@ -61,6 +61,20 @@ pip install google-generativeai   # 或 anthropic
 
 每篇会按是否命中 `INTERESTS` 自动决定长度：**命中 → 深讲 20 分钟**（动机、方法细节、实验数字、局限与借鉴），**不相关 → 科普式概览 10 分钟**。这一档**必须配 LLM**（`LLM_BACKEND=gemini` + key），因为要读全文再展开；不配则退回「读摘要」的短兜底，到不了目标长度。手写的稿子放进 `data/scripts/` 会被原样复用、不覆盖。
 
+## 博客网站（笔记优先，英文为主）
+
+`public/` 现在还是一个静态个人博客（暗色极简），由 `scripts/build_site.py`
+从 `library/index.jsonl` + 卡片生成，跟音频/RSS 一起部署到同一个 GitHub Pages：
+
+- **首页** `index.html`：个人简介 + 精选写作 + 最新阅读。
+- **Writing** `writing.html`：所有**有笔记**的论文——你写了 `## 笔记` 的卡片
+  就会自动变成一篇博客文章（用 `lib.py note <id> "..."` 添加即可）。
+- **Library** `library.html`：全部论文，前端搜索 + 标签过滤。
+- **电台 Radio** `radio.html`：每篇的中文导读音频（附属）。
+
+站点信息（标题、简介、链接、主题色）在 **`data/site.json`** 里改。
+`run_daily.py` 每天自动重建站点；本地单独重建：`python scripts/build_site.py`。
+
 ## 订阅（VLC 网络串流 / 播客 App）
 
 仓库公开后用 GitHub Pages 托管 `public/`（`pages.yml` 自动部署）。一次性设置：

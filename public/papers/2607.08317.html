@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blind-Spots-Bench: Evaluating Blind Spots in Multimodal Models · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 15, 2026</time> · <a href="https://arxiv.org/abs/2607.08317">arXiv</a> · <a href="https://arxiv.org/pdf/2607.08317">PDF</a></div>
+    <h1>Blind-Spots-Bench: Evaluating Blind Spots in Multimodal Models</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-15-blind-spots-bench-evaluating-blind-spots-in-multimodal-model-d5c22734.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Modern AI models achieve strong performance on many established benchmarks, yet they still fail on tasks that humans find almost trivial, such as manipulating a string or drawing a dog with five legs. These examples suggest that existing benchmarks may under-measure persistent blind spots in current systems. We introduce blind-spots-bench, a benchmark designed to expose such blind spots through tasks that appear simple for humans but remain challenging for modern AI. We collect raw questions from students in an AI course, clean and annotate them with structured reference solutions, and propose a task taxonomy tailored to the resulting dataset of 235 samples. We further develop an automated grading pipeline to evaluate a wide range of models, including open-weight and closed-source language, vision-language, and image-generation models. Our analysis on blind-spots-bench reveals that closed-source frontier models can substantially outperform open-weight models with even approx10% gap, even when they attain comparable performance on existing benchmarks. A more fine-grained analysis shows that no single model dominates across all task types, and that some tasks remain challenging for all evaluated models. These results highlight the value of blind-spots-bench as a diagnostic stress test for identifying concrete weaknesses in current modern models.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>现有的大型语言模型和多模态模型在很多主流测试集上已经表现得相当亮眼，有些甚至接近或超过了人类专家水平。但与此同时，这些模型在一些看起来极其简单的任务上却会出人意料地失败——比如让它生成一个恰好包含二十个字符的字符串，或者画一只有五条腿的狗，或者告诉它把时钟画成某个特定时刻，它却画不准。这种反差说明了一个问题：现有的那些主流基准测试，可能根本没有在测那些模型真正&quot;软肋&quot;的地方，而是把大量精力花在了模型已经擅长的任务上。这篇论文要做的，就是系统地去找到这些软肋，并且用一套可复现的方式把它们暴露出来。</p>
+<p>这项工作来自瑞士联邦理工学院，由 Matteo Santelmo、Xiuying Wei 以及他们的团队完成。他们构建了一个叫做 Blind-Spots-Bench 的基准测试，总共包含 235 道精心整理的题目，覆盖文字、图像生成和图文混合多种输入输出格式，并配套了一套自动化的评分流水线，对 38 个当前主流的大模型进行了系统评估。这篇论文的价值不在于提出一种新的模型，而在于提供一面镜子，让我们看清楚当前这些前沿模型究竟在哪里失灵、失灵的程度如何。</p>
+<p>先说数据是怎么来的。这些题目并不是研究者凭空设计的，而是从 EPFL 一门研究生级别的人工智能课程中收集来的。大概在 2025 年 10 月，课程里的每个学生都被要求提出五道题：这些题人类做起来很容易，但当时最先进的 AI 聊天工具却答不对。这个收集方式非常有意思，因为它本质上是在做众包式的模型失败案例挖掘，而且来源是对 AI 有一定了解的研究生，他们提出的问题往往能精准踩到模型的死角。</p>
+<p>一共收到了大约 287 道原始题目，经过筛选和整理，最终保留了 235 道。筛选的原则有两个方向：太简单的、现有模型就能答对的要去掉，因为那已经不是盲点；太难的、连人也觉得很费劲的也要去掉，因为目标是&quot;对人类容易、对机器难&quot;这个交集。筛出来之后，研究者对每道题都手工标注了一个结构化的参考答案，包括正确答案的形式、判定正确的必要条件，以及常见的错误模式。这些常见错误模式有两个来源：一是学生提交题目时附带的 AI 失败案例，二是至少三名标注者额外补充的出错场景。这种双源标注的方式让参考答案更有操作性，后面自动评分的时候也更可靠。</p>
+<p>在题目格式上，这 235 道题分成三类：纯文字输入输出的占 46.2%，要求生成图片的占 35.6%，输入同时包含图像和文字但输出是文字的占 18.2%。这个分布决定了哪类模型可以被评估哪类题——纯文字大模型只做文字题，视觉语言模型同时做文字题和多模态题，专门的图像生成模型做生成图片的题。</p>
+<p>接下来是任务分类体系，这也是这篇论文设计上一个比较用心的地方。研究者为这 235 道题建立了一个三级分类法，三个大类分别是：以对象为中心的任务、抽象推理任务，以及语言与知识任务。每个大类下面还有更细的子类，总共 12 个子类。</p>
+<p>以对象为中心的任务，包括属性与模式识别、空间推理、视觉计数，以及生成性计数，也就是要求模型在生成图片时保证特定数量的对象。空间推理是这个数据集中出现最频繁的子类，一共 53 道题，这和已有研究的发现是一致的——视觉语言模型在处理空间关系时普遍表现不佳，让它判断哪个物体在哪个方向、进行旋转变换，都会遇到困难。视觉计数紧随其后，这类题要求模型数出图片里某类物体的数量，听起来简单，但在杂乱场景下、物体相互遮挡或尺寸很小时，模型很容易数错。</p>
+<p>抽象推理任务包括数学与算术推理、逻辑推理、几何与图形推理，以及约束推理。逻辑推理出现较多的一个原因，是这类问题通常需要多步推断，而模型在每一步只做局部最优选择，不会主动回溯检验全局一致性，这就导致错误在链条上层层叠加，最后给出一个看似有道理但实际错误的答案。约束推理比如数独这类问题，模型在遇到死路时很难有效回退重新选择，往往会把一条走不通的路径强行&quot;幻想&quot;出一个出口。</p>
+<p>语言与知识任务包含字符级操作、语义推理，以及对无关干扰信息的鲁棒性。字符级操作是这里面特别值得关注的一类，比如让模型生成一段恰好 N 个字符长的文本，或者要求它重复某个特定序列。这类任务难倒很多模型的根本原因，研究者认为很可能是现代大模型的分词方式导致的。大模型不是按字符处理文本，而是按&quot;词片&quot;处理，一个词片可能对应一个词也可能对应半个词，所以模型对字符数量的感知天然就是模糊的，让它精确控制字符数就像让人在完全不看刻度的情况下倒出刚好 100 毫升的水一样困难。</p>
+<p>弄清楚数据是什么之后，来说评估流水线是怎么设计的。研究者用了一个两步走的结构：第一步，让被测模型回答题目，不给它任何示例，也不做思维链提示，让它直接生成答案；第二步，把原始题目、模型的答案、以及参考答案一起喂给一个评分模型，让它给出一个二元判断，也就是对或者错。因为这些题的答案本身就是客观确定的，所以不需要部分分，这个二元评分是合理的。评分模型选用了 Gemini-3-Flash，因为它在评分质量、速度和成本之间有一个比较好的平衡，并且它被开启了代码执行能力，可以用写代码运行的方式来验证一些硬约束，比如检查字符串长度、数数子串之类的，这比纯靠语言理解来判断要准确得多。</p>
+<p>自动评分能不能信赖？研究者做了细致的人工校验。他们从不同模型的回答中随机抽取了超过 100 条，故意让正确和错误的回答各占一半以避免类别不平衡，然后同步进行人工打分和自动评分，最后比较一致性。结果是：在文字输出任务上，人工和自动评分的一致率达到了 96.6%，在更难判断的图像生成任务上，一致率也有 90.9%。这个水平已经相当可靠。研究者还专门检查了用 Gemini 做评分会不会对 Google 家的模型产生偏袒，结果发现不仅没有明显的偏袒，反而是对非 Google 模型的错误答案更容易被误判为正确，也就是说 Gemini 评分对 Google 自家模型在某种程度上更严格而不是更宽松。</p>
+<p>所有模型都在开启&quot;thinking&quot;模式的情况下运行，最大输出 token 设定为 32768，没有提供少样本示例，文字任务重复跑 4 次取平均，图像生成由于成本太高只跑一次。开源模型通过 EPFL 的 AI 推理服务平台访问，底层用的是 vLLM 部署，接口兼容 OpenAI 格式。这些设置的统一性保证了不同模型之间的比较是公平的。</p>
+<p>现在来看最核心的实验结果。整体来看，Gemini-3.1-Pro 是综合表现最强的模型，在文字任务上达到 83.3% 准确率，在多模态任务上达到 66.9%。GPT-5.5 在文字任务上同样很强，达到 84%，但这个优势没能迁移到视觉任务上，多模态任务只有 58.7%，和 Gemini 相比差距明显。这个对比很有意思：两个模型在文字任务上几乎齐平，但在需要理解图像的任务上，Gemini 系列明显更稳健。</p>
+<p>在开源模型里，GLM-5.2 是表现最好的，文字任务准确率达到 74%。Qwen3.5-397B 也表现出色，文字任务 70%，多模态任务 48%，超过了很多参数规模更大的模型比如 Kimi-K2.6 和 DeepSeek-V4-Pro。研究者注意到 Qwen3.5-397B 输出的 token 数量特别多，这可能意味着更长的推理链条帮助它拿到了更高的分数。</p>
+<p>闭源模型和开源模型之间的差距大约是 10 个百分点，而且这个差距在你控制掉通用智能分数之后依然存在。研究者把 Blind-Spots-Bench 的准确率和一个叫做&quot;人工分析智能指数&quot;的外部综合评分做了对比，这个外部指数汇总了包括 Humanity&#x27;s Last Exam、IFBench 等十个主流文字测试。结果发现：整体上看，在这个外部综合评分上分高的模型，在 Blind-Spots-Bench 上分也高，说明这个基准确实在测通用推理能力，不是一堆与能力无关的刁钻题目。但是，在相同的外部评分水平上，开源模型的 Blind-Spots-Bench 成绩明显低于闭源模型。一个可能的解释是：开源模型往往被集中优化在那些有大量公开训练数据的主流基准上，而对那些代表性不足的边缘任务就没有同等程度的覆盖，导致它们在通用排行榜上看起来不差，但遇到这些&quot;盲点&quot;任务就暴露了短板。</p>
+<p>关于成本效益，也有非常清晰的发现。在文字任务上，准确率从 60% 提升到 70% 需要推理成本增加大约 10 倍。这个边际收益递减的曲线在多模态任务上也存在。但有几个开源模型，特别是 DeepSeek-V4、Qwen3.5 和 GLM-5.2，在相同成本水平上明显胜过闭源的 Gemini-3.1-Flash-Lite 和 GPT-5.4-mini。所以如果你的预算有限，这几个开源模型在这个基准上是相当划算的选择。在图像生成方面，Gemini-3-Pro-Image 准确率最高，达到 54.8%，但成本比 GPT-Image-2 贵了大约 4 倍，而 GPT-Image-2 的准确率是 51.2%，差距不大但便宜很多。</p>
+<p>工具使用这个话题值得单独展开说一说。直觉上，很多 Blind-Spots-Bench 里的困难任务——比如数字符串长度、做字符串操作——如果模型能调用代码执行环境，好像应该变得容易很多。研究者为一部分模型加上了 Python 代码执行环境，每道题最多允许调用五次工具，然后重新评估。结果是混合的：Gemini-3.1-Flash 开了工具之后准确率明显提升，而且 token 用量也下降了，说明它能把工具用得比较有效；但 GPT-5.4 和 Qwen3.5-397B 开了工具之后准确率反而下降了。研究者做了定性分析，发现一个很典型的失败模式：模型生成的代码本身是正确的，但在把输入粘贴进代码时出了问题，比如复制字符串的时候引入了多余空格或者截断了内容，导致代码跑出来的答案是对的，但针对的却是一个被错误处理过的输入。这个发现说明工具使用并非万能的，工具和语言推理之间的衔接本身也是一个需要被检验的能力。</p>
+<p>再来看细粒度任务分析的发现，这是论文里信息密度最高的部分之一。首先，视觉感知类任务是所有模型的共同瓶颈。在属性与模式识别上，最强的模型准确率也只有 41.67%；在视觉计数上，最强模型的准确率是 57.14%，大多数模型只有 30% 到 40%。这意味着让模型数一下图片里有几只猫，或者识别出拼图里标出的单词，现有最好的模型依然答错了将近一半。这是一个非常惊人的结果，说明视觉感知这一块的基础性问题到今天还没有被真正解决。</p>
+<p>其次，不同模型家族有各自擅长的领域，没有哪个模型在所有子任务上都是第一。GPT 系列在算术推理上表现最突出，GPT-OSS 在数学相关任务上有优势，但在三个语言和知识子任务上落后于其他模型。DeepSeek-V4 在字符级操作上表现特别好，准确率达到 75%。Kimi 在算术推理上也有亮点，准确率高达 83%，但在其他子类上和领先模型的差距比较明显，字符级操作上就落后约 10 个百分点。图像生成方面，Gemini 在抽象推理题上多赢了 3 题，GPT 在语言与知识题上稍强，二者互有胜负。这种互补的模式说明现在还没有一个&quot;全面碾压&quot;的模型，选择模型时需要根据具体任务类型来考虑。</p>
+<p>第三个很重要的发现是模型规模扩大并不总能带来提升。在 Gemma-4 系列里，26B 的模型在大多数子任务上比更小的版本好，但在对无关干扰信息的鲁棒性这一项上比最小的 E2B 模型低了约 8 个百分点。在 Qwen3.5 系列里，122B 的模型在逻辑推理、几何与图形推理、算术推理这几个抽象推理子类上，比 35B 的模型低了 10 到 14 个百分点。参数量最大的 397B 模型部分弥补了这个下降，但在这些子类上依然没能超过 35B。这打破了一个常见的直觉，就是&quot;越大越好&quot;，在盲点任务这个测试上，更大的模型并不意味着更全面的能力。</p>
+<p>这篇论文当然也有它的局限性，作者讲得很坦诚。235 道题整体规模不大，而且各子类的题目数量很不均匀，这限制了统计结论的可靠性。题目主要由学生针对当时两个主流前沿模型的失败案例设计，所以可能对这两个模型的特定弱点有一定偏向，而遗漏了其他类型的推理失败。另外，论文里没有真正做人类基线实验——虽然前提假设是这些题对人类很简单，但究竟简单到什么程度，没有被量化出来。</p>
+<p>对于从事多模态模型研究或者做模型评估的人来说，这篇论文有几点值得重点借鉴。第一，主流基准的高分不等于没有盲点，把专门针对已知弱点设计的细粒度测试纳入评估体系，能帮你更准确地判断模型实际能力的边界。第二，如果你的任务涉及视觉计数、空间关系或者字符级约束，要特别小心，因为哪怕是最强的闭源模型在这些方向上错误率也高得惊人。第三，工具使用并非总是有益的，工具调用链路中的输入处理本身就是一个需要被单独测试的能力。第四，当你需要在多个模型中做选择时，最好在目标子任务类型上分别评估，而不是只看总分，因为不同模型擅长的方向差别很大。</p>
+<p>这整件事情传达出的最核心的启示是：现在的评估体系越来越容易被模型&quot;应试&quot;，而真正的能力边界往往藏在那些你从来没有专门测过的地方，把寻找盲点本身当成一项系统性工程来做，是让评估真正有价值的关键所在。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

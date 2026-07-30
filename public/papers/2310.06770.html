@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SWE-bench: Can Language Models Resolve Real-World GitHub Issues? · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Oct 10, 2023</time> · 1 min read · <a href="https://arxiv.org/abs/2310.06770">arXiv</a> · <a href="https://arxiv.org/pdf/2310.06770">PDF</a></div>
+    <h1>SWE-bench: Can Language Models Resolve Real-World GitHub Issues?</h1>
+    <div class="tags"><span class="tag">levelbench</span><span class="tag">reading-list</span><span class="tag">t1</span></div>
+  </header>
+  <section class="notes"><h2>Notes</h2><ul><li>你最像的方法学表亲：真实 artifact + 确定性测试 oracle + 未泄漏测试分区。你的球面展开就是它的 FAIL_TO_PASS 的关卡版。读它就是读你 benchmark 的骨架。</li></ul></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2023-10-10-swe-bench-can-language-models-resolve-real-world-github-issu-1ced6e74.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Language models have outpaced our ability to evaluate them effectively, but for their future development it is essential to study the frontier of their capabilities. We find real-world software engineering to be a rich, sustainable, and challenging testbed for evaluating the next generation of language models. To this end, we introduce SWE-bench, an evaluation framework consisting of $2,294$ software engineering problems drawn from real GitHub issues and corresponding pull requests across $12$ popular Python repositories. Given a codebase along with a description of an issue to be resolved, a language model is tasked with editing the codebase to address the issue. Resolving issues in SWE-bench frequently requires understanding and coordinating changes across multiple functions, classes, and even files simultaneously, calling for models to interact with execution environments, process extremely long contexts and perform complex reasoning that goes far beyond traditional code generation tasks. Our evaluations show that both state-of-the-art proprietary models and our fine-tuned model SWE-Llama can resolve only the simplest issues. The best-performing model, Claude 2, is able to solve a mere $1.96$% of the issues. Advances on SWE-bench represent steps towards LMs that are more practical, intelligent, and autonomous.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>真正难住顶级语言模型的，不是写一个排序函数，而是像真实软件工程师那样，面对一个有几千个文件的代码库，读懂一个用户提交的 bug 报告，然后找到问题所在，改对它，还不能破坏其他功能。这篇论文要解决的问题就是：我们怎么评测语言模型在这个层面上的真实能力？</p>
+<p>在这篇论文出现之前，评测语言模型写代码的主流方式是 HumanEval 这类基准。它的逻辑很简单：给模型一道题，让它写一个函数，跑通单元测试就算过关。这类题目大多是自包含的，几行代码就能解决，有点像刷 LeetCode 的简单题。但真实的软件开发完全不是这个样子。一个工程师修一个 bug，可能需要先在几百个文件里找到问题的根源，理解好几个模块之间的依赖关系，改动多个文件里的多个函数，同时还不能引入新的问题。现有基准已经严重饱和，顶级模型在上面刷到很高的分数，但我们并不知道这是否意味着模型真的具备工程能力，还是只是记住了题目模式。</p>
+<p>所以这篇论文的作者，来自普林斯顿大学和芝加哥大学的团队，提出了一个叫 SWE-bench 的评测框架。它的核心思路非常朴素：直接用真实世界里发生过的软件工程问题来考模型。具体来说，他们从 GitHub 上热门的 Python 开源项目里，收集了用户提交的 issue 和对应的 pull request，把每一对 issue 加代码库做成一道考题，让模型去修复这个 issue，然后用真实的测试套件来判断模型改对了没有。</p>
+<p>我们来讲讲这个数据集是怎么构建出来的，因为构建方式直接决定了这个基准的质量。</p>
+<p>团队从 GitHub 上挑选了数十个流行的 Python 开源项目，包括像 Django、Flask、Matplotlib、Sphinx 这样广为人知的库。他们的筛选逻辑分三层。第一层：只要已经合并的 pull request，因为合并意味着社区认可了这个修改。第二层：这个 pull request 必须关联了一个 issue，也就是说它在解决一个真实的 bug 报告或功能请求。第三层，也是最关键的：这个 pull request 必须同时修改了测试文件，这意味着开发者贡献了测试来验证问题确实被修复了。</p>
+<p>但光满足这三个条件还不够。他们还要做执行层面的验证。具体做法是：把这个 pull request 拆成两部分，一部分是测试代码，一部分是实际的修复代码。先只应用测试代码，跑一遍，看看哪些测试是失败的。再把修复代码也应用上去，再跑一遍，看看哪些原来失败的测试现在通过了。只有至少存在一个这样的&quot;从失败变通过&quot;的测试，这个任务实例才会被保留。这种设计非常严谨，它保证了每道题都有可执行的验证标准，模型改没改对，测试结果说了算，不需要人工评判。</p>
+<p>经过这一套流水线筛选下来，最终形成了包含两千多个任务实例的 SWE-bench 基准，覆盖十几个知名 Python 仓库。</p>
+<p>这个基准有几个特点值得仔细说一下，因为它们揭示了这个任务有多难。</p>
+<p>首先是代码库的规模。每道题给模型的不是一个孤立的函数，而是整个代码仓库，里面有成千上万个文件。参考答案平均需要修改多个文件、多个函数、以及若干行代码。这和&quot;写一个小函数&quot;完全不是同一个量级的挑战。</p>
+<p>其次是输入的复杂性。Issue 的描述通常很长，包含 bug 的现象、复现步骤、有时候还有用户自己的猜测。更麻烦的是，整个代码库的 token 数量远超任何现有模型的上下文窗口，所以模型不可能把所有代码一次性都读进来。这就引出了一个关键问题：怎么从海量代码里挑出和这个 bug 相关的部分？</p>
+<p>第三，这个基准是可以持续更新的。因为 GitHub 每天都在产生新的 issue 和 pull request，只要有新的代码提交，就可以按同样的流程产生新的评测实例。而且可以专门选取在某个模型训练截止日期之后才出现的 issue，这样就能保证模型没有在训练时见过答案，避免数据污染的问题。</p>
+<p>讲完了基准本身，我们来看实验怎么设计的。因为代码库太大，塞不进上下文窗口，研究者需要先做一步检索，把可能相关的文件挑出来，再喂给模型。他们设计了两种检索方式。</p>
+<p>一种叫稀疏检索，也就是 BM25，这是一个经典的基于关键词匹配的信息检索算法，有点像搜索引擎最基础的那层逻辑。把 issue 的文字描述当成查询，从代码库里找出最相关的文件，在上下文窗口允许的范围内尽量多塞一些进去。</p>
+<p>另一种叫&quot;oracle 检索&quot;，也就是作弊模式。直接告诉模型，参考答案改的是哪几个文件，把那几个文件喂给它。这显然在现实中是做不到的，因为你事先不知道要改哪里，但它代表了一个上界，告诉我们即便给了模型最理想的上下文，它能做到什么程度。</p>
+<p>参与评测的模型包括 GPT-4、Claude 2、ChatGPT 3.5，以及他们自己训练的 SWE-Llama。SWE-Llama 是基于 CodeLlama 做了监督微调的版本，他们另外收集了来自三十多个不同仓库的训练数据，微调了七十亿参数和一百三十亿参数两个版本。值得注意的是，为了让 CodeLlama 能够遵循格式要求生成 patch 文件，微调是必须的，因为原版 CodeLlama 直接用在这个任务上根本不会按指令行事，要么输出无关内容，要么生成占位符。</p>
+<p>结果怎么样？说出来很震撼。</p>
+<p>在 oracle 检索模式下，也就是直接告诉模型去改哪几个文件的情况下，Claude 2 的解题率只有大约 4.8%，GPT-4 大约 1.7%。切换到 BM25 检索之后，Claude 2 进一步下降到 1.9% 左右。换句话说，即使是当时最强的商业模型，在这个基准上也几乎全军覆没，只能解决极少数最简单的问题。</p>
+<p>这里有几个值得深挖的观察。</p>
+<p>第一，上下文长度是个大敌。随着喂给模型的代码量增加，性能不升反降。研究者专门做了一个消融实验：如果把 oracle 检索的文件进一步压缩，只保留真正被修改的那几行代码的周边内容，那么 GPT-4 的通过率从 1.7% 跳到了大约 4%，Claude 2 也有类似幅度的提升。这说明模型在大量代码里根本找不到该动的地方，就像在一篇很长的文章里找一个关键句，上下文太多了反而更容易迷失。这和另一篇研究&quot;长上下文中间迷失&quot;现象的论文结论是一致的，语言模型对上下文窗口两端的内容更敏感，中间的信息容易被忽略。</p>
+<p>第二，BM25 检索本身也有问题。研究者发现，在较大的 token 预算下，BM25 大约只有不到一半的情况能把参考答案涉及的文件全部检索到。也就是说，模型有时候根本没拿到正确的文件，自然也改不了对的地方。</p>
+<p>第三，微调模型 SWE-Llama 对上下文分布非常敏感。它是用 oracle 检索的上下文来训练的，一旦换成 BM25 检索的上下文，性能急剧下滑。这说明模型学到的不是真正理解如何修 bug，而是学会了在给定正确文件的情况下如何生成 patch，一旦上下文里混入了无关文件，它就乱了阵脚。</p>
+<p>第四，模型生成的改动普遍比真实答案短小和简单。真实的 gold patch 平均有几十行改动，而模型生成的有效 patch 往往不到真实答案一半的长度，而且很少同时修改多个文件。这说明模型倾向于做局部的、表面的修补，而不是像有经验的工程师那样做更系统性的代码改进。</p>
+<p>论文里还有一个具体的案例分析挺有说明性。有一道题来自 Sphinx 文档生成工具，问题是某个扩展在特定配置下没有正确格式化文档关键词。模型找到了正确的函数，也尝试做了修改，但它的改法是把某个配置参数的值硬编码成了 True，也就是直接忽略了用户的配置设置，而正确的做法是先检查配置项再决定行为。结果测试马上就抓住了这个错误，因为测试用例专门用 False 这个配置来验证行为。这个例子很生动地说明了模型的一个通病：它能看到问题的表面，但理解不了代码背后的设计意图和约束条件。</p>
+<p>还有一个有趣的发现：研究者担心模型可能&quot;作弊&quot;，就是因为训练数据里见过代码库的历史版本，所以只要把后来的版本背出来就能解题。但他们按时间把数据集分成 2023 年前和 2023 年后的 issue 来测，发现模型在两个时间段上的表现差不多，说明这种作弊路径基本不成立。这也让这个基准的可信度更高一些。</p>
+<p>在局限性方面，作者非常坦诚地提到了几点。首先，SWE-bench 现在只覆盖 Python 语言，虽然方法论上可以扩展到其他语言，但还没有做到。其次，他们的实验方式是最基础的检索加生成，没有涉及更复杂的智能体方法，比如让模型在代码库里主动导航、执行命令、根据报错反复迭代。这些方向他们认为很有前景，但不在这篇论文的范围里。第三，执行测试通过只是一个必要条件，不是充分条件。研究者在定性分析里发现，即使模型生成的代码改法能通过测试，它的实现方式也可能是脆弱的、不符合代码风格的、或者解决了症状但没解决根本原因的。所以测试通过率低估了真实差距，而不是高估了。</p>
+<p>这篇论文的价值不仅仅在于提出了一个困难的基准。它更深刻的贡献在于重新定义了我们该怎么评测语言模型的代码能力。过去我们问的是&quot;模型能不能写出一个正确的函数&quot;，SWE-bench 把问题升级成了&quot;模型能不能在真实工程环境里发现问题、定位原因、修复代码、同时维护整体系统的正确性&quot;。这两个问题的难度差了不止一个数量级。</p>
+<p>从更宏观的角度看，这个基准的意义在于它揭示了当前语言模型和真正自主的软件工程智能体之间还有多大的鸿沟。一个模型能在考试题上得高分，但在实际工程问题面前可能还处于&quot;几乎没有帮助&quot;的水平。这不是说语言模型没有价值，而是说我们对它们能力边界的认知需要更诚实、更精准。SWE-bench 给了我们一把衡量这条鸿沟的尺子，而沿着这把尺子的刻度去改进模型，才是真正朝着有用的工程智能迈进的方向。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

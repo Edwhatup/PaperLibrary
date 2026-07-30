@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jun 23, 2026</time> · <a href="https://arxiv.org/abs/2606.23654">arXiv</a> · <a href="https://arxiv.org/pdf/2606.23654">PDF</a></div>
+    <h1>EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-06-23-enterpriseclawbench-benchmarking-agents-from-real-workplace--12e97a7d.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Enterprise agents increasingly operate inside workspaces: they read heterogeneous files, invoke tools, and deliver business artifacts. We introduce EnterpriseClawBench, an enterprise agent benchmark constructed from proprietary, real-world agent sessions. Starting from a large archive of workplace sessions, the EnterpriseClawBench produces 852 reproducible tasks, each paired with recovered fixtures, rewritten prompts, role classes, skill subclasses, hard rules, and semantic rubrics. Because the sessions contain internal enterprise content, we do not release the benchmark data; instead, our reusable contribution is the construction and evaluation protocol. On EnterpriseClawBench, the best configuration reaches only 0.663 (Codex with GPT-5.5). These results show that enterprise agent evaluation must report harness--model combinations, artifact delivery, visual quality, cost, runtime, and skill-transfer behavior, rather than collapsing performance into a single score. Code: https://github.com/FrontisAI/EnterpriseClawBench</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>当前的大语言模型正从简单的文本助手演变为能够在可执行工作空间中操作，并产出实际业务成果的智能代理。然而，在评估这些企业级代理时，我们面临着几个核心挑战：首先，如何构建既能真实反映企业需求，又能大规模生成的任务？现有基准测试的任务往往是人工编写、模拟或基于公开环境的，这与真实企业工作中的自然需求之间存在显著差距。其次，代理的性能评估不应仅仅是一个单一的分数，它受到基础模型、代理框架（我们称之为“爪子”或“harness”）、环境、状态、多模态输出质量、成本和延迟等多种因素的影响。因此，我们需要一个多维度的评估体系。最后，在企业环境中，可复用的技能正成为重要的资产，但现有的基准测试要么没有为技能评估设计，要么只在单个任务层面进行评估，未能真正测试技能在同一类任务中的泛化能力。</p>
+<p>为了解决这些痛点，我们引入了EnterpriseClawBench，这是一个从我们内部企业系统历史代理会话中构建的基准测试平台。它的独特之处在于，它不是通过人工编写或模拟任务，而是通过一套自动化的构建流程，将真实的、带有专有内容的会话转化为可重现的基准任务。这个构建协议能够将日常工作场景中那些嘈杂、复杂的原始会话，转换成结构清晰、可用于评估的基准任务。</p>
+<p>具体来说，EnterpriseClawBench的构建流程非常严谨。它首先从大量的原始会话档案中，识别并恢复出潜在的任务实例。接着，会应用一系列的“机械门槛”进行初步筛选，比如过滤掉长度过短、信息不足的会话，或者检查任务所需的附件文件是否能够被成功找到和恢复。这一步还会处理内部数据中常见的敏感信息脱敏和恢复问题，并检查外部网络依赖是否稳定可达，确保任务的自包含性和可重现性。</p>
+<p>通过这些初步筛选后，那些通过了可重现性检查的候选任务，会被进一步判断其是否足够“自包含”，也就是说，能否独立地被理解和执行。如果一个任务在原始会话中需要代理进行多次澄清才能理解用户意图，那么它就会被排除。合格的任务会被改写成简洁明了的单轮基准提示，并被分配到特定的“角色类别”和“技能子类别”，例如“产品/项目交付”下的“文档撰写”技能。同时，我们还会为每个任务自动生成预期的交付物列表、硬性规则（比如文件类型、数量、是否可打开等客观指标），以及用于语义评估的文本和视觉判别标准。在任务正式进入基准集之前，还会进行一次“沙盒预飞检查”，确保它能在隔离环境中正常运行，包括输入上传、代理执行、结果下载和评判路由等环节。</p>
+<p>通过这套流程，我们从5291个原始任务实例中，最终构建了852个高质量的基准任务。这些任务覆盖了从产品/项目管理、工程/IT到财务、市场、销售、行政等多种企业角色，并细分出45个角色特定的技能子类别，这为我们后续进行任务类别的技能泛化评估奠定了基础。同时，任务的输入和输出文件类型也非常多样化，包括文档、表格、演示文稿、图片、代码等，反映了企业工作场景的异构性。</p>
+<p>在实验评估阶段，EnterpriseClawBench强调的是评估“代理框架-模型”组合的性能，而不仅仅是单一模型的能力。我们测试了包括Claude Code、Codex、DeepAgents、Hermes和OpenClaw等多种代理框架，并搭配了GPT-5.5、Sonnet 4.6、Opus 4.6、Haiku 4.5等主流大语言模型。所有任务都在独立的、无状态的沙盒环境中运行，并记录了完成状态、运行时长、Token使用量、成本、工具调用和潜在警告等详细指标。</p>
+<p>我们的评分机制分为两个层次：首先是“硬性规则”检查，它评估交付物的客观属性，比如生成的文件类型是否正确、数量是否符合要求、文件是否为空、能否正常打开、是否有错误堆栈信息或未替换的占位符等。通过硬性规则后，进入第二层“语义判别”，由大语言模型作为评判者，对输出质量进行多维度打分，包括“依据准确性”、“任务相关性”、“内容深度”、“实用性”和“沟通质量”这五个方面。值得一提的是，针对不同模态的输出，我们会路由到不同的评判器：纯文本输出由文本评判器打分，而HTML、幻灯片、PDF、电子表格和图像等则会渲染成截图或页面图像，交由视觉评判器进行评估。</p>
+<p>在针对手动审计的120个任务子集（我们称之为“Lite”子集）进行的初步评估中，我们发现即使是表现最好的“Codex/GPT-5.5”组合，其得分也仅为0.663。这清晰地表明，企业级成果产出任务的难度远未被现有代理饱和解决，还有巨大的提升空间。</p>
+<p>我们还观察到“代理框架-模型”之间的显著交互效应。一个典型的例子是，Claude家族的模型在Hermes框架下表现显著下降。例如，Sonnet 4.6在Claude Code、DeepAgents和OpenClaw框架下得分稳定在0.62-0.64，但在Hermes框架下却骤降至0.458。通过对执行轨迹的检查我们发现，Claude家族的模型通常依赖于主动的环境探测、脚本执行和多步修复能力，而Hermes框架则更频繁地通过审批检查来阻断这些操作，或者将受阻的工作路由到委托子任务中，有时甚至会返回过长的执行轨迹，导致在最终成果写入循环完成之前就被截断。这使得会话在没有稳定文件产出的情况下就结束了。但同样的任务，在Claude Code或DeepAgents框架下使用相同的Claude模型却能够完成，这说明这并非模型本身的能力不足，而是框架与模型之间存在兼容性问题。这强调了在企业级代理评估中，必须将框架和模型作为一个整体来考量。</p>
+<p>在成本与得分的权衡方面，我们发现代理的成本通常与得分呈现非线性关系。从非常低成本的系统转向中等成本系统时，性能提升非常显著；但当成本超过中等范围后，额外的投入所带来的性能提升会逐渐减小，呈现出一种对数曲线的形状。这符合我们在实际部署中的直觉：更强大的模型确实能带来更高的可靠性和成果质量，但边际效益会递减。当然，Hermes与Claude家族的组合是一个明显的例外，由于框架-模型交互问题，高昂的模型成本并未能转化为高分。</p>
+<p>我们还分析了“角色类别”对任务表现的影响。GPT-5.5在多个角色类别中表现领先，是一个非常稳健的通用型代理。而营销以及财务/运营类的任务则相对更难。我们通过人工检查发现，这些任务往往需要代理进行大量的文档理解和内容生成，并且涉及到公司特定的业务场景和惯例。这些任务在公开数据集中相对不常见，这可能部分解释了它们得分较低的原因。</p>
+<p>“成果类型”也对排名产生了影响。GPT-5.5在HTML、代码/JSON以及一些侧重交付的类别上表现最强，而Opus 4.6则在电子表格处理上更具优势。我们还注意到一个系统性的偏差：通过视觉判别器评估的电子表格和演示文稿类成果，其得分普遍高于纯文本交付物。这一点在后续的评判器消融实验中也再次出现，这暗示了当前多模态大语言模型评判器在进行细粒度的企业级成果评估时，其校准程度可能不如文本评判器。</p>
+<p>通过对五个语义维度的分析，我们发现当前系统在“沟通质量”和“任务相关性”方面表现较好，但在“依据准确性”上存在明显瓶颈。这与企业任务通常需要阅读大量输入文件，并将关键证据融入到业务成果中的特点相符。人工检查表明，代理在大型上传文件中定位用户所需的核心信息时常常失败，或者在长时间的执行过程中丢失这些关键信息。</p>
+<p>为了验证EnterpriseClawBench管道的可扩展性，我们还在自动构建的852个完整任务集上运行了四个DeepAgents组合。结果显示，GPT-5.5依然是最强的模型，Sonnet 4.6紧随其后，Haiku 4.5居中，而GPT-4.1-mini则明显较弱。这个排名与我们在Lite子集上的主要排行榜结果保持一致。这证明了我们自动化的构建流程能够有效地保留模型的整体排名差异，并且即使对于最强的模型，任务集也仍然未被完全攻克，保持了清晰的分数区分度。</p>
+<p>在技能评估方面，我们聚焦于一个具体的任务子类别——前端页面生成。我们的评估流程是：首先让一个“消费者代理”在10个该子类别内的任务上运行，收集其执行轨迹、交付物和评判反馈。然后，将这些材料提供给一个“技能创建者”（另一个大语言模型），由它为对应的消费者代理提炼出一个“代理特定技能”。接着，我们将这个生成的技能注入回同一个消费者代理中，并让它在5个该子类别中“未曾见过”的任务上进行评估。我们报告的指标是技能注入前后，这5个未见过任务的平均得分变化，以此来衡量从领域内执行中提炼出的技能，是否能够泛化到同一任务类中的新任务。</p>
+<p>结果显示，技能质量与“创建者模型”的能力密切相关。在这个实验中，GPT-5.5是表现最强的创建者，平均带来了正向的迁移效果（+0.0681分），并且没有出现负向的得分下降。Kimi K2.6也表现出正向的平均效果（+0.0518分），尽管它的提升主要集中在Codex/GPT-5.5和OpenClaw/Kimi K2.6等较强的消费者代理上。而Haiku 4.5则是最弱的创建者，它平均导致了负向的得分变化（-0.0941分），并且对OpenClaw/Kimi K2.6造成了显著的性能下降。</p>
+<p>这项实验还揭示了一个重要的现象：技能创建能力和技能消费能力并非总是一致的。例如，Haiku 4.5虽然是一个弱创建者，但DeepAgents/Haiku 4.5作为一个消费者代理，在该任务类别中表现出色：它在注入的三个技能中有两个都提升了基线性能。反过来，即使是更强的消费者代理，也可能对创建者的选择很敏感。Codex/GPT-5.5在所有三个创建者模型下都获得了提升，但Hermes/Kimi K2.6和OpenClaw/Kimi K2.6却受到了Haiku创建技能的负面影响。这表明技能注入的结果具有高度的不确定性，它取决于创建者质量、消费者行为、创建者与消费者之间的匹配度，以及消费者代理本身的基线得分。因此，我们认为在评估技能时，应该在任务类别层面，通过一个“消费者-创建者矩阵”来呈现结果，而不是简单地报告一个单一的平均技能分数。</p>
+<p>最后，我们对“评判器可靠性”进行了深入研究。这包括两个层面：大语言模型评判器之间的协议一致性，以及大语言模型评判器与人类评判员之间的一致性。在LLM-LLM一致性方面，我们用不同的LLM评判器对Lite子集上的32种框架-模型组合的成果进行了重新打分。结果显示，GPT-5.4文本评判器与我们的主文本评判器Sonnet 4.6之间表现出很强的相关性。GPT-5.4视觉评判器也大致保留了视觉路由得分的排序。这表明不同LLM评判器虽然在绝对得分尺度上可能不同，但它们在评估相对好坏方面具有一致性。</p>
+<p>然而，在与人类评判员的一致性方面，我们审计了48个任务包，其中文本和视觉任务各占一半。文本路由的评判结果与人类评分高度一致：平均得分接近，平均绝对误差（MAE）仅为0.134，斯皮尔曼相关系数高达0.790。但视觉路由的一致性则明显较弱：Sonnet 4.6在视觉评估中比人类评判员保守得多，MAE达到0.303，并且排名相关性为负。这是一个EnterpriseClawBench揭示出的重要差距：当前多模态成果的评估，特别是视觉质量评估，尚未成熟。</p>
+<p>总而言之，EnterpriseClawBench是一个基于真实内部企业代理会话构建的创新基准测试平台。它通过一套自动化的构建协议，将专有的职场档案转化为852个可重现的、以成果为中心的任务，并配备了完整的附件、分类体系以及文本和视觉评判标准。实验结果清晰地表明，这些任务对于现有模型来说仍然远未饱和，并且模型的性能会随着所使用的代理框架发生显著变化。除了最终得分，我们发现成本、运行时长、成果交付质量以及多维度的语义质量，都是解释系统行为不可或缺的评估维度。此外，其独特的任务类别分类体系也使其天然适合进行技能泛化能力的测试。当然，这个基准测试也存在一些局限性，比如它来源于单一的企业部署，结果可能不完全代表所有组织；出于隐私考虑，完整数据集无法公开；以及大语言模型评判器，特别是针对视觉成果的评判，仍存在不足，需要进一步的校准和改进。</p>
+<p>这项研究为我们提供了深刻的启示：在开发和部署企业级智能代理时，我们必须跳出单一模型性能的思维框架，转而关注“代理框架-模型”的整体兼容性与协同效应，并采用多维度、细粒度的评估体系，才能真正理解代理在复杂企业环境中的表现，并推动其向更实用、更可靠的方向发展。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

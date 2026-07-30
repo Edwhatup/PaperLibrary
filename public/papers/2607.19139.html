@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text Template Tokens Are Implicit Semantic Registers in Diffusion Transformers · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 22, 2026</time> · <a href="https://arxiv.org/abs/2607.19139">arXiv</a> · <a href="https://arxiv.org/pdf/2607.19139">PDF</a></div>
+    <h1>Text Template Tokens Are Implicit Semantic Registers in Diffusion Transformers</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-22-text-template-tokens-are-implicit-semantic-registers-in-diff-f6037bcc.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Text-to-image diffusion transformers (DiTs) jointly process text and image tokens, yet their internal computation during denoising remains poorly understood. We introduce a causal interpretability framework for modern large-scale DiTs that combines attention decomposition with targeted interventions across token spans, heads, and layers. Using it to separate prompt-content tokens from structural template tokens, we find that the structural tokens carry little prompt-specific information at the encoder output. Yet surprisingly, they emerge as dominant image-to-text attention sinks and causally maintain object identity inside the DiT, acting as implicit semantic registers. We show that they acquire this identity indirectly, with prompt semantics first injected into the image latents and then read back into the template tokens rather than transferred directly from the prompt tokens. Inspired by the above findings, we design a training-free pruning rule for DiTs. Heads that attend most strongly to prompt tokens are dispensable, and pruning them removes 20% of attention FLOPs with only a 1.4-point drop on GenEval. We further reveal how generative computation in DiTs is organized across heads and depth, separating semantic routing from visual synthesis and progressing from identity formation to propagation and refinement. Our work not only reveals that the tokens encoding semantics at input need not be those that maintain it during generation, but also provides a causal view of internal mechanisms in DiTs.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>文本生成模型在生成图像时，究竟是怎么&quot;读懂&quot;你给的文字提示的？这个问题听上去很基础，但实际上在现代扩散变换器里，这个问题的答案出乎意料地反常识。今天要讲的这篇论文，就揭示了一个让研究者自己都感到惊讶的发现：那些看上去毫无实质内容的&quot;格式占位符&quot;词符，才是模型在生成过程中真正维护物体身份的核心位置。</p>
+<p>先来交代背景。现在主流的文字生成图像系统，越来越多地用了一种叫&quot;扩散变换器&quot;的架构，英文缩写是DiT。跟以前的U-Net架构不同，扩散变换器把文字词符和图像词符放进同一个注意力计算里，让它们互相竞争、互相影响。与此同时，文字那一侧也在升级换代——很多新系统不再只用CLIP或者T5这种专门的文字编码器，而是直接用大语言模型来编码文字条件。</p>
+<p>这就带来一个具体的操作细节，也是这篇论文故事的起点。当你输入一段提示词，比如&quot;一只红苹果&quot;，系统不是直接把这几个字送进语言模型。它会先把你的话套进一个聊天模板，加上&quot;系统提示&quot;&quot;用户&quot;&quot;助手&quot;这些角色标记，以及各种分隔符。整个模板序列被送进语言模型编码之后，编码结果再传给扩散变换器用于生图。</p>
+<p>这就产生了两类词符。一类是你实际写的那些词，叫做语义词符，携带了你真正想表达的内容，比如&quot;一只红苹果&quot;里的每一个词。另一类是模板自动加进去的格式词符，叫做结构词符，包括角色标记、分隔符、换行符，这些东西只是聊天格式的骨架，跟你想生成什么图完全没有关系。</p>
+<p>过去大家默认的理解是：这些结构词符就是格式残留，是给编码器接口用的，不参与真正的语义工作。扩散变换器在生成图像时，应该主要去读那些承载了真实内容的语义词符。这篇论文的团队搭建了一套分析框架，去验证这个假设——结果发现，这个假设完全错了。</p>
+<p>他们用的分析工具，核心是把注意力矩阵拆开来看。在一个多模态扩散变换器的每个模块里，文字词符和图像词符共享同一个注意力计算，所以注意力矩阵可以被切分成四个区块：文字查询看文字、文字查询看图像、图像查询看文字、图像查询看图像。其中最关键的是&quot;图像查询看文字&quot;这个区块，因为这是图像流从文字条件里获取信息的主要通道。</p>
+<p>他们统计了图像词符把多少注意力权重分配给语义词符，又把多少分配给结构词符。结果是：图像词符把压倒性的注意力集中在那五个结构模板词符上，而不是集中在携带实际内容的语义词符上。</p>
+<p>数字是很惊人的。拿最简单的提示词&quot;一只苹果&quot;来说，图像词符分配给结构词符的注意力，比分配给内容词符的多了一个数量级。其中最厉害的那个结构词符，就是聊天模板里的结束标记，它单独一个词符吸收了所有图像词符注意力的将近一半，比&quot;苹果&quot;这个词吸收的还多得多。</p>
+<p>这种现象有个名字叫&quot;注意力汇聚&quot;，英文叫attention sink，在语言模型里早有发现，指的是某些位置会无缘无故地吸引大量注意力，而它们本身并不携带什么有意义的内容。结构模板词符在扩散变换器里，就扮演了这个注意力汇聚点的角色。</p>
+<p>研究者很仔细地排查了这个现象是否只是特殊情况。他们在三个不同的测试集上做了大规模验证，涵盖了短提示词、长而复杂的多对象提示词，以及中文提示词。结果这个模式始终成立。当提示词变得很长、内容词符很多的时候，总的注意力质量上语义段确实会超过结构段，但如果换算成每个词符的平均注意力，结构词符依然以几倍到几十倍的优势碾压内容词符。他们还在另外两个不同的大模型上重复了实验，包括一个基于Mistral语言模型编码的三百二十亿参数的系统，以及另一个十二亿参数的系统，发现这个注意力汇聚现象在不同架构、不同语言模型底座、不同采样步数下都稳定存在。</p>
+<p>好，发现了这个现象，接下来的自然问题是：那又怎样？注意力汇聚点在语言模型里确实存在，而且通常被认为是计算上的噪声——模型把一些注意力&quot;浪费&quot;在无意义的位置上。那这些结构词符，只是吸引了注意力但对生成结果没影响，还是说它们真的在功能上起到了某种作用？</p>
+<p>研究者用了一个非常巧妙的实验来回答这个问题，叫做跨轨迹头移植。思路是这样的：他们同时运行两条生成轨迹，一条生成&quot;一只苹果&quot;，一条生成&quot;一只香蕉&quot;。然后把&quot;香蕉&quot;轨迹里的注意力头，一个一个地移植到&quot;苹果&quot;轨迹里，替换掉原来的注意力头，观察生成结果什么时候从苹果变成香蕉。</p>
+<p>按照传统的理解，应该是那些最多关注语义词符的注意力头最重要，因为语义词符携带了&quot;苹果&quot;还是&quot;香蕉&quot;的信息。所以优先替换那些&quot;读文字最多&quot;的头，应该最快地让苹果变成香蕉。但实验结果完全相反。</p>
+<p>优先替换那些对语义词符注意力最高的头，非但没有把苹果变成香蕉，反而让生成结果崩塌成了模型的默认输出——在大量人像训练数据的影响下，那个默认输出是一张人脸的照片。真正决定物体身份的，是那些对语义词符注意力极低、但对结构词符注意力很高的头。只要替换大约三分之一的这类头，图像就从苹果干脆地翻转成了香蕉。</p>
+<p>这个结果表明，读取文字提示和维护物体身份，这两件事在模型内部是分离的，由不同的注意力头负责。那些看起来在认真读文字的头，对于最终生成什么物体其实没什么因果贡献。而那些充当注意力汇聚点的结构模板词符，才是模型内部真正存放物体身份信息的地方。这就是论文标题里说的&quot;隐式语义寄存器&quot;——结构词符作为一种寄存器，默默存放着物体的语义，但这个过程是隐式的，不显眼。</p>
+<p>那么问题又来了：结构词符本身在语言模型编码阶段就携带了什么语义吗？毕竟聊天模板在送进语言模型时，结构词符也看到了语义词符，通过自注意力机制，理论上结构词符的编码表示可以吸收语义信息。</p>
+<p>研究者用了另一个实验来排除这种可能性。他们做了跨提示词的模板替换：拿两个不同的提示词，把提示词A的内容词符和提示词B的结构词符拼在一起，然后生图。如果结构词符携带了B的语义，生出来的图应该往B的方向漂移。结果图像忠实地反映了A的内容，B的结构词符没有带来任何语义污染。</p>
+<p>他们还做了更极端的版本：把几百个不同提示词的结构词符取平均，得到一个与任何提示词都无关的&quot;通用平均模板&quot;，然后把这个平均模板替换到各种提示词的结构词符位置，再生图。大多数情况下，生成结果还是按照内容词符的意思来的，物体、属性、数量基本保持不变。这证明结构词符在语言模型编码输出阶段，几乎不携带语义信息。</p>
+<p>那么，结构词符是怎么在扩散变换器内部获得语义的？答案是通过图像词符的中转。研究者做了一个屏蔽实验：在扩散变换器的前几个模块里，把结构词符的注意力分别屏蔽掉——一次屏蔽它对语义词符的注意力，另一次屏蔽它对图像词符的注意力。</p>
+<p>结果非常清楚。屏蔽结构词符对语义词符的注意力，生成结果几乎没有变化，物体身份保持完好。屏蔽结构词符对图像词符的注意力，仅仅两个模块之后，物体就崩塌了。这意味着结构词符的语义来源是图像词符，不是直接来自语义词符。</p>
+<p>完整的信息流是这样的：语义词符先把物体信息注入图像词符，这个过程在第一个模块就基本完成了；然后图像词符再把这个信息传递给结构词符；结构词符充当寄存器，在后续的生成过程中把物体身份维持住。这就是&quot;隐式&quot;的含义——语义绕了一个弯，先到图像，再到结构词符，而不是直接从语义词符流向结构词符。</p>
+<p>这个发现还有一个横跨网络深度的维度。研究者统计了在一个六十层的变换器里，哪些层的注意力头对物体身份的转换最有决定性作用。结果分布是两头多、中间少：前十层的头最关键，第五十一到六十层也起重要作用，而中间四十层的头几乎不参与身份的切换，更多是把已有的状态向前传递。这形成了一个三阶段结构：早期层负责提交身份，中间层负责传递身份，晚期层负责精细化。这个模式跟语言模型里的发现惊人地相似。</p>
+<p>研究者还在注意力头的维度上发现了另一个分工：除了结构寄存器头，还有一类渲染头，它们的注意力几乎全部集中在图像词符之间，不参与物体身份的维护，而是负责把图像各个区域的特征缝合成空间连贯的图像。这两类头各司其职，分工明确，虽然也有少数头介于两者之间。</p>
+<p>理解了这个机制之后，研究者顺势推导出了一个不需要重新训练的剪枝规则。既然那些对语义词符注意力最高的头，对于物体身份没有因果贡献，那就可以直接把它们剪掉。具体做法是：按照每个头分配给语义词符的注意力权重排序，把排名最高的一批头裁掉它们的计算。为了保护身份提交阶段，只对后段的去噪步骤做剪枝。</p>
+<p>这个方法在GenEval这个对象正确性评测集上的结果是：剪掉四分之一的注意力头，意味着减少了百分之十七点五的注意力计算量，而评测分数只下降了零点几个百分点。同时他们还验证了剪哪些头比剪多少头更重要——同样剪四分之一，如果按照结构汇聚头的排序来剪（也就是剪掉那些真正有用的头），评分下降就大得多；随机剪也明显比按照因果无效头剪要差。这说明这个剪枝规则是有信息量的，不是瞎猜。</p>
+<p>这篇论文最重要的贡献，是它颠覆了一个看上去理所当然的假设。在神经网络里，我们习惯于认为信息在哪里被编码，就在哪里被处理和维护。你写了&quot;苹果&quot;，这个语义应该附着在&quot;苹果&quot;这个词符上，一路传递。但扩散变换器实际上做的事情更复杂：编码语义的词符，和在生成过程中维护语义的词符，是不同的词符。语义在模型内部完成了一次隐式的搬家，从内容词符出发，绕经图像词符，落脚在结构格式词符上。</p>
+<p>这对于我们理解大模型的内部机制有普遍意义。它提示我们，一个词符在输入端扮演的角色，和它在模型计算过程中实际承担的功能，可以是完全不同的事情。那些看上去最有信息含量的位置，不一定是计算的真正核心；那些看上去是无意义格式噪声的位置，可能恰恰是模型维持关键状态的枢纽。这种&quot;计算枢纽&quot;和&quot;信息来源&quot;的分离，是现代大规模变换器里一个值得持续深挖的规律。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

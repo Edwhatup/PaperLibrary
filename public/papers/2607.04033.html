@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OmniOpt: Taxonomy, Geometry, and Benchmarking of Modern Optimizers · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 07, 2026</time> · <a href="https://arxiv.org/abs/2607.04033">arXiv</a> · <a href="https://arxiv.org/pdf/2607.04033">PDF</a></div>
+    <h1>OmniOpt: Taxonomy, Geometry, and Benchmarking of Modern Optimizers</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-07-omniopt-taxonomy-geometry-and-benchmarking-of-modern-optimiz-997d3857.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Optimizer selection for large-scale model training has become a system-level design decision constrained jointly by compute, memory, tuning budget, and task diversity, yet the landscape of over one hundred methods remains fragmented. We therefore present OmniOpt, a unified survey and benchmark cookbook of optimizers for the research community. OmniOpt rests on four coupled components. First, we treat every optimizer update as a structured transformation through a five-stage meta-pipeline, and show that most methods engage only one or two of these stages. Second, we use norm-constrained linear minimization oracles (LMOs) to unify different optimizers. Third, these two views ground a dual-dimension taxonomy, one dimension assigning each method to a mechanism family and the other recording the measurable training objectives it aims to improve. Fourth, and at the core of this paper, we instantiate the full taxonomy in a unified cross-domain benchmark spanning representative optimizers, model scales, and training regimes from language model pretraining to image classification, systematically analyzing each method family across multiple effect objectives and laying out their trade-offs. OmniOpt thus supplies the research community with an operational coordinate system for selecting optimizers under explicit mechanism and objective assumptions, and charts a direction for the future development of the optimizer community.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>在大型模型训练中，优化器选择已经成为一个系统级的决策，它不仅受到计算资源、内存、超参数调优预算和任务多样性的限制，还面临着上百种优化方法所构成的碎片化局面。要在这个快速发展的领域中做出明智的选择，变得异常困难。我们看到，优化器相关的研究论文通常只围绕一个局部机制展开，比如一个新的动量估计器、预处理器、投影方法、量化器或者后更新校正。这种命名方式虽然方便实现，但却无法揭示两种优化器是否在更新过程的同一阶段进行干预，它们的组件是否正交，或者它们是否能够兼容组合。</p>
+<p>其次，优化器的经验性结论往往高度依赖具体的协议设置。近期的LLM优化器研究表明，结论会随着模型规模、批次大小、训练时长、数据与模型比例、学习率调度、热身策略、权重衰减以及超参数调优预算的变化而改变。一个能够改善预训练损失的方法，可能会增加内存消耗、延长实际运行时间，或是加重调优负担。反之，一个节省内存的方法，也可能同时改变更新方向和状态表示。</p>
+<p>再者，现代优化器的数学解释仍然是碎片化的。元素级自适应方法、矩阵预处理器、符号优化器、低秩投影以及几何感知正则化方法，通常都使用不同的符号和假设进行分析。这些都使得选择和理解优化器变得像是在迷宫中摸索。</p>
+<p>正是为了解决这些痛点，我们提出了OmniOpt。Omn它将优化器视为从随机训练信号到参数更新的一个结构化转换。其核心前提是，大多数现代优化器都是对一个共享的元流水线进行稀疏修改：它们负责参数路由、梯度信号转换、内部状态演化、更新重建，最后应用缩放或正则化。这种操作视角引出了一种过程对齐的方法论分类法，其中每个优化器家族都根据其主要非恒等操作发生的阶段进行分组。在此基础上，我们利用范数约束线性最小化预言机，简称LMO，作为解释范数诱导更新方向的几何原语，这包括了符号方向、正交矩阵方向以及预处理方向。由此产生的四轴分解法，将理想化的LMO方向选择扩展到实用的优化器更新中，并加入了曲率估计、梯度估计质量和状态压缩选择。</p>
+<p>同时，我们还引入了第二种以效果为导向的分类法，记录了每种方法旨在或预期改善的训练目标，例如收敛效率、每步成本、内存消耗、稳定性、超参数鲁棒性和泛化能力。这些视角共同构成了一个机制感知的框架，用以回答三个相互关联的问题：优化器在哪里起作用，为什么它的更新具有特定的数学形式，以及它旨在改善哪些实际训练目标。</p>
+<p>接下来，我们深入探讨这个统一的理论框架。首先是通用元流水线，它是一个过程层面的抽象，旨在将本研究中涉及的优化器统一到一个共同的单步更新模板下。它的目的是揭示每种方法的操作位置，区分主要机制和默认机制，并为连接到LMO驱动的几何视图做准备。</p>
+<p>我们可以将一个优化器的更新步骤分解为五个内部操作阶段，S1到S5，每个阶段都可能退化为恒等映射。这些阶段将梯度信号G_t转换为一个带符号的参数增量Delta_t。</p>
+<p>在这些内部阶段开始之前，训练系统会提供一个信号，我们称之为S0：训练信号获取。它决定了更新流水线可以使用的信息。标准情况是使用一阶反向传播的梯度。但有些优化器会用方差缩减的估计器来替代G_t，例如STORM风格的校正。还有一些会通过海森向量积或Hutchinson对角估计来添加曲率增强信号，比如Sophia。零阶方法在这里被视为边界情况，因为它们的主要贡献通常是获取函数值信号，而不是下游的更新转换。</p>
+<p>S1：参数范围界定与路由。这是第一个内部阶段，它根据张量拓扑和模块类型，将完整的参数集进行分区，并为每个组分配一个路由标签。最常见的划分是将二维矩阵（支持矩阵几何操作，如SVD分解、Kronecker分解和低秩投影）与向量状参数（通常由元素级规则处理）分开。更细致的划分可能包括注意力头块、每层组或特定模块规则。当所有参数共享一个路由时，S1就是恒等映射，就像标准AdamW一样。</p>
+<p>S2：梯度转换。此阶段对路由后的梯度应用一个结构化算子，可能会改变其维度或流形。转换可以是维度保持的，也可以是压缩的。代表性的转换包括：恒等映射，即梯度不变；Newton-Schulz谱正交化，使梯度动量矩阵正交化；Kronecker因子化预处理；低秩正交投影；以及符号或量化方向离散化，比如Lion。S2和S4形成一个数学上的对偶关系：如果S2引入了降维或基旋转映射，那么S4必须定义相应的返回参数空间的映射。</p>
+<p>S3：状态演化。此阶段更新优化器的内部内存。对于Adam家族的方法，S3包含一阶和二阶动量的指数移动平均。其他状态形式包括Kronecker因子、行-列因子化状态（如AdaFactor）、INT8量化状态（如8-bit Adam）以及多时间尺度的指数移动平均流（如AdEMAMix）。无状态方法要么跳过S3，要么将当前转换后的信号直接传递到下游。</p>
+<p>S4：更新重建。如果S2引入了表示的变化，此阶段将应用相应的逆算子来恢复完整空间的更新。对于低秩方法，它将子空间更新映射回来。如果S2是恒等映射，那么S4也是恒等映射。逆映射的精确性决定了最终更新方向的保真度。</p>
+<p>S5：更新最终化。重建后的方向通过应用缩放、正则化和几何约束，转换为实际的参数写入。这包括全局学习率、可选的逐层信任比因子、后更新滤波器、裁剪算子和权重衰减系数。代表性的子操作包括：解耦权重衰减（AdamW）；全局梯度裁剪；元素级信任区域裁剪；逐层信任比缩放（LAMB）；方向一致性掩码；以及对抗性扰动最终校正（SAM）。这些子操作是可选且通常可组合的，但当两个机制修改同一量时，必须指定它们的顺序。</p>
+<p>元流水线的一个核心推论是“身份映射原则”：大多数优化器只在一个或两个流水线阶段进行非平凡的设计选择，而将剩余阶段作为恒等映射或标准默认值。这个原则为描述代表性优化器提供了一个紧凑的方式。</p>
+<p>例如，AdamW主要是一个S3/S5方法，它在S3维护一阶和二阶动量EMA，并在S5应用偏置校正的自适应缩放和解耦权重衰减。Muon主要是一个S1/S2方法，它在S1分离二维权重矩阵和向量参数，并在S2对梯度动量应用Newton-Schulz正交化。GaLore则跨越S1到S4，其主要创新在于通过S2/S4对偶将计算和优化器状态转移到低维空间。Lion主要是一个S2/S3方法，它在S2将动量插值梯度离散化为符号方向。SAM则主要是一个S0/S5方法，它在S0通过对抗性扰动生成梯度信号，并在S5进行邻域正则化的写入。</p>
+<p>元流水线回答了一个操作性问题：优化器在哪里介入更新过程？而接下来要讲的LMO驱动分析则回答了一个补充性的几何问题：为什么产生的方向会呈现特定的数学形式？这两个视角是相互关联的。</p>
+<p>我们以线性最小化预言机，即LMO，作为核心构建块，因为它是几何化的。当相同的梯度信号被输入到不同的范数球中时，预言机返回的极值方向会随着球的形状而改变，因此约束几何和优化器行为就成为同一对象的两种解读。这个单一的思想足以将符号更新、谱正交化、Kronecker因子化预处理、曲率加权、方差缩减和状态压缩都置于一个紧凑的坐标系中，使我们无需切换符号即可进行比较。</p>
+<p>给定一个凸集D和一个输入信号s，LMO被定义为在D中找到与s内积最小的x。当约束集是一个半径为ρ的范数球时，LMO返回该特定几何的最陡下降方向。L2范数球会产生归一化梯度；无穷范数球会产生符号方向，因为超立方体的每个顶点都是一个符号模式，比如Lion优化器就是如此；而谱范数球则产生矩阵极性方向，比如Muon。</p>
+<p>在此基础上，我们将每个优化器更新沿着四个轴进行组织，并按照优化器实际的流水线顺序排列。</p>
+<p>第一个轴是更新域，它关注更新存在于哪里，是在原始参数空间、矩阵空间、低秩子空间还是某个投影坐标系中。</p>
+<p>第二个轴是状态估计器，它关注有效的信号、动量、二阶状态、Gram海森矩阵和投影状态是如何从当前梯度和累积历史中形成的。</p>
+<p>第三个轴是几何与预处理算子，它关注状态估计器产生的量如何通过LMO约束集或基于海森矩阵的预处理器成为一个方向。</p>
+<p>第四个轴是最终化封装器，它关注方向如何被写回参数，并吸收了学习率、权重衰减、反向投影步长、路由规则、回退和刷新调度。简而言之，第一个轴确定空间，第二个轴估计状态，第三个轴生成方向，最后一个轴提交更新。</p>
+<p>有了操作和几何的统一视角，我们就可以构建一个双维分类法。</p>
+<p>第一维是方法论分类法，它将每个优化器分配到一个非重叠的主要机制家族。我们识别出五大类： T1：元素级自适应动量与标量控制。这类方法主要在S3和S5阶段发挥作用，通过动量EMA和解耦权重衰减来调整更新。AdamW、AdEMAMix是其代表。</p>
+<p>T2：矩阵级结构化方法。这类方法通常在S1、S2和S4阶段介入，利用参数的矩阵结构进行操作。例如，Shampoo和Muon通过矩阵路由和谱正交化来转换梯度，GaLore则通过低秩投影将计算和状态转移到低维空间。</p>
+<p>T3：离散化与方向量化。这类方法主要在S2和S3阶段，通过将梯度或动量离散化为符号方向来改变更新。Lion和SignSGD是典型的例子。</p>
+<p>T4：状态压缩与结构聚合。这类方法主要在S3和S4阶段，通过压缩优化器状态或聚合结构信息来减少内存消耗。AdaFactor和8-bit Adam是其代表。</p>
+<p>T5：曲率感知与几何正则化。这类方法主要在S0和S5阶段，通过引入曲率信息或几何正则化来改善泛化能力或稳定性。SAM和Sophia是这类方法的代表。</p>
+<p>第二维是以目标为导向的分类法，它记录了每种方法旨在改善的可衡量训练目标。我们定义了六个核心目标： O1：收敛效率，即达到目标损失所需的时间或步数。 O2：计算成本，包括实际运行时间、浮点运算次数等。 O3：内存成本，主要是优化器状态的内存占用。 O4：稳定性，指对噪声和学习率变化的鲁棒性。 O5：超参数鲁棒性，即对超参数调优的敏感程度。 O6：泛化能力，即模型在未见过数据上的表现。</p>
+<p>通过这种双维分类法，我们能够将优化器的工作原理（方法论维度）与它试图达成的实际效果（目标维度）清晰地联系起来。</p>
+<p>基于这个统一的框架，我们进行了大规模的基准测试研究。这是我们论文的核心部分。我们的实验设置涵盖了广泛的领域，包括从6000万到10亿参数的语言模型预训练，跨越四种架构，上下文长度从256到32k tokens，以及在CIFAR100上的图像分类任务。我们系统地评估了来自所有T1到T5家族的代表性优化器，横跨O1到O6这六个效果目标，并逐一分析了它们之间的权衡。</p>
+<p>我们的基准研究得出了几个反复出现的关键发现。首先，没有任何单一的优化器能够在这个多目标前沿中占据主导地位。这意味着在选择优化器时，总是存在固有的权衡。</p>
+<p>其次，激进的状态压缩方法（T4家族），例如8-bit Adam和AdaFactor，在短上下文任务中表现出色，但在输入复杂性增加时，性能会急剧下降。这表明，节省内存的策略往往伴随着对其他性能指标的牺牲，尤其是在处理长序列或复杂数据时。</p>
+<p>再者，结构化矩阵方法（T2家族），比如Muon和Shampoo，在跨架构和任务迁移时表现出最强的稳定性，但其每步计算成本通常较高。这意味着它们可能在需要高泛化性和鲁棒性的场景下更有价值，但如果计算资源受限，则需要仔细权衡。</p>
+<p>另外，优化器的排名会随着模型规模、上下文长度和领域的变化而系统性地交错。这意味着，在小型模型或短上下文上表现最佳的优化器，在大模型或长上下文上可能不再是最优选择。这种现象强调了在特定训练约束下进行定制化选择的重要性。</p>
+<p>我们还对内存效率高的优化器进行了情景敏感性分析，发现它们在内存受限的场景下确实能节省资源，但往往会牺牲收敛效率或泛化能力。辅助稳定性分析，包括梯度范数动态和学习率扰动鲁棒性，揭示了一些方法（如SAM）能有效提升稳定性，而另一些方法（如某些T3家族）则可能在特定条件下表现出较低的稳定性。</p>
+<p>在家族层面的目标总结中，我们发现每个家族都有其独特的优势和劣势。例如，T1家族通常在收敛效率和超参数鲁棒性方面表现良好，但内存消耗较高。T3家族可能在内存和计算成本方面有优势，但对学习率调度可能更敏感。</p>
+<p>为了更深入地理解优化器内部机制，我们还对矩阵结构化优化器Muon进行了机制消融实验。我们分解了Muon的子操作，并在不同规模和架构下验证了它们如何组合影响性能。结果表明，Muon中的正交化操作确实有助于性能提升，但其带来的计算成本也必须被纳入考量。这些消融实验帮助我们理解了优化器组件在不同条件下的具体贡献。</p>
+<p>这项研究也存在一些局限性。我们主要关注LLM训练问题，但优化器的应用远不止于此。此外，尽管我们努力标准化超参数调优预算，但它仍然是一个影响结果的因素。并且，新的优化器方法仍在不断涌现。</p>
+<p>从技术层面，我们总结了几点重要的经验教训。首先，上下文长度是区分优化器性能的一个关键因素。其次，矩阵结构化方法提供了强大的泛化能力，但代价是更高的计算成本。第三，多时间尺度适应性对于鲁棒性至关重要。第四，显式正则化，比如SAM中的锐度感知，通常有助于提高模型的泛化能力。最后，状态压缩总是一种权衡，它在节省内存的同时，可能影响收敛速度和最终性能。</p>
+<p>展望未来，优化器领域还有许多开放性问题和发展方向。例如，我们可以探索优化器组件的元学习，即让模型自动学习如何选择和组合优化器组件。学习率调度与优化器协同设计也是一个重要的方向，以及如何超越一阶信号，利用更丰富的曲率信息。此外，硬件感知的优化器设计，将硬件特性纳入优化器考量，也是提升效率的关键。</p>
+<p>总而言之，OmniOpt为研究社区提供了一个操作性的坐标系统，用于在明确的机制和目标假设下选择优化器。它系统地分析了每个方法家族在多个效果目标上的表现，并揭示了它们之间的权衡。这项工作为未来优化器社区的发展指明了方向，也提醒我们，没有“一刀切”的最佳优化器，最佳选择永远取决于具体的训练约束和目标。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

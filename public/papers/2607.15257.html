@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 17, 2026</time> · <a href="https://arxiv.org/abs/2607.15257">arXiv</a> · <a href="https://arxiv.org/pdf/2607.15257">PDF</a></div>
+    <h1>SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-17-searchos-v1-towards-robust-open-domain-information-seeking-a-7e2e02d8.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Recent advances in Tool-Integrated Large Language Models have made web search a core capability of information-seeking agents. However, as interaction histories grow, agents increasingly struggle to track task progress. When search attempts fail to yield useful evidence, current single- and multi-agent systems can become trapped in repetitive loops, wasting search budgets and ultimately compromising the quality and completeness of the final output. We introduce SearchOS, a system-level multi-agent framework that turns fragile, implicit search progress into explicit, persistent, and shared state. First, we formulate open-domain information seeking as relational schema completion with grounded citations, where agents discover entities, populate attributes across linked tables, and anchor each value to source evidence. Then we design Search-Oriented Context Management (SOCM), which externalizes the evolving state into Frontier Task, an Evidence Graph, a Coverage Map, and Failure Memory. Built on SOCM, SearchOS applies a pipeline-parallel scheduling mechanism that overlaps the execution of sub-agents and continuously refills freed slots with tasks targeting unresolved coverage gaps to improve utilization and throughput. To schedule and control the execution of search agents, SearchOS introduces a Search Tool Middleware Harness that intercepts model and tool interactions to record grounded evidence and react to stalls or budget exhaustion, and provides a reusable hierarchical skill system comprising strategy and access skills to augment the agents&#x27; search process and avoid repeating failed search patterns across runs. On WideSearch and GISA, SearchOS leads all metrics among the evaluated single- and multi-agent baselines, paving the way toward robust information-seeking collaboration.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>当一个AI智能体被要求&quot;帮我找出全球排名前五十的GPU云服务商，并整理出它们的价格、延迟、可用区域和客户评价&quot;时，现有系统会遭遇一个根本性的困难：随着搜索历史越积越长，智能体开始忘记自己已经找到了什么、还缺少什么，一旦某条搜索路径遇阻，它就会在原地打转，反复发出几乎一样的查询，白白耗尽预算，最终交出一份残缺的答案。这篇来自人民大学和蚂蚁集团的论文，正是要从系统层面解决这个问题，他们给出的框架叫做SearchOS。</p>
+<p>先来把问题说清楚。当前的信息检索智能体，无论是单智能体还是多智能体，都有一个共同的毛病：它们把任务进度、已收集的证据、失败的搜索路径，全部当作对话历史里的一段文字来处理。这就意味着，随着对话越来越长，这些信息要么被埋在几千个token的上下文里难以追踪，要么直接被截断丢失。多开几个并行的智能体也解决不了问题——不同的工作者可能重复做同一件事，可能对&quot;要填哪些字段&quot;产生分歧，也可能因为等待最慢的那个任务完成而让其他执行槽闲置着。</p>
+<p>这些失效的根源，在论文里有一句话说得非常准确：搜索状态应该由系统来维护，而不是由智能体每次从对话历史里反复推断。这一句话，其实就是SearchOS整个设计哲学的起点。</p>
+<p>那么SearchOS的第一个核心贡献，是对任务本身的重新表述。论文把开放域信息检索问题形式化为&quot;带溯源引用的关系模式补全&quot;，英文叫做relational schema completion with grounded citations。这个说法听起来有点学术，但背后的直觉非常朴实。你可以想象成一张或多张互相关联的数据库表格。系统首先要发现有哪些实体行，也就是&quot;我们要收集哪些对象&quot;；然后要填充每一个属性格子，也就是&quot;每个对象有哪些字段的值&quot;；最后，每一个填入的值都必须有来源——一个URL加上原文中的具体片段，这就叫做grounded citation，可以理解为&quot;有据可查的引用锚点&quot;。</p>
+<p>为什么要借鉴关系数据库的设计？因为关系模型提供了两个非常重要的东西：一是用主键和外键来表达实体之间的联系，二是规范化设计来减少冗余和矛盾。把信息检索任务套进这个框架，好处立竿见影——任务目标变得具体可测量，你可以在实体级别和属性级别精确地知道哪些格子已经填了、哪些还空着，而不是模糊地感觉&quot;应该差不多搜完了&quot;。</p>
+<p>有了这个形式化表述之后，SearchOS的第二个核心贡献就是Search-Oriented Context Management，简称SOCM，可以翻译为&quot;面向搜索的上下文管理&quot;。这是整个系统的状态骨架，它把所有执行状态外置到智能体的对话之外，作为持久化的共享状态存储。SOCM包含四个组件，值得一个一个展开说。</p>
+<p>第一个组件叫做Frontier Task，可以理解为&quot;前沿任务池&quot;。它是一个感知依赖关系的任务队列，每个任务有类型、状态、优先级、依赖关系、目标格子、负责的智能体和尝试次数。任务只有在所有前置依赖都完成后才变成待执行状态，执行完成后提交报告，如果触发循环检测、重试上限或容量限制，任务会被取消。这里有两个细节设计很聪明：一是目标格子去重，如果两个任务的目标格子重叠，新任务会被拒绝，防止重复劳动；二是派发时实时验证，如果一个任务对应的格子在派发前已经被填上了，这个任务就直接关闭。</p>
+<p>第二个组件叫做Evidence Graph，证据图。这里存的不是页面摘要，而是原子级别的发现——每个节点记录一个具体的值、来源URL、支持文本片段、所绑定的表格字段、置信度、溯源层级和状态。被拒绝或被后来的证据取代的节点不会删除，它们仍然保留用于审计，只是不计入覆盖率。证据的溯源有层级之分：有原文片段锚定的证据排名高于仅有页面链接的证据，而直接提取的证据又高于推导出来的摘要。这个设计确保了每个填入值的可信度是有据可查的。</p>
+<p>第三个组件叫做Coverage Map，覆盖率地图。它把每一个表格格子都物化为一条记录，状态分为&quot;缺失&quot;&quot;已填&quot;&quot;不确定&quot;和&quot;不可达&quot;。当多个证据节点都支持同一个格子时，系统会按照溯源层级、字段对齐度和权威调整后的置信度这三个维度的字典序来选择最优证据，而不是简单地用最新的覆盖最旧的。如果多个来源之间存在矛盾，系统会标记冲突，而不是悄悄地把其中一个覆盖掉。覆盖率的计算也有一个设计要点：如果一张表是空的但还在搜索中，覆盖率不会是百分之百，这防止了系统在还没找到任何实体的时候就误认为任务完成了。</p>
+<p>第四个组件叫做Failure Memory，失败记忆。这可能是SOCM里最有工程价值、但也最容易被忽视的部分。在多智能体系统里，如果没有共享的失败记录，一个智能体走进的死胡同，另一个智能体完全可能毫不知情地再走一遍。Failure Memory为每条失败记录存储失败类型、任务作用域内的签名特征、纠正建议、重现次数和最近发生时间。记录的失败模式包括：无用或重复的查询、无法访问的来源、执行失败的技能、被丢弃的搜索分支和被拒绝的声明。每次匹配到已有失败记录，重现次数就加一，而且重现次数越高，&quot;不要再试&quot;的警告力度就越强。论文还提到，在某一个任务上的失败后验可以作为种子，注入到相关任务的失败记忆中，这是一种跨会话的知识复用。</p>
+<p>SOCM的这四个组件共享同一个加锁的读-改-写接口，更新是原子的，所以智能体不会读到一半旧一半新的状态。每个智能体拿到的不是全部状态，而是角色专属的投影视图：编排器看到的是全局缺口的汇总，搜索智能体看到的是自己被分配的格子，写作智能体看到的是一个紧凑的摘要。</p>
+<p>讲完了状态管理，来看调度机制。SearchOS的第三个核心贡献是流水线并行的多智能体编排。论文这里借用了深度学习训练领域GPipe和PipeDream的流水线并行思想，把它迁移到多智能体调度上。</p>
+<p>传统的多智能体系统倾向于批次化调度：把一批任务同时发出去，等所有任务都完成，再发下一批。问题是，不同任务的耗时差别可能很大，最慢的那个任务会让其他已经完成的执行槽白白空着，这就是所谓的&quot;掉队者问题&quot;。SearchOS采用的是事件驱动的连续调度：一旦某个执行槽释放，立刻从Frontier Task里取出优先级最高的就绪任务填进去，不等其他任务完成。这样各个角色的工作可以在依赖关系允许的范围内充分重叠，最大化执行槽的利用率。</p>
+<p>论文在WideSearch的10个案例上做了对比实验，批次调度和连续调度使用相同的查询、相同的模型配置、相同的并发上限，只改调度策略。结果是连续调度的端到端时间平均缩短了一定比例，token用量更少，同时Item-level F1也有所提升——也就是说，更快、更省、质量还更好，这三件事同时发生了。原因就在于消除了批次边界的空闲等待，提高了吞吐量。</p>
+<p>SearchOS的第四个核心贡献是Search Tool Middleware Harness，搜索工具中间件框架。这是一个系统级的执行守卫，它不依赖智能体自己去记住应该遵守哪些约束，而是在模型调用和工具执行的边界处拦截，强制执行全局不变量。</p>
+<p>为什么需要这个？因为提示词层面的约束对于经过不同方式后训练的模型来说是不可靠的——随着上下文增长，模型可能忘记任务状态，可能无视安全提示。中间件框架把这些责任从提示词里移出去，交给系统代码来保证。</p>
+<p>中间件包含三个组件。首先是Context Middleware，上下文中间件，在每次模型调用之前运行，负责把最近的历史、SOCM的角色专属投影、以及检索到的技能组合成模型输入。在预算吃紧的时候，它会修剪掉较旧的交互记录，但始终保留状态信息和当前的约束条件。其次是Evidence Extraction Middleware，证据提取中间件，在工具执行之后运行，负责从浏览器返回的观测结果中提取候选证据，并要求每个候选必须同时满足字段绑定和文本锚定两个条件才能被接受，然后以原子操作的方式同时更新证据图和覆盖率地图。第三个是Sensor Middleware，传感器中间件，负责检测搜索是否停滞，以及监控资源消耗。停滞的判断标准是：在一个时间窗口内，覆盖率和已发现实体数都没有增长。资源压力则综合考虑迭代次数、搜索次数和时间三个维度的归一化使用量。传感器检测到问题后，中间件可以决定继续执行、注入纠正指令、请求回填、进入只消化已有信息的模式，或者直接停止某个分支。</p>
+<p>论文在消融实验里展示了三条有代表性的轨迹，分别对应早期、中期和晚期的干预。在每条轨迹里，Loop Sensor检测到低进度循环之后触发策略切换，都能在此后恢复搜索进展。这提供了机制层面的证据：传感器确实能把停滞的搜索重新导向有效工作。</p>
+<p>SearchOS的第五个核心贡献是层级化技能系统。现有智能体通常每次都要重新摸索怎么查一个数据库、怎么从政府网站提取数据，这些经验没有被沉淀下来复用。SearchOS把可复用的知识组织成三个层级。</p>
+<p>第一层是编排器技能，是全局剧本，涵盖任务分解、表格与实体集合对齐、综合验证等高层策略。第二层是策略技能，是与来源无关的通用方法，包括查询重构、实体消歧、结构化提取、多跳和时态推理、聚合以及停滞恢复。第三层是访问技能，是针对特定来源的检索和提取方法，比如怎么查政府数据库、怎么从维基百科提取信息、怎么访问公司网站。部分访问技能还配备了可执行的代码，把URL构建、HTTP错误处理、页面解析封装在里面，智能体只需要给出参数，就能拿到标准化的结构化输出，不需要重复导航和解析。论文举了Senate.gov的例子：智能体只需要调用一个get_senators_by_state函数并传入州代码，背后的HTTP请求、BeautifulSoup解析全部由执行器处理，智能体拿到的是干净的参议员名单。</p>
+<p>SearchOS-V1预置了280个技能，覆盖多个领域。消融实验显示，有技能和无技能相比，Item F1有所提升，Row F1提升幅度更大——行级别的增益更显著，论文的解释是：技能帮助智能体组装出连贯完整的实体记录，而不仅仅是偶尔找回几个孤立的格子值。在效率方面，技能使会话时间、搜索调用次数和页面调用次数都有明显下降，也就是说，质量的提升是伴随着更少的试错来实现的。</p>
+<p>接下来看实验结果。论文在两个基准上评测SearchOS：WideSearch和GISA。WideSearch包含200道手工标注的问题，覆盖超过15个领域，每道题要求收集大量可客观验证的原子事实并组织成完整的表格；GISA有373道人工构造的查询，答案有四种结构化格式，结合了深度多跳推理和跨来源聚合。</p>
+<p>评测指标分两个层级：Item-level是把每个格子独立算精确率、召回率和F1；Row-level则是只有一行里所有格子都正确，这一行才算对，要求严格得多。</p>
+<p>在WideSearch上，SearchOS在Item级别的精确率、召回率和F1全部领先，相比最强基线A-MapReduce提升了一定的F1分数。增益主要集中在召回率上，这与覆盖率驱动的调度设计目标完全吻合——系统就是为了减少漏填的格子而设计的。在更严格的Row-level指标上，SearchOS同样全面领先。</p>
+<p>在GISA上，SearchOS在每种问题类型上都是最好的。增益最大的是Set类型的问题，SearchOS拿到76.5的Set F1，而最强基线只有63.1，提升了13.4个百分点。Set类型的问题要求正确枚举出一个完整的答案集合，这恰好是证据图和覆盖率驱动的完整性检查最能发力的场景。在Table类型上，Item F1和Row F1也都位居第一，List F1同样是最好的。</p>
+<p>值得单独提一下固定模式与动态规划的消融实验。论文选了40道可以拆成多表模式的问题，分别用固定的单表、固定的多表和SearchOS自主规划来跑。结果是：固定多表平均比固定单表稍强，但在40道题里只赢了21道，输了17道，两者平局2道，说明哪种固定结构更好完全取决于具体任务。更有意思的是，即使用一个先知来对每道题都选择更好的那种固定结构，得到的Item F1和Row F1仍然低于SearchOS的自主规划。这说明schema的规划本身就应该是搜索过程的一部分，系统需要根据搜索中遇到的实体类型、字段分布和关系模式来动态决定用单表、多表还是混合结构，并在新证据改变信息拓扑时及时修订。</p>
+<p>论文还给出了几个完整的轨迹案例，非常能说明系统设计的深层意图。其中一个案例是收集迈克尔·菲尔普斯在奥运会和世界游泳锦标赛上的个人项目奖牌记录。编排器最初分两组来收集，两组完成后，已知格子的覆盖率达到了百分之百——但表格里只有16行，而智能体报告暗示大约应该有31个符合条件的项目。系统没有把&quot;已知格子全部填满&quot;当作完成的信号，而是触发了实体集合的范围审计，识别出缺失的年份和比赛，派出新的回填任务。最终表格增长到35行，期间还检测出一条重复的2003年世锦赛400米个人混合泳记录，移除了错误的行，补上了缺失的2005年100米蝶泳结果。这个案例完美地说明了论文里的一个关键设计原则：覆盖率饱和和范围完整性是两件独立的事，格子全填满不等于实体集合找全了。</p>
+<p>另一个案例是收集三本期刊在2020到2024年间的移民相关文章。Wiley和JSTOR的页面反复返回访问检查或HTTP 402付费墙错误。智能体转向Crossref、OpenAlex和学术论文技能，Loop Sensor记录下了两次明确的策略切换。当剩余来源和每个智能体的预算都耗尽之后，系统保留了未解决的格子，而没有用无法支撑的推断去捏造数据。最终这个案例返回了57行数据，覆盖率96.3%，Item F1和Row F1都是93.8。这说明系统在面对真实世界的访问失败时，能够在继续尝试和优雅停止之间找到合理的平衡，而且它宁可留下空格也不编造答案。</p>
+<p>从这篇工作可以获得几点具体的启发。第一，对于任何需要持续积累信息的长任务来说，把执行状态外置到对话之外是工程上的关键一步——对话历史是天然有损耗的，而结构化的外部状态不是。第二，覆盖率驱动的任务调度比基于直觉的任务分配要稳健得多，因为你可以在每一步都精确地知道还剩哪些空格要填，而不是靠模型去猜。第三，失败记忆这个组件成本不高，但在多智能体场景里能防止大量重复的无效搜索，值得在实际系统里认真实现。第四，技能的层级化设计——把与来源无关的策略和针对特定来源的访问方法分开——为知识复用提供了一个干净的接口，是一种可以直接借鉴的架构模式。第五，中间件拦截这个思路告诉我们，可靠性保障不应该依赖提示词，而应该在系统层面硬编码，这对所有需要长期稳定运行的智能体系统都是一个值得认真对待的工程原则。</p>
+<p>SearchOS最根本的洞见是：在长周期信息检索任务里，搜索进展的不可见性才是造成失败的主要原因，而解决这个问题需要的不是更聪明的模型，而是更明智的系统设计。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

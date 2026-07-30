@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edwhatup</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="index.html">Edwhatup</a>
+  <nav><a href="index.html" class="active">Home</a><a href="writing.html">Writing</a><a href="library.html">Library</a><a href="radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<section class="hero">
+  <h1>Edwhatup</h1>
+  <p class="tagline">Reading the AI frontier, one paper at a time — notes, takes, and an audio digest.</p>
+  <div class="bio"><p>I read HuggingFace Daily Papers and write up what actually matters. My own research direction: <strong>turning game levels into research datasets</strong> — level-generation benchmarks, rhythm-game audio tokenization, and agent 2D level-connectivity. Below are my notes, my takes, and a daily audio digest (电台) of what I&#x27;m reading.</p>
+<p>_(Edit this bio in <code>data/site.json</code>.)_</p></div>
+  <div class="pills"><a class="pill" href="https://github.com/edwhatup/PaperLibrary">GitHub</a> <a class="pill" href="mailto:edwhatup@gmail.com">Email</a></div>
+</section><section class="section"><div class="section-head"><h2>Featured writing</h2><a class="more" href="writing.html">All posts →</a></div><div class="post-grid"><article class="post-card">
+  <a class="post-card-link" href="papers/course-ab-03.html">
+    <div class="post-card-meta"><time>Jul 08, 2026</time> · 1 min read</div>
+    <h3>Benchmark 设计课 第3讲:错误分析——一线团队的评测基本功</h3>
+    <p> 来源: hamel.dev/blog/posts/evals / hamel.dev/blog/posts/fieldguide / hamel.dev/blog/posts/evalsfaq (Hamel &amp; Shreya Shankar) / OpenAI Evaluation Best Practices / Anthropic docs Creat…</p>
+    <div class="tags"><span class="tag">agent-benchmark</span><span class="tag">course</span></div>
+  </a>
+</article><article class="post-card">
+  <a class="post-card-link" href="papers/course-ab-02.html">
+    <div class="post-card-meta"><time>Jul 07, 2026</time> · 1 min read</div>
+    <h3>Benchmark 设计课 第2讲:静态基准解剖——从 MMLU 到 SWE-bench</h3>
+    <p> 来源: HuggingFace openllmleaderboardmmlu 博客 / Anthropic Challenges in evaluating AI systems / HumanEval arXiv:2107.03374 / EvalPlus arXiv:2305.01210 / SWEbench arXiv:2310.06770 / Op…</p>
+    <div class="tags"><span class="tag">agent-benchmark</span><span class="tag">course</span></div>
+  </a>
+</article><article class="post-card">
+  <a class="post-card-link" href="papers/course-ab-01.html">
+    <div class="post-card-meta"><time>Jul 06, 2026</time> · 1 min read</div>
+    <h3>Benchmark 设计课 第1讲:什么是好的基准——构念效度与质量框架</h3>
+    <p> 来源: BetterBench arXiv:2411.12990 / Measuring what Matters arXiv:2511.04703 / Stanford HAI 解读 hai.stanford.edu/policy/whatmakesagoodaibenchmark…</p>
+    <div class="tags"><span class="tag">agent-benchmark</span><span class="tag">course</span></div>
+  </a>
+</article></div></section><section class="section"><h2>More notes</h2><div class="post-list"><article class="post-card">
+  <a class="post-card-link" href="papers/2606.09826.html">
+    <div class="post-card-meta"><time>Jun 08, 2026</time> · 1 min read</div>
+    <h3>OmniGameArena: A Unified UE5 Benchmark for VLM Game Agents with Improvement Dynamics</h3>
+    <p> 点播(20260707)。UE5 统一环境的 VLM 游戏 agent 基准,含 improvement dynamics——和 levelbench 的环境设计、以及课程第5讲讲的&#x27;可复现模拟世界&#x27;范式直接相关。…</p>
+    <div class="tags"><span class="tag">benchmark</span><span class="tag">game</span><span class="tag">requested</span></div>
+  </a>
+</article><article class="post-card">
+  <a class="post-card-link" href="papers/2511.04703.html">
+    <div class="post-card-meta"><time>Nov 03, 2025</time> · 1 min read</div>
+    <h3>Measuring what Matters: Construct Validity in Large Language Model Benchmarks</h3>
+    <p> 你在定义一个新能力，这篇问&#x27;你测的真是它吗&#x27;。445 个 benchmark 的系统综述 = 一份&#x27;别造出一个测了等于没测的 benchmark&#x27;的检查表。你定义关卡设计能力这件事的护身符。…</p>
+    <div class="tags"><span class="tag">levelbench</span><span class="tag">reading-list</span><span class="tag">t1</span></div>
+  </a>
+</article><article class="post-card">
+  <a class="post-card-link" href="papers/2509.12667.html">
+    <div class="post-card-meta"><time>Sep 16, 2025</time> · 1 min read</div>
+    <h3>Osu2MIR: Beat Tracking Dataset Derived From Osu! Data</h3>
+    <p> 同样挖 osu! 谱面、你最大的 novelty 威胁。必须精确知道它做了什么（抽节拍网格、非敲击点），才能写好 pincer 防线。…</p>
+    <div class="tags"><span class="tag">metro</span><span class="tag">reading-list</span><span class="tag">t1</span></div>
+  </a>
+</article><article class="post-card">
+  <a class="post-card-link" href="papers/2506.12285.html">
+    <div class="post-card-meta"><time>Jun 14, 2025</time> · 1 min read</div>
+    <h3>CMI-Bench: A Comprehensive Benchmark for Evaluating Music Instruction Following</h3>
+    <p> 构念上离你最近（含 beat F@20ms），但评的是生成式 LLM——你要正面区分。…</p>
+    <div class="tags"><span class="tag">metro</span><span class="tag">reading-list</span><span class="tag">t3</span></div>
+  </a>
+</article><article class="post-card">
+  <a class="post-card-link" href="papers/2503.16416.html">
+    <div class="post-card-meta"><time>Mar 20, 2025</time> · 1 min read</div>
+    <h3>Survey on Evaluation of LLM-based Agents</h3>
+    <p> 你进入的整个空间的地图。读一遍把自己定位清楚，知道哪些轮子别人造过。…</p>
+    <div class="tags"><span class="tag">levelbench</span><span class="tag">reading-list</span><span class="tag">t2</span></div>
+  </a>
+</article><article class="post-card">
+  <a class="post-card-link" href="papers/2501.01108.html">
+    <div class="post-card-meta"><time>Jan 02, 2025</time> · 1 min read</div>
+    <h3>MuQ: Self-Supervised Music Representation Learning with Mel Residual Vector Quantization</h3>
+    <p> 你排行榜的冠军、近期音乐 SSL SOTA。需知道它为何强、为何没报节拍任务（你 §4.5 的论据）。…</p>
+    <div class="tags"><span class="tag">metro</span><span class="tag">reading-list</span><span class="tag">t2</span></div>
+  </a>
+</article></div></section><section class="section"><div class="section-head"><h2>From the reading list</h2><a class="more" href="library.html">Browse all →</a></div><div class="read-list"><a class="read-row" href="papers/2607.24368.html">
+  <time>Jul 29, 2026</time>
+  <span class="read-title">Keep It InMind: Benchmarking the Implicit-Association Blind Spot in Agent Memory <span class="badge audio">♪</span></span>
+</a><a class="read-row" href="papers/2607.19712.html">
+  <time>Jul 29, 2026</time>
+  <span class="read-title">How Fast Can Reward Models Score? A Systems Study of C++ and PyTorch Inference Runtimes for RLHF</span>
+</a><a class="read-row" href="papers/2607.25895.html">
+  <time>Jul 29, 2026</time>
+  <span class="read-title">HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone <span class="badge audio">♪</span></span>
+</a><a class="read-row" href="papers/2607.24176.html">
+  <time>Jul 29, 2026</time>
+  <span class="read-title">Where Quality Breaks in Compressed Short-Text Generation: Staged Bottleneck Localization</span>
+</a><a class="read-row" href="papers/2607.24904.html">
+  <time>Jul 29, 2026</time>
+  <span class="read-title">Mage-VL: An Efficient Codec-Native Streaming Multimodal Foundation Model</span>
+</a><a class="read-row" href="papers/2607.26057.html">
+  <time>Jul 29, 2026</time>
+  <span class="read-title">Pass the Baton: Trajectory-Relayed On-Policy Distillation</span>
+</a><a class="read-row" href="papers/2607.12544.html">
+  <time>Jul 29, 2026</time>
+  <span class="read-title">Edge-Aware Thermal Infrared UAV Swarm Tracking</span>
+</a><a class="read-row" href="papers/2607.25572.html">
+  <time>Jul 29, 2026</time>
+  <span class="read-title">Mapping CVEs to MITRE ATT&amp;CK Techniques: A Curated Gold-Set Classifier and the Limits of LLM-Assisted Label Expansion</span>
+</a></div></section>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KronQ: LLM Quantization via Kronecker-Factored Hessian · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 13, 2026</time> · <a href="https://arxiv.org/abs/2607.07964">arXiv</a> · <a href="https://arxiv.org/pdf/2607.07964">PDF</a></div>
+    <h1>KronQ: LLM Quantization via Kronecker-Factored Hessian</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-13-kronq-llm-quantization-via-kronecker-factored-hessian-dfdd65db.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Post-training quantization (PTQ) is a widely adopted technique for compressing large language models (LLMs) without retraining. Existing second-order PTQ methods, including GPTQ, construct quantization objectives exclusively from input activation statistics, effectively assuming that all output channels contribute equally to the layer-wise reconstruction objective. We propose KronQ, a PTQ framework that challenges this assumption by introducing the gradient covariance into the quantization pipeline. Under the Kronecker-factored Hessian approximation, the quantization loss depends jointly on both the activation and gradient covariances, and KronQ exploits this at two complementary levels. (1) KronQ introduces bidirectional incoherence processing, extending the existing input-side random rotation to the output dimension using the gradient covariance, reducing weight magnitude variance across both input and output dimensions. (2) KronQ derives a new sensitivity metric for inter-layer mixed-precision allocation, driven by the gradient and activation Hessian traces. Notably, in the case of 2-bit weight-only quantization on LLaMA-3-70B, while GPTQ and GPTAQ diverge or produce degenerate quantizations (&gt;2000 perplexity on WikiText-2), KronQ achieves 7.93 perplexity.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>大型语言模型在部署时面临的核心挑战，是如何在保持高性能的同时，显著降低其庞大的内存占用和计算需求。传统的量化方法，特别是训练后量化，也就是我们常说的PTQ，虽然能有效压缩模型，但它们往往只关注模型输入端的统计信息，比如输入激活的协方差。这就导致了一个潜在的问题：这些方法默认模型的输出端，也就是模型的每个输出通道，对量化误差的贡献是均等的。但实际上，这并非总是如此。</p>
+<p>今天我们要聊的这篇论文，名为KronQ，它提出了一种全新的训练后量化框架，专门挑战了这种“输出端均等贡献”的假设。KronQ的核心思想是，在量化过程中，除了考虑输入激活的协方差，还要引入一个至关重要的信息：梯度协方差。通过利用一种叫做克罗内克积因子化的Hessian近似方法，KronQ能够更全面地理解模型权重的敏感性，从而实现更精准、更高效的量化。</p>
+<p>简单来说，Hessian矩阵可以看作是模型损失函数曲率的一种度量，它告诉我们模型参数在不同方向上对损失变化的敏感程度。在深度学习中，准确估计完整的Hessian矩阵计算量巨大，几乎不可能。而克罗内克积因子化近似，则巧妙地将这个巨大的Hessian矩阵分解成两个较小的矩阵的克罗内克积，一个与输入激活的协方差相关，另一个则与梯度协方差相关。之前的PTQ方法，比如GPTQ及其后续改进，仅仅使用了输入激活协方差作为Hessian的代理，这相当于隐式地假设了梯度协方差是一个单位矩阵，也就是说，它认为模型的所有输出方向都是同等重要的。但KronQ通过实验发现，模型的不同输出通道在梯度大小上差异巨大，这说明了输出端的敏感性是异构的，不能一概而论。</p>
+<p>KronQ正是抓住了这个被忽视的梯度协方差信息，并在两个互补的层面上加以利用，从而显著提升了量化效果。</p>
+<p>首先，它引入了“双向不相干处理”技术。我们知道，量化误差往往与模型权重的数值分布有关，如果权重值分布不均匀，存在很多异常值，那么低比特量化就更容易出错。为了解决这个问题，一些现有方法会通过随机正交变换来打乱权重和输入激活的谱方向，让它们的数值分布变得更“平坦”，也就是更不相干。但这只处理了输入端。KronQ则将这种思想扩展到了输出维度，它利用梯度协方差来指导输出端的随机旋转。想象一下，如果把模型权重看作一张地图，现有的方法只是把横向的崎岖不平变得平坦，但纵向的起伏依然存在。KronQ的双向不相干处理，就是同时把横向和纵向的崎岖都给“熨平”，使得权重值的幅度在输入和输出两个维度上都更加均匀，从而大大降低了量化时的舍入误差。这个过程在数学上，是通过对角缩放和哈达玛变换等正交变换来实现的。值得一提的是，尽管引入了梯度协方差，但KronQ在实际的量化更新过程中，梯度协方差的项会神奇地被抵消掉，这意味着它能保持与现有量化器相当的计算效率，不会增加额外的量化时间开销。</p>
+<p>其次，KronQ还推导出了一个新的“敏感度指标”，用于实现跨层的混合精度分配。在混合精度量化中，我们希望根据模型不同层的敏感程度，为它们分配不同的比特宽度，越敏感的层分配更高的比特，反之则分配更低的比特，以在模型性能和压缩率之间找到最佳平衡。现有的方法通常只依赖输入激活Hessian的迹（trace）来衡量敏感度。但问题是，在Transformer模型中，像查询（Q）、键（K）和值（V）这些投影层，它们共享相同的输入，因此仅凭输入激活Hessian的迹，是无法区分它们各自敏感度的。而KronQ提出的新敏感度指标，是梯度Hessian的迹与激活Hessian的迹的乘积。由于Q、K、V投影层虽然输入相同，但它们接收到的下游梯度是不同的，因此它们的梯度Hessian的迹也会不同。这样一来，KronQ就能成功地打破这种“同输入”带来的敏感度退化问题，为Q、K、V以及其他子层进行更精细、更合理的比特分配，从而在相同的平均比特数下，实现更好的模型性能。</p>
+<p>为了验证KronQ的有效性，研究人员在多个大规模语言模型上进行了广泛的实验，包括LLaMA-2和LLaMA-3系列，从70亿参数到700亿参数的模型都涵盖在内。他们测试了多种量化设置，包括纯权重2比特、3比特、4比特量化，以及权重和激活的混合量化。</p>
+<p>实验结果非常令人印象深刻。在最严苛的2比特纯权重量化任务上，当GPTQ和GPTAQ这些主流方法在LLaMA-3-70B模型上出现性能退化甚至量化失败（困惑度飙升到2000以上）时，KronQ依然能够保持出色的性能，困惑度仅为7.93。困惑度是衡量语言模型预测下一个词的能力，数值越低代表模型表现越好。这清楚地表明，KronQ在极低比特量化方面拥有显著的优势，尤其是在其他方法难以驾驭的场景下。</p>
+<p>除了困惑度，KronQ在多项零样本推理任务上的准确率也持续领先，展现出更好的泛化能力。即使是针对更新的模型家族，比如Gemma和DeepSeek，以及更具挑战性的推理基准测试，KronQ依然在所有设置中胜出，并且在2比特量化时，其优势更为明显。特别是在像LiveCodeBench这类生成式推理任务上，KronQ几乎将GPTAQ的得分翻了一番，这说明输出端的曲率信息在处理复杂推理任务时，具有非凡的价值。</p>
+<p>在混合精度量化方面，KronQ的敏感度分数也表现出卓越的性能。通过将最敏感的子层从2比特提升到3比特，KronQ的敏感度排名能够带来比仅依赖激活Hessian的排名更好的困惑度-比特数权衡。这进一步证明了同时考虑输入和输出两端Hessian信息的正确性和有效性。</p>
+<p>当然，任何方法都有其成本。KronQ在校准阶段会引入适度的延迟开销，大约每层增加8到11秒，这主要是由于双向哈达玛旋转需要进行密集的矩阵乘法。在内存方面，为了存储梯度协方差矩阵，KronQ会有一个临时的内存峰值，但一旦双向不相干处理完成，这个矩阵就会被释放，后续的量化循环所需的内存与GPTAQ相当。</p>
+<p>更重要的是，这些校准开销带来的性能提升，在实际部署中能够带来巨大的收益。KronQ量化后的模型，在内存占用上相比全精度模型可减少3.5到7.5倍，解码延迟也能提升1.25到2.51倍。这意味着一个原本需要两块80GB A100显卡才能运行的700亿参数模型，在KronQ的4比特量化下，可以轻松地在一块A100显卡上运行，极大地降低了部署成本和门槛。</p>
+<p>总的来说，KronQ通过巧妙地引入梯度协方差信息，解决了现有训练后量化方法在处理模型输出端敏感性时的盲区。它在双向不相干处理和混合精度分配上的创新，为大型语言模型的超低比特量化开辟了新的道路，尤其是在2比特量化这样极具挑战性的场景下，展现出卓越的性能和稳定性。这项工作不仅在理论上深化了我们对量化误差的理解，更在实践中为LLM的广泛部署提供了强大的技术支持。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

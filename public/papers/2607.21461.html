@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AREX: Towards a Recursively Self-Improving Agent for Deep Research · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 24, 2026</time> · <a href="https://arxiv.org/abs/2607.21461">arXiv</a> · <a href="https://arxiv.org/pdf/2607.21461">PDF</a></div>
+    <h1>AREX: Towards a Recursively Self-Improving Agent for Deep Research</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-24-arex-towards-a-recursively-self-improving-agent-for-deep-res-9546bd3f.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Deep research requires agents to find answers that jointly satisfy multiple constraints. Discovering such answers is costly, whereas verifying a candidate can often be decomposed into tractable constraint-wise checks. This discovery--verification asymmetry suggests that a research agent should do more than simply search longer: it should recursively improve its current answer by verifying intermediate results and using the partially verified state to guide subsequent refinement. We introduce AREX, a family of Recursively Self-Improving (RSI) deep research agents. AREX alternates between an inner research loop that gathers evidence and constructs a provisional answer, and an outer self-improvement loop that audits the answer constraint-wise, identifies unresolved claims, and launches targeted follow-up research. To sustain RSI over long horizons, AREX learns an autonomous context-update tool that compresses growing interaction history into a compact improvement state preserving verified evidence and unresolved constraints, without relying on an external model. We train AREX on verified synthetic tasks and high-quality trajectories through agentic mid-training and long-horizon reinforcement learning. To mitigate sparse final rewards during long horizon learning, we emphasize key steps where decisive evidence is acquired or erroneous research directions are corrected. We instantiate a dense 4B model and a 122B-A10B Mixture-of-Experts model. Across BrowseComp, WideSearch, DeepSearchQA, Humanity&#x27;s Last Exam (HLE), and other reasoning and tool-use benchmarks, AREX substantially outperforms comparable-scale baselines and remains competitive with models using substantially more activated parameters.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>深度研究这件事，难点不只是&quot;找到信息&quot;，而是找到一个能同时满足多个约束条件的答案。比如你要找的不是某一个事实，而是一个人物，他必须同时满足：在某个时间段活跃、发表过某类研究、获得过某个奖项、还和某个机构有关联。这四个条件缺一不可，任何一个没满足，答案就是错的。这种任务，现有的搜索增强型语言模型系统面对起来非常吃力，因为它们的基本逻辑是：搜得更多、想得更深、上下文拉得更长。但问题在于，拉长搜索轨迹并不等于系统性进步，早期的错误会一直被带着走，已经走投无路的方向会被反复尝试，部分正确的候选答案可能被过早接受。</p>
+<p>AREX这篇论文来自北京智源人工智能研究院，它要解决的核心问题就是：一个深度研究智能体，不应该只是&quot;搜更久&quot;，而应该在搜索过程中能够识别哪些约束已经被满足、哪些还没有，然后用这个诊断结果来驱动下一轮更有针对性的研究。这个思路背后有一个非常关键的观察，论文称之为&quot;发现与验证的不对称性&quot;。</p>
+<p>什么意思呢？发现一个同时满足所有约束的答案，是极其困难的，因为搜索空间很大，有价值的线索又很稀疏。但是，验证一个候选答案是否满足某个具体约束，往往可以分解成一系列更容易处理的独立检查。就好比你要找一根针，难；但如果有人递给你一根，让你判断它是不是那根，就容易多了。而且验证不只是告诉你&quot;对还是错&quot;，它还会告诉你：哪几个条件已经有证据支持，哪几个还悬在空中，哪几个证据之间相互矛盾。这个&quot;部分验证的状态&quot;，是非常有价值的中间信息。</p>
+<p>现有的工作要么把验证用在最后——用来从多个候选轨迹里选最好的那个——要么把它用在轨迹内部做局部修正。AREX的关键创新在于，把验证作为研究轮次之间的转换操作符。它把一个临时答案转化成一个&quot;部分验证的研究状态&quot;，然后用这个状态去驱动下一轮更精准的研究。这就是&quot;递归自我改进&quot;的含义。</p>
+<p>具体来说，AREX的整体架构是一个双层循环结构。内层叫做&quot;研究循环&quot;，负责收集证据、评估候选答案、构建临时答案。外层叫做&quot;自我改进循环&quot;，负责逐约束地审查临时答案、识别未解决的声明、决定是否接受答案、还是发起下一轮针对性研究。</p>
+<p>内层研究循环的运作方式是这样的：在每一轮里，模型根据当前研究目标，调用搜索工具或网页浏览工具，把返回的证据整合进来，判断下一步怎么做。如果发现当前候选答案被推翻，就转向新的方向；如果来源之间有冲突，就寻找权威性更强、更直接、时效性更好的证据。当模型判断当前目标已经研究得足够充分，或者继续搜索不太可能带来实质收益时，它会调用一个叫做&quot;finish&quot;的接口，输出三样东西：临时答案、支持证据和文档标识、以及一个答案级别的置信度分数。</p>
+<p>这个置信度分数是外层循环的核心输入。外层循环看到置信度之后，如果超过预设阈值，就接受这个答案，整个递归过程结束。如果没超过，外层循环就要评估当前轨迹是否还有救：如果有用的发现值得保留，就进入&quot;精炼&quot;模式，把可靠的发现保留下来，把剩余的问题转化成下一轮的精准目标；如果轨迹太嘈杂、太有误导性，就进入&quot;重启&quot;模式，丢弃当前轨迹，从原始问题重新开始。这个过程有最大轮次限制，如果没有任何一个答案达到置信度阈值，就返回置信度最高的那个。</p>
+<p>现在我们来谈一个在这个框架里极其重要、但很容易被忽视的机制，叫做&quot;自主上下文更新&quot;，也就是论文里的ACU。这个机制解决的问题是：随着研究轨迹越来越长，上下文里积累的东西越来越多——搜索结果、中间结论、被否定的候选答案、相互冲突的发现、不断变化的计划。如果原封不动地保留所有这些，后续的推理会被噪声干扰；但如果随意截断，又可能丢掉后续验证需要的关键证据。</p>
+<p>现有的做法通常是固定规则：比如按照预设的规则丢弃工具返回结果，或者在达到某个token数量阈值时触发摘要。这些做法把上下文管理当成&quot;预算控制问题&quot;，而不是&quot;研究状态维护问题&quot;。结果就是，它们可能会丢掉或稀释关键信息，比如信息来源的溯源、负面证据、未解决的约束、相互冲突的发现、以及某个候选答案被否定的原因。</p>
+<p>AREX的解决方案是让模型自己学会调用一个专门的工具，叫做&quot;update_context&quot;。模型自主决定什么时候调用，比如在解决了一个有意义的子问题之后，在排除了一个主要候选答案之后，在调和了相互冲突的证据之后，或者在改变研究计划之后。调用之后，这个工具会把当前的交互历史压缩成一个紧凑的&quot;改进状态&quot;。这个状态里保留了什么呢？已验证的发现和它们的来源标识、当前的候选答案、未解决的约束、有效性方面的顾虑、已被否定的候选答案、以及下一步的研究计划。冗余的观察、已被推翻的结论、过时的计划，全部删掉。</p>
+<p>这里有一个非常关键的区别：这个压缩不是由外部模型来做的通用摘要，而是AREX自己生成的，而且是围绕它当前的研究目标来组织的。这保证了压缩后的状态和模型当前的认知状态、未来的行动计划是对齐的。</p>
+<p>从实验数据来看，这个机制有多重要呢？在BrowseComp这个基准测试上，单纯有内层研究循环、没有ACU的情况下，准确率是59.6分。加上ACU之后，准确率跳到71.4分，绝对提升11.8个点。外层自我改进循环带来的提升：没有ACU时，加上外层循环从59.6升到69.8，提升10.2点；有ACU时，加上外层循环从71.4升到82.5，提升11.1点。完整系统的82.5分，比两者都没有的基线高出22.9个点，是所有消融实验里差距最大的。</p>
+<p>我们还可以看一下ACU在实际运行时的行为模式。在BrowseComp的案例里，模型在80.3%的情况下会调用update_context。调用时的平均上下文长度是25721个token，中位数是25386个token，远低于128K的上限。只有0.01%的调用发生在接近上限的位置。这说明ACU主要是一种主动的研究操作，而不是被动的应急措施。触发原因里，搜索策略需要调整占66.9%，候选答案被否定占13.6%。更新后保留的内容里，未解决的约束和下一步计划是保留率最高的元素，这符合直觉——模型最需要记住的是&quot;还有什么没弄清楚&quot;和&quot;下一步该干什么&quot;。</p>
+<p>置信度分数这个机制也经过了验证。正确的最终答案里，95.9%的置信度落在90到100这个区间；错误的最终答案里，55.2%的置信度低于60。这种分布上的分离意味着，外层循环可以仅凭置信度分数就识别出大多数需要继续的情况，而不需要重新解读整条轨迹。</p>
+<p>接下来讲训练部分，这是这篇论文另一个技术密度很高的地方。AREX的训练分成三个主要阶段：监督能力获取、多阶段主动学习中训练、以及步骤感知的强化学习。</p>
+<p>训练数据的构建也很有意思。论文构建了一个合成任务数据集，专门用于递归研究训练。任务生成的逻辑是这样的：先从真实来源里提取一个目标实体或答案，然后识别出与之相关的一组约束条件，这些约束可以涉及时间关系、数值属性、实体关系、技术特征等。然后把这些约束抽象转化成间接描述，需要多跳推理才能解答。最终的任务必须满足三个条件：答案不能直接从问题中推断出来、每个约束都可以从现有证据中验证、多个约束联合唯一确定答案。之后还有自动验证流程，剔除答案模糊、约束矛盾或证据不足的任务，以及通过多次独立rollout筛掉太简单或完全无解的任务。</p>
+<p>教师轨迹的收集也做了严格质量控制：不只是保留最终答案正确的轨迹，还要求轨迹展示了有意义的迭代调查行为、连贯的研究状态维护、以及对新证据的适应性调整。猜答案、忽略观察结果、不修正错误假设的轨迹，全部删掉。</p>
+<p>中训练阶段采用渐进式多轮能力训练。第一阶段先训练浏览密集型任务，建立工具使用和证据获取的基本能力；然后引入专家推理任务，强化长链思维、假设验证和复杂问题解决能力。但问题来了：过度专注于推理任务会削弱之前建立的浏览和工具使用能力，这是一种能力干扰现象。为了缓解这个问题，论文引入了&quot;混合能力巩固&quot;阶段，把能力扩展任务与浏览密集型长轨迹的选择性回放结合起来。关键点在于，不是均匀地回放完整轨迹，而是集中在&quot;关键步骤&quot;上。</p>
+<p>什么是关键步骤？论文定义了三类：第一类是在多次探索性步骤之后，第一次工具调用的结果为答案相关实体或约束提供了证据；第二类是模型第一次拒绝之前探索的错误实体或假设、并将搜索重定向到更有希望方向的步骤；第三类是模型调用上下文更新工具、把已验证的证据保存到改进状态、记录未解决条件、并准备下一个针对性研究计划的关键步骤。</p>
+<p>这些关键步骤的识别方式是基于规则的检测器，而不是模型的自我报告。只有当工具观察引入了答案相关证据、支持了向解决方案的可验证转变、或者产生了经证据积累后的可操作改进状态时，一个步骤才会被标记为关键步骤。而且这些标注只用于训练，不会在评估或推理时使用。</p>
+<p>为什么要这么做？论文做了一个步骤级别的损失分析，结果非常有说服力。在完整轨迹训练之后，普通步骤的平均token损失是0.232；而三类关键步骤的损失分别是：证据发现0.277、路径拒绝与重定向0.298、关键上下文更新0.300。相对于普通步骤分别高出约19%、28%、29%。这说明即使经过完整轨迹的监督学习，模型对这些最重要的决策时刻仍然欠拟合。这个发现是整个关键步骤集中训练设计的实证基础。</p>
+<p>关键步骤集中监督的实现方式：对于每个选中的关键步骤，保留其完整的前缀上下文作为条件，但损失函数只作用于这个关键步骤本身，前缀token、用户消息和工具观察都被遮掉。消融实验显示，把关键步骤集中监督替换成从相同轨迹里随机抽样等数量步骤的做法，BrowseComp准确率从82.5降到74.1，是所有消融实验里降幅最大的一个，下降了8.4个点。这说明额外的监督信号集中在欠学习的决策关键步骤上，效果远好于随机分配到普通步骤。</p>
+<p>强化学习阶段采用了&quot;步骤感知的组策略优化&quot;。标准的组相对策略优化方法把序列级别的奖励信号均匀传播到轨迹里的所有token上，这对于长轨迹来说是很粗粒度的信用分配。AREX的做法是转向轮次级别的策略优化，并加入了两个关键设计：</p>
+<p>第一个是分层归一化。先在每条轨迹内对各个助手步骤取平均，再在rollout组内对各条轨迹取平均。这防止了步骤更多的长轨迹仅仅因为长度而主导训练目标，更好地反映了长轨迹异质性结构。步骤级别的策略比率使用几何平均来做长度归一化，让不同长度步骤之间的比率尺度可比。</p>
+<p>第二个是步骤级别的奖励塑形。关键步骤注释被复用为有界的辅助塑形信号。关键步骤的奖励加成只在轨迹级别结果有效时才应用，以避免对虚假的中间行为发放奖励。最终步骤级别的优势函数是：轨迹级别的结果优势加上关键步骤的加成项，加成强度有超参数控制。这个设计保持最终答案奖励作为主要优化信号，同时给决策关键步骤加一个小的辅助偏好。</p>
+<p>消融实验显示，把步骤感知强化学习替换成标准GRPO，BrowseComp从82.5降到79.4，下降3.1个点。这说明步骤感知策略优化在中训练建立主要能力之后，进一步精炼了研究策略。</p>
+<p>来看整体实验结果。AREX实例化为两个版本：AREX-Turbo是基于Qwen3.5-4B的稠密模型，AREX-Base是基于Qwen3.5-122B-A10B的混合专家模型，122B总参数、10B激活参数。评估基准涵盖六个，分别是BrowseComp、WideSearch、DeepSearchQA、人类最后考试（带工具版本）、GAIA、以及xbench-DeepSearch-2510，覆盖了深度搜索、广度搜索、多约束信息查找、以及带工具的推理四种场景。推理时每个episode允许最多300个内层研究循环轮次和5次外层自我改进循环操作。</p>
+<p>AREX-Base在10B激活参数的情况下，能力参数比表现突出，不仅超越了Qwen3.5系列，包括大得多的Qwen3.5-397B，还在多个基准上与领先的开源和专有研究智能体保持竞争力。具体来说，它在DeepSearchQA和纯文本HLE上超过了MiroThinker-H1；在DeepSearchQA、WideSearch-en和纯文本HLE上超过了DeepSeek-V4-Pro；在GAIA和WideSearch-en上超过了Kimi-K2.6；在WideSearch-en上取得了所有报告结果中最好的分数。AREX-Turbo这个4B模型在六个基准里的五个上超过了Qwen3.5-35B，这个对比特别说明问题，因为参数量差了将近九倍。</p>
+<p>关于局限性，论文在结论部分和附录里都有诚实的讨论。首先，外层自我改进循环目前依赖一个置信度阈值，这个阈值是预设的，并不是自适应学习的。其次，关键步骤的识别目前依靠高精度规则检测器，这些规则是基于可验证的任务结构设计的，具有较好的精确率，但覆盖率有限，未来需要更通用、更自动化的步骤效用估计机制。第三，附录里提到了一个初步探索方向叫做&quot;轨迹自蒸馏&quot;：用一个中间训练好的模型为同样的问题重新生成轨迹，然后用这些新轨迹训练一个从头初始化的模型。实验显示在简化设置下BrowseComp从52.3提升到57.1，提升4.8个点，但作者明确指出这个结果没有与完整系统结合测试，自生成轨迹也可能继承或放大教师模型的偏差，所以这只是一个有潜力的方向，而不是已经成熟的组件。</p>
+<p>对于做相关研究的人来说，这篇论文有几个非常值得借鉴的地方。</p>
+<p>第一是&quot;发现-验证不对称性&quot;这个框架视角。不要把验证只看作一个最终过滤器，而是把它当成研究过程的控制信号，用部分验证的状态来定义下一步研究的起点和方向。这个思路可以推广到任何需要多步决策、且中间状态可以结构化表示的场景。</p>
+<p>第二是上下文管理的设计哲学。把上下文压缩从&quot;预算控制问题&quot;重新定义为&quot;研究状态维护问题&quot;，这意味着你需要知道压缩后的状态要保留什么、为什么保留，而不只是压缩到多少token。让模型自主决定何时压缩、压缩什么，并且围绕当前目标来组织，这比固定规则更对齐实际的推理需求。</p>
+<p>第三是关键步骤的识别和集中训练。如果你在做长轨迹的强化学习或监督学习，做一次步骤级别的损失分析，找出那些在完整轨迹训练后仍然损失偏高的步骤，重点对这些步骤加强监督，效果往往远超均匀地扩大训练数据量。这个思路在任何长视野序列决策任务里都值得尝试。</p>
+<p>第四是渐进式能力训练的重要性。先建立基础的工具使用能力，再叠加复杂推理能力，能有效减少不同类型训练目标之间的相互干扰。消融实验里直接混合训练比渐进式训练低了5个点，这个代价不小。</p>
+<p>AREX这个工作的核心贡献，用一句话概括就是：把验证从研究的终点变成了研究的导航仪，让智能体能够在长视野的探索过程中保留已确认的进展、隔离剩余的不确定性、并把这种不确定性转化成下一步更精准的研究问题，这是让深度研究智能体真正具备系统性自我改进能力的关键一步。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

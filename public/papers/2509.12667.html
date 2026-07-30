@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Osu2MIR: Beat Tracking Dataset Derived From Osu! Data · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Sep 16, 2025</time> · 1 min read · <a href="https://arxiv.org/abs/2509.12667">arXiv</a> · <a href="https://arxiv.org/pdf/2509.12667">PDF</a></div>
+    <h1>Osu2MIR: Beat Tracking Dataset Derived From Osu! Data</h1>
+    <div class="tags"><span class="tag">metro</span><span class="tag">reading-list</span><span class="tag">t1</span></div>
+  </header>
+  <section class="notes"><h2>Notes</h2><ul><li>同样挖 osu! 谱面、你最大的 novelty 威胁。必须精确知道它做了什么（抽节拍网格、非敲击点），才能写好 pincer 防线。</li></ul></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2025-09-16-osu2mir-beat-tracking-dataset-derived-from-osu-data-cd770c44.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>In this work, we explore the use of Osu!, a community-based rhythm game, as an alternative source of beat and downbeat annotations. Osu! beatmaps are created and refined by a large, diverse community and span underrepresented genres such as anime, Vocaloid, and video game music. We introduce a pipeline for extracting annotations from Osu! beatmaps and partition them into meaningful subsets. Through manual analysis, we find that beatmaps with a single timing point or widely spaced multiple timing points (&gt;=5 seconds apart) provide reliable annotations, while closely spaced timing points (&lt;5 seconds apart) often require additional curation. We also observe high consistency across multiple annotations of the same song. This study demonstrates the potential of Osu! data as a scalable, diverse, and community-driven resource for MIR research. We release our pipeline and a high-quality subset osu2beat2025 to support further exploration: https://github.com/ziyunliu4444/osu2mir.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>节拍追踪（beat tracking）这个任务听起来简单——就是让机器听音乐、找出每一拍在哪一秒——但它在音乐信息检索领域一直是个硬骨头，而制约它进步的核心瓶颈，不是算法不够强，而是数据不够好、不够多、不够多样。这篇论文想解决的正是这个问题：能不能从一个意想不到的地方找到高质量的节拍标注数据？他们的答案是：去音游里挖。</p>
+<p>先说清楚背景。深度学习模型做节拍追踪，需要大量有标注的音频，也就是你得告诉模型，这首歌在0.52秒有一拍，在1.04秒又有一拍，依此类推，还要标出哪一拍是每小节的第一拍，也就是所谓的&quot;下拍&quot;（downbeat）。这些标注传统上是怎么做的？靠专家手动标。一个人戴着耳机，盯着波形，一拍一拍地打时间戳。这个过程极其耗时，所以现有的标准数据集规模都很小，而且风格极度集中——大量是西方流行音乐、摇滚、爵士，动漫歌曲、Vocaloid、电子游戏BGM这些类型几乎没有覆盖。更麻烦的是，既然是一个人标，那这个人的偏见就会进入数据。比如他觉得某段是4/4拍，但另一个人可能认为是2/4拍，两个人都有道理，但数据集只记录了一种意见。还有一个问题论文直接点出来——这些数据集里有没被发现的错误，而且因为数量少，没人反复核查。</p>
+<p>那音游数据为什么可以解决这些问题？这里要解释一下osu!这个游戏。osu!是一款免费的节奏类游戏，玩家点击随音乐出现的圆圈，核心机制是你的操作必须精确对齐音乐的节拍。游戏里的关卡叫做&quot;谱面&quot;（beatmap），全部由玩家社区自制上传，目前平台上有超过四万套谱面，涵盖来自日本、韩国、欧美的各种音乐，其中大量是动漫歌曲、Vocaloid合成声乐、游戏OST。</p>
+<p>更关键的是游戏的技术结构。每一张谱面里都有一个叫做TimingPoints的配置段落，里面存着&quot;非继承时间点&quot;（uninherited timing points），每个时间点包含三件事：从哪个毫秒开始、每拍多少毫秒（也就是BPM的倒数）、这里是几拍一小节。有了这些信息，你就可以精确计算出整首歌每一拍落在哪一秒。而且这些时间点是谱面作者手工对齐音乐的，因为如果对不准，游戏就会感觉很别扭，玩家会给差评，谱面就上不了官方排名榜。所以游戏的激励机制天然地保证了时间点的精确性。</p>
+<p>还有一点很重要：osu!的谱面排名体系。一张谱面要进入&quot;ranked&quot;状态，需要经过多个审核员的审查，有一套类似于同行评审的流程。排名靠前的谱面是经过社区层层筛选的，质量比较有保障。论文正是利用了这一点——他们只收集ranked状态的谱面。</p>
+<p>这就是整个研究动机的核心逻辑：osu!社区几十年来自发地做了一件事，就是把大量音乐精确地配上了节拍时间信息，而且这件事是为了游戏好玩、为了让自己的作品被认可而做的，不是为了MIR数据集做的，所以它的激励结构完全独立于学术界，某种程度上更纯粹。</p>
+<p>下面说数据收集的具体做法。他们用了一个叫&quot;Batch Beatmap Downloader&quot;的第三方工具，这是一个osu!玩家nzbasic开发的批量下载器。为了保证质量，他们设了三个过滤条件：第一，只选ranked谱面；第二，谱面集里必须包含&quot;Insane&quot;难度，也就是第二高难度档，这个条件的目的是筛选节奏比较复杂的音乐，因为简单难度的谱面往往是一些很规整的曲子，节奏多样性不足；第三，谱面集至少要有200个收藏，这是一个流行度门槛，保证选到的是有一定受众、经过更多人验证的内容。</p>
+<p>数据处理流程是这样的。osu!的谱面文件格式是.osz，本质上是一个压缩包，解压之后里面有若干个.osu文件（每个难度一个）和音频文件（.mp3）。他们写了一个Python脚本，自动解压每个.osz包，读取.osu文件里的General段落（用来找到这个谱面对应的是哪个音频文件）和TimingPoints段落（用来提取所有非继承时间点）。然后根据这些时间点，从第一拍开始，按照该段的BPM逐拍叠加时间戳，同时计算每拍在小节里的位置——也就是第几拍，用来区分下拍和非下拍。最后输出一个制表符分隔的标注文件，同时把对应的音频复制到目标目录。整个流程是全自动的，可以批量处理几千张谱面。</p>
+<p>处理完之后，他们把数据按照一个关键维度分成三个子集，这个维度就是：一张谱面里有多少个非继承时间点，以及这些时间点之间的时间间隔。</p>
+<p>第一个子集：整首歌只有一个非继承时间点。这意味着全曲BPM和拍号完全固定，节拍是完全规律的等间隔序列。</p>
+<p>第二个子集：有多个非继承时间点，但相邻两个时间点之间间隔至少5秒。这通常对应的情况是：一首歌有明显的段落切换，比如前奏是一个BPM，副歌突然加速，或者有一段明显的拍号变化，比如从4/4切换到3/4。每个时间区段本身是稳定的，但歌曲整体有结构性的变化。</p>
+<p>第三个子集：有多个非继承时间点，且相邻两点间隔不足5秒。这里用了5秒作为一个经验阈值来区分&quot;真正的结构性切换&quot;和&quot;密集微调&quot;。密集的时间点往往意味着什么？要么是谱面作者在追踪非常细微的节拍漂移，要么是作者用了一些特殊的方式来标注，比如用多个短暂的时间点来模拟渐变速度，或者把时间点对齐到歌词而不是音乐节拍本身。</p>
+<p>为了评估每个子集的标注质量，他们没有直接和另一个&quot;真实标注&quot;比较——因为那样就又回到了小规模人工标注的老路。他们的方法是：用madmom这个经典的音乐信号处理库里的RNN节拍追踪器，让它听音频、自动预测节拍，然后把这个预测结果和从谱面提取的标注做比对。用来衡量比对结果的指标有三个：F-measure（节拍的精确率和召回率的综合），CMLt（连续对齐的节拍比例，要求连续多拍都对准），以及AMLt（宽容版本的连续对齐，允许2倍或一半速度的偏差，因为有时候一首曲子你可以说它是每分钟120拍，也可以说它是每分钟60拍）。</p>
+<p>这里有个很重要的方法论意识：他们明确说，这不是说madmom一定是对的，而是把madmom的预测当作一个启发式的质量探针——如果madmom和谱面标注高度一致，说明这个标注很可能是正确的、符合音乐感知的；如果高度不一致，就把这条数据拉出来人工复查，看看是谱面标注有问题，还是madmom自己预测错了，还是这首歌本身就有某种特殊的节奏结构让两边都不对。这个思路设计得相当务实。</p>
+<p>来看结果数字，三个子集一一讲。</p>
+<p>第一子集，单时间点。拿madmom的预测来对比，平均beat F1是0.91，beat CMLt是0.82，beat AMLt是0.92，downbeat F1是0.87，downbeat CMLt是0.80，downbeat AMLt是0.91。这些数字相当高。人工抽查也确认了质量好，包括一些切分节奏的歌、非4/4拍的歌（比如3/4、7/8这些），标注都是可靠的。多个用户对同一首歌的标注也高度一致。论文的评价是：这个子集可靠性高，但节奏多样性相对有限——单时间点的歌本身就是节拍最规律的那一类，拿它训练模型可能对复杂节奏的泛化帮助不大。</p>
+<p>第二子集，多时间点且间距大于等于5秒。beat F1是0.89，beat CMLt是0.77，beat AMLt是0.87，downbeat F1是0.81，downbeat CMLt是0.72，downbeat AMLt是0.82。数字比第一子集略低，这是合理的，因为有段落切换的歌本来就更复杂，madmom也更容易在段落边界预测失误。人工检查发现标注质量很好，确实反映了真实的速度和拍号变化。多标注者之间也高度一致，偶尔的分歧是在速度折叠问题上——比如一个人认为这段是BPM 140、4拍一小节，另一个认为是BPM 70、8拍一小节，这两种理解在音乐上都是合理的，只是对节拍层级的选择不同。论文说这个子集质量高而且多样性好，是最有价值的一个子集，他们发布的公开数据集osu2beat2025就是基于这个子集。</p>
+<p>第三子集，多时间点且间距小于5秒。beat F1是0.86，beat CMLt是0.71，beat AMLt是0.83，downbeat F1是0.76，downbeat CMLt是0.61，downbeat AMLt是0.73。数字下降比较明显，尤其是downbeat CMLt只有0.61，这个指标连续对齐要求最高，说明下拍的标注质量问题更突出。人工检查揭示了几个具体问题：第一，osu!的编辑器不支持非4的倍数拍号，比如你没法直接标一个5/4或7/8，有些作者就用密集的时间点来变通地模拟这种效果，结果反而让标注变得不规则；第二，有些作者把时间点对齐到歌词的节奏而不是音乐的节拍，这对玩家体验可能有意义，但对节拍追踪来说就是噪声；第三，密集时间点有时只是在微调渐变速度，而不代表真正的新时间结构。这个子集不是不能用，但需要额外的人工筛选，不建议直接拿来训练模型。</p>
+<p>发布的数据集osu2beat2025包含741个标注文件，对应708首不同的音频（有些歌有多个用户标注）。文件命名格式是MD5哈希加上谱面集ID再加上beats metered后缀，都是制表符分隔的文本文件，里面记录了每一拍的时间戳和它在小节里的位置。论文还给了几个使用注意事项，值得专门说一下：第一，标注的时间范围可能超出音频的实际可听范围，如果你要用它训练模型，建议先把音频裁剪到有效结束时间；第二，当同一首歌有多个标注者，而且他们用了不同的拍号，那个用复合拍号或加法拍号的版本通常才是更正确的音乐解读，比如有人用6/8、有人用3/4，6/8往往更能反映这首歌的律动特性。</p>
+<p>再讲一个比较有趣的观察，他们在数据分析过程中注意到：osu!用户的时间点标注系统性地比madmom预测的节拍稍微靠前一点点，也就是人类觉得拍子在哪里，比算法觉得的要略早。这可能反映的是人类感知节拍的方式——我们倾向于在感知到律动开始时就标记它，而不是等待声学上的峰值能量出现。这不是错误，而是人与机器感知节拍的系统性差异，这个发现对后续研究很有意义，因为如果你用这些数据评估算法，可能需要考虑这个系统性偏移的问题。</p>
+<p>讲完核心内容，来说说和已有工作的区别和这篇论文的贡献到底在哪里。在这之前的工作里，从节奏游戏挖数据做MIR只有一个先例，叫ADTOF，它是从Guitar Hero和Rock Band等游戏的鼓轨谱面里提取数据，做鼓声转录用的。但那是鼓转录，不是节拍追踪。osu2MIR是第一个把osu!数据用于节拍追踪这个任务的系统性工作。另外一批相关工作是用osu!数据生成游戏谱面——也就是给一首新歌自动生成osu!的打击序列——但那是AI生成谱面，方向完全相反，是把MIR技术用于游戏，而不是把游戏数据反哺MIR。</p>
+<p>这篇论文的贡献是三方面的。首先是方法层面，提出了一套完整的、可复现的从osu!谱面提取节拍标注的流水线，而且代码和数据都开源。其次是数据层面，提供了一个包含708首歌的高质量标注数据集，这些歌里大量是动漫、Vocaloid、游戏音乐，这些类型在现有的MIR数据集里几乎找不到，对提升模型在这些类型上的泛化性有直接价值。第三是分析层面，通过三分法的分区策略和系统的质量评估，清晰地说明了什么样的osu!数据可以直接用，什么样的需要谨慎处理，给后来想用这个思路的人提供了具体的操作指导。</p>
+<p>这里值得特别强调的是数据多样性这件事。现有的节拍追踪数据集——比如被广泛使用的GTZAN beat annotations、Ballroom、RWC等——在流派覆盖上有明显的西方中心偏差。一个在这些数据上训练出来的节拍追踪器，拿去处理日文动漫歌曲或者带有Vocaloid人工声线的合成音乐，表现往往不尽如人意，因为这些音乐的节拍感知线索和西方流行音乐是有差异的。osu!平台上天然存在大量这类内容，而且质量有社区机制保证，这是一个其他任何来源都很难提供的独特优势。</p>
+<p>局限性方面，论文也比较诚实地指出了几个问题。第一，osu!编辑器对拍号的支持有限，不能直接标5/4或7/8这样的拍号，这会限制数据在非常规拍号方面的表达能力。第二，第三子集（密集时间点）的质量问题比较严重，大量数据需要人工筛选才能用，这会消耗大量人力，而且如何系统性地自动过滤仍然是一个未解问题。第三，虽然多标注者一致性总体高，但在节拍层级选择（比如速度折叠）这个维度上仍然存在分歧，而且目前没有一个自动机制来判断哪个层级更合适。第四，这篇论文是ISMIR 2025的Late-Breaking Demo论文，属于扩展摘要性质，很多分析还比较初步，比如他们提到的系统性标注提前偏移只是观察，还没有做定量分析，也没有真正用这些数据训练节拍追踪模型来验证数据的实际价值，那个实验留在了未来工作里。</p>
+<p>对于做音乐信息检索、特别是做节拍追踪或者相关节奏分析任务的研究者，这篇论文有几个很具体的借鉴点。如果你的数据集里缺乏日本动漫、游戏音乐、Vocaloid这些类型，可以直接使用osu2beat2025作为补充数据来源，代码和数据都已开源，接入成本很低。如果你想自己构建更大规模的子集，他们提供的Pipeline可以定制化运行，你可以调整筛选条件，比如改变难度门槛或收藏数门槛，来平衡规模和质量。需要注意的是，使用第三子集数据之前，一定要加入额外的质量过滤步骤，至少要做一轮基于madmom比对的自动筛选，再加上人工抽查，不要直接拿来用。另外，当你设计多标注者一致性评估时，要把节拍层级差异和真正的标注错误区分开来，前者是可接受的解读差异，后者才是需要修正的问题。</p>
+<p>最后还有一个更大的视角值得记住：这篇论文实际上是在探索一种&quot;数据众包&quot;的新路径——不是让人专门来标注数据，而是找到那些因为其他目的（游戏娱乐）而产生的、但恰好对研究有用的副产品数据，把它转化为研究资源。这个思路在数据越来越贵的时代有很强的实用价值，osu!只是一个例子，背后的逻辑是：任何需要人类精确感知音乐节奏的活动，都可能留下对MIR有价值的隐性标注，关键是设计好提取和验证的流水线。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Forward Beats Two: InnerZoom for Accurate and Efficient GUI Grounding · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jun 30, 2026</time> · <a href="https://arxiv.org/abs/2606.30084">arXiv</a> · <a href="https://arxiv.org/pdf/2606.30084">PDF</a></div>
+    <h1>One Forward Beats Two: InnerZoom for Accurate and Efficient GUI Grounding</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  
+  <details class="abstract" open><summary>Abstract</summary><p>MLLM-based GUI grounding methods commonly formulate target localization as autoregressive coordinate generation, enabling models to leverage the strong instruction-following and semantic understanding capabilities of MLLMs. However, this formulation requires the model to retain region-level target evidence while decoding coordinate tokens with the spatial precision demanded by GUI clicking. Our diagnostic analysis reveals that target-region awareness emerges in intermediate decoder layers but is neither retained nor translated into the final coordinate prediction. Existing ZoomIn-style methods address this issue through an external crop-and-rerun pass, which improves localization but increases end-to-end latency and computational cost. To retain the accuracy benefits of two-pass zooming without this extra cost, we propose InnerZoom, a single-forward framework for cross-layer evidence bridging. InnerZoom transforms target-related cues from the original forward pass into a compact cross-layer evidence state, then preserves, refines, and reinjects this state throughout later decoding layers to guide coordinate prediction. Extensive experimental results suggest that InnerZoom-4B achieves state-of-the-art performance on all six GUI grounding benchmarks, obtaining 64.7 on OSWorld-G, 40.2 on UI-Vision, 73.1 on OSWorld-GR, and 87.6 on MMBench-GUI, surpassing the previous best results by 4.1, 3.2, 2.9, and 2.3 points, respectively. Under a controlled 4B setting, InnerZoom improves the same SFT+RL baseline by 5.3 points on average and outperforms two-pass ZoomIn by 1.3 points on average, while reducing end-to-end latency by up to 31.8% and TFLOPs by about 29%. Code and models will be publicly available.</p></details>
+  
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

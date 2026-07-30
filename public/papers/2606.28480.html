@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TUA-Bench: A Benchmark for General-Purpose Terminal-Use Agents · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jun 30, 2026</time> · <a href="https://arxiv.org/abs/2606.28480">arXiv</a> · <a href="https://arxiv.org/pdf/2606.28480">PDF</a></div>
+    <h1>TUA-Bench: A Benchmark for General-Purpose Terminal-Use Agents</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-06-30-tua-bench-a-benchmark-for-general-purpose-terminal-use-agent-680598e6.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>As large language models and harness frameworks continue to advance, agents operating in terminals are increasingly capable of performing a broader range of general computer-use tasks beyond coding. However, existing benchmarks do not adequately evaluate general-purpose terminal computer-use agents (TUAs): general computer-use benchmarks primarily target graphical user interfaces (GUIs), whereas terminal-based benchmarks largely emphasize technical and programming-centric workflows historically native to the shell. We introduce TUA-Bench, a general-purpose benchmark for terminal-use agents. TUA-Bench includes 120 real-world tasks across five task families, covering routine digital activities-including document editing, email management, and live-web information seeking-as well as scientific and engineering workflows co-designed with PhD-level domain experts that require specialized software. This breadth distinguishes TUA-Bench from prior shell-focused or domain-specific benchmarks. Each task is manually designed, runs in a real terminal with a deterministic setup script, and is evaluated by an execution-based scoring protocol. We find that the strongest frontier agent, Claude Code with Claude Opus 4.8 max reasoning effort, achieves 65.8% overall performance, with substantial gaps across both tracks. By providing a broad and realistic evaluation of terminal-use capabilities, TUA-Bench aims to accelerate the transition from narrow, task-specific assistants to general-purpose agents capable of operating reliably across diverse digital environments.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>大型语言模型在终端环境中的应用越来越广泛，但我们发现，现有的基准测试并不能充分评估这些通用终端使用代理的能力。我们平时使用电脑，大部分都是通过图形用户界面，也就是我们点击图标、操作鼠标的这种界面。所以，现在大多数评估AI代理的基准，也都集中在图形界面上，比如让AI去浏览网页、操作桌面应用等等。但问题是，图形界面的操作对AI来说，需要结合语言推理和视觉感知，它要看懂屏幕截图，把动作精确地对应到屏幕上的特定位置，还得适应布局、分辨率、渲染的变化。这些都引入了额外的感知和定位挑战，使得这些基于图形界面的评估，在某种程度上更多地衡量了AI的视觉理解和坐标级控制能力，而不是它核心的规划、推理和工具使用能力。</p>
+<p>与此同时，命令行界面，也就是我们常说的终端或Shell，却以文本原生的形式暴露了计算机的交互。命令是明确的，反馈是文本的，复杂的流程可以通过脚本、管道和专门程序来组合。这些特性使得命令行环境与大型语言模型的优势天然契合。更重要的是，许多高价值的专业工作流，比如软件工程、数据分析、科学计算、系统管理和多媒体处理，本身就是主要通过终端完成的。而且，除了这些传统的终端核心领域，命令行访问现在也越来越多地被广泛的软件系统所支持，像GitHub、Slack、Google Cloud，甚至一些社区项目，都在积极扩展命令行工具。这都表明，终端界面正在从编程专用工具，演变为调用应用程序、检查状态、组合工具和验证结果的更通用媒介。</p>
+<p>尽管有这样的发展趋势，但现有对AI代理的评估并没有充分捕捉到终端使用的广度。目前的终端基准测试，比如Terminal-Bench，主要还是集中在Shell原生的技术和编程工作流上，这使得它们在评估通用终端计算机使用能力方面显得力不从心。</p>
+<p>正是因为这个空白，我们引入了TUA-Bench，一个专门用于评估通用终端使用代理的基准。TUA-Bench包含了120个多样化、真实且具有挑战性的计算机使用任务，这些任务要求代理完全通过命令行界面来操作。这些任务被分成了五大家族，涵盖了从日常的数字活动，比如文档编辑、邮件管理、在线信息搜索，到与博士级领域专家共同设计的科学和工程工作流，这些专业任务往往需要代理操作专门的软件。这种广泛的任务覆盖范围，正是TUA-Bench与之前那些侧重于Shell或特定领域的基准测试的不同之处。TUA-Bench里的每一个任务都是经过人工精心设计的，它们在一个真实的终端环境中运行，并且拥有确定性的设置脚本。任务的评估采用基于执行的评分协议，也就是说，我们看重的是代理是否真正完成了任务，而不是它说了什么。我们发现，即使是最强的前沿代理，使用了Claude Code和Claude Opus 4.8的最大推理努力配置，也只达到了65.8%的整体性能，这表明在不同任务类型之间仍然存在显著的差距。通过提供对终端使用能力的广泛和现实评估，TUA-Bench旨在加速AI代理从狭窄的、任务特定的助手，向能够在各种数字环境中可靠操作的通用代理的过渡。</p>
+<p>总结一下，我们的主要贡献有三点：第一，我们推出了TUA-Bench，一个高质量的基准，用于评估通用终端使用代理。它包含了120个多样化、真实且具有挑战性的任务，涵盖了日常数字工作和与领域专家共同设计的专业工作流。第二，我们提供了一个可靠的评估套件。每个任务都以标准化格式指定，配有可执行环境和验证程序，并且经过人工从最初的394个候选任务中精心筛选，排除了那些模糊、过于简单或不一致的任务。第三，我们对前沿模型和代理框架进行了全面的评估，包括对模型推理努力的消融实验。我们的分析表明，即使是最强的代理也只达到了65.8%的成功率，这凸显了在长程规划、工具使用、执行监控和错误恢复方面，AI代理在终端环境中仍面临着巨大挑战。</p>
+<p>接下来，我们来看看TUA-Bench是如何与现有工作区别开来的。目前，大多数针对通用计算机使用的基准测试，都倾向于通过图形用户界面来评估代理。比如MiniWoB和WebArena专注于浏览器任务，OSWorld和WindowsAgentArena则评估整个桌面操作。这些基准测试在评估通用代理能力和图形界面特定技能方面做得很好，但它们并没有解决代理如何通过文本原生的命令行界面操作计算机的问题。</p>
+<p>另一方面，虽然也有一些基于命令行的代理系统和基准测试出现，比如SWE-agent和OpenHands，它们展示了代理如何使用Shell来检查代码库、编辑文件和解决软件任务，但它们的主要焦点仍然是软件工程和开发者协助。像Terminal-Bench这样的终端基准，也主要集中在技术性和Shell核心的工作流上。所以，现有的CLI基准和文本原生评估，仍然集中在软件工程、技术终端工作流或结构化工具使用上，没有覆盖到通用计算机使用的广度。</p>
+<p>TUA-Bench的定位正是要填补这个空白。它将原生的命令行交互与广泛的任务覆盖范围结合起来。它在可执行的终端环境中评估日常、技术和专家工作，提供了一个统一的、基于执行的评估，来判断代理是否能够将终端作为通用的计算机接口来使用。</p>
+<p>那么，TUA-Bench具体是如何构建的呢？</p>
+<p>首先是任务执行环境。为了支持标准化和可复现的评估，TUA-Bench是建立在Harbor框架之上的。Harbor是一个成熟的终端代理评估编排框架，它负责任务设置、环境管理、执行控制、日志记录和结果验证。你可以把它想象成一个高度标准化的“训练场”，确保每次评估都在相同的条件下进行。每个任务都在一个隔离且可重置的Linux容器内执行，这保证了评估的可复现性，并且即使失败或不安全的执行也不会影响后续的试验。除了Docker，TUA-Bench还支持Podman，这使得在共享集群上进行无root权限的执行成为可能。这种基础设施允许代理在真实的终端环境中操作，与文件、Shell命令、已安装的软件包、可选的互联网访问以及原生的CLI代理接口进行交互。</p>
+<p>每个TUA-Bench任务都打包成一个自包含的规范，包括一个Dockerfile（你可以理解为环境的构建蓝图）、任务特定的输入文件、自然语言指令、环境变量、模型和运行时设置，以及一个环境内的验证器。这种打包方式标准化了每个任务的初始状态、执行过程和评估协议，从而确保了评估的一致性和可复现性。</p>
+<p>接下来是任务策划过程，这是TUA-Bench的核心。TUA-Bench包含120个真实世界的任务，它们沿着两个互补的维度进行组织：广度维度捕捉了普通计算机用户的日常数字工作，包括网页浏览、文档和电子表格编辑、邮件管理以及媒体处理；深度维度则侧重于与生物学、医学物理学、建筑工程和机械工程等领域的博士级专家共同设计的专业工作流。这些任务要求代理操作专门的软件，并完成领域特定的程序，通常也是通过命令行界面。</p>
+<p>我们的任务策划流程反映了日常任务和专业任务的不同设计要求。对于日常任务，我们从现有的基于图形用户界面的基准（比如OSWorld）中获取灵感，并将其转换为以终端为中心的环境。我们保留了用户底层的目标，但要求代理通过命令行交互和文件级操作来完成任务。与OSWorld不同的是，我们的任务不再指定代理必须使用哪个应用程序，比如编辑电子表格时不再强制使用LibreOffice，而是只给出任务意图，让代理有更大的灵活性来选择合适的命令、工具或工作流。在转换了369个任务后，我们进行了一个严格的人工质量控制过程，通过人工检查代理失败的执行轨迹和最终生成的文件，来识别和排除那些输入文件与预期输出不一致的任务。</p>
+<p>考虑到代理基准测试可能会随着模型和框架的改进而迅速饱和，我们还引入了难度感知任务选择机制。我们使用三个前沿模型（GPT-5.5、Claude Opus 4.7和Gemini 3.1 Pro），在Terminus-2代理框架内，对每个候选任务进行五次独立试验，并计算平均奖励来量化任务的可解性。然后，我们根据这些模型的综合可解性对任务进行排名，并保留其中最难的100个任务纳入基准。通过这种方式，我们旨在构建一个具有持续难度和长期区分能力的基准。</p>
+<p>对于专业任务，我们与博士级领域专家合作构建了25个初始任务，主要涉及生物学、医学物理学、建筑工程和机械工程。每个任务都反映了专业人士常执行的有意义的工作流，需要足够复杂的连续操作，并支持可靠的评估。我们确保这些任务是真实的，并将其打包成可复现的设置，让代理通过与专业工具的实际交互来完成。最终，我们排除了过于简单的任务，保留了20个具有挑战性的专业任务。</p>
+<p>从任务统计和特性来看，TUA-Bench的120个任务被分为五个顶层家族：办公与生产力、网络与信息、系统与软件操作、科学与工程、以及多媒体与设计。这些家族进一步细分为20个子类别。办公与生产力任务占比最大，达到38.3%，这与电子表格、文档、演示文稿和邮件工作流在日常计算机使用中的普遍性相符。其余四个家族的分布相对均匀。这种任务构成旨在覆盖日常生产力场景和专业的特定领域工作流，包括工程仿真、医学影像和软件配置，确保TUA-Bench的整体性能反映了代理在异构、真实世界计算机使用环境中的操作能力。</p>
+<p>接下来，我们来看看基准实验的结果。</p>
+<p>我们对当代终端代理和前沿语言模型进行了广泛评估。具体来说，我们评估了五个代理框架：Terminus-2、Codex、OpenHands、Mini-SWE-Agent和Claude Code。模型方面，我们涵盖了领先的专有模型和强大的开源或广泛可用的替代方案，包括GPT-5.5、Claude Opus 4.8等，共12个模型。</p>
+<p>评估指标方面，我们使用基于执行的任务成功率。每个任务都配有一个自动验证器，检查最终环境状态并返回一个标量奖励。我们对每个代理-模型-思考配置运行5次独立试验，并报告所有试验的平均成功率。此外，我们还报告了Pass@1、Pass@5和All-5来表征代理的可靠性。Pass@1衡量单次运行的任务性能，Pass@5衡量每个任务在五次独立试验中的最佳结果，而All-5则衡量在所有五次试验中始终解决任务的比例。这些互补的指标可以区分偶尔解决任务的系统和能够稳健解决任务的系统。</p>
+<p>主要结果显示，在固定代理框架Terminus-2的情况下，GPT-5.5（60.1%）、Claude Opus 4.8（59.7%）和Claude Opus 4.7（58.0%）构成了领先的第一梯队。虽然前两名模型的平均性能差异很小，但Claude Opus 4.8在42.5%的任务中所有五次尝试都成功，而GPT-5.5只有31.7%，这表明Claude Opus 4.8在多次尝试中表现出更一致的行为。在领先组之下，与中层模型（44.9%到49.3%）之间存在大约9个百分点的差距，这包括Gemini 3.1 Pro、GLM-5.1等。Claude模型内部的结果也显示了清晰的能力层级：Opus 4.8达到59.7%，Sonnet 4.6为42.8%，Haiku 4.5为23.9%。这表明TUA-Bench能够有效地区分不同能力层级的模型，并且尚未达到饱和。</p>
+<p>从每个代理框架的最佳性能来看，Claude Code与Claude Opus 4.8（最大思考努力）的组合取得了最高的整体结果，达到了65.8%。紧随其后的是Codex与GPT-5.5（xhigh思考努力）的组合，达到64.7%。OpenHands与Claude Opus 4.8（max）为63.4%，Mini-SWE-Agent与GPT-5.5（xhigh）为62.4%。Terminus-2与GPT-5.5（xhigh）获得了60.1%。整体而言，领先的代理框架占据了相对狭窄的性能区间，这表明强大的前沿模型可以在一系列代理实现中产生有竞争力的结果。</p>
+<p>接下来，我们进行了一些消融研究和经验分析。</p>
+<p>首先是任务执行时间预算的影响。我们发现，任务执行时间是衡量性能的一个重要因素。当时间限制从150秒增加到2400秒时，超时试验的数量急剧下降，而成功率从33.0%上升到60.1%。这个27.1个百分点的提升是在没有改变模型或代理框架的情况下获得的，这表明许多低预算的失败是由于过早终止，而不是根本的推理失败——代理通常处于可行的轨道上，但没有足够的时间完成任务。当时间超过1200秒后，收益开始减小。因此，我们在所有其他实验中默认使用2400秒的任务时间限制，因为它几乎消除了超时，并提供了在该配置下代理任务解决上限的最清晰估计。</p>
+<p>其次是思考努力程度的扩展。结果显示，成功率随着推理预算的增加而单调提高，从“无”设置下的36.5%上升到“xhigh”设置下的60.1%。最大的收益发生在较低的努力水平：从“无”到“中等”大约可以恢复15个百分点，而令牌成本只有适度增加。在此之后，回报递减。特别是，从“高”努力增加到“xhigh”努力，成功率仅提高了2.3个百分点，但每次运行的平均输出令牌数量几乎翻了一番。这表明推理努力是提高准确性的可靠杠杆，但其成本效益在高努力水平下急剧下降。因此，中等到高设置通常提供了最佳的准确性与成本权衡。</p>
+<p>我们还对成本-性能权衡进行了比较。结果显示，总体而言，成本跨越了一个数量级以上，从每次运行大约12美元到304美元不等，而成功率则从23.9%到65.8%不等。突出显示的帕累托前沿表明，只有一小部分配置在成功率和成本之间实现了最佳权衡。在低成本端，Terminus-2与开源模型结合效率特别高，MiniMax-M3以12美元/次的成本达到47%的成功率，GLM-5.1以23美元/次的成本达到48%的成功率。在中等成本范围内，Terminus-2与Claude Opus 4.7以及Mini-SWE-Agent与Claude Opus 4.8进一步提升了前沿，以大约54-57美元/次的成本实现了50-57%的成功率。最高的成功率由Claude Code与Claude Opus 4.8（max）在最大推理努力下获得，达到65.8%，成本为173.61美元/次。这些结果揭示了两个主要趋势：一是，在帕累托前沿的顶部附近，回报急剧递减；二是，代理框架对成本-性能效率有显著影响。相同的模型在不同的代理框架下可能占据图中非常不同的区域，例如，Claude Opus 4.7在Terminus-2下的准确性与Claude Code相当，但成本要低得多。</p>
+<p>此外，我们观察到代理依赖的模型性能。GPT-5.5和Claude Opus 4.8在三个开源代理框架上的平均表现相似：GPT-5.5的平均成功率为61.3%，仅比Opus 4.8高1.1个百分点。然而，这种微小的总体差异掩盖了显著的代理框架依赖性变化。GPT-5.5在Mini-SWE-Agent上比Claude Opus 4.8高出5.0个百分点，而Opus 4.8在OpenHands上则领先2.0个百分点。在Terminus-2下，两者基本持平。这些反转表明，模型的相对性能并非对代理框架不变。因此，代理框架的选择可能与底层模型的选择具有同等重要的影响，从单一框架得出的结论可能会误导模型相对能力的评估。</p>
+<p>在每个类别的性能方面，没有一个模型在所有类别中都表现出色。GPT-5.5（xhigh）是最稳定的表现者，在每个类别中都名列前茅或接近前茅，而Claude Opus 4.8（max）在网络与信息类别中大幅领先，但在其他类别中则更接近中游水平，这表明其优势更为集中。其次，任务类别对性能影响很大。系统与软件操作相对容易，所有模型都集中在一个狭窄的高性能区间内，而办公和多媒体任务则持续困难：大多数模型低于45%，即使是最强的系统也只在50%左右的水平。第三，绝对成功率远低于饱和，这表明TUA-Bench在区分前沿系统方面仍然有效，并留有很大的提升空间。</p>
+<p>类别级别的平均值可能会掩盖任务级别的显著差异。为了揭示这种结构，我们展示了按类别和子类别分组的单个任务的平均成功率热力图。热力图揭示了类别内部的强烈异质性：许多类别包含既有普遍解决的任务，也有几乎所有模型都失败的任务，因此中等平均值通常反映了简单任务和困难任务的混合，而不是统一的部分成功。这种模式在多媒体和办公部分尤其明显，其中广泛的低奖励区域表明了共同的能力差距。热力图还支持了总体趋势，GPT-5.5和Claude Opus 4.8整体上颜色更深，并显示Opus 4.8在网络与信息方面的优势集中在特定的任务组中。这都表明，TUA-Bench的进步需要解决当前代理始终失败的特定困难任务，而不仅仅是提高类别级别的总体性能。</p>
+<p>当然，TUA-Bench也存在一些局限性。它专注于基于终端的计算机使用，因此没有涵盖所有计算机交互的完整范围。一些应用程序仍然缺乏成熟的命令行界面或无头支持，这限制了能够真实表示的工作流，尽管命令行工具的日益普及可能会使这种设置越来越相关。专业任务轨道只涵盖了有限的专业领域样本，并且所有任务描述目前都仅限于英文。最后，公开发布可能会使任务暴露给未来的模型训练数据，这需要定期刷新基准，而固定的无头工具版本则需要持续的容器维护。</p>
+<p>总的来说，我们引入的TUA-Bench，为评估通用终端使用代理在各种日常和专业工作流中的能力，提供了一个至关重要的基准。它补充了之前主要关注图形用户界面交互或以编程为中心的终端任务的计算机使用基准。TUA-Bench专注于文本原生的命令行环境，要求代理完全通过终端交互来规划、调用工具、监控执行并从错误中恢复。该基准包含了120个经过人工精心策划的任务，涵盖了日常数字工作和与多个领域专家共同设计的领域特定工作流。我们对前沿模型和代理框架的评估表明，即使是最强的配置也只达到了65.8%的成功率，这凸显了可靠的终端计算机使用仍然是一个具有挑战性的开放问题。我们开放TUA-Bench的源代码，以实现可复现的评估，降低开发新终端使用代理的门槛，并支持社区驱动的进步，以实现可靠的计算机使用系统。TUA-Bench为通用终端代理的评估提供了一个坚实的基础，并清晰地指明了未来研究和开发的挑战与方向，鼓励我们共同努力，推动AI代理在真实世界中更可靠、更广泛地应用。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

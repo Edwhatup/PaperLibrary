@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 29, 2026</time> · <a href="https://arxiv.org/abs/2607.25565">arXiv</a> · <a href="https://arxiv.org/pdf/2607.25565">PDF</a></div>
+    <h1>ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-29-redesign-recovering-editable-design-structures-from-images-v-29f2a267.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Recovering an editable design file from a raster image is a common and costly bottleneck in modern design workflows, yet remains challenging since editability depends on recovering multi-modal attributes, such as typography, vector geometry, colors, grouping, and layer ordering. We present ReDesign, an agentic framework that grows an editable layer hierarchy by selecting and composing specialized tools across modalities. To keep this long decision process reliable despite imperfect tool outputs, we introduce graceful verification at each expansion, which provides local accept, prune, or retry feedback that prevents error accumulation and avoids large scale reruns. To evaluate editability at scale, we introduce the Figma Edit Replay Benchmark, consisting of 909 raw Figma files and 14,796 controlled edit instructions that replay edits on reconstructed outputs. Across this benchmark and standard reconstruction metrics, ReDesign achieves strong visual fidelity while delivering the highest editability across layout, color, and text edits, outperforming layered decomposition baselines and serial tool use pipelines.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>现代设计工作流里有一个非常普遍却又让人头疼的瓶颈：你拿到一张设计图的截图，或者一个被&quot;拍平&quot;成像素的导出文件，你想修改里面某个文字的字体、调整某个色块的颜色、或者挪动某个元素的位置，但你发现根本无从下手，因为原本可编辑的图层结构已经不存在了。要让这张图重新可编辑，你必须在设计软件里从零开始重建，费时费力，而且容错率极低。这篇论文要解决的就是这个问题，它叫做 ReDesign，全称是&quot;从图像中恢复可编辑设计结构的智能体分解框架&quot;，来自 KAIST 和 Helmholtz Munich 的研究团队，发表于 2026 年 7 月。</p>
+<p>我们先把问题说清楚。设计师在 Figma、Adobe Illustrator、Canva 这类工具里工作时，整个设计是由一棵树形的图层结构组成的：文本有字体、字号、字重等属性，形状有矢量路径，颜色是独立的参数，各个元素之间有叠放顺序，还有分组关系。这棵树之所以有价值，是因为它暴露了正确的&quot;调节旋钮&quot;——你想改文字就改文字图层，你想改背景色就改背景色参数，改一个不会影响另一个。但是当你把这个设计导出成一张光栅图像，也就是 PNG 或 JPEG，这棵树就消失了，所有信息被压缩成一个二维像素矩阵。这是一个多对一的映射：无数种不同的图层结构可以渲染出同一张图，所以从图像反推图层结构是一个病态的逆问题，没有唯一解。</p>
+<p>解决这个问题的难点不只是识别图里有什么元素，而是要恢复出每个元素的完整语义属性，并且让这些属性在被编辑时能产生预期的效果。比如识别出一段文字是一回事，但你还需要知道它用的什么字体、行距是多少、它和背景的分层关系是怎样的，这样当你修改这段文字时，背景才不会受到污染。再比如，一个红色圆角矩形如果只是被标注为&quot;一块红色区域&quot;，那你修改它的颜色时可能只能改到部分像素，而不是整个形状对象。</p>
+<p>现有的工作已经在子任务上取得了不少进展，比如 OCR 做文字识别，LayerD 和 Qwen-Image-Layered 做图像分层，StarVector 和 OmniSVG 做矢量化。但把这些工具串联起来直接组成流水线，在实际中往往不可靠。原因很直接：一个工具出了错，错误会向下游传播，整条链就崩了。而且不同的设计图有不同的结构复杂度，一个固定的工具调用顺序根本适应不了现实世界的多样性。ReDesign 的核心贡献就是针对这两个问题提出了一套结构化的解决方案。</p>
+<p>框架的第一个核心思路是把重建过程建模为树的生长。这个想法的直觉非常自然：可编辑的设计文件本来就是一棵树，根节点是整个画布，子节点是各个图层，图层下面还可以有子图层和分组，最终叶节点是不可再分的原子元素，比如一段文字、一个形状、一张图片。既然目标是恢复这棵树，那就从树根开始，逐步展开，直到每个叶节点都有完整的可编辑属性。</p>
+<p>具体来说，ReDesign 维护一棵&quot;部分重建树&quot;，每个节点代表当前画布上的一个局部区域，以及目前已推断出的元数据。在每一步，一个由视觉语言模型驱动的控制器选择某个节点来展开，并从一个固定的动作集合里选择合适的工具序列，生成该节点的子节点。这种从粗到细的分解方式模拟了人类设计师组织图层的方式：先建立大的分组和层次关系，再逐步精化每个组内的细节。</p>
+<p>动作集合里有五类工具。第一类是文字提取：用 OCR 工具定位并识别可见文字，然后用分割模型把文字像素抠出来，用修复模型把文字区域填补成背景，这样就产生了一个文字图层和一个去掉了文字的背景图层，两者互不干扰。第二类是多图层分解，也就是调用 Qwen-Image-Layered 这样的生成模型，把一个区域拆解成若干个带透明度的图层，图层数量根据该区域的视觉复杂度自适应选择。第三类是连通分量标注：当一个图层包含多个在空间上彼此分离的元素时，用经典的连通分量算法把它们切分成不重叠的子节点，不需要任何模型推理，纯粹靠几何关系。第四类是检测加分割：对于那些纠缠在一起、空间上有重叠的对象，先用视觉语言模型识别最前景的元素，再用开放集检测器定位它，用分割模型提取它，用修复模型填补它被抠走之后的空洞，产生一个前景节点和一个背景节点。第五类是矢量化或参数化：对于最终的叶节点，判断它是否适合矢量化。如果是形状类内容，就用 vtracer 转成 SVG 路径；如果是照片或复杂纹理，就保留为带位置元数据的光栅图层；如果是文字，就调用字体识别 API 提取字体属性，生成带完整排版参数的可编辑文字元素。</p>
+<p>这套工具集的设计体现了一个重要认识：矢量化并不是万能的。强行把照片或复杂纹理转成 SVG 路径，不仅会产生失真，还会降低可编辑性，因为没有设计师会用这种方式表示这类内容。所以系统需要在每个节点上做出判断，而不是对所有内容施加同一种处理。</p>
+<p>框架的第二个核心思路是&quot;优雅验证&quot;。这是整个系统最关键的设计之一，值得仔细讲清楚。前面说了，工具输出并不总是完美的，控制器有时也会做出错误的展开决策。如果不加任何保护，一个早期的错误会沿着树往下传播，等到最后才发现问题，整个流程就要从头重来，代价极高。</p>
+<p>现有的智能体系统通常在最终输出上做一次接受或拒绝的判断，但这种做法有两个缺陷：一是它只告诉你结果好不好，不告诉你哪一步出了问题；二是如果最终输出是坏的，你没有任何办法做局部修复，只能全部重跑。</p>
+<p>ReDesign 的优雅验证把验证时机提前到每一次节点展开之后，而不是等到最后。每当控制器提出一组候选子节点，验证器立即评估这次展开是否合法，标准有两条：第一，子节点的并集是否覆盖了父节点的全部内容；第二，子节点是否超出了父节点的范围、引入了父节点里不存在的内容。这两条标准对应的是层次分解里最常见的两类失败：遗漏覆盖和幻觉内容。</p>
+<p>验证器有三种处理方式：接受、剪枝、或者重试。接受意思是这次展开合法，继续往下生长。剪枝意思是某个子节点引入了幻觉内容或与兄弟节点高度重复，就把这个子节点删掉，保留合法的部分。重试意思是这次展开整体不可接受，让控制器换一个动作或者调整参数再试一次。</p>
+<p>这里有一个微妙的设计细节：对于 CCL 和文字提取这两类直接从输入里抽取内容的动作，验证器只允许接受或重试，不允许剪枝，因为一旦剪掉就可能丢失真实存在的内容。而对于多图层分解和检测加分割这两类依赖生成模型的动作，因为生成模型有时会凭空产生图中没有的内容，验证器就额外允许剪枝来过滤掉幻觉输出。</p>
+<p>论文里的消融实验数据显示，在所有的展开操作中，需要干预的比例是相当高的，不同动作类型有不同程度的重试和剪枝率，这直接证明了验证步骤的必要性。特别是 Qwen-Image-Layered 和 LayerD 的输出，在实际使用中会频繁出现幻觉内容、不完整分离和模糊伪影，如果没有验证器过滤，这些错误会直接进入重建树。</p>
+<p>另一个值得提的设计是记忆管理。每个节点维护一条&quot;血统记忆&quot;，也就是只记录从根节点到这个节点这条路径上发生的事情，而不去追踪兄弟节点的状态。这个设计有两个好处：一是内存消耗不会随着树的宽度指数级增长；二是由于不同分支的展开之间没有共享状态，整棵树的多个叶节点可以同时并行展开，而不会产生竞争条件。论文的分析显示，这种并行执行相比串行工具调用能带来数倍的速度提升，而且关键路径的长度从总的展开次数缩减到树的深度，从理论上就保证了可扩展性。</p>
+<p>现在说到评估。这篇论文还提出了一个新的基准，叫做 Figma Edit Replay Benchmark。作者收集了 909 个真实的 Figma 设计文件，这些文件自带完整的图层结构和元数据，包括文字内容、排版参数、矢量形状、颜色、叠放顺序等，是天然的真值。Crello 这个已有数据集的元素密度相对较低，而他们收集的 Figma 数据集里每个设计平均有 2.62 倍于 Crello 的元素数量，结构复杂得多，更接近真实工作场景。</p>
+<p>评估可编辑性的协议设计得很有意思，叫做&quot;编辑重放&quot;。思路是这样的：拿到一张设计图，各个方法把它重建成可编辑格式；然后对真值设计文件施加一个受控的编辑操作，比如移动某个元素的位置、修改某个元素的颜色、修改某段文字的内容；同样的操作也施加在重建出来的设计文件上；最后比较两次编辑后的渲染结果。如果重建出来的结构是正确的，那么同样的编辑指令应该产生同样的视觉效果，否则说明重建出来的表示存在结构性错误。</p>
+<p>这个协议一共生成了 14796 条编辑指令，覆盖六种编辑类型：删除、透明度调整、重新着色、旋转、平移、以及图层叠放顺序交换。评估指标用的是编辑后渲染图像之间的结构相似性 SSIM，对于文字编辑还额外用 OCR 检测文字是否被正确修改。</p>
+<p>匹配重建元素和真值元素的方式也值得说一下。因为不同方法的分解粒度可能不一样，一个真值里的单个元素可能对应重建里的多个元素，或者反过来，所以他们用了一个基于可见掩码的最优二部匹配算法，用匈牙利算法求全局最优匹配，计算成本里还加入了合并惩罚项，防止算法为了降低表观误差而把不相关的元素强行合并在一起。这个设计很细致，保证了评估的公平性。</p>
+<p>结果来看，在 Figma 数据集上，ReDesign 在所有指标上都是最优的，包括对象级别的平均 L1 误差、全局视觉保真度 PSNR 和 LPIPS、以及布局保真度指标全景质量 PQ 和检测 F1。在可编辑性方面，ReDesign 在所有编辑类型上也都达到了最高分。特别是在着色和透明度这类属性编辑上，优势最为明显，因为这类编辑要求目标元素被干净地分离出来，而对比基线往往因为分层不准确，导致编辑操作&quot;泄漏&quot;到背景像素或者相邻图层上。</p>
+<p>两个图层分解基线 Qwen-Image-Layered 和 LayerD 在简单的几何编辑上还能保持竞争力，但在依赖正确元素归属和叠放顺序的编辑上性能明显下滑。工具智能体基线，也就是用同样工具集但串行调用且只在最后验证的方案，在文字编辑上退化最严重，因为串行链条里的早期错误会快速污染后续步骤，文字内容最容易在这个过程中失真到 OCR 都无法识别的程度。</p>
+<p>在效率上，论文做了一个很有说服力的对比：把每次运行的耗时和 PSNR 画在同一张图上，结果发现 ReDesign 比稀疏终端验证的方案既快又准，这反直觉地说明了&quot;每步都做小验证&quot;比&quot;最后做大验证&quot;更经济，因为小验证的总成本远低于让错误传播之后被迫重跑的代价。</p>
+<p>关于 VLM 骨干的鲁棒性，他们对比了 Gemini-3-flash 和 GPT-5 mini 两个版本。GPT-5 mini 验证更严格，倾向于只保留高置信度的元素，所以全局保真度指标更好；Gemini 分析多图像上下文更全面，不会过度剪枝，所以元素级别的覆盖更完整，对下游可编辑性更有利。但两者之间的差距很小，说明系统的结构化工作流具有一定的骨干鲁棒性。</p>
+<p>还有一个关于动作选择分布的分析非常有启发性。论文观察到控制器在不同树深度上自然形成了不同的动作偏好：在浅层，控制器优先做文字提取，因为文字是语义最重要、最需要早期保护的内容；在深度一，倾向于调用 Qwen-Image-Layered 做宏观结构拆分；在深度二，CCL 变得更常用，因为宏观图层往往已经是空间分离的，几何方法就够了；到了更深的位置，检测加分割变得主导，处理那些需要精细前后景分离的局部区域。这个涌现出来的从粗到细的分工，正好和设计师组织图层的直觉相吻合，而且不是人工规定的，是控制器从任务结构里自然学到的。</p>
+<p>再说一下局限性，论文对此是坦诚的。什么叫&quot;好的可编辑格式&quot;，本身就没有唯一定义。如果你想做的只是整体布局调整，那矢量化细节就是多余的；如果你想精确编辑一个图标的路径，那粗粒度的分层就不够。ReDesign 没有针对 Figma 或 Crello 的特定分层标准做训练，所以它的分解粒度不会总是和真值的图层划分完全对应，即使渲染结果看起来是对的。不过这其实也是一种灵活性：因为不绑定固定训练分布，用户可以通过提示词要求更细或者更粗的分解，系统可以继续展开树来匹配特定的编辑意图。论文里展示了一个例子，系统可以对同一张图在不同粒度上产生不同的分解结果，这在实际使用中是一个很实用的特性。</p>
+<p>还有一点值得单独提：作者在论文里对比了 ReDesign 和像 Nano Banana 2 这样最先进的图像编辑服务。结论是，直接做像素级图像编辑在面对精确空间调整时仍然不稳定，甚至一个局部文字修改的指令都可能导致整个图像的宽高比发生变化，或者影响到周围的元素。这说明恢复显式的可编辑表示不是因为生成模型还不够强，而是因为一个带有对象标识和参数的图层层次结构提供的是决定性的、稳定的、可重复的编辑能力，而不是依赖模型理解指令的概率性编辑。</p>
+<p>从更大的视角来看，ReDesign 真正的贡献不只是解决了&quot;设计图恢复&quot;这一个具体任务，它提出了一个更普适的原则：在构建长序列决策的智能体系统时，如果你能把问题表示为一个有结构约束的展开过程，那失败就会被局部化，验证就能精准，修复就能高效，并行就能自然发生。这对任何需要多模态工具组合、且决策链条较长的系统设计都有参考价值。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

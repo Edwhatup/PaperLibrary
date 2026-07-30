@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Function-Aware Fill-in-the-Middle as Mid-Training for Coding Agent Foundation Models · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 15, 2026</time> · <a href="https://arxiv.org/abs/2607.12463">arXiv</a> · <a href="https://arxiv.org/pdf/2607.12463">PDF</a></div>
+    <h1>Function-Aware Fill-in-the-Middle as Mid-Training for Coding Agent Foundation Models</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-15-function-aware-fill-in-the-middle-as-mid-training-for-coding-0612dd30.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Coding agents must integrate external tool returns into ongoing reasoning - a capability that standard left-to-right pretraining on code exposes only in its forward direction. We observe that the action-observation-continuation loop of a coding agent is structurally isomorphic to a function call site, where a caller binds arguments, a callee returns a value computed elsewhere, and downstream code consumes that value. This conditioning structure exists at internet scale in ordinary code. We exploit it through function-aware fill-in-the-middle (FIM) mid-training: a self-supervised objective that masks functions selected via program dependency graph analysis and a complexity-inferability double criterion. We mid-train Qwen2.5-Coder-Instruct (7B/14B) and Qwen3-8B on a 2.6B-token decontaminated corpus drawn from 968 GitHub repositories, then apply existing agentic post-training pipelines. Mid-training improves SWE-Bench-Verified by +2.8/+3.0 at 7B/14B and by +3.2 on Qwen3-8B; SWE-Bench-Lite gains are +3.7/+4.0/+5.4 on the same models. The improvement holds across two post-training pipelines (R2E-Gym, SWE-Smith) and on a non-Qwen2.5 base (Qwen3-8B with SWE-Lego). Beyond in-domain gains, mid-training also mitigates the capability erosion that agentic post-training otherwise inflicts on non-agent coding (e.g., LiveCodeBench) and non-coding tool-use benchmarks (tau-bench, BFCL): although the mid-training corpus contains Python code only, the function-call inductive bias survives post-training and yields consistent gains.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>编写AI软件工程代理的研究者面临一个共同的困境：这些代理需要在执行任务的过程中不断调用工具、接收工具返回的结果，然后根据这些结果继续推进任务。但主流的代码语言模型是用从左到右的下一个词预测目标训练出来的，这个训练方式天然地偏重&quot;往前看&quot;，而不擅长&quot;根据外部返回的结果来决定下一步怎么走&quot;。这篇来自滑铁卢大学等机构的论文，就是在正面回答这个问题：在基础模型预训练完成之后、智能体专项的后训练开始之前，能不能插入一个专门的中间训练阶段，把这种&quot;根据外部返回值推断后续行为&quot;的结构性先验装进模型？他们的答案不仅是肯定的，而且实现方式出人意料地简洁：直接用普通代码中无处不在的函数调用结构来做。</p>
+<p>先来理解这个核心类比，因为整篇论文的逻辑都建立在它上面。一个编程代理在运行时的每一步，可以分解成四个部分：当前的历史上下文、它采取的行动、外部工具返回的观测结果、以及基于这个观测继续生成的内容。论文作者发现，普通代码里的函数调用具有完全相同的四部分结构：调用前的代码建立了意图并绑定参数，这对应历史上下文；函数调用本身对应代理的行动；函数返回的值是由调用范围之外的代码计算出来的，这对应外部工具的观测返回；调用之后消费返回值的下游代码，对应代理基于观测的后续推理。这个对应不是表面上的比喻，而是深层的结构同构。如果一个模型能学会&quot;根据函数调用前后的代码，推断出被遮住的函数体应该做什么&quot;，它实际上就在练习同一种能力：在已知上下文和后续结果的条件下，填补中间那个&quot;外部计算&quot;的环节。而这种结构在GitHub上有数十亿行代码可以免费利用，完全不需要任何人工标注的代理轨迹。</p>
+<p>但这里有一个关键问题：现有的代码语言模型已经在预训练中用过一种叫做填充中间（Fill-in-the-Middle，缩写FIM）的目标，为什么还需要专门的中间训练？论文给出了三个理由，每一个都很关键。第一，预训练中的FIM是随机遮住文本片段，遮挡的边界在语法上是任意的，经常切断一个表达式或者一条语句的中间，和函数调用的语义边界没有任何关系，捕捉到函数级依赖关系纯属偶然。第二，随机FIM没有推理监督，模型直接填空，没有中间的思考步骤，而代理的工作模式恰恰是先思考再行动。第三，即便预训练里的FIM带来了一些结构性先验，这个信号也被淹没在万亿个无关词元里，等到后训练开始的时候，这个先验早就被稀释得差不多了。针对这三个问题，这篇论文分别提出了对应的设计：用程序依赖图分析来选择函数级的遮挡目标，在FIM的中间部分嵌入思维链推理，并且把整个过程放在一个独立的中间训练阶段，让信号在紧接着后训练之前集中注入。</p>
+<p>接下来讲方法的具体设计，这是论文最有技术含量的部分。数据来源是从GitHub精心筛选的968个Python代码库，经过去污染处理——所有与SWE-Bench测试集有重叠的代码库都被排除，而且每个代码库只保留时间戳早于SWE-Bench基准提交时间的版本，以防止测试集泄露。最终得到约26亿个词元的语料库。</p>
+<p>函数选择是整个方法的核心。给定一个源代码文件，流程分四步走。第一步，构建程序依赖图。对每个文件解析抽象语法树，提取所有函数节点，包括顶层函数和类方法，然后建立两类边：调用边，表示调用者和被调用者之间的关系；以及同级边，表示同一个类的不同方法之间的关系，因为它们通过共享的实例状态相互耦合。第二步，计算复杂度分数。这个分数综合了代码行数、McCabe圈复杂度（也就是函数里分支路径的数量）、以及控制流的最大嵌套深度，每个量都用一个软上限做归一化，然后加权求和。设计这个分数的目的是筛出足够复杂、因而值得练习的函数——太简单的函数遮住了也没什么学习价值。第三步，计算可推断性分数。这是一个更精妙的设计。一个函数被遮住之后，如果周围的上下文提供了充分的线索，模型才有可能从中学到有用的东西；如果完全无法从上下文推断，那就是噪声，不是信号。可推断性分数由五个组件构成：调用点的参数具体程度（调用者传入了什么样的参数）、这个函数在文件内调用了哪些已知的辅助函数、函数签名的信息量（有没有类型注解、函数名是否有描述性）、是否有文档字符串、以及同类中有多少兄弟方法提供了额外的上下文。这五个组件都是人工设计的代理指标，作者特别说明不使用学习到的可预测性分数，是为了避免选择逻辑和特定模型绑定，确保方法能跨不同基础模型迁移。第四步，综合打分并设置单边难度惩罚。最终分数用调和均值的形式把复杂度和可推断性结合起来，调和均值的特点是两者必须都大才能得高分，只有一个大不行。还有一个单边惩罚：如果一个函数即便给了完整上下文仍然非常难，说明它大概率包含了外部的隐性知识，遮住了只会成为不可学习的噪声，所以用高斯函数把这类目标的权重压低。</p>
+<p>多函数组遮挡是对单函数选择的扩展，动机是真实世界的代码补丁经常同时跨越多个相互关联的函数。论文枚举了八种拓扑模式：调用者-被调用者对、两个共同被调用者、同类方法对、互相调用的函数对、调用链、hub型（一个中心连接多个下游）、fan-in型（多个来源汇聚到一个节点）、以及类三元组。组的评分引入了一个耦合项，是组内边的归一化计数加上共享实例属性的相似度，这个耦合项以乘法进入得分公式，因为一个弱耦合的函数组本质上和独立采样没有区别，只有紧密耦合的组才能产生跨函数依赖关系的训练信号。重要的一点是，在计算组的可推断性时，组内成员之间的引用关系被排除在外，因为这些引用在联合遮挡之后就看不见了，不能算作上下文线索。</p>
+<p>思维链增强是方法的第三个组件。对每个被选中的函数，流程是这样的：先用Gemini 3 Flash，只给它看遮住了函数体的文件，让它先一步步推理这个函数应该做什么，再写出候选实现，整个过程不给它看真实的函数体。然后用另一个Gemini 3 Flash实例作为评判者，把推理过程和候选实现跟真实函数体对比，从可行性和五个质量维度打分，保留高质量的样本。最终训练样本的格式是：FIM前缀加FIM后缀，然后在中间部分放上推理过程紧跟着函数实现。这样模型被训练成&quot;先想清楚再写代码&quot;的模式，和代理先思考再行动的结构完全对应。真实函数体只用来做过滤，不出现在训练目标里。</p>
+<p>实验的设置值得仔细看。基础模型是Qwen2.5-Coder-Instruct的7B和14B版本，以及Qwen3-8B。中间训练完成后，直接接上已有的后训练流程，没有任何修改：7B和14B模型分别搭配R2E-Gym和SWE-Smith后训练流程，Qwen3-8B搭配SWE-Lego流程。评测分三类：代理任务用SWE-Bench Verified和SWE-Bench Lite；非代理编程任务用LiveCodeBench、OJBench、FullStackBench；工具使用和跨域代理用τ-bench、BFCL以及Terminal-Bench 2.0。所有数字是三个独立评测种子的平均值。比较的基线是直接做后训练，不加中间训练阶段。</p>
+<p>主要结果的数字：在Qwen2.5-Coder-7B上，加了中间训练后SWE-Bench Verified提升了约3.5个百分点，14B上提升了约2.7个百分点。换用SWE-Smith作为后训练流程时，7B上的提升更大，达到约4.4个百分点。在Qwen3-8B上搭配SWE-Lego，Verified同样获得了正向提升，与Qwen2.5系列的量级相当。论文特别强调，这些增益在后训练之后仍然存在，因为只做中间训练的检查点会破坏指令遵循能力，所以所有汇报的数字都是完整流程的结果，是真正经历了后训练依然存活下来的增益。</p>
+<p>能力保留的结果是整篇论文里我认为最有启发性的发现之一，但在很多代理论文里几乎从不提及。实验在14B配置上专门做了检查：单独做R2E-Gym后训练，会导致LiveCodeBench下降约11个百分点，BFCL下降约15个百分点，FullStackBench下降约7个百分点，τ-bench下降约12个百分点，OJBench下降约8个百分点。六个非目标测评基准平均下降超过10个点。这是代理后训练的隐性成本，真实存在但很少被明确量化。加上中间训练之后，LiveCodeBench恢复约7个点，OJBench恢复到接近指令微调基础模型的水平，FullStackBench恢复约4个点，六个基准的平均分从后训练基线的水平大幅提升，同时SWE-Bench上的增益依然保留。也就是说，中间训练改善了代理后训练的整体收益-代价比。</p>
+<p>更直接验证核心假说的是跨域迁移结果。τ-bench和BFCL这两个基准测的是工具调用能力，和Python代码编辑完全无关，而中间训练语料库里也没有任何工具调用轨迹。尽管如此，加了中间训练之后τ-bench提升约3个百分点，BFCL提升约4个百分点。因为语料库里没有工具调用数据，唯一的解释机制就是函数调用结构安装的先验在后训练中存活了下来，并且迁移到了工具调用这个结构上相似的任务。这是对函数调用与工具调用同构性的直接实证证据。</p>
+<p>消融实验揭示了各个设计选择的独立贡献。第一组消融：完全去掉思维链推理，只保留函数感知的FIM结构，结果提升仍然显著——大约是完整方案收益的一半。用模型自己生成的推理代替Gemini生成的推理（称为self-CoT），能恢复大部分的差距，说明前沿模型教师的贡献是真实的但是有限的，整个方法不是一个变相的蒸馏流程。第二组消融：比较不同的函数选择策略。随机遮挡设定了最低基线，用Gemini来判断遮哪个函数比随机好，但效果不如用程序依赖图分析。只用依赖图结构过滤（PDG only）、在此基础上加复杂度分数、加可推断性分数，分别有递进的提升，把两者都加上（Full）达到最佳效果，说明复杂度和可推断性不是冗余的。第三组消融：遮挡粒度。加入函数对（pair）遮挡后平均分从单函数基线提升；加入三元组（triple）带来的额外提升基本可以忽略，与直觉一致——联合遮挡越多函数，耦合关系越难维持，边际收益递减。</p>
+<p>分析部分进一步剖析了代理行为的变化。一个关键指标是负观测恢复率：在轨迹中遇到了报错、补丁无法应用、测试失败等负面反馈之后，代理仍然能最终解决问题的比例。这个比例从后训练基线的约37%上升到约42%，提升了5个百分点，相对提升超过13%。这正是论文框架所预测的效果：中间训练帮助模型学会了在外部返回结果不符合预期时继续有效推理。每个解决任务所用的编辑次数和轨迹步数也相应增加，说明模型倾向于采取一种更反复迭代、边做边验证的策略。</p>
+<p>增益在任务类型上的分布也有规律。按照金标准补丁的形状把SWE-Bench Verified的任务分层：需要在单个文件内同时修改多个函数的任务，中间训练带来的增益远大于只需要修改单个函数的任务。跨文件的任务则没有差异性的帮助，作者将其归因于粒度不匹配——当前的FIM操作在文件内部，无法直接覆盖跨文件的依赖关系。这个分层结果非常干净地验证了核心假说：函数感知FIM帮助最多的，恰好是需要跟踪同一文件内调用者和被调用者之间控制流与数据流的任务。</p>
+<p>局限性方面论文说得很坦诚。第一，语料库只有Python，跨语言的泛化只有FullStackBench提供了间接证据，Java、C++、Rust是否适用是未来工作。第二，默认方案依赖Gemini 3 Flash生成推理，消融实验显示self-CoT能恢复大部分增益，但完全开源的复现还需要一个同等能力的开放教师模型。第三，跨基础模型的验证目前只有一个配置（Qwen3-8B加SWE-Lego），这个对比同时改变了后训练流程和基础模型，是一个混淆因素，结论是&quot;不特定于某一个基础模型加后训练的组合&quot;，而不是&quot;跨所有模型族系都适用&quot;。第四，方法预设了代码是模块化的，对于单体脚本、生成代码或者Jupyter Notebook，能通过选择标准的函数会大幅减少，这个场景没有系统研究。</p>
+<p>对听众工作的可借鉴之处主要在三个层面。第一，如果你正在训练或者微调代理类模型，这篇论文提供了一个非常具体的配方：在后训练之前加一个以函数级FIM为目标的中间训练阶段，可以同时改善目标任务的表现和缓解后训练对其他能力的侵蚀。第二，函数感知选择的核心设计思路——用复杂度和可推断性的调和均值来筛选训练目标，同时用单边惩罚排除不可学习的噪声——是一个可以直接迁移到其他领域的数据课程设计框架，不仅适用于代码。第三，这篇论文提供了一个优雅的反例，说明&quot;结构性先验&quot;可以从一个不包含任何目标任务数据的语料库中获得，而且这个先验足够强健，能够在随后的大规模后训练中存活并迁移。真正决定迁移是否发生的，不是表面数据的相似性，而是任务之间深层的计算结构是否一致——这个视角本身就很值得在设计下一个训练阶段时认真思考。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

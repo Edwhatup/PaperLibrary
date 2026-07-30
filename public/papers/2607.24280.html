@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 28, 2026</time> · <a href="https://arxiv.org/abs/2607.24280">arXiv</a> · <a href="https://arxiv.org/pdf/2607.24280">PDF</a></div>
+    <h1>From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-28-from-proprietary-to-open-source-bridging-the-distribution-ga-4f9876b9.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Agentic search enables large language models to solve knowledge-intensive tasks by interleaving multi-step reasoning with retrieval, yet optimizing this with outcome-based reinforcement learning (RL) provides only sparse supervision. Knowledge distillation can supply denser guidance, and advanced proprietary models with their strong reasoning capabilities are promising teachers. While distilling from proprietary models can densify this supervisory signal, conventional logit-matching is precluded by hidden logits and mismatched tokenizers, whereas raw natural language trajectory imitation transfers superficial stylistic artifacts rather than core reasoning competence. To address the heterogeneous distillation problem and bridge the distribution gap, we propose Multi-Agent Protocol Distillation (MAPD), a joint distillation and RL framework uses a structured, style-normalized protocol as an intermediate representation. An offline multi-agent system (MAS) decomposes each query, retrieves supporting evidence, repairs failed searches, and converts the resulting exploration trace into a JSON protocol containing the task type, reasoning plan, and extractive grounding facts. During training, the protocol is provided only to a privileged branch of the student policy, whose token distributions furnish a dense distillation signal alongside the sparse RL objective. Extensive evaluations across seven QA benchmarks demonstrate that MAPD consistently outperforms competitive distillation and RL, achieving average success rates of 39.4\% on Qwen3-1.7B and 44.4\% on Qwen3-4B. Crucially, the framework generalizes robustly across diverse proprietary teachers while effectively mitigating the student policy from style drift and verbosity degeneration.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>有一个真实的痛点贯穿着这篇论文的全部设计：我们手里有强大的专有模型，比如Claude、GPT、Gemini，它们在复杂推理上远超开源小模型；但我们又没有办法把它们的能力真正&quot;灌&quot;进一个开源学生模型里去。这个卡壳的地方，就是这篇论文要解决的核心问题。</p>
+<p>先把背景交代清楚。所谓Agentic Search，也就是&quot;智能体搜索&quot;，是近年来大语言模型研究的一个重要范式转变。过去我们让模型做问答，是单轮的：给个问题，出个答案。但很多知识密集型的问题，比如&quot;某部电影的导演的父亲是哪个国籍&quot;，一步根本搜不出来，你得先搜导演是谁，再搜他父亲是谁，再搜国籍，中间还可能要做推断和纠错。这种把多步推理和多轮检索交织在一起的任务，就叫做Agentic Search。</p>
+<p>现在主流的做法是用基于结果的强化学习来训练这个智能体，行话叫RLVR。模型执行完一整条轨迹之后，用最终答案是否正确来给一个奖励信号。问题在于，这个奖励太稀疏了。整个推理链路可能有好几轮检索、几百步推理，但系统只告诉你&quot;对了&quot;或&quot;错了&quot;，完全没有告诉你哪一步做得好、哪一步出了问题，这对于优化中间推理过程帮助非常有限。</p>
+<p>于是有人提出，用知识蒸馏来补充更密集的监督信号。特别是一种叫Online Policy Distillation的方法，简单说就是让模型同时扮演&quot;老师&quot;和&quot;学生&quot;两个角色：学生做正常推理，老师拿到一些额外信息之后做推理，然后让学生在token层面去对齐老师的分布，相当于给每一步都提供了更细粒度的指导。</p>
+<p>理论上，如果你能让一个非常强的专有模型来当这个老师，那蒸馏的效果应该会好很多。但现实中有两个根本性的障碍挡在那里。</p>
+<p>第一个障碍是技术层面的：传统蒸馏需要访问老师模型在每个token位置上的输出概率分布，也就是所谓的logits。但Claude、GPT这些API是黑盒，根本不开放logits。而且更棘手的是，不同模型用的分词器不一样，你不可能直接做token层面的KL散度对齐，因为两边的词汇表压根就不是同一套体系。</p>
+<p>第二个障碍更隐蔽，也更伤：有人想了个退而求其次的办法，让专有模型把推理过程写成自然语言轨迹，然后让开源学生去模仿这段自然语言。但这个做法在实践中效果很差，甚至会让模型变得更差。为什么？因为专有模型的推理文字风格非常独特，它有自己的措辞习惯、自己的句式偏好、自己的啰嗦程度。学生模型死命模仿这些表面的语言特征，反而把自己原本学到的那套推理习惯给冲乱了，出现严重的&quot;风格漂移&quot;，还会增加幻觉。更关键的是，模仿到的是语言外壳，而不是背后的认知策略。</p>
+<p>这两个障碍合起来，构成了所谓的&quot;异构蒸馏问题&quot;——老师和学生之间不只是能力差距，还有架构异质、词汇异质、风格异质，三重鸿沟叠在一起。</p>
+<p>针对这个问题，这篇论文提出了一个叫MAPD的框架，全称Multi-Agent Protocol Distillation，也就是多智能体协议蒸馏。这个框架的核心思路可以用一句话概括：不要直接让学生模仿老师说话的方式，而是先把老师的思考过程&quot;提炼&quot;成一份结构化的、风格中立的协议，再用这份协议来指导学生。</p>
+<p>具体来说，MAPD把整个流程分成两个阶段：离线的协议合成阶段，和在线的联合训练阶段。</p>
+<p>先说离线阶段。这个阶段的主角是一个多智能体系统，里面有四种不同角色的Agent。第一个叫Orchestrator，负责把原始问题分解成若干有依赖关系的子任务。第二类叫Searcher，有多个并行运作，每个Searcher负责一个子任务，去Wikipedia语料库里检索，最多发三轮查询，把检索到的段落压缩成简洁的发现。第三个叫Repair，用来处理失败情况：如果Orchestrator综合完所有Searcher的发现之后，用精确匹配来判断候选答案还是错的，那就把正确答案交给Repair Agent做诊断。Repair会判断失败是因为表达问题（证据找到了但格式不对）还是搜索问题（根本没找到关键证据），然后触发有针对性的重新分解和补充搜索，最多允许三轮修复。注意一个重要细节：正确答案只用于诊断，绝对不会被写进检索查询或推理链里，防止数据泄露。</p>
+<p>这个协作探索过程结束后，系统得到了一份完整的探索日志，记录了每个子任务、每次查询、每段检索结果和每个发现。然后第四个Agent登场，叫做Protocolizer，它把这份原始日志转换成一个结构化的JSON协议。</p>
+<p>这个JSON协议是整个框架最关键的设计，值得仔细说清楚。协议里包含五个字段：任务类型（单跳、多跳、比较或其他），推理计划（一个有序的子目标列表，把复杂任务分解成可操作的步骤），接地事实（从检索段落里逐字抽取的证据，不是改写的，是原文substring），部分发现（如果搜索没有完全成功，记录已有的中间结论），以及答案验证（最终答案加上一个布尔标志，标明这个答案是否有证据支撑）。</p>
+<p>这个设计有几个精妙之处。首先，JSON格式本身是语言无关的，它不带任何特定模型的风格特征，不管是Claude生成的还是GPT生成的，经过这个格式统一之后，学生看到的是同一种形式的信息，而不是老师的&quot;说话腔调&quot;。其次，抽取式接地这一条规定所有证据必须是检索段落里的原文，这不是随便加的约束，它强制把推理的根基建在实际检索到的内容上，而不是模型的参数记忆，这样可以有效对抗幻觉。第三，推理计划这个字段有一条硬约束叫&quot;no hindsight&quot;，也就是不允许在推理步骤里出现最终答案或后续搜索结果，强制让计划保持前向视角，防止把答案反向注入进推理过程形成数据污染。</p>
+<p>协议生成完之后还要过一个质量门控，包括四项自动化检查：JSON格式是否合法、答案是否和标准答案完全匹配、接地事实是否真的是检索原文的子字符串、以及推理步骤里有没有泄露oracle信息。不通过的协议直接丢弃，对应的训练样本退化为基线的self-rollout方式。论文报告说，通过人工验证，这个流程在90%的样本上能产出符合规范的高质量协议，总共覆盖了三个老师模型下的若干实例。</p>
+<p>再说在线的训练阶段。这个阶段用的是一种叫&quot;在线策略自蒸馏&quot;的框架，具体是用同一个模型的两个&quot;分支&quot;来做。学生分支就正常做推理，不拿任何额外信息。教师分支拿到了刚才生成的那份JSON协议作为特权信息，在这个条件下做推理。两个分支用的是完全相同的参数，区别只在于教师分支输入里多了一份协议。</p>
+<p>然后在训练的时候，用教师分支在每个token上的预测分布来指导学生分支，具体是最小化从学生到教师的反向KL散度，只让梯度流过学生分支，教师分支只负责提供分布信号，不更新参数。这就是所谓的&quot;自蒸馏&quot;：老师和学生是同一个模型，只是条件不同。这个设计天然绕过了词汇表不匹配的问题，因为根本不涉及跨模型对齐。</p>
+<p>整体的训练目标是两项的加权和：一项是来自GRPO的稀疏强化学习信号，看最终答案对不对来给梯度；另一项是来自OPSD的密集token级蒸馏信号，权重由一个超参数lambda控制。这两个信号互补——RL负责拉着模型往正确结果走，蒸馏负责在每一步给更细粒度的方向指引。</p>
+<p>现在来说实验。训练数据用的是NQ和HotpotQA的训练集，评测覆盖七个知识密集型问答基准，其中三个单跳（NQ、TriviaQA、PopQA）和四个多跳（HotpotQA、2WikiMultihopQA、MuSiQue、Bamboogle）。七个里面有五个是训练时完全没见过的，用来测试泛化能力。指标是精确匹配成功率。</p>
+<p>学生模型选的是Qwen3-1.7B和Qwen3-4B，从预训练基础权重开始训练，不是从指令微调版本开始的。训练用了8张GPU，跑若干步，每个prompt采样若干条rollout，最大响应长度4096个token，环境允许最多三轮检索交互，每次返回Wikipedia前三段。</p>
+<p>对比基线有六个：Vanilla（零样本），纯OPSD（只用自蒸馏，没有外部特权信息），纯GRPO（只用强化学习），GRPO加OPSD的朴素组合，以及SDAR（一个相对先进的基线，把RL和技能生成内容的门控蒸馏组合起来）。</p>
+<p>主要结果是：MAPD在七个基准上的平均成功率，1.7B模型上领先所有基线，4B模型上同样领先所有基线。和最强基线SDAR相比，1.7B相对提升大约是3.2%，4B相对提升大约是2.7%。</p>
+<p>有一个值得注意的规律：MAPD的提升在多跳任务上明显大于单跳任务。1.7B模型在多跳基准上的相对提升达到7.9%，单跳只有2.3%；4B上是5.1%对1.8%。这个规律是符合预期的，因为多智能体的分解和证据聚合正是为复杂多跳推理而设计的，这些策略通过协议蒸馏进入学生模型之后，恰好能补上单智能体搜索在多步推理上的短板。</p>
+<p>论文还观察到一个极有意思的失败案例：纯OPSD在Agentic Search任务下表现非常糟糕，1.7B成功率崩到5.9%，4B也只有20.9%。原因是什么？因为在没有外部信息增益的情况下，模型把自己做对的那些rollout当作特权信息去对齐，这些rollout里的推理本来就是学生现有能力的上限，没有任何增量信息。结果模型学到了一个退化策略：把回应写得越来越长，以为越长越像&quot;做了充分推理&quot;。论文观察到length clip ratio——也就是被截断的比例——从初始值爆升到接近训练上限，这是一个非常明显的退化信号。</p>
+<p>消融实验把结构化协议、多智能体系统、专有模型这三个组件分别拿掉，结果揭示出每个部件各自的贡献。</p>
+<p>最关键的发现是：直接用专有模型的原始自然语言轨迹做蒸馏，不加结构化协议，结果比完全不用专有模型还要差。这个发现非常直接地支持了论文最初的判断：风格漂移不是小问题，它是一个足以让整个蒸馏过程走向反面的主要矛盾。</p>
+<p>只用结构化协议、但不用多智能体系统（即用单个专有模型直接生成协议），比单纯GRPO+OPSD有提升，但还不如SDAR。这说明协议格式本身能有效消除风格污染，但单个模型的检索深度和错误恢复能力不够，证据质量还是受限。</p>
+<p>同时把多智能体系统加回去但不用结构化协议，成绩比不用多智能体还略差，因为多智能体产出的探索日志更丰富，但也更嘈杂，风格迁移问题反而加剧了。</p>
+<p>完整的MAPD把这两个组件都用上，效果最好。论文对此给了一个很清晰的解释：结构化协议保证蒸馏信号是可学习的（去除风格噪声），多智能体系统保证蒸馏信号是事实准确的（提升证据质量和推理完整性）。这两个属性需要同时满足，缺一不可。</p>
+<p>lambda超参数的敏感性分析也很有意思。实验在几个值上测试，发现0.1是最优的。太小的lambda意味着蒸馏信号过弱，学生很快就把老师的分布&quot;榨干&quot;了，到训练100步左右老师学生之间的KL差距就缩没了，没有后续指引；但即便如此，这种短暂的蒸馏也比纯GRPO还是强的，说明早期那些引导是有价值的。</p>
+<p>太大的lambda则产生另一种退化：模型被过度强迫对齐教师分布，开始走一个&quot;检索但不推理&quot;的捷径。表现是平均回应长度从135个token压缩到大约42个token，而每轮最多三次工具调用全部打满。这种行为模式说明模型学会了&quot;赶紧调工具，不管推理了&quot;。单跳任务因为只需要找到一个事实，对这种策略的容忍度高，所以成绩略微上升；但多跳任务要求跨多个检索步骤保持连贯的推理链，这种策略直接把推理链给打断了，2WikiMultihopQA从45.7%掉到38.4%，MuSiQue从14.0%掉到11.1%，跌幅很显著。</p>
+<p>这个发现揭示了一个在Agentic Search中做蒸馏的根本张力：蒸馏压力太小，没有足够指引；蒸馏压力太大，模型退化成浅层的检索机器，正好摧毁了Agentic Search最核心的能力——多步推理。</p>
+<p>还有一项关于老师跨模型泛化的实验。三个顶级专有模型Claude-Opus-4.6、GPT-5.5、Gemini-3.1-Pro分别用来生成协议，然后用同样的训练流程跑。结果三个配置的平均成功率差距都在2个百分点以内。这个结论很有实用价值：因为协议格式把老师的语言风格剥离掉了，只保留了语义推理骨架，所以无论换哪个老师，学生接收到的信息都是结构相似的，不需要为每个老师单独调超参数，也不需要修改架构。</p>
+<p>成本上，论文以Gemini-3.1-Pro为例做了核算。25600条训练样本，通过质量门控的协议有25584条，通过率99.94%。平均每个样本调用老师模型大约17次，消耗约12500个token，平均每条协议的合成成本是0.057美元，整个训练集的一次性成本大约是1454美元。这个开销只在准备训练数据的时候发生一次，训练和推理阶段完全不需要再调用专有模型API。</p>
+<p>从工程角度来看，这个设计很聪明：把最贵的计算都放在离线的数据准备阶段，训练和推理阶段学生完全自立，没有额外开销。这意味着一旦协议合成好，之后无论学生跑多少次推理，成本都和专有模型无关了。</p>
+<p>这篇论文对做相关研究的人有几个值得直接借鉴的地方。</p>
+<p>第一，中间表示的选择比你想象的更重要。很多人在做跨模型蒸馏时，会默认&quot;用自然语言轨迹&quot;是一个安全的选择，但这篇论文的消融结果明确告诉你，这个选择在某些场景下会适得其反。特别是在Agentic任务里，老师的风格和学生的训练分布之间的冲突足以抵消甚至逆转蒸馏带来的好处。结构化的、风格中立的中间表示是一个更稳健的选择。</p>
+<p>第二，自蒸馏框架的上限被&quot;特权信息的质量&quot;严格限制。如果特权信息来自学生自己的rollout，那你只是在让学生对齐自己已经会的东西，没有任何增量。引入外部的、质量更高的信息源才是打破这个天花板的关键。这个道理看起来显然，但具体在Agentic Search里怎么做、做到什么粒度，这篇论文给了一个具体的工程答案。</p>
+<p>第三，对于Agentic Search这类需要多步推理的任务，蒸馏强度本身是一个需要认真校准的超参数，而且它的危险点不在你通常想象的地方。过强的蒸馏不是让模型变得&quot;太像老师&quot;，而是诱导出一种特定的退化行为——过度依赖工具调用、放弃推理链——而这恰好摧毁了Agentic Search的核心价值。这个诊断结果在设计类似系统时很值得预防性地考虑。</p>
+<p>根本上讲，这篇论文做的事情是：在&quot;强大但封闭&quot;和&quot;开放但受限&quot;之间，找到一条不依赖访问权限、不依赖词汇表对齐的知识传输路径，关键在于把传输的内容从&quot;语言风格&quot;切换到&quot;推理骨架&quot;，而这个切换所需的工程，就是那套结构化JSON协议和多智能体生成流水线。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

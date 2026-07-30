@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReferTrack: Referring Then Tracking for Embodied Visual Tracking · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 24, 2026</time> · <a href="https://arxiv.org/abs/2607.20061">arXiv</a> · <a href="https://arxiv.org/pdf/2607.20061">PDF</a></div>
+    <h1>ReferTrack: Referring Then Tracking for Embodied Visual Tracking</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-24-refertrack-referring-then-tracking-for-embodied-visual-track-072b37a5.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Embodied visual tracking (EVT) requires a mobile agent to continuously follow a specific target described in natural language using only onboard vision. While recent vision-language-action (VLA) policies unify target identification and trajectory planning, their chain-of-thought (CoT) reasoning often operates in abstract spatial latents that are difficult to supervise and weakly aligned with explicit image-space detections. To address this, we introduce ReferTrack, a referring-then-tracking paradigm that grounds EVT using a single forward-facing camera. Our model first selects the target from an indexed set of bounding boxes, then decodes tracking waypoints conditioned on this image-grounded decision. To preserve target motion cues over time, ReferTrack maintains a sliding-window queue of previously selected bounding boxes, injecting their geometric features into the visual history via temporal-viewpoint-bbox indicator (TVBI) tokens. We further enhance target identification by co-training on a custom Refer-QA dataset. On EVT-Bench, ReferTrack achieves state-of-the-art single-view performance with success rates of 89.4%, 73.3%, and 74.1% on the single-target, distracted, and ambiguity tracking splits, respectively -- matching or even surpassing several multi-camera baselines on identification-heavy tasks. Finally, real-world deployments on legged and humanoid robots validate its robust sim-to-real transfer capabilities. Code is available at https://github.com/MedlarTea/referTrack.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>具身视觉追踪这件事，听起来很直观——让机器人跟着一个人走——但真正做好它，需要同时解决两个在工程上彼此纠缠的难题：第一，在人群里准确认出你要跟的那个人；第二，在认出目标之后，还要规划出一条安全、流畅、不碰东西的运动轨迹。这两件事如果分开做，就会出现经典的误差传播问题：视觉识别模块认错了人，导航模块跟着跑偏，整个系统雪崩。如果想用一个端到端的神经网络把它们统一处理，又面临另一个问题：你怎么让这个网络在复杂拥挤的场景里精准定位目标？这篇论文要解决的，就是这个痛点。</p>
+<p>论文叫做 ReferTrack，来自南方科技大学和腾讯机器人实验室等机构的团队，发表于2026年。它的核心贡献是提出了一个叫做&quot;先指代、再追踪&quot;的范式，英文叫 referring-then-tracking。下面我把这篇论文的背景、问题、方法设计、实验结果和可借鉴之处，一层一层讲清楚。</p>
+<p>先说背景和已有方法的局限。</p>
+<p>具身视觉追踪，英文缩写 EVT，要求机器人只靠自身携带的摄像头，持续跟随一个用自然语言描述的目标人物，比如&quot;穿白色帽子、白色上衣和黑色裤子的中年男性&quot;。早期的方案是把识别和规划拆成两个模块：用 SAM、Grounding DINO 这类视觉基础模型来识别目标，再用强化学习或者模仿学习训练一个导航控制器。这种模块化流程的问题在于，识别错误会直接传染给规划，而且两个模块的优化目标并不一致，很难联合调优。</p>
+<p>最近几年，视觉-语言-动作模型，也就是 VLA 模型，开始被引入 EVT 任务。这类模型的思路是：把目标识别和轨迹规划统一到一个大模型里，用类似大语言模型的下一个词预测方式，端到端地输出机器人动作。比较有代表性的工作有 TrackVLA 和它的升级版 TrackVLA++。TrackVLA++ 在动作预测之前，加入了一个&quot;思维链推理&quot;步骤，用极坐标 token 来表示目标的空间位置，然后基于这个推理结果再预测轨迹。</p>
+<p>这个设计听起来很合理，但有一个根本性的弱点：它的推理是在一个抽象的空间隐空间里进行的，这个极坐标 token 很难被直接监督，也很难和图像里真实的检测框对齐。换句话说，模型的&quot;想法&quot;和它&quot;看到的东西&quot;之间存在一道隔阂，在人员密集、目标相似的场景里，这道隔阂会让识别质量大幅下降。</p>
+<p>ReferTrack 的动机正是针对这一点：能不能把目标识别这个步骤，锚定到图像空间里可以被直接监督的东西上？</p>
+<p>解决思路是这样的：与其让模型在抽象空间里猜目标在哪儿，不如先用一个现成的目标检测器跑一遍当前帧，把所有检测到的行人都框出来、编上索引，然后让 VLA 模型从这个编了号的候选列表里选一个——就像做选择题一样。这样，&quot;识别目标&quot;这件事就从一个开放式的推理问题，变成了一个有限集合上的分类问题，监督信号清晰，优化稳定，而且天然和图像空间对齐。</p>
+<p>现在来详细讲 ReferTrack 的架构设计，这是论文最核心的部分。</p>
+<p>整个系统分成几个主要组件：观测编码器、候选目录、指代思维链 token、轨迹预测头，以及一个滑动窗口的目标边界框队列。我逐一讲它们的作用和设计动机。</p>
+<p>首先是观测编码器。模型使用 SigLIP 和 DINOv2 两个视觉编码器提取特征，把它们拼接起来，分别生成当前帧的&quot;精细 token&quot;和历史帧的&quot;粗粒度 token&quot;。精细 token 保留当前帧的细节信息，粗粒度 token 用来保存更长时间范围内的历史上下文。两类 token 组合在一起，输入给一个大语言模型骨干网络，这里用的是 Qwen3-4B。</p>
+<p>然后是候选目录的构建。每一个时间步，系统用 YOLO11 加 ByteTrack 这套实时检测追踪方案，在当前帧里检测所有行人，按照边界框面积排序，取前若干个，每个赋予一个数字索引。另外，还有一个特殊的虚拟索引，代表&quot;目标不在当前视野内&quot;这种情况。每个候选行人的边界框，通过一个两层 MLP 编码成一个向量，跟上对应的索引标识符 token，构成完整的候选目录，送入语言模型。</p>
+<p>接下来是最关键的设计：指代思维链 token，论文叫 Refer-CoT token。给定语言指令、候选目录和视觉历史，语言模型做的第一件事，是从候选目录里输出一个单独的 token，就是那个目标的索引编号。这是一个严格的单 token 分类决策，而不是生成一段文字描述。如果目标不在当前视野里，就输出特殊的缺席符号。这一步的监督是直接的交叉熵损失，目标是正确的索引值，简洁、清晰、可靠。</p>
+<p>在 Refer-CoT 输出了目标索引之后，模型把这个选择作为前缀条件，进行第二步：预测动作 token，解码成若干个航点，也就是机器人接下来要走的局部路径，每个航点是一个平面位移加朝向变化。</p>
+<p>这里有一个非常重要的工程细节：当前帧的精细 token，是没有注入任何目标边界框信息的。这是故意设计的。原因是：如果当前帧就直接告诉模型&quot;目标在这个框里&quot;，模型就失去了自己去视觉定位目标的动力，指代推理步骤就变得多余。只让历史帧注入框信息，迫使模型真正学会用语言指令和历史几何信息去定位当前目标，而不是依赖&quot;作弊&quot;的当前框。</p>
+<p>说到历史帧注入框信息，这就引出了另一个核心组件：TVBI token，全称是 temporal-viewpoint-bbox indicator token，时序视角边界框指示器 token。这个机制是从另一篇导航工作 NavFoM 的 TVI token 演化而来的。TVI token 的作用是在视觉历史的每一帧 token 组之间插入一个时序和视角标记，让模型知道&quot;这段视觉特征来自哪个时间步、哪个摄像头方向&quot;。ReferTrack 在此基础上，额外把历史帧里选中的目标边界框的几何特征也加进去，让这个指示 token 不仅说明&quot;这是哪一帧&quot;，还说明&quot;那一帧里目标在哪里&quot;。</p>
+<p>具体实现上，有一个滑动窗口队列，长度等于历史帧数。每次 Refer-CoT 选出目标索引，就把对应的边界框取出来，推入队列。下一个时间步，历史帧的 TVBI token 就用这个队列里的框坐标来构建。如果某一历史帧目标不可见，就用一个固定的&quot;缺席哨兵向量&quot;填充，让模型能区分&quot;目标曾经在视野里&quot;和&quot;那帧根本没看到目标&quot;这两种情况。</p>
+<p>这个机制的意义在于：它把目标身份认定和运动线索这两件事，用一个明确的几何记忆通道连接起来。Refer-CoT 告诉系统&quot;跟谁&quot;，TVBI 队列告诉系统&quot;目标过去在哪儿、怎么移动的&quot;，两者共同为轨迹预测提供锚点。</p>
+<p>训练方面，损失函数由三部分加权求和：轨迹 MSE 损失、Refer-CoT 的交叉熵损失、以及 Refer-QA 的文本交叉熵损失。</p>
+<p>Refer-QA 是论文另一个重要的贡献。团队从 SYNTH-PEDES 这个行人重识别数据集出发，构造了一个静态的指代问答数据集：把行人图像随机粘贴到背景上，每张图包含两到三个行人，每个行人有对应的文字描述和边界框，模型的任务是根据文字描述选出正确的索引。</p>
+<p>这个数据集的格式，和在线追踪时的候选目录格式完全一致——同样是编了号的边界框列表，同样是单 token 的索引选择。因此，从静态 QA 数据集上学到的指代能力，可以无缝迁移到动态追踪场景。这是一个很聪明的设计：利用大量廉价的静态数据，增强模型在动态场景里最难的那个子任务——在人群里认人。</p>
+<p>训练分两个阶段：第一阶段只训练视觉投影器，在通用多模态 QA 数据集上做一个 epoch 的预热；第二阶段，把导航数据和 Refer-QA 数据按 1:1 的比例混合，联合进行完整的参数微调，语言模型骨干全量更新，视觉编码器保持冻结。总共导航样本 130 万条，Refer-QA 样本 130 万条。整个训练没有用强化学习，完全是监督微调。</p>
+<p>现在说实验结果，这里的数字很值得细细品味。</p>
+<p>评测基准是 EVT-Bench，在 Habitat 3.0 仿真器里进行，分三个子任务：单目标追踪（STT）、干扰追踪（DT）和歧义追踪（AT）。干扰追踪是场景里有相似外貌的干扰人员，歧义追踪是语言描述本身存在多义性。评测指标是成功率、追踪率和碰撞率。</p>
+<p>在单目标追踪任务上，ReferTrack 的成功率达到 89.4%，追踪率 92.5%，碰撞率只有 1.6%，是所有单视角方法里最好的。</p>
+<p>但更有说服力的结果在歧义追踪和干扰追踪上。在干扰追踪任务上，ReferTrack 的成功率是 73.3%，而之前最强的单视角基线 TrackVLA++ 只有大约 66.5%，提升幅度超过六个百分点，追踪率提升了整整 13 个百分点。在歧义追踪上，成功率提升幅度更大，接近 23 个百分点。</p>
+<p>最让人印象深刻的一点是：ReferTrack 用单个前视摄像头，在识别密集型的任务上，成绩不仅超过了大部分单视角基线，甚至匹配或超越了一些多摄像头方案。论文的解读是：当目标消歧是主要瓶颈时，显式的图像空间指代能力，比增加摄像头数量更有效。这个结论值得记住。</p>
+<p>而且，ReferTrack 没有用强化学习，也没有堆大模型，只用了一个 4B 参数的骨干、130 万条导航样本、纯监督微调，就打出了这个成绩。这意味着：精心设计的推理接口，本身就能弥补很大一部分数据量和算力上的差距。</p>
+<p>消融实验的结果进一步揭示了各个组件的贡献。论文在干扰追踪任务上做了系统性的消融。</p>
+<p>第一个变体是&quot;用真实标注框直接填 TVBI，绕过 Refer-CoT&quot;，也就是假设识别是完美的，只测运动规划的上限。这个版本的成功率是 81.5%，明显高于完整模型的 73.3%。而论文用的专家策略，也就是能看到所有模拟器状态的理想控制器，成功率是 85.1%。这说明什么？81.5% 和 85.1% 之间的差距，是运动规划本身留下的空间；而 73.3% 和 81.5% 之间的差距，是目标识别错误带来的损失。识别才是主要瓶颈，而不是规划。这个诊断结论非常重要，它说明未来工作的努力方向应该主要放在提升识别质量上。</p>
+<p>第二个变体是去掉 TVBI，只保留 Refer-CoT。成功率从 73.3% 降到 70.4%，下降了接近三个百分点。这说明 TVBI 有用，但不是决定性的。Refer-CoT 本身已经提供了很强的识别信号。</p>
+<p>第三个变体是同时去掉 Refer-CoT 和 TVBI，退化成没有显式指代能力的基础模型。成功率暴跌到 55.7%，下降了将近 18 个百分点。这非常清楚地说明：Refer-CoT 才是系统鲁棒性的核心来源，TVBI 在此基础上进一步稳定追踪。</p>
+<p>真实世界的部署实验也有几个值得关注的细节。团队在宇树 Go2 四足机器人和宇树 G1 人形机器人上分别测试，两台机器人都只有单前视摄像头。推理运行在云端 GPU 服务器上，通过 Wi-Fi 实时传输，整个感知加控制的循环频率平均是 10.6 Hz，目标检测每帧只需要 12 毫秒。四足机器人在杂乱障碍物环境中追踪目标，目标绕开障碍物绕行时依然保持跟踪，即使摄像头视野里只拍到目标的下半身，系统也没有丢失。人形机器人在多人干扰的场景里，Refer-CoT 正确选出了目标，追踪成功。这些定性结果说明仿真到真实的迁移效果还不错。</p>
+<p>再来说局限性。论文本身没有专门写 limitation 小节，但从方法设计上可以看出几个值得注意的地方。</p>
+<p>第一，系统依赖一个实时目标检测器，如果目标被遮挡严重、或者检测器漏检，目标就不会出现在候选目录里，Refer-CoT 只能输出缺席符号，此时追踪就会中断。消融实验里那个&quot;用真实框填 TVBI&quot;的版本，也暗示了更好的重识别模块或者更鲁棒的检测器能进一步提升性能。</p>
+<p>第二，当前的候选目录最多容纳有限个候选，超出的部分按面积截断。在极度密集的人群场景里，目标可能因为框面积太小而被丢弃，这是一个潜在的失效模式。</p>
+<p>第三，整个方案目前只使用单前视摄像头，对于目标从侧方或后方出现的情况，没有覆盖。虽然论文说单视角能在识别密集任务上媲美多摄像头方案，但这是在 EVT-Bench 的特定场景设置下的结论，泛化到更复杂环境还需要验证。</p>
+<p>第四，Refer-QA 数据是从行人重识别数据集合成的静态图片，和真实动态追踪场景之间还有一定的域差距，虽然格式统一减缓了这个问题，但并没有完全消除。</p>
+<p>对于做具身导航、机器人感知或者视觉语言动作模型的同行来说，这篇论文有几个非常直接可借鉴的点。</p>
+<p>最重要的一个是：把开放式推理问题转化为有限集合上的选择题，这个范式本身就值得借鉴。如果你的任务里有&quot;从候选里找目标&quot;这类需求，考虑把候选编号、让模型选索引，而不是让模型生成抽象的坐标或描述，往往能得到更强的监督信号和更好的性能。</p>
+<p>第二个是：用几何特征注入历史视觉记忆这个机制。TVBI token 的思路可以推广：任何时候你需要让模型在历史帧里追踪某个特定目标或物体，都可以把相关的几何信息（比如框坐标）显式地编码进历史 token，而不是只依赖视觉特征来隐式传递这个信息。</p>
+<p>第三个是：用廉价的静态数据预训练一个和在线任务接口完全一致的子能力，然后无缝迁移。ReferTrack 用 Refer-QA 数据增强指代能力的策略，本质是一种课程学习的变体——先在静态、简单的数据上学会&quot;认人&quot;，再在动态、复杂的追踪数据上进行全任务的联合微调。这个思路在其他需要识别能力的具身任务里同样适用。</p>
+<p>第四个是关于模型规模和训练策略的启示：4B 参数 + 纯监督微调，只要接口设计得好，就能在关键任务上超过更大模型或者需要强化学习的方案。不要盲目追求参数量和 RL，先把推理接口和数据格式设计对。</p>
+<p>总结来说，ReferTrack 的核心洞见是：把目标识别这一步锚定到图像空间里真实存在的检测框上，让模型做一道有界的选择题，比在抽象隐空间里猜目标位置更可靠、更容易监督。这个直觉简单但有力，在识别密集的追踪场景里，它带来的增益甚至超过了增加摄像头和使用强化学习。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

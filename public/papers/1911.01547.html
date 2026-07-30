@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>On the Measure of Intelligence · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Nov 05, 2019</time> · 1 min read · <a href="https://arxiv.org/abs/1911.01547">arXiv</a> · <a href="https://arxiv.org/pdf/1911.01547">PDF</a></div>
+    <h1>On the Measure of Intelligence</h1>
+    <div class="tags"><span class="tag">levelbench</span><span class="tag">reading-list</span><span class="tag">t1</span></div>
+  </header>
+  <section class="notes"><h2>Notes</h2><ul><li>跟你哲学最近的一篇。靠 novelty 构造抗污染、难度不靠记忆、成本上榜——你的程序化生成抗污染策略就是纯 Chollet。这篇定义了你为什么不怕模型背攻略。</li></ul></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2019-11-05-on-the-measure-of-intelligence-79ed511b.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>To make deliberate progress towards more intelligent and more human-like artificial systems, we need to be following an appropriate feedback signal: we need to be able to define and evaluate intelligence in a way that enables comparisons between two systems, as well as comparisons with humans. Over the past hundred years, there has been an abundance of attempts to define and measure intelligence, across both the fields of psychology and AI. We summarize and critically assess these definitions and evaluation approaches, while making apparent the two historical conceptions of intelligence that have implicitly guided them. We note that in practice, the contemporary AI community still gravitates towards benchmarking intelligence by comparing the skill exhibited by AIs and humans at specific tasks such as board games and video games. We argue that solely measuring skill at any given task falls short of measuring intelligence, because skill is heavily modulated by prior knowledge and experience: unlimited priors or unlimited training data allow experimenters to &quot;buy&quot; arbitrary levels of skills for a system, in a way that masks the system&#x27;s own generalization power. We then articulate a new formal definition of intelligence based on Algorithmic Information Theory, describing intelligence as skill-acquisition efficiency and highlighting the concepts of scope, generalization difficulty, priors, and experience. Using this definition, we propose a set of guidelines for what a general AI benchmark should look like. Finally, we present a benchmark closely following these guidelines, the Abstraction and Reasoning Corpus (ARC), built upon an explicit set of priors designed to be as close as possible to innate human priors. We argue that ARC can be used to measure a human-like form of general fluid intelligence and that it enables fair general intelligence comparisons between AI systems and humans.</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>人工智能领域有一个悬而未决的根本问题：我们到底在测量什么？当一个AI系统在围棋上击败世界冠军，当另一个系统在《星际争霸》里战胜职业选手，我们是否真的在测量智能本身？还是说，我们只是在测量一种非常昂贵、非常专门的技能？这篇论文，François Chollet在2019年写的《论智能的度量》，试图彻底厘清这个问题，并给出一个可操作的、形式化的智能定义，同时提出一个配套的测试基准。</p>
+<p>先来讲论文真正想解决的痛点。Chollet指出，人工智能领域有一个奇怪的悖论：我们越来越擅长构建能够完成各种具体任务的系统，但这些系统距离我们当初设想的&quot;像人一样的智能&quot;却越来越远。这不是偶然的。根本原因在于，我们一直在用错误的指标衡量进步。我们把&quot;技能&quot;当成了&quot;智能&quot;，把&quot;在特定任务上表现出色&quot;当成了&quot;具有通用学习能力&quot;。这两件事不是一回事，而混淆它们带来了整个领域方向上的偏差。</p>
+<p>要理解为什么会出现这种混淆，需要先了解一段思想史。Chollet梳理了一百多年来关于智能的两种截然不同的理解。第一种理解把智能看作一系列特定任务技能的集合。这种观点的代表人物是Marvin Minsky，他认为AI就是&quot;让机器能够完成那些如果由人来做就需要智能的任务&quot;。在这个框架下，AI研究的目标是把人类的各种能力编码成规则和知识库。这种观点受到进化心理学的影响，认为人的认知能力是进化出来处理特定问题的专用模块的集合。</p>
+<p>第二种理解把智能看作一种通用的学习能力。这种观点的灵感来自洛克的&quot;白板说&quot;，认为心智是一块空白的石板，通过经验习得知识和技能，原则上可以被引导去处理任何问题。Alan Turing在1950年提出的想法就属于这个传统：他想象一个类似孩子大脑的系统，有很少的内置机制，但有大量空白的&quot;页面&quot;等待被经验填写。</p>
+<p>今天深度学习主导的AI研究，在哲学上其实更接近第二种观点。很多研究者隐隐把神经网络想象成一块随机初始化的白板，通过训练数据获得能力。但Chollet认为，这两种极端观点都是错误的，真实的人类智能两者兼而有之，而我们对AI的评估方式却没有反映出这一点。</p>
+<p>接下来讲技能和智能的核心区别，这是整篇论文最关键的论点。Chollet说，技能是智能过程的&quot;结晶输出&quot;，而不是智能本身。用一个很直观的类比来理解：如果一个人类棋手下围棋下得很好，我们可以合理地推断他是个聪明的人，因为我们知道没有人天生就会围棋，这个人一定动用了自己的通用学习能力才掌握了这项技能，而这种通用学习能力也可以被用来学习其他很多东西。但如果一个AI系统下围棋很好，我们能做出同样的推断吗？不能，因为这个AI可能是用完全不同的方式达到这个技能水平的，这个方式和人类展示智能的方式毫无关系。</p>
+<p>这里有一个更深刻的论断：不存在这样一种任务X，使得&quot;在X上表现出色&quot;就能证明系统具有智能，除非X本身就是一个元任务，测试的是跨越大量不同任务的技能获取能力。这个论断听起来有点绝对，但Chollet的论证是严密的。技能可以通过两种方式被&quot;购买&quot;，而不需要任何真正的泛化能力：第一，无限的先验知识，也就是系统开发者把解决方案直接硬编码进去；第二，无限的训练数据，用足够密集的数据覆盖来弥补泛化能力的不足。如果这两种方式都可以让一个系统在任何给定任务上表现出色，那么单纯测试任务表现就根本无法区分&quot;真正具有泛化能力的系统&quot;和&quot;靠堆数据堆先验知识达到高分的系统&quot;。</p>
+<p>论文举了一个很精彩的例子。想象一个使用局部敏感哈希函数的哈希表，它能够把新的输入映射到它见过的最相似的输入，然后返回那个输入对应的动作。这个系统几乎没有泛化能力，它的泛化程度是固定的，完全由哈希函数的抽象能力决定，和它见过多少数据无关。但是，如果你给它提供足够密集的训练数据，它可以在任何视频游戏上达到超人水平。把这个想清楚，就能理解为什么Chollet说，当前的深度学习模型在概念上类似于这样一个局部敏感哈希表，只不过更复杂、更精细而已。它们可以被训练到在任何任务上达到任意高的技能水平，但这需要对输入输出空间进行密集采样，而不是靠真正的抽象推理能力。</p>
+<p>这就解释了为什么OpenAI的DotA2 AI &quot;Five&quot;用相当于四万五千年的训练时间打败了顶级职业玩家，但在向公众开放后，非职业玩家在几天内就找到了可靠击败它的策略。它没有真正地泛化，它只是把它训练时见过的空间覆盖得非常密集。同样，AlphaGo能打败围棋世界冠军，但在这之后几年里，它没有被应用到棋盘游戏以外的任何其他领域。</p>
+<p>讲完了问题的本质，来看Chollet提出的泛化能力谱系。他把泛化分成了四个层级，这个分类对于理解不同AI系统的能力边界非常有用。</p>
+<p>第一个层级是&quot;无泛化&quot;。有些系统，比如用穷举法来下井字棋的程序，或者被严格证明正确的排序算法，根本不能说在做泛化，因为它们面对的情况没有任何不确定性，所有可能的输入都可以被提前列举或者解析描述。</p>
+<p>第二个层级是&quot;局部泛化&quot;，也叫鲁棒性。这是指系统能够处理来自已知分布的新样本，处理一个单一任务或者一组定义明确的任务，前提是见过足够多的训练例子。比如一个图像分类器，训练完了之后能够正确分类它没见过的猫和狗的图片。这是机器学习从1950年代到今天主要关注的泛化形式。</p>
+<p>第三个层级是&quot;广泛泛化&quot;，也叫灵活性。这是指系统能够在不需要人类进一步干预的情况下，处理一大类任务和环境，包括系统创造者无法预见的情况。比如一辆真正意义上的L5级自动驾驶汽车，或者能够走进任何一个陌生厨房帮你泡一杯咖啡的家用机器人。Chollet认为，即使是今天最先进的AI系统，也还没有真正达到这个层级，尽管已经有越来越多的研究在朝这个方向努力。</p>
+<p>第四个层级是&quot;极端泛化&quot;，对应人类级别的通用智能。这是指系统能够处理全新的任务，这些任务和之前见过的情况只有抽象层面上的共同点，适用于人类经验范围内几乎任何领域和任务。目前只有人类，以及可能存在的其他有智慧的物种，展现出这个层级的泛化能力。Chollet把&quot;人类中心化的极端泛化&quot;定义为&quot;通用性&quot;，这也是他认为AI研究应该追求的目标。</p>
+<p>有意思的是，这个四层级结构和认知心理学中人类智能的层级理论高度吻合。卡特尔、霍恩和卡罗尔提出的CHC理论把人类认知能力组织成一个层级结构，最顶层是一般智能因子，也就是g因子，中间层是各种广泛能力，最底层是具体技能和测试任务。g因子对应极端泛化，宽泛的认知能力对应广泛泛化，具体任务技能对应局部泛化。</p>
+<p>这个对应关系不是巧合，它指向了论文的一个核心建议：AI评估应该向心理测量学学习。心理测量学是研究如何测量人类认知能力的学科，它发展了一套非常成熟的方法论：不测量特定任务上的分数，而是通过大量不同任务的综合表现来推断背后的&quot;能力&quot;构建；测试题应该是测试者事先不知道的，就像智力测试默认被测者没有专门练习过那些题目；测试结果应该满足可靠性，也就是可以被重复；有效性，也就是真正在测它声称在测的东西；标准化；以及无偏见。</p>
+<p>Chollet特别强调一点：心理测量学里的关键假设，是被测者没有事先针对性练习过测试题。这对人类来说是自然的，因为我们无法预知测试会考什么。但对AI系统来说，这个假设很难强制执行，因为系统的开发者完全可以看过所有测试题，然后把解法硬编码进去。这就是为什么简单地把现有IQ测试题拿来测AI是行不通的。1960年代就有人写程序来解几何类比题，也就是那种IQ测试里常见的&quot;图形A之于图形B，犹如图形C之于哪个图形&quot;这类题，程序确实能解，但解的是开发者事先编好的那些题，而不是说程序本身具有推理能力。</p>
+<p>那么，要评估AI系统的真正智能，应该怎么设计基准测试？论文给出了几条核心原则。测试应该测量技能获取能力，而不是技能本身。评估应该通过大量事先未知的任务来进行，这些任务对系统开发者来说也应该是新的，不能让开发者有机会针对特定任务进行优化。评估必须显式地控制先验知识、经验，以及泛化难度这三个关键变量。</p>
+<p>这就引出了论文的形式化定义。Chollet基于算法信息论，把智能定义为&quot;技能获取效率&quot;。更精确地说，他把一个系统的智能定义为：在给定先验知识和经验的条件下，系统在一定范围的任务上获取技能的效率。这个定义有四个关键要素：范围，也就是考虑的任务域有多广；泛化难度，也就是这些任务有多难被泛化；先验知识，包括系统开发者内置的知识；以及经验，也就是系统通过训练获得的信息。</p>
+<p>用算法信息论来形式化这个定义，核心思想是：给定任务T，一个系统在任务T上的技能水平，减去通过先验知识和训练数据可以&quot;解释&quot;的那部分，剩下的才是真正体现泛化能力的部分。换句话说，如果你用了大量的领域先验或者大量的训练数据就能达到高技能，这说明的是你的&quot;购买力&quot;，而不是你的智能。</p>
+<p>基于这个定义，Chollet设计了一个具体的测试基准，叫做ARC，全称是Abstraction and Reasoning Corpus，抽象和推理语料库。ARC的设计逻辑非常清晰：它测试的是人类在几乎不需要任何学习的情况下就能展示出来的那种核心推理能力，同时对AI系统来说又足够有挑战性。</p>
+<p>ARC的每道题是这样的：给你几个输入输出对作为例子，这些例子都遵循某条规则，然后给你一个新的输入，让你根据规律推断出正确的输出。题目的形式是彩色像素网格，规则涉及各种空间关系、对称性、对象识别、计数、模式匹配等等。听起来好像不难，但难点在于，ARC的规则都是全新的，没有任何题目是重复的，而且每道题只给你很少几个例子，通常是三到五个，你要从这极少量的例子里归纳出规律，然后应用到新情况。</p>
+<p>为什么ARC能体现真正的智能而不只是技能？关键在于它的先验知识设定。Chollet把ARC的先验知识明确设计为尽可能接近人类的先天认知能力，具体来说包括四类：对象感知，也就是把连续的像素区域理解为独立的对象；数量和计数，对小数字有天然的感知；基本的几何和拓扑直觉，比如对称性、连通性、内外关系；以及目标导向行为的基本理解。这些都是认知发展心理学研究表明人类婴儿不需要学习就具备的核心知识系统。</p>
+<p>这个设计有两个好处。第一，这些先验非常基础，应该对AI系统开发者来说也是可以明确描述和实现的，而不是某种神秘的人类专属能力。第二，ARC的题目是全新生成的，没有任何题目是在测试者开发系统之前公开的，这就保证了开发者无法通过查看题目来针对性地优化系统。</p>
+<p>从实验结果来看，情况非常说明问题。人类测试者在ARC上的平均准确率大约是百分之八十四。而截至论文写作时，当时最好的AI系统，包括各种深度学习方法和程序合成方法，在ARC上的表现都非常差，远远低于人类水平。这种差距本身就是一个重要的信号：它表明，在那些对人类来说只需要极少量例子就能学会的任务上，现有AI系统几乎无能为力。</p>
+<p>值得注意的是，ARC并不测试总体上&quot;多聪明&quot;，它测试的是一种特定的、人类中心化的泛化形式。Chollet非常谨慎地说，他的定义中的&quot;通用性&quot;是有限的，是在人类经验范围内的通用性，而不是宇宙中任何可能任务上的通用性。他甚至专门提到了&quot;无免费午餐定理&quot;：对于所有可能问题的均匀分布，任何两个优化算法的平均表现都是相同的，没有哪个算法本质上比另一个更好。这意味着真正意义上的&quot;普适智能&quot;是不可能存在的，任何实际的智能都是相对于某个特定的任务分布而言的。把这个任务分布锚定在人类经验，是一个合理且可操作的选择。</p>
+<p>论文还有一段对人类智能本质的深刻讨论，对我们理解AI应该追求什么很有帮助。Chollet认为，人类智能既不是纯粹的特定能力模块集合，也不是一块空白石板。人类有大量内置的先验知识，包括核心知识系统，比如对物体、数量、空间、因果关系的直觉，这些是进化赋予的，不需要学习。但在这些先验的基础上，人类具有非凡的学习能力，能够从极少量的例子中快速抽象出规律，并把这些规律应用到全新的情境中。这种组合，丰富的先验加上高效的学习，才是人类智能的本质。而当前的AI系统，不管是知识库驱动的符号系统，还是大规模深度学习模型，都缺少这种组合：符号系统有先验但没有足够好的学习，深度学习有学习但先验太稀薄，需要靠海量数据来弥补。</p>
+<p>论文的局限性也值得一提。Chollet的形式化定义基于算法信息论，理论上很优雅，但实际计算中，描述复杂度是不可计算的，所以这个定义更多是作为概念框架，而不是可以直接用于计算的算法。ARC基准也有局限：它只覆盖了人类智能的一个特定子集，也就是视觉空间推理和抽象模式识别，并没有覆盖语言、社会认知、长期规划等其他重要维度。此外，如何精确量化一个系统的先验知识，从而真正&quot;控制先验&quot;而不只是口头上说控制，也是一个技术上仍然困难的问题。</p>
+<p>那么这篇论文对正在做AI研究的人有什么具体的借鉴意义呢？有几点非常值得思考。如果你在做泛化能力的研究，要认真区分&quot;系统级泛化&quot;和&quot;开发者感知泛化&quot;，后者才能真正体现系统的能力上限，而不只是数据工程能力。如果你在设计基准测试，要问自己：这个基准能被通过堆先验知识或者堆训练数据来通过吗？如果答案是肯定的，它测量的就不是真正的泛化能力。如果你在用大规模预训练模型，要认真思考模型在预训练阶段实际上见过多少&quot;近似版本&quot;的测试题，这会严重影响你对泛化结论的解读。最重要的是，技能和智能是不同的东西，当你的系统在某个任务上表现很好，问自己它用的是哪条路：是真正的抽象推理，还是模式记忆加上密集数据覆盖？</p>
+<p>智能不是你能做什么，而是你用多少资源，从多少经验中，学会了做什么，而且这种学习还能被迁移到下一个没见过的问题上。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement · Edwhatup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Radio" href="../rss.xml">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Edwhatup</a>
+  <nav><a href="../index.html">Home</a><a href="../writing.html">Writing</a><a href="../library.html">Library</a><a href="../radio.html">电台 Radio</a></nav>
+</header>
+<main>
+<article class="paper">
+  <header class="paper-head">
+    <div class="paper-meta"><time>Jul 21, 2026</time> · <a href="https://arxiv.org/abs/2607.18217">arXiv</a> · <a href="https://arxiv.org/pdf/2607.18217">PDF</a></div>
+    <h1>HOMIE: Human-object Centric Video Personalization via Multimodal Intelligent Enchancement</h1>
+    <div class="tags"></div>
+  </header>
+  <section class="notes empty-notes"><p>No notes on this paper yet — it's on the reading list.</p></section>
+  
+  <section class="audio-block">
+  <h2>Audio digest (电台)</h2>
+  <audio controls preload="none" src="../audio/2026-07-21-homie-human-object-centric-video-personalization-via-multimo-7d9af37a.mp3"></audio>
+</section>
+  <details class="abstract" open><summary>Abstract</summary><p>Human-object centric video personalization (HOCVP) is a core task within subject-driven video generation. However, existing methods suffer from two key limitations. First, most approaches focusing on inter-subject personalization still struggle to strike a balance between high subject fidelity and accurate interaction patterns between humans and diverse objects, especially when objects represent abstract concepts such as logos. Second, while intra-subject references (e.g., OCR maps, multi-view inputs) are expected to enhance subject fidelity, most existing works lack mechanisms to understand such latent correspondence. To address both challenges, we propose HOMIE, an HOCVP framework that tackles both inter- and intra-subject input settings in a unified manner. Compared to previous approaches, HOMIE proposes a better MLLM integration strategy to extract knowledge of reference-level relationships without compromising the controllability of text encoders or incurring costly re-alignment. Specifically, we introduce global multimodal guidance within self-attention to better align MLLM-derived semantic features with VAE tokens. Furthermore, we propose modality-reference embedding to differentiate tokens from MLLM features and VAE tokens and associate intra-subject reference image tokens. Extensive experiments validate that our method achieves state-of-the-art performance across various HOCVP tasks. Project Page: https://yiyangcai.github.io/homie-page.github.io/</p></details>
+  <details class="digest"><summary>Chinese digest · 导读全文</summary><div class="digest-body"><p>怎么让AI生成的视频既能准确识别出&quot;这是同一件物品的不同角度&quot;，又能把Logo贴在语义上最合理的位置，还能同时让视频里的人和物都保持高度的外观一致性——这是当前视频个性化生成领域一个真实存在、而且相当棘手的问题。HOMIE这篇论文就是专门冲着这个痛点来的。</p>
+<p>先把背景交代清楚。所谓视频个性化生成，核心思路是：给模型几张参考图，告诉它&quot;这个人长这样&quot;&quot;这件物品是这个&quot;，然后让模型生成一段视频，视频里的人和物要和参考图保持一致，同时还要按照文字提示做出各种动作和交互。这个任务在商业上非常有价值——想象一下，你是一个品牌方，你希望生成一段广告视频，视频里有一个特定脸型的模特、拿着你家的真实产品，在做某个特定动作，而不是随机生成一张脸或者一个通用物品。这种需求就是HOCVP，全称Human-Object Centric Video Personalization，人物-物体中心的视频个性化生成。</p>
+<p>这个领域近年进展很快，出现了很多基于扩散Transformer架构的方法。但作者观察到，现有方法在面对两类场景时都有明显短板。</p>
+<p>第一类叫做&quot;跨主体&quot;场景，也就是你给模型提供的参考图里，每张图对应不同的主体，比如一张人物图、一张杯子图、一张Logo图，三个独立的东西。问题是，当主体数量增多，模型很难同时保持每个主体的外观保真度，并且还要让它们之间的交互显得自然合理。更难的情况是，参考图里有抽象概念，比如Logo——Logo本质上是一个品牌标识，它应该被贴在什么地方，是需要推理的，你不能明确告诉模型&quot;把Logo贴到杯子上&quot;，而是期望模型能理解Logo和使用场景之间的隐含关系。现有方法在这里普遍失败，生成出来的视频要么把Logo当成一个独立的平面物体漂浮在画面里，要么根本忽略它。</p>
+<p>第二类叫做&quot;同主体内&quot;场景，也就是你给模型提供的多张参考图，其实是同一个主体的不同视角或者不同形式。比如你提供了一个产品包装的正面、侧面、俯视图，期望模型生成的视频能同时保留这三个视角的细节；或者你提供了一张带有精细文字的OCR地图，期望生成的视频里物品上的文字能被准确渲染。现有方法在这里的问题是，它们没有机制去理解&quot;这三张图其实是同一个东西&quot;，要么把它们当成三个不同主体处理，要么完全丢失多视角信息。</p>
+<p>所以问题的本质是：模型需要有推理能力，能理解参考图之间的隐含关系——无论是跨主体之间的语义联系，还是同主体内部的一致性约束。</p>
+<p>这种推理能力，正好是多模态大语言模型，也就是MLLM的强项。MLLM经过海量图文数据训练，具备强大的视觉理解和跨模态推理能力。自然的想法就是把MLLM引入视频扩散模型。但问题来了，怎么接？接的姿势不对，效果就会大打折扣。</p>
+<p>作者梳理了现有的两种主流接法，并指出它们各自的缺陷。</p>
+<p>第一种接法是&quot;对齐到文本编码器&quot;。具体来说，很多视频扩散模型本来用的是UmT5这样的文本编码器，通过交叉注意力把文字条件注入到视频生成过程。这类接法试图把MLLM输出的特征强行对齐到UmT5的嵌入空间，然后一起送进交叉注意力。问题是，UmT5的特征空间是为语言设计的，语义粒度和MLLM的视觉特征相差很大，强行对齐就像把一套高分辨率的视觉信号压缩进一个为文字设计的低维通道，大量细节丢失。而且这样做还会破坏UmT5原有的对文字指令的控制能力，两边都受损。</p>
+<p>第二种接法是&quot;用MLLM完全替换文本编码器&quot;。直接把原来的文字控制体系推倒重来，用MLLM承担所有条件注入的任务。这个问题更大——模型的整个文字控制管线需要从头对齐，训练成本极高，而且MLLM这时候要同时承担两件事：既要像原来的文字编码器一样理解&quot;一个女人在公园散步&quot;这样的文字描述，又要推理参考图之间的关系。这两件事会互相干扰，模型很难同时做好。</p>
+<p>HOMIE的核心洞察是：不要动原有的文字编码器，让它继续做自己擅长的事；把MLLM单独拎出来，只让它专注于推理参考图之间的关系。这两条信息流并行工作，各司其职，最后通过精心设计的接口合并进视频生成过程。这个直觉非常清晰：文字编码器保持稳定的文字控制能力，MLLM提供额外的视觉推理能力，两者相加而不是相互替代。</p>
+<p>在这个大原则下，HOMIE提出了两个具体的核心模块：全局多模态引导和模态-参考嵌入。</p>
+<p>先说全局多模态引导，英文缩写GMG。理解这个模块，需要先想清楚一个问题：MLLM提取的特征是高度语义化的，它和3D VAE编码出来的视频潜在表示在分布上有显著差距，就像一个人用哲学语言描述一幅画，和另一个人用像素颜色值描述同一幅画，表达的内容有重叠，但格式天差地别。如果直接把MLLM特征和视频潜在表示拼接在一起送进自注意力，模型会混乱，原有的视频内部特征交互会被扰乱。</p>
+<p>GMG的解决思路是：不要让MLLM特征直接参与内容层面的注意力计算，而是让它以一种更温和、更全局的方式影响视频特征的注意力结构。具体操作是：在自注意力的Query和Key计算阶段，把视频token对应的Query和Key，用从MLLM特征提取出来的全局表示做一个仿射变换，也就是缩放加偏移。这个全局表示是通过在时间维度上做池化得到的——把MLLM特征在时间轴上压缩成一个全局向量，然后用两个轻量级的投影网络把它映射成缩放因子和偏移因子，再广播到视频token的序列长度，施加到视频的Q和K上。</p>
+<p>这个设计的妙处在于：参考图对应的Q和K完全不动，保持它们和视频token之间的原生自注意力模式；MLLM的语义信息只是轻轻地调制视频token的注意力方向，而不是暴力插入内容。而且这种全局池化的操作天然地在时间维度上保持了稳定性，避免了MLLM特征对不同时间步注意力的不一致干扰。</p>
+<p>从实验上看，GMG是整个方法里对Logo个性化任务最关键的模块。消融实验里，去掉GMG，换成把MLLM特征对齐到UmT5的做法，模型就完全失去了把Logo贴到语义相关物体上的能力，也无法生成&quot;喝一口&quot;这样的精细动作。这证明GMG确实成功地把MLLM的推理知识传递进了视频生成过程。</p>
+<p>再说模态-参考嵌入，英文缩写MRE。这个模块要解决的问题不一样，它的核心目标是告诉模型：这些来自不同地方的token，身份是什么？</p>
+<p>HOMIE的输入把视频潜在token、参考图token和MLLM特征token全部拼接在一起。但模型天然不知道哪些token来自视频、哪些来自参考图、哪些来自MLLM。更关键的是，对于参考图token，模型还需要知道：这两张参考图是同一个主体的不同视角，它们内部有关联；那两张参考图是两个不同的主体，它们之间应该是独立的。</p>
+<p>MRE是一个可学习的嵌入模块，包含两类嵌入：模态嵌入和参考嵌入。</p>
+<p>模态嵌入的作用是标记token的来源类型——它是视频token、参考图token还是MLLM特征token，给每种类型分配一个独特的可学习向量，加到对应token上。这就像给每个token贴一个标签，让模型能明确区分不同模态的信息。</p>
+<p>参考嵌入更有意思，它专门作用于参考图token。规则是：同一个主体的不同参考图——也就是同主体内的多张图，比如同一个产品的不同视角——共享同一个参考嵌入向量；不同主体的参考图——也就是跨主体的参考，比如人物图和物品图——分配不同的参考嵌入向量。</p>
+<p>这个设计的效果非常直接：当两张参考图被赋予相同的参考嵌入，模型会把它们理解成&quot;同一个东西&quot;，自然地在它们之间建立关联，在生成视频时保持多视角一致性；当两张参考图被赋予不同的参考嵌入，模型会把它们理解成独立的主体，在生成时分别保持各自的外观特征，不会混淆。</p>
+<p>消融实验里有一个很有说服力的现象：去掉MRE后，模型在处理OCR地图输入时，会把OCR地图当成一个独立的主体——也就是说，视频里会出现一个看起来像地图的平面物体，而不是把地图上的文字信息融合到产品包装上。这正说明没有MRE，模型无法理解&quot;这个OCR地图和这个产品是同一件事物的不同描述形式&quot;。加上MRE后，这个问题消失，文字信息被正确地渲染到产品上。</p>
+<p>现在来看训练策略。HOMIE的训练数据来自两个开源数据集，OpenS2V-5M和PhantomData，经过多步筛选：先过滤低质量视频，然后去掉背景和小物体等与人物-物体中心任务无关的内容，最终构建了三个子集——30万单主体样本、8万多主体样本，以及一个自行精标注的2万高质量样本，包含精细的人和物的分割掩码，同时构建了同主体内参考图对，用于训练MRE。另外还有约4万张720P的高分辨率多主体样本。</p>
+<p>训练分三个阶段。第一阶段在单主体数据上训练，让模型学会保持单个主体的身份一致性，同时让每个参考嵌入都被充分优化，和不同主体身份建立独特关联。第二阶段在多主体数据上训练，重点是让模型学习跨主体的语义知识，包括特定主体之间的交互模式，以及Logo和对应使用场景之间的关系。第三阶段在720P高分辨率数据上进行短期微调，提升高分辨率生成能力。整个训练消耗约1.1万GPU小时，使用的是A100。</p>
+<p>底座模型是Wan2.1-14B和Wan2.2-14B，这是当前开源视频生成领域比较强的模型。MLLM选用的是Qwen3-VL-2B-Thinking，取其最后一层隐藏状态作为特征，用一个两层MLP做对齐，压缩到和3D VAE token兼容的维度。GMG被插入到全部40个DiT块的自注意力层中，参考嵌入数量设置为5。</p>
+<p>实验评估覆盖了200个人物-物体组合，其中140个样本包含三张或三张以上的参考图，包括跨主体和同主体内两种设置。对比的基线包括闭源商业模型Kling-1.6、以及一系列基于Wan-14B的开源方法，还特别对比了用MLLM完全替换文字编码器的两个模型UniVideo和VINO，它们基于HunyuanVideo，参数量更大，训练成本也更高。</p>
+<p>评估指标分三大类。第一类是视频质量，包括美学分和运动流畅度。第二类是文字指令遵循能力，用GMEScore衡量。第三类是主体一致性，细分为人脸相似度、DINO-I物体相似度、GPT-5.2评估的物体相似度，以及OCR准确度。对于多视角同主体内场景，还用了DINO召回率和DINO精确率这两个指标，分别衡量&quot;视频有没有覆盖所有参考视角&quot;和&quot;视频里的物体有没有和参考保持一致&quot;。</p>
+<p>主要结果是这样的：HOMIE在开源方法中达到了最高的视频质量和文字指令遵循性能。最亮眼的数字是OCR准确度，比排名第二的SkyReels-V3提高了21.8%，这是相对提升，说明MLLM引导对于理解和渲染包装文字信息有显著效果。在多视角同主体内任务上，HOMIE也展示了强大的多视角一致性，能在视频里真实呈现参考图中覆盖的各个视角，同时保持物体的外观保真度。</p>
+<p>定性分析里有几个案例特别能说明问题。在一个四主体的复杂跨主体HOCVP场景里，VACE、SkyReels-V3、BindWeave和UniVideo都出现了主体缺失、服装错误或者人体退化的问题；Kling动作不够流畅。只有HOMIE在四个主体都保持外观一致的情况下，还生成了自然的交互动作。</p>
+<p>Logo个性化这个案例更能体现MLLM推理能力的价值。任务是：参考图里有COSTA咖啡的Logo，还有一个一次性纸杯，文字提示里并没有显式说明&quot;把Logo贴到杯子上&quot;。在这个隐含语义推理的场景下，只有HOMIE、Kling和UniVideo三个模型成功地把Logo附着到了杯子上，其他模型失败了。但在Logo细节的渲染质量上，只有HOMIE准确还原了Logo的视觉细节，Kling和UniVideo的Logo细节失真。</p>
+<p>在同主体内场景里，有OCR地图输入的任务，Phantom、FFGO和UniVideo都产生了重复生成的问题，也就是把OCR地图当成了独立的主体，视频里出现了地图的副本；而HOMIE正确地把地图上的文字信息融合到了物品上。在多视角输入的场景里，HOMIE也明显更好地保持了参考图中涵盖的多个视角，同时跟随&quot;旋转&quot;这样的交互提示。</p>
+<p>用户研究部分，40名参与者对20组样本进行评估，每组样本有来自HOMIE、Phantom、Kling、SkyReels-V3和UniVideo的视频各一条，从整体质量、文字指令遵循和主体一致性三个维度打分。结果是HOMIE在三个维度上都排名第一，这在主观评估层面进一步验证了方法的实用价值。</p>
+<p>讲完优势，也要实事求是地说局限性。HOMIE基于Wan-T2V-14B系列，继承了底座模型的限制，最直接的是视频时长，目前优化的是大约5秒的短片，这和所有对比基线其实是一样的约束。如果要做更长的视频，需要另外的技术扩展。另外，从训练成本角度看，11000 GPU小时在开源方法里属于中等水平，远低于UniVideo和VINO那种替换整个文字编码器的方案，但也不是轻量级的工程，对小团队有一定门槛。</p>
+<p>对于做视频生成或者多模态生成研究的听众，这篇论文有几个值得借鉴的具体思路。第一，MLLM的接入策略选择&quot;并联&quot;而非&quot;替换&quot;，保留原有控制管线的同时引入新的推理能力，这种设计哲学在很多多模态融合场景都适用，避免了昂贵的从头对齐。第二，GMG用全局池化加仿射调制的方式把高语义特征柔和地注入注意力计算，比直接拼接内容token更稳定，可以作为跨模态特征融合的一种通用思路。第三，MRE用可学习嵌入明确区分token来源和主体归属，是一种低成本但高效的身份绑定机制，在任何需要同时处理多个来源、多个身份输入的场景都可以借鉴。</p>
+<p>理解参考图之间的隐含关系，既包括不同主体之间的语义联系，也包括同一主体多张图之间的一致性约束，这正是当前视频个性化生成从&quot;能用&quot;走向&quot;好用&quot;的关键跨越，而HOMIE给出了一条清晰、可复现、且训练效率相对合理的路径。</p></div></details>
+  <div class="back"><a href="../writing.html">← Writing</a> · <a href="../library.html">Library</a></div>
+</article>
+</main>
+<footer class="site-foot">
+  <span>Built from a personal paper library — cards, notes and audio generated daily.</span>
+  <span>© 2026 Edwhatup · <a href="../rss.xml">RSS</a></span>
+</footer>
+</body>
+</html>
