@@ -17,6 +17,7 @@ from datetime import datetime, timezone
 from slugify import slugify
 
 import build_feed
+import build_site
 import config
 import fetch_fulltext
 import fetch_papers
@@ -110,6 +111,7 @@ def run(date_str: str | None = None) -> None:
         process_paper(paper, label=f"{i}/{len(papers)}: ")
     build_feed.build_all()
     lib.build_library()  # refresh paper cards + index (preserves notes/status)
+    build_site.build_site()  # regenerate the static blog into public/
     print("\n[run] done.")
 
 

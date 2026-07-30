@@ -1,0 +1,13 @@
+{
+  "title": "Edwhatup",
+  "tagline": "Reading the AI frontier, one paper at a time — notes, takes, and an audio digest.",
+  "author": "Edwhatup",
+  "bio": "I read HuggingFace Daily Papers and write up what actually matters. My own research direction: **turning game levels into research datasets** — level-generation benchmarks, rhythm-game audio tokenization, and agent 2D level-connectivity. Below are my notes, my takes, and a daily audio digest (电台) of what I'm reading.\n\n_(Edit this bio in `data/site.json`.)_",
+  "accent": "#f0803c",
+  "links": {
+    "GitHub": "https://github.com/edwhatup/PaperLibrary",
+    "Email": "mailto:edwhatup@gmail.com"
+  },
+  "featured_tag": "",
+  "footer": "Built from a personal paper library — cards, notes and audio generated daily."
+}
