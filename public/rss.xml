@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Keep It InMind: Benchmarking the Implicit-Association Blind Spot in Agent Memory</title>
+      <description>当一个AI助手记住了你有坚果过敏，几分钟后你问它能不能推荐一款马卡龙食谱，它热情地给了你一份杏仁粉的详细配方——这就是这篇论文要解决的核心问题。这个问题不是遗忘，不是存储故障，也不是模型不够聪明。系统刚刚在你直接问"我对什么过敏"的时候完美地回答了你。它知道这个事实，它存着这个事实，但在最关键的那一刻，它没有把这个事实用上来。</description>
+      <link>https://arxiv.org/abs/2607.24368</link>
+      <guid isPermaLink="false">2026-07-29-keep-it-inmind-benchmarking-the-implicit-association-blind-s-dd44d1e9.mp3</guid>
+      <pubDate>Thu, 30 Jul 2026 00:15:43 +0000</pubDate>
+      <itunes:duration>935</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-29-keep-it-inmind-benchmarking-the-implicit-association-blind-s-dd44d1e9.mp3" length="5614128" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>CodeNib: A Multi-View Data System for Serving Repository Context to Coding Agents</title>
+      <description>好的，没问题。这是一段约20分钟、适合开车时收听的连续口播稿，总字数在6120到8160之间，严格按照您的要求撰写。</description>
+      <link>https://arxiv.org/abs/2607.25431</link>
+      <guid isPermaLink="false">2026-07-29-codenib-a-multi-view-data-system-for-serving-repository-cont-daafdb96.mp3</guid>
+      <pubDate>Thu, 30 Jul 2026 00:12:41 +0000</pubDate>
+      <itunes:duration>2898</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-29-codenib-a-multi-view-data-system-for-serving-repository-cont-daafdb96.mp3" length="17389296" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition</title>
+      <description>现代设计工作流里有一个非常普遍却又让人头疼的瓶颈：你拿到一张设计图的截图，或者一个被"拍平"成像素的导出文件，你想修改里面某个文字的字体、调整某个色块的颜色、或者挪动某个元素的位置，但你发现根本无从下手，因为原本可编辑的图层结构已经不存在了。要让这张图重新可编辑，你必须在设计软件里从零开始重建，费时费力，而且容错率极低。这篇论文要解决的就是这个问题，它叫做 ReDesign，全称是"从图像中恢复可编辑设计结构的智能体分解框架"，来自 KAIST 和 Helmholtz Munich 的研究团队，发表于 2026 年 7 月。</description>
+      <link>https://arxiv.org/abs/2607.25565</link>
+      <guid isPermaLink="false">2026-07-29-redesign-recovering-editable-design-structures-from-images-v-29f2a267.mp3</guid>
+      <pubDate>Thu, 30 Jul 2026 00:06:03 +0000</pubDate>
+      <itunes:duration>884</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-29-redesign-recovering-editable-design-structures-from-images-v-29f2a267.mp3" length="5304672" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>A New Role for Relevance: Guiding Corpus Interaction in Agentic Search</title>
+      <description>有一类搜索任务，光靠检索排名是解决不了的。你问的问题很复杂，需要跨多份文档拼接证据，需要精确定位某一段话里的关键事实，需要在发现一个中间实体之后再追踪下一跳。传统的检索增强生成，也就是RAG，给你排好序，把前几篇文档塞进上下文，然后让语言模型来回答。这条路走了很多年，但它有一个根本性的问题：文档级别的相关性分数，和真正的证据价值，并不总是一回事。一篇文档排名很靠前，但决定性的事实可能就藏在被截断的那几行里；另一篇文档乍看不相关，却恰好包含你需要的关键数字。这篇论文要解决的，就是这个相关性信号在智能搜索中被严重低估、被用错地方的问题。</description>
+      <link>https://arxiv.org/abs/2607.24223</link>
+      <guid isPermaLink="false">2026-07-29-a-new-role-for-relevance-guiding-corpus-interaction-in-agent-f234bddd.mp3</guid>
+      <pubDate>Thu, 30 Jul 2026 00:03:06 +0000</pubDate>
+      <itunes:duration>919</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-29-a-new-role-for-relevance-guiding-corpus-interaction-in-agent-f234bddd.mp3" length="5519808" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone</title>
+      <description>好的，没问题。下面是根据你提供的论文内容，为你准备的约 15 分钟的口播稿，总字数在 4590 到 6120 字之间。</description>
+      <link>https://arxiv.org/abs/2607.25895</link>
+      <guid isPermaLink="false">2026-07-29-hifi-umi-learning-deployable-manipulation-policies-from-high-7eea8350.mp3</guid>
+      <pubDate>Wed, 29 Jul 2026 23:59:57 +0000</pubDate>
+      <itunes:duration>1926</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-29-hifi-umi-learning-deployable-manipulation-policies-from-high-7eea8350.mp3" length="11560608" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation</title>
       <description>好的，接下来，我们来聊一篇关于扩散模型（Diffusion Model）的最新研究。这篇论文的标题是《重新思考策略内扩散蒸馏中的无分类器引导》。</description>
       <link>https://arxiv.org/abs/2607.24731</link>

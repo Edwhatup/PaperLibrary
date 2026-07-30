@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-29
+
+- **Keep It InMind: Benchmarking the Implicit-Association Blind Spot in Agent Memory** · 25★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-29-keep-it-inmind-benchmarking-the-implicit-association-blind-s-dd44d1e9.mp3) [arXiv](https://arxiv.org/abs/2607.24368)
+- **CodeNib: A Multi-View Data System for Serving Repository Context to Coding Agents** · 42★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-29-codenib-a-multi-view-data-system-for-serving-repository-cont-daafdb96.mp3) [arXiv](https://arxiv.org/abs/2607.25431)
+- **ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition** · 54★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-29-redesign-recovering-editable-design-structures-from-images-v-29f2a267.mp3) [arXiv](https://arxiv.org/abs/2607.25565)
+- **A New Role for Relevance: Guiding Corpus Interaction in Agentic Search** · 82★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-29-a-new-role-for-relevance-guiding-corpus-interaction-in-agent-f234bddd.mp3) [arXiv](https://arxiv.org/abs/2607.24223)
+- **HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone** · 134★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-29-hifi-umi-learning-deployable-manipulation-policies-from-high-7eea8350.mp3) [arXiv](https://arxiv.org/abs/2607.25895)
+
 ## 2026-07-28
 
 - **Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation** · 62★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-28-rethinking-classifier-free-guidance-in-on-policy-diffusion-d-ab202275.mp3) [arXiv](https://arxiv.org/abs/2607.24731)
