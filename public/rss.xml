@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>CLBench-V: Evaluating Multimodal Context Learning from Grounding to Knowledge Acquisition</title>
+      <description>当前最好的多模态大模型，在一个专门设计的测试集上，综合得分只有0.2847，连三成都不到。这个数字说明的问题，比很多人想象的要严峻得多。这篇论文做的事，就是把这个问题搞清楚：当模型面对的不只是文字，而是图表、文档页面、地图、网页截图这些混合在一起的多模态上下文时，它到底在哪里出了问题。这个基准叫CLBench-V，来自上海交通大学和中关村学院的团队。</description>
+      <link>https://arxiv.org/abs/2607.25294</link>
+      <guid isPermaLink="false">2026-07-30-clbench-v-evaluating-multimodal-context-learning-from-ground-8633ccbf.mp3</guid>
+      <pubDate>Fri, 31 Jul 2026 00:10:37 +0000</pubDate>
+      <itunes:duration>1049</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-30-clbench-v-evaluating-multimodal-context-learning-from-ground-8633ccbf.mp3" length="6299136" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>DecoEvo: Score-Decoupled Co-Evolution of Solver and Rubric-Generator Skills in Text Space</title>
+      <description>现在有一类很有意思的大模型优化范式，叫做"文本空间优化"。它不改动模型的任何参数，而是通过修改外部的自然语言文档——比如一个任务策略文档或者一套评分标准——来让模型在特定任务上表现得更好。这听起来很优雅：模型就像一个黑盒，你只是给它配了一套更好的使用说明书和评判手册。但这个范式有一个深层的问题一直没有被很好地解决，DecoEvo这篇论文就是冲着这个问题来的。</description>
+      <link>https://arxiv.org/abs/2607.25675</link>
+      <guid isPermaLink="false">2026-07-30-decoevo-score-decoupled-co-evolution-of-solver-and-rubric-ge-eba5ce54.mp3</guid>
+      <pubDate>Fri, 31 Jul 2026 00:07:25 +0000</pubDate>
+      <itunes:duration>894</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-30-decoevo-score-decoupled-co-evolution-of-solver-and-rubric-ge-eba5ce54.mp3" length="5367744" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>HumanCLAW: Can Vision-Language Models Act Through a Body?</title>
+      <description>现在的视觉语言模型，在图像描述、空间关系判断、视觉问答这些任务上，已经表现得相当不错了。但有一个问题一直没有被认真测量过：如果你给这个模型配上一具真实的身体，让它用这具身体在物理世界里完成任务，它到底行不行？</description>
+      <link>https://arxiv.org/abs/2607.27180</link>
+      <guid isPermaLink="false">2026-07-30-humanclaw-can-vision-language-models-act-through-a-body-d3253525.mp3</guid>
+      <pubDate>Fri, 31 Jul 2026 00:04:32 +0000</pubDate>
+      <itunes:duration>1109</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-30-humanclaw-can-vision-language-models-act-through-a-body-d3253525.mp3" length="6655392" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>CoRT: Counterfactual Replay for Token-Level Rubric-Guided Policy Optimization</title>
+      <description>大型语言模型在经过强化学习训练时，面临一个看似不起眼却相当根本的问题：当我们用一套评分标准去评估模型的回答，给它打一个分数，再把这个分数转化成训练信号去更新模型参数的时候，这个信号是被均匀地分摊到回答里的每一个词上的。也就是说，一句回答里无论哪个词，不管它是关键的格式标记、必须出现的特定短语，还是无关紧要的连接词，都拿到了完全相同的训练力度。这篇论文要解决的，就是这个"一刀切"的信用分配问题。</description>
+      <link>https://arxiv.org/abs/2607.25659</link>
+      <guid isPermaLink="false">2026-07-30-cort-counterfactual-replay-for-token-level-rubric-guided-pol-162f57ec.mp3</guid>
+      <pubDate>Fri, 31 Jul 2026 00:00:24 +0000</pubDate>
+      <itunes:duration>710</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-30-cort-counterfactual-replay-for-token-level-rubric-guided-pol-162f57ec.mp3" length="4265424" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>TurboVLA: Real-Time Vision-Language-Action Model at 32 Hz on an RTX 4090 with &lt;1 GB VRAM</title>
+      <description>目前在机器人操作领域，视觉-语言-动作模型，也就是我们常说的VLA模型，已经成为一种非常强大的框架。它能把机器人的视觉观察、人类的自然语言指令，以及机器人需要执行的动作，统一到一个策略中。这种模型能让机器人理解我们的指令，并根据视觉信息来完成任务。</description>
+      <link>https://arxiv.org/abs/2607.27205</link>
+      <guid isPermaLink="false">2026-07-30-turbovla-real-time-vision-language-action-model-at-32-hz-on--8885c06b.mp3</guid>
+      <pubDate>Thu, 30 Jul 2026 23:58:11 +0000</pubDate>
+      <itunes:duration>863</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-30-turbovla-real-time-vision-language-action-model-at-32-hz-on--8885c06b.mp3" length="5180688" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Keep It InMind: Benchmarking the Implicit-Association Blind Spot in Agent Memory</title>
       <description>当一个AI助手记住了你有坚果过敏，几分钟后你问它能不能推荐一款马卡龙食谱，它热情地给了你一份杏仁粉的详细配方——这就是这篇论文要解决的核心问题。这个问题不是遗忘，不是存储故障，也不是模型不够聪明。系统刚刚在你直接问"我对什么过敏"的时候完美地回答了你。它知道这个事实，它存着这个事实，但在最关键的那一刻，它没有把这个事实用上来。</description>
       <link>https://arxiv.org/abs/2607.24368</link>

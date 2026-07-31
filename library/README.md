@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-30
+
+- **CLBench-V: Evaluating Multimodal Context Learning from Grounding to Knowledge Acquisition** · 40★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-30-clbench-v-evaluating-multimodal-context-learning-from-ground-8633ccbf.mp3) [arXiv](https://arxiv.org/abs/2607.25294)
+- **DecoEvo: Score-Decoupled Co-Evolution of Solver and Rubric-Generator Skills in Text Space** · 54★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-30-decoevo-score-decoupled-co-evolution-of-solver-and-rubric-ge-eba5ce54.mp3) [arXiv](https://arxiv.org/abs/2607.25675)
+- **HumanCLAW: Can Vision-Language Models Act Through a Body?** · 66★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-30-humanclaw-can-vision-language-models-act-through-a-body-d3253525.mp3) [arXiv](https://arxiv.org/abs/2607.27180)
+- **CoRT: Counterfactual Replay for Token-Level Rubric-Guided Policy Optimization** · 73★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-30-cort-counterfactual-replay-for-token-level-rubric-guided-pol-162f57ec.mp3) [arXiv](https://arxiv.org/abs/2607.25659)
+- **TurboVLA: Real-Time Vision-Language-Action Model at 32 Hz on an RTX 4090 with <1 GB VRAM** · 120★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-30-turbovla-real-time-vision-language-action-model-at-32-hz-on--8885c06b.mp3) [arXiv](https://arxiv.org/abs/2607.27205)
+
 ## 2026-07-29
 
 - **Keep It InMind: Benchmarking the Implicit-Association Blind Spot in Agent Memory** · 25★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-29-keep-it-inmind-benchmarking-the-implicit-association-blind-s-dd44d1e9.mp3) [arXiv](https://arxiv.org/abs/2607.24368)

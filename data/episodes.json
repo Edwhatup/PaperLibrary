@@ -1,5 +1,65 @@
 [
   {
+    "key": "2607.25294",
+    "date": "2026-07-30",
+    "title": "CLBench-V: Evaluating Multimodal Context Learning from Grounding to Knowledge Acquisition",
+    "abstract": "Real-world tasks often require models to learn from task-specific context rather than relying only on pre-trained knowledge. While recent work has highlighted this capability as context learning, existing evaluations mainly focus on textual contexts. In many practical settings, however, the context to be learned from is multimodal: scientific findings are conveyed through figures and tables, financial indicators are scattered across converted reports, and spatial decisions depend on maps, scenes, or web pages. We introduce CLBench-V, a benchmark for multimodal context learning that addresses the difficulty of localizing where context use breaks down by organizing tasks around three dimensions: context grounding, new information application, and new knowledge learning. CLBench-V combines converted public benchmarks with newly constructed datasets spanning domains such as science, finance, long-document understanding, spatial reasoning, and web-based visual question answering. To reduce the cost of constructing domain-specific context-learning tasks, we further use automated construction and filtering procedures for our newly built datasets. Across 3,443 instances and six recent multimodal models, the best overall score is only 0.2847, indicating that multimodal context learning remains far from saturated. Moreover, InternVL3.5-30B-A3B performs best on context grounding and new knowledge learning, while Qwen3.5-Plus performs best on new information application. We further analyze judge reliability, context length, image count, and representative failure cases. Code is available at https://github.com/IamLihua/CLBench-V.",
+    "notes": "当前最好的多模态大模型，在一个专门设计的测试集上，综合得分只有0.2847，连三成都不到。这个数字说明的问题，比很多人想象的要严峻得多。这篇论文做的事，就是把这个问题搞清楚：当模型面对的不只是文字，而是图表、文档页面、地图、网页截图这些混合在一起的多模态上下文时，它到底在哪里出了问题。这个基准叫CLBench-V，来自上海交通大学和中关村学院的团队。",
+    "url": "https://arxiv.org/abs/2607.25294",
+    "upvotes": 40,
+    "audio": "2026-07-30-clbench-v-evaluating-multimodal-context-learning-from-ground-8633ccbf.mp3",
+    "size": 6299136,
+    "published": "2026-07-31T00:10:37.437265+00:00"
+  },
+  {
+    "key": "2607.25675",
+    "date": "2026-07-30",
+    "title": "DecoEvo: Score-Decoupled Co-Evolution of Solver and Rubric-Generator Skills in Text Space",
+    "abstract": "Text-space optimization adapts large language models (LLMs) by editing external natural-language artifacts rather than model weights, so the optimized artifacts remain inspectable and the model can be treated as a black box. However, most existing text-space methods keep evaluation fixed. On open-ended tasks, this can become a bottleneck: once the solver improves on the criteria a rubric measures, omitted dimensions remain invisible to the optimization signal. Simply evolving the rubric is also unreliable when updates are selected by the current solver's score, because apparent progress can come from making the rubric easier to satisfy. We introduce DecoEvo (Decoupled Co-Evolution), which co-evolves a solver skill and a rubric-generator skill under decoupled objectives without using gold rubrics during optimization. The solver skill is updated using criterion-level feedback, while the rubric-generator skill is revised through complementary audits of requirement coverage and response discrimination that are independent of aggregate solver score. This separation focuses generator updates on newly exposed solver weaknesses, reducing repeated emphasis on criteria the solver already satisfies. Under each benchmark's official evaluation, DecoEvo outperforms all compared methods across five benchmarks and three LLM backbones, yielding 2.8--5.0\\% relative gains over SkillOpt in the five-benchmark average.",
+    "notes": "现在有一类很有意思的大模型优化范式，叫做\"文本空间优化\"。它不改动模型的任何参数，而是通过修改外部的自然语言文档——比如一个任务策略文档或者一套评分标准——来让模型在特定任务上表现得更好。这听起来很优雅：模型就像一个黑盒，你只是给它配了一套更好的使用说明书和评判手册。但这个范式有一个深层的问题一直没有被很好地解决，DecoEvo这篇论文就是冲着这个问题来的。",
+    "url": "https://arxiv.org/abs/2607.25675",
+    "upvotes": 54,
+    "audio": "2026-07-30-decoevo-score-decoupled-co-evolution-of-solver-and-rubric-ge-eba5ce54.mp3",
+    "size": 5367744,
+    "published": "2026-07-31T00:07:25.664943+00:00"
+  },
+  {
+    "key": "2607.27180",
+    "date": "2026-07-30",
+    "title": "HumanCLAW: Can Vision-Language Models Act Through a Body?",
+    "abstract": "Evaluating whether a vision-language model (VLM) can act through a physical body is challenging. The outcome of an action couples the VLM's decision with motor control. When a task fails, it is hard to tell whether the VLM made a bad choice or the motor controller simply failed to execute it, e.g., losing balance and falling. In this work, we introduce HumanCLAW, an evaluation framework that decouples action decision-making from low-level execution. At every step, a harnessed, off-the-shelf VLM issues an atomic skill command, and the command is translated into a sub-second chunk of continuous full-body motion with real physical consequences, including gravity and collisions. The body can therefore act freely in the physical world, while execution-side disturbances, balance and motor errors, are factored out. What remains measurable is the model's action intelligence: its moment-to-moment choice of what the body should execute next. Based on this framework, we build HumanCLAW-Bench: 1,218 long-horizon, egocentric find-navigate-interact episodes across 41 indoor scenes. We test nine state-of-the-art VLMs and find that none solves the benchmark; the best model reaches only a 16.8% success rate. Recognizing the target is not the bottleneck. What current VLMs lack is embodied self-awareness: they lose track of their own body, failing to tell where it is, whether it has reached the goal, or whether it has hit an obstacle.",
+    "notes": "现在的视觉语言模型，在图像描述、空间关系判断、视觉问答这些任务上，已经表现得相当不错了。但有一个问题一直没有被认真测量过：如果你给这个模型配上一具真实的身体，让它用这具身体在物理世界里完成任务，它到底行不行？",
+    "url": "https://arxiv.org/abs/2607.27180",
+    "upvotes": 66,
+    "audio": "2026-07-30-humanclaw-can-vision-language-models-act-through-a-body-d3253525.mp3",
+    "size": 6655392,
+    "published": "2026-07-31T00:04:32.182279+00:00"
+  },
+  {
+    "key": "2607.25659",
+    "date": "2026-07-30",
+    "title": "CoRT: Counterfactual Replay for Token-Level Rubric-Guided Policy Optimization",
+    "abstract": "Rubric-based reinforcement learning enriches language model training by evaluating model outputs against explicit criteria. Yet in GRPO-style pipelines, these structured judgments are reduced to a scalar response-level reward and converted into a response-level advantage, which is broadcast uniformly to all generated tokens. This leaves no explicit mechanism for allocating credit within a response, even when different criteria are grounded in different spans, formatting decisions, or semantic choices. We propose CoRT, a token-level credit weighting method for rubric-conditioned GRPO. Instead of training an auxiliary token scoring model, CoRT uses counterfactual replay to rescore the same sampled response under the original rubric-conditioned prompt and a matched criteria-free prompt. The resulting tokenwise log-likelihood contrasts serve as a proxy for dependence on the rubric context. CoRT maps these contrasts to bounded, response-normalized weights and uses them to redistribute the signed GRPO advantage across tokens, without introducing an auxiliary scorer or changing the response-level reward. Experiments across instruction-tuned models and reward granularities show that CoRT improves over matched response-level GRPO in the vast majority of comparisons, with an average gain of 4.4 percentage points. The method remains competitive with learned token-level credit baselines while avoiding a separate relevance-learning stage. These results suggest that policy-internal counterfactual likelihood contrasts provide an effective training signal for within-response credit allocation while retaining the simplicity and stability of GRPO.",
+    "notes": "大型语言模型在经过强化学习训练时，面临一个看似不起眼却相当根本的问题：当我们用一套评分标准去评估模型的回答，给它打一个分数，再把这个分数转化成训练信号去更新模型参数的时候，这个信号是被均匀地分摊到回答里的每一个词上的。也就是说，一句回答里无论哪个词，不管它是关键的格式标记、必须出现的特定短语，还是无关紧要的连接词，都拿到了完全相同的训练力度。这篇论文要解决的，就是这个\"一刀切\"的信用分配问题。",
+    "url": "https://arxiv.org/abs/2607.25659",
+    "upvotes": 73,
+    "audio": "2026-07-30-cort-counterfactual-replay-for-token-level-rubric-guided-pol-162f57ec.mp3",
+    "size": 4265424,
+    "published": "2026-07-31T00:00:24.164533+00:00"
+  },
+  {
+    "key": "2607.27205",
+    "date": "2026-07-30",
+    "title": "TurboVLA: Real-Time Vision-Language-Action Model at 32 Hz on an RTX 4090 with <1 GB VRAM",
+    "abstract": "Vision-language-action (VLA) models commonly adopt an LLM-centric V to L to A pathway, where visual observations are projected into the representation space of a large language model before being decoded into robot actions. Although effective, this design incurs substantial computation and memory overhead at every policy invocation. In this work, we introduce TurboVLA, a new VLA paradigm that reformulates the conventional V to L to A pathway as a direct V + L to A mapping. Instead of using a large language model as the central interface between perception and action, TurboVLA independently encodes visual observations and language instructions, directly exchanges information between them through lightweight bidirectional vision-language interaction, and predicts continuous action chunks with a compact decoder. This simple design constructs task-conditioned representations directly from visual and linguistic features, significantly reducing the computational and memory costs of VLA inference. On LIBERO, TurboVLA achieves 97.7% average success with only 0.2B parameters, 31.2 ms inference latency, and 0.9 GB inference VRAM on a consumer-grade RTX 4090, matching or outperforming substantially larger VLA policies. These results establish TurboVLA as a simple and effective alternative to the prevailing LLM-centric VLA paradigm, offering a new perspective on how vision, language, and action can be connected for efficient robotic manipulation. Code is available at https://github.com/H-EmbodVis/TurboVLA.",
+    "notes": "目前在机器人操作领域，视觉-语言-动作模型，也就是我们常说的VLA模型，已经成为一种非常强大的框架。它能把机器人的视觉观察、人类的自然语言指令，以及机器人需要执行的动作，统一到一个策略中。这种模型能让机器人理解我们的指令，并根据视觉信息来完成任务。",
+    "url": "https://arxiv.org/abs/2607.27205",
+    "upvotes": 120,
+    "audio": "2026-07-30-turbovla-real-time-vision-language-action-model-at-32-hz-on--8885c06b.mp3",
+    "size": 5180688,
+    "published": "2026-07-30T23:58:11.203194+00:00"
+  },
+  {
     "key": "2607.24368",
     "date": "2026-07-29",
     "title": "Keep It InMind: Benchmarking the Implicit-Association Blind Spot in Agent Memory",
