@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering</title>
+      <description>如果你想训练一个AI系统来改进AI系统本身，你面临的第一个核心问题是：这个"改进过程"能不能被验证、能不能被量化、能不能提供可执行的反馈？这篇来自Frontis.AI和清华大学的论文，就是在认真回答这个问题。它提出了一个叫做OpenMLE的完整技术栈，以及在这个栈上训练出来的模型Frontis-MA1-35B，目标是朝着所谓的"递归自我改进"迈出具体的一步。</description>
+      <link>https://arxiv.org/abs/2607.28568</link>
+      <guid isPermaLink="false">2026-07-31-frontis-ma1-training-an-ai4ai-model-towards-recursive-self-i-5ecadd96.mp3</guid>
+      <pubDate>Sat, 01 Aug 2026 00:12:44 +0000</pubDate>
+      <itunes:duration>1006</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-31-frontis-ma1-training-an-ai4ai-model-towards-recursive-self-i-5ecadd96.mp3" length="6040944" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>PhiZero: A World Model Built Around Physical Language</title>
+      <description>目前主流的视频世界模型在预测未来视频时，通常直接在像素空间进行，这导致了它们在生成结果时常常出现物理上不一致的情况。这些模型没有显式地学习物理世界是如何演变的，而是将底层的动力学隐藏在高维的视觉预测器中，这正是当前物理人工智能领域面临的一个核心痛点。</description>
+      <link>https://arxiv.org/abs/2607.28624</link>
+      <guid isPermaLink="false">2026-07-31-phizero-a-world-model-built-around-physical-language-c20f3965.mp3</guid>
+      <pubDate>Sat, 01 Aug 2026 00:09:36 +0000</pubDate>
+      <itunes:duration>1376</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-31-phizero-a-world-model-built-around-physical-language-c20f3965.mp3" length="8256096" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Metis: Memory Foundation Model</title>
+      <description>有一个问题摆在桌面上：AI智能体系统里，模型的推理能力已经被内化到基础模型本身了，比如深度思考、链式推理，这些能力现在都是模型原生自带的。但是记忆能力呢？记忆到今天还是靠外挂模块来实现的。你把一段对话历史存到数据库里，需要用的时候再检索回来，塞进提示词的上下文里，让模型去读。这就是绝大多数所谓"有记忆"的AI系统的实现方式。</description>
+      <link>https://arxiv.org/abs/2607.26760</link>
+      <guid isPermaLink="false">2026-07-31-metis-memory-foundation-model-50443dfc.mp3</guid>
+      <pubDate>Sat, 01 Aug 2026 00:05:44 +0000</pubDate>
+      <itunes:duration>1096</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-31-metis-memory-foundation-model-50443dfc.mp3" length="6576480" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents</title>
+      <description>一个AI系统，要在真实手机上帮你订机票、处理文件、甚至在你还没开口之前就主动帮你安排好因航班取消带来的一系列连锁问题——这听起来像科幻，但这正是这篇论文想要解决的核心问题：现有的GUI智能体（也就是能操作图形界面的AI）在模拟环境里表现不错，一到真实设备上就垮掉了。这篇来自阿里巴巴的技术报告，介绍的是他们的系统Qwen-UI-Agent，目标是把GUI智能体从"跑分工具"变成真正能在现实世界里干活的助手。</description>
+      <link>https://arxiv.org/abs/2607.28227</link>
+      <guid isPermaLink="false">2026-07-31-qwen-ui-agent-technical-report-toward-next-generation-real-w-1108ec10.mp3</guid>
+      <pubDate>Sat, 01 Aug 2026 00:02:16 +0000</pubDate>
+      <itunes:duration>1140</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-31-qwen-ui-agent-technical-report-toward-next-generation-real-w-1108ec10.mp3" length="6845040" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis</title>
+      <description>化学文献综述面临一个根本性的困境：当你想回答"有哪些电催化剂可以把二氧化碳还原成一氧化碳，法拉第效率分别是多少"这样的问题时，答案并不存在于某一篇论文里，它分散在几十篇乃至上百篇论文各自的实验数据中。现有的文献检索系统，无论是谷歌学术、Semantic Scholar，还是专业的SciFinder、Reaxys，给你的都是一个按相关度排列的论文列表。你拿到这个列表之后，还得一篇一篇打开，定位到具体段落，核实数据，然后手动把信息拼装成一个完整的回答。这个过程对人类研究者来说已经很耗时，而当AI智能体想要做同样的事情时，问题变得更加严重——语言模型如果不能从检索工具里拿到具体的证据，就会倾向于从自</description>
+      <link>https://arxiv.org/abs/2607.28618</link>
+      <guid isPermaLink="false">2026-07-31-askchem-claim-centered-infrastructure-for-chemistry-literatu-f8103786.mp3</guid>
+      <pubDate>Fri, 31 Jul 2026 23:58:30 +0000</pubDate>
+      <itunes:duration>898</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-07-31-askchem-claim-centered-infrastructure-for-chemistry-literatu-f8103786.mp3" length="5389776" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>CLBench-V: Evaluating Multimodal Context Learning from Grounding to Knowledge Acquisition</title>
       <description>当前最好的多模态大模型，在一个专门设计的测试集上，综合得分只有0.2847，连三成都不到。这个数字说明的问题，比很多人想象的要严峻得多。这篇论文做的事，就是把这个问题搞清楚：当模型面对的不只是文字，而是图表、文档页面、地图、网页截图这些混合在一起的多模态上下文时，它到底在哪里出了问题。这个基准叫CLBench-V，来自上海交通大学和中关村学院的团队。</description>
       <link>https://arxiv.org/abs/2607.25294</link>

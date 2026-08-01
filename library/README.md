@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-07-31
+
+- **Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering** · 143★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-31-frontis-ma1-training-an-ai4ai-model-towards-recursive-self-i-5ecadd96.mp3) [arXiv](https://arxiv.org/abs/2607.28568)
+- **PhiZero: A World Model Built Around Physical Language** · 150★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-31-phizero-a-world-model-built-around-physical-language-c20f3965.mp3) [arXiv](https://arxiv.org/abs/2607.28624)
+- **Metis: Memory Foundation Model** · 240★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-31-metis-memory-foundation-model-50443dfc.mp3) [arXiv](https://arxiv.org/abs/2607.26760)
+- **Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents** · 264★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-31-qwen-ui-agent-technical-report-toward-next-generation-real-w-1108ec10.mp3) [arXiv](https://arxiv.org/abs/2607.28227)
+- **AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis** · 285★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-31-askchem-claim-centered-infrastructure-for-chemistry-literatu-f8103786.mp3) [arXiv](https://arxiv.org/abs/2607.28618)
+
 ## 2026-07-30
 
 - **CLBench-V: Evaluating Multimodal Context Learning from Grounding to Knowledge Acquisition** · 40★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-30-clbench-v-evaluating-multimodal-context-learning-from-ground-8633ccbf.mp3) [arXiv](https://arxiv.org/abs/2607.25294)
