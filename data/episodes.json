@@ -1,5 +1,65 @@
 [
   {
+    "key": "2607.28590",
+    "date": "2026-08-04",
+    "title": "VAD: Attributing Visual Evidence for Target Reconstruction in Multimodal On-Policy Distillation",
+    "abstract": "Multimodal on-policy distillation (OPD) transfers fine-grained visual knowledge by supervising student-generated trajectories with a privileged-view teacher. Yet its next-token corrections are source-mixed, combining visual signals with linguistic priors and teacher-specific effects. The key challenge is to estimate which corrections are supported by visual evidence, not merely where or how strongly to distill. We introduce Visual Attribution Distillation (VAD), a counterfactual target-reconstruction algorithm that estimates the visually attributable part of a teacher correction. At each student-generated prefix, VAD evaluates the same fixed teacher with the relevant evidence present and removed. The corresponding change in centered log-probabilities defines ut, a signed proxy for the visual evidence direction that estimates how revealing the evidence supports or refutes candidate tokens. VAD projects the original correction onto this proxy to obtain an intervention-aligned component and a proxy-unexplained residual, then reconstructs a student-anchored target from the former. During training, this reconstructed target supplies the primary supervision signal, while the privileged teacher contributes a weak regularizer. Across six fine-grained visual benchmarks at 4B and 9B scales, VAD outperforms direct privileged-view distillation and visual-advantage weighting. Token- level and controlled-target analyses show that the proxy-aligned component is enriched in task-relevant visual corrections and yields stronger target shifts, especially when evidence refutes a mistaken answer. These results support counterfactual target reconstruction as an effective alternative to source-mixed supervision.",
+    "notes": "好的，我们今天要聊的这篇论文是 VAD，全称是 Visual Attribution Distillation，它解决的核心问题是在多模态在线策略蒸馏（Multimodal On-Policy Distillation，简称 OPD）中，如何精确地识别并利用视觉证据来指导模型学习。",
+    "url": "https://arxiv.org/abs/2607.28590",
+    "upvotes": 43,
+    "audio": "2026-08-04-vad-attributing-visual-evidence-for-target-reconstruction-in-08976fc9.mp3",
+    "size": 7264368,
+    "published": "2026-08-05T00:15:26.704015+00:00"
+  },
+  {
+    "key": "2608.01678",
+    "date": "2026-08-04",
+    "title": "Progressive Agent Skill Generation via Reinforcement Learning",
+    "abstract": "Existing skill generation methods largely rely on heuristics or pipeline-style consolidation, which must be specially designed for different evidence sources. In contrast, learning-based approaches offer a more unified way to model skill generation across heterogeneous sources. However, learning-based skill generation remains challenging because skills lack a natural supervision signal based on relevance or correctness; their value can largely be determined only by whether they improve the behavior of the agent on downstream tasks. To address this challenge, we propose Skill-α, a reinforcement learning method for progressively generating high-quality agent skills. Specifically, we formulate skill generation as a sequential editing process that decomposes skill construction into individually evaluable edits, and introduce a novel rollback reward that evaluates each edit by comparing downstream execution under the original and edited skills on an anchored query. Extensive experiments show that Skill-α generates more effective skills than methods based on heuristics or pipelines in both document-to-skill and experience-to-skill settings. Under the main GPT-4o worker, Skill-α improves average downstream success rates over the strongest skill-generation baseline by 3.3 points on CL-Bench and 6.7 points on tau2-bench. Further ablations validate the importance of rollback reward and progressive generation.",
+    "notes": "让大型语言模型智能体自动生成高质量技能，这个问题听起来有点抽象，但它直接决定了一个智能体系统能不能在不重新训练模型的前提下，持续提升自己解决复杂任务的能力。这篇论文叫做\"Skill-Alpha\"，核心思路是用强化学习来训练一个技能生成器，让它学会如何把文档或者执行经验，一步步改写成真正有用的技能模块。",
+    "url": "https://arxiv.org/abs/2608.01678",
+    "upvotes": 49,
+    "audio": "2026-08-04-progressive-agent-skill-generation-via-reinforcement-learnin-bbe5c57d.mp3",
+    "size": 4477536,
+    "published": "2026-08-05T00:11:55.412382+00:00"
+  },
+  {
+    "key": "2608.01735",
+    "date": "2026-08-04",
+    "title": "DAPD: Dual-Anchored Policy Distillation",
+    "abstract": "On-policy (self) distillation (OPSD) is increasingly adopted for language-model post-training. It strengthens the teacher with privileged information but can induce a privilege illusion: the student learns privilege-dependent behavior it cannot reproduce from its inference-time context, yet behaves as if the training-time privileged information remained available, ultimately degrading performance. In this paper, we identify information asymmetry between the privileged teacher and the student at inference as the root cause of this failure in OPSD. To resolve this asymmetry, we propose Dual-Anchored Policy Distillation (DAPD), a unified framework with two levels of anchoring. Dual-Path Anchoring (DPA) introduces a self-conditioned bridge and aligns reference and rollout behavior along two matched-information paths, preventing privilege-dependent behavior from being transferred to the inference-time student. Dual-Source Anchoring (DSA) applies these paths in both reference-to-rollout and rollout-to-reference directions, reducing reliance on privileged reference guidance while preserving correctness supervision. Extensive experiments show that DAPD significantly alleviates privilege illusion, outperforming OPSD on Qwen3-4B by +2.00 points on average across tasks. Notably, its gains persist across scales, reaching +2.69 at 4B and +2.78 at 32B.",
+    "notes": "我们今天要聊的这篇论文，它解决的是大型语言模型在训练后，特别是使用一种叫做“在线策略自蒸馏”的方法时，遇到的一个非常普遍但又棘手的问题，我们称之为“特权幻觉”。",
+    "url": "https://arxiv.org/abs/2608.01735",
+    "upvotes": 54,
+    "audio": "2026-08-04-dapd-dual-anchored-policy-distillation-c8a08944.mp3",
+    "size": 4483584,
+    "published": "2026-08-05T00:09:12.313150+00:00"
+  },
+  {
+    "key": "2608.01964",
+    "date": "2026-08-04",
+    "title": "LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks",
+    "abstract": "Large language model (LLM) agents increasingly undertake long-horizon tasks that require sustained reasoning, tool use, and revision across many interdependent steps. However, existing agent harnesses maintain task execution, task state, and completion assessment within a growing context, making the state difficult to track and allowing incorrect self-assessments to propagate into later decisions. We reformulate long-horizon execution as a task-state management problem and propose LongHorizon-Harness, which maintains the task state explicitly outside execution and updates it only with facts independently verified from the environment. Its Manage-Execute-Audit(MEA) loop uses a manager to maintain the task state and determine the next subtask, a fresh-context executor to perform it, and a read-only auditor to verify the resulting environment state before the next round. A lightweight AgentAdapter supports interchangeable model and harness backends without modifying their native agent loops. LongHorizon-Harness improves Qwen~3.7-Plus from 51.8% to 80.7% on WeaveBench, from 69.7% to 77.2% on Terminal-Bench~2.1, and from 2.8% to 8.3% on OSWorld~2.0. It also raises Claude Opus~4.7 from 20.0% to 34.3% on an OSWorld2.0 subset, demonstrating consistent gains across models, harnesses, and interaction domains.",
+    "notes": "长时域智能体的执行可靠性问题，是当前AI Agent领域最核心的瓶颈之一。你可以想象一个场景：你让一个AI助手帮你完成一项复杂的电脑操作任务，比如从多个软件里提取数据、跨界面协同处理、最后生成一份完整的报告。这个任务可能需要几十甚至上百个操作步骤，跨越多个软件界面，中间还有各种依赖关系。现有的AI Agent在这种场景下经常失败——不是因为它不聪明，而是因为它在执行过程中迷失了，忘记了自己做到哪里，错误地判断自己完成了某个子任务，或者在一个卡壳的地方反复挣扎了几百步都出不来。这篇论文就是要系统性地解决这个问题。",
+    "url": "https://arxiv.org/abs/2608.01964",
+    "upvotes": 126,
+    "audio": "2026-08-04-longhorizon-harness-advancing-long-horizon-agents-for-real-w-17e818bb.mp3",
+    "size": 5894352,
+    "published": "2026-08-05T00:06:34.393301+00:00"
+  },
+  {
+    "key": "2608.02023",
+    "date": "2026-08-04",
+    "title": "SwanTale: Unified Multi-Speaker Speech and Audio Generation for Instruct and Zero-Shot Tasks",
+    "abstract": "Speech and audio generation is often needed in animation dubbing, audio drama, movies, advertising, games, podcasts, and short-video production. In these scenarios, creators may need to design voices without reference recordings, control speaker styles with natural language, support acoustic scenes with environments and audio effects, and later reuse the designed voices. Therefore, it is important to support multi-speaker speech and audio generation for both instruct and zero-shot tasks. The instruct task requires a caption of the environment, speaker styles, and fine-grained content, while the zero-shot task uses reference audio together with the same fine-grained content. We address these tasks from both the data and model sides. First, we propose SwanData-Caption, which cleans raw speech and audio data, adds targeted synthetic coverage, and annotates diverse and accurate multi-level captions. Then, we propose SwanTale, a multi-speaker expressive speech and audio generation model that supports both zero-shot and instruct tasks. We introduce SwanVAE to support high-quality multi-audio-modality generation. Then, we adopt reward-conditioned quality control and Engram conditioning, along with Unified MoE for multi-task and multi-audio-modality modeling. In addition, we use curriculum learning and GRPO post-training to let the model progressively learn and strengthen its capabilities. Experimental results show that SwanTale leads on multiple key zero-shot and instruct metrics, achieves the best expressiveness scores in both tasks, and supports complex instruct generation involving multi-speaker speech and audio. Demos can be found at https://swanaigc.github.io/\\#swantale.",
+    "notes": "有一类语音合成系统面对的痛点，不是\"给我一段参考音频，我来克隆它\"，而是\"我根本没有参考音频，我需要从零开始设计一个角色的声音\"。动画配音、有声剧、短视频、广告、游戏——这些场景里，创作者需要用自然语言描述角色的性格、声线、情绪，需要把声音放进带有环境音和音效的声学场景里，还需要在后续制作中能够复用这个声音。这篇来自字节跳动和浙江大学的论文，叫做SwanTale，要解决的正是这件事：在一个模型里，同时支持\"给参考音频做零样本克隆\"和\"给自然语言描述做指令生成\"，并且把语音、环境音、音效、偶尔的歌声和背景音乐，统统放在一条输出波形里生成。",
+    "url": "https://arxiv.org/abs/2608.02023",
+    "upvotes": 140,
+    "audio": "2026-08-04-swantale-unified-multi-speaker-speech-and-audio-generation-f-f84a4a6c.mp3",
+    "size": 7388352,
+    "published": "2026-08-05T00:03:06.070472+00:00"
+  },
+  {
     "key": "2607.28568",
     "date": "2026-07-31",
     "title": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",

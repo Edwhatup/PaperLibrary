@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>VAD: Attributing Visual Evidence for Target Reconstruction in Multimodal On-Policy Distillation</title>
+      <description>好的，我们今天要聊的这篇论文是 VAD，全称是 Visual Attribution Distillation，它解决的核心问题是在多模态在线策略蒸馏（Multimodal On-Policy Distillation，简称 OPD）中，如何精确地识别并利用视觉证据来指导模型学习。</description>
+      <link>https://arxiv.org/abs/2607.28590</link>
+      <guid isPermaLink="false">2026-08-04-vad-attributing-visual-evidence-for-target-reconstruction-in-08976fc9.mp3</guid>
+      <pubDate>Wed, 05 Aug 2026 00:15:26 +0000</pubDate>
+      <itunes:duration>1210</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-04-vad-attributing-visual-evidence-for-target-reconstruction-in-08976fc9.mp3" length="7264368" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Progressive Agent Skill Generation via Reinforcement Learning</title>
+      <description>让大型语言模型智能体自动生成高质量技能，这个问题听起来有点抽象，但它直接决定了一个智能体系统能不能在不重新训练模型的前提下，持续提升自己解决复杂任务的能力。这篇论文叫做"Skill-Alpha"，核心思路是用强化学习来训练一个技能生成器，让它学会如何把文档或者执行经验，一步步改写成真正有用的技能模块。</description>
+      <link>https://arxiv.org/abs/2608.01678</link>
+      <guid isPermaLink="false">2026-08-04-progressive-agent-skill-generation-via-reinforcement-learnin-bbe5c57d.mp3</guid>
+      <pubDate>Wed, 05 Aug 2026 00:11:55 +0000</pubDate>
+      <itunes:duration>746</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-04-progressive-agent-skill-generation-via-reinforcement-learnin-bbe5c57d.mp3" length="4477536" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>DAPD: Dual-Anchored Policy Distillation</title>
+      <description>我们今天要聊的这篇论文，它解决的是大型语言模型在训练后，特别是使用一种叫做“在线策略自蒸馏”的方法时，遇到的一个非常普遍但又棘手的问题，我们称之为“特权幻觉”。</description>
+      <link>https://arxiv.org/abs/2608.01735</link>
+      <guid isPermaLink="false">2026-08-04-dapd-dual-anchored-policy-distillation-c8a08944.mp3</guid>
+      <pubDate>Wed, 05 Aug 2026 00:09:12 +0000</pubDate>
+      <itunes:duration>747</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-04-dapd-dual-anchored-policy-distillation-c8a08944.mp3" length="4483584" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks</title>
+      <description>长时域智能体的执行可靠性问题，是当前AI Agent领域最核心的瓶颈之一。你可以想象一个场景：你让一个AI助手帮你完成一项复杂的电脑操作任务，比如从多个软件里提取数据、跨界面协同处理、最后生成一份完整的报告。这个任务可能需要几十甚至上百个操作步骤，跨越多个软件界面，中间还有各种依赖关系。现有的AI Agent在这种场景下经常失败——不是因为它不聪明，而是因为它在执行过程中迷失了，忘记了自己做到哪里，错误地判断自己完成了某个子任务，或者在一个卡壳的地方反复挣扎了几百步都出不来。这篇论文就是要系统性地解决这个问题。</description>
+      <link>https://arxiv.org/abs/2608.01964</link>
+      <guid isPermaLink="false">2026-08-04-longhorizon-harness-advancing-long-horizon-agents-for-real-w-17e818bb.mp3</guid>
+      <pubDate>Wed, 05 Aug 2026 00:06:34 +0000</pubDate>
+      <itunes:duration>982</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-04-longhorizon-harness-advancing-long-horizon-agents-for-real-w-17e818bb.mp3" length="5894352" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SwanTale: Unified Multi-Speaker Speech and Audio Generation for Instruct and Zero-Shot Tasks</title>
+      <description>有一类语音合成系统面对的痛点，不是"给我一段参考音频，我来克隆它"，而是"我根本没有参考音频，我需要从零开始设计一个角色的声音"。动画配音、有声剧、短视频、广告、游戏——这些场景里，创作者需要用自然语言描述角色的性格、声线、情绪，需要把声音放进带有环境音和音效的声学场景里，还需要在后续制作中能够复用这个声音。这篇来自字节跳动和浙江大学的论文，叫做SwanTale，要解决的正是这件事：在一个模型里，同时支持"给参考音频做零样本克隆"和"给自然语言描述做指令生成"，并且把语音、环境音、音效、偶尔的歌声和背景音乐，统统放在一条输出波形里生成。</description>
+      <link>https://arxiv.org/abs/2608.02023</link>
+      <guid isPermaLink="false">2026-08-04-swantale-unified-multi-speaker-speech-and-audio-generation-f-f84a4a6c.mp3</guid>
+      <pubDate>Wed, 05 Aug 2026 00:03:06 +0000</pubDate>
+      <itunes:duration>1231</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-04-swantale-unified-multi-speaker-speech-and-audio-generation-f-f84a4a6c.mp3" length="7388352" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering</title>
       <description>如果你想训练一个AI系统来改进AI系统本身，你面临的第一个核心问题是：这个"改进过程"能不能被验证、能不能被量化、能不能提供可执行的反馈？这篇来自Frontis.AI和清华大学的论文，就是在认真回答这个问题。它提出了一个叫做OpenMLE的完整技术栈，以及在这个栈上训练出来的模型Frontis-MA1-35B，目标是朝着所谓的"递归自我改进"迈出具体的一步。</description>
       <link>https://arxiv.org/abs/2607.28568</link>

@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-04
+
+- **VAD: Attributing Visual Evidence for Target Reconstruction in Multimodal On-Policy Distillation** · 43★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-04-vad-attributing-visual-evidence-for-target-reconstruction-in-08976fc9.mp3) [arXiv](https://arxiv.org/abs/2607.28590)
+- **Progressive Agent Skill Generation via Reinforcement Learning** · 49★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-04-progressive-agent-skill-generation-via-reinforcement-learnin-bbe5c57d.mp3) [arXiv](https://arxiv.org/abs/2608.01678)
+- **DAPD: Dual-Anchored Policy Distillation** · 54★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-04-dapd-dual-anchored-policy-distillation-c8a08944.mp3) [arXiv](https://arxiv.org/abs/2608.01735)
+- **LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks** · 126★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-04-longhorizon-harness-advancing-long-horizon-agents-for-real-w-17e818bb.mp3) [arXiv](https://arxiv.org/abs/2608.01964)
+- **SwanTale: Unified Multi-Speaker Speech and Audio Generation for Instruct and Zero-Shot Tasks** · 140★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-04-swantale-unified-multi-speaker-speech-and-audio-generation-f-f84a4a6c.mp3) [arXiv](https://arxiv.org/abs/2608.02023)
+
 ## 2026-07-31
 
 - **Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering** · 143★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-07-31-frontis-ma1-training-an-ai4ai-model-towards-recursive-self-i-5ecadd96.mp3) [arXiv](https://arxiv.org/abs/2607.28568)
