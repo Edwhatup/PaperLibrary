@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-05
+
+- **Video-DeepResearch: Towards the Next-Generation Multimodal Deepresearch Agent** · 45★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-05-video-deepresearch-towards-the-next-generation-multimodal-de-5a90acb9.mp3) [arXiv](https://arxiv.org/abs/2608.03979)
+- **Hunyuan3D-Buffalo 1.0: A Unified Multimodal Model for Scalable 3D Generation, Understanding, and Editing** · 71★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-05-hunyuan3d-buffalo-1-0-a-unified-multimodal-model-for-scalabl-4b0f8eb7.mp3) [arXiv](https://arxiv.org/abs/2608.02711)
+- **AURORA-LM: Autoencoding Unified Representation for Continuous-Latent Diffusion Language Modeling** · 73★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-05-aurora-lm-autoencoding-unified-representation-for-continuous-bd1f5b42.mp3) [arXiv](https://arxiv.org/abs/2608.02602)
+- **JoyAI-Video-Edit: Real-Time Open-Ended Video Editing with Autoregressive Diffusion** · 77★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-05-joyai-video-edit-real-time-open-ended-video-editing-with-aut-2832980d.mp3) [arXiv](https://arxiv.org/abs/2608.03974)
+- **MerchantBench: Benchmarking LLM Agents for Long-Term Coherence in E-Commerce Operations** · 83★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-05-merchantbench-benchmarking-llm-agents-for-long-term-coherenc-903182d5.mp3) [arXiv](https://arxiv.org/abs/2607.28956)
+
 ## 2026-08-04
 
 - **VAD: Attributing Visual Evidence for Target Reconstruction in Multimodal On-Policy Distillation** · 43★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-04-vad-attributing-visual-evidence-for-target-reconstruction-in-08976fc9.mp3) [arXiv](https://arxiv.org/abs/2607.28590)

@@ -1,5 +1,65 @@
 [
   {
+    "key": "2608.03979",
+    "date": "2026-08-05",
+    "title": "Video-DeepResearch: Towards the Next-Generation Multimodal Deepresearch Agent",
+    "abstract": "We introduce Video-DeepResearch (Video-DR), extending multimodal agents from static images to continuous video streams, a setting that demands dense spatiotemporal grounding coupled with open-web exploration. Preliminary evaluations reveal two critical bottlenecks in current models: (1) modality bias, where agents bypass visual tools in favor of textual search, and (2) parametric knowledge leakage, where models rely on internal memory rather than genuine tool-augmented execution. To address these challenges, we propose Video-DR, featuring a decoupled perception-exploration pipeline with stage-wise tool unlocking that compels exhaustive cross-frame visual grounding prior to web retrieval. Our framework adopts a two-stage training recipe: supervised fine-tuning followed by Group Relative Policy Optimization (GRPO), enabling autonomous exploration that breaks the imitation-learning ceiling. Furthermore, we curate Video-DR-Bench, a human-AI collaborative benchmark comprising 200 complex, multi-hop VQA instances. Empirical results demonstrate that our Video-DeepResearch-35B-A3B establishes a new state-of-the-art of 64.0% average accuracy, surpassing proprietary Claude-4.5-Sonnet (59.0%) by 5.0 points and significantly outperforming GPT-5 (52.5%) and Gemini 2.5 Pro (57.5%). The 30B-A3B variant achieves 59.3%, competitive with Claude-4.5-Sonnet and demonstrating the effectiveness of our training paradigm even at compact scale. Code: https://github.com/Osilly/Vision-DeepResearch.",
+    "notes": "当前最先进的视觉语言模型在处理视频理解任务时，遇到了一个很少被人正视的根本性问题：它们不愿意真正去看视频。即便你给它配备了完善的视觉工具，它也倾向于绕开这些工具，直接去做文字搜索，甚至干脆从自己的记忆里捞答案。这篇论文，Video-DeepResearch，就是专门为了拆解并解决这两个失效模式而提出的。",
+    "url": "https://arxiv.org/abs/2608.03979",
+    "upvotes": 45,
+    "audio": "2026-08-05-video-deepresearch-towards-the-next-generation-multimodal-de-5a90acb9.mp3",
+    "size": 5932368,
+    "published": "2026-08-06T00:07:21.728046+00:00"
+  },
+  {
+    "key": "2608.02711",
+    "date": "2026-08-05",
+    "title": "Hunyuan3D-Buffalo 1.0: A Unified Multimodal Model for Scalable 3D Generation, Understanding, and Editing",
+    "abstract": "Recent advances in image generation have demonstrated the potential of unified multimodal models that integrate understanding, generation, and editing. However, unified 3D modeling remains constrained by scarce multimodal data, particularly the lack of large-scale and geometrically consistent editing data. To address this limitation, we propose Hunyuan3D-Buffalo 1.0, a unified framework supporting 3D understanding, text-to-3D generation, instruction-guided 3D editing, and text-grounded part generation within a single architecture. To enable scalable training, we construct an 87M-scale 3D multimodal corpus, comprising 25M understanding samples, 50M text-to-3D pairs, and 12M editing pairs generated using Nano3D-v2. Architecturally, the framework combines Hunyuan3D-VLM for semantic, structural, and spatial understanding with Hunyuan3D DiT for high-fidelity 3D synthesis. The VLM provides multimodal semantic conditions for generation, while editing and part generation additionally condition the diffusion process on the source object representation to preserve its overall structure and unedited regions. Extensive experiments show that Hunyuan3D-Buffalo 1.0 achieves state-of-the-art or leading performance on text-to-3D generation and 3D editing benchmarks, while exhibiting strong understanding and part-generation capabilities. Our analysis further shows that both generation and understanding improve editing, demonstrating the effectiveness of unified 3D multimodal training. Project Page: https://tencent-hunyuan.github.io/Hunyuan3D-Buffalo1.0/",
+    "notes": "三维内容的生成和编辑，长期以来都是相互独立的研究方向。生成归生成，编辑归编辑，理解又是另一套系统。这篇论文要解决的核心问题是：能不能把三维的理解、生成和编辑统一到同一个框架里，让它们互相增强，而不是各自为政？",
+    "url": "https://arxiv.org/abs/2608.02711",
+    "upvotes": 71,
+    "audio": "2026-08-05-hunyuan3d-buffalo-1-0-a-unified-multimodal-model-for-scalabl-4b0f8eb7.mp3",
+    "size": 6217056,
+    "published": "2026-08-06T00:04:18.101929+00:00"
+  },
+  {
+    "key": "2608.02602",
+    "date": "2026-08-05",
+    "title": "AURORA-LM: Autoencoding Unified Representation for Continuous-Latent Diffusion Language Modeling",
+    "abstract": "Language remains an outlier in generative modeling: while images, video, and audio are increasingly modeled in continuous latent spaces, text generation still relies predominantly on discrete tokens. Existing continuous language models either inherit embedding spaces not designed for joint generation and decoding, or compress autoencoded latents to ease diffusion, sacrificing token-level fidelity. Instead of simplifying the representation to suit the generative model, we preserve a high-capacity, decodable text latent and design the diffusion model to learn its distribution directly.\n  We introduce AURORA-LM, a continuous-latent diffusion language model that separates the construction of a decodable text representation from the modeling of its distribution. A Query-based Encoder-Decoder organizes text into a high-capacity, prefix-aligned latent sequence, and a Block-causal Diffusion Transformer learns its distribution through flow matching, generating blocks left to right while denoising positions within each block in parallel. Because such a latent is harder for diffusion to model, AURORA-LM restricts only the noisy-input pathway while retaining the full clean-latent prediction target, accommodating full-width latents without reducing decoder-facing capacity. We further calibrate the noise-level distribution to the latent width, and introduce self-trajectory consistency to bridge independently sampled training noise and iterative denoising at inference.\n  AURORA-LM achieves the strongest performance among evaluated continuous and diffusion-based language models on OpenWebText free generation and XSum summarization. Scaling to 1B parameters with about 1500 EFLOPs of total compute yields further gains, surpassing a larger publicly released latent-diffusion language model under a matched evaluation protocol. All experiments are conducted on Ascend NPUs.",
+    "notes": "文本生成领域长期存在一个奇怪的不对称现象。图像、视频、音频这些模态，早就跑在连续潜空间里生成了，扩散模型在这些领域已经非常成熟。但文字生成这件事，主流方案到现在还是在离散的token序列上做自回归预测，也就是一个词一个词地蹦。这个不对称背后有一个真实的痛点：把语言也拉进连续潜空间做扩散生成，究竟难在哪里？AURORA-LM这篇论文要正面回答这个问题，而且它的切入角度非常有意思，不是去简化表示来迁就生成模型，而是反过来，先把表示做好，然后让生成模型去适应这个表示。",
+    "url": "https://arxiv.org/abs/2608.02602",
+    "upvotes": 73,
+    "audio": "2026-08-05-aurora-lm-autoencoding-unified-representation-for-continuous-bd1f5b42.mp3",
+    "size": 5406048,
+    "published": "2026-08-06T00:00:41.177296+00:00"
+  },
+  {
+    "key": "2608.03974",
+    "date": "2026-08-05",
+    "title": "JoyAI-Video-Edit: Real-Time Open-Ended Video Editing with Autoregressive Diffusion",
+    "abstract": "Real-time video editing requires low-latency causal generation with bounded computational resources while preserving source fidelity and long-term temporal consistency. We present JoyAI-Video-Edit, a 16B-parameter autoregressive diffusion framework for real-time, open-ended video editing without access to future frames or a predefined video duration. Our method combines chunk-wise autoregressive adaptation, Source-Anchored Distribution Matching Distillation (SA-DMD), and Long-Horizon Autoregressive Distillation to reduce train--inference mismatch, preserve source fidelity during two-step generation, and mitigate accumulated temporal drift. Extensive automatic and human evaluations show that JoyAI-Video-Edit substantially outperforms existing streaming editors and remains competitive with strong offline systems on both short and long videos. The complete system achieves end-to-end 720p video editing at approximately 30 FPS on a single Nvidia B200 GPU. Code is available at https://github.com/jd-opensource/JoyAI-Video-Edit.",
+    "notes": "如果你想让AI实时地把一段正在直播的视频按照你的指令改掉，比如把背景换成沙漠、把人物的服装变成古装、或者把整体画风变成油画风格，而且这件事要在视频播出的同时完成，延迟不能超过人眼察觉的阈值，那你面对的其实是一个非常棘手的工程问题。这篇来自京东Joy Future Academy的论文，要解决的正是这个问题。他们提出的系统叫做JoyAI-Video-Edit，一个160亿参数的自回归扩散模型，能够在单张英伟达B200显卡上以每秒30帧的速度完成端到端的实时视频编辑。",
+    "url": "https://arxiv.org/abs/2608.03974",
+    "upvotes": 77,
+    "audio": "2026-08-05-joyai-video-edit-real-time-open-ended-video-editing-with-aut-2832980d.mp3",
+    "size": 4116672,
+    "published": "2026-08-05T23:58:03.423511+00:00"
+  },
+  {
+    "key": "2607.28956",
+    "date": "2026-08-05",
+    "title": "MerchantBench: Benchmarking LLM Agents for Long-Term Coherence in E-Commerce Operations",
+    "abstract": "Large language model agents are increasingly evaluated as autonomous tool users, yet most benchmarks focus on bounded tasks with immediate success criteria. Real-world deployments often require Long-Term Coherence, the capacity to preserve purposeful behavior across extended horizons while adapting decisions to accumulated evidence. Evaluating this capacity requires a persistent environment in which actions constrain future choices, feedback arrives at heterogeneous delays, and incoherent behavior produces measurable cumulative effects. Seller-side e-commerce provides a suitable setting for this evaluation through recurrent and interdependent decisions over Product Sourcing, Listing and Pricing Control, Cash-Flow Management, and Mixed-Latency Feedback Adaptation. We introduce MerchantBench, a 365-day order-level simulation grounded in 98,843 real e-commerce product records and equipped with 26 tools for agent interaction. MerchantBench couples promptly observable Upstream Supplier Events with delayed Downstream Order Outcomes, requiring agents to follow individual order lifecycles and revisit earlier decisions. We evaluate eight LLMs under two agent frameworks in 48 runs, each spanning 365 simulated days. Our results reveal a substantial gap between even the latest LLMs and human participants, with the best LLM configuration attaining only 27.3\\% of the mean final net assets achieved by human participants.",
+    "notes": "现有的大语言模型智能体测评体系有一个根本性的缺陷：它们测的基本上都是\"单次任务\"，也就是给模型一个有明确终点的问题，让它完成，然后评分。但真实世界里的很多应用根本不是这种结构。真实的业务场景要求智能体在一个持续运转的环境里，跨越很长的时间跨度，一边观察反馈、一边做决策、一边修正之前的判断。这篇论文要解决的核心问题就是：我们该怎么评测大模型在这种长期、连贯、动态的任务里究竟表现如何？",
+    "url": "https://arxiv.org/abs/2607.28956",
+    "upvotes": 83,
+    "audio": "2026-08-05-merchantbench-benchmarking-llm-agents-for-long-term-coherenc-903182d5.mp3",
+    "size": 6294240,
+    "published": "2026-08-05T23:56:02.884259+00:00"
+  },
+  {
     "key": "2607.28590",
     "date": "2026-08-04",
     "title": "VAD: Attributing Visual Evidence for Target Reconstruction in Multimodal On-Policy Distillation",

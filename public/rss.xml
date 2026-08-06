@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Video-DeepResearch: Towards the Next-Generation Multimodal Deepresearch Agent</title>
+      <description>当前最先进的视觉语言模型在处理视频理解任务时，遇到了一个很少被人正视的根本性问题：它们不愿意真正去看视频。即便你给它配备了完善的视觉工具，它也倾向于绕开这些工具，直接去做文字搜索，甚至干脆从自己的记忆里捞答案。这篇论文，Video-DeepResearch，就是专门为了拆解并解决这两个失效模式而提出的。</description>
+      <link>https://arxiv.org/abs/2608.03979</link>
+      <guid isPermaLink="false">2026-08-05-video-deepresearch-towards-the-next-generation-multimodal-de-5a90acb9.mp3</guid>
+      <pubDate>Thu, 06 Aug 2026 00:07:21 +0000</pubDate>
+      <itunes:duration>988</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-05-video-deepresearch-towards-the-next-generation-multimodal-de-5a90acb9.mp3" length="5932368" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Hunyuan3D-Buffalo 1.0: A Unified Multimodal Model for Scalable 3D Generation, Understanding, and Editing</title>
+      <description>三维内容的生成和编辑，长期以来都是相互独立的研究方向。生成归生成，编辑归编辑，理解又是另一套系统。这篇论文要解决的核心问题是：能不能把三维的理解、生成和编辑统一到同一个框架里，让它们互相增强，而不是各自为政？</description>
+      <link>https://arxiv.org/abs/2608.02711</link>
+      <guid isPermaLink="false">2026-08-05-hunyuan3d-buffalo-1-0-a-unified-multimodal-model-for-scalabl-4b0f8eb7.mp3</guid>
+      <pubDate>Thu, 06 Aug 2026 00:04:18 +0000</pubDate>
+      <itunes:duration>1036</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-05-hunyuan3d-buffalo-1-0-a-unified-multimodal-model-for-scalabl-4b0f8eb7.mp3" length="6217056" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>AURORA-LM: Autoencoding Unified Representation for Continuous-Latent Diffusion Language Modeling</title>
+      <description>文本生成领域长期存在一个奇怪的不对称现象。图像、视频、音频这些模态，早就跑在连续潜空间里生成了，扩散模型在这些领域已经非常成熟。但文字生成这件事，主流方案到现在还是在离散的token序列上做自回归预测，也就是一个词一个词地蹦。这个不对称背后有一个真实的痛点：把语言也拉进连续潜空间做扩散生成，究竟难在哪里？AURORA-LM这篇论文要正面回答这个问题，而且它的切入角度非常有意思，不是去简化表示来迁就生成模型，而是反过来，先把表示做好，然后让生成模型去适应这个表示。</description>
+      <link>https://arxiv.org/abs/2608.02602</link>
+      <guid isPermaLink="false">2026-08-05-aurora-lm-autoencoding-unified-representation-for-continuous-bd1f5b42.mp3</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:41 +0000</pubDate>
+      <itunes:duration>901</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-05-aurora-lm-autoencoding-unified-representation-for-continuous-bd1f5b42.mp3" length="5406048" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>JoyAI-Video-Edit: Real-Time Open-Ended Video Editing with Autoregressive Diffusion</title>
+      <description>如果你想让AI实时地把一段正在直播的视频按照你的指令改掉，比如把背景换成沙漠、把人物的服装变成古装、或者把整体画风变成油画风格，而且这件事要在视频播出的同时完成，延迟不能超过人眼察觉的阈值，那你面对的其实是一个非常棘手的工程问题。这篇来自京东Joy Future Academy的论文，要解决的正是这个问题。他们提出的系统叫做JoyAI-Video-Edit，一个160亿参数的自回归扩散模型，能够在单张英伟达B200显卡上以每秒30帧的速度完成端到端的实时视频编辑。</description>
+      <link>https://arxiv.org/abs/2608.03974</link>
+      <guid isPermaLink="false">2026-08-05-joyai-video-edit-real-time-open-ended-video-editing-with-aut-2832980d.mp3</guid>
+      <pubDate>Wed, 05 Aug 2026 23:58:03 +0000</pubDate>
+      <itunes:duration>686</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-05-joyai-video-edit-real-time-open-ended-video-editing-with-aut-2832980d.mp3" length="4116672" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>MerchantBench: Benchmarking LLM Agents for Long-Term Coherence in E-Commerce Operations</title>
+      <description>现有的大语言模型智能体测评体系有一个根本性的缺陷：它们测的基本上都是"单次任务"，也就是给模型一个有明确终点的问题，让它完成，然后评分。但真实世界里的很多应用根本不是这种结构。真实的业务场景要求智能体在一个持续运转的环境里，跨越很长的时间跨度，一边观察反馈、一边做决策、一边修正之前的判断。这篇论文要解决的核心问题就是：我们该怎么评测大模型在这种长期、连贯、动态的任务里究竟表现如何？</description>
+      <link>https://arxiv.org/abs/2607.28956</link>
+      <guid isPermaLink="false">2026-08-05-merchantbench-benchmarking-llm-agents-for-long-term-coherenc-903182d5.mp3</guid>
+      <pubDate>Wed, 05 Aug 2026 23:56:02 +0000</pubDate>
+      <itunes:duration>1049</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-05-merchantbench-benchmarking-llm-agents-for-long-term-coherenc-903182d5.mp3" length="6294240" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>VAD: Attributing Visual Evidence for Target Reconstruction in Multimodal On-Policy Distillation</title>
       <description>好的，我们今天要聊的这篇论文是 VAD，全称是 Visual Attribution Distillation，它解决的核心问题是在多模态在线策略蒸馏（Multimodal On-Policy Distillation，简称 OPD）中，如何精确地识别并利用视觉证据来指导模型学习。</description>
       <link>https://arxiv.org/abs/2607.28590</link>
