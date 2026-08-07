@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>GST-Bench: Can VLMs Develop Global Spatial Awareness from Video?</title>
+      <description>现在的视觉语言模型到底能不能真正理解空间？这篇论文要戳破的，正是这个看起来理所当然却其实漏洞百出的假设。</description>
+      <link>https://arxiv.org/abs/2608.05747</link>
+      <guid isPermaLink="false">2026-08-07-gst-bench-can-vlms-develop-global-spatial-awareness-from-vid-f6b00f43.mp3</guid>
+      <pubDate>Fri, 07 Aug 2026 23:46:02 +0000</pubDate>
+      <itunes:duration>1039</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-07-gst-bench-can-vlms-develop-global-spatial-awareness-from-vid-f6b00f43.mp3" length="6239952" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval</title>
+      <description>好的，我们今天来聊一篇非常有意思的论文，标题是“可解释的MEG解码感知语音：皮层源和驱动信息提取的刺激特征”。这篇论文要解决的核心问题是，现在深度学习模型已经能够从非侵入性的脑磁图，也就是MEG记录中，恢复出我们听到的短语音片段，准确率甚至能达到在超过一千个候选音频中选出正确的一个。这听起来非常棒，让人觉得我们好像真的能从大脑活动中读取出丰富的语言内容了。</description>
+      <link>https://arxiv.org/abs/2608.01481</link>
+      <guid isPermaLink="false">2026-08-07-interpretable-meg-decoding-of-perceived-speech-cortical-sour-b725bc2e.mp3</guid>
+      <pubDate>Fri, 07 Aug 2026 23:42:41 +0000</pubDate>
+      <itunes:duration>2949</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-07-interpretable-meg-decoding-of-perceived-speech-cortical-sour-b725bc2e.mp3" length="17699472" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>WorldClaw: Agentic 3D Open-World Generation at Scale</title>
+      <description>有一个核心难题困扰着3D世界生成领域很多年：怎么从一句话的文字描述，生成一个真正可以自由探索的大规模三维世界？注意，这里的要求是很苛刻的，不只是看起来好看的一张图或者一段视频，而是几何结构要一致、可以从任意视角走进去看、每一个物体都是可以单独编辑和复用的独立资产。这篇叫做WorldClaw的论文就是在正面攻克这个问题。</description>
+      <link>https://arxiv.org/abs/2608.05248</link>
+      <guid isPermaLink="false">2026-08-07-worldclaw-agentic-3d-open-world-generation-at-scale-34573825.mp3</guid>
+      <pubDate>Fri, 07 Aug 2026 23:36:53 +0000</pubDate>
+      <itunes:duration>1141</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-07-worldclaw-agentic-3d-open-world-generation-at-scale-34573825.mp3" length="6849216" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models</title>
+      <description>让视觉语言模型来判断一个AI智能体有没有完成任务，这件事听起来很自然，但没有人认真测试过这个"裁判"本身是否靠谱。这篇论文就是要填上这个空白。</description>
+      <link>https://arxiv.org/abs/2607.28609</link>
+      <guid isPermaLink="false">2026-08-07-osreward-instituting-standardized-evaluation-for-cross-platf-ba12ce05.mp3</guid>
+      <pubDate>Fri, 07 Aug 2026 23:33:10 +0000</pubDate>
+      <itunes:duration>987</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-07-osreward-instituting-standardized-evaluation-for-cross-platf-ba12ce05.mp3" length="5924448" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>AgentOPSD: Recursive Self-Distillation for Agentic Reinforcement Learning</title>
+      <description>长期以来，用强化学习训练大语言模型智能体，有一个绕不开的根本性难题：奖励信号太稀疏了。具体来说，智能体在一个环境里反复交互，走完十几步、几十步，最后才得到一个成功或失败的信号。问题是，这十几步里哪几步是真正关键的，哪几步是多余的甚至是有害的，从这个最终奖励里根本分不出来。这就是所谓的信用分配问题，而当交互轨迹越来越长、任务越来越复杂的时候，这个问题就变得越来越致命。</description>
+      <link>https://arxiv.org/abs/2608.05987</link>
+      <guid isPermaLink="false">2026-08-07-agentopsd-recursive-self-distillation-for-agentic-reinforcem-8130c1df.mp3</guid>
+      <pubDate>Fri, 07 Aug 2026 23:30:10 +0000</pubDate>
+      <itunes:duration>975</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-07-agentopsd-recursive-self-distillation-for-agentic-reinforcem-8130c1df.mp3" length="5855616" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Video-DeepResearch: Towards the Next-Generation Multimodal Deepresearch Agent</title>
       <description>当前最先进的视觉语言模型在处理视频理解任务时，遇到了一个很少被人正视的根本性问题：它们不愿意真正去看视频。即便你给它配备了完善的视觉工具，它也倾向于绕开这些工具，直接去做文字搜索，甚至干脆从自己的记忆里捞答案。这篇论文，Video-DeepResearch，就是专门为了拆解并解决这两个失效模式而提出的。</description>
       <link>https://arxiv.org/abs/2608.03979</link>

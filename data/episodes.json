@@ -1,5 +1,65 @@
 [
   {
+    "key": "2608.05747",
+    "date": "2026-08-07",
+    "title": "GST-Bench: Can VLMs Develop Global Spatial Awareness from Video?",
+    "abstract": "Spatial intelligence is fundamental to embodied agents, yet existing benchmarks focus on local spatial perception from single or few viewpoints, overlooking global spatial awareness over continuous, long-horizon visual streams. To address this limitation, we introduce the Global-Spatial-Temporal Benchmark (GST-Bench), a VQA benchmark for global spatial intelligence in video understanding, comprising human-verified questions derived from 6,790 minutes of synthetically generated video. It requires models to perform accurate spatial inference from novel viewpoints unseen in the input video and to map egocentric observations onto global top-down images. A comprehensive evaluation of 22 state-of-the-art VLMs exposes a striking gap between models and humans: the strongest zero-shot model attains only 42.68, far below the human score of 79.08. To probe the cause of this gap, we construct GST-Bench-Local and find that models, despite strong local spatial understanding under the same task formulation, still fail to consolidate long-horizon observations into a globally consistent scene representation. We further provide GST-Train, a dataset for global spatial reasoning, as a complementary resource to facilitate future research on this challenge.",
+    "notes": "现在的视觉语言模型到底能不能真正理解空间？这篇论文要戳破的，正是这个看起来理所当然却其实漏洞百出的假设。",
+    "url": "https://arxiv.org/abs/2608.05747",
+    "upvotes": 30,
+    "audio": "2026-08-07-gst-bench-can-vlms-develop-global-spatial-awareness-from-vid-f6b00f43.mp3",
+    "size": 6239952,
+    "published": "2026-08-07T23:46:02.603165+00:00"
+  },
+  {
+    "key": "2608.01481",
+    "date": "2026-08-07",
+    "title": "Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval",
+    "abstract": "Short segments of perceived speech can be retrieved from non-invasive magnetoencephalographic (MEG) recordings by deep networks trained with a CLIP-style objective against wav2vec 2.0 audio embeddings. Yet their weights do not map onto electrophysiological quantities, and it remains unclear which speech properties drive retrieval.\n  We build on a high-performing MEG-to-audio retrieval architecture but redesign both its front end and decoder. Its spatial attention operates on a flattened sensor layout; we replace it with spherical harmonics defined on the three-dimensional MEG helmet geometry. We reduce the subject-specific representation from 270 to 25 branches, add a temporal filter to each branch to match it to a neuronal source in space and time, and make the convolutional decoder shallower. Ocular and cardiac components are removed before training to reduce the risk of stimulus-locked shortcuts.\n  On MEG-MASC, the model reaches 39.75 +/- 0.34% Top-1 accuracy among 1005 candidates across six trained solutions, with about 20 times fewer decoder parameters. Its weights map to source space, recovering generators consistent with the speech-perception network, while left-lateralized branches carry higher-frequency rhythmic components not evident on the right. Paired MEG occlusion shows that 15 of 19 stimulus features contribute, with the largest effects for silence, sound intensity, vowels, and acoustic onsets. Random word lists behave oppositely: substituting narrative MEG into them improves retrieval, indicating that activity without narrative structure carries less recoverable information than activity during coherent speech. The wav2vec target can be reduced to about twelve learned feature dimensions without loss of accuracy, whereas strong temporal compression causes a clear loss.\n  Together, source mapping and input interventions reveal what drives retrieval.",
+    "notes": "好的，我们今天来聊一篇非常有意思的论文，标题是“可解释的MEG解码感知语音：皮层源和驱动信息提取的刺激特征”。这篇论文要解决的核心问题是，现在深度学习模型已经能够从非侵入性的脑磁图，也就是MEG记录中，恢复出我们听到的短语音片段，准确率甚至能达到在超过一千个候选音频中选出正确的一个。这听起来非常棒，让人觉得我们好像真的能从大脑活动中读取出丰富的语言内容了。",
+    "url": "https://arxiv.org/abs/2608.01481",
+    "upvotes": 46,
+    "audio": "2026-08-07-interpretable-meg-decoding-of-perceived-speech-cortical-sour-b725bc2e.mp3",
+    "size": 17699472,
+    "published": "2026-08-07T23:42:41.782531+00:00"
+  },
+  {
+    "key": "2608.05248",
+    "date": "2026-08-07",
+    "title": "WorldClaw: Agentic 3D Open-World Generation at Scale",
+    "abstract": "Generating large-scale, freely explorable 3D worlds from open-ended text remains challenging because a system must jointly maintain global spatial coherence, rich local content, and explicit assets suitable for downstream editing and reuse. We present WorldClaw, a fully agentic, coarse-to-fine framework for open-world 3D scene generation. Planning agents translate a text prompt into a structured specification of regions, terrain, assets, materials, and spatial relations. WorldClaw then builds a globally coherent terrain foundation from semantic layouts, reusable assets, generative or procedural materials, and a region-aware height field. For detail-demanding regions, it generates terrain-conditioned compositions, reconstructs editable textured meshes, and recovers their placement on the terrain; render-based agents further refine terrain, objects, appearance, and contacts. Across diverse open-world prompts, WorldClaw produces large-scale scenes with coherent spatial organization, visually compelling local content, and editable instance-level assets while preserving a consistent global terrain structure.",
+    "notes": "有一个核心难题困扰着3D世界生成领域很多年：怎么从一句话的文字描述，生成一个真正可以自由探索的大规模三维世界？注意，这里的要求是很苛刻的，不只是看起来好看的一张图或者一段视频，而是几何结构要一致、可以从任意视角走进去看、每一个物体都是可以单独编辑和复用的独立资产。这篇叫做WorldClaw的论文就是在正面攻克这个问题。",
+    "url": "https://arxiv.org/abs/2608.05248",
+    "upvotes": 46,
+    "audio": "2026-08-07-worldclaw-agentic-3d-open-world-generation-at-scale-34573825.mp3",
+    "size": 6849216,
+    "published": "2026-08-07T23:36:53.730169+00:00"
+  },
+  {
+    "key": "2607.28609",
+    "date": "2026-08-07",
+    "title": "OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models",
+    "abstract": "Computer-using agents (CUAs) are advancing rapidly across the digital world. A CUA trajectory records the agent's actions, states, and reasoning. Verifying whether it fulfilled the task instruction is central to CUA evaluation, data curation, and reinforcement learning. Neither human-written verifiers nor human annotators can provide such verification at scale, so the field increasingly turns to vision-language models (VLMs) as judges of CUA trajectories. But a fundamental question has long gone unexamined: are these VLM judges reliable enough? To study it systematically, we introduce OSReward, a realistic, high-quality benchmark that evaluates VLM judges on CUA trajectories. The trajectories come from diverse agent backbones executing human-verified instructions across platforms, then rigorously labeled with ground-truth verdicts through multi-stage human annotation. Building on it, we derive OSReward-Hard, a challenge set concentrating genuinely hard cases, and OSReward-Multi for fine-grained efficiency and alignment scoring. The most comprehensive evaluation of VLM judges to date finds even state-of-the-art models fall short of an ideal judge, sharing a systematic leniency bias that mislabels failed runs as successes. The few reliable enough to trust are too expensive to run at scale, while affordable open models trail far behind. To close this gap, we construct and release OS-Shepherd-100K, an open corpus of reasoning-annotated trajectory judgments for the CUA community. On it, we train OS-Shepherd (9B and 35B), open reward models that supply low-cost, stable, and reliable reward signals, matching commercial judges at 30-60% lower cost than the frontier. Extensive analyses further inform the design of reliable CUA reward at scale. Our code, benchmark, dataset, and model checkpoints are available at https://os-copilot.github.io/OSReward-Home/.",
+    "notes": "让视觉语言模型来判断一个AI智能体有没有完成任务，这件事听起来很自然，但没有人认真测试过这个\"裁判\"本身是否靠谱。这篇论文就是要填上这个空白。",
+    "url": "https://arxiv.org/abs/2607.28609",
+    "upvotes": 51,
+    "audio": "2026-08-07-osreward-instituting-standardized-evaluation-for-cross-platf-ba12ce05.mp3",
+    "size": 5924448,
+    "published": "2026-08-07T23:33:10.889460+00:00"
+  },
+  {
+    "key": "2608.05987",
+    "date": "2026-08-07",
+    "title": "AgentOPSD: Recursive Self-Distillation for Agentic Reinforcement Learning",
+    "abstract": "Reinforcement learning (RL) with verifiable rewards constructs trajectory-level advantage estimates, yet it often fails to credit the few pivotal decisions that determine outcomes in long-horizon, multi-turn agentic tasks. Recent work introduces privileged self-distillation for credit assignment, providing denser supervision, but it remains unclear how such local signals should represent sequential credit. We propose AgentOPSD, a critic-free, recursive method for turn-level credit assignment in agentic reinforcement learning. AgentOPSD aggregates token-level teacher-student log-probability gaps into turn-level evidence and recursively updates a Bayesian belief state in log-odds space. This yields a principled reweighting scheme that converts sparse outcome supervision into turn-level credit signals and identifies pivotal turns through the marginal belief revision between consecutive states. The method is fully compatible with standard policy optimization and requires neither an additional critic nor extra rollouts. We evaluate AgentOPSD on ALFWorld, WebShop, and Search-QA using Qwen2.5 models at two scales (3B and 7B). AgentOPSD outperforms GRPO and strong self-distillation baselines, achieving 89.1% success on ALFWorld with Qwen2.5-7B. Ablation studies attribute the gains to turn-level aggregation and history-dependent recursive belief updates.",
+    "notes": "长期以来，用强化学习训练大语言模型智能体，有一个绕不开的根本性难题：奖励信号太稀疏了。具体来说，智能体在一个环境里反复交互，走完十几步、几十步，最后才得到一个成功或失败的信号。问题是，这十几步里哪几步是真正关键的，哪几步是多余的甚至是有害的，从这个最终奖励里根本分不出来。这就是所谓的信用分配问题，而当交互轨迹越来越长、任务越来越复杂的时候，这个问题就变得越来越致命。",
+    "url": "https://arxiv.org/abs/2608.05987",
+    "upvotes": 66,
+    "audio": "2026-08-07-agentopsd-recursive-self-distillation-for-agentic-reinforcem-8130c1df.mp3",
+    "size": 5855616,
+    "published": "2026-08-07T23:30:10.332054+00:00"
+  },
+  {
     "key": "2608.03979",
     "date": "2026-08-05",
     "title": "Video-DeepResearch: Towards the Next-Generation Multimodal Deepresearch Agent",

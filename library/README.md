@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-07
+
+- **GST-Bench: Can VLMs Develop Global Spatial Awareness from Video?** · 30★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-07-gst-bench-can-vlms-develop-global-spatial-awareness-from-vid-f6b00f43.mp3) [arXiv](https://arxiv.org/abs/2608.05747)
+- **Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval** · 46★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-07-interpretable-meg-decoding-of-perceived-speech-cortical-sour-b725bc2e.mp3) [arXiv](https://arxiv.org/abs/2608.01481)
+- **WorldClaw: Agentic 3D Open-World Generation at Scale** · 46★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-07-worldclaw-agentic-3d-open-world-generation-at-scale-34573825.mp3) [arXiv](https://arxiv.org/abs/2608.05248)
+- **OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models** · 51★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-07-osreward-instituting-standardized-evaluation-for-cross-platf-ba12ce05.mp3) [arXiv](https://arxiv.org/abs/2607.28609)
+- **AgentOPSD: Recursive Self-Distillation for Agentic Reinforcement Learning** · 66★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-07-agentopsd-recursive-self-distillation-for-agentic-reinforcem-8130c1df.mp3) [arXiv](https://arxiv.org/abs/2608.05987)
+
 ## 2026-08-05
 
 - **Video-DeepResearch: Towards the Next-Generation Multimodal Deepresearch Agent** · 45★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-05-video-deepresearch-towards-the-next-generation-multimodal-de-5a90acb9.mp3) [arXiv](https://arxiv.org/abs/2608.03979)
