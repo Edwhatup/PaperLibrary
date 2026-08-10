@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-10
+
+- **StreamArena: Toward Continuous, Interactive, and Long-Horizon Agentic Streaming Video Understanding** · 14★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-10-streamarena-toward-continuous-interactive-and-long-horizon-a-ed289994.mp3) [arXiv](https://arxiv.org/abs/2608.05703)
+- **YOLO-PEFT: Parameter-Efficient Fine-Tuning on YOLO Family** · 15★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-10-yolo-peft-parameter-efficient-fine-tuning-on-yolo-family-40d2ac31.mp3) [arXiv](https://arxiv.org/abs/2608.07051)
+- **SimWAM: A Simple World Action Model for End-to-End Autonomous Driving** · 22★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-10-simwam-a-simple-world-action-model-for-end-to-end-autonomous-d33ce2ea.mp3) [arXiv](https://arxiv.org/abs/2608.07468)
+- **Beyond Simply Environment Scaling: Designing Effective Environment Distributions for Multimodal Agent Learning** · 28★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-10-beyond-simply-environment-scaling-designing-effective-enviro-2664373f.mp3) [arXiv](https://arxiv.org/abs/2608.03571)
+- **SFT Conflicts, RL Coexists: A Theoretical and Empirical Analysis of Multi-Task Learning for LLMs** · 31★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-10-sft-conflicts-rl-coexists-a-theoretical-and-empirical-analys-e80e2580.mp3) [arXiv](https://arxiv.org/abs/2608.03573)
+
 ## 2026-08-07
 
 - **GST-Bench: Can VLMs Develop Global Spatial Awareness from Video?** · 30★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-07-gst-bench-can-vlms-develop-global-spatial-awareness-from-vid-f6b00f43.mp3) [arXiv](https://arxiv.org/abs/2608.05747)

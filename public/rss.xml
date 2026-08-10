@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>StreamArena: Toward Continuous, Interactive, and Long-Horizon Agentic Streaming Video Understanding</title>
+      <description>真正的难题不是让AI看懂一段视频，而是让它像人一样，持续地、主动地、跨越几十分钟乃至几个小时地理解一段永不停歇的视频流，同时还能随时回答你的问题，甚至在你没开口的时候主动提醒你。这篇论文要解决的，正是这个问题。</description>
+      <link>https://arxiv.org/abs/2608.05703</link>
+      <guid isPermaLink="false">2026-08-10-streamarena-toward-continuous-interactive-and-long-horizon-a-ed289994.mp3</guid>
+      <pubDate>Mon, 10 Aug 2026 23:40:37 +0000</pubDate>
+      <itunes:duration>936</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-10-streamarena-toward-continuous-interactive-and-long-horizon-a-ed289994.mp3" length="5618736" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>YOLO-PEFT: Parameter-Efficient Fine-Tuning on YOLO Family</title>
+      <description>现在最热门的目标检测模型非YOLO莫属，从YOLOv8到YOLO11再到YOLOv12，这个系列在速度和精度上的平衡做得相当出色。但问题来了：当你想把这些模型用到自己的特定场景，比如工厂里的缺陷检测、无人机航拍图像分析、医疗影像中的病灶识别，你该怎么做？最直接的办法当然是拿预训练权重全量微调，把所有参数都更新一遍。但问题是，YOLO这类模型动辄几千万个参数，全量微调意味着你要存储整套新参数，要用大量GPU内存，要花很长时间训练，而且如果你同时有几十个下游任务，每个任务都存一套完整权重，那存储成本就完全不可接受了。</description>
+      <link>https://arxiv.org/abs/2608.07051</link>
+      <guid isPermaLink="false">2026-08-10-yolo-peft-parameter-efficient-fine-tuning-on-yolo-family-40d2ac31.mp3</guid>
+      <pubDate>Mon, 10 Aug 2026 23:37:45 +0000</pubDate>
+      <itunes:duration>678</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-10-yolo-peft-parameter-efficient-fine-tuning-on-yolo-family-40d2ac31.mp3" length="4071168" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SimWAM: A Simple World Action Model for End-to-End Autonomous Driving</title>
+      <description>自动驾驶领域有一个长期存在的矛盾：想让车辆真正理解世界的动态变化，就得用世界模型来预测未来场景；但在实际行驶时做未来视频预测，计算量极大，严重拖慢推理速度。这篇来自华中科技大学和东风研发院的论文，要解决的就是这个问题——如何在不牺牲推理效率的前提下，让规划器真正吸收到世界模型的动态先验知识。</description>
+      <link>https://arxiv.org/abs/2608.07468</link>
+      <guid isPermaLink="false">2026-08-10-simwam-a-simple-world-action-model-for-end-to-end-autonomous-d33ce2ea.mp3</guid>
+      <pubDate>Mon, 10 Aug 2026 23:35:46 +0000</pubDate>
+      <itunes:duration>683</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-10-simwam-a-simple-world-action-model-for-end-to-end-autonomous-d33ce2ea.mp3" length="4099536" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Beyond Simply Environment Scaling: Designing Effective Environment Distributions for Multimodal Agent Learning</title>
+      <description>最近在多模态大语言模型和智能体领域，研究的焦点正从静态数据集转向动态环境。为了提升智能体的各项能力，很多工作都在构建大规模的多模态环境池，并在这些环境中联合训练智能体。现有的方法主要关注单个环境的质量，比如检查环境是否可执行，或者奖励信号是否可靠。这当然是必要的，但对于智能体的训练而言，单个环境的质量还远远不够。智能体实际学到了什么，以及它的泛化能力如何，都直接取决于训练环境分布的有效性。</description>
+      <link>https://arxiv.org/abs/2608.03571</link>
+      <guid isPermaLink="false">2026-08-10-beyond-simply-environment-scaling-designing-effective-enviro-2664373f.mp3</guid>
+      <pubDate>Mon, 10 Aug 2026 23:33:37 +0000</pubDate>
+      <itunes:duration>1178</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-10-beyond-simply-environment-scaling-designing-effective-enviro-2664373f.mp3" length="7070688" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SFT Conflicts, RL Coexists: A Theoretical and Empirical Analysis of Multi-Task Learning for LLMs</title>
+      <description>当我们想让一个大语言模型同时学会数学推理、科学问答、代码生成和逻辑判断这四件事的时候，究竟应该用监督微调还是强化学习？这个问题听起来像是工程选择，但这篇论文告诉我们，它背后其实有一个深刻的数学机制差异，而这个差异直接决定了两条路走到最后会不会崩。</description>
+      <link>https://arxiv.org/abs/2608.03573</link>
+      <guid isPermaLink="false">2026-08-10-sft-conflicts-rl-coexists-a-theoretical-and-empirical-analys-e80e2580.mp3</guid>
+      <pubDate>Mon, 10 Aug 2026 23:30:11 +0000</pubDate>
+      <itunes:duration>739</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-10-sft-conflicts-rl-coexists-a-theoretical-and-empirical-analys-e80e2580.mp3" length="4437216" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>GST-Bench: Can VLMs Develop Global Spatial Awareness from Video?</title>
       <description>现在的视觉语言模型到底能不能真正理解空间？这篇论文要戳破的，正是这个看起来理所当然却其实漏洞百出的假设。</description>
       <link>https://arxiv.org/abs/2608.05747</link>
