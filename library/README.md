@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-11
+
+- **On-Policy Self-Distillation without Any Supervision** · 52★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-11-on-policy-self-distillation-without-any-supervision-6893724b.mp3) [arXiv](https://arxiv.org/abs/2608.06296)
+- **Ouroboros: A Self-Developing Frontier Coding Agent with Reviewed Core Evolution** · 66★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-11-ouroboros-a-self-developing-frontier-coding-agent-with-revie-8cdd4fc4.mp3) [arXiv](https://arxiv.org/abs/2608.08311)
+- **SWE-Bench ProMax: Benchmarking Agents on Large-Scale Multilingual Code Refactoring** · 116★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-11-swe-bench-promax-benchmarking-agents-on-large-scale-multilin-195e2661.mp3) [arXiv](https://arxiv.org/abs/2608.09802)
+- **Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA** · 198★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-11-macaron-v1-towards-open-continual-learning-with-self-improve-a90fb0c6.mp3) [arXiv](https://arxiv.org/abs/2608.09819)
+- **BDH-CQ: In-Context Learning with Recurrent Latent Reasoning** · 240★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-11-bdh-cq-in-context-learning-with-recurrent-latent-reasoning-d32bbe61.mp3) [arXiv](https://arxiv.org/abs/2608.09888)
+
 ## 2026-08-10
 
 - **StreamArena: Toward Continuous, Interactive, and Long-Horizon Agentic Streaming Video Understanding** · 14★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-10-streamarena-toward-continuous-interactive-and-long-horizon-a-ed289994.mp3) [arXiv](https://arxiv.org/abs/2608.05703)

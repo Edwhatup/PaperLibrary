@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>On-Policy Self-Distillation without Any Supervision</title>
+      <description>大语言模型的后训练领域有一个根本性的矛盾：我们想让模型自我提升，但几乎所有现有方法都离不开外部监督信号。要么需要人工标注的标准答案，要么需要一个更强的教师模型来指导，要么需要来自环境的反馈。这篇论文要解决的核心问题就是：能不能彻底去掉这些外部依赖，让模型真正靠自己来提升自己？</description>
+      <link>https://arxiv.org/abs/2608.06296</link>
+      <guid isPermaLink="false">2026-08-11-on-policy-self-distillation-without-any-supervision-6893724b.mp3</guid>
+      <pubDate>Tue, 11 Aug 2026 23:49:34 +0000</pubDate>
+      <itunes:duration>937</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-11-on-policy-self-distillation-without-any-supervision-6893724b.mp3" length="5627808" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Ouroboros: A Self-Developing Frontier Coding Agent with Reviewed Core Evolution</title>
+      <description>当一个AI智能体在完成某项任务之后，能够主动回过头去修改自己的代码、改进自己的工具、然后用改进后的自己去完成下一项任务——这件事到底意味着什么？这篇来自莫斯科国立大学、斯科尔科沃科技学院等机构的论文，正是要解决这个问题：如何让一个编程智能体在持续运行中真正地自我进化，同时又不失去人类对它的控制权。</description>
+      <link>https://arxiv.org/abs/2608.08311</link>
+      <guid isPermaLink="false">2026-08-11-ouroboros-a-self-developing-frontier-coding-agent-with-revie-8cdd4fc4.mp3</guid>
+      <pubDate>Tue, 11 Aug 2026 23:45:58 +0000</pubDate>
+      <itunes:duration>953</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-11-ouroboros-a-self-developing-frontier-coding-agent-with-revie-8cdd4fc4.mp3" length="5720400" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SWE-Bench ProMax: Benchmarking Agents on Large-Scale Multilingual Code Refactoring</title>
+      <description>现有的AI代码能力评测基准正在迅速饱和，而且它们的评测质量本身已经出了严重问题。最近一次对SWE-bench Verified的审计发现，在那些没有被解决的实例里，将近60%的测试用例存在缺陷——要么测试写得太窄，把功能正确的解法也拒掉了；要么测试写得太宽，去检验任务描述里根本没有提到的东西。更糟的是，有证据显示前沿模型能够直接从训练数据里背出标准答案。OpenAI干脆直接把这个基准给废弃了。与此同时，另一个现实是，顶尖模型在SWE-bench Verified上的通过率已经超过了75%，各系统之间的差距越来越小，这个基准已经没办法再有效区分顶尖能力了。</description>
+      <link>https://arxiv.org/abs/2608.09802</link>
+      <guid isPermaLink="false">2026-08-11-swe-bench-promax-benchmarking-agents-on-large-scale-multilin-195e2661.mp3</guid>
+      <pubDate>Tue, 11 Aug 2026 23:42:36 +0000</pubDate>
+      <itunes:duration>964</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-11-swe-bench-promax-benchmarking-agents-on-large-scale-multilin-195e2661.mp3" length="5785488" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA</title>
+      <description>当一个大语言模型在部署之后面对新工具、新用户、新任务，它能不能继续学习、继续进化，而不是被冻结在某个训练检查点上——这是Macaron-V1这篇论文真正想解决的核心问题。</description>
+      <link>https://arxiv.org/abs/2608.09819</link>
+      <guid isPermaLink="false">2026-08-11-macaron-v1-towards-open-continual-learning-with-self-improve-a90fb0c6.mp3</guid>
+      <pubDate>Tue, 11 Aug 2026 23:38:57 +0000</pubDate>
+      <itunes:duration>974</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-11-macaron-v1-towards-open-continual-learning-with-self-improve-a90fb0c6.mp3" length="5844384" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>BDH-CQ: In-Context Learning with Recurrent Latent Reasoning</title>
+      <description>有一类推理问题，对人类来说只需要看几个例子就能举一反三，但对现有的AI系统来说却要么计算量巨大、要么完全依赖训练时见过的任务才能运作。这篇论文想解决的，就是这个矛盾：能不能让一个紧凑的模型，在推理阶段直接从示例里学到新技能，同时又不需要一步步把中间思考过程写成文字？</description>
+      <link>https://arxiv.org/abs/2608.09888</link>
+      <guid isPermaLink="false">2026-08-11-bdh-cq-in-context-learning-with-recurrent-latent-reasoning-d32bbe61.mp3</guid>
+      <pubDate>Tue, 11 Aug 2026 23:35:40 +0000</pubDate>
+      <itunes:duration>960</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-11-bdh-cq-in-context-learning-with-recurrent-latent-reasoning-d32bbe61.mp3" length="5761728" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>StreamArena: Toward Continuous, Interactive, and Long-Horizon Agentic Streaming Video Understanding</title>
       <description>真正的难题不是让AI看懂一段视频，而是让它像人一样，持续地、主动地、跨越几十分钟乃至几个小时地理解一段永不停歇的视频流，同时还能随时回答你的问题，甚至在你没开口的时候主动提醒你。这篇论文要解决的，正是这个问题。</description>
       <link>https://arxiv.org/abs/2608.05703</link>
