@@ -1,5 +1,65 @@
 [
   {
+    "key": "2608.11205",
+    "date": "2026-08-12",
+    "title": "AdvFD: Boosting Visual Generation via Adversarial Fr'echet Distance Loss",
+    "abstract": "Fréchet distance has recently emerged as an effective distribution-level objective for generator post-training, complementing the conventional sample-level diffusion and flow-matching losses. However, directly optimizing Fréchet objectives can cause Fréchet hacking. The target metrics keep improving, but visual quality and Fréchet alignment in other feature spaces may stagnate or deteriorate. We attribute this failure to the static pretrained feature spaces used by existing Fréchet losses. These feature spaces provide incomplete and fixed views of the differences between real and generated distributions. To address this limitation, we propose Adversarial Fréchet Distance (AdvFD), which complements the static representation targets in FD-Loss with a calibrated adversarially learned representation. AdvFD augments the original static Fréchet objective with a learnable representation that adversarially maximizes the Fréchet discrepancy between real and generated samples, while the generator minimizes the same discrepancy in the resulting adaptive feature space. To prevent the adversarial representation from trivially increasing the objective through feature amplification, we further introduce real-feature whitening, which normalizes its scale and covariance geometry and stabilizes the min--max optimization. Extensive experiments show that AdvFD consistently improves one-step generator post-training across both JiT and pMF backbones and across different model scales.",
+    "notes": "图像生成模型在训练时面临一个根本性的矛盾：你用来衡量\"生成质量\"的那把尺子，同时也成了模型可以钻空子的漏洞。这篇论文要解决的，就是这个问题。",
+    "url": "https://arxiv.org/abs/2608.11205",
+    "upvotes": 17,
+    "audio": "2026-08-12-advfd-boosting-visual-generation-via-adversarial-fr-echet-di-98195637.mp3",
+    "size": 4156704,
+    "published": "2026-08-12T23:46:53.726036+00:00"
+  },
+  {
+    "key": "2607.27749",
+    "date": "2026-08-12",
+    "title": "Articulated Object Reconstruction from Rest-State Observation",
+    "abstract": "Building interactive digital twins requires recovering both 3D geometry and the kinematic structures that govern how objects articulate. Yet existing methods for articulated object reconstruction require explicitly observable motion from multiple articulation states. We introduce a rest-state formulation that reconstructs articulated objects from a single closed configuration, an inherently ill-posed setting where geometry, semantics, and motion priors compensate for the absence of motion cues. Our framework adopts an explicit mesh as an intermediate representation for cross-model verification and fusion, reconciling noisy outputs from vision-language and segmentation models into spatially consistent part structures. To estimate joint parameters without observed motion, we use a video diffusion model to synthesize articulation hypotheses and validate them through geometric consistency. Our approach achieves accurate part decomposition and physically plausible articulation, performing competitively with motion-observing reconstruction-based, generation-based, and modular pretrained-model baselines.",
+    "notes": "关节体对象重建这个问题，放在现实场景里其实非常常见，但它的难度往往被低估。你走进一家家具店，看到一排柜子整整齐齐地关着——门关着、抽屉合着。你的大脑可以毫不费力地推断出这个柜子的门是向外旋转开的、那个柜子的抽屉是向前滑出来的。但如果让计算机来做这件事，绝大多数现有方法都会卡住，因为它们需要先看到物体被打开的状态，或者至少看到物体在不同状态之间运动的过程，才能推断出它的运动结构。",
+    "url": "https://arxiv.org/abs/2607.27749",
+    "upvotes": 34,
+    "audio": "2026-08-12-articulated-object-reconstruction-from-rest-state-observatio-61e43213.mp3",
+    "size": 4594032,
+    "published": "2026-08-12T23:44:40.757548+00:00"
+  },
+  {
+    "key": "2608.10744",
+    "date": "2026-08-12",
+    "title": "Beyond Pixels: From Video Priors to 4D Worlds",
+    "abstract": "4D generation synthesizes dynamic 3D scenes from conditions such as text or images. Existing methods either reconstruct generated RGB videos with a separate 4D model or adapt a particular video generator to predict geometry directly. The former suffers from distribution mismatch and error propagation, whereas the latter ties 4D prediction to a specific generator and may require retraining when the generator or conditioning regime changes. We ask whether the final denoised latents of video models that share a variational autoencoder (VAE) can instead provide a reusable interface to explicit 4D prediction. Building on this insight, we introduce direct latent-to-4D generation and instantiate it as Latent-to-4D, which bypasses RGB by aligning a video latent with the token grid of a pretrained 4D decoder and refining it through frame-wise and global spatiotemporal attention. Trained on roughly 1K existing reconstruction clips, a single checkpoint transfers unchanged across multiple video diffusion transformers within the same VAE family. On Text4D-200 and I4D-200, Latent-to-4D surpasses matched same-latent Wan+4RC cascades in projection-based DINO-F1 by 2.88--3.45 and 5.81 points, respectively, while also being preferred by human raters for geometry, temporal stability, and overall quality.",
+    "notes": "如果你想凭一段文字或一句话，就让计算机自动生成一个可以从任意角度观察、带有真实几何结构和动态运动的三维场景，这件事听起来很科幻，但它其实就是\"4D生成\"这个研究方向正在努力解决的核心问题。这里的4D，是三维空间加上时间维度——不只是一段视频，而是一个可以自由旋转视角、随时间演化的动态三维世界。",
+    "url": "https://arxiv.org/abs/2608.10744",
+    "upvotes": 102,
+    "audio": "2026-08-12-beyond-pixels-from-video-priors-to-4d-worlds-1b672b3e.mp3",
+    "size": 3985488,
+    "published": "2026-08-12T23:42:01.790666+00:00"
+  },
+  {
+    "key": "2608.10299",
+    "date": "2026-08-12",
+    "title": "Co-Evolution in Agentic Systems: Toward Self-Directed Evolution Beyond Human Design",
+    "abstract": "Agentic systems are increasingly expected to improve after deployment, yet single-entity self-evolution is often bounded by a static learning context, such as fixed tasks and feedback. This survey focuses on co-evolution in agentic systems, a multi-component form of self-evolution in which multiple agents and their environment impose adaptive pressure on one another. To organize existing papers, we propose a progressive three-stage taxonomy that traces how the system gradually sheds human-engineered constraints. Agent--Agent Co-Evolution studies how agents adapt through dynamic peers, including adversarial, collaborative, and organizational adaptation. Agent--Environment Co-Evolution extends this loop to adaptive tasks, feedback, and interaction spaces that change with the agents. Meta Co-Evolution further explores the possibility of making the evolution mechanism itself evolvable. We also discuss open challenges in evaluating such systems, scaling them across multiple components, and keeping increasingly autonomous evolutionary processes safe and controllable. This survey provides a unified foundation for building robust and open-ended agentic systems that can improve beyond fixed human-designed paths.",
+    "notes": "当一个AI系统被部署出去之后，怎么让它持续进化、越用越强？这是现在整个AI领域最核心的问题之一。但有一个很根本的困境：如果系统只靠自身单打独斗地进化，它很快就会碰到天花板。任务是固定的，反馈是固定的，能学到的东西也就有限。这篇论文要解决的，正是这个单体自进化的瓶颈问题，它提出的答案叫做\"协同进化\"，也就是让系统中的多个组件彼此互相施压、互相塑造，从而突破单一实体自我改进的上限。",
+    "url": "https://arxiv.org/abs/2608.10299",
+    "upvotes": 108,
+    "audio": "2026-08-12-co-evolution-in-agentic-systems-toward-self-directed-evoluti-faae4d2c.mp3",
+    "size": 6844752,
+    "published": "2026-08-12T23:39:57.252367+00:00"
+  },
+  {
+    "key": "2608.10915",
+    "date": "2026-08-12",
+    "title": "ComBodied Agents: a New Paradigm of Human-Centric Agentic AI",
+    "abstract": "After an older adult misses a medication dose, a software agent can send another reminder and an embodied agent can bring the medication. Yet neither explains whether the person forgot, is confused, has side effects, or deliberately refused, nor what support is appropriate. This reveals a structural gap in Agentic AI: Digital Agents primarily transform software states, while Embodied Agents transform physical states; neither makes a person's evolving state and agency the primary object of modeling, intervention, and evaluation. We introduce Combodied Agents, a human-centered paradigm that perceives, models, predicts, and supports individual human-state trajectories over time, using software tools, sensors, wearables, robots, and human services as action channels rather than end goals. We unify fragmented capabilities across personal assistants, health agents, AI companions, and adaptive human--AI systems into a closed loop: event-based multimodal perception reconstructs meaningful personal events; longitudinal, correctable memory provides temporal context; Personal World Models estimate future personal states and outcomes under alternative decisions and interventions; and an admissible intervention policy selects proportionate support under consent, uncertainty, safety, reversibility, and user control. Feedback from the person and environment updates the loop. Rather than requiring an exhaustive Human Digital Twin, the framework uses purpose-bounded, uncertainty-aware, user-correctable representations. We organize the design space by human-state targets, relational contexts, and agent roles, and propose scenario-centered evaluation, agency-preservation metrics, benchmark requirements, edge-native personal models, and governance directions. Combodied Agents shift Agentic AI from external task completion toward sustained human benefit.",
+    "notes": "当一位老人漏服了一次药，软件智能体可以再发一条提醒，机器人智能体可以把药端过来。但这两种动作都没有回答一个更根本的问题：这个人到底是忘了，还是被副作用搞得不舒服，还是根本就不想吃？应该提供什么样的支持才是合适的？这个模糊性，暴露了当前智能体研究里一个结构性的缺口。这篇论文就是要正面回答这个问题，提出一种叫做\"ComBodied Agents\"的全新范式。",
+    "url": "https://arxiv.org/abs/2608.10915",
+    "upvotes": 166,
+    "audio": "2026-08-12-combodied-agents-a-new-paradigm-of-human-centric-agentic-ai-288b30b6.mp3",
+    "size": 7196688,
+    "published": "2026-08-12T23:36:12.634255+00:00"
+  },
+  {
     "key": "2608.06296",
     "date": "2026-08-11",
     "title": "On-Policy Self-Distillation without Any Supervision",

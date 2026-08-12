@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>AdvFD: Boosting Visual Generation via Adversarial Fr'echet Distance Loss</title>
+      <description>图像生成模型在训练时面临一个根本性的矛盾：你用来衡量"生成质量"的那把尺子，同时也成了模型可以钻空子的漏洞。这篇论文要解决的，就是这个问题。</description>
+      <link>https://arxiv.org/abs/2608.11205</link>
+      <guid isPermaLink="false">2026-08-12-advfd-boosting-visual-generation-via-adversarial-fr-echet-di-98195637.mp3</guid>
+      <pubDate>Wed, 12 Aug 2026 23:46:53 +0000</pubDate>
+      <itunes:duration>692</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-12-advfd-boosting-visual-generation-via-adversarial-fr-echet-di-98195637.mp3" length="4156704" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Articulated Object Reconstruction from Rest-State Observation</title>
+      <description>关节体对象重建这个问题，放在现实场景里其实非常常见，但它的难度往往被低估。你走进一家家具店，看到一排柜子整整齐齐地关着——门关着、抽屉合着。你的大脑可以毫不费力地推断出这个柜子的门是向外旋转开的、那个柜子的抽屉是向前滑出来的。但如果让计算机来做这件事，绝大多数现有方法都会卡住，因为它们需要先看到物体被打开的状态，或者至少看到物体在不同状态之间运动的过程，才能推断出它的运动结构。</description>
+      <link>https://arxiv.org/abs/2607.27749</link>
+      <guid isPermaLink="false">2026-08-12-articulated-object-reconstruction-from-rest-state-observatio-61e43213.mp3</guid>
+      <pubDate>Wed, 12 Aug 2026 23:44:40 +0000</pubDate>
+      <itunes:duration>765</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-12-articulated-object-reconstruction-from-rest-state-observatio-61e43213.mp3" length="4594032" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Beyond Pixels: From Video Priors to 4D Worlds</title>
+      <description>如果你想凭一段文字或一句话，就让计算机自动生成一个可以从任意角度观察、带有真实几何结构和动态运动的三维场景，这件事听起来很科幻，但它其实就是"4D生成"这个研究方向正在努力解决的核心问题。这里的4D，是三维空间加上时间维度——不只是一段视频，而是一个可以自由旋转视角、随时间演化的动态三维世界。</description>
+      <link>https://arxiv.org/abs/2608.10744</link>
+      <guid isPermaLink="false">2026-08-12-beyond-pixels-from-video-priors-to-4d-worlds-1b672b3e.mp3</guid>
+      <pubDate>Wed, 12 Aug 2026 23:42:01 +0000</pubDate>
+      <itunes:duration>664</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-12-beyond-pixels-from-video-priors-to-4d-worlds-1b672b3e.mp3" length="3985488" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Co-Evolution in Agentic Systems: Toward Self-Directed Evolution Beyond Human Design</title>
+      <description>当一个AI系统被部署出去之后，怎么让它持续进化、越用越强？这是现在整个AI领域最核心的问题之一。但有一个很根本的困境：如果系统只靠自身单打独斗地进化，它很快就会碰到天花板。任务是固定的，反馈是固定的，能学到的东西也就有限。这篇论文要解决的，正是这个单体自进化的瓶颈问题，它提出的答案叫做"协同进化"，也就是让系统中的多个组件彼此互相施压、互相塑造，从而突破单一实体自我改进的上限。</description>
+      <link>https://arxiv.org/abs/2608.10299</link>
+      <guid isPermaLink="false">2026-08-12-co-evolution-in-agentic-systems-toward-self-directed-evoluti-faae4d2c.mp3</guid>
+      <pubDate>Wed, 12 Aug 2026 23:39:57 +0000</pubDate>
+      <itunes:duration>1140</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-12-co-evolution-in-agentic-systems-toward-self-directed-evoluti-faae4d2c.mp3" length="6844752" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ComBodied Agents: a New Paradigm of Human-Centric Agentic AI</title>
+      <description>当一位老人漏服了一次药，软件智能体可以再发一条提醒，机器人智能体可以把药端过来。但这两种动作都没有回答一个更根本的问题：这个人到底是忘了，还是被副作用搞得不舒服，还是根本就不想吃？应该提供什么样的支持才是合适的？这个模糊性，暴露了当前智能体研究里一个结构性的缺口。这篇论文就是要正面回答这个问题，提出一种叫做"ComBodied Agents"的全新范式。</description>
+      <link>https://arxiv.org/abs/2608.10915</link>
+      <guid isPermaLink="false">2026-08-12-combodied-agents-a-new-paradigm-of-human-centric-agentic-ai-288b30b6.mp3</guid>
+      <pubDate>Wed, 12 Aug 2026 23:36:12 +0000</pubDate>
+      <itunes:duration>1199</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-12-combodied-agents-a-new-paradigm-of-human-centric-agentic-ai-288b30b6.mp3" length="7196688" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>On-Policy Self-Distillation without Any Supervision</title>
       <description>大语言模型的后训练领域有一个根本性的矛盾：我们想让模型自我提升，但几乎所有现有方法都离不开外部监督信号。要么需要人工标注的标准答案，要么需要一个更强的教师模型来指导，要么需要来自环境的反馈。这篇论文要解决的核心问题就是：能不能彻底去掉这些外部依赖，让模型真正靠自己来提升自己？</description>
       <link>https://arxiv.org/abs/2608.06296</link>

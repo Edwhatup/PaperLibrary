@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-12
+
+- **AdvFD: Boosting Visual Generation via Adversarial Fr'echet Distance Loss** · 17★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-12-advfd-boosting-visual-generation-via-adversarial-fr-echet-di-98195637.mp3) [arXiv](https://arxiv.org/abs/2608.11205)
+- **Articulated Object Reconstruction from Rest-State Observation** · 34★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-12-articulated-object-reconstruction-from-rest-state-observatio-61e43213.mp3) [arXiv](https://arxiv.org/abs/2607.27749)
+- **Beyond Pixels: From Video Priors to 4D Worlds** · 102★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-12-beyond-pixels-from-video-priors-to-4d-worlds-1b672b3e.mp3) [arXiv](https://arxiv.org/abs/2608.10744)
+- **Co-Evolution in Agentic Systems: Toward Self-Directed Evolution Beyond Human Design** · 108★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-12-co-evolution-in-agentic-systems-toward-self-directed-evoluti-faae4d2c.mp3) [arXiv](https://arxiv.org/abs/2608.10299)
+- **ComBodied Agents: a New Paradigm of Human-Centric Agentic AI** · 166★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-12-combodied-agents-a-new-paradigm-of-human-centric-agentic-ai-288b30b6.mp3) [arXiv](https://arxiv.org/abs/2608.10915)
+
 ## 2026-08-11
 
 - **On-Policy Self-Distillation without Any Supervision** · 52★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-11-on-policy-self-distillation-without-any-supervision-6893724b.mp3) [arXiv](https://arxiv.org/abs/2608.06296)
