@@ -1,5 +1,65 @@
 [
   {
+    "key": "2608.05604",
+    "date": "2026-08-13",
+    "title": "SkillZip: Contract-Preserving Graph Compression for Scalable Agent Skill Libraries",
+    "abstract": "Large Language Models (LLMs) increasingly act as agents whose procedural knowledge is stored in reusable skill packages and loaded at inference time. As skill libraries grow, a central challenge is to expose the smallest sufficient executable context under a limited context budget. Existing systems struggle to reuse routines below the whole-skill level, preserve procedural contracts during compression, keep compressed routines executable and expandable, and update the compressed library as skills evolve. These challenges reveal a unit mismatch: skills are retrieved as packages, compressed as text, and converted into execution graphs only after retrieval, whereas reliable reuse requires a contract-bearing procedural unit. We propose SkillZip, an execution-aware procedural abstraction framework that performs contract-preserving compression over section-level graphs. SkillZip rewrites recurring contract-valid motifs into reversible ported macros while preserving boundary signatures, dependency closure, verifier reachability, and source-level expansion. At inference time, it hydrates a compact, dependency-closed context and expands macros only when required. ReZip further integrates new skills and revises risky macros using execution evidence. Comprehensive experiments1 on technical and embodied agent benchmarks show SkillZip consistently outperforms the strongest baseline by up to 12.2 points, while achieving a 3.46x compression ratio with 99.2% dependency preservation and 98.7% verifier reachability. Scaling analyses further confirm robust retrieval across skill libraries ranging from 200 to 100K skills.",
+    "notes": "当一个大语言模型驱动的智能体要完成复杂任务的时候，它的程序性知识存在哪里？答案是存在一个叫做技能库的外部存储层里。这个技能库里装的是一个个可复用的技能包，每个包里有操作指令、脚本、验证规则和各种资源。智能体执行任务的时候，会从这个库里取出相关的技能包，把它们放进上下文窗口，然后按照里面的步骤走。",
+    "url": "https://arxiv.org/abs/2608.05604",
+    "upvotes": 72,
+    "audio": "2026-08-13-skillzip-contract-preserving-graph-compression-for-scalable--d49ed9c7.mp3",
+    "size": 7575840,
+    "published": "2026-08-13T23:50:41.862481+00:00"
+  },
+  {
+    "key": "2608.12036",
+    "date": "2026-08-13",
+    "title": "Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence",
+    "abstract": "AI models have achieved remarkable success across diverse domains, yet the mechanisms underlying their capabilities and the risks they may pose remain poorly understood. As AI development becomes faster and increasingly automated, mechanistic exploration remains largely manual, widening the gap between what models can do and our ability to understand and control them. To bridge this gap, we introduce Mechanist, an agentic system that uses AI as a scientific instrument for the autonomous discovery of mechanisms underlying AI intelligence. To support autonomous mechanistic discovery, we construct an interpretability-focused knowledge graph of approximately 13,000 papers and integrate it with a multidisciplinary database of 43 million papers spanning 26 fields. We further curate a library of 32 foundational methods for mechanism analysis, causal intervention, and validation. Compared with Claude Code and existing AI-scientist systems, Mechanist generates more valuable mechanism hypotheses and executes experiments more reliably. Mechanist also demonstrates a progression from discovering model behaviors to explaining and controlling AI models. Specifically, Mechanist first uncovers a counterintuitive safety risk in scientific laboratories, showing that unsafe traits can transfer across modalities through apparently safe training data. Mechanist then develops a mechanism theory of belief, revealing how models represent world knowledge, form beliefs, infer the beliefs of others, and how these mechanisms emerge during pretraining. Finally, Mechanist translates these mechanistic insights into practical interventions that improve model performance across diverse scenarios and steer scientific foundation models toward generating DNA sequences with specified properties.",
+    "notes": "有一类安全风险，不会出现在任何一行训练数据里，却能悄悄地从一个模型传染给另一个模型。这篇论文要解决的，正是这个问题——以及更大的一个问题：当AI模型越来越复杂、越来越难以理解的时候，我们怎么用AI自己去搞清楚AI内部到底在发生什么。",
+    "url": "https://arxiv.org/abs/2608.12036",
+    "upvotes": 73,
+    "audio": "2026-08-13-mechanist-ai-as-a-scientific-instrument-for-discovering-the--0cd280fb.mp3",
+    "size": 6689520,
+    "published": "2026-08-13T23:47:00.801344+00:00"
+  },
+  {
+    "key": "2608.12307",
+    "date": "2026-08-13",
+    "title": "AI4AI at Test-Time: Strong-to-Weak Capability Transfer via Harnesses",
+    "abstract": "Recent work on distillation transfers the capabilities of large models to smaller ones often by updating the latter's parameters, through teacher forcing, on-policy distillation, and related training-time methods. In this paper, we ask whether such transfer can instead occur at test time. We study strong-to-weak scaffolding: whether a stronger builder model can construct inference-time harnesses that help a weaker target model solve tasks more reliably without any parameter updates. Using four representative Theory-of-Mind benchmarks, each builder model uses 5% of the data as a validation set to iteratively refine its harness over multiple rounds, after which the finalized harness is evaluated on the full test set. Empirically, this form of test-time capability transfer is highly effective, nearly doubling average target-model performance from 0.49 to 0.91. Our analysis shows that the gains come primarily from offloading unstable model reasoning into deterministic code, benchmark-specific routing, and strict answer-format enforcement, rather than from encouraging the target model to reason more extensively or sample more broadly. We further find that builder-model reasoning effort improves harness quality monotonically, platform effects are modest relative to the builder model's own capability, and weaker target models receive the largest gains. These results suggest that inference-time harness design is an important complement to conventional training-time distillation, enabling strong models to transfer cognitive structure to weaker models without retraining.",
+    "notes": "这篇论文想解决一个很实际的问题：我们手头有一个便宜的小模型，它在某些任务上表现很差，但我们又不想重新训练它、不想做微调、不想花大量算力。那么，有没有办法在推理阶段，让一个强大的大模型来\"改造环境\"，使得弱模型在不改变自身参数的情况下，表现得更好？这就是这篇论文的核心出发点，它把这种方式叫做\"强到弱的脚手架迁移\"，英文是strong-to-weak scaffolding，发表在arXiv上，作者来自Salesforce AI Research和UIUC。",
+    "url": "https://arxiv.org/abs/2608.12307",
+    "upvotes": 97,
+    "audio": "2026-08-13-ai4ai-at-test-time-strong-to-weak-capability-transfer-via-ha-7c9a76b4.mp3",
+    "size": 6035040,
+    "published": "2026-08-13T23:43:27.088680+00:00"
+  },
+  {
+    "key": "2608.11924",
+    "date": "2026-08-13",
+    "title": "Spark-to-Paper: End-to-End Research Paper Generation as a Composable Skill",
+    "abstract": "Turning a research idea into a complete paper requires more than text generation: the system must retrieve literature, design and execute experiments, revise claims according to evidence, produce publication-ready figures, and maintain consistency across a long generation process. We present Spark-to-Paper, an end-to-end research paper generation system implemented as thirteen composable skills inside an existing coding assistant, without requiring a separate agent platform or orchestration service. Spark-to-Paper separates model-based judgment from deterministic operations that can be directly executed and checked. It further separates experiment planning from reporting, so that required evidence is specified before results are observed and manuscript claims are revised according to measured outcomes. To improve reliability over long research trajectories, the system combines deterministic integrity checks with self-critique and bounds a failure mode we call the Self-Refutation Loop, in which repeated experiments continue to reject the original research objective. Spark-to-Paper also produces editable vector figures through programmatic plotting for experimental results and code-based reconstruction for generated method diagrams. Across eight controlled research topics, Spark-to-Paper achieves 99.5% citation validity and 96.4% figure editability. A controlled ablation increases fabrication detection from 14% for a single-pass draft to 92% with the full integrity and review stack, while adversarial review achieves 74% precision. The full system uses 11.9M tokens, costs $8.1 per manuscript, and requires 3.2 hours on average. These results show that end-to-end research paper generation can be implemented as a lightweight, composable workflow inside existing coding assistants while keeping experimental evidence central to how claims are accepted, revised, or abandoned.",
+    "notes": "把一篇研究论文变成完整的学术论文，光靠文本生成是远远不够的。你需要检索文献、设计并执行实验、根据实验结果修改论述、生成符合发表标准的图表，还要在一个漫长的写作过程中保持全篇的逻辑一致性。这正是Spark-to-Paper这篇论文想要解决的核心问题——而且它的解决方案有一个很独特的切入点：不是再造一个新的AI研究平台，而是把整个流程实现为一套可组合的技能，直接跑在现有的代码助手里。",
+    "url": "https://arxiv.org/abs/2608.11924",
+    "upvotes": 176,
+    "audio": "2026-08-13-spark-to-paper-end-to-end-research-paper-generation-as-a-com-c55676ea.mp3",
+    "size": 6751584,
+    "published": "2026-08-13T23:40:29.332175+00:00"
+  },
+  {
+    "key": "2608.00677",
+    "date": "2026-08-13",
+    "title": "OpenART: Scaling Agent Red Teaming via Open-Ended Environment Evolution",
+    "abstract": "AI agents operate in persistent environments where early state changes can influence decisions far into the future. Unlike conventional language-model interactions, agent behavior is mediated through a shared state that is repeatedly modified and reused across long-horizon workflows. Current safety benchmarks often fail to capture these cumulative risks because they focus on short, static tasks. To address these limitations, we introduce OpenART, an open-ended arena for scalable agent red teaming through environment evolution. OpenART provides over 10,000 validated stateful scenarios across 50 domains, drawing from a pool of more than 500,000 tools and skills. These tasks require a median of 97 tool calls and enable unified evaluation across 75 different agent-model configurations. To systematically explore these evolving attack surfaces, we propose the Evolutionary Markov Hypergraph Attack (EMHA). EMHA is a black-box policy that performs feedback-driven environment evolution by coordinating authorized state transitions without requiring parameter updates. Throughout the evaluation, task objectives remain fixed while only the environment state changes. Across all configurations, EMHA achieves a pooled Attack Success Rate (ASR) of 85.0%. Its advantage over instruction-only evolution increases from approximately 2% on simple environments to over 17% on the most complex ones, demonstrating that environment evolution increasingly exposes safety failures as task complexity grows. Furthermore, our analysis shows that the specific runtime implementation of an agent explains a significant portion of safety variation beyond the underlying model's capabilities. These results establish OpenART as a scalable foundation for studying agent safety in complex, evolving environments.",
+    "notes": "当AI智能体真正开始在持久化环境里工作，安全问题就不再是\"这一句话有没有毒\"那么简单了。它变成了：这个智能体在执行一个跨越几十甚至上百步工具调用的长流程任务时，如果环境本身被悄悄改变，它还能保持安全吗？这就是这篇论文想解决的核心问题。",
+    "url": "https://arxiv.org/abs/2608.00677",
+    "upvotes": 182,
+    "audio": "2026-08-13-openart-scaling-agent-red-teaming-via-open-ended-environment-bb326405.mp3",
+    "size": 5594976,
+    "published": "2026-08-13T23:37:07.336567+00:00"
+  },
+  {
     "key": "2608.11205",
     "date": "2026-08-12",
     "title": "AdvFD: Boosting Visual Generation via Adversarial Fr'echet Distance Loss",

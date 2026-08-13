@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>SkillZip: Contract-Preserving Graph Compression for Scalable Agent Skill Libraries</title>
+      <description>当一个大语言模型驱动的智能体要完成复杂任务的时候，它的程序性知识存在哪里？答案是存在一个叫做技能库的外部存储层里。这个技能库里装的是一个个可复用的技能包，每个包里有操作指令、脚本、验证规则和各种资源。智能体执行任务的时候，会从这个库里取出相关的技能包，把它们放进上下文窗口，然后按照里面的步骤走。</description>
+      <link>https://arxiv.org/abs/2608.05604</link>
+      <guid isPermaLink="false">2026-08-13-skillzip-contract-preserving-graph-compression-for-scalable--d49ed9c7.mp3</guid>
+      <pubDate>Thu, 13 Aug 2026 23:50:41 +0000</pubDate>
+      <itunes:duration>1262</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-13-skillzip-contract-preserving-graph-compression-for-scalable--d49ed9c7.mp3" length="7575840" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence</title>
+      <description>有一类安全风险，不会出现在任何一行训练数据里，却能悄悄地从一个模型传染给另一个模型。这篇论文要解决的，正是这个问题——以及更大的一个问题：当AI模型越来越复杂、越来越难以理解的时候，我们怎么用AI自己去搞清楚AI内部到底在发生什么。</description>
+      <link>https://arxiv.org/abs/2608.12036</link>
+      <guid isPermaLink="false">2026-08-13-mechanist-ai-as-a-scientific-instrument-for-discovering-the--0cd280fb.mp3</guid>
+      <pubDate>Thu, 13 Aug 2026 23:47:00 +0000</pubDate>
+      <itunes:duration>1114</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-13-mechanist-ai-as-a-scientific-instrument-for-discovering-the--0cd280fb.mp3" length="6689520" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>AI4AI at Test-Time: Strong-to-Weak Capability Transfer via Harnesses</title>
+      <description>这篇论文想解决一个很实际的问题：我们手头有一个便宜的小模型，它在某些任务上表现很差，但我们又不想重新训练它、不想做微调、不想花大量算力。那么，有没有办法在推理阶段，让一个强大的大模型来"改造环境"，使得弱模型在不改变自身参数的情况下，表现得更好？这就是这篇论文的核心出发点，它把这种方式叫做"强到弱的脚手架迁移"，英文是strong-to-weak scaffolding，发表在arXiv上，作者来自Salesforce AI Research和UIUC。</description>
+      <link>https://arxiv.org/abs/2608.12307</link>
+      <guid isPermaLink="false">2026-08-13-ai4ai-at-test-time-strong-to-weak-capability-transfer-via-ha-7c9a76b4.mp3</guid>
+      <pubDate>Thu, 13 Aug 2026 23:43:27 +0000</pubDate>
+      <itunes:duration>1005</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-13-ai4ai-at-test-time-strong-to-weak-capability-transfer-via-ha-7c9a76b4.mp3" length="6035040" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Spark-to-Paper: End-to-End Research Paper Generation as a Composable Skill</title>
+      <description>把一篇研究论文变成完整的学术论文，光靠文本生成是远远不够的。你需要检索文献、设计并执行实验、根据实验结果修改论述、生成符合发表标准的图表，还要在一个漫长的写作过程中保持全篇的逻辑一致性。这正是Spark-to-Paper这篇论文想要解决的核心问题——而且它的解决方案有一个很独特的切入点：不是再造一个新的AI研究平台，而是把整个流程实现为一套可组合的技能，直接跑在现有的代码助手里。</description>
+      <link>https://arxiv.org/abs/2608.11924</link>
+      <guid isPermaLink="false">2026-08-13-spark-to-paper-end-to-end-research-paper-generation-as-a-com-c55676ea.mp3</guid>
+      <pubDate>Thu, 13 Aug 2026 23:40:29 +0000</pubDate>
+      <itunes:duration>1125</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-13-spark-to-paper-end-to-end-research-paper-generation-as-a-com-c55676ea.mp3" length="6751584" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>OpenART: Scaling Agent Red Teaming via Open-Ended Environment Evolution</title>
+      <description>当AI智能体真正开始在持久化环境里工作，安全问题就不再是"这一句话有没有毒"那么简单了。它变成了：这个智能体在执行一个跨越几十甚至上百步工具调用的长流程任务时，如果环境本身被悄悄改变，它还能保持安全吗？这就是这篇论文想解决的核心问题。</description>
+      <link>https://arxiv.org/abs/2608.00677</link>
+      <guid isPermaLink="false">2026-08-13-openart-scaling-agent-red-teaming-via-open-ended-environment-bb326405.mp3</guid>
+      <pubDate>Thu, 13 Aug 2026 23:37:07 +0000</pubDate>
+      <itunes:duration>932</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-13-openart-scaling-agent-red-teaming-via-open-ended-environment-bb326405.mp3" length="5594976" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>AdvFD: Boosting Visual Generation via Adversarial Fr'echet Distance Loss</title>
       <description>图像生成模型在训练时面临一个根本性的矛盾：你用来衡量"生成质量"的那把尺子，同时也成了模型可以钻空子的漏洞。这篇论文要解决的，就是这个问题。</description>
       <link>https://arxiv.org/abs/2608.11205</link>

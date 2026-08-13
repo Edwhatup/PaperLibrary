@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-13
+
+- **SkillZip: Contract-Preserving Graph Compression for Scalable Agent Skill Libraries** · 72★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-13-skillzip-contract-preserving-graph-compression-for-scalable--d49ed9c7.mp3) [arXiv](https://arxiv.org/abs/2608.05604)
+- **Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence** · 73★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-13-mechanist-ai-as-a-scientific-instrument-for-discovering-the--0cd280fb.mp3) [arXiv](https://arxiv.org/abs/2608.12036)
+- **AI4AI at Test-Time: Strong-to-Weak Capability Transfer via Harnesses** · 97★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-13-ai4ai-at-test-time-strong-to-weak-capability-transfer-via-ha-7c9a76b4.mp3) [arXiv](https://arxiv.org/abs/2608.12307)
+- **Spark-to-Paper: End-to-End Research Paper Generation as a Composable Skill** · 176★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-13-spark-to-paper-end-to-end-research-paper-generation-as-a-com-c55676ea.mp3) [arXiv](https://arxiv.org/abs/2608.11924)
+- **OpenART: Scaling Agent Red Teaming via Open-Ended Environment Evolution** · 182★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-13-openart-scaling-agent-red-teaming-via-open-ended-environment-bb326405.mp3) [arXiv](https://arxiv.org/abs/2608.00677)
+
 ## 2026-08-12
 
 - **AdvFD: Boosting Visual Generation via Adversarial Fr'echet Distance Loss** · 17★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-12-advfd-boosting-visual-generation-via-adversarial-fr-echet-di-98195637.mp3) [arXiv](https://arxiv.org/abs/2608.11205)
