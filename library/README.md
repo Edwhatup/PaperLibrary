@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-14
+
+- **Intern-S2-Preview: Scientific Agentic Foundation Model** · 42★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-14-intern-s2-preview-scientific-agentic-foundation-model-fffd1ef4.mp3) [arXiv](https://arxiv.org/abs/2608.13505)
+- **DarwinX: Evolving Agent Harnesses Through Natural Selection** · 57★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-14-darwinx-evolving-agent-harnesses-through-natural-selection-147f80b7.mp3) [arXiv](https://arxiv.org/abs/2608.07545)
+- **DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation** · 79★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-14-dreamx-phi-1-0-action-conditioned-video-world-model-for-robo-91a19dee.mp3) [arXiv](https://arxiv.org/abs/2608.13489)
+- **Alaya-EVOKE: From Linear-Scaling Supervision to Endless World** · 82★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-14-alaya-evoke-from-linear-scaling-supervision-to-endless-world-be8f2d7b.mp3) [arXiv](https://arxiv.org/abs/2608.13546)
+- **LLMRouter: Unified Infrastructure for Developing, Evaluating, and Deploying LLM Routers** · 89★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-14-llmrouter-unified-infrastructure-for-developing-evaluating-a-f911feda.mp3) [arXiv](https://arxiv.org/abs/2608.06867)
+
 ## 2026-08-13
 
 - **SkillZip: Contract-Preserving Graph Compression for Scalable Agent Skill Libraries** · 72★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-13-skillzip-contract-preserving-graph-compression-for-scalable--d49ed9c7.mp3) [arXiv](https://arxiv.org/abs/2608.05604)

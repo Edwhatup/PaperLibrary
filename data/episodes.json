@@ -1,5 +1,65 @@
 [
   {
+    "key": "2608.13505",
+    "date": "2026-08-14",
+    "title": "Intern-S2-Preview: Scientific Agentic Foundation Model",
+    "abstract": "Scientific discovery increasingly requires AI systems that can reason over scientific evidence of heterogeneous modalities, interact with scientific tools and environments, and sustain progress across long task horizons. We present Intern-S2-Preview, a series of scientific agentic foundation models designed to support multimodal scientific understanding, reasoning, generation, and long-horizon tasks. The training pipeline begins with scientific multimodal pre-training over rendered scientific documents, interleaved image-text data, and diverse scientific corpora. Starting from the pretrained checkpoint, we apply a unified post-training pipeline consisting of supervised fine-tuning, scalable multi-task reinforcement learning (RL), black- and white-box agentic RL, and on-policy distillation. This pipeline is supported by practical techniques that improve rollout and training stability and efficiency, including partial rollout with off-policy correction, adaptive length regularization, online speculative decoding, robust multi-task optimization, and trace-aware experience assembly for agentic tasks. At the architecture level, Intern-S2-Preview-397B extends time series modelling from efficient long-sequence understanding to numerical forecasting, while Memory Decoder is studied as a separate memory-augmented path for rapid scientific specialization without modifying the frozen 397B backbone. Evaluations across scientific, multimodal, agentic, and general-purpose benchmarks show that Intern-S2-Preview-397B achieves competitive or leading results in multiple settings. The time series modules improve scientific signal understanding and forecasting on SciTS, while the separate Intern-MemDec-4B extension improves the Biology-Instructions average score from 56.92 to 60.32 without modifying the frozen 397B backbone.",
+    "notes": "有一个核心问题困扰着当前所有的科学AI系统：它们擅长回答孤立的问题，却无法像真正的科研人员那样，在一个漫长的探索过程中持续推理、调用工具、与环境反复交互、最终解决复杂的科学任务。这篇论文要做的，就是系统性地解决这个问题，提出一个叫做Intern-S2-Preview的科学智能体基础模型系列，其中最核心的是一个3970亿参数的旗舰版本。",
+    "url": "https://arxiv.org/abs/2608.13505",
+    "upvotes": 42,
+    "audio": "2026-08-14-intern-s2-preview-scientific-agentic-foundation-model-fffd1ef4.mp3",
+    "size": 6544944,
+    "published": "2026-08-14T23:32:36.189266+00:00"
+  },
+  {
+    "key": "2608.07545",
+    "date": "2026-08-14",
+    "title": "DarwinX: Evolving Agent Harnesses Through Natural Selection",
+    "abstract": "An LLM agent's capability depends not only on model weights but on its harness: prompts, tools, skills, and control flow. Self-improvement loops already edit harnesses, yet single-lineage search is path-dependent and local wins often regress other tasks. We introduce DarwinX, which treats self-evolution as selection over a population of harnesses with the model frozen: a preserve-and-extend contract admits only variants that extend coverage without regressing, an archive keeps alternative lineages for recombination, and failure-, teacher-, and self-derived evidence share one edit interface. Fitness comes from each benchmark's own verifier: no gold solutions, no hand-picked winners. Across four benchmarks that progressively separate the evolution signal from the test, one loop adds about 17 points on average: Terminal-Bench 2.1 rises +7.7 to 83.2% on a matched base and to the verified frontier at 84.7% on a stronger one; TerminalWorld's held-out split reaches 68.3%, ahead of every off-the-shelf agent; WebArena-Infinity real-task pass@1 rises from 43.5% to 93.0% audit-clean; and a Terminal-Bench 2.1 harness transfers unchanged to SWE-bench Verified. What evolves is general agent competence, not benchmark-specific patches, so it survives changes of task, verifier, and base model. A frozen model need not be a fixed agent: harness selection turns evaluation compute into durable capability.",
+    "notes": "一个LLM智能体能力的天花板，究竟由什么决定？很多人会直觉地回答：模型的权重，也就是那几百亿甚至上千亿的参数。但这篇论文提出了一个不同的答案——模型权重只是能力的一半，另一半藏在\"harness\"里，也就是围绕模型的那一整套提示词、工具、记忆机制和控制流程。更关键的是，这篇论文要解决的核心痛点是：当你想让智能体自我进化、自我改进的时候，现有的方法有两个根本性的缺陷，而这两个缺陷加在一起，会让进化过程陷入死局。",
+    "url": "https://arxiv.org/abs/2608.07545",
+    "upvotes": 57,
+    "audio": "2026-08-14-darwinx-evolving-agent-harnesses-through-natural-selection-147f80b7.mp3",
+    "size": 5548608,
+    "published": "2026-08-14T23:28:46.258355+00:00"
+  },
+  {
+    "key": "2608.13489",
+    "date": "2026-08-14",
+    "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
+    "abstract": "We present DreamX-Phi 1.0, an action-conditioned video world model for robotic manipulation that, given an observed frame, a language instruction, and a prescribed action sequence comprising end-effector poses and gripper states, predicts the resulting future observations. Yet realism alone does not guarantee faithfulness: a convincing rollout can still move the wrong arm or lose the manipulated object. To ensure the prediction respects each arm's commanded path, we inject per-arm SE(3) transformations into attention via PRoPE-style geometric encoding, preserving arm identity and rigid-motion structure. Action control alone does not fully constrain scene geometry or the evolution of small manipulated objects. We therefore add a lightweight depth branch for scene-level geometry and use SAM3 masks with a frozen V-JEPA teacher to maintain object consistency throughout grasping. We further distill the multi-step generator into a few-step student via distribution-matching distillation for efficient deployment. At the time of writing,  achieves first place on Track~1 and second place on Track~2 of the WorldArena~2.0 Challenge. Our model and code will be publicly available.",
+    "notes": "机器人在执行一个任务之前，怎么知道自己的动作会不会成功？最直接的办法，是让它在真实世界里试——但这太慢、太危险、成本也高。另一条路是给它一个\"世界模型\"：你告诉模型\"机器人接下来要做这一串动作\"，模型就预测出对应的视频画面，机器人可以在脑子里先演练一遍，再决定要不要真的去做。",
+    "url": "https://arxiv.org/abs/2608.13489",
+    "upvotes": 79,
+    "audio": "2026-08-14-dreamx-phi-1-0-action-conditioned-video-world-model-for-robo-91a19dee.mp3",
+    "size": 4111920,
+    "published": "2026-08-14T23:25:08.790428+00:00"
+  },
+  {
+    "key": "2608.13546",
+    "date": "2026-08-14",
+    "title": "Alaya-EVOKE: From Linear-Scaling Supervision to Endless World",
+    "abstract": "Interactive world models must support persistent memory, responsive interaction, and long-horizon generation, yet these requirements place conflicting demands on the model. Maintaining history in the denoiser context or key-value cache incurs growing cost, forcing a trade-off between session length and retained memory, while low-latency interaction relies on few-step generation whose capabilities are bounded by its teacher. Evoke addresses both limitations by externalizing persistent world state and redesigning the teacher for long-horizon interactive generation. Scene geometry is maintained in an external, camera-indexed world state bank, from which only view-relevant information is retrieved, keeping the denoiser context bounded as the session grows. Rather than treating the teacher as a fixed generator, we design it for long-horizon supervision: its sparse attention combines chunk-wise grouping, retrieval of selected distant frames, and a linear-attention global state, yielding linear growth in memory and compute while enabling supervision over long horizons. Such supervision exposes content drift that stays locally plausible within short windows, while per-chunk conditioning enables prompt changes and event control throughout the sequence. A 30-second distribution-matching objective, applied under self-forced rollouts, transfers both capabilities to a three-step student that uses no classifier-free guidance, improving resistance to long-term drift while preserving responsive conditioning. With bounded context and recurrent external memory, Evoke supports open-ended, continuously evolving generation; on a single H200 at 384times 640, each 1.5,s chunk is generated in 2.11,s. As a three-step world model, Evoke achieves state-of-the-art performance on WBench while remaining competitive on VBench-Long and VBench-2.0.",
+    "notes": "交互式世界模型在设计时面临一个核心挑战：它必须同时支持长久记忆、即时用户交互以及长时程的生成能力。然而，这些要求之间往往存在内在冲突。比如，要维持长久记忆，传统的做法是把历史信息保存在去噪器的上下文里，或者以键值缓存的形式存储。但这样做会导致每一次去噪的计算成本随着会话历史的增长而不断增加，迫使我们在会话长度和保留记忆之间做出取舍。另一方面，即时交互要求模型能够在几步之内就完成生成，这意味着它的能力最终会被训练它的“老师”模型所限制。这些局限性使得现有的方法难以同时兼顾所有需求。",
+    "url": "https://arxiv.org/abs/2608.13546",
+    "upvotes": 82,
+    "audio": "2026-08-14-alaya-evoke-from-linear-scaling-supervision-to-endless-world-be8f2d7b.mp3",
+    "size": 3951648,
+    "published": "2026-08-14T23:22:32.056470+00:00"
+  },
+  {
+    "key": "2608.06867",
+    "date": "2026-08-14",
+    "title": "LLMRouter: Unified Infrastructure for Developing, Evaluating, and Deploying LLM Routers",
+    "abstract": "No single large language model (LLM) is optimal across all queries and budget constraints, making model routing essential for cost-effective deployment. Existing routers adopt diverse formulations and implementations, making fair comparison and extension difficult. We present a unified formulation of LLM routing as a sequential decision process characterized by five components: context encoders, model encoders, scoring functions, decision rules, and learning signals, covering single-turn, multi-turn, and personalized routing. Based on this formulation, we develop an automated pipeline for constructing routing supervision and evaluating routers jointly on response quality and inference cost. The resulting benchmark, xRouteBench, spans generic LLM, memory-augmented, vision, time-series, and personalized routing tasks. We further introduce LLMRouter, an open-source modular infrastructure with more than 16 representative routers. Our empirical study shows that learned routers outperform the strongest fixed-model baseline by 14.6% relatively, lightweight routers become more competitive under tight cost constraints, and user-conditioned routing consistently improves personalization.",
+    "notes": "现在的大语言模型市场里有一个很现实的痛点：没有哪一个模型能在所有任务上都表现最好，同时还控制得住成本。GPT-4这类顶级模型回答一个简单问题，花的钱可能是一个小模型的几十倍，但它在某些任务上的表现却并不比小模型强多少。反过来，小模型在复杂推理、数学证明、代码生成这类任务上又明显力不从心。于是\"路由\"这个概念就变得至关重要——路由的意思就是：对于每一个进来的查询，智能地决定应该把它交给哪个模型来处理，从而在质量和成本之间取得最佳平衡。",
+    "url": "https://arxiv.org/abs/2608.06867",
+    "upvotes": 89,
+    "audio": "2026-08-14-llmrouter-unified-infrastructure-for-developing-evaluating-a-f911feda.mp3",
+    "size": 6366240,
+    "published": "2026-08-14T23:19:20.778930+00:00"
+  },
+  {
     "key": "2608.05604",
     "date": "2026-08-13",
     "title": "SkillZip: Contract-Preserving Graph Compression for Scalable Agent Skill Libraries",

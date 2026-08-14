@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Intern-S2-Preview: Scientific Agentic Foundation Model</title>
+      <description>有一个核心问题困扰着当前所有的科学AI系统：它们擅长回答孤立的问题，却无法像真正的科研人员那样，在一个漫长的探索过程中持续推理、调用工具、与环境反复交互、最终解决复杂的科学任务。这篇论文要做的，就是系统性地解决这个问题，提出一个叫做Intern-S2-Preview的科学智能体基础模型系列，其中最核心的是一个3970亿参数的旗舰版本。</description>
+      <link>https://arxiv.org/abs/2608.13505</link>
+      <guid isPermaLink="false">2026-08-14-intern-s2-preview-scientific-agentic-foundation-model-fffd1ef4.mp3</guid>
+      <pubDate>Fri, 14 Aug 2026 23:32:36 +0000</pubDate>
+      <itunes:duration>1090</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-14-intern-s2-preview-scientific-agentic-foundation-model-fffd1ef4.mp3" length="6544944" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>DarwinX: Evolving Agent Harnesses Through Natural Selection</title>
+      <description>一个LLM智能体能力的天花板，究竟由什么决定？很多人会直觉地回答：模型的权重，也就是那几百亿甚至上千亿的参数。但这篇论文提出了一个不同的答案——模型权重只是能力的一半，另一半藏在"harness"里，也就是围绕模型的那一整套提示词、工具、记忆机制和控制流程。更关键的是，这篇论文要解决的核心痛点是：当你想让智能体自我进化、自我改进的时候，现有的方法有两个根本性的缺陷，而这两个缺陷加在一起，会让进化过程陷入死局。</description>
+      <link>https://arxiv.org/abs/2608.07545</link>
+      <guid isPermaLink="false">2026-08-14-darwinx-evolving-agent-harnesses-through-natural-selection-147f80b7.mp3</guid>
+      <pubDate>Fri, 14 Aug 2026 23:28:46 +0000</pubDate>
+      <itunes:duration>924</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-14-darwinx-evolving-agent-harnesses-through-natural-selection-147f80b7.mp3" length="5548608" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation</title>
+      <description>机器人在执行一个任务之前，怎么知道自己的动作会不会成功？最直接的办法，是让它在真实世界里试——但这太慢、太危险、成本也高。另一条路是给它一个"世界模型"：你告诉模型"机器人接下来要做这一串动作"，模型就预测出对应的视频画面，机器人可以在脑子里先演练一遍，再决定要不要真的去做。</description>
+      <link>https://arxiv.org/abs/2608.13489</link>
+      <guid isPermaLink="false">2026-08-14-dreamx-phi-1-0-action-conditioned-video-world-model-for-robo-91a19dee.mp3</guid>
+      <pubDate>Fri, 14 Aug 2026 23:25:08 +0000</pubDate>
+      <itunes:duration>685</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-14-dreamx-phi-1-0-action-conditioned-video-world-model-for-robo-91a19dee.mp3" length="4111920" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Alaya-EVOKE: From Linear-Scaling Supervision to Endless World</title>
+      <description>交互式世界模型在设计时面临一个核心挑战：它必须同时支持长久记忆、即时用户交互以及长时程的生成能力。然而，这些要求之间往往存在内在冲突。比如，要维持长久记忆，传统的做法是把历史信息保存在去噪器的上下文里，或者以键值缓存的形式存储。但这样做会导致每一次去噪的计算成本随着会话历史的增长而不断增加，迫使我们在会话长度和保留记忆之间做出取舍。另一方面，即时交互要求模型能够在几步之内就完成生成，这意味着它的能力最终会被训练它的“老师”模型所限制。这些局限性使得现有的方法难以同时兼顾所有需求。</description>
+      <link>https://arxiv.org/abs/2608.13546</link>
+      <guid isPermaLink="false">2026-08-14-alaya-evoke-from-linear-scaling-supervision-to-endless-world-be8f2d7b.mp3</guid>
+      <pubDate>Fri, 14 Aug 2026 23:22:32 +0000</pubDate>
+      <itunes:duration>658</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-14-alaya-evoke-from-linear-scaling-supervision-to-endless-world-be8f2d7b.mp3" length="3951648" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>LLMRouter: Unified Infrastructure for Developing, Evaluating, and Deploying LLM Routers</title>
+      <description>现在的大语言模型市场里有一个很现实的痛点：没有哪一个模型能在所有任务上都表现最好，同时还控制得住成本。GPT-4这类顶级模型回答一个简单问题，花的钱可能是一个小模型的几十倍，但它在某些任务上的表现却并不比小模型强多少。反过来，小模型在复杂推理、数学证明、代码生成这类任务上又明显力不从心。于是"路由"这个概念就变得至关重要——路由的意思就是：对于每一个进来的查询，智能地决定应该把它交给哪个模型来处理，从而在质量和成本之间取得最佳平衡。</description>
+      <link>https://arxiv.org/abs/2608.06867</link>
+      <guid isPermaLink="false">2026-08-14-llmrouter-unified-infrastructure-for-developing-evaluating-a-f911feda.mp3</guid>
+      <pubDate>Fri, 14 Aug 2026 23:19:20 +0000</pubDate>
+      <itunes:duration>1061</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-14-llmrouter-unified-infrastructure-for-developing-evaluating-a-f911feda.mp3" length="6366240" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>SkillZip: Contract-Preserving Graph Compression for Scalable Agent Skill Libraries</title>
       <description>当一个大语言模型驱动的智能体要完成复杂任务的时候，它的程序性知识存在哪里？答案是存在一个叫做技能库的外部存储层里。这个技能库里装的是一个个可复用的技能包，每个包里有操作指令、脚本、验证规则和各种资源。智能体执行任务的时候，会从这个库里取出相关的技能包，把它们放进上下文窗口，然后按照里面的步骤走。</description>
       <link>https://arxiv.org/abs/2608.05604</link>
