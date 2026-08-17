@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-17
+
+- **SimpleOPD: Simple Tokenizer-Agnostic On-Policy Distillation for Long-Context Reasoning** · 23★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-17-simpleopd-simple-tokenizer-agnostic-on-policy-distillation-f-347dfad6.mp3) [arXiv](https://arxiv.org/abs/2608.14277)
+- **Intern-S2-Mobius: Foundation Model with Decoupled Knowledge and Reasoning** · 31★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-17-intern-s2-mobius-foundation-model-with-decoupled-knowledge-a-b52b2731.mp3) [arXiv](https://arxiv.org/abs/2608.14290)
+- **Beyond Final Scores: A Systematic Evaluation of Agents for Long-Horizon AI Research and Development** · 41★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-17-beyond-final-scores-a-systematic-evaluation-of-agents-for-lo-7e3ba7f1.mp3) [arXiv](https://arxiv.org/abs/2608.13417)
+- **Self-Supervised Visual On-Policy Distillation** · 147★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-17-self-supervised-visual-on-policy-distillation-20beadfe.mp3) [arXiv](https://arxiv.org/abs/2608.14144)
+- **Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination** · 257★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-17-can-we-defend-against-ai-generated-video-attacks-on-real-wor-e82bbcc3.mp3) [arXiv](https://arxiv.org/abs/2608.14391)
+
 ## 2026-08-14
 
 - **Intern-S2-Preview: Scientific Agentic Foundation Model** · 42★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-14-intern-s2-preview-scientific-agentic-foundation-model-fffd1ef4.mp3) [arXiv](https://arxiv.org/abs/2608.13505)

@@ -1,5 +1,65 @@
 [
   {
+    "key": "2608.14277",
+    "date": "2026-08-17",
+    "title": "SimpleOPD: Simple Tokenizer-Agnostic On-Policy Distillation for Long-Context Reasoning",
+    "abstract": "On-policy distillation (OPD) offers a promising way to transfer reasoning capabilities from stronger teacher models, but applying it to long-context reasoning teachers and short-context students introduces practical challenges, including tokenizer mismatch, teacher-student distribution mismatch, response length explosion, and training instability. In this work, we study this setting by transferring proof-reasoning capabilities from the long-context reasoning model SU-01 to short-context student models. To handle tokenizer differences, we perform OPD in a shared text space and align only tokens that occupy identical text spans under the student and teacher tokenizers. To mitigate the problem of excessive generation length and frequent truncation, we introduce a student reference KL loss and mask the advantages of special termination tokens such as </think> and <|im_end|>. This strategy constrains the student from drifting excessively from its initial policy, thereby mitigating the teacher-student distribution mismatch problem and fostering steady length growth. Experiments on both same-family and different-family student models, including Qwen3, Qwen3.5, Intern-S2, GLM-4.7, Gemma-4, show consistent gains in mathematical reasoning, especially natural-language math proving. Notably, Intern-S2-Preview improves by 21.2 points on ProofBench, reaching 55.2 and surpassing Gemini-2.5-Pro. It also improves on science benchmarks such as HLE and HiPhO, suggesting that OPD transfers reasoning capabilities that generalize beyond the mathematical training domain.",
+    "notes": "让一个数学推理能力极强的大模型，把它的能力\"传授\"给另一个架构完全不同、词表也不同的小模型——这件事听起来简单，做起来却会踩一个接一个的坑。这篇论文叫做SimpleOPD，全名是\"简单的、与分词器无关的在线策略蒸馏用于长上下文推理\"，它要解决的核心痛点，就是在教师模型和学生模型分词器不兼容的情况下，如何稳定地把长链推理能力蒸馏过去，而不让训练崩掉。",
+    "url": "https://arxiv.org/abs/2608.14277",
+    "upvotes": 23,
+    "audio": "2026-08-17-simpleopd-simple-tokenizer-agnostic-on-policy-distillation-f-347dfad6.mp3",
+    "size": 5904720,
+    "published": "2026-08-17T23:33:29.787387+00:00"
+  },
+  {
+    "key": "2608.14290",
+    "date": "2026-08-17",
+    "title": "Intern-S2-Mobius: Foundation Model with Decoupled Knowledge and Reasoning",
+    "abstract": "We introduce Mobius-v0, an architecture that comprises a globally shared Memory (FFN) that stores knowledge vectors and multiple Reasoners (Self-Attn) that iteratively achieve compositional reasoning. Using hidden states as cache and carrier, reasoners repeatedly query memory for required knowledge-vectors, while the knowledge is transmitted back to reasoning operators. Through this knowledge-reasoning-separation architecture, Mobius achieves better knowledge compression and reasoning efficiency. Built upon Mobius-v0 architecture: 1) Our 7B model trained-from-scratch achieves similar downstream score as a 7B Transformer baseline with 62.6% of baseline's training data. 2) Our Intern-S2-Mobius, continually-pretrained from Qwen3.5-35B, achieves similar downstream score while delivering nearly 4x end-to-end inference speedup.",
+    "notes": "大型语言模型在过去几年里取得了惊人的发展，它们的核心架构，也就是我们常说的Transformer，几乎渗透到了从语言、视觉到科学计算的每一个领域。沿着这条发展轨迹，研究者们主要探索了两个方向。第一个方向是保持模型架构不变，通过增加投入来提升能力，比如扩充模型参数、扩大训练语料库、拉长推理链等等，这些做法通常能让模型获得更丰富的知识，解决更复杂的问题。第二个方向则是通过降低架构复杂度来减少训练和推理的开销，从而提高实用性，比如针对自注意力机制的二次复杂度瓶颈，提出了线性注意力机制，并将其整合到主流架构中。",
+    "url": "https://arxiv.org/abs/2608.14290",
+    "upvotes": 31,
+    "audio": "2026-08-17-intern-s2-mobius-foundation-model-with-decoupled-knowledge-a-b52b2731.mp3",
+    "size": 6435072,
+    "published": "2026-08-17T23:30:34.801237+00:00"
+  },
+  {
+    "key": "2608.13417",
+    "date": "2026-08-17",
+    "title": "Beyond Final Scores: A Systematic Evaluation of Agents for Long-Horizon AI Research and Development",
+    "abstract": "Autonomous agents are increasingly capable of improving models, systems, and other technical artifacts through long-horizon experimentation. To understand the current state of this capability, however, evaluation must go beyond final scores, which neither reveal where progress is gained or lost nor indicate whether accumulated experience improves later decisions. We therefore present a systematic evaluation of seven frontier models on 36 long-horizon tasks based on a new framework that uses rule-based metrics to characterize within-run behavior through Solution Framing, Execution, and Feedback Control and controlled comparisons to assess experience reuse within and across tasks. The results show that current agents operate more like engineering optimizers than fully autonomous researchers: they can formulate and implement practical solutions, but their performance varies substantially across runs, their strongest solutions mainly adapt or combine established techniques, and genuine methodological novelty remains rare. Detailed analysis reveals that observed performance is shaped by multiple factors, including distinct process bottlenecks behind similar final outcomes, experience reuse that can help or mislead subsequent decisions, and harness designs that affect performance stability. These findings suggest concrete directions for improving model training, inference-time strategies, experience management, and harness design.",
+    "notes": "自动化AI研究智能体到底有多强？这篇论文想解决的，是当前评估体系里一个根本性的缺陷：我们在评估这些自动做研究的智能体时，只看最终得分，但最终得分这个单一数字根本告诉不了你任何有用的信息。它不能说明智能体是一开始就找到了正确方向，还是在反复试错之后才碰巧撞上了好结果；它看不出智能体的实现能力是否可靠；它也不能揭示智能体有没有从过去的经验中学到东西。这篇论文的核心贡献，就是建立一套系统性的、远超最终分数的评估框架，然后用它来回答一个大问题：当前的前沿大模型，到底处于什么水平的自主研究能力？",
+    "url": "https://arxiv.org/abs/2608.13417",
+    "upvotes": 41,
+    "audio": "2026-08-17-beyond-final-scores-a-systematic-evaluation-of-agents-for-lo-7e3ba7f1.mp3",
+    "size": 6646320,
+    "published": "2026-08-17T23:27:24.956593+00:00"
+  },
+  {
+    "key": "2608.14144",
+    "date": "2026-08-17",
+    "title": "Self-Supervised Visual On-Policy Distillation",
+    "abstract": "Visual on-policy distillation relies heavily on an informative teacher-student asymmetry, through either a larger, stronger teacher or privileged supervision, such as reference answers or ground-truth regions of interest. This raises a fundamental question: where can informative asymmetry come from when nothing privileged is available? We answer this by inverting where the asymmetry comes from. Rather than adding privileged information to the teacher, we subtract information from the student. This asymmetry creates the same effective learning signal for free as a teacher with access to information unavailable to the student, without ground-truth annotations, rewards, or a separate stronger teacher model. Building on this principle, we introduce Self-Supervised Visual On-Policy Distillation (S^2VOPD), a simple yet effective method that constructs on-policy learning signals from asymmetric augmented views. S^2VOPD distills the teacher's distribution conditioned on the original image on-policy into the student distribution conditioned on a strongly augmented view of the same image. We systematically explore a broad design space of visual augmentations and uncover that (1) asymmetry matters: all four augmentation families improve performance, while symmetric self-distillation degrades it; (2) strength matters: performance peaks at a moderate strength; and (3) the gap must remain task-consistent: augmentations that completely remove the question-relevant evidence can induce large but uninformative discrepancies. Across six fine-grained perception benchmarks, S^2VOPD improves Qwen3.5-4B from 70.7% to 77.4%, above all open-source models compared, up to Qwen3-VL at 235B, and surpasses GPT-5.4. While holding training data the same, it recovers 96% of the improvement achieved by methods with privileged information. Website is at https://williamium3000.github.io/s2vopd",
+    "notes": "现有的策略蒸馏方法，无论是针对大型语言模型还是视觉语言模型，都高度依赖于一种信息不对称：老师模型要么比学生模型更大、能力更强，要么拥有一些特权信息，比如参考答案、环境反馈，或者图像中精确标注的感兴趣区域。这就引出了一个根本性的问题：当没有任何这些特权信息可用时，这种有用的信息不对称究竟从何而来呢？",
+    "url": "https://arxiv.org/abs/2608.14144",
+    "upvotes": 147,
+    "audio": "2026-08-17-self-supervised-visual-on-policy-distillation-20beadfe.mp3",
+    "size": 7206048,
+    "published": "2026-08-17T23:23:45.152224+00:00"
+  },
+  {
+    "key": "2608.14391",
+    "date": "2026-08-17",
+    "title": "Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination",
+    "abstract": "Recent video generators can fabricate realistic depictions of wars, disasters, public emergencies, and other real-world crises, creating substantial risks of misinformation. Existing benchmarks, however, provide limited evidence on detector and generator behavior in such settings, including how detectability varies with generation conditions, how people perceive generated videos, and whether detectors remain reliable during social dissemination. To address this gap, we introduce RA-Bench, a benchmark for AI-generated video detection that uses Real videos as Anchors. RA-Bench contains 17,886 videos, comprising 1,830 real-video anchors across 10 social-risk categories and 16,056 generated clips from four open-source and five closed-source generators. Based on RA-Bench, we organize our evaluation along three dimensions. We first assess detector generalization across seven traditional detectors, ten zero-shot multimodal models under three review settings, and two MLLMs specifically fine-tuned on AI-generated video detection. Across these methods, none of the three detector families generalizes consistently across RA-Bench instances. We then examine how detectability varies with generation quality, conditioning information, and sampling seeds. These analyses show that generation properties affect detector families differently, while source-level detection patterns remain stable across seeds. Finally, we study human authenticity judgments and detector reliability during social dissemination. We find that videos that mislead people are also difficult for current detectors, and that social dissemination makes detection harder. Together, these findings show that current methods struggle to detect realistic AI-generated videos, highlighting the need for detectors robust to evolving video generators.",
+    "notes": "当前，我们正面临一个严峻的挑战：人工智能生成的视频，尤其是那些描绘真实世界危机事件的视频，正在变得越来越逼真，这给错误信息传播带来了巨大的风险。然而，现有的检测方法和评估基准，在应对这类特定场景时，往往显得力不从心。它们很少系统地分析检测器在这种敏感背景下的表现，也未能充分探究生成条件如何影响视频的可检测性，人们如何感知这些生成视频，以及在社交媒体传播过程中，检测器的可靠性是否会下降。",
+    "url": "https://arxiv.org/abs/2608.14391",
+    "upvotes": 257,
+    "audio": "2026-08-17-can-we-defend-against-ai-generated-video-attacks-on-real-wor-e82bbcc3.mp3",
+    "size": 6795792,
+    "published": "2026-08-17T23:20:14.305564+00:00"
+  },
+  {
     "key": "2608.13505",
     "date": "2026-08-14",
     "title": "Intern-S2-Preview: Scientific Agentic Foundation Model",

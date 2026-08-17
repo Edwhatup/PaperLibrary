@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>SimpleOPD: Simple Tokenizer-Agnostic On-Policy Distillation for Long-Context Reasoning</title>
+      <description>让一个数学推理能力极强的大模型，把它的能力"传授"给另一个架构完全不同、词表也不同的小模型——这件事听起来简单，做起来却会踩一个接一个的坑。这篇论文叫做SimpleOPD，全名是"简单的、与分词器无关的在线策略蒸馏用于长上下文推理"，它要解决的核心痛点，就是在教师模型和学生模型分词器不兼容的情况下，如何稳定地把长链推理能力蒸馏过去，而不让训练崩掉。</description>
+      <link>https://arxiv.org/abs/2608.14277</link>
+      <guid isPermaLink="false">2026-08-17-simpleopd-simple-tokenizer-agnostic-on-policy-distillation-f-347dfad6.mp3</guid>
+      <pubDate>Mon, 17 Aug 2026 23:33:29 +0000</pubDate>
+      <itunes:duration>984</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-17-simpleopd-simple-tokenizer-agnostic-on-policy-distillation-f-347dfad6.mp3" length="5904720" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Intern-S2-Mobius: Foundation Model with Decoupled Knowledge and Reasoning</title>
+      <description>大型语言模型在过去几年里取得了惊人的发展，它们的核心架构，也就是我们常说的Transformer，几乎渗透到了从语言、视觉到科学计算的每一个领域。沿着这条发展轨迹，研究者们主要探索了两个方向。第一个方向是保持模型架构不变，通过增加投入来提升能力，比如扩充模型参数、扩大训练语料库、拉长推理链等等，这些做法通常能让模型获得更丰富的知识，解决更复杂的问题。第二个方向则是通过降低架构复杂度来减少训练和推理的开销，从而提高实用性，比如针对自注意力机制的二次复杂度瓶颈，提出了线性注意力机制，并将其整合到主流架构中。</description>
+      <link>https://arxiv.org/abs/2608.14290</link>
+      <guid isPermaLink="false">2026-08-17-intern-s2-mobius-foundation-model-with-decoupled-knowledge-a-b52b2731.mp3</guid>
+      <pubDate>Mon, 17 Aug 2026 23:30:34 +0000</pubDate>
+      <itunes:duration>1072</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-17-intern-s2-mobius-foundation-model-with-decoupled-knowledge-a-b52b2731.mp3" length="6435072" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Beyond Final Scores: A Systematic Evaluation of Agents for Long-Horizon AI Research and Development</title>
+      <description>自动化AI研究智能体到底有多强？这篇论文想解决的，是当前评估体系里一个根本性的缺陷：我们在评估这些自动做研究的智能体时，只看最终得分，但最终得分这个单一数字根本告诉不了你任何有用的信息。它不能说明智能体是一开始就找到了正确方向，还是在反复试错之后才碰巧撞上了好结果；它看不出智能体的实现能力是否可靠；它也不能揭示智能体有没有从过去的经验中学到东西。这篇论文的核心贡献，就是建立一套系统性的、远超最终分数的评估框架，然后用它来回答一个大问题：当前的前沿大模型，到底处于什么水平的自主研究能力？</description>
+      <link>https://arxiv.org/abs/2608.13417</link>
+      <guid isPermaLink="false">2026-08-17-beyond-final-scores-a-systematic-evaluation-of-agents-for-lo-7e3ba7f1.mp3</guid>
+      <pubDate>Mon, 17 Aug 2026 23:27:24 +0000</pubDate>
+      <itunes:duration>1107</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-17-beyond-final-scores-a-systematic-evaluation-of-agents-for-lo-7e3ba7f1.mp3" length="6646320" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Self-Supervised Visual On-Policy Distillation</title>
+      <description>现有的策略蒸馏方法，无论是针对大型语言模型还是视觉语言模型，都高度依赖于一种信息不对称：老师模型要么比学生模型更大、能力更强，要么拥有一些特权信息，比如参考答案、环境反馈，或者图像中精确标注的感兴趣区域。这就引出了一个根本性的问题：当没有任何这些特权信息可用时，这种有用的信息不对称究竟从何而来呢？</description>
+      <link>https://arxiv.org/abs/2608.14144</link>
+      <guid isPermaLink="false">2026-08-17-self-supervised-visual-on-policy-distillation-20beadfe.mp3</guid>
+      <pubDate>Mon, 17 Aug 2026 23:23:45 +0000</pubDate>
+      <itunes:duration>1201</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-17-self-supervised-visual-on-policy-distillation-20beadfe.mp3" length="7206048" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination</title>
+      <description>当前，我们正面临一个严峻的挑战：人工智能生成的视频，尤其是那些描绘真实世界危机事件的视频，正在变得越来越逼真，这给错误信息传播带来了巨大的风险。然而，现有的检测方法和评估基准，在应对这类特定场景时，往往显得力不从心。它们很少系统地分析检测器在这种敏感背景下的表现，也未能充分探究生成条件如何影响视频的可检测性，人们如何感知这些生成视频，以及在社交媒体传播过程中，检测器的可靠性是否会下降。</description>
+      <link>https://arxiv.org/abs/2608.14391</link>
+      <guid isPermaLink="false">2026-08-17-can-we-defend-against-ai-generated-video-attacks-on-real-wor-e82bbcc3.mp3</guid>
+      <pubDate>Mon, 17 Aug 2026 23:20:14 +0000</pubDate>
+      <itunes:duration>1132</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-17-can-we-defend-against-ai-generated-video-attacks-on-real-wor-e82bbcc3.mp3" length="6795792" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Intern-S2-Preview: Scientific Agentic Foundation Model</title>
       <description>有一个核心问题困扰着当前所有的科学AI系统：它们擅长回答孤立的问题，却无法像真正的科研人员那样，在一个漫长的探索过程中持续推理、调用工具、与环境反复交互、最终解决复杂的科学任务。这篇论文要做的，就是系统性地解决这个问题，提出一个叫做Intern-S2-Preview的科学智能体基础模型系列，其中最核心的是一个3970亿参数的旗舰版本。</description>
       <link>https://arxiv.org/abs/2608.13505</link>
