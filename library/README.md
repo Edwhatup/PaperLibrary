@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-18
+
+- **Learn What's Left, Not What's Mastered: Saturation Aware Advantage Reweighting for Multi-Reward Policy Optimization** · 44★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-18-learn-what-s-left-not-what-s-mastered-saturation-aware-advan-f70e51e7.mp3) [arXiv](https://arxiv.org/abs/2608.16072)
+- **Large Discovery Models: Empirically-grounded Model-Based Open-Ended Search** · 49★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-18-large-discovery-models-empirically-grounded-model-based-open-57bcc4a3.mp3) [arXiv](https://arxiv.org/abs/2608.15669)
+- **VibeWorlding: Can Multimodal Agents Construct 3D Open Worlds End-to-End?** · 51★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-18-vibeworlding-can-multimodal-agents-construct-3d-open-worlds--706fa10b.mp3) [arXiv](https://arxiv.org/abs/2608.15265)
+- **StateM: Reaching 95.3% Raw Accuracy, or a \$15 Frontier Run, on Terminal-Bench 2.1 via Harness Scaling** · 101★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-18-statem-reaching-95-3-raw-accuracy-or-a-15-frontier-run-on-te-f87058f7.mp3) [arXiv](https://arxiv.org/abs/2608.15089)
+- **HarnessEval-W: Agentifying the Evaluation of Visual Worlds** · 110★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-18-harnesseval-w-agentifying-the-evaluation-of-visual-worlds-0eb1f598.mp3) [arXiv](https://arxiv.org/abs/2608.16859)
+
 ## 2026-08-17
 
 - **SimpleOPD: Simple Tokenizer-Agnostic On-Policy Distillation for Long-Context Reasoning** · 23★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-17-simpleopd-simple-tokenizer-agnostic-on-policy-distillation-f-347dfad6.mp3) [arXiv](https://arxiv.org/abs/2608.14277)
