@@ -8,6 +8,42 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>ASI-Bench: At the Dawn of Artificial Superintelligence</title>
+      <description>当前的AI系统能不能独立做科研，不靠人手把手引导？这正是ASI-Bench这篇论文要直接测量的问题。</description>
+      <link>https://arxiv.org/abs/2608.17271</link>
+      <guid isPermaLink="false">2026-08-19-asi-bench-at-the-dawn-of-artificial-superintelligence-8f0af73d.mp3</guid>
+      <pubDate>Wed, 19 Aug 2026 23:30:15 +0000</pubDate>
+      <itunes:duration>926</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-19-asi-bench-at-the-dawn-of-artificial-superintelligence-8f0af73d.mp3" length="5560416" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution</title>
+      <description>如何让你家的游戏电脑跑起来两千八百四十亿参数的大模型，同时还能保持实时交互的速度——这是这篇论文要解决的核心问题。</description>
+      <link>https://arxiv.org/abs/2608.16157</link>
+      <guid isPermaLink="false">2026-08-19-freetoken-efficient-edge-native-moe-serving-with-bandwidth-a-595d14c1.mp3</guid>
+      <pubDate>Wed, 19 Aug 2026 23:26:53 +0000</pubDate>
+      <itunes:duration>1101</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-19-freetoken-efficient-edge-native-moe-serving-with-bandwidth-a-595d14c1.mp3" length="6607872" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements</title>
+      <description>用强化学习来微调大语言模型做智能体任务，这件事在短对话场景里已经被证明很有效，但当任务变成需要十几步、几十步才能完成的长链推理时，强化学习暴露出了两个根本性的痛点：第一，它需要把整条轨迹的激活值和优化器状态都存在显存里，再做反向传播，这对稍微大一点的模型来说显存开销极其沉重；第二，奖励信号通常只在整条轨迹跑完之后才给出一个稀疏的终端奖励，强化学习需要把这一个标量分摊回去，逐步骤地判断每一个动作的功过，这个信用分配问题在轨迹越来越长的时候会变得越来越难。这篇来自新加坡国立大学的论文要问的问题是：有没有一种方法，既不需要反向传播，显存只要推理级别，又能天然地绕开长链条信用分配的难题？答案是：进化策</description>
+      <link>https://arxiv.org/abs/2608.17310</link>
+      <guid isPermaLink="false">2026-08-19-agentic-esopt-fine-tuning-long-horizon-llm-agents-with-minim-86369b52.mp3</guid>
+      <pubDate>Wed, 19 Aug 2026 23:23:12 +0000</pubDate>
+      <itunes:duration>945</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-19-agentic-esopt-fine-tuning-long-horizon-llm-agents-with-minim-86369b52.mp3" length="5674608" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Demystifying Agent Skills: Why They Work-Until They Don't</title>
+      <description>当我们评估一个LLM智能体系统时，最常见的做法是看任务成功率——加了某个模块之后，整体成功率提升了多少个百分点。但这种评估方式有一个根本性的盲点：它告诉你"有没有用"，却完全不告诉你"为什么有用"，也不告诉你"什么时候会失效"。这篇论文要直接攻克的就是这个问题，研究对象是近年来在LLM智能体系统中越来越流行的一种记忆形式——技能，英文叫Skills。</description>
+      <link>https://arxiv.org/abs/2608.14036</link>
+      <guid isPermaLink="false">2026-08-19-demystifying-agent-skills-why-they-work-until-they-don-t-7b26306d.mp3</guid>
+      <pubDate>Wed, 19 Aug 2026 23:19:52 +0000</pubDate>
+      <itunes:duration>961</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-19-demystifying-agent-skills-why-they-work-until-they-don-t-7b26306d.mp3" length="5769648" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Learn What's Left, Not What's Mastered: Saturation Aware Advantage Reweighting for Multi-Reward Policy Optimization</title>
       <description>用强化学习训练大语言模型做推理，现在已经是标准流程了。但有一个问题一直没被好好解决：当你同时优化多个目标的时候，怎么合理分配训练资源？这篇论文要解决的核心痛点，就是现有方法在多目标强化学习里，会持续把梯度预算浪费在那些已经学得很好的目标上，而真正还有提升空间的难目标却得不到足够的优化力度。论文提出了一个叫做SA-MRPO的方法，全称是Saturation Aware Advantage Reweighting for Multi-Reward Policy Optimization，中文可以理解为"饱和感知的多目标优势重加权"。下面我们一步步把这个问题和解法讲清楚。</description>
       <link>https://arxiv.org/abs/2608.16072</link>

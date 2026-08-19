@@ -3,6 +3,13 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-19
+
+- **ASI-Bench: At the Dawn of Artificial Superintelligence** · 51★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-19-asi-bench-at-the-dawn-of-artificial-superintelligence-8f0af73d.mp3) [arXiv](https://arxiv.org/abs/2608.17271)
+- **FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution** · 58★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-19-freetoken-efficient-edge-native-moe-serving-with-bandwidth-a-595d14c1.mp3) [arXiv](https://arxiv.org/abs/2608.16157)
+- **Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements** · 91★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-19-agentic-esopt-fine-tuning-long-horizon-llm-agents-with-minim-86369b52.mp3) [arXiv](https://arxiv.org/abs/2608.17310)
+- **Demystifying Agent Skills: Why They Work-Until They Don't** · 125★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-19-demystifying-agent-skills-why-they-work-until-they-don-t-7b26306d.mp3) [arXiv](https://arxiv.org/abs/2608.14036)
+
 ## 2026-08-18
 
 - **Learn What's Left, Not What's Mastered: Saturation Aware Advantage Reweighting for Multi-Reward Policy Optimization** · 44★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-18-learn-what-s-left-not-what-s-mastered-saturation-aware-advan-f70e51e7.mp3) [arXiv](https://arxiv.org/abs/2608.16072)

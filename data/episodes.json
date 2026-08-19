@@ -1,5 +1,53 @@
 [
   {
+    "key": "2608.17271",
+    "date": "2026-08-19",
+    "title": "ASI-Bench: At the Dawn of Artificial Superintelligence",
+    "abstract": "Artificial superintelligence (ASI) requires AI to move beyond mastering existing knowledge toward exploring the unknown, creating new knowledge, and turning new ideas into verifiable results. However, the capabilities of today's AI systems are still largely built on learning, compressing, and applying existing human knowledge. Accordingly, existing benchmarks primarily test whether AI can produce correct answers based on learned knowledge, or whether it can complete tasks under extensive human guidance. We therefore introduce ASI-Bench, the first benchmark to jointly evaluate AI systems' capabilities of innovative exploration and autonomous scientific execution across general research domains, and the first to progressively withdraw human methodological guidance within the same research project to test how far AI can proceed on its own. Built by over 40 experts with the cost of 31,000+ human hours, ASI-Bench contains 60 project-level research tasks across 11 scientific domains and progressively reduces methodological guidance to test whether AI can independently select methods, conduct research, and produce verifiable results. All tasks undergo expert review, AI-assisted auditing, sandbox execution, and scorer validation. Across 18 state-of-the-art agent--model configurations, the average score drops from 50.91 with full methodological guidance to 29.10 with only the method specified and 26.62 when agents must determine the method themselves. This sharp decline shows that current systems remain heavily dependent on human guidance and are still far from autonomously conducting end-to-end, project-level scientific research. ASI-Bench is open to the world. We invite researchers and builders everywhere to contribute new tasks, challenge the limits of today's AI, and help accelerate humanity's collective path toward artificial superintelligence at https://asibench.apexin.ai/submit.",
+    "notes": "当前的AI系统能不能独立做科研，不靠人手把手引导？这正是ASI-Bench这篇论文要直接测量的问题。",
+    "url": "https://arxiv.org/abs/2608.17271",
+    "upvotes": 51,
+    "audio": "2026-08-19-asi-bench-at-the-dawn-of-artificial-superintelligence-8f0af73d.mp3",
+    "size": 5560416,
+    "published": "2026-08-19T23:30:15.301291+00:00"
+  },
+  {
+    "key": "2608.16157",
+    "date": "2026-08-19",
+    "title": "FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution",
+    "abstract": "Frontier open-weight models are increasingly available, but serving them still largely assumes datacenter infrastructure. We present FreeToken, an edge-native MoE serving system that treats a personal machine not as a small GPU, but as a unified, elastic inference platform. FreeToken co-designs the full serving stack, including model layout and loading, expert residency, CPU--GPU execution, agentic state reuse, and runtime memory management, around two realities of local AI: agent workloads continuously change their execution pattern, and edge hardware exposes heterogeneous resources whose balance differs from machine to machine. Rather than committing to a fixed offloading strategy, FreeToken continuously maps computation and model state onto the resources actually available. FreeToken supports more than 20 MoE models and real coding and tool-using agents across hardware ranging from an 8GB laptop GPU to a single workstation GPU. More importantly, it changes what these machines can practically serve, from a 35B model on a laptop to a 284B model on a gaming desktop and the 753B GLM-5.2 on a single workstation GPU. FreeToken turns open weights into deployable local software, making the machines users already own a practical platform for frontier-scale intelligence. We release the system at flashml.ai.",
+    "notes": "如何让你家的游戏电脑跑起来两千八百四十亿参数的大模型，同时还能保持实时交互的速度——这是这篇论文要解决的核心问题。",
+    "url": "https://arxiv.org/abs/2608.16157",
+    "upvotes": 58,
+    "audio": "2026-08-19-freetoken-efficient-edge-native-moe-serving-with-bandwidth-a-595d14c1.mp3",
+    "size": 6607872,
+    "published": "2026-08-19T23:26:53.354579+00:00"
+  },
+  {
+    "key": "2608.17310",
+    "date": "2026-08-19",
+    "title": "Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements",
+    "abstract": "Reinforcement Learning (RL) has been promising in single-turn LLM fine-tuning. However, long-horizon agentic reasoning introduces increasingly branching interactions and sparse rewards, exposing several limitations of RL: its heavyweight backpropagation-based training stack makes it impractical to fine-tune larger LLMs, and longer-horizon trajectories make credit assignment in RL substantially harder. This paper argues that evolution strategies (ES) can be a better choice for fine-tuning long-horizon LLM agents. Compared with agentic RL, ES offers three key advantages: 1) Model Scalability: ES enables full-parameter optimization with only minimal, inference-level GPU memory, making it possible to fine-tune large LLMs. 2) Flexibility: its lightweight, black-box feedback interface makes ES fine-tuning easy to compose with prompt-space evolution (e.g., skill optimization & test-time compute); and 3) Long-Horizon Scalability: ES performs trajectory-level parameter attribution without decomposing rewards across horizons, yielding better scalability than Agentic RL as the horizon length grows. Based on this insight, we propose Agentic ESOpt, a full-parameter agentic fine-tuning framework tailored to flexible parameter--context co-evolution. At each step, Agentic ESOpt samples perturbations around the current LLM parameters, evaluates the resulting agents with rewards, and applies an online reward-weighted update. To improve the exploration--adaptation trade-off, Agentic ESOpt further introduces a cosine decay schedule of the perturbation scale σ. On WebArena-Lite, full-parameter optimization of Qwen-3.5-27B improves the No Skill baseline by 6.69%. In test-time automatic heuristic design, Agentic ESOpt performs online prompt--parameter co-evolution, improving its matched baseline in 28 of 36 settings.",
+    "notes": "用强化学习来微调大语言模型做智能体任务，这件事在短对话场景里已经被证明很有效，但当任务变成需要十几步、几十步才能完成的长链推理时，强化学习暴露出了两个根本性的痛点：第一，它需要把整条轨迹的激活值和优化器状态都存在显存里，再做反向传播，这对稍微大一点的模型来说显存开销极其沉重；第二，奖励信号通常只在整条轨迹跑完之后才给出一个稀疏的终端奖励，强化学习需要把这一个标量分摊回去，逐步骤地判断每一个动作的功过，这个信用分配问题在轨迹越来越长的时候会变得越来越难。这篇来自新加坡国立大学的论文要问的问题是：有没有一种方法，既不需要反向传播，显存只要推理级别，又能天然地绕开长链条信用分配的难题？答案是：进化策",
+    "url": "https://arxiv.org/abs/2608.17310",
+    "upvotes": 91,
+    "audio": "2026-08-19-agentic-esopt-fine-tuning-long-horizon-llm-agents-with-minim-86369b52.mp3",
+    "size": 5674608,
+    "published": "2026-08-19T23:23:12.071887+00:00"
+  },
+  {
+    "key": "2608.14036",
+    "date": "2026-08-19",
+    "title": "Demystifying Agent Skills: Why They Work-Until They Don't",
+    "abstract": "Skills have emerged as a practical and effective approach for enhancing LLM agents at inference time through structured packages of knowledge. However, existing evaluations largely measure whether skills improve aggregated task success, leaving a more fundamental question underexplored: \\textbf{When do skills help, why do they work, and where do they fail?} Through controlled experiments across various benchmarks, agent harnesses and LLMs, we isolate the effects of representation, outcome annotation, retrieval difficulty, and cross-framework robustness of skills. To further answer this question, we design a contrastive study that combines controlled quantitative experiments with paired trajectory analysis. We normalize 8,135 trial records from controlled experiments and retain 238 valid unique labels from 240 open-coded records. We consolidate these observations into a taxonomy of three high-level categories and twelve skill-use modes: skills work when noisy trajectories become procedural anchors that stabilize execution. Skills improve over Workflow Memory by 6.06 points in matched comparisons. Procedural anchoring accounts for 65.7\\% of skill cases, versus 4.5\\% for explicit knowledge injection, showing that skills stabilize action rather than inject missing facts. Retrieval is a separate bottleneck: as pools grow from 5 to 100, actual-use precision falls from 29.6\\% to 3.3\\%. Confusable distractors impair offline identification, yet downstream success remains stable; exact ground-truth invocation is neither sufficient nor necessary. Skills fail under brittle assumptions, incompatible contexts, or insufficient adaptation. These findings move evaluation beyond aggregate success rates and guide reliable self-evolving agents.",
+    "notes": "当我们评估一个LLM智能体系统时，最常见的做法是看任务成功率——加了某个模块之后，整体成功率提升了多少个百分点。但这种评估方式有一个根本性的盲点：它告诉你\"有没有用\"，却完全不告诉你\"为什么有用\"，也不告诉你\"什么时候会失效\"。这篇论文要直接攻克的就是这个问题，研究对象是近年来在LLM智能体系统中越来越流行的一种记忆形式——技能，英文叫Skills。",
+    "url": "https://arxiv.org/abs/2608.14036",
+    "upvotes": 125,
+    "audio": "2026-08-19-demystifying-agent-skills-why-they-work-until-they-don-t-7b26306d.mp3",
+    "size": 5769648,
+    "published": "2026-08-19T23:19:52.079163+00:00"
+  },
+  {
     "key": "2608.16072",
     "date": "2026-08-18",
     "title": "Learn What's Left, Not What's Mastered: Saturation Aware Advantage Reweighting for Multi-Reward Policy Optimization",
