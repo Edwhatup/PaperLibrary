@@ -1,5 +1,65 @@
 [
   {
+    "key": "2608.13558",
+    "date": "2026-08-20",
+    "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",
+    "abstract": "Recent advances in foundation models have enabled AI scientists to automate increasingly complete research workflows, from hypothesis generation and code execution to manuscript preparation. Yet workflow coverage alone does not provide access to the full evidence on which scientific discovery depends. Existing systems typically reason over text, code, labels, or precomputed summaries, leaving scientifically decisive spatial, temporal, cross-channel, and procedural relations unavailable to the agent. We introduce OmniScientist, an end-to-end, omni-modal AI scientist that conducts multidisciplinary research directly from heterogeneous raw evidence. A perception layer and 3 autonomous agents for ideation, experiment, and writeup operate within a deterministic pipeline, allowing observations to shape research questions, experimental decisions, and final claims throughout the research lifecycle. By running idea, rigour, and claim checks in code, the system enforces novelty screening, statistical validity, execution provenance, and numerical traceability. We evaluate OmniScientist on 36 real-data cases spanning 5 discipline families, 4 families of scientific evidence, and modalities including images, signals, audio, video, 3-D structures, trajectories, tables, formulae, and graphs. The system completes the full path from raw data to a compiled manuscript in all 36 cases and achieves a mean overall paper score of 6.3 with the reference reasoning backbone. In paired comparisons against a blind variant that receives only precomputed scalar features, direct perception improves all 7 evaluation dimensions and wins 85% of head-to-head judgments. These results show that lifecycle-wide perception is essential for evidence-grounded scientific discovery and provides a practical path toward broadly capable AI scientists.",
+    "notes": "今天我们要聊的这篇论文，它直接切入了一个当前人工智能科学家领域的核心痛点：现有的AI科学家系统，虽然在自动化科研流程方面已经做得非常出色，几乎可以覆盖从提出假设、执行代码到撰写论文的整个工作流，但它们却常常在“证据完整性”上有所欠缺。简单来说，这些系统通常只能处理经过预处理、格式化的数据，比如文本、代码片段、标签或者人类总结好的数值，这导致了科学发现中至关重要的空间、时间、跨通道以及程序关系等原始信息，在AI代理进行推理时是无法获得的。",
+    "url": "https://arxiv.org/abs/2608.13558",
+    "upvotes": 83,
+    "audio": "2026-08-20-omniscientist-an-omni-modal-omni-discipline-ai-scientist-bc836f5e.mp3",
+    "size": 6828624,
+    "published": "2026-08-20T23:32:09.011999+00:00"
+  },
+  {
+    "key": "2608.17253",
+    "date": "2026-08-20",
+    "title": "Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL",
+    "abstract": "Reinforcement learning (RL) has emerged as a powerful approach for improving reasoning in language and vision-language models, yet its strongest successes still depend heavily on ground-truth supervision (e.g., verifiable reward). Such annotations are costly to obtain and become increasingly scarce as reasoning capabilities advance beyond what humans can reliably evaluate. Self-rewarding RL reduces this dependence by enabling models to derive reward signals from their own completions. However, training solely on self-generated feedback can reinforce existing biases and suboptimal behaviors, reduce response diversity, and ultimately lead to homogenized responses and training collapse. In this work, we show that unsupervised reasoning can emerge through cooperative multi-agent training. We introduce Co-RL, a framework in which multiple decoupled models, sharing no parameters, are simultaneously optimized through RL using rewards derived from their peers. We further show that increasing cohort diversity, through heterogeneous model families, sizes, and rephrased training samples, reduces the correlated errors that drive self-reinforcing feedback loops. This diversity consistently improves reasoning performance, maintains behavioral diversity, and mitigates training collapse. Across text-only and multimodal domains, Co-RL consistently outperforms the base models and prior label-free approaches, while matching or surpassing supervised methods, without access to any ground-truth labels. Concretely, Co-RL yields average gains of 3.0-8.6% across seven text-only benchmarks for LLMs and 2.3-7.2% across four multimodal benchmarks for VLMs. Code is available at https://github.com/DrStranded/Co-RL.",
+    "notes": "强化学习在提升大型语言模型和视觉语言模型推理能力方面展现出了强大的潜力，但它最大的成功依然严重依赖于有标注的真实奖励。这些奖励通常需要人工进行验证，获取成本非常高昂，而且随着模型推理能力不断提升，甚至开始超越人类可以可靠评估的水平时，这种高质量的标注数据就变得越来越稀缺了。为了减少这种对真实标注的依赖，自奖励强化学习应运而生，它让模型能够从自身生成的完成文本中推导出奖励信号。然而，这种仅仅依赖自身生成的反馈进行训练的方式，很容易强化模型现有的偏见和次优行为，导致模型响应的多样性降低，最终可能出现输出同质化，甚至训练崩溃的问题。",
+    "url": "https://arxiv.org/abs/2608.17253",
+    "upvotes": 84,
+    "audio": "2026-08-20-co-rl-unsupervised-reasoning-emerges-from-diverse-cohort-in--56d10b72.mp3",
+    "size": 5898528,
+    "published": "2026-08-20T23:30:02.675369+00:00"
+  },
+  {
+    "key": "2608.18565",
+    "date": "2026-08-20",
+    "title": "SemaPLC: A Project-Grounded, Verification-Gated Agent Harness for PLC Code Generation",
+    "abstract": "Programmable logic controllers (PLCs) run industrial plants, and large language models can already generate independent program organization units (POUs) for them. Whether such logic integrates into an existing PLC project and then runs correctly has been checked only in limited tests. We present SemaPLC, a project-grounded and verification-gated agent harness assembled from conventional tools but governed by a strict completion rule. Rather than stopping when the model judges its own output adequate, SemaPLC declares a task complete only when logged external checks confirm it. Those checks cover the specification, the compilation, and the behavior on a live runtime. On 117 independent-POU tasks matching existing benchmarks, it attains the highest strict verified pass rate on all seven models (72.6\\% mean). On a project-context track of 65 tasks whose generated logic must compile and run inside a real project, it attains the highest mean on integrated compilation, static behavior, and dynamic behavior. Of the three layers, dynamic behavior is the most revealing. We measure it by deploying the generated and the reference logic to a live PLC runtime and comparing their executed traces. All methods fall within 10 static points of one another, whereas dynamic scores separate them sharply, from 22.4 to 31.4 for the baselines against 52.2 for SemaPLC. Overall, our verification-gated harness raises the mean at every layer and most sharply at runtime. Execution, not static scoring, is the faithful test of whether generated control logic actually works. SemaPLC is open-sourced at https://github.com/midea-ai/SemaPLC.",
+    "notes": "好的，我们来聊聊这篇关于可编程逻辑控制器，也就是PLC代码生成的研究。",
+    "url": "https://arxiv.org/abs/2608.18565",
+    "upvotes": 110,
+    "audio": "2026-08-20-semaplc-a-project-grounded-verification-gated-agent-harness--659973b9.mp3",
+    "size": 7406064,
+    "published": "2026-08-20T23:28:10.777565+00:00"
+  },
+  {
+    "key": "2608.16590",
+    "date": "2026-08-20",
+    "title": "Zetta ζ: An Efficient Closed-Loop Embodied Harness for Self-Evolving Physical Intelligence",
+    "abstract": "Embodied agents are increasingly used to close the gap left by end-to-end policy models. Yet the agentic path has not realized closed-loop learning in physical execution: existing harnesses remain largely open-loop, following fixed skills during rollout and reflecting only after an episode completes. Such post-hoc reflection cannot govern execution as it unfolds, because physical interaction requires decisions to track rapidly changing robot-environment states at a frequency beyond today's large agentic models. We present Zetta, a closed-loop embodied harness that evolves code-based runtime critics and recovery skills online while keeping the base policy frozen. Through three timescale-separated loops, Zetta provides action-frequency governance, rollout-level critic-recovery proposal, and validation-gated skill updates. Together with Z-Infra, a rollout infrastructure decoupling agent logic from heterogeneous execution resources, Zetta achieves state-of-the-art success on LIBERO-Pro and RoboCasa under our current rollout budget, reaching 90.8% and 93.6%, with an 11.1x inference speedup; success continues to scale with self-exploration experience; learned skills transfer zero-shot, and clear robotic \"Aha Moments\" emerge. These results show that closed-loop harness self-evolution opens a scaling path for reliable physical intelligence.",
+    "notes": "用机器人做任务，听起来很简单，但现实里哪怕是\"把一个瓶子放进碗里\"这样的动作，现有的机器人系统也经常失败。失败的原因不是机器人不够聪明，而是它在执行过程中出了问题却没有办法自己发现、自己纠正。这篇论文要解决的，正是这个核心矛盾：当前最先进的视觉-语言-动作模型，也就是VLA模型，在推理时本质上是开环的——它根据当前观察生成动作，但不会在执行过程中持续监控自己有没有出错，也不会在出错的瞬间介入修复。而这篇论文提出的Zetta框架，就是要把这个开环系统变成一个真正的闭环系统，让机器人在执行过程中能随时监控、随时介入、随时恢复，并且随着经验积累不断自我进化。",
+    "url": "https://arxiv.org/abs/2608.16590",
+    "upvotes": 129,
+    "audio": "2026-08-20-zetta-z-an-efficient-closed-loop-embodied-harness-for-self-e-590d6d0f.mp3",
+    "size": 6379344,
+    "published": "2026-08-20T23:26:27.887201+00:00"
+  },
+  {
+    "key": "2608.17426",
+    "date": "2026-08-20",
+    "title": "SemComp-Bench: Benchmarking Semantic Task Completion in Video Generation",
+    "abstract": "We introduce Semantic Task Completion Video Generation, an outcome-oriented video generation task. Under this formulation, success requires both achievement of the intended outcome and semantic grounding. Semantic grounding characterizes the correspondence between the reference image and the generated outcome in terms of high-level semantics relevant to the task. Evaluation focuses on the generated outcome and requires neither the presentation of a complete sequence of intermediate task steps nor conventional appearance consistency with the reference image. To support systematic evaluation, we construct SemComp-Data, an evaluation dataset covering six domains. Each instance comprises a reference image, a detailed instruction, a brief instruction, and an outcome-centric video clip. A scalable four-stage curation pipeline converts raw videos into standardized SemComp-Data instances. We further introduce SemComp-Bench, an evaluation protocol that uses a vision-language model (VLM) to answer structured binary questions. SemComp-Bench reports the OA Score and the GR Score for Outcome Achievement and Generation Reliability, respectively. Experiments on representative video generation models show that achieving intended outcomes while maintaining task-relevant semantic grounding in reference images remains challenging.",
+    "notes": "当前视频生成模型面临一个被严重忽视的问题：它们能生成画面精美、时序流畅的视频，但能不能真正完成一项有明确结果要求的任务？比如给你一张钞票图片，让模型生成\"把这张钞票折成一只乌龟\"的视频，模型不仅要折出乌龟形状，还要让观众能认出那是原来那张钞票，而不是凭空出现一只纸龟。这就是这篇论文想解决的核心问题。",
+    "url": "https://arxiv.org/abs/2608.17426",
+    "upvotes": 151,
+    "audio": "2026-08-20-semcomp-bench-benchmarking-semantic-task-completion-in-video-2e0ed536.mp3",
+    "size": 6234192,
+    "published": "2026-08-20T23:23:14.369413+00:00"
+  },
+  {
     "key": "2608.17271",
     "date": "2026-08-19",
     "title": "ASI-Bench: At the Dawn of Artificial Superintelligence",

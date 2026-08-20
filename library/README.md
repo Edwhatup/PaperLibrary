@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-20
+
+- **OmniScientist: An Omni-Modal Omni-Discipline AI Scientist** · 83★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-20-omniscientist-an-omni-modal-omni-discipline-ai-scientist-bc836f5e.mp3) [arXiv](https://arxiv.org/abs/2608.13558)
+- **Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL** · 84★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-20-co-rl-unsupervised-reasoning-emerges-from-diverse-cohort-in--56d10b72.mp3) [arXiv](https://arxiv.org/abs/2608.17253)
+- **SemaPLC: A Project-Grounded, Verification-Gated Agent Harness for PLC Code Generation** · 110★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-20-semaplc-a-project-grounded-verification-gated-agent-harness--659973b9.mp3) [arXiv](https://arxiv.org/abs/2608.18565)
+- **Zetta ζ: An Efficient Closed-Loop Embodied Harness for Self-Evolving Physical Intelligence** · 129★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-20-zetta-z-an-efficient-closed-loop-embodied-harness-for-self-e-590d6d0f.mp3) [arXiv](https://arxiv.org/abs/2608.16590)
+- **SemComp-Bench: Benchmarking Semantic Task Completion in Video Generation** · 151★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-20-semcomp-bench-benchmarking-semantic-task-completion-in-video-2e0ed536.mp3) [arXiv](https://arxiv.org/abs/2608.17426)
+
 ## 2026-08-19
 
 - **ASI-Bench: At the Dawn of Artificial Superintelligence** · 51★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-19-asi-bench-at-the-dawn-of-artificial-superintelligence-8f0af73d.mp3) [arXiv](https://arxiv.org/abs/2608.17271)
