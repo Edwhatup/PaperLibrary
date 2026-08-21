@@ -1,5 +1,65 @@
 [
   {
+    "key": "2608.20336",
+    "date": "2026-08-21",
+    "title": "WithEveryone: Unified Planning and Identity Grounding for Group Image Generation",
+    "abstract": "Identity-preserving image generation becomes increasingly unreliable when a scene must contain many specified people. Beyond retaining each identity, the model must bind every reference to a distinct person and location, while training-time identity losses must establish correspondence among several noisy predicted faces. We introduce WithEveryone, a unified framework for generating group images up to ten reference identities. WithEveryone injects each selected identity as an addressed token, predicts a structured identity--layout plan, and renders the plan as a visual condition. Its key objective, Layout-Grounded ID Loss, uses annotated face regions to supervise the intended identities directly, avoiding unstable embedding-based face matching; ID Representation Forcing additionally trains a prediction for each identity before image synthesis. On an identity-disjoint benchmark, WithEveryone achieves the highest target-context identity similarity, improving face similarity from 0.462 for GPT-Image-2 to 0.499, while reducing copy-paste artifacts from 0.169 to 0.055. It further covers 97.3\\% of the requested identities with a duplicate rate of only 2.8\\%. These results show that explicit identity--layout grounding enables identity-preserving generation to scale to larger groups without relying on direct reference-face copying.",
+    "notes": "好的，没问题。这是一段为你定制的，时长约20分钟、适合开车时收听的连续口播稿。它将深入讲解 WithEveryone 这篇论文，但不会有任何开场白、问候语或Markdown符号。",
+    "url": "https://arxiv.org/abs/2608.20336",
+    "upvotes": 38,
+    "audio": "2026-08-21-witheveryone-unified-planning-and-identity-grounding-for-gro-bb0e124d.mp3",
+    "size": 5468256,
+    "published": "2026-08-21T23:26:38.135065+00:00"
+  },
+  {
+    "key": "2608.19799",
+    "date": "2026-08-21",
+    "title": "SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?",
+    "abstract": "Software increasingly functions as part of the scientific instrument itself, making failures in scientific code capable of compromising not only program behavior but also the evidence underlying scientific conclusions. Yet existing evaluations of coding agents largely emphasize aggregate task success, providing limited insight into why agents fail when repairing scientific software. We introduce SWE-bench Science, a repository-level benchmark for scientific software engineering comprising 119 tasks from 98 GitHub repositories across 20 scientific domains. Each task is organized into one of three paradigms: Issue-driven, Expert-exploratory, and Engineering-integration. Even the best-performing agent, Claude Code with Opus-5 (max), achieves a pass@1 below 50\\%, highlighting the substantial challenges posed by scientific software engineering. We identify four recurring failure mechanisms: deficits in scientific knowledge or abstraction, misguided exploration or surface-level repair, incomplete repair coverage or system integration, and failures to generalize scientific knowledge beyond observed cases in our analysis. We further conduct a paired ablation that removes explicit scientific guidance while preserving the repository and executable engineering context. The results show that scientific knowledge is not uniformly beneficial: well-grounded information can constrain repair and improve average performance and token efficiency, whereas poorly aligned guidance can induce anchoring and does not necessarily improve exact repair success. Together, SWE-bench Science provides a broad testbed for studying both the capabilities and failure mechanisms of coding agents in scientific software engineering.",
+    "notes": "现在我们直接切入这篇论文要解决的核心问题：在科学研究中，软件已经不再仅仅是辅助工具，它本身就成了产生科学结论的“仪器”之一。这意味着，科学代码中的任何缺陷，都可能不仅仅影响程序的行为，更会直接损害科学结论背后的证据链，甚至导致错误的科学发现。然而，我们目前评估编程智能体（也就是那些能自动写代码、修bug的AI模型）的现有基准测试，大多只关注它们完成任务的整体成功率。它们很少能深入告诉我们，当这些智能体在修复科学软件时，究竟是“为什么”会失败。",
+    "url": "https://arxiv.org/abs/2608.19799",
+    "upvotes": 56,
+    "audio": "2026-08-21-swe-bench-science-can-coding-agents-resolve-engineering-task-57cdbcdb.mp3",
+    "size": 8396640,
+    "published": "2026-08-21T23:25:18.784109+00:00"
+  },
+  {
+    "key": "2608.20335",
+    "date": "2026-08-21",
+    "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
+    "abstract": "We present 4DAnyone, a framework for reconstructing 4D humans from an uncalibrated monocular video by generating reconstruction-grade multiview-consistent videos and lifting them into 4D Gaussian Splatting (4DGS). Existing camera-controlled video diffusion models synthesize plausible novel-view videos but fail to maintain consistency when scaled to the tens of target views required for 4DGS reconstruction. We identify this failure as a bounded-attention-context problem: when target views exceed the capacity of a single DiT forward pass, they must be split into groups, exposing two coupled bottlenecks. On the reference-context side, conditioning on all previously generated views grows as O(N), weakening cross-view appearance guidance. On the target-context side, disjoint groups cannot directly exchange information, causing global structural drift. 4DAnyone addresses both bottlenecks with two complementary designs: Reference Context Packing (RCP) compresses growing reference views into a fixed-length mixed-resolution context with O(1) reference-context complexity, while Target Context Routing (TCR) rotates target-view groupings during denoising to share context across groups at high-noise steps and stabilize details at low-noise steps. We further build the MVGameHuman dataset using our in-house game engine and combine it with light-stage and in-the-wild video datasets for training. Experiments on DNA-Rendering and DyMVHumans show that 4DAnyone outperforms prior methods in both novel-view video quality and downstream 4DGS reconstruction, with robust in-the-wild generalization. See our project page for video results and source code: https://4danyone.github.io.",
+    "notes": "好的，我们来深入探讨一篇非常有趣且实用的论文，它的标题是“4DAnyone: Create Anyone in 4D from a Casual Monocular Video”。",
+    "url": "https://arxiv.org/abs/2608.20335",
+    "upvotes": 58,
+    "audio": "2026-08-21-4danyone-create-anyone-in-4d-from-a-casual-monocular-video-4f45a427.mp3",
+    "size": 8431776,
+    "published": "2026-08-21T23:22:50.474309+00:00"
+  },
+  {
+    "key": "2608.18580",
+    "date": "2026-08-21",
+    "title": "FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis",
+    "abstract": "Training terminal agents requires scalable executable supervision, yet synthesizing high-quality terminal tasks remains challenging. Each task couples an instruction, an initialized environment, a reference solution, and an executable verifier; if these artifacts are generated from inconsistent assumptions, the resulting task may be unsolvable or incorrectly evaluated. Meanwhile, multi-stage synthesis can discard the goals, dependencies, state transitions, and procedural constraints encoded in the original sources. We present FACET (Fine-grained Agentic Construction of Executable Tasks), a framework that addresses both information preservation and cross-artifact consistency. FACET reconstructs related agent skills into coherent, information-rich scenarios, then realizes and repairs the execution environment before generating the final task artifacts. The resulting container state serves as shared grounding for the instruction, solution, and verifier, while execution-based validation and targeted repair correct artifact-specific failures without unnecessarily regenerating valid components. FACET produces complex terminal tasks with dense executable checks, and successful trajectories collected from these tasks provide effective, data-efficient supervision. Fine-tuning models across multiple scales consistently improves performance on Terminal-Bench 2.1, while analyses of alternative generation schemes support the importance of environment-grounded construction for task validity and solution-verifier alignment. These results establish source-intent preservation and shared executable-state grounding as key principles for scalable terminal-task synthesis.",
+    "notes": "当前人工智能研究的一个核心目标，是开发出不仅能对复杂目标进行推理，还能在开放环境中自主行动和适应的系统。而要训练这样的智能体，尤其是在终端环境中操作的智能体，我们需要大量高质量、可执行的监督数据。但目前合成这些终端任务面临着严峻的挑战。",
+    "url": "https://arxiv.org/abs/2608.18580",
+    "upvotes": 107,
+    "audio": "2026-08-21-facet-preserving-source-intent-and-executable-state-in-termi-f7d30ca3.mp3",
+    "size": 7719984,
+    "published": "2026-08-21T23:20:16.237362+00:00"
+  },
+  {
+    "key": "2608.19880",
+    "date": "2026-08-21",
+    "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
+    "abstract": "LLM agents learn by interacting with environments, yet these environments are hand-built and static: blind to an agent's weaknesses, and quickly left behind as it improves. While recent environment generation methods attempt to address this, they require domain-specific pipelines, rely on expensive or unreliable verifiers, and still produce static environments. To alleviate the engineering burden of rebuilding environments from scratch, we propose Environment Harness (EnvHarness), a programmable layer of plug-in components that wraps a static environment to reshape its behavior without modifying the underlying logic. Operating through standard interfaces, EnvHarness applies across diverse domains while ensuring every reshaped environment retains its original verifier. To automate this process, we introduce EnvRigger, which treats the target policy as a black box, observing its execution trajectories to synthesize EnvHarness components targeting diagnosed flaws, and validating them via fresh rollouts. Across five benchmarks in four domains, EnvHarness outperforms both original environments and domain-specific environment generation pipelines, achieving up to a 9.0-point improvement on held-out instances with 9.8% fewer execution steps. Furthermore, EnvHarness provides a superior optimization signal for reinforcement learning, enabling continuous, targeted co-evolution of the policy and its environment.",
+    "notes": "好的，这是一段约 20 分钟的口播稿，总字数在 6120 到 8160 字之间，用纯文本输出，避免任何 Markdown 标记，并且直接切入主题。",
+    "url": "https://arxiv.org/abs/2608.19880",
+    "upvotes": 234,
+    "audio": "2026-08-21-envharness-awakening-static-worlds-for-agent-learning-bbe5b1ca.mp3",
+    "size": 6775200,
+    "published": "2026-08-21T23:18:13.718955+00:00"
+  },
+  {
     "key": "2608.13558",
     "date": "2026-08-20",
     "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",

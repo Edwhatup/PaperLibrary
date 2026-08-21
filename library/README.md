@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-21
+
+- **WithEveryone: Unified Planning and Identity Grounding for Group Image Generation** · 38★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-21-witheveryone-unified-planning-and-identity-grounding-for-gro-bb0e124d.mp3) [arXiv](https://arxiv.org/abs/2608.20336)
+- **SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?** · 56★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-21-swe-bench-science-can-coding-agents-resolve-engineering-task-57cdbcdb.mp3) [arXiv](https://arxiv.org/abs/2608.19799)
+- **4DAnyone: Create Anyone in 4D from a Casual Monocular Video** · 58★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-21-4danyone-create-anyone-in-4d-from-a-casual-monocular-video-4f45a427.mp3) [arXiv](https://arxiv.org/abs/2608.20335)
+- **FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis** · 107★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-21-facet-preserving-source-intent-and-executable-state-in-termi-f7d30ca3.mp3) [arXiv](https://arxiv.org/abs/2608.18580)
+- **EnvHarness: Awakening Static Worlds for Agent Learning** · 234★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-21-envharness-awakening-static-worlds-for-agent-learning-bbe5b1ca.mp3) [arXiv](https://arxiv.org/abs/2608.19880)
+
 ## 2026-08-20
 
 - **OmniScientist: An Omni-Modal Omni-Discipline AI Scientist** · 83★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-20-omniscientist-an-omni-modal-omni-discipline-ai-scientist-bc836f5e.mp3) [arXiv](https://arxiv.org/abs/2608.13558)

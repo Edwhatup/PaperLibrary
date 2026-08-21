@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>WithEveryone: Unified Planning and Identity Grounding for Group Image Generation</title>
+      <description>好的，没问题。这是一段为你定制的，时长约20分钟、适合开车时收听的连续口播稿。它将深入讲解 WithEveryone 这篇论文，但不会有任何开场白、问候语或Markdown符号。</description>
+      <link>https://arxiv.org/abs/2608.20336</link>
+      <guid isPermaLink="false">2026-08-21-witheveryone-unified-planning-and-identity-grounding-for-gro-bb0e124d.mp3</guid>
+      <pubDate>Fri, 21 Aug 2026 23:26:38 +0000</pubDate>
+      <itunes:duration>911</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-21-witheveryone-unified-planning-and-identity-grounding-for-gro-bb0e124d.mp3" length="5468256" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?</title>
+      <description>现在我们直接切入这篇论文要解决的核心问题：在科学研究中，软件已经不再仅仅是辅助工具，它本身就成了产生科学结论的“仪器”之一。这意味着，科学代码中的任何缺陷，都可能不仅仅影响程序的行为，更会直接损害科学结论背后的证据链，甚至导致错误的科学发现。然而，我们目前评估编程智能体（也就是那些能自动写代码、修bug的AI模型）的现有基准测试，大多只关注它们完成任务的整体成功率。它们很少能深入告诉我们，当这些智能体在修复科学软件时，究竟是“为什么”会失败。</description>
+      <link>https://arxiv.org/abs/2608.19799</link>
+      <guid isPermaLink="false">2026-08-21-swe-bench-science-can-coding-agents-resolve-engineering-task-57cdbcdb.mp3</guid>
+      <pubDate>Fri, 21 Aug 2026 23:25:18 +0000</pubDate>
+      <itunes:duration>1399</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-21-swe-bench-science-can-coding-agents-resolve-engineering-task-57cdbcdb.mp3" length="8396640" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>4DAnyone: Create Anyone in 4D from a Casual Monocular Video</title>
+      <description>好的，我们来深入探讨一篇非常有趣且实用的论文，它的标题是“4DAnyone: Create Anyone in 4D from a Casual Monocular Video”。</description>
+      <link>https://arxiv.org/abs/2608.20335</link>
+      <guid isPermaLink="false">2026-08-21-4danyone-create-anyone-in-4d-from-a-casual-monocular-video-4f45a427.mp3</guid>
+      <pubDate>Fri, 21 Aug 2026 23:22:50 +0000</pubDate>
+      <itunes:duration>1405</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-21-4danyone-create-anyone-in-4d-from-a-casual-monocular-video-4f45a427.mp3" length="8431776" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis</title>
+      <description>当前人工智能研究的一个核心目标，是开发出不仅能对复杂目标进行推理，还能在开放环境中自主行动和适应的系统。而要训练这样的智能体，尤其是在终端环境中操作的智能体，我们需要大量高质量、可执行的监督数据。但目前合成这些终端任务面临着严峻的挑战。</description>
+      <link>https://arxiv.org/abs/2608.18580</link>
+      <guid isPermaLink="false">2026-08-21-facet-preserving-source-intent-and-executable-state-in-termi-f7d30ca3.mp3</guid>
+      <pubDate>Fri, 21 Aug 2026 23:20:16 +0000</pubDate>
+      <itunes:duration>1286</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-21-facet-preserving-source-intent-and-executable-state-in-termi-f7d30ca3.mp3" length="7719984" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>EnvHarness: Awakening Static Worlds for Agent Learning</title>
+      <description>好的，这是一段约 20 分钟的口播稿，总字数在 6120 到 8160 字之间，用纯文本输出，避免任何 Markdown 标记，并且直接切入主题。</description>
+      <link>https://arxiv.org/abs/2608.19880</link>
+      <guid isPermaLink="false">2026-08-21-envharness-awakening-static-worlds-for-agent-learning-bbe5b1ca.mp3</guid>
+      <pubDate>Fri, 21 Aug 2026 23:18:13 +0000</pubDate>
+      <itunes:duration>1129</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-21-envharness-awakening-static-worlds-for-agent-learning-bbe5b1ca.mp3" length="6775200" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>OmniScientist: An Omni-Modal Omni-Discipline AI Scientist</title>
       <description>今天我们要聊的这篇论文，它直接切入了一个当前人工智能科学家领域的核心痛点：现有的AI科学家系统，虽然在自动化科研流程方面已经做得非常出色，几乎可以覆盖从提出假设、执行代码到撰写论文的整个工作流，但它们却常常在“证据完整性”上有所欠缺。简单来说，这些系统通常只能处理经过预处理、格式化的数据，比如文本、代码片段、标签或者人类总结好的数值，这导致了科学发现中至关重要的空间、时间、跨通道以及程序关系等原始信息，在AI代理进行推理时是无法获得的。</description>
       <link>https://arxiv.org/abs/2608.13558</link>
