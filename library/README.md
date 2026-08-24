@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-24
+
+- **ParaTempo: Efficient Parallel Reasoning via Temporal Confidence** · 26★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-24-paratempo-efficient-parallel-reasoning-via-temporal-confiden-d4b9dede.mp3) [arXiv](https://arxiv.org/abs/2608.16425)
+- **OmniAssistBench: Assistant-style Interaction Benchmark for Omni-LLMs** · 26★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-24-omniassistbench-assistant-style-interaction-benchmark-for-om-d94a07d0.mp3) [arXiv](https://arxiv.org/abs/2608.21360)
+- **Graph Engineering in the Era of LLM Agents: From Individual Intelligence to System Intelligence** · 30★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-24-graph-engineering-in-the-era-of-llm-agents-from-individual-i-dcc12c88.mp3) [arXiv](https://arxiv.org/abs/2608.21156)
+- **InfinityEdit: Infinite Video Editing with a Lightweight Edit-Ignition Adapter** · 31★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-24-infinityedit-infinite-video-editing-with-a-lightweight-edit--c482062d.mp3) [arXiv](https://arxiv.org/abs/2608.20910)
+- **Let's Scale Step by Step: Compute-Efficient Hyperparameter Transfer for Large-Scale Mixture-of-Experts** · 32★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-24-let-s-scale-step-by-step-compute-efficient-hyperparameter-tr-c19ce395.mp3) [arXiv](https://arxiv.org/abs/2608.20061)
+
 ## 2026-08-21
 
 - **WithEveryone: Unified Planning and Identity Grounding for Group Image Generation** · 38★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-21-witheveryone-unified-planning-and-identity-grounding-for-gro-bb0e124d.mp3) [arXiv](https://arxiv.org/abs/2608.20336)

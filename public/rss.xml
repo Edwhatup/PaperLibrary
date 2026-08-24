@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>ParaTempo: Efficient Parallel Reasoning via Temporal Confidence</title>
+      <description>大型语言模型在进行复杂推理任务时，虽然通过并行推理能够显著提升准确性和鲁棒性，因为它能探索多条可能的解决方案路径，但这种方法也带来了一个核心挑战：计算成本会随着推理深度和并行分支数量的增加而急剧上升。</description>
+      <link>https://arxiv.org/abs/2608.16425</link>
+      <guid isPermaLink="false">2026-08-24-paratempo-efficient-parallel-reasoning-via-temporal-confiden-d4b9dede.mp3</guid>
+      <pubDate>Mon, 24 Aug 2026 23:26:05 +0000</pubDate>
+      <itunes:duration>1033</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-24-paratempo-efficient-parallel-reasoning-via-temporal-confiden-d4b9dede.mp3" length="6202944" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>OmniAssistBench: Assistant-style Interaction Benchmark for Omni-LLMs</title>
+      <description>当前多模态大语言模型，也就是我们常说的Omni-LLM，正在从被动分析视频内容的工具，迅速演变为能够实时与用户互动、提供指导的视频助手。然而，评估这些模型在真实世界中作为交互式助手的能力，却面临着巨大的挑战。传统的视频理解基准，比如我们常见的问答数据集，通常是静态的：给一段视频，然后问几个问题，模型的回答不会影响视频内容或用户的后续行为。但真正的交互式助手可不是这样。在实际应用中，助手的回复会直接影响用户的下一步行动，这就会导致一个核心问题，叫做“交互路径发散”。比如说，用户想完成一个任务，助手可以给出好几种不同的指导方式，每种方式都会让用户采取不同的行动，最终殊途同归。静态的离线数据集根本无</description>
+      <link>https://arxiv.org/abs/2608.21360</link>
+      <guid isPermaLink="false">2026-08-24-omniassistbench-assistant-style-interaction-benchmark-for-om-d94a07d0.mp3</guid>
+      <pubDate>Mon, 24 Aug 2026 23:24:10 +0000</pubDate>
+      <itunes:duration>1393</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-24-omniassistbench-assistant-style-interaction-benchmark-for-om-d94a07d0.mp3" length="8363664" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Graph Engineering in the Era of LLM Agents: From Individual Intelligence to System Intelligence</title>
+      <description>大家早上好，今天我们来聊一篇关于大型语言模型智能体（LLM Agents）的最新论文，它的标题是《Graph Engineering in the Era of LLM Agents: From Individual Intelligence to System Intelligence》。这篇论文要解决的核心问题是：随着真实世界任务的复杂性不断提高，仅仅依靠单个LLM智能体的“个体智能”已经不够用了。很多任务天生就需要多种专业知识的协作、子任务之间的相互依赖、并行执行、独立验证以及持久化的状态管理。这些需求已经超出了任何单一智能体的组织能力。简单地增强单个智能体的能力或者扩展它的上下文窗口，</description>
+      <link>https://arxiv.org/abs/2608.21156</link>
+      <guid isPermaLink="false">2026-08-24-graph-engineering-in-the-era-of-llm-agents-from-individual-i-dcc12c88.mp3</guid>
+      <pubDate>Mon, 24 Aug 2026 23:21:35 +0000</pubDate>
+      <itunes:duration>1286</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-24-graph-engineering-in-the-era-of-llm-agents-from-individual-i-dcc12c88.mp3" length="7720560" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>InfinityEdit: Infinite Video Editing with a Lightweight Edit-Ignition Adapter</title>
+      <description>今天我们来聊一篇关于视频编辑的最新研究，它解决了一个非常实际但又极具挑战性的问题：如何在不间断的视频流中进行持续的编辑。我们都知道，现在有很多强大的预训练模型，它们让基于指令的视频编辑变得越来越好。但这些方法大多都遵循一个叫作“原地编辑”的假设，也就是说，它们会把编辑后的视频和原始视频的每一帧，在一个固定的时间跨度内进行对齐。简单来说，就是给你一段视频，你告诉我怎么改，我就在这段视频的长度内把它改好。</description>
+      <link>https://arxiv.org/abs/2608.20910</link>
+      <guid isPermaLink="false">2026-08-24-infinityedit-infinite-video-editing-with-a-lightweight-edit--c482062d.mp3</guid>
+      <pubDate>Mon, 24 Aug 2026 23:19:48 +0000</pubDate>
+      <itunes:duration>1446</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-24-infinityedit-infinite-video-editing-with-a-lightweight-edit--c482062d.mp3" length="8679600" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Let's Scale Step by Step: Compute-Efficient Hyperparameter Transfer for Large-Scale Mixture-of-Experts</title>
+      <description>大型混合专家模型在训练时面临一个巨大的挑战：如何高效地找到最佳的学习率。传统的做法是进行大量的参数扫描，也就是“地毯式搜索”，这在模型规模和训练数据量都达到万亿级别时，计算成本高得令人望而却步。这篇论文正是为了解决这个问题，提出了一种计算效率极高的两步超参数迁移框架，旨在精确预测超大规模混合专家模型的最佳学习率。</description>
+      <link>https://arxiv.org/abs/2608.20061</link>
+      <guid isPermaLink="false">2026-08-24-let-s-scale-step-by-step-compute-efficient-hyperparameter-tr-c19ce395.mp3</guid>
+      <pubDate>Mon, 24 Aug 2026 23:17:18 +0000</pubDate>
+      <itunes:duration>815</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-24-let-s-scale-step-by-step-compute-efficient-hyperparameter-tr-c19ce395.mp3" length="4893696" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>WithEveryone: Unified Planning and Identity Grounding for Group Image Generation</title>
       <description>好的，没问题。这是一段为你定制的，时长约20分钟、适合开车时收听的连续口播稿。它将深入讲解 WithEveryone 这篇论文，但不会有任何开场白、问候语或Markdown符号。</description>
       <link>https://arxiv.org/abs/2608.20336</link>
