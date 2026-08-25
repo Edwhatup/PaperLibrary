@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks</title>
+      <description>移动设备上的大语言模型（LLM）代理正逐渐成为我们的个人副驾驶，它们不再仅仅是回答问题，而是被期望能够主动理解自然语言意图，编排复杂的系统工具，并执行多步骤的工作流程。然而，要在一个动态、有状态的移动操作系统中严格评估这些代理的能力，一直是一个巨大的挑战。现有的基准测试方法，要么过于关注图形用户界面，即我们常说的GUI，比如那些只测试屏幕点击和像素级感知的框架。这类方法虽然能评估低层级的感知和布局理解，但它忽略了后台工具的使用和长期的规划能力，更重要的是，它效率低下，让代理把宝贵的计算资源浪费在视觉解析上，而没有优先处理系统级的、通过结构化API进行的快速、高效控制。</description>
+      <link>https://arxiv.org/abs/2608.23035</link>
+      <guid isPermaLink="false">2026-08-25-mobilepa-bench-benchmarking-mobile-planner-agents-on-complex-83820b2a.mp3</guid>
+      <pubDate>Tue, 25 Aug 2026 23:38:49 +0000</pubDate>
+      <itunes:duration>1495</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-25-mobilepa-bench-benchmarking-mobile-planner-agents-on-complex-83820b2a.mp3" length="8975520" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Unlocking the Potential of Image Editing via Concept Scaling and Dense Supervision</title>
+      <description>现有的图像编辑框架，大多沿袭了文本到图像扩散模型的设计范式，但在实际应用中，这种直接的迁移带来了两个核心问题。首先，是编辑概念粒度不足的问题。在文本到图像生成领域，大家普遍认为扩大训练数据的多样性是提升生成能力的关键。但对于图像编辑来说，一个编辑样本本质上包含两部分：原始图像和编辑概念，比如“添加物体”、“替换背景”或者“改变属性”。虽然现有数据集主要通过增加原始图像的多样性来扩展规模，但它们对编辑概念的多样性和粒度关注不够，导致模型在面对细致、复杂的编辑需求时，泛化能力不足。</description>
+      <link>https://arxiv.org/abs/2608.16812</link>
+      <guid isPermaLink="false">2026-08-25-unlocking-the-potential-of-image-editing-via-concept-scaling-9b788e4f.mp3</guid>
+      <pubDate>Tue, 25 Aug 2026 23:36:36 +0000</pubDate>
+      <itunes:duration>1012</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-25-unlocking-the-potential-of-image-editing-via-concept-scaling-9b788e4f.mp3" length="6075072" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>TLive-Omni: An Omni-Modal Understanding Model for E-Commerce Live Streaming</title>
+      <description>电商直播流媒体理解面临一个核心挑战：产品信息往往分散在嘈杂、长时间的语音、视频画面、商品图片、叠加文本和用户查询中，而且这些证据可能出现在直播流的不同时间点。这就要求模型不仅要联合解释这些异构信号，还要将音频和视觉证据精确地对齐到以产品为中心的时间片段上，并忠实地表达基于感知的答案，来完成诸如自动语音识别、光学字符识别、商品视觉定位、时间定位以及全模态问答等任务。</description>
+      <link>https://arxiv.org/abs/2608.20958</link>
+      <guid isPermaLink="false">2026-08-25-tlive-omni-an-omni-modal-understanding-model-for-e-commerce--2590b110.mp3</guid>
+      <pubDate>Tue, 25 Aug 2026 23:34:42 +0000</pubDate>
+      <itunes:duration>1610</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-25-tlive-omni-an-omni-modal-understanding-model-for-e-commerce--2590b110.mp3" length="9663552" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>EchoWM: Open and Enterable Omnimodal World Models</title>
+      <description>好了，我们今天来聊一篇关于“可进入式全模态世界模型”的论文，它的标题是 EchoWM。这篇论文的核心目标，是想解决当前生成式视频模型在用户交互方面的一个痛点：现在的模型大多是基于文本提示的，用户只能被动地看生成结果，很难像在游戏里那样，自由地在生成的世界里导航和探索。而且，大部分现有系统生成的视频是无声的，或者音频和视觉是分离的，缺乏真实的沉浸感。EchoWM 想要做的，就是创建一个用户可以自由穿梭的生成式环境，这个环境能实时响应用户的导航指令，同时同步生成高质量的视频、环境音效、背景音乐和人物语音。</description>
+      <link>https://arxiv.org/abs/2608.23189</link>
+      <guid isPermaLink="false">2026-08-25-echowm-open-and-enterable-omnimodal-world-models-a90bf6cc.mp3</guid>
+      <pubDate>Tue, 25 Aug 2026 23:32:34 +0000</pubDate>
+      <itunes:duration>1190</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-25-echowm-open-and-enterable-omnimodal-world-models-a90bf6cc.mp3" length="7141536" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Apodex 1.1: Scaling Agentic Intelligence for Complex Work</title>
+      <description>好的，没问题。下面是根据你的要求撰写的口播稿。</description>
+      <link>https://arxiv.org/abs/2608.23283</link>
+      <guid isPermaLink="false">2026-08-25-apodex-1-1-scaling-agentic-intelligence-for-complex-work-20e675d3.mp3</guid>
+      <pubDate>Tue, 25 Aug 2026 23:30:57 +0000</pubDate>
+      <itunes:duration>2621</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-25-apodex-1-1-scaling-agentic-intelligence-for-complex-work-20e675d3.mp3" length="15726096" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>ParaTempo: Efficient Parallel Reasoning via Temporal Confidence</title>
       <description>大型语言模型在进行复杂推理任务时，虽然通过并行推理能够显著提升准确性和鲁棒性，因为它能探索多条可能的解决方案路径，但这种方法也带来了一个核心挑战：计算成本会随着推理深度和并行分支数量的增加而急剧上升。</description>
       <link>https://arxiv.org/abs/2608.16425</link>

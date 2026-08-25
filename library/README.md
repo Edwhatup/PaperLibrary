@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-25
+
+- **MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks** · 33★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-25-mobilepa-bench-benchmarking-mobile-planner-agents-on-complex-83820b2a.mp3) [arXiv](https://arxiv.org/abs/2608.23035)
+- **Unlocking the Potential of Image Editing via Concept Scaling and Dense Supervision** · 45★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-25-unlocking-the-potential-of-image-editing-via-concept-scaling-9b788e4f.mp3) [arXiv](https://arxiv.org/abs/2608.16812)
+- **TLive-Omni: An Omni-Modal Understanding Model for E-Commerce Live Streaming** · 52★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-25-tlive-omni-an-omni-modal-understanding-model-for-e-commerce--2590b110.mp3) [arXiv](https://arxiv.org/abs/2608.20958)
+- **EchoWM: Open and Enterable Omnimodal World Models** · 64★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-25-echowm-open-and-enterable-omnimodal-world-models-a90bf6cc.mp3) [arXiv](https://arxiv.org/abs/2608.23189)
+- **Apodex 1.1: Scaling Agentic Intelligence for Complex Work** · 172★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-25-apodex-1-1-scaling-agentic-intelligence-for-complex-work-20e675d3.mp3) [arXiv](https://arxiv.org/abs/2608.23283)
+
 ## 2026-08-24
 
 - **ParaTempo: Efficient Parallel Reasoning via Temporal Confidence** · 26★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-24-paratempo-efficient-parallel-reasoning-via-temporal-confiden-d4b9dede.mp3) [arXiv](https://arxiv.org/abs/2608.16425)

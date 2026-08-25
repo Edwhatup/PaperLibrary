@@ -1,5 +1,65 @@
 [
   {
+    "key": "2608.23035",
+    "date": "2026-08-25",
+    "title": "MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks",
+    "abstract": "As on-device LLM agents evolve into personal copilots, the mobile operating system has become a key testbed for this paradigm, making rigorous capability evaluation essential. Yet existing benchmarks fall into two camps, each with a critical blind spot: GUI-centric benchmarks test surface-level screen manipulation while overlooking background tool use and long-horizon planning, whereas static function-calling benchmarks rely on offline API matching that is detached from real runtime constraints. To close this gap, we present MobilePA-Bench, an interactive, stateful, and tool-centric benchmark for evaluating the tool-calling and planning abilities of mobile planning agents. MobilePA-Bench runs on an executable sandbox that maintains live application databases and returns structured feedback, spanning 13 functional domains and 212 realistic mobile tools. Beyond basic tool use, it evaluates a central planning agent along three advanced dimensions: (1)~Sub-agent Collaboration---decomposing a complex task and delegating specialized work to capable sub-agents; (2)~Memory Usage---recalling stored memories, user profiles, and past preferences to resolve implicit requests; and (3)~Skill Usage---invoking pre-packaged composite skills instead of planning every step from scratch. Extensive experiments show that current frontier LLMs remain unreliable in mobile settings: performance drops sharply under strict tool ordering, permission limits, and unexpected runtime errors. By pairing an interactive function-calling sandbox with evidence-based verification, MobilePA-Bench serves as both a practical diagnostic benchmark and an interactive foundation for agentic reinforcement learning---accelerating the development of dependable mobile agents.",
+    "notes": "移动设备上的大语言模型（LLM）代理正逐渐成为我们的个人副驾驶，它们不再仅仅是回答问题，而是被期望能够主动理解自然语言意图，编排复杂的系统工具，并执行多步骤的工作流程。然而，要在一个动态、有状态的移动操作系统中严格评估这些代理的能力，一直是一个巨大的挑战。现有的基准测试方法，要么过于关注图形用户界面，即我们常说的GUI，比如那些只测试屏幕点击和像素级感知的框架。这类方法虽然能评估低层级的感知和布局理解，但它忽略了后台工具的使用和长期的规划能力，更重要的是，它效率低下，让代理把宝贵的计算资源浪费在视觉解析上，而没有优先处理系统级的、通过结构化API进行的快速、高效控制。",
+    "url": "https://arxiv.org/abs/2608.23035",
+    "upvotes": 33,
+    "audio": "2026-08-25-mobilepa-bench-benchmarking-mobile-planner-agents-on-complex-83820b2a.mp3",
+    "size": 8975520,
+    "published": "2026-08-25T23:38:49.586979+00:00"
+  },
+  {
+    "key": "2608.16812",
+    "date": "2026-08-25",
+    "title": "Unlocking the Potential of Image Editing via Concept Scaling and Dense Supervision",
+    "abstract": "Existing image editing frameworks predominantly follow the training paradigm of text-to-image diffusion models. However, extending this paradigm to image editing highlights two inherent discrepancies, specifically, the insufficient attention to edit concept granularity and the training inefficiency caused by sparse supervision signals. To address these issues, we establish a comprehensive hierarchical taxonomy featuring over 1,000 fine-grained edit concepts and build ConceptEdit-12M, a massive dataset of 12 million high-quality editing pairs via an improved synthesis framework. This library-driven approach effectively rectifies the distribution collapse of generated data while ensuring high data fidelity. Furthermore, we propose a dense supervision training strategy that synthesizes multiple non-interfering concepts into single image pairs. By providing richer learning signals, this strategy significantly enhances both training efficiency and overall model performance. Training results validate our strategy, significantly outperforming prior works. Finally, we present ConceptEdit-Bench, a granular evaluation suite designed to diagnose model capabilities across a vast array of real-world scenarios.",
+    "notes": "现有的图像编辑框架，大多沿袭了文本到图像扩散模型的设计范式，但在实际应用中，这种直接的迁移带来了两个核心问题。首先，是编辑概念粒度不足的问题。在文本到图像生成领域，大家普遍认为扩大训练数据的多样性是提升生成能力的关键。但对于图像编辑来说，一个编辑样本本质上包含两部分：原始图像和编辑概念，比如“添加物体”、“替换背景”或者“改变属性”。虽然现有数据集主要通过增加原始图像的多样性来扩展规模，但它们对编辑概念的多样性和粒度关注不够，导致模型在面对细致、复杂的编辑需求时，泛化能力不足。",
+    "url": "https://arxiv.org/abs/2608.16812",
+    "upvotes": 45,
+    "audio": "2026-08-25-unlocking-the-potential-of-image-editing-via-concept-scaling-9b788e4f.mp3",
+    "size": 6075072,
+    "published": "2026-08-25T23:36:36.068358+00:00"
+  },
+  {
+    "key": "2608.20958",
+    "date": "2026-08-25",
+    "title": "TLive-Omni: An Omni-Modal Understanding Model for E-Commerce Live Streaming",
+    "abstract": "E-commerce live streaming requires omni-modal understanding of noisy, temporally extended streams, where product facts are distributed across speech, video frames, product images, overlaid text, and user queries. We present TLive-Omni, an omni-modal understanding model tailored to live-commerce scenarios. It maps image, video, audio, and text inputs into a unified representation space. For long-form live streaming analysis, we introduce Per-vGrid, a timestamped token organization that groups each video grid with its temporally corresponding audio within explicit boundary tokens to facilitate temporal alignment. We design a three-stage supervised training recipe that progressively develops live-commerce understanding, from omni-modal perception to instruction-following responses. We then propose Faithful-RFT, a reinforcement fine-tuning stage that further improves answer faithfulness and expression quality while meeting real-time demands, scoring final responses directly with task-verifiable feedback rather than optimizing for reasoning-style exploration during rollout. Moreover, TLive-Omni is supported by a scenario-oriented atomic capability taxonomy and a compact data production engine that converts live-commerce audio, image, and video streams into training signals for speech recognition, speaker analysis, product visual grounding, text recognition, temporal grounding, video dense caption, and omni-modal QA, etc. For scalable training, a synchronized length-grouped sampler reduces padding while preserving comparable workloads across workers, while a lightweight dynamic sampling strategy regenerates rollout groups with near-zero reward variance to maintain meaningful relative advantages for GRPO. Experiments on e-commerce live streaming benchmarks demonstrate strong performance across live-commerce domain tasks, together with excellent generalization on general benchmarks.",
+    "notes": "电商直播流媒体理解面临一个核心挑战：产品信息往往分散在嘈杂、长时间的语音、视频画面、商品图片、叠加文本和用户查询中，而且这些证据可能出现在直播流的不同时间点。这就要求模型不仅要联合解释这些异构信号，还要将音频和视觉证据精确地对齐到以产品为中心的时间片段上，并忠实地表达基于感知的答案，来完成诸如自动语音识别、光学字符识别、商品视觉定位、时间定位以及全模态问答等任务。",
+    "url": "https://arxiv.org/abs/2608.20958",
+    "upvotes": 52,
+    "audio": "2026-08-25-tlive-omni-an-omni-modal-understanding-model-for-e-commerce--2590b110.mp3",
+    "size": 9663552,
+    "published": "2026-08-25T23:34:42.088149+00:00"
+  },
+  {
+    "key": "2608.23189",
+    "date": "2026-08-25",
+    "title": "EchoWM: Open and Enterable Omnimodal World Models",
+    "abstract": "We present EchoWM, an omnimodal world model for enterable generative media that responds to continuous navigation while jointly generating 720p video, environmental sound, music and speech. We organize interaction around camera intent: in first-person scenes, it specifies observer motion, while in third-person scenes, camera--character dynamics are learned from data without view-specific controllers. Discrete commands and continuous poses are mapped to a shared metric-scale relative 6-DoF trajectory, with dataset-level calibration preserving motion magnitude across heterogeneous data. To jointly learn audio-visual generation and trajectory control, we construct a complementary data engine and adopt progressive training followed by autoregressive post-training for long-horizon generation. Extensive evaluations show that \\model achieves strong trajectory following and high visual quality on public world-model benchmarks, supporting both first- and third-person interaction across varied subjects, and maintaining synchronized environmental sound and speech over long-horizon generation.",
+    "notes": "好了，我们今天来聊一篇关于“可进入式全模态世界模型”的论文，它的标题是 EchoWM。这篇论文的核心目标，是想解决当前生成式视频模型在用户交互方面的一个痛点：现在的模型大多是基于文本提示的，用户只能被动地看生成结果，很难像在游戏里那样，自由地在生成的世界里导航和探索。而且，大部分现有系统生成的视频是无声的，或者音频和视觉是分离的，缺乏真实的沉浸感。EchoWM 想要做的，就是创建一个用户可以自由穿梭的生成式环境，这个环境能实时响应用户的导航指令，同时同步生成高质量的视频、环境音效、背景音乐和人物语音。",
+    "url": "https://arxiv.org/abs/2608.23189",
+    "upvotes": 64,
+    "audio": "2026-08-25-echowm-open-and-enterable-omnimodal-world-models-a90bf6cc.mp3",
+    "size": 7141536,
+    "published": "2026-08-25T23:32:34.169559+00:00"
+  },
+  {
+    "key": "2608.23283",
+    "date": "2026-08-25",
+    "title": "Apodex 1.1: Scaling Agentic Intelligence for Complex Work",
+    "abstract": "General-purpose language models can reason and synthesize knowledge, but complex work also requires sustained interaction with files, information sources, and executable code, together with state maintenance, failure recovery, and verifiable delivery. We call this working capability: sustained, verifiable progress toward a real-world objective. Apodex 1.1 develops this capability along two complementary dimensions. Environment Scaling expands the diversity and verifiability of executable file, search, and code environments, while Agentic Coordination Scaling trains agents to decompose long-horizon tasks, delegate parallel work, integrate asynchronous results, and replan. A shared execution harness and AgentOS maintain task state and provenance across tools and agents, and training turns environment trajectories and coordination traces into reliable behavior. Across complex professional work, finance, scientific research, mathematics, coding, and search, Apodex 1.1 reaches the leading performance band despite using a substantially smaller model than many frontier systems. The 35B-parameter Apodex 1.1 Mini further retains strong working capability in a locally deployable form. These results ground agentic intelligence in useful, verifiable work completed over time and advance our goal of building a Heavy-Duty Solver for ambitious, long-running tasks.",
+    "notes": "好的，没问题。下面是根据你的要求撰写的口播稿。",
+    "url": "https://arxiv.org/abs/2608.23283",
+    "upvotes": 172,
+    "audio": "2026-08-25-apodex-1-1-scaling-agentic-intelligence-for-complex-work-20e675d3.mp3",
+    "size": 15726096,
+    "published": "2026-08-25T23:30:57.779522+00:00"
+  },
+  {
     "key": "2608.16425",
     "date": "2026-08-24",
     "title": "ParaTempo: Efficient Parallel Reasoning via Temporal Confidence",
