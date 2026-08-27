@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-27
+
+- **VBVR-Pro: A Scalable and Verifiable Suite for Native Visual Reasoning** · 13★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-27-vbvr-pro-a-scalable-and-verifiable-suite-for-native-visual-r-47305bb1.mp3) [arXiv](https://arxiv.org/abs/2608.26105)
+- **VGI-BENCH: Probing Visual Intelligence in Video Generation Models** · 15★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-27-vgi-bench-probing-visual-intelligence-in-video-generation-mo-c6c70a85.mp3) [arXiv](https://arxiv.org/abs/2608.19583)
+- **D^3-MOPD: Adaptive Dynamic Domain ScheDuling for Efficient Multi-Teacher Distillation** · 17★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-27-d-3-mopd-adaptive-dynamic-domain-scheduling-for-efficient-mu-444b4da4.mp3) [arXiv](https://arxiv.org/abs/2608.24987)
+- **FrontierChallenge: Evaluating Scientific Workflow Completion** · 26★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-27-frontierchallenge-evaluating-scientific-workflow-completion-b947daef.mp3) [arXiv](https://arxiv.org/abs/2608.24979)
+- **JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution** · 26★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-27-jit-agent-scaling-harness-intelligence-via-just-in-time-harn-3409c3b3.mp3) [arXiv](https://arxiv.org/abs/2608.25593)
+
 ## 2026-08-25
 
 - **MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks** · 33★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-25-mobilepa-bench-benchmarking-mobile-planner-agents-on-complex-83820b2a.mp3) [arXiv](https://arxiv.org/abs/2608.23035)

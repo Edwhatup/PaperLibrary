@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>VBVR-Pro: A Scalable and Verifiable Suite for Native Visual Reasoning</title>
+      <description>各位听众朋友，今天我们来深入探讨一篇名为《VBVR-Pro：一个可扩展、可验证的原生视觉推理套件》的论文。这篇论文要解决的核心问题是：尽管大型语言模型在推理方面取得了巨大成功，但现实世界中的许多智能形式，比如涉及空间变换、时间连续性、物体持久性和动态交互的推理，本质上都不是语言性的。它们更像是我们人类在不自觉地进行视觉思考，比如在脑海中旋转一个物体，或者想象一个过程的演变。</description>
+      <link>https://arxiv.org/abs/2608.26105</link>
+      <guid isPermaLink="false">2026-08-27-vbvr-pro-a-scalable-and-verifiable-suite-for-native-visual-r-47305bb1.mp3</guid>
+      <pubDate>Thu, 27 Aug 2026 04:20:44 +0000</pubDate>
+      <itunes:duration>1737</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-27-vbvr-pro-a-scalable-and-verifiable-suite-for-native-visual-r-47305bb1.mp3" length="10422144" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>VGI-BENCH: Probing Visual Intelligence in Video Generation Models</title>
+      <description>好的，这是一段为你量身定制的口播稿，总字数在 6120 到 8160 字之间，没有开场白和结束语，直接切入正题，并确保所有句子都完整自然地结束。</description>
+      <link>https://arxiv.org/abs/2608.19583</link>
+      <guid isPermaLink="false">2026-08-27-vgi-bench-probing-visual-intelligence-in-video-generation-mo-c6c70a85.mp3</guid>
+      <pubDate>Thu, 27 Aug 2026 04:17:29 +0000</pubDate>
+      <itunes:duration>1495</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-27-vgi-bench-probing-visual-intelligence-in-video-generation-mo-c6c70a85.mp3" length="8975952" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>D^3-MOPD: Adaptive Dynamic Domain ScheDuling for Efficient Multi-Teacher Distillation</title>
+      <description>好的，我们来聊一篇很有意思的论文，它关注的是多教师在线策略蒸馏，简称 MOPD。这篇论文要解决的核心问题是，在 MOPD 训练中，我们通常会固定每个领域的数据混合比例，但这样做忽略了一个关键事实：不同的领域，学生模型学习和收敛的速度是完全不一样的。有些领域可能很快就学得差不多了，达到了瓶颈期，而另一些领域可能在整个训练过程中都还在持续进步。如果我们的数据混合比例一直不变，那么就会出现一种浪费：在那些已经收敛的领域上，我们还在投入大量的计算资源，而那些还在努力学习、需要更多资源的领域，却因为固定比例而得不到充分训练。这就像是给一个已经吃饱了的人继续喂饭，而另一个还在饿着肚子的人却没饭吃，效率自然</description>
+      <link>https://arxiv.org/abs/2608.24987</link>
+      <guid isPermaLink="false">2026-08-27-d-3-mopd-adaptive-dynamic-domain-scheduling-for-efficient-mu-444b4da4.mp3</guid>
+      <pubDate>Thu, 27 Aug 2026 04:15:41 +0000</pubDate>
+      <itunes:duration>1272</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-27-d-3-mopd-adaptive-dynamic-domain-scheduling-for-efficient-mu-444b4da4.mp3" length="7634880" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>FrontierChallenge: Evaluating Scientific Workflow Completion</title>
+      <description>大型语言模型正在从单纯的文本生成器，迅速演变为能够规划、调用工具、执行代码甚至修改文件的智能体。它们在科学研究领域的应用前景广阔，比如分析数据、运行模拟、生成报告等等。然而，我们发现目前大多数衡量这些科学智能体能力的基准测试，往往只关注最终答案是否正确，或者某个独立程序的执行情况，再或者只局限于单一的科学领域。这带来了一个核心问题：一个科学智能体能否真正完成一项复杂的、端到端的科学工作流程，并交付所有必需的、相互一致的科学成果？</description>
+      <link>https://arxiv.org/abs/2608.24979</link>
+      <guid isPermaLink="false">2026-08-27-frontierchallenge-evaluating-scientific-workflow-completion-b947daef.mp3</guid>
+      <pubDate>Thu, 27 Aug 2026 04:13:52 +0000</pubDate>
+      <itunes:duration>710</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-27-frontierchallenge-evaluating-scientific-workflow-completion-b947daef.mp3" length="4262544" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution</title>
+      <description>好的，这是一段为你准备的、约20分钟、适合开车时收听的论文口播稿。请注意，为了满足字数要求和深入解释的需要，部分内容可能需要你放慢语速或在某些地方稍作停顿。</description>
+      <link>https://arxiv.org/abs/2608.25593</link>
+      <guid isPermaLink="false">2026-08-27-jit-agent-scaling-harness-intelligence-via-just-in-time-harn-3409c3b3.mp3</guid>
+      <pubDate>Thu, 27 Aug 2026 04:12:05 +0000</pubDate>
+      <itunes:duration>847</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-27-jit-agent-scaling-harness-intelligence-via-just-in-time-harn-3409c3b3.mp3" length="5082912" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks</title>
       <description>移动设备上的大语言模型（LLM）代理正逐渐成为我们的个人副驾驶，它们不再仅仅是回答问题，而是被期望能够主动理解自然语言意图，编排复杂的系统工具，并执行多步骤的工作流程。然而，要在一个动态、有状态的移动操作系统中严格评估这些代理的能力，一直是一个巨大的挑战。现有的基准测试方法，要么过于关注图形用户界面，即我们常说的GUI，比如那些只测试屏幕点击和像素级感知的框架。这类方法虽然能评估低层级的感知和布局理解，但它忽略了后台工具的使用和长期的规划能力，更重要的是，它效率低下，让代理把宝贵的计算资源浪费在视觉解析上，而没有优先处理系统级的、通过结构化API进行的快速、高效控制。</description>
       <link>https://arxiv.org/abs/2608.23035</link>
