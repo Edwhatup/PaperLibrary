@@ -1,5 +1,65 @@
 [
   {
+    "key": "2608.27456",
+    "date": "2026-08-28",
+    "title": "UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City",
+    "abstract": "Multimodal large language models (MLLMs) can interpret a street view, but urban agency depends on whether such local evidence remains useful after the agent starts to move. In this paper, we investigate how far current MLLM agents can turn local urban perception into reliable action in a complicated real-scale city. We propose UrbanGround, the first sandbox to make this question testable in a physically constrained replica of Hong Kong built from territory-wide 3D geospatial data. UrbanGround supports closed-loop interaction from a first-person view and provides an interactive map for navigation. Agents can directly enter the 3D city and explore from a first-person view. Our analysis follows the growth of the spatial problem through three research questions. We first test whether an agent can ground a local scene well enough to answer spatial questions after active observation. Then we ask whether that grounding supports navigation as destinations become farther away and less explicit. Finally, we examine whether the resulting behavior survives changes in route availability and pedestrian motion. Contemporary MLLM agents usually show useful atomic abilities in visual recognition and short-range spatial reasoning, while orientation and pedestrian-aware movement remain unreliable. Their central failure emerges over extended exploration, where local abilities do not compose into sustained goal-directed behavior and errors accumulate without effective correction. We hope UrbanGround will support broader study of how far current MLLM agents can explore reliably in complex, open-ended urban environments.",
+    "notes": "多模态大语言模型，也就是我们常说的MLLM，在理解街景方面已经展现出了非常强大的能力，比如它们能识别出画面里的各种物体。但是，城市环境下的智能体，也就是我们说的“智能Agent”，它的真正能力并不在于它能看到什么，而在于当它开始移动之后，之前感知到的那些局部信息，是否还能持续有用。这篇论文的核心问题，就是想深入探讨，在像香港这样复杂且真实尺度的城市里，目前的MLLM智能体，能把这种局部的城市感知能力，转化成多大程度的可靠行动。",
+    "url": "https://arxiv.org/abs/2608.27456",
+    "upvotes": 24,
+    "audio": "2026-08-28-urbanground-from-local-perception-to-spatial-agency-in-a-rea-bc1491c2.mp3",
+    "size": 7682688,
+    "published": "2026-08-28T06:38:22.459265+00:00"
+  },
+  {
+    "key": "2608.27260",
+    "date": "2026-08-28",
+    "title": "What Makes Good Agentic Data? An ACE Lens on Data Generation for LLM Agents",
+    "abstract": "LLM agents increasingly rely on generated interaction data to learn how to interact with external environments. Agentic data generation must maintain consistency among environments, tasks, interactions, and success signals while producing experience that is useful rather than merely abundant. Existing work spans many agent domains, but domain-centered organization and heterogeneous evaluation often obscure common generation mechanisms and conflate candidate construction with verification and selection. This work develops a two-level framework for the field. First, we represent agentic data as a common factorized object (E,q,τ,v), comprising an environment specification, task signal, interaction realization, and optional verifier. We organize generation paradigms by their primary anchor and dependency structure. Second, we formulate generation as constrained distribution design through the Accuracy-Complexity-divErsity (ACE) lens. Accuracy establishes the feasible support of grounded and internally consistent data. Within this support, Complexity places learning mass relative to the capability of a declared learner and execution configuration, while divErsity controls coverage and redundancy of data. Using this framework, we explore how prior work verifies generated experience, constructs and calibrates difficulty, and expands behavioral coverage. The literature reveals a shift toward execution-grounded accuracy, learner-relative complexity, and diversity beyond surface variation or dataset size. We further discuss broader directions and emerging trends in agentic data generation through the ACE lens, including their implications for scaling, data sources, training regimes and adaptive learning. Overall, the central challenge is not simply to generate more data, but to continually allocate valid, informative, and non-redundant experience as agents and environments evolve.",
+    "notes": "好的，我们今天来聊一篇关于大型语言模型代理（LLM Agents）数据生成的重要论文，标题是《What Makes Good Agentic Data? An ACE Lens on Data Generation for LLM Agents》。这篇论文的核心目标，是解决当前LLM代理训练数据生成领域面临的一个关键问题：我们不仅要生成大量数据，更要确保这些数据是高质量、有用的。",
+    "url": "https://arxiv.org/abs/2608.27260",
+    "upvotes": 29,
+    "audio": "2026-08-28-what-makes-good-agentic-data-an-ace-lens-on-data-generation--e4981231.mp3",
+    "size": 12928896,
+    "published": "2026-08-28T06:36:42.544932+00:00"
+  },
+  {
+    "key": "2608.27448",
+    "date": "2026-08-28",
+    "title": "TTPO: Test-Time Policy Optimization",
+    "abstract": "Recent prominent post-training methods, such as Reinforcement Learning (RL) and On-Policy Self-Distillation (OPSD), have driven rapid progress in mathematical reasoning for large language models, yet their reliance on ground-truth labels precludes test-time training (TTT). Replacing ground truth with majority-vote pseudo-labels is a natural alternative, yet it is fragile: an incorrect vote corrupts the teacher and misleads every token. We observe that this failure mode is asymmetric: rollouts that disagree with the pseudo-label are typically wrong regardless of whether the vote itself is correct. Building on this observation, we propose Test-Time Policy Optimization (TTPO), an asymmetric objective that distills agreeing rollouts via OPSD and penalizes disagreeing rollouts with Grouped RL. Token-level selection further refines both branches: distillation down-weights already-converged positions, while RL penalizes only confident errors. Both updates remain well-grounded even under frequent pseudo-label errors, and majority-vote routing yields tighter self-supervision as the model improves. Without any labels, TTPO matches label-supervised OPSD on five competition-level benchmarks, raises Qwen3-1.7B from 38.0% to 45.2% in TTT, yields +25.2% to +36.4% without thinking, and shows strong cross-task generalization.",
+    "notes": "好的，接下来我们将深入探讨一篇关于大语言模型数学推理的最新研究，这篇论文标题是 TTPO：Test-Time Policy Optimization。",
+    "url": "https://arxiv.org/abs/2608.27448",
+    "upvotes": 35,
+    "audio": "2026-08-28-ttpo-test-time-policy-optimization-eb8a9972.mp3",
+    "size": 9454752,
+    "published": "2026-08-28T06:33:22.868617+00:00"
+  },
+  {
+    "key": "2608.15763",
+    "date": "2026-08-28",
+    "title": "Training Agents to Evolve with Their Harness: TaoLive Digital Avatar Agent Technical Report",
+    "abstract": "AI-powered digital avatar streamers must answer product questions, engage viewers, and execute marketing strategies in real time, demanding low latency, frequent strategy updates, and accurate yet effective responses. Evolvable Harnesses, whose Skills, Hooks, prompts, and tools can be updated independently of model weights, enable rapid iteration but expose a trade-off: large models adapt zero-shot yet are too slow, whereas compact models meet latency targets but overfit to fixed Harness configurations. We propose Harness-Aware Training (HAT), which trains compact models to adapt to changing Harnesses. Its key component, Harness-State Augmentation (HSA), applies task-preserving transformations to Skill identifiers and content, tool schemas, prompt structures, and Hook functions. Training proceeds in three stages: HSA-SFT learns reasoning and tool use from strong-model trajectories across diverse environments; General On-Policy Distillation restores generalization lost during SFT; and HSA-RL improves robustness to changing Harnesses through reinforcement learning in augmented environments. Across four evaluation sets, HAT achieves 94.8 on Live-Stream QA (base: 80.3; strongest general LLM: 93.0) and 94.6 on Harness-Variant QA (base: 75.4). Unlike Fixed-Harness SFT, which lowers IFEval by 7.7 points from the base model, HAT avoids this regression and reaches 83.5. On one NVIDIA H20 GPU, the optimized system delivers P50 and P95 latencies of 3.4 s and 8.1 s. Deployed in Taobao Live's digital-avatar service, it also yields positive online A/B test results for GMV and item-page views.",
+    "notes": "在直播电商领域，数字人主播面临着独特的挑战：它们必须实时回答产品问题、与观众互动，并执行各种营销策略。这意味着对系统的要求极高，既要保证超低延迟，以便与观众无缝互动，又要能快速适应频繁变化的营销规则和商家偏好，同时还要确保回复的准确性和有效性，避免内容出错或偏离用户意图。",
+    "url": "https://arxiv.org/abs/2608.15763",
+    "upvotes": 36,
+    "audio": "2026-08-28-training-agents-to-evolve-with-their-harness-taolive-digital-cfd4c95d.mp3",
+    "size": 6001056,
+    "published": "2026-08-28T06:31:05.872382+00:00"
+  },
+  {
+    "key": "2608.27345",
+    "date": "2026-08-28",
+    "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
+    "abstract": "Recent video generation models are increasingly framed as world models. Many physical processes can unfold in more than one valid way. Therefore, a world model should reproduce not only a plausible trajectory, but also the distribution of possible behaviors under the same initial observation and action. We call this distribution-level requirement probabilistic alignment. However, existing evaluations largely assess individual-video plausibility and do not test whether repeated generations recover the correct distribution. This raises a central question: how far are current video generators from probabilistically aligned world modeling? To answer it, we formalize probabilistic alignment as a distributional criterion for world models and introduce PAWBench, a benchmark for evaluating video generators as stochastic samplers of world dynamics. We further introduce PAWEval, an outcome-level protocol that converts repeated video rollouts into empirical distributions over possible physical behaviors. Across 50 scenarios and eleven current systems, no model consistently matches the reference probabilities while recovering the range of valid behaviors. Having established this gap, we test whether language prompts, initial noise sampling, or model training can reshape the model's predictive distribution. We believe our work can serve as a foundation for future efforts to move towards probabilistically aligned world modeling.",
+    "notes": "各位听众，我们今天要聊的这篇论文，它直接切入了一个当前视频生成领域的核心问题：我们现在的视频生成模型，虽然能生成看起来很逼真、很连贯的视频，但它们真的理解世界运行的随机性吗？也就是说，当一个物理过程可能产生多种结果时，模型能否像真实世界一样，不仅能生成这些不同的结果，还能以正确的概率来生成它们？",
+    "url": "https://arxiv.org/abs/2608.27345",
+    "upvotes": 54,
+    "audio": "2026-08-28-pawbench-how-far-are-we-from-probabilistically-aligned-world-1d75f375.mp3",
+    "size": 5406768,
+    "published": "2026-08-28T06:29:30.804470+00:00"
+  },
+  {
     "key": "2608.26105",
     "date": "2026-08-27",
     "title": "VBVR-Pro: A Scalable and Verifiable Suite for Native Visual Reasoning",

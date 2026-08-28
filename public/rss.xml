@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City</title>
+      <description>多模态大语言模型，也就是我们常说的MLLM，在理解街景方面已经展现出了非常强大的能力，比如它们能识别出画面里的各种物体。但是，城市环境下的智能体，也就是我们说的“智能Agent”，它的真正能力并不在于它能看到什么，而在于当它开始移动之后，之前感知到的那些局部信息，是否还能持续有用。这篇论文的核心问题，就是想深入探讨，在像香港这样复杂且真实尺度的城市里，目前的MLLM智能体，能把这种局部的城市感知能力，转化成多大程度的可靠行动。</description>
+      <link>https://arxiv.org/abs/2608.27456</link>
+      <guid isPermaLink="false">2026-08-28-urbanground-from-local-perception-to-spatial-agency-in-a-rea-bc1491c2.mp3</guid>
+      <pubDate>Fri, 28 Aug 2026 06:38:22 +0000</pubDate>
+      <itunes:duration>1280</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-28-urbanground-from-local-perception-to-spatial-agency-in-a-rea-bc1491c2.mp3" length="7682688" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>What Makes Good Agentic Data? An ACE Lens on Data Generation for LLM Agents</title>
+      <description>好的，我们今天来聊一篇关于大型语言模型代理（LLM Agents）数据生成的重要论文，标题是《What Makes Good Agentic Data? An ACE Lens on Data Generation for LLM Agents》。这篇论文的核心目标，是解决当前LLM代理训练数据生成领域面临的一个关键问题：我们不仅要生成大量数据，更要确保这些数据是高质量、有用的。</description>
+      <link>https://arxiv.org/abs/2608.27260</link>
+      <guid isPermaLink="false">2026-08-28-what-makes-good-agentic-data-an-ace-lens-on-data-generation--e4981231.mp3</guid>
+      <pubDate>Fri, 28 Aug 2026 06:36:42 +0000</pubDate>
+      <itunes:duration>2154</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-28-what-makes-good-agentic-data-an-ace-lens-on-data-generation--e4981231.mp3" length="12928896" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>TTPO: Test-Time Policy Optimization</title>
+      <description>好的，接下来我们将深入探讨一篇关于大语言模型数学推理的最新研究，这篇论文标题是 TTPO：Test-Time Policy Optimization。</description>
+      <link>https://arxiv.org/abs/2608.27448</link>
+      <guid isPermaLink="false">2026-08-28-ttpo-test-time-policy-optimization-eb8a9972.mp3</guid>
+      <pubDate>Fri, 28 Aug 2026 06:33:22 +0000</pubDate>
+      <itunes:duration>1575</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-28-ttpo-test-time-policy-optimization-eb8a9972.mp3" length="9454752" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Training Agents to Evolve with Their Harness: TaoLive Digital Avatar Agent Technical Report</title>
+      <description>在直播电商领域，数字人主播面临着独特的挑战：它们必须实时回答产品问题、与观众互动，并执行各种营销策略。这意味着对系统的要求极高，既要保证超低延迟，以便与观众无缝互动，又要能快速适应频繁变化的营销规则和商家偏好，同时还要确保回复的准确性和有效性，避免内容出错或偏离用户意图。</description>
+      <link>https://arxiv.org/abs/2608.15763</link>
+      <guid isPermaLink="false">2026-08-28-training-agents-to-evolve-with-their-harness-taolive-digital-cfd4c95d.mp3</guid>
+      <pubDate>Fri, 28 Aug 2026 06:31:05 +0000</pubDate>
+      <itunes:duration>1000</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-28-training-agents-to-evolve-with-their-harness-taolive-digital-cfd4c95d.mp3" length="6001056" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>PAWBench: How Far Are We from Probabilistically Aligned World Modeling?</title>
+      <description>各位听众，我们今天要聊的这篇论文，它直接切入了一个当前视频生成领域的核心问题：我们现在的视频生成模型，虽然能生成看起来很逼真、很连贯的视频，但它们真的理解世界运行的随机性吗？也就是说，当一个物理过程可能产生多种结果时，模型能否像真实世界一样，不仅能生成这些不同的结果，还能以正确的概率来生成它们？</description>
+      <link>https://arxiv.org/abs/2608.27345</link>
+      <guid isPermaLink="false">2026-08-28-pawbench-how-far-are-we-from-probabilistically-aligned-world-1d75f375.mp3</guid>
+      <pubDate>Fri, 28 Aug 2026 06:29:30 +0000</pubDate>
+      <itunes:duration>901</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-08-28-pawbench-how-far-are-we-from-probabilistically-aligned-world-1d75f375.mp3" length="5406768" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>VBVR-Pro: A Scalable and Verifiable Suite for Native Visual Reasoning</title>
       <description>各位听众朋友，今天我们来深入探讨一篇名为《VBVR-Pro：一个可扩展、可验证的原生视觉推理套件》的论文。这篇论文要解决的核心问题是：尽管大型语言模型在推理方面取得了巨大成功，但现实世界中的许多智能形式，比如涉及空间变换、时间连续性、物体持久性和动态交互的推理，本质上都不是语言性的。它们更像是我们人类在不自觉地进行视觉思考，比如在脑海中旋转一个物体，或者想象一个过程的演变。</description>
       <link>https://arxiv.org/abs/2608.26105</link>

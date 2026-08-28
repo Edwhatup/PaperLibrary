@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-08-28
+
+- **UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City** · 24★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-28-urbanground-from-local-perception-to-spatial-agency-in-a-rea-bc1491c2.mp3) [arXiv](https://arxiv.org/abs/2608.27456)
+- **What Makes Good Agentic Data? An ACE Lens on Data Generation for LLM Agents** · 29★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-28-what-makes-good-agentic-data-an-ace-lens-on-data-generation--e4981231.mp3) [arXiv](https://arxiv.org/abs/2608.27260)
+- **TTPO: Test-Time Policy Optimization** · 35★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-28-ttpo-test-time-policy-optimization-eb8a9972.mp3) [arXiv](https://arxiv.org/abs/2608.27448)
+- **Training Agents to Evolve with Their Harness: TaoLive Digital Avatar Agent Technical Report** · 36★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-28-training-agents-to-evolve-with-their-harness-taolive-digital-cfd4c95d.mp3) [arXiv](https://arxiv.org/abs/2608.15763)
+- **PAWBench: How Far Are We from Probabilistically Aligned World Modeling?** · 54★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-28-pawbench-how-far-are-we-from-probabilistically-aligned-world-1d75f375.mp3) [arXiv](https://arxiv.org/abs/2608.27345)
+
 ## 2026-08-27
 
 - **VBVR-Pro: A Scalable and Verifiable Suite for Native Visual Reasoning** · 13★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-27-vbvr-pro-a-scalable-and-verifiable-suite-for-native-visual-r-47305bb1.mp3) [arXiv](https://arxiv.org/abs/2608.26105)
