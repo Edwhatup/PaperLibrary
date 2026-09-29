@@ -1,5 +1,65 @@
 [
   {
+    "key": "2609.33855",
+    "date": "2026-09-29",
+    "title": "Program-Verified Self-Evolution for Vision-Language Models",
+    "abstract": "Self-evolving vision-language models train on questions they generate from unlabeled images. Since these questions have no gold answers, prior methods label them by majority vote over sampled answers or by a model judge. In a human evaluation, we find that 24\\% of majority-vote labels and 18\\% of model-judge labels produced during self-evolution are wrong. To address this problem, we present Verifiable QA Generation for Self-Evolving Models (VQS), which changes how the model judges answers. Instead of voting on an answer, the model parses each image into a structured record, such as a scene graph, a chart table, or a diagram graph. Fixed programs then write a question from the record and compute its answer. The model still acts as a visual checker, but it only confirms the individual facts the program reads, one short claim at a time. These claim-level checks select the parser's training targets, so the parser also improves without labels. Human raters find 94\\% of VQS answers correct, against 76\\% for majority voting. Across ten benchmarks, VQS improves Qwen3-VL by up to 3.18 points at the 2B, 4B, and 8B scales and outperforms the strongest self-evolving baseline at each. Gains keep growing over three training rounds, reaching 3.84 points at 2B. Code is released at https://github.com/ahmedheakl/VQS",
+    "notes": "当前的视觉语言模型在自我演化训练过程中，常常会遇到一个核心难题：它们从无标签图片生成问题，然后自己给出答案。由于这些问题没有“标准答案”，以往的方法通常通过对多个采样答案进行多数投票，或者让另一个模型作为“评判者”来给这些答案打上伪标签。然而，我们通过人工评估发现，在使用多数投票方法时，有百分之二十四的伪标签是错误的；而即使是模型评判者，也有百分之十八的伪标签是错的。更糟糕的是，这些错误率还会随着模型自我演化轮次的增加而累积，导致伪标签的准确性持续下降，甚至最终使得模型训练崩溃。这表明，现有方法在验证答案的准确性上存在严重缺陷，极大地限制了视觉语言模型自我演化的效果。",
+    "url": "https://arxiv.org/abs/2609.33855",
+    "upvotes": 1,
+    "audio": "2026-09-29-program-verified-self-evolution-for-vision-language-models-4f0e43b6.mp3",
+    "size": 7586640,
+    "published": "2026-09-29T02:36:44.665216+00:00"
+  },
+  {
+    "key": "2609.33757",
+    "date": "2026-09-29",
+    "title": "YuE2: Unifying Symbolic and Audio Music Generation at Frontier Quality",
+    "abstract": "Symbolic models make melody, harmony, rhythm, and form explicit but typically stop before a finished recording; audio models produce complete songs while leaving composition implicit. We introduce YuE2, which unifies symbolic and audio music generation at frontier quality through symbolic planning. A single AR-NAR Mixture-of-Transformers (MoT) first writes a readable score specifying melody and harmony, expands it into semantic music tokens, and realizes it as full-song audio. In comparisons using the same checkpoint, experts prefer symbolic planning for overall quality and musicality, with 49.3% of overall preferences versus 34.6% without planning. Experts also favor the unified model over a separate language model and diffusion Transformer. On WildSongBench, YuE2 scores 6.73 on SongBench Global Avg, exceeding all evaluated public baselines. Selecting from eight candidates (best-of-8), YuE2 reaches 6.96, the highest observed mean among all evaluated systems. Expert listening further establishes its competitiveness with proprietary song generators, favoring best-of-8 over Suno v4.5 and yielding nearly balanced preferences against Suno v5. To learn this generation process from recordings without aligned scores, we introduce MERT2 and SheetSage2 to supply semantic and symbolic supervision. MERT2 sets a new state of the art in music representation learning, surpassing previous best results on 14 of 15 MARBLE metrics; SheetSage2 leads 12 of 15 benchmark-metric pairs in our lead-sheet transcription comparison. The same checkpoint follows score edits while largely preserving unedited musical content and generates zero-shot covers without cover-specific training. Its readable score also enables agentic music editing, with external language models translating user feedback into revisions of the composition.",
+    "notes": "我们今天要聊的这篇论文，YuE2，解决的是音乐生成领域一个长期存在的痛点：现有的音乐生成模型往往是割裂的。一种是符号模型，它们能清晰地生成旋律、和声、节奏和结构，就像作曲家写出乐谱一样，但它们通常止步于此，无法直接产出最终的录音。另一种是音频模型，它们可以直接生成完整的歌曲，但创作过程往往是隐式的，我们无法看到乐谱，也难以对具体的作曲元素进行干预。这就像你拿到一首歌的最终录音，却不知道它的乐谱长什么样，更别提去修改其中的某个和弦或旋律了。那么，有没有可能让一个模型既能明确地进行符号创作，又能将其高质量地实现为完整的音频呢？",
+    "url": "https://arxiv.org/abs/2609.33757",
+    "upvotes": 2,
+    "audio": "2026-09-29-yue2-unifying-symbolic-and-audio-music-generation-at-frontie-33e89ad1.mp3",
+    "size": 5283792,
+    "published": "2026-09-29T02:34:43.573578+00:00"
+  },
+  {
+    "key": "2609.32444",
+    "date": "2026-09-29",
+    "title": "Rethinking Training-Inference Mismatch in LLM Reinforcement Learning: Where It Arises and How to Correct It",
+    "abstract": "We study training-inference mismatch in reinforcement learning with verifiable rewards (RLVR) for large language models, where rollouts are sampled by an inference engine while gradients are computed by a training engine, and the two engines assign different probabilities to the same tokens. To account for this discrepancy in policy updates, we introduce calibrated importance sampling (CIS). CIS is motivated by an empirically supported logit-displacement characterization that expresses the mismatch as an additive displacement varepsilon_t in log-odds, determined by the per-logit perturbation before the softmax, whose distribution is approximately invariant to token confidence. This characterization motivates a confidence-aware truncation: large positive displacements are truncated at a single constant threshold, which maps back to an importance-ratio cap that tightens as token confidence increases. Theoretically, we show that CIS replaces the unbounded second moment that governs the error of exact importance sampling with a term bounded by a constant, at the cost of a bias controlled by the truncated excess. In evaluation across three mixture-of-experts models and five mathematical reasoning benchmarks, CIS achieves the highest five-benchmark average on all three models among the evaluated baselines. Diagnostic analyses show that CIS places less truncation bias on low-confidence tokens than truncated importance sampling, while upward clipping of small importance weights reduces held-out accuracy.",
+    "notes": "好的，这是一段为你准备的口播稿，总字数在 6120 到 8160 字之间，适合在开车时收听。我会用流畅的口语来讲解这篇论文。",
+    "url": "https://arxiv.org/abs/2609.32444",
+    "upvotes": 3,
+    "audio": "2026-09-29-rethinking-training-inference-mismatch-in-llm-reinforcement--d116fba1.mp3",
+    "size": 9360720,
+    "published": "2026-09-29T02:33:10.781610+00:00"
+  },
+  {
+    "key": "2609.32472",
+    "date": "2026-09-29",
+    "title": "AdaTutoRank: Learning to Rerank Document Sets via Adaptive Tutoring Optimization for RAG and Deep Research",
+    "abstract": "Document rerankers determine what evidence reaches the downstream model in RAG and deep research, yet mainstream rerankers select by relevance matching, and individually relevant documents rarely constitute the complete, complementary, non-redundant set a complex information need demands. Prior work rewards a set by its aggregate rubric score, shifting the objective from ranking documents to composing sets. Yet that score is one scalar shared by every document in the set, so the supervision is sparse: a redundant document is rewarded with the rest whenever the set scores well, and a decisive one penalized with the rest whenever it does not; credit assignment leaves contributors indistinguishable from free riders. On-policy distillation could densify this supervision, but existing methods give every rollout the same fixed guidance, too prescriptive for strong rollouts and too abstract for weak ones. We therefore propose AdaTutoRank, a setwise reranker trained with Adaptive Tutoring Optimization (ATO) under a three-level hierarchy of nine rubric dimensions, which supplies silver labels for the cold start, rewards for reinforcement learning, and hints for distillation. ATO draws three hint forms of increasing specificity from the policy's own frozen snapshot: the rubrics alone, a self-selector's sibling-set chosen under rubrics, and a self-reflector's reflection contrasting the rollout with that sibling-set; each rollout receives the form matched to its quality. Re-scoring that rollout under the hint-conditioned frozen teacher and the hint-free snapshot distills the hint's effect into a token-level advantage that complements the group-relative outcome advantage. Across ten benchmarks spanning RAG, deep research, and setwise evaluation, AdaTutoRank attains the best overall performance while issuing fewer retrieval calls.",
+    "notes": "好的，这是一段约20分钟的AdaTutoRank论文中文口播稿，总字数在6120到8160之间，适合开车时收听。",
+    "url": "https://arxiv.org/abs/2609.32472",
+    "upvotes": 7,
+    "audio": "2026-09-29-adatutorank-learning-to-rerank-document-sets-via-adaptive-tu-0fb4f1fc.mp3",
+    "size": 8182944,
+    "published": "2026-09-29T02:30:51.930443+00:00"
+  },
+  {
+    "key": "2609.28236",
+    "date": "2026-09-29",
+    "title": "EmbodiedMemory-Bench: Benchmarking Embodied Memory for Long-Horizon Embodied Tasks",
+    "abstract": "Long-horizon embodied interaction requires agents to retain and continually update information about the environment as they observe, act, and encounter change. Yet current agents struggle to maintain such memory reliably. Our analysis traces this limitation to four key deficiencies: weak fine-grained visual memory, unreliable dynamic world-state tracking, failing to record world state revealed by interaction outcomes, and limited generalization from prior experience. However, existing benchmarks do not directly assess these memory capabilities during long-horizon embodied interaction. To address this gap, we introduce EmbodiedMemory-Bench (EMem-Bench), comprising 2,554 interactive episodes across four task families. EMem-Bench requires agents to build and update memory from interaction history, then use it to complete a later task by acting in the environment. We further present Embodied-Memorizer (EMem), an external memory system that organizes embodied experience into spatial, event, and scene memories. We also train EMem-8B, an 8B policy that manages and uses these memories. We evaluate a diverse range of open-source and proprietary MLLMs and representative multimodal memory systems. Results show that current models remain weak and uneven across the four challenges. Under matched backbones, EMem achieves the best overall performance among the evaluated memory systems and improves both open-source and proprietary models, while EMem-8B further improves over its backbone. Project page: https://zju-omniai.github.io/EmbodiedMemoryBench/",
+    "notes": "好的，没问题。这是一段为你定制的，时长约 20 分钟、适合开车时收听的连续口播稿，总字数在 6120 到 8160 字之间，保证重点突出，自然流畅，结尾完整。",
+    "url": "https://arxiv.org/abs/2609.28236",
+    "upvotes": 10,
+    "audio": "2026-09-29-embodiedmemory-bench-benchmarking-embodied-memory-for-long-h-09599363.mp3",
+    "size": 7330032,
+    "published": "2026-09-29T02:29:15.859518+00:00"
+  },
+  {
     "key": "2608.27456",
     "date": "2026-08-28",
     "title": "UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City",

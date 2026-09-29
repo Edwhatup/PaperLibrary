@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-09-29
+
+- **Program-Verified Self-Evolution for Vision-Language Models** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-09-29-program-verified-self-evolution-for-vision-language-models-4f0e43b6.mp3) [arXiv](https://arxiv.org/abs/2609.33855)
+- **YuE2: Unifying Symbolic and Audio Music Generation at Frontier Quality** · 2★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-09-29-yue2-unifying-symbolic-and-audio-music-generation-at-frontie-33e89ad1.mp3) [arXiv](https://arxiv.org/abs/2609.33757)
+- **Rethinking Training-Inference Mismatch in LLM Reinforcement Learning: Where It Arises and How to Correct It** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-09-29-rethinking-training-inference-mismatch-in-llm-reinforcement--d116fba1.mp3) [arXiv](https://arxiv.org/abs/2609.32444)
+- **AdaTutoRank: Learning to Rerank Document Sets via Adaptive Tutoring Optimization for RAG and Deep Research** · 7★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-09-29-adatutorank-learning-to-rerank-document-sets-via-adaptive-tu-0fb4f1fc.mp3) [arXiv](https://arxiv.org/abs/2609.32472)
+- **EmbodiedMemory-Bench: Benchmarking Embodied Memory for Long-Horizon Embodied Tasks** · 10★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-09-29-embodiedmemory-bench-benchmarking-embodied-memory-for-long-h-09599363.mp3) [arXiv](https://arxiv.org/abs/2609.28236)
+
 ## 2026-08-28
 
 - **UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City** · 24★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-08-28-urbanground-from-local-perception-to-spatial-agency-in-a-rea-bc1491c2.mp3) [arXiv](https://arxiv.org/abs/2608.27456)

@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Program-Verified Self-Evolution for Vision-Language Models</title>
+      <description>当前的视觉语言模型在自我演化训练过程中，常常会遇到一个核心难题：它们从无标签图片生成问题，然后自己给出答案。由于这些问题没有“标准答案”，以往的方法通常通过对多个采样答案进行多数投票，或者让另一个模型作为“评判者”来给这些答案打上伪标签。然而，我们通过人工评估发现，在使用多数投票方法时，有百分之二十四的伪标签是错误的；而即使是模型评判者，也有百分之十八的伪标签是错的。更糟糕的是，这些错误率还会随着模型自我演化轮次的增加而累积，导致伪标签的准确性持续下降，甚至最终使得模型训练崩溃。这表明，现有方法在验证答案的准确性上存在严重缺陷，极大地限制了视觉语言模型自我演化的效果。</description>
+      <link>https://arxiv.org/abs/2609.33855</link>
+      <guid isPermaLink="false">2026-09-29-program-verified-self-evolution-for-vision-language-models-4f0e43b6.mp3</guid>
+      <pubDate>Tue, 29 Sep 2026 02:36:44 +0000</pubDate>
+      <itunes:duration>1264</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-09-29-program-verified-self-evolution-for-vision-language-models-4f0e43b6.mp3" length="7586640" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>YuE2: Unifying Symbolic and Audio Music Generation at Frontier Quality</title>
+      <description>我们今天要聊的这篇论文，YuE2，解决的是音乐生成领域一个长期存在的痛点：现有的音乐生成模型往往是割裂的。一种是符号模型，它们能清晰地生成旋律、和声、节奏和结构，就像作曲家写出乐谱一样，但它们通常止步于此，无法直接产出最终的录音。另一种是音频模型，它们可以直接生成完整的歌曲，但创作过程往往是隐式的，我们无法看到乐谱，也难以对具体的作曲元素进行干预。这就像你拿到一首歌的最终录音，却不知道它的乐谱长什么样，更别提去修改其中的某个和弦或旋律了。那么，有没有可能让一个模型既能明确地进行符号创作，又能将其高质量地实现为完整的音频呢？</description>
+      <link>https://arxiv.org/abs/2609.33757</link>
+      <guid isPermaLink="false">2026-09-29-yue2-unifying-symbolic-and-audio-music-generation-at-frontie-33e89ad1.mp3</guid>
+      <pubDate>Tue, 29 Sep 2026 02:34:43 +0000</pubDate>
+      <itunes:duration>880</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-09-29-yue2-unifying-symbolic-and-audio-music-generation-at-frontie-33e89ad1.mp3" length="5283792" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Rethinking Training-Inference Mismatch in LLM Reinforcement Learning: Where It Arises and How to Correct It</title>
+      <description>好的，这是一段为你准备的口播稿，总字数在 6120 到 8160 字之间，适合在开车时收听。我会用流畅的口语来讲解这篇论文。</description>
+      <link>https://arxiv.org/abs/2609.32444</link>
+      <guid isPermaLink="false">2026-09-29-rethinking-training-inference-mismatch-in-llm-reinforcement--d116fba1.mp3</guid>
+      <pubDate>Tue, 29 Sep 2026 02:33:10 +0000</pubDate>
+      <itunes:duration>1560</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-09-29-rethinking-training-inference-mismatch-in-llm-reinforcement--d116fba1.mp3" length="9360720" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>AdaTutoRank: Learning to Rerank Document Sets via Adaptive Tutoring Optimization for RAG and Deep Research</title>
+      <description>好的，这是一段约20分钟的AdaTutoRank论文中文口播稿，总字数在6120到8160之间，适合开车时收听。</description>
+      <link>https://arxiv.org/abs/2609.32472</link>
+      <guid isPermaLink="false">2026-09-29-adatutorank-learning-to-rerank-document-sets-via-adaptive-tu-0fb4f1fc.mp3</guid>
+      <pubDate>Tue, 29 Sep 2026 02:30:51 +0000</pubDate>
+      <itunes:duration>1363</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-09-29-adatutorank-learning-to-rerank-document-sets-via-adaptive-tu-0fb4f1fc.mp3" length="8182944" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>EmbodiedMemory-Bench: Benchmarking Embodied Memory for Long-Horizon Embodied Tasks</title>
+      <description>好的，没问题。这是一段为你定制的，时长约 20 分钟、适合开车时收听的连续口播稿，总字数在 6120 到 8160 字之间，保证重点突出，自然流畅，结尾完整。</description>
+      <link>https://arxiv.org/abs/2609.28236</link>
+      <guid isPermaLink="false">2026-09-29-embodiedmemory-bench-benchmarking-embodied-memory-for-long-h-09599363.mp3</guid>
+      <pubDate>Tue, 29 Sep 2026 02:29:15 +0000</pubDate>
+      <itunes:duration>1221</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-09-29-embodiedmemory-bench-benchmarking-embodied-memory-for-long-h-09599363.mp3" length="7330032" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City</title>
       <description>多模态大语言模型，也就是我们常说的MLLM，在理解街景方面已经展现出了非常强大的能力，比如它们能识别出画面里的各种物体。但是，城市环境下的智能体，也就是我们说的“智能Agent”，它的真正能力并不在于它能看到什么，而在于当它开始移动之后，之前感知到的那些局部信息，是否还能持续有用。这篇论文的核心问题，就是想深入探讨，在像香港这样复杂且真实尺度的城市里，目前的MLLM智能体，能把这种局部的城市感知能力，转化成多大程度的可靠行动。</description>
       <link>https://arxiv.org/abs/2608.27456</link>
