@@ -8,6 +8,15 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Scaling and Distilling Text Embeddings for Better Diffusibility</title>
+      <description>好的，没问题。这是一段约15分钟、适合开车时收听的连续口播稿，总字数在4590到6120之间。</description>
+      <link>https://arxiv.org/abs/2610.01016</link>
+      <guid isPermaLink="false">2026-10-02-scaling-and-distilling-text-embeddings-for-better-diffusibil-0743c11f.mp3</guid>
+      <pubDate>Fri, 02 Oct 2026 01:57:20 +0000</pubDate>
+      <itunes:duration>1125</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-02-scaling-and-distilling-text-embeddings-for-better-diffusibil-0743c11f.mp3" length="6751296" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Program-Verified Self-Evolution for Vision-Language Models</title>
       <description>当前的视觉语言模型在自我演化训练过程中，常常会遇到一个核心难题：它们从无标签图片生成问题，然后自己给出答案。由于这些问题没有“标准答案”，以往的方法通常通过对多个采样答案进行多数投票，或者让另一个模型作为“评判者”来给这些答案打上伪标签。然而，我们通过人工评估发现，在使用多数投票方法时，有百分之二十四的伪标签是错误的；而即使是模型评判者，也有百分之十八的伪标签是错的。更糟糕的是，这些错误率还会随着模型自我演化轮次的增加而累积，导致伪标签的准确性持续下降，甚至最终使得模型训练崩溃。这表明，现有方法在验证答案的准确性上存在严重缺陷，极大地限制了视觉语言模型自我演化的效果。</description>
       <link>https://arxiv.org/abs/2609.33855</link>

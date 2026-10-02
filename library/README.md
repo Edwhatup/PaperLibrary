@@ -3,6 +3,10 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-10-02
+
+- **Scaling and Distilling Text Embeddings for Better Diffusibility** · 9★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-02-scaling-and-distilling-text-embeddings-for-better-diffusibil-0743c11f.mp3) [arXiv](https://arxiv.org/abs/2610.01016)
+
 ## 2026-09-29
 
 - **Program-Verified Self-Evolution for Vision-Language Models** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-09-29-program-verified-self-evolution-for-vision-language-models-4f0e43b6.mp3) [arXiv](https://arxiv.org/abs/2609.33855)
