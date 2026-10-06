@@ -8,6 +8,24 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Prism: Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training</title>
+      <description>好的，我们来聊一篇关于视频和音频联合生成模型训练的最新论文，叫做 Prism。</description>
+      <link>https://arxiv.org/abs/2610.05416</link>
+      <guid isPermaLink="false">2026-10-06-prism-dynamic-sparse-attention-for-native-2k-joint-video-aud-ac28f8a2.mp3</guid>
+      <pubDate>Tue, 06 Oct 2026 02:40:47 +0000</pubDate>
+      <itunes:duration>913</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-06-prism-dynamic-sparse-attention-for-native-2k-joint-video-aud-ac28f8a2.mp3" length="5482944" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Rethinking Long-Video Efficiency: A Joint Allocation Perspective on Frames, Pixels, and Front-End Latency</title>
+      <description>好的，现在我们来深入探讨一篇非常有趣且实用的论文，它的标题是《Rethinking Long-Video Efficiency: A Joint Allocation Perspective on Frames, Pixels, and Front-End Latency》。这篇论文要解决的核心问题是：在处理长视频时，如何才能更高效地利用我们有限的视觉语言模型，也就是 VLM 的资源。</description>
+      <link>https://arxiv.org/abs/2610.04318</link>
+      <guid isPermaLink="false">2026-10-06-rethinking-long-video-efficiency-a-joint-allocation-perspect-013dfea2.mp3</guid>
+      <pubDate>Tue, 06 Oct 2026 02:39:15 +0000</pubDate>
+      <itunes:duration>808</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-06-rethinking-long-video-efficiency-a-joint-allocation-perspect-013dfea2.mp3" length="4849632" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Scaling and Distilling Text Embeddings for Better Diffusibility</title>
       <description>好的，没问题。这是一段约15分钟、适合开车时收听的连续口播稿，总字数在4590到6120之间。</description>
       <link>https://arxiv.org/abs/2610.01016</link>

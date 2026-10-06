@@ -3,6 +3,11 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-10-06
+
+- **Prism: Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-06-prism-dynamic-sparse-attention-for-native-2k-joint-video-aud-ac28f8a2.mp3) [arXiv](https://arxiv.org/abs/2610.05416)
+- **Rethinking Long-Video Efficiency: A Joint Allocation Perspective on Frames, Pixels, and Front-End Latency** · 2★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-06-rethinking-long-video-efficiency-a-joint-allocation-perspect-013dfea2.mp3) [arXiv](https://arxiv.org/abs/2610.04318)
+
 ## 2026-10-02
 
 - **Scaling and Distilling Text Embeddings for Better Diffusibility** · 9★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-02-scaling-and-distilling-text-embeddings-for-better-diffusibil-0743c11f.mp3) [arXiv](https://arxiv.org/abs/2610.01016)

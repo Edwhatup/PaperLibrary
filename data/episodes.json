@@ -1,5 +1,29 @@
 [
   {
+    "key": "2610.05416",
+    "date": "2026-10-06",
+    "title": "Prism: Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training",
+    "abstract": "Natively training joint video-audio generation models at higher resolutions empowers them to learn richer visual details and sharper motion dynamics. However, full attention incurs quadratic cost and, as resolution increases, spreads attention over increasingly redundant tokens, diluting learning signals for informative content and disrupting pretrained priors. Existing sparse attention methods either target training-free acceleration or overlook the unique structure of joint video-audio data, where cross-modal interactions are inherently concentrated around sound-producing regions. To address this, we propose Prism, a dynamic sparse attention framework for natively training joint video-audio generation models at 2K. In particular, Prism organizes the token sequence into spatiotemporal macro-zones, enabling the attention structure to adapt to local content. For each zone, it estimates local information structure via video feature variance along the channel and feature norms from the audio-to-video cross-attention, jointly capturing how visual content varies directionally and how strongly audio influences each visual region. Based on these signals, Prism dynamically assigns a tailored block shape to each zone, applying finer partitioning along axes of rapid visual content variation and strong audio-visual coupling. This encourages tokens within each block to remain semantically coherent, allowing block-level features to capture both visual content and joint video-audio interaction patterns. Prism further adopts a hybrid block selection strategy to dynamically determine per-query sparsity. Experiments show that Prism achieves 2.5times training speedup compared to full attention, while surpassing it in generation quality.",
+    "notes": "好的，我们来聊一篇关于视频和音频联合生成模型训练的最新论文，叫做 Prism。",
+    "url": "https://arxiv.org/abs/2610.05416",
+    "upvotes": 1,
+    "audio": "2026-10-06-prism-dynamic-sparse-attention-for-native-2k-joint-video-aud-ac28f8a2.mp3",
+    "size": 5482944,
+    "published": "2026-10-06T02:40:47.640137+00:00"
+  },
+  {
+    "key": "2610.04318",
+    "date": "2026-10-06",
+    "title": "Rethinking Long-Video Efficiency: A Joint Allocation Perspective on Frames, Pixels, and Front-End Latency",
+    "abstract": "Efficient long-video understanding with vision-language models (VLMs) is often framed as selecting informative frames or visual tokens at a fixed native resolution. We show that per-frame resolution can instead be traded for denser temporal coverage, while front-end decoding latency depends on the size of the candidate pool rather than the final token budget. An empirical study across multiple VLMs and long-video benchmarks yields three findings: dense low-resolution sampling outperforms sparse native-resolution sampling at matched token budgets; resolution-sensitive tasks benefit from selected high-resolution frames; and front-end decoding dominates wall time for hour-long videos. Motivated by these findings, we introduce LoHi, a training-free, single-pass framework that combines a dense low-resolution video stream with sparse high-resolution image frames through the VLM's native video and image pathways. LoHi-Anchor selects high-resolution frames using codec I-frame metadata, while LoHi-SemDiv uses query relevance and visual diversity over CLIP features. Across three long-video benchmarks, LoHi improves average accuracy by 10.6 percentage points over the native-resolution baseline at a matched token budget and by 5.2 percentage points over the strongest prior efficiency method. It also reduces front-end decoding latency by up to 7x on hour-long videos. Project page: https://sixundong.com/projects/lohi",
+    "notes": "好的，现在我们来深入探讨一篇非常有趣且实用的论文，它的标题是《Rethinking Long-Video Efficiency: A Joint Allocation Perspective on Frames, Pixels, and Front-End Latency》。这篇论文要解决的核心问题是：在处理长视频时，如何才能更高效地利用我们有限的视觉语言模型，也就是 VLM 的资源。",
+    "url": "https://arxiv.org/abs/2610.04318",
+    "upvotes": 2,
+    "audio": "2026-10-06-rethinking-long-video-efficiency-a-joint-allocation-perspect-013dfea2.mp3",
+    "size": 4849632,
+    "published": "2026-10-06T02:39:15.908558+00:00"
+  },
+  {
     "key": "2610.01016",
     "date": "2026-10-02",
     "title": "Scaling and Distilling Text Embeddings for Better Diffusibility",
