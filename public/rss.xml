@@ -8,6 +8,15 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>HiPLEX: Hierarchical Policy Factorization for Full Duplex Speech Language Models</title>
+      <description>好的，我们来把这篇论文《HiPLEX: Hierarchical Policy Factorization for Full Duplex Speech Language Models》整理成一段适合开车时收听的中文口播稿。这篇论文主要解决的是人机对话中一个非常实际且复杂的问题：如何让AI在实时对话中表现得更像人类，不仅仅是能说出恰当的回答，还要在合适的时机说话、倾听、打断、回应，以及进行“嗯、啊”之类的简短回应，也就是所谓的“全双工”对话。</description>
+      <link>https://arxiv.org/abs/2610.07727</link>
+      <guid isPermaLink="false">2026-10-07-hiplex-hierarchical-policy-factorization-for-full-duplex-spe-3a9eb85e.mp3</guid>
+      <pubDate>Wed, 07 Oct 2026 01:57:09 +0000</pubDate>
+      <itunes:duration>599</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-07-hiplex-hierarchical-policy-factorization-for-full-duplex-spe-3a9eb85e.mp3" length="3596976" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Prism: Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training</title>
       <description>好的，我们来聊一篇关于视频和音频联合生成模型训练的最新论文，叫做 Prism。</description>
       <link>https://arxiv.org/abs/2610.05416</link>

@@ -1,5 +1,17 @@
 [
   {
+    "key": "2610.07727",
+    "date": "2026-10-07",
+    "title": "HiPLEX: Hierarchical Policy Factorization for Full Duplex Speech Language Models",
+    "abstract": "As human--AI interactions become more conversational, full-duplex speech language models capable of natural real-time dialogue are growing in importance. Beyond generating appropriate responses, these models must coordinate turn-taking, backchanneling, and floor management in real time. Reinforcement learning (RL) provides a way to refine these behaviors through direct feedback on interaction outcomes. However, existing RL methods either apply timing feedback to a token policy or optimize semantic content, leaving the joint improvement of timing and content unresolved. We introduce HiPLEX, an RL framework that factorizes a pretrained full-duplex text policy into a control policy that decides when to emit content and a conditional content policy that decides what to emit. The first factor selects among 'pad', 'epad', and 'con'. The second selects a token only when 'con' is chosen. This hierarchy describes conditional actions within each frame and uses the model's existing text head. We route timing advantages to the token-group factor through event-causal masks derived from generated speech episodes, and route an LLM-judge semantic advantage to the conditional content factor. Across three Moshi seeds on Full-Duplex-Bench v1, HiPLEX reduces takeover rates during natural user pauses and backchannel opportunities, and shortens post-interruption response latency relative to GRPO, while maintaining comparable judged interruption-response quality. On Moshi and PersonaPlex, HiPLEX better matches pooled human turn-timing and backchannel-rate marginals than GRPO.",
+    "notes": "好的，我们来把这篇论文《HiPLEX: Hierarchical Policy Factorization for Full Duplex Speech Language Models》整理成一段适合开车时收听的中文口播稿。这篇论文主要解决的是人机对话中一个非常实际且复杂的问题：如何让AI在实时对话中表现得更像人类，不仅仅是能说出恰当的回答，还要在合适的时机说话、倾听、打断、回应，以及进行“嗯、啊”之类的简短回应，也就是所谓的“全双工”对话。",
+    "url": "https://arxiv.org/abs/2610.07727",
+    "upvotes": 0,
+    "audio": "2026-10-07-hiplex-hierarchical-policy-factorization-for-full-duplex-spe-3a9eb85e.mp3",
+    "size": 3596976,
+    "published": "2026-10-07T01:57:09.860956+00:00"
+  },
+  {
     "key": "2610.05416",
     "date": "2026-10-06",
     "title": "Prism: Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training",
