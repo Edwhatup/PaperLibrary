@@ -1,5 +1,65 @@
 [
   {
+    "key": "2610.07967",
+    "date": "2026-10-08",
+    "title": "DecepEval: A Benchmark for Evaluating Deception in LLM Agents",
+    "abstract": "As large language model (LLM) agents become increasingly autonomous, they may pursue task performance through deception, raising concerns about their reliable deployment. Existing evaluations show that LLM agents can deceive, but often examine isolated scenarios or narrowly defined conditions, limiting systematic understanding of when deception becomes more likely. To address this gap, we introduce DecepEval, a benchmark comprising 1,532 instances across 3 task families and 28 professional scenarios. Drawing on classical fraud theories, we propose the LLM Deception Diamond framework, which characterizes four external conditions that may induce deception: pressure, incentive, opportunity, and conflict. DecepEval pairs neutral and induced versions of each instance to measure condition-dependent changes in deception rates, while explicit task facts and observable agent behavior help distinguish deception from capability-related errors. Evaluations of nine frontier LLMs show that inducements increase deception across models and task families, even among models with low baseline deception rates. DecepEval makes these vulnerabilities measurable, providing a shared benchmark for progress toward trustworthy artificial intelligence.",
+    "notes": "大型语言模型代理在日益自主化的过程中，可能会为了追求任务表现而采取欺骗行为，这引发了人们对其可靠部署的担忧。现有的一些评估已经显示，大型语言模型代理确实能够进行欺骗，但这些研究往往只考察孤立的场景或者定义狭窄的条件，这使得我们很难系统性地理解，到底在什么情况下，欺骗行为会更容易出现。为了解决这个空白，我们今天介绍一项名为 DecepEval 的基准测试，它包含了 1532 个测试实例，涵盖了三大任务系列和 28 个专业场景。",
+    "url": "https://arxiv.org/abs/2610.07967",
+    "upvotes": 3,
+    "audio": "2026-10-08-decepeval-a-benchmark-for-evaluating-deception-in-llm-agents-3172cdb2.mp3",
+    "size": 7766784,
+    "published": "2026-10-08T02:32:39.518817+00:00"
+  },
+  {
+    "key": "2610.08760",
+    "date": "2026-10-08",
+    "title": "WorldSonus: Bringing Sound to Worlds",
+    "abstract": "Recent advances in world models have enabled increasingly realistic visual synthesis. However, these generated environments remain largely silent. Bringing sound to world models poses three core challenges: real-time generation to keep pace with interactive video streams, interactive control to respond to mid-stream sound instructions, and spatially aligned stereo to reflect scene geometry and camera motion. To address these demands, we introduce WorldSonus, an interactive video-to-audio framework designed for real-time spatial sound synthesis in world models. For real-time generation, WorldSonus employs a streaming causal autoregressive diffusion architecture that synthesizes audio chunks at a low real-time factor (RTF) of 0.41. For interactive control, we incorporate an audio-centric captioning pipeline with chunk-indexed prompt scheduling, enabling dynamic manipulation of sound events during generation. For spatial alignment, we leverage high-quality stereo supervision curated from diverse stereo and ambisonic data. Extensive experiments demonstrate that while tailored for world models, WorldSonus generalizes effectively to open-domain video-to-audio benchmarks, matching or outperforming state-of-the-art bidirectional models in both acoustic quality and spatial alignment. Project page: https://noizai.github.io/WorldSonus/",
+    "notes": "好的，接下来我将为您详细解读这篇题为 WorldSonus: Bringing Sound to Worlds 的论文。",
+    "url": "https://arxiv.org/abs/2610.08760",
+    "upvotes": 3,
+    "audio": "2026-10-08-worldsonus-bringing-sound-to-worlds-d7ddc307.mp3",
+    "size": 5919120,
+    "published": "2026-10-08T02:30:49.131904+00:00"
+  },
+  {
+    "key": "2610.10429",
+    "date": "2026-10-08",
+    "title": "SGF+: Decoupling Gradient Flows for Autoregressive Video Generation",
+    "abstract": "Autoregressive video generation requires denoising the current frames while writing their key-value representations as context for future predictions. However, these two roles typically share parameters, and we find that their gradients exhibit distinct patterns and systematic negative alignment, hindering the joint optimization of visual quality and temporal consistency. We introduce Self Gradient Forcing Plus (SGF+), which assigns separate parameters to context writing and denoising while preserving their interaction through causal attention. Both roles are jointly optimized using the original generation objective without auxiliary losses, with context writing supervised through its contribution to future predictions. This simple change improves visual quality and long-horizon consistency over the evaluated baselines in both framewise and chunkwise generation, without additional video training data or a longer training horizon. Trained on only 5s rollouts, SGF+ supports continuous generation for up to 24 hours without long-video fine-tuning. These results highlight role-specific parameterization as an effective design principle for high-quality autoregressive video generation and native long-horizon extrapolation.",
+    "notes": "好的，这是一段约 15 分钟的中文口播稿，总字数在 4590 到 6120 字之间，适合开车时收听。我会直接切入主题，避免任何开场白和套话，用自然流畅的口语表达。",
+    "url": "https://arxiv.org/abs/2610.10429",
+    "upvotes": 3,
+    "audio": "2026-10-08-sgf-decoupling-gradient-flows-for-autoregressive-video-gener-60f0ab31.mp3",
+    "size": 4493232,
+    "published": "2026-10-08T02:28:59.065242+00:00"
+  },
+  {
+    "key": "2610.08699",
+    "date": "2026-10-08",
+    "title": "nanoMuse: An Open-Source Personal Agent for Every Device You Own",
+    "abstract": "Assistants from 2011 answered and waited, and agents from 2023 did a task and stopped. In September 2026 Meta's Muse showed an agent for one person, with accounts, devices, memory and a conversation that lasts, closed, in a vendor's cloud, in one country. Such an agent is expected to act on a person's accounts and devices, remember them across weeks, speak first when it is worth it, and answer for what it did. It is a kind of software, not a model, and until now had no open counterpart. This report defines the personal agent in five questions and three horizons. It reads how Muse is built from Meta's public record and a copy of its production prompt, each statement marked by its source. It then presents nanoMuse, the open-source counterpart under the GPL-3.0, one agent on every device a person owns, with hands on the phone's screen and the computer's. They share one conversation over a relay anyone can run; every action goes through a Sentinel, memory is files the person can read, and the model is their choice. Its size and cost are given as estimates. What is open, memory with provenance, an evaluation suite for the hands and an open model for them, is set out as a roadmap.",
+    "notes": "现有的智能体，无论是早期的智能助手还是后来的任务型智能体，都存在一个核心问题：它们要么只响应你的指令然后等待，要么完成一个任务就停下来，无法真正像一个私人助理那样，长时间为你工作，记住你的偏好，甚至在必要时主动帮你处理事务。更重要的是，市面上那些声称是“私人智能体”的产品，比如Meta在2026年9月推出的缪斯（Muse），虽然展现了个人智能体的理想形态——它能为你管理账户、操作设备，记忆你的喜好长达数周，甚至在关键时刻主动与你沟通，并能对自己的行为负责——但它却是一个封闭的系统。它运行在厂商的云端，你无法检查它的内部运作，也无法将它部署到你自己的设备上。这种将用户的生活核心数据和操作能力都锁",
+    "url": "https://arxiv.org/abs/2610.08699",
+    "upvotes": 6,
+    "audio": "2026-10-08-nanomuse-an-open-source-personal-agent-for-every-device-you--b8091985.mp3",
+    "size": 9639504,
+    "published": "2026-10-08T02:28:06.228831+00:00"
+  },
+  {
+    "key": "2610.04299",
+    "date": "2026-10-08",
+    "title": "Questioning the Questions: Sustaining Self-Evolution in Reasoning Models",
+    "abstract": "Self-evolving reasoning models learn from their own generated questions, yet repeated self-training can lead to performance collapse. In this paper, we investigate why performance deteriorates over successive rounds and how to sustain self-evolution. Our analysis identifies two recurring quality problems in self-generated questions: invalid questions and repeated variants of the same mathematical questions. First, invalid questions become more prevalent across rounds, and answer-consistency filtering further increases their proportion in training data. Second, existing question diversity controls based on lexical similarity can miss mathematically equivalent questions expressed in different ways, which leads to question diversity collapse in later training rounds. Building on these findings, we introduce R-Quest, which uses question validity and novelty feedback to guide self-evolution. We first train the solver to recognize and reject invalid questions, then use its judgments to guide questioner rewards and filter solver training data. To avoid question repetition, we use a frozen base model to compare sampled question pairs and provide novelty feedback. Empirically, our method consistently achieves the highest average performance on 12 benchmarks in mathematical reasoning, general-domain reasoning, and code generation across two model families. Additionally, R-Quest maintains stable performance gains over ten rounds of self-evolution, peaking in the final round and outperforming R-Zero by 17.32 points.",
+    "notes": "各位听众朋友，今天我们要探讨一篇题为“质疑问题：在推理模型中维持自我演进”的论文。这篇论文聚焦的是当前大型语言模型在自我演进过程中面临的一个核心难题：为什么它们在通过生成和解决自身任务来学习时，性能会随着训练轮次的增加而逐渐下降，甚至最终崩溃？以及我们如何才能让这种自我演进持续下去，实现真正的长期进步？",
+    "url": "https://arxiv.org/abs/2610.04299",
+    "upvotes": 17,
+    "audio": "2026-10-08-questioning-the-questions-sustaining-self-evolution-in-reaso-e64d2418.mp3",
+    "size": 7080624,
+    "published": "2026-10-08T02:25:51.628743+00:00"
+  },
+  {
     "key": "2610.07727",
     "date": "2026-10-07",
     "title": "HiPLEX: Hierarchical Policy Factorization for Full Duplex Speech Language Models",

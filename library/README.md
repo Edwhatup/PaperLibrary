@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-10-08
+
+- **DecepEval: A Benchmark for Evaluating Deception in LLM Agents** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-08-decepeval-a-benchmark-for-evaluating-deception-in-llm-agents-3172cdb2.mp3) [arXiv](https://arxiv.org/abs/2610.07967)
+- **WorldSonus: Bringing Sound to Worlds** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-08-worldsonus-bringing-sound-to-worlds-d7ddc307.mp3) [arXiv](https://arxiv.org/abs/2610.08760)
+- **SGF+: Decoupling Gradient Flows for Autoregressive Video Generation** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-08-sgf-decoupling-gradient-flows-for-autoregressive-video-gener-60f0ab31.mp3) [arXiv](https://arxiv.org/abs/2610.10429)
+- **nanoMuse: An Open-Source Personal Agent for Every Device You Own** · 6★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-08-nanomuse-an-open-source-personal-agent-for-every-device-you--b8091985.mp3) [arXiv](https://arxiv.org/abs/2610.08699)
+- **Questioning the Questions: Sustaining Self-Evolution in Reasoning Models** · 17★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-08-questioning-the-questions-sustaining-self-evolution-in-reaso-e64d2418.mp3) [arXiv](https://arxiv.org/abs/2610.04299)
+
 ## 2026-10-07
 
 - **HiPLEX: Hierarchical Policy Factorization for Full Duplex Speech Language Models** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-07-hiplex-hierarchical-policy-factorization-for-full-duplex-spe-3a9eb85e.mp3) [arXiv](https://arxiv.org/abs/2610.07727)

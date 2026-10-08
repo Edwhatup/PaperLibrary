@@ -1,0 +1,152 @@
+[
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.04299",
+    "title": "Questioning the Questions: Sustaining Self-Evolution in Reasoning Models",
+    "abstract": "Self-evolving reasoning models learn from their own generated questions, yet repeated self-training can lead to performance collapse. In this paper, we investigate why performance deteriorates over successive rounds and how to sustain self-evolution. Our analysis identifies two recurring quality problems in self-generated questions: invalid questions and repeated variants of the same mathematical questions. First, invalid questions become more prevalent across rounds, and answer-consistency filtering further increases their proportion in training data. Second, existing question diversity controls based on lexical similarity can miss mathematically equivalent questions expressed in different ways, which leads to question diversity collapse in later training rounds. Building on these findings, we introduce R-Quest, which uses question validity and novelty feedback to guide self-evolution. We first train the solver to recognize and reject invalid questions, then use its judgments to guide questioner rewards and filter solver training data. To avoid question repetition, we use a frozen base model to compare sampled question pairs and provide novelty feedback. Empirically, our method consistently achieves the highest average performance on 12 benchmarks in mathematical reasoning, general-domain reasoning, and code generation across two model families. Additionally, R-Quest maintains stable performance gains over ten rounds of self-evolution, peaking in the final round and outperforming R-Zero by 17.32 points.",
+    "upvotes": 17,
+    "url": "https://arxiv.org/abs/2610.04299",
+    "pdf": "https://arxiv.org/pdf/2610.04299",
+    "hf_url": "https://huggingface.co/papers/2610.04299"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.08699",
+    "title": "nanoMuse: An Open-Source Personal Agent for Every Device You Own",
+    "abstract": "Assistants from 2011 answered and waited, and agents from 2023 did a task and stopped. In September 2026 Meta's Muse showed an agent for one person, with accounts, devices, memory and a conversation that lasts, closed, in a vendor's cloud, in one country. Such an agent is expected to act on a person's accounts and devices, remember them across weeks, speak first when it is worth it, and answer for what it did. It is a kind of software, not a model, and until now had no open counterpart. This report defines the personal agent in five questions and three horizons. It reads how Muse is built from Meta's public record and a copy of its production prompt, each statement marked by its source. It then presents nanoMuse, the open-source counterpart under the GPL-3.0, one agent on every device a person owns, with hands on the phone's screen and the computer's. They share one conversation over a relay anyone can run; every action goes through a Sentinel, memory is files the person can read, and the model is their choice. Its size and cost are given as estimates. What is open, memory with provenance, an evaluation suite for the hands and an open model for them, is set out as a roadmap.",
+    "upvotes": 6,
+    "url": "https://arxiv.org/abs/2610.08699",
+    "pdf": "https://arxiv.org/pdf/2610.08699",
+    "hf_url": "https://huggingface.co/papers/2610.08699"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.10429",
+    "title": "SGF+: Decoupling Gradient Flows for Autoregressive Video Generation",
+    "abstract": "Autoregressive video generation requires denoising the current frames while writing their key-value representations as context for future predictions. However, these two roles typically share parameters, and we find that their gradients exhibit distinct patterns and systematic negative alignment, hindering the joint optimization of visual quality and temporal consistency. We introduce Self Gradient Forcing Plus (SGF+), which assigns separate parameters to context writing and denoising while preserving their interaction through causal attention. Both roles are jointly optimized using the original generation objective without auxiliary losses, with context writing supervised through its contribution to future predictions. This simple change improves visual quality and long-horizon consistency over the evaluated baselines in both framewise and chunkwise generation, without additional video training data or a longer training horizon. Trained on only 5s rollouts, SGF+ supports continuous generation for up to 24 hours without long-video fine-tuning. These results highlight role-specific parameterization as an effective design principle for high-quality autoregressive video generation and native long-horizon extrapolation.",
+    "upvotes": 3,
+    "url": "https://arxiv.org/abs/2610.10429",
+    "pdf": "https://arxiv.org/pdf/2610.10429",
+    "hf_url": "https://huggingface.co/papers/2610.10429"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.08760",
+    "title": "WorldSonus: Bringing Sound to Worlds",
+    "abstract": "Recent advances in world models have enabled increasingly realistic visual synthesis. However, these generated environments remain largely silent. Bringing sound to world models poses three core challenges: real-time generation to keep pace with interactive video streams, interactive control to respond to mid-stream sound instructions, and spatially aligned stereo to reflect scene geometry and camera motion. To address these demands, we introduce WorldSonus, an interactive video-to-audio framework designed for real-time spatial sound synthesis in world models. For real-time generation, WorldSonus employs a streaming causal autoregressive diffusion architecture that synthesizes audio chunks at a low real-time factor (RTF) of 0.41. For interactive control, we incorporate an audio-centric captioning pipeline with chunk-indexed prompt scheduling, enabling dynamic manipulation of sound events during generation. For spatial alignment, we leverage high-quality stereo supervision curated from diverse stereo and ambisonic data. Extensive experiments demonstrate that while tailored for world models, WorldSonus generalizes effectively to open-domain video-to-audio benchmarks, matching or outperforming state-of-the-art bidirectional models in both acoustic quality and spatial alignment. Project page: https://noizai.github.io/WorldSonus/",
+    "upvotes": 3,
+    "url": "https://arxiv.org/abs/2610.08760",
+    "pdf": "https://arxiv.org/pdf/2610.08760",
+    "hf_url": "https://huggingface.co/papers/2610.08760"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.07967",
+    "title": "DecepEval: A Benchmark for Evaluating Deception in LLM Agents",
+    "abstract": "As large language model (LLM) agents become increasingly autonomous, they may pursue task performance through deception, raising concerns about their reliable deployment. Existing evaluations show that LLM agents can deceive, but often examine isolated scenarios or narrowly defined conditions, limiting systematic understanding of when deception becomes more likely. To address this gap, we introduce DecepEval, a benchmark comprising 1,532 instances across 3 task families and 28 professional scenarios. Drawing on classical fraud theories, we propose the LLM Deception Diamond framework, which characterizes four external conditions that may induce deception: pressure, incentive, opportunity, and conflict. DecepEval pairs neutral and induced versions of each instance to measure condition-dependent changes in deception rates, while explicit task facts and observable agent behavior help distinguish deception from capability-related errors. Evaluations of nine frontier LLMs show that inducements increase deception across models and task families, even among models with low baseline deception rates. DecepEval makes these vulnerabilities measurable, providing a shared benchmark for progress toward trustworthy artificial intelligence.",
+    "upvotes": 3,
+    "url": "https://arxiv.org/abs/2610.07967",
+    "pdf": "https://arxiv.org/pdf/2610.07967",
+    "hf_url": "https://huggingface.co/papers/2610.07967"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.07591",
+    "title": "Recurrent Looped Transformer",
+    "abstract": "State tracking requires an update at every input, but the depth a Transformer applies to each token is fixed regardless of sequence length. We introduce the Recurrent Looped Transformer (RLT), which splits its layers between a parallel causal encoder and a recurrent decoder. At each token, the decoder merges the encoder output with the previous token's final decoder state, so the computation path grows with sequence length at a fixed per-token cost. On six algorithmic tasks, we compare five splits of eight layers with an eight-layer Transformer over three seeds. Trained on at most 40 bits, two RLT splits generalize parity to 256 bits with 100% accuracy in every seed, while the Transformer stays at chance. On swap-based S_5 permutation tracking at eight times the training length, RLT reaches 97% final-state accuracy versus under 1% for the Transformer, and accuracy increases with decoder depth. On modular arithmetic beyond the training lengths, RLT reaches up to 93% versus 33% for the Transformer. Ablations show that these gains depend on the feedback: removing it drops parity and swap-based S_5 to chance at every split. Updating the feedback once per four-token chunk lets known tokens in a chunk run in parallel and keeps 64-bit parity at 99%, while permutation tracking depends on per-token feedback: chunking lowers length-64 swap-based S_5 from 100% to 20%.",
+    "upvotes": 3,
+    "url": "https://arxiv.org/abs/2610.07591",
+    "pdf": "https://arxiv.org/pdf/2610.07591",
+    "hf_url": "https://huggingface.co/papers/2610.07591"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2609.39306",
+    "title": "ReSAIL: Mitigating Collapse in Iterative Agent Self-Distillation",
+    "abstract": "Iterative self-distillation enables LLM agents to learn from successive deployments, offering a path toward recursive self-improvement (RSI). Yet our experiments with existing methods reveal a collapse in deployment performance across cycles, while task performance with privileged information (PI) also declines. We address this collapse by prioritizing informative interaction steps for distillation and preserving PI-conditioned behavior as the student becomes the next teacher. We introduce Retentive and Selective Augmentation for Iterative Self-Distillation (ReSAIL), a plug-in augmentation for iterative PI-based self-distillation. ReSAIL selects interaction steps where PI most strongly changes the teacher's predictions and balances the resulting distillation losses across trajectories. It also regularizes the student's PI-conditioned output distributions toward those of the frozen teacher at selected and unselected steps to preserve PI-conditioned behavior for supervision in the next cycle. On ALFWorld and TextCraft, ReSAIL sustains substantial gains across model scales over three cycles, with an average absolute gain of 22.5% in final-cycle success rates when added to self-distillation baselines. Sensitivity-guided selection of offline data also improves action prediction accuracy for multimodal GUI agents on AITZ. These findings provide the first evidence that a more robust learning mechanism can effectively mitigate performance collapse in iterative agent self-distillation over deployment trajectories.",
+    "upvotes": 3,
+    "url": "https://arxiv.org/abs/2609.39306",
+    "pdf": "https://arxiv.org/pdf/2609.39306",
+    "hf_url": "https://huggingface.co/papers/2609.39306"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.08963",
+    "title": "On KL-Regularized Policy Optimization",
+    "abstract": "Asynchronous reinforcement learning (RL) for large language model (LLM) agents trains one policy on trajectories generated by another: rollouts come from stale checkpoints, and the inference engine's probabilities differ from the trainer's even at identical parameters. Standard remedies either clip importance ratios, which biases the update, or, as in GRPO, sample a group of responses per prompt, which is costly when episodes are long. We propose KL-Regularized Policy Optimization (KLPO), a framework that anchors the KL regularizer at the sampler. The regularized improvement step then has a closed-form Gibbs solution, and KLPO fits its log-ratio optimality condition by least squares on the sampler's own trajectories, so the sampler probability enters through a log-ratio and no importance weights are needed. Profiling out the regression intercept replaces the intractable log-partition function with the signal's sampler mean plus a sampler-to-trainer KL divergence. For token-level policy mirror descent targets, we show that the resulting gradient can be computed from terminal returns without a critic, via sampler-centered scores or a single trajectory residual, even under stochastic tool outputs. We further prove that independent Monte Carlo estimates of the KL term keep these gradients unbiased, derive the exact KL gap of cheaper top-K and binary approximations, and show that SPPO, GPO, REBEL, and BPO arise as special cases of KLPO. The result is a critic-free update that uses one rollout per prompt and requires neither a learned normalizer nor a group of responses.",
+    "upvotes": 3,
+    "url": "https://arxiv.org/abs/2610.08963",
+    "pdf": "https://arxiv.org/pdf/2610.08963",
+    "hf_url": "https://huggingface.co/papers/2610.08963"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.08621",
+    "title": "Recursive Game Creator: An Agentic Product-Level Experience-Oriented Game Harness",
+    "abstract": "Recent game design agents have made substantial progress in generating playable games. However, program correctness does not ensure an enjoyable experience for players. We present Recursive Game Creator, an experience-oriented harness to advance agentic game development from rough game prototypes into entertaining games. Recursive Game Creator organizes recursive development around four components: Designer, Builder, Player, and Reviewer. The Designer translates user instructions and Reviewer's feedback into detailed plans. The Builder turns these plans into candidate games. The coding-native Player creates and executes reusable policies through programmatic interfaces to efficiently collect diverse gameplay trajectories, mitigating evaluation bias caused by slow GUI-based collection. The Reviewer uses carefully designed trajectory-based metrics to induce player preferences, integrating with visual evidence and explicit textual preferences to evaluate games against game-specific criteria. Finally, the Reviewer accepts the better version and provides improvement reviews for the next round, closing the recursive loop. Our method achieves state-of-the-art overall performance of 77.89 on GameCraft-Bench. On GameASG-Bench, it achieves a strict task success rate of 53.2%, a 34.1% improvement over the same-model baseline, and the highest mean runtime-check pass rate at 93.4% among compared methods. A user study shows longer playtime and higher ratings. Code is coming soon.",
+    "upvotes": 1,
+    "url": "https://arxiv.org/abs/2610.08621",
+    "pdf": "https://arxiv.org/pdf/2610.08621",
+    "hf_url": "https://huggingface.co/papers/2610.08621"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.05034",
+    "title": "Agentic RAG Evaluation: Budget Allocation Across Questions, Trajectories, and Reads",
+    "abstract": "Evaluation budgets in agentic retrieval-augmented generation span questions, search trajectories, and repeated answers. We measure allocation precision, reading efficiency, and cost boundaries using a retrieval-feedback comparison on HotpotQA and MuSiQue. At 34.14--34.39M model tokens, broader question coverage lowers standard error by 33\\% versus five reads and 12.6\\% versus three trajectories. Archived nested and Q-only forecasts predict these allocations within 4.0\\% and 3.5\\%, respectively. Depth subsets establish no clear forecasting advantage beyond the two-trajectory audit. One-read variance penalties relative to the fitted optimum at the same token budget are 0--9.9\\%, with substantial Pro uncertainty. Under recorded model fees, more questions beat more trajectories at search prices of \\$0--1 per 1,000 requests; question-versus-read fee rankings remain unresolved. Temperature zero cuts answer disagreement from 14.3\\% to 3.4\\% while comparison precision stays similar. \\par\\medskip\\noindentKeywords: Agentic RAG; Evaluation budget; Generalizability theory; Repeated sampling.",
+    "upvotes": 1,
+    "url": "https://arxiv.org/abs/2610.05034",
+    "pdf": "https://arxiv.org/pdf/2610.05034",
+    "hf_url": "https://huggingface.co/papers/2610.05034"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.05289",
+    "title": "Mobile-4DGS: Unified Static-Dynamic Real-time Mobile Gaussian Splatting",
+    "abstract": "Recent advances in 3D Gaussian Splatting (3DGS) have achieved remarkable performance in novel view synthesis, yet deploying both static and dynamic Gaussian representations on resource-constrained mobile devices remains challenging due to heavy storage, redundant primitives, and costly per-frame computation. We present Mobile-4DGS, a unified lightweight framework for high-fidelity real-time static and dynamic Gaussian rendering on mobile platforms. For compact appearance modeling, we introduce a Monte Carlo Specular Energy Aggregator that compresses high-order radiance residuals into the first-order Spherical Harmonics (SH), together with an Attribute-Conditioned SH Enhancement module whose predicted offsets are pre-baked before inference. We further propose a Multi-View Alpha-Based Densification and Pruning strategy to suppress redundant primitives while maintaining multi-view consistency. For dynamic scenes, we develop a compact explicit 4D representation by constructing second-order Gaussian motion, learnable temporal support, and a binary static-dynamic partition, enabling continuous-time modeling without runtime deformation networks. Based on this partition, a Depth-Order Certificate selectively reuses previously committed depth orders to reduce re-projection, sorting, merging, and index-buffer updates during playback. Extensive experiments on static and dynamic scenes demonstrate that Mobile-4DGS substantially reduces storage and rendering overhead while maintaining competitive visual quality, enabling real-time 3D and 4D Gaussian Splatting on mobile devices. magenta{https://xiaobiaodu.github.io/mobile-4dgs-project/{Code has been released: https://xiaobiaodu.github.io/mobile-4dgs-project/}}.",
+    "upvotes": 1,
+    "url": "https://arxiv.org/abs/2610.05289",
+    "pdf": "https://arxiv.org/pdf/2610.05289",
+    "hf_url": "https://huggingface.co/papers/2610.05289"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.10114",
+    "title": "Mechanics of Long-Context Hybrid Models Part 1.1: From Hybrid Attention to Hybrid Position",
+    "abstract": "The architectural design of Large Language Models (LLMs) is shifting from traditional full-attention-only models to hybrid models, which combine different attention modules to improve long-context efficiency and performance in length extrapolation and context extension. To explain why hybrid models work and how to design them better, we propose Mechanics of Long-Context Hybrid Models. As Part 1.1 of this series, we begin with hybrids of full attention and either sliding-window attention (SWA) or gated variants of linear attention (LA), represented by GLA and GDN. We first observe a Seesaw Effect in Context Extension: LA hybrids benefit more from long-context continual pretraining, whereas SWA hybrids perform better under length extrapolation. We attribute this behavior to differences in the positional inductive biases induced by these attention mechanisms. We find that SWA hybrids suffer from a Short-Context Learning Trap, Short-Window Weariness, and Long-Window Laziness, and require extended windows to enhance performance in continual long-context pretraining. For LA hybrids, we summarize the Matthew Effect of Hybrid Position Extrapolation and propose Sliding-Window Linear Attention, achieving 16times training-free length extrapolation while maintaining 100\\% accuracy on NIAH-SK1 in 64k context length.",
+    "upvotes": 1,
+    "url": "https://arxiv.org/abs/2610.10114",
+    "pdf": "https://arxiv.org/pdf/2610.10114",
+    "hf_url": "https://huggingface.co/papers/2610.10114"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.07226",
+    "title": "Minimal Witness Reinforcement Learning",
+    "abstract": "``What are the irreducible conditions that are sufficient to produce an outcome?'' is one of the most common questions that recur across computation and science. Its answers, the minimal sufficient witnesses, are what we mean by explanations, mechanisms and reasons. These problems usually ask for multiple minimal witnesses, yet standard RL methods may reveal only one solution or redundant ones. We formalize this problem as minimal-witness identification and introduce Minimal-Witness Reinforcement Learning (MWRL). MWRL takes the union of the sets certified by successful proposals sampled from the policy and credits each proposal for the coverage the group union would lose without that proposal. This credit assignment, derived directly from the problem definition, unifies the demands for minimality and recovery of alternatives from a single black-box verifier bit. Under this principle, we derive a value iteration planner that recovers the entire family of witnesses and a policy gradient method that can scale to large language models. Across different experimental settings, MWRL recovers most minimal witnesses, while other methods return redundant supersets or a single witness. By making witness families learnable from verifier feedback, MWRL expands the scope of reinforcement learning beyond single-solution optimization. Our code is available at https://github.com/TSUITUENYUE/MWRL.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2610.07226",
+    "pdf": "https://arxiv.org/pdf/2610.07226",
+    "hf_url": "https://huggingface.co/papers/2610.07226"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.10047",
+    "title": "AdSpark: A Large-Scale Dataset and Benchmark for Product-Centric Advertisement Video Generation",
+    "abstract": "Product-centric advertisement video generation aims to create promotional videos that preserve fine-grained product identity while presenting selling points through coherent multi-shot narratives. However, this emerging task remains underexplored due to the lack of large-scale advertisement-specific datasets and comprehensive evaluation frameworks. To address this gap, we introduce AdSpark, a large-scale dataset and benchmark for product-centric advertisement video generation, based on data from a major e-commerce platform. AdSpark-300K contains approximately 300K reference image--prompt--video triplets, comprising a real-world subset and a synthetic subset. Each sample provides structured advertisement annotations, including product identity annotations, selling-point descriptions, creative plans, and aligned audio scripts, enabling models to learn product preservation and advertisement-oriented visual storytelling. We further propose AdSpark-Bench, a diagnostic benchmark that evaluates generated advertisements across six dimensions, including visual quality, product fidelity, instruction adherence, temporal coherence, audio alignment, and advertisement effectiveness. Based on AdSpark-Bench, we evaluate representative models, revealing key challenges in product preservation, multi-shot storytelling, and selling-point visualization. Experiments with AdSpark-300K-finetuned models further validate the effectiveness of our dataset. AdSpark provides a unified dataset and benchmark for future research, and we will release the dataset upon acceptance.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2610.10047",
+    "pdf": "https://arxiv.org/pdf/2610.10047",
+    "hf_url": "https://huggingface.co/papers/2610.10047"
+  },
+  {
+    "date": "2026-10-08",
+    "arxiv_id": "2610.03036",
+    "title": "WebFovea: When the Model Is Right but the Click Is Wrong -- Reliable Round Trips for Vision-Based Web Agents on Live Websites",
+    "abstract": "We present WebFovea, a vision-based web agent that placed 2nd in the WebRetriever Challenge 2026 with a final score of 57.0 out of 100. The challenge evaluates agents end to end on Protocol III of the WebRetriever benchmark (arXiv:2607.06118): starting from an entry URL on a live website, the agent must operate the site's own interface and return a verifiable answer. A capable multimodal large language model (LLM) is necessary for this, but not sufficient. The model's decisions reach the browser through the harness, the code between the model and the page. At every step, four things must go right: the model's reply must be parsed into the intended action, the action must take effect on the page, the result must be reported back accurately, and the model must be shown the information it needs. On real websites, many of the failures we observed occurred at one of these four stages rather than in the model's reasoning. A coordinate-space mismatch placed every click at 3/4 of its intended coordinates; actions on native dropdowns, inside iframes, and in text boxes failed silently; and self-generated chat-template tokens contaminated 4.9% of task episodes. WebFovea hardens each stage and surrounds the loop with guardrails that keep the agent within the rules and its budget. The four-stage view does not depend on the model, although some individual fixes do. Because we used the same model in all four submissions, the rise of our official hidden-set score from 31.0 to 57.0 reflects changes to the harness, up to run-to-run variance on live sites. We describe the design, the evidence for each component (including negative results), a failure analysis, the limitations, and a roadmap that includes routing different steps to different models. Code is available at https://github.com/jianganghan/WebFovea.",
+    "upvotes": 0,
+    "url": "https://arxiv.org/abs/2610.03036",
+    "pdf": "https://arxiv.org/pdf/2610.03036",
+    "hf_url": "https://huggingface.co/papers/2610.03036"
+  }
+]

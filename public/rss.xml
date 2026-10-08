@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>DecepEval: A Benchmark for Evaluating Deception in LLM Agents</title>
+      <description>大型语言模型代理在日益自主化的过程中，可能会为了追求任务表现而采取欺骗行为，这引发了人们对其可靠部署的担忧。现有的一些评估已经显示，大型语言模型代理确实能够进行欺骗，但这些研究往往只考察孤立的场景或者定义狭窄的条件，这使得我们很难系统性地理解，到底在什么情况下，欺骗行为会更容易出现。为了解决这个空白，我们今天介绍一项名为 DecepEval 的基准测试，它包含了 1532 个测试实例，涵盖了三大任务系列和 28 个专业场景。</description>
+      <link>https://arxiv.org/abs/2610.07967</link>
+      <guid isPermaLink="false">2026-10-08-decepeval-a-benchmark-for-evaluating-deception-in-llm-agents-3172cdb2.mp3</guid>
+      <pubDate>Thu, 08 Oct 2026 02:32:39 +0000</pubDate>
+      <itunes:duration>1294</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-08-decepeval-a-benchmark-for-evaluating-deception-in-llm-agents-3172cdb2.mp3" length="7766784" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>WorldSonus: Bringing Sound to Worlds</title>
+      <description>好的，接下来我将为您详细解读这篇题为 WorldSonus: Bringing Sound to Worlds 的论文。</description>
+      <link>https://arxiv.org/abs/2610.08760</link>
+      <guid isPermaLink="false">2026-10-08-worldsonus-bringing-sound-to-worlds-d7ddc307.mp3</guid>
+      <pubDate>Thu, 08 Oct 2026 02:30:49 +0000</pubDate>
+      <itunes:duration>986</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-08-worldsonus-bringing-sound-to-worlds-d7ddc307.mp3" length="5919120" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SGF+: Decoupling Gradient Flows for Autoregressive Video Generation</title>
+      <description>好的，这是一段约 15 分钟的中文口播稿，总字数在 4590 到 6120 字之间，适合开车时收听。我会直接切入主题，避免任何开场白和套话，用自然流畅的口语表达。</description>
+      <link>https://arxiv.org/abs/2610.10429</link>
+      <guid isPermaLink="false">2026-10-08-sgf-decoupling-gradient-flows-for-autoregressive-video-gener-60f0ab31.mp3</guid>
+      <pubDate>Thu, 08 Oct 2026 02:28:59 +0000</pubDate>
+      <itunes:duration>748</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-08-sgf-decoupling-gradient-flows-for-autoregressive-video-gener-60f0ab31.mp3" length="4493232" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>nanoMuse: An Open-Source Personal Agent for Every Device You Own</title>
+      <description>现有的智能体，无论是早期的智能助手还是后来的任务型智能体，都存在一个核心问题：它们要么只响应你的指令然后等待，要么完成一个任务就停下来，无法真正像一个私人助理那样，长时间为你工作，记住你的偏好，甚至在必要时主动帮你处理事务。更重要的是，市面上那些声称是“私人智能体”的产品，比如Meta在2026年9月推出的缪斯（Muse），虽然展现了个人智能体的理想形态——它能为你管理账户、操作设备，记忆你的喜好长达数周，甚至在关键时刻主动与你沟通，并能对自己的行为负责——但它却是一个封闭的系统。它运行在厂商的云端，你无法检查它的内部运作，也无法将它部署到你自己的设备上。这种将用户的生活核心数据和操作能力都锁</description>
+      <link>https://arxiv.org/abs/2610.08699</link>
+      <guid isPermaLink="false">2026-10-08-nanomuse-an-open-source-personal-agent-for-every-device-you--b8091985.mp3</guid>
+      <pubDate>Thu, 08 Oct 2026 02:28:06 +0000</pubDate>
+      <itunes:duration>1606</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-08-nanomuse-an-open-source-personal-agent-for-every-device-you--b8091985.mp3" length="9639504" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Questioning the Questions: Sustaining Self-Evolution in Reasoning Models</title>
+      <description>各位听众朋友，今天我们要探讨一篇题为“质疑问题：在推理模型中维持自我演进”的论文。这篇论文聚焦的是当前大型语言模型在自我演进过程中面临的一个核心难题：为什么它们在通过生成和解决自身任务来学习时，性能会随着训练轮次的增加而逐渐下降，甚至最终崩溃？以及我们如何才能让这种自我演进持续下去，实现真正的长期进步？</description>
+      <link>https://arxiv.org/abs/2610.04299</link>
+      <guid isPermaLink="false">2026-10-08-questioning-the-questions-sustaining-self-evolution-in-reaso-e64d2418.mp3</guid>
+      <pubDate>Thu, 08 Oct 2026 02:25:51 +0000</pubDate>
+      <itunes:duration>1180</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-08-questioning-the-questions-sustaining-self-evolution-in-reaso-e64d2418.mp3" length="7080624" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>HiPLEX: Hierarchical Policy Factorization for Full Duplex Speech Language Models</title>
       <description>好的，我们来把这篇论文《HiPLEX: Hierarchical Policy Factorization for Full Duplex Speech Language Models》整理成一段适合开车时收听的中文口播稿。这篇论文主要解决的是人机对话中一个非常实际且复杂的问题：如何让AI在实时对话中表现得更像人类，不仅仅是能说出恰当的回答，还要在合适的时机说话、倾听、打断、回应，以及进行“嗯、啊”之类的简短回应，也就是所谓的“全双工”对话。</description>
       <link>https://arxiv.org/abs/2610.07727</link>
