@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-10-09
+
+- **From Prompting to Composing: A Spatial Canvas Interface for Poster Generation** · 2★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-09-from-prompting-to-composing-a-spatial-canvas-interface-for-p-72ca36fa.mp3) [arXiv](https://arxiv.org/abs/2610.12230)
+- **VibeEdit: Image Editing with Canvas Instructions** · 2★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-09-vibeedit-image-editing-with-canvas-instructions-9f336202.mp3) [arXiv](https://arxiv.org/abs/2610.12229)
+- **Chaos in the Text: Revealing the Modality Preference in Mixed-Modality Retrievers** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-09-chaos-in-the-text-revealing-the-modality-preference-in-mixed-b81e2702.mp3) [arXiv](https://arxiv.org/abs/2610.11816)
+- **SuperNav: An Agentic Navigation System for Any Task in Any Scene** · 4★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-09-supernav-an-agentic-navigation-system-for-any-task-in-any-sc-835f3e00.mp3) [arXiv](https://arxiv.org/abs/2610.12126)
+- **AgentGarten: Code Worlds for Evolving Agents** · 11★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-09-agentgarten-code-worlds-for-evolving-agents-ea212ef1.mp3) [arXiv](https://arxiv.org/abs/2610.12374)
+
 ## 2026-10-08
 
 - **DecepEval: A Benchmark for Evaluating Deception in LLM Agents** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-08-decepeval-a-benchmark-for-evaluating-deception-in-llm-agents-3172cdb2.mp3) [arXiv](https://arxiv.org/abs/2610.07967)

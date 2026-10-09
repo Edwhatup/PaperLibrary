@@ -1,0 +1,122 @@
+[
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2610.12374",
+    "title": "AgentGarten: Code Worlds for Evolving Agents",
+    "abstract": "Interactive virtual worlds allow agents to learn through exploration and interaction. What agents can learn is bounded by the environments they practice in, which must be faithful, with consistent state, rules, and dynamics, and realistic, with observations that follow the real-world visual distributions. Achieving both across diverse worlds remains a bottleneck. We introduce AgentGarten, a framework that couples simulators and game engines with a shared neural renderer to build real-time interactive environments. Its simulation backends maintain persistent world state and execute program-defined interaction rules, while the renderer generates visual observations from structured conditions exported through a common interface. To build the neural renderer, we adapt a pretrained video model to geometry conditions, distill it with our proposed Adversarial Forcing, and optimize inference for real-time interaction. Adversarial Forcing makes history prefilling differentiable through exact replay, so that losses on later predictions update how the renderer encodes prior observations, and adds real-data adversarial supervision to improve its visual quality. In AgentGarten, agents perceive the world through visual observations, interact with it in real time, and improve by distilling each round of experience into playbooks that subsequent agents inherit and refine. Our empirical study demonstrates a substantial gain in learning efficiency, with agents learning from just 4 rounds compared with millions for a conventional reinforcement learning counterpart. As new worlds can be written as code and rendered through the same interface, environments can scale in both number and difficulty alongside their agents, a step toward agents that keep evolving through interactive experience.",
+    "upvotes": 11,
+    "url": "https://arxiv.org/abs/2610.12374",
+    "pdf": "https://arxiv.org/pdf/2610.12374",
+    "hf_url": "https://huggingface.co/papers/2610.12374"
+  },
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2610.12126",
+    "title": "SuperNav: An Agentic Navigation System for Any Task in Any Scene",
+    "abstract": "General-purpose service robots need navigation systems that can handle diverse human requests in unfamiliar environments, combining task generality with scene generality. Some existing methods fine-tune multimodal large language models (MLLMs) to predict navigation actions, making their behavior dependent on the coverage of navigation training data and potentially limiting generalization to new requests and environments. Our key insight is to let the MLLM focus on interpreting requests, understanding scenes, and making decisions while preserving its general-purpose capabilities and delegating motion execution to navigation tools. To realize this idea, we introduce SuperNav, which equips a pretrained MLLM with a specialized agent harness without navigation-specific fine-tuning of the MLLM. Our harness supports these decisions with Navigation Skills, agent-oriented Tools for physical interaction, and task-progress and context management. A unified visual-point interface connects decision-making to motion by allowing the model to specify destinations directly in images and revise its decisions from execution feedback. Together, these components support sustained navigation across different task requirements and environments. SuperNav outperforms four evaluated baselines on instance-level, multi-object, and demand-driven tasks. Category-level evaluation on HM3D and deployment on a real quadruped robot further demonstrate its applicability across environments. Project Page: https://zju3dv.github.io/SuperNav/",
+    "upvotes": 4,
+    "url": "https://arxiv.org/abs/2610.12126",
+    "pdf": "https://arxiv.org/pdf/2610.12126",
+    "hf_url": "https://huggingface.co/papers/2610.12126"
+  },
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2610.11816",
+    "title": "Chaos in the Text: Revealing the Modality Preference in Mixed-Modality Retrievers",
+    "abstract": "Dense retrievers have made significant progress on text and image corpora, but whether these capabilities extend reliably to mixed corpora containing text, image, and fused text-image documents remains unclear. In this paper, we systematically examine retrievers across architectures and find that their performance is highly sensitive to modality composition. As image documents are progressively replaced with semantically corresponding text representations, retrieval performance follows a pronounced V-shaped curve, remaining strong on single-modality corpora but degrading substantially when modalities coexist. In particular, irrelevant text causes more severe degradation than an equal number of irrelevant images, a phenomenon we term Chaos in the Text. Further analysis reveals modality preference, whereby text representations receive systematically higher similarity scores, allowing irrelevant text to outrank relevant images. To mitigate this bias, we introduce Trident, which constructs text, image, and fused text-image views of each document as co-equal positives and jointly optimizes relevance discrimination and positive-view balance through Multi-Positive View InfoNCE. Experiments across visual document and natural image benchmarks show that trident improves mixed-modality retrieval on both CLIP-based and VLM-based architectures, reduces sensitivity to modality composition and text distractors, and increases average single-modality retrieval performance.",
+    "upvotes": 3,
+    "url": "https://arxiv.org/abs/2610.11816",
+    "pdf": "https://arxiv.org/pdf/2610.11816",
+    "hf_url": "https://huggingface.co/papers/2610.11816"
+  },
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2610.12229",
+    "title": "VibeEdit: Image Editing with Canvas Instructions",
+    "abstract": "In text-guided image editing, describing the desired change is often straightforward, but identifying the intended object or region can be cumbersome, especially when several objects look alike. We introduce a new image editing interface that lets users place spatial marks and optional short notes directly on the image. Together, these annotations form a canvas instruction that specifies where to edit and what to change. Our editor, VibeEdit, follows these instructions to perform object addition, removal, replacement, attribute modification, and movement without a separate text prompt. We construct 1.55 million source-target edit pairs with object masks and structured edit descriptions, from which we render canvas instructions during training. We adapt Qwen-Image-Edit with layer-decoupled conditioning that separately encodes source images and canvas instructions for image editing. We train the model with region-weighted supervised fine-tuning, followed by rubric-guided reinforcement learning to improve edit completion, local edit quality, and preservation of unedited regions. We evaluate VibeEdit on an independently constructed, human-curated benchmark of 419 cases emphasizing target selection among similar objects. VibeEdit achieves a VLM rubric score of 79.9 and an outside-region PSNR of 32.8 dB, compared with 67.4 and 24.0 dB for FireRed, the highest-scoring text-instructed baseline in our evaluation.",
+    "upvotes": 2,
+    "url": "https://arxiv.org/abs/2610.12229",
+    "pdf": "https://arxiv.org/pdf/2610.12229",
+    "hf_url": "https://huggingface.co/papers/2610.12229"
+  },
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2610.12230",
+    "title": "From Prompting to Composing: A Spatial Canvas Interface for Poster Generation",
+    "abstract": "Text prompting is an indirect interface for poster generation, requiring users to encode inherently two-dimensional composition intent into a one-dimensional sequence of words. We introduce a Spatial Canvas Interface that enables users to directly compose generation intent in space through four complementary binding types: semantic, identity, text, and pixel, together with Text Specifications for individual elements and global appearance. Based on this interface, we develop Compo, a poster generation model adapted from a pretrained image editing model to understand Spatial Canvas inputs and Text Specifications. Compo supports both direct inference, where users explicitly construct the canvas, and agentic mode, where a high-level request is automatically translated into a planned Spatial Canvas. To train Compo, we develop a scalable pipeline that automatically constructs supervision data for different binding types and their combinations, enabling efficient adaptation without training a specialized poster generator from scratch. We further introduce a benchmark that evaluates adherence to individual binding types and their joint composition. Experiments show that Compo achieves stronger compositional controllability than both general-purpose image generation models and dedicated poster generation systems while maintaining high visual quality. By decoupling intent specification from visual generation, our work shifts poster generation from prompting toward composing.",
+    "upvotes": 2,
+    "url": "https://arxiv.org/abs/2610.12230",
+    "pdf": "https://arxiv.org/pdf/2610.12230",
+    "hf_url": "https://huggingface.co/papers/2610.12230"
+  },
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2610.12327",
+    "title": "SparseDecoding: Decoding-Aware Pruning for Accurate and Efficient LLM Inference",
+    "abstract": "The memory-bound nature of the decoding stage of large language model (LLM) inference incurs significant latency. Layer-wise training-free network pruning approaches guided by the Hessian have been a prominent solution to this problem, as pruning reduces the number of nonzero parameters read from memory during decoding. Nevertheless, typical methods in this line compute the Hessian using pre-collected natural sequences, whereas the model is fed self-generated tokens during decoding, creating a distribution shift between the two sequences. The Hessian calculated on the natural sequence is different from that calculated on the generated sequence. We observe that this discrepancy causes the activation distribution during generation to deviate from that used for pruning, further hurting the pruned model performance. Moreover, most existing LLM pruning methods that bring actual speedup primarily target the sparse matrix-matrix (SpMM) multiplication, providing limited support for the sparse matrix-vector (SpMV) operations, which dominate decoding. To solve these problems, we introduce SparseDecoding, a principled decoding-aware pruning framework tailored for accurate and efficient LLM decoding. Specifically, at the algorithmic axis, SparseDecoding constructs calibration matrices from layer-wise activations collected during the dense-model autoregressive generation, excluding prefill, thereby aligning the pruning objective with the decoding activations. At the system axis, we develop an optimized N:M sparse matrix-vector kernel with bitmask indexing and fixed-step traversal. Substantial empirical results on representative LLMs (Llama-3.1-8B, Llama-3.3-70B, Qwen3-14B / 32B) demonstrate that our method consistently outperforms standard fixed-text calibration on the long-form generation benchmarks while achieving up to 1.48x end-to-end wall-clock decoding speedup on A100 GPUs.",
+    "upvotes": 2,
+    "url": "https://arxiv.org/abs/2610.12327",
+    "pdf": "https://arxiv.org/pdf/2610.12327",
+    "hf_url": "https://huggingface.co/papers/2610.12327"
+  },
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2610.11322",
+    "title": "USDCraft: Geometrically Grounded Programmatic Modeling of Articulated 3D Assets for Simulation",
+    "abstract": "Geometrically faithful and functional articulated 3D assets are essential for real-to-sim robot manipulation, where policies trained in simulation must transfer to physical objects. Recent mesh-based methods learn to infer articulation from annotated 3D assets, but deployment remains challenging when real-world objects fall outside the training distribution or their meshes are incomplete or corrupted. To address these limitations, we formulate articulated asset reconstruction as programmatic modeling grounded in partial geometric evidence and introduce USDCraft, a framework in which a pretrained LLM writes and revises executable programs for simulation-ready articulated assets without task-specific training. We propose source geometry analysis, which converts the source mesh into a metric textual description that distinguishes observed surface from unknown space, and iterative geometric rechecking, which re-encodes each candidate in the same representation so that discrepancies point to program edits while unobserved regions remain open to completion. Visual feedback and physical authoring guidance complete the modeling process, which produces articulated USD assets with explicit physical properties that load into Isaac Sim without manual adjustment. Experiments demonstrate leading articulation recovery on two benchmarks and validate USDCraft's effectiveness for real-to-sim-to-real robot manipulation.",
+    "upvotes": 2,
+    "url": "https://arxiv.org/abs/2610.11322",
+    "pdf": "https://arxiv.org/pdf/2610.11322",
+    "hf_url": "https://huggingface.co/papers/2610.11322"
+  },
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2609.38173",
+    "title": "In-context Robot Learning Made Simple: A Democratized Recipe for Manipulation Tasks",
+    "abstract": "We study robotic in-context learning (ICL), an emerging paradigm that enables robots to infer and execute tasks from visual demonstrations. Despite its growing promise, the problem itself remains under-defined: a visual demonstration simultaneously conveys action trajectories, object semantics, manipulation affordances, spatial relations, and task goals, making it unclear what information the robot is actually expected to follow. In this work, we first provide a clear problem definition of robot ICL that explicitly defines its learning target and resolves this fundamental prompt ambiguity. Building on this definition, we develop a minimalist and reproducible ICL framework (SimpleICL) with a visual prompt encoder and a low-cost data collection protocol. Without massive pre-training or specialized data infrastructure, our framework achieves strong performance in both simulation and real-world environments. Extensive experiments further reveal several key properties of robot ICL, including action, semantic, composition, and affordance discrimination. We will fully open-source our data and training pipeline to facilitate systematic and reproducible research on robot ICL. The project page can be found at https://simpleicl.github.io/simpleicl.",
+    "upvotes": 1,
+    "url": "https://arxiv.org/abs/2609.38173",
+    "pdf": "https://arxiv.org/pdf/2609.38173",
+    "hf_url": "https://huggingface.co/papers/2609.38173"
+  },
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2610.06100",
+    "title": "From Traces to Agentic Worlds: Agentic Language World Models for Interactive Environment Simulation",
+    "abstract": "Realistic environment replicas are increasingly valuable for training and evaluating LLM agents, yet the original systems may be inaccessible or impractical to reproduce. We explore agentic language world modeling: rather than rebuilding an executable environment, a world model agent serves as the environment for a task agent and supports faithful and stateful simulation. We instantiate this paradigm with Trace2Env, a learning-free framework for settings where the original system is unavailable but historical interaction traces remain accessible. Trace2Env reconstructs these traces into a reusable environment worldbook containing environment schemas, grounded evidence, and induced behavioral knowledge. At runtime, the world model agent actively consults the worldbook together with persistent episodic state to infer each action's observation and lasting state effects. Across nine environments, Trace2Env improves both next-observation fidelity and long-horizon interaction consistency over conventional prompt-based LWMs. In multi-turn interaction, task agent actions generated against Trace2Env remain valid more often when replayed in the real environment, indicating that its simulated dynamics better preserve the consequences of earlier actions across successive turns. These results establish agentic language world modeling as an alternative direction for building realistic environment replicas without reconstructing the original executable system.",
+    "upvotes": 1,
+    "url": "https://arxiv.org/abs/2610.06100",
+    "pdf": "https://arxiv.org/pdf/2610.06100",
+    "hf_url": "https://huggingface.co/papers/2610.06100"
+  },
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2610.07730",
+    "title": "SanSi: A Looped Typed Decision Model for System 1.5 Thinking",
+    "abstract": "Typed decision models answer a declared question without generating text: a decision head returns a probability for each of the declared options in a single forward pass. A single pass is fast, intuitive System 1 thinking. We study what lies between one pass and generated reasoning: looping, in which the same layers are recursively applied several times before one typed readout. Each loop lets the model revise its hidden state before it commits to an answer, without generating a token; we call this System 1.5 thinking. We propose SanSi, which turns a pre-trained looped language model into a typed decision model. The option probabilities are read after every loop, and every loop is trained with a proper scoring rule, so that one model serves every budget from one loop to eight in a single run. On 10,027 test decisions from 59 sources, SanSi reaches 72.0% accuracy: 13.5 points above a non-looped model of the same shape trained with the same recipe, 5.3 points above a newer non-looped model of its size, and 1.8 points below one with three times the parameters. On two depth-controlled tasks, loops extend the solvable depth beyond the depths seen in training, where the larger single-pass model fails. Used as the judge for policy optimization with reinforcement learning, without gold answers, SanSi raises the generator's F1 by 7.7 points.",
+    "upvotes": 1,
+    "url": "https://arxiv.org/abs/2610.07730",
+    "pdf": "https://arxiv.org/pdf/2610.07730",
+    "hf_url": "https://huggingface.co/papers/2610.07730"
+  },
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2610.03858",
+    "title": "Retrieval-Centric Deep Learning in Growing Nonparametric Neural Networks",
+    "abstract": "We investigate a general-purpose layer for deep learning that, instead of compressing arbitrary-size training data into fixed-size weight matrices, stores a new pair of key-value representations for every data point during training, and retrieves and recombines these representations through an attention mechanism at inference time - resulting in a growing neural net (NN). While Irie et al. (arXiv:2202.05798) have put forward this perspective from the classic duality expressing any linear layer in a deep NN trained by gradient descent as linear attention (LA) over the training data points, replacing LA by more powerful attention functions, as they suggest, turns out to be non-trivial: we show that naively applying learning rules from the LA case to advanced kernels does not lead to principled optimization. Here we fill this gap and develop functional gradient-based learning rules for kernelized attention layers, based on radial basis function (RBF) and softmax-like kernels - establishing the principled \"retrieval-centric deep learning\" (RCDL) paradigm. Empirically, we demonstrate the promising performance and learning-efficiency of RCDL on image classification and synthetic teacher-student learning tasks. Moreover, we show that replacing LA in the dual form of NNs by advanced LA variants, namely MesaNet/DeltaNet, yields a formal connection to recently proposed optimizers for conventional fixed-size NNs, offering a novel perspective on deep learning optimization.",
+    "upvotes": 1,
+    "url": "https://arxiv.org/abs/2610.03858",
+    "pdf": "https://arxiv.org/pdf/2610.03858",
+    "hf_url": "https://huggingface.co/papers/2610.03858"
+  },
+  {
+    "date": "2026-10-09",
+    "arxiv_id": "2610.11251",
+    "title": "V-CoLA: Vision Token Compression with Linear Attention",
+    "abstract": "Vision-language models (VLMs) have demonstrated impressive capabilities but suffer from substantial computational overhead, as vision tokens dominate the input sequence. This motivates vision token compression as a key direction to alleviate the burden. However, with the emergence of hybrid architectures incorporating linear attention (\\eg, Qwen3.5), prior methods designed for softmax attention struggle to generalize. Our analysis reveals that both attention- and similarity-based approaches suffer notable performance degradation, underscoring the urgent need for compression methods tailored to this regime. To this end, we propose V-CoLA, an efficient training-free token compression framework specifically designed for linear attention. V-CoLA introduces a novel uniqueness-aware importance criterion for identifying critical vision tokens, coupled with an adaptive token merging strategy that performs compression. All components are optimized at the implementation level to remain compatible with the chunk-wise parallelism of linear attention, ensuring strong practical value. Extensive experiments across multiple benchmarks demonstrate the superiority of V-CoLA: it achieves 99.5\\% of the original performance with only 50.0\\% of vision tokens, and over 88.0\\% with as few as 12.5\\%, while delivering a 1.86times to 6.15times prefill speedup.",
+    "upvotes": 1,
+    "url": "https://arxiv.org/abs/2610.11251",
+    "pdf": "https://arxiv.org/pdf/2610.11251",
+    "hf_url": "https://huggingface.co/papers/2610.11251"
+  }
+]
