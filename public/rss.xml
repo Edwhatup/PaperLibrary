@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>AMLworld-Compact: Importance-Weighted Downsampling for Cost-Effective LLM Evaluation and Error Diagnosis</title>
+      <description>我们今天来聊一篇关于如何更高效、更经济地评估大型语言模型，也就是LLM，在反洗钱任务上的论文。这篇论文的标题是“AMLworld-Compact: Importance-Weighted Downsampling for Cost-Effective LLM Evaluation and Error Diagnosis”。</description>
+      <link>https://arxiv.org/abs/2610.13627</link>
+      <guid isPermaLink="false">2026-10-12-amlworld-compact-importance-weighted-downsampling-for-cost-e-5446fb67.mp3</guid>
+      <pubDate>Mon, 12 Oct 2026 02:08:08 +0000</pubDate>
+      <itunes:duration>1083</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-12-amlworld-compact-importance-weighted-downsampling-for-cost-e-5446fb67.mp3" length="6502320" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ProgramGym: Scaling Training Environments for Long-Horizon Program Reproduction Agents</title>
+      <description>好的，没问题。这是一段约 20 分钟的连续口播稿，将这篇论文的核心内容深入浅出地讲解出来，语速适中，适合开车时收听。</description>
+      <link>https://arxiv.org/abs/2610.13395</link>
+      <guid isPermaLink="false">2026-10-12-programgym-scaling-training-environments-for-long-horizon-pr-a54d60f3.mp3</guid>
+      <pubDate>Mon, 12 Oct 2026 02:06:38 +0000</pubDate>
+      <itunes:duration>1152</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-12-programgym-scaling-training-environments-for-long-horizon-pr-a54d60f3.mp3" length="6914160" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>RSI-Anything: Unlocking Recursive Self-Improvement with World Models</title>
+      <description>很多AI系统都在追求一个宏伟目标：如何实现“递归式自我改进”，也就是让它们能从经验中不断学习，持续提升自己的能力。但这里面有两个核心难题：第一，真实世界的反馈往往非常昂贵，比如让机器人实际操作一次，或者做一次化学实验，成本都很高，这就限制了AI系统从实际互动中获取经验的次数。第二，当AI的决策方式（我们称之为“策略”）不断演变时，它内部用来预测世界如何变化的“世界模型”可能会变得不可靠，因为它赖以学习的环境变了，导致预测失准，从而阻碍了持续的自我改进。</description>
+      <link>https://arxiv.org/abs/2610.13912</link>
+      <guid isPermaLink="false">2026-10-12-rsi-anything-unlocking-recursive-self-improvement-with-world-7e35d1e3.mp3</guid>
+      <pubDate>Mon, 12 Oct 2026 02:04:25 +0000</pubDate>
+      <itunes:duration>584</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-12-rsi-anything-unlocking-recursive-self-improvement-with-world-7e35d1e3.mp3" length="3506112" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SoloQ: Calibration-Free Quantization for Diffusion Language Models</title>
+      <description>好的，我们来聊一篇关于扩散大语言模型量化的最新研究，论文标题是 SoloQ：扩散大语言模型的免校准量化。</description>
+      <link>https://arxiv.org/abs/2610.07121</link>
+      <guid isPermaLink="false">2026-10-12-soloq-calibration-free-quantization-for-diffusion-language-m-1c8cdddf.mp3</guid>
+      <pubDate>Mon, 12 Oct 2026 02:03:01 +0000</pubDate>
+      <itunes:duration>813</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-12-soloq-calibration-free-quantization-for-diffusion-language-m-1c8cdddf.mp3" length="4880160" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>PolyOCR-Venus: Unified OCR Foundation Models for Text-Centric Visual Intelligence</title>
+      <description>好的，这是一段约20分钟、用中文讲解、适合开车时收听的连续口播稿，总字数在6120到8160字之间：</description>
+      <link>https://arxiv.org/abs/2609.37712</link>
+      <guid isPermaLink="false">2026-10-12-polyocr-venus-unified-ocr-foundation-models-for-text-centric-c4aac0c4.mp3</guid>
+      <pubDate>Mon, 12 Oct 2026 02:01:43 +0000</pubDate>
+      <itunes:duration>3180</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-12-polyocr-venus-unified-ocr-foundation-models-for-text-centric-c4aac0c4.mp3" length="19081008" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>From Prompting to Composing: A Spatial Canvas Interface for Poster Generation</title>
       <description>好的，这是一段约 20 分钟的连续口播稿，将这篇论文的核心内容进行深入浅出的讲解。</description>
       <link>https://arxiv.org/abs/2610.12230</link>

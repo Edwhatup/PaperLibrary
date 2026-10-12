@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-10-12
+
+- **AMLworld-Compact: Importance-Weighted Downsampling for Cost-Effective LLM Evaluation and Error Diagnosis** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-12-amlworld-compact-importance-weighted-downsampling-for-cost-e-5446fb67.mp3) [arXiv](https://arxiv.org/abs/2610.13627)
+- **ProgramGym: Scaling Training Environments for Long-Horizon Program Reproduction Agents** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-12-programgym-scaling-training-environments-for-long-horizon-pr-a54d60f3.mp3) [arXiv](https://arxiv.org/abs/2610.13395)
+- **RSI-Anything: Unlocking Recursive Self-Improvement with World Models** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-12-rsi-anything-unlocking-recursive-self-improvement-with-world-7e35d1e3.mp3) [arXiv](https://arxiv.org/abs/2610.13912)
+- **SoloQ: Calibration-Free Quantization for Diffusion Language Models** · 4★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-12-soloq-calibration-free-quantization-for-diffusion-language-m-1c8cdddf.mp3) [arXiv](https://arxiv.org/abs/2610.07121)
+- **PolyOCR-Venus: Unified OCR Foundation Models for Text-Centric Visual Intelligence** · 4★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-12-polyocr-venus-unified-ocr-foundation-models-for-text-centric-c4aac0c4.mp3) [arXiv](https://arxiv.org/abs/2609.37712)
+
 ## 2026-10-09
 
 - **From Prompting to Composing: A Spatial Canvas Interface for Poster Generation** · 2★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-09-from-prompting-to-composing-a-spatial-canvas-interface-for-p-72ca36fa.mp3) [arXiv](https://arxiv.org/abs/2610.12230)
