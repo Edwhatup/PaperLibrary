@@ -8,6 +8,33 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Steering Black-Box Large Language Model Agents with Pitfall Anticipation World Model</title>
+      <description>当前最先进的黑盒大型语言模型智能体，在执行复杂任务时，虽然擅长长期推理和精确行动生成，但它们普遍缺乏对特定环境如何演进的内在知识。想象一下，一个顶尖的棋手，虽然棋艺高超，能规划出精妙的招数，但如果他从来没见过某个特殊的棋盘布局，就很难预判对手在这种布局下的陷阱。这正是目前黑盒大型语言模型智能体所面临的挑战。它们虽然具备强大的通用能力，例如指令遵循、通用推理和任务规划，但在面对特定环境时，却无法像人类一样，通过经验形成对环境动态的直观理解。</description>
+      <link>https://arxiv.org/abs/2610.29139</link>
+      <guid isPermaLink="false">2026-10-27-steering-black-box-large-language-model-agents-with-pitfall--462e6098.mp3</guid>
+      <pubDate>Tue, 27 Oct 2026 01:51:44 +0000</pubDate>
+      <itunes:duration>1026</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-27-steering-black-box-large-language-model-agents-with-pitfall--462e6098.mp3" length="6161328" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Trial by Trace: Benchmarking AI Agent Harnesses for Reliability and Failure Attribution</title>
+      <description>目前，大型语言模型已经从简单的文本生成工具，发展成了能够执行复杂多步任务的智能体。这些智能体通过调用工具、执行指令、修改文件以及与外部环境交互，将用户的目标转化为具体的行动和可观察的结果。然而，一个人工智能智能体的表现，并不仅仅取决于其底层的大语言模型本身。它还高度依赖于支持其运作的“智能体线束”（Agent Harness）。这个线束负责连接模型与周围的各种组件，比如系统指令、上下文管理、可用工具、执行环境、持久状态、生命周期控制和安全机制。它决定了模型能接收到什么信息，能采取哪些行动，以及工具的执行结果、错误和状态变化如何呈现给模型。因此，即便使用相同的模型，通过不同的线束部署，其行为也可</description>
+      <link>https://arxiv.org/abs/2610.32285</link>
+      <guid isPermaLink="false">2026-10-27-trial-by-trace-benchmarking-ai-agent-harnesses-for-reliabili-1a71c628.mp3</guid>
+      <pubDate>Tue, 27 Oct 2026 01:50:20 +0000</pubDate>
+      <itunes:duration>908</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-27-trial-by-trace-benchmarking-ai-agent-harnesses-for-reliabili-1a71c628.mp3" length="5451120" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>WorldCast: World-Consistent Character Video Generation with Large-Angle Camera Control</title>
+      <description>好的，下面是为您准备的口播稿：</description>
+      <link>https://arxiv.org/abs/2610.33135</link>
+      <guid isPermaLink="false">2026-10-27-worldcast-world-consistent-character-video-generation-with-l-04353590.mp3</guid>
+      <pubDate>Tue, 27 Oct 2026 01:48:39 +0000</pubDate>
+      <itunes:duration>939</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-27-worldcast-world-consistent-character-video-generation-with-l-04353590.mp3" length="5637024" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>AMLworld-Compact: Importance-Weighted Downsampling for Cost-Effective LLM Evaluation and Error Diagnosis</title>
       <description>我们今天来聊一篇关于如何更高效、更经济地评估大型语言模型，也就是LLM，在反洗钱任务上的论文。这篇论文的标题是“AMLworld-Compact: Importance-Weighted Downsampling for Cost-Effective LLM Evaluation and Error Diagnosis”。</description>
       <link>https://arxiv.org/abs/2610.13627</link>

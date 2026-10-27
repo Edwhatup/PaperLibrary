@@ -3,6 +3,12 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-10-27
+
+- **Steering Black-Box Large Language Model Agents with Pitfall Anticipation World Model** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-27-steering-black-box-large-language-model-agents-with-pitfall--462e6098.mp3) [arXiv](https://arxiv.org/abs/2610.29139)
+- **Trial by Trace: Benchmarking AI Agent Harnesses for Reliability and Failure Attribution** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-27-trial-by-trace-benchmarking-ai-agent-harnesses-for-reliabili-1a71c628.mp3) [arXiv](https://arxiv.org/abs/2610.32285)
+- **WorldCast: World-Consistent Character Video Generation with Large-Angle Camera Control** · 14★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-27-worldcast-world-consistent-character-video-generation-with-l-04353590.mp3) [arXiv](https://arxiv.org/abs/2610.33135)
+
 ## 2026-10-12
 
 - **AMLworld-Compact: Importance-Weighted Downsampling for Cost-Effective LLM Evaluation and Error Diagnosis** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-12-amlworld-compact-importance-weighted-downsampling-for-cost-e-5446fb67.mp3) [arXiv](https://arxiv.org/abs/2610.13627)
