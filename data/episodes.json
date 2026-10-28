@@ -1,5 +1,65 @@
 [
   {
+    "key": "2610.22543",
+    "date": "2026-10-28",
+    "title": "On the SPOT: Enhancing Speculative Decoding for Diffusion Language Models via Commit-Order Prediction",
+    "abstract": "Diffusion language models (DLMs) promise parallel text generation, but in practice face an unresolved speed-quality trade-off. Exact decoding fills in only one masked position per model pass, while faster multi-token decoding schemes are lossy. Speculative decoding is the standard lossless acceleration for autoregressive models. However, it does not transfer directly to DLMs, which must choose both what to generate and where. We show that this order is the missing piece: the model's own predictions from the previous pass already give the right token at over 90% of positions, but not which position comes next. We introduce Speculating Positions Order Trajectory (SPOT), a 0.62M-parameter model that reads only the target's output distributions, predicts this order and proposes a tree of candidate continuations, which the target verifies in a single pass by state equality. Coupled-noise match, which shares Gumbel noise between drafter and target, keeps this verification exact at any temperature. This approach also inspired us to introduce SPOT-Sets for dynamic threshold decoding, where a pass commits several positions: SPOT-Sets drafts whole commit sets together with their tokens. Our comprehensive experiments show that SPOT cuts target passes by up to 6.8times and reaches up to 3.4times the throughput of standard decoding on SDAR-8B, matching or beating the calibrated and training-free drafting baselines in every task and budget at T=0 and T=1. In addition, we show that SPOT's learned drafter transfers across models, demonstrating successful transfer across six different DLMs; with a light calibration, the SPOT-Sets drafter transfers as well. On top of dynamic threshold decoding, SPOT-Sets improves the throughput of SDAR-8B by 59% on average over the threshold decoder alone. Project page: https://eliezer318.github.io/SPOT-dLLM/",
+    "notes": "扩散语言模型虽然有望实现并行文本生成，但在实际应用中却面临着一个难以解决的速度与质量的权衡难题。具体来说，如果追求高质量的生成效果，通常需要模型在每一步只填充一个被遮蔽的位置，这导致推理速度非常慢。而如果为了提升速度，采用多词元解码方案，一次性生成多个词元，又往往会牺牲生成质量，因为它可能改变原本的解码路径。对于自回归语言模型来说，推测解码是一种标准的无损加速方法，它通过一个轻量级的草稿模型来预测未来的词元序列，然后由目标模型并行验证这些预测，同时还能精确地保留无草稿解码的分布。",
+    "url": "https://arxiv.org/abs/2610.22543",
+    "upvotes": 0,
+    "audio": "2026-10-28-on-the-spot-enhancing-speculative-decoding-for-diffusion-lan-c094afa9.mp3",
+    "size": 6624432,
+    "published": "2026-10-28T02:10:10.075161+00:00"
+  },
+  {
+    "key": "2610.36269",
+    "date": "2026-10-28",
+    "title": "Cross-modal Steering Vectors Exist Across Both Image and Text Generation",
+    "abstract": "Are concepts and mechanisms unified across modalities in current AI models, or instead implemented separately for each one? We operationalize this broad question of modality unification by studying cross-modal steering: 1) finding vectors that successfully steer generation on tokens of one modality, which then 2) transfer zero-shot to steer generation when added to tokens of another modality. Our study goes beyond simple correlational alignment (e.g. representational similarity) because steering is fundamentally causal. We study cross-modal steering in several unified multimodal models (UMMs), since they possess shared parameters for language and image generation, focusing on these two modalities. Across diverse steered concepts such as emotion and object size, we show that steering vectors transfer zero-shot in both directions (text-to-image & image-to-text). Even for concepts that are highly unique to one modality (e.g. formal vs. colloquial language), steering vectors often induce a consistent, interpretable effect in the other modality, such as formal clothing and design. This transfer has a geometric signature too: despite a clear modality gap separating text and image representations, steering vectors with strong cross-modal transferability tend to point in similar directions for the same concept. Our findings shed light on how vision and language interact inside unified multimodal models and point towards more general, modality-agnostic approaches for controlling their behavior.",
+    "notes": "这篇论文探讨了一个非常核心的问题：在当前的人工智能模型中，视觉和语言这些不同的模态，它们所代表的概念和背后的机制是统一的，还是各自独立实现的？具体来说，研究人员想知道，我们能否找到一种“转向向量”，它在一种模态（比如文本）中成功地引导模型生成特定内容，然后将这个完全相同的向量，不做任何修改地，应用到另一种模态（比如图像）的生成中，并观察到它也能产生一致且可解释的效果。",
+    "url": "https://arxiv.org/abs/2610.36269",
+    "upvotes": 1,
+    "audio": "2026-10-28-cross-modal-steering-vectors-exist-across-both-image-and-tex-5a714af3.mp3",
+    "size": 5651424,
+    "published": "2026-10-28T02:08:01.194245+00:00"
+  },
+  {
+    "key": "2610.34283",
+    "date": "2026-10-28",
+    "title": "ChronoReplay: One Answer Interface Is Not Enough for Streaming Spatial Intelligence",
+    "abstract": "Training a spatial VLM to answer which side an object lies on does not require it to preserve the metric displacement that determines that answer, while supervision for a distance estimate may leave categorical relations largely unconstrained. When post-training emphasizes one readout, improvements can therefore concentrate on that interface while transfer to others remains weak or even degrades; we call this observed specialization interface lock-in. ChronoReplay addresses it by replaying heterogeneous spatial supervision as chronologically ordered episodes, retaining source-native targets, and balancing supervision across families. Under the same observation access, a single ChronoReplay checkpoint improves OVO-S-Bench, OST-Bench, and UCS-Bench together, including a 13.41-point gain on OST-Bench, and achieves the highest three-benchmark mean among the supervision settings compared here. Same-data controls further separate the ingredients of this transfer: answer serialization redistributes gains across OST and UCS, family-balanced learning improves over ordinary joint SFT and natural turn weighting, and chronological replay exceeds a shifted-order control by about 2.41 OST points across two paired seeds. Adaptive frame selection then changes evidence access while keeping the trained model fixed, providing an additional inference-time gain at lower visual cost. Streaming spatial performance depends on what distinctions supervision preserves, how heterogeneous histories are organized during learning, and what causal evidence inference makes available at test time.",
+    "notes": "好的，我们来深入探讨这篇名为 ChronoReplay 的论文，它解决的是一个在流式空间智能领域非常核心的问题：一个视觉语言模型，也就是 VLM，在处理来自实时视频流的空间智能任务时，往往不能很好地同时应对多种不同形式的回答。比如，你问机器人一个物体在左边还是右边，这需要一个分类答案；你问沙发离这里多远，这需要一个具体的距离数值；你问我们什么时候经过了那棵植物，这需要一个时间点。一篇论文，一个模型，如果只针对其中一种回答形式进行训练，那么它在其他回答形式上的表现就会很差，甚至可能倒退。这种现象，论文称之为“接口锁定”（interface lock-in）。",
+    "url": "https://arxiv.org/abs/2610.34283",
+    "upvotes": 3,
+    "audio": "2026-10-28-chronoreplay-one-answer-interface-is-not-enough-for-streamin-3d33f3bc.mp3",
+    "size": 5255280,
+    "published": "2026-10-28T02:06:12.282426+00:00"
+  },
+  {
+    "key": "2610.36456",
+    "date": "2026-10-28",
+    "title": "LociArt: A Unified Paradigm for Free-Style Local Video Stylization",
+    "abstract": "Video stylization typically transforms entire scenes, while local artistic editing requires precise region--style association, spatial control, and temporal consistency. We introduce LociArt, a unified paradigm for free-style local video stylization that explicitly specifies where to stylize and what style to apply while preserving non-target content. At its core, GRNStyle builds on Generative Refinement Networks (GRN) and introduces a polar style-aware mask that embeds style identities as equal-norm directions within selected regions. Complementary representation--geometry conditioning combines encoded mask features with raw-mask spatial support, integrating spatiotemporal context with geometric control. To provide paired supervision, we develop an automated pipeline combining global stylization, video object removal, matting, and compositing, and construct the LociArt-100K Dataset with 100K local stylization pairs. We further establish the LociArt Benchmark, comprising 80 source videos and 84 target masks covering 168 foreground/background stylization cases, with a Style Prototype Similarity (SPS) evaluation scheme for regional style quality and complementary measures of non-target preservation and temporal consistency. Experiments show that GRNStyle outperforms existing methods in regional style quality and spatial control while maintaining strong temporal consistency. Qualitative examples further illustrate joint stylization of multiple regions with the same or different learned styles, despite training only on single-region, single-style pairs. Together, these components provide a unified foundation for learning and evaluating controllable local video stylization. Project page: https://higherhu.github.io/lociart/.",
+    "notes": "好的，没问题。下面是为您准备的口播稿，总字数大约在 6000-8000 字之间，适合 20 分钟的讲解时长。",
+    "url": "https://arxiv.org/abs/2610.36456",
+    "upvotes": 12,
+    "audio": "2026-10-28-lociart-a-unified-paradigm-for-free-style-local-video-styliz-d3b3d80d.mp3",
+    "size": 7174224,
+    "published": "2026-10-28T02:01:13.025360+00:00"
+  },
+  {
+    "key": "2610.36068",
+    "date": "2026-10-28",
+    "title": "Rollback: Experience Backtracking in World Models for Policy Improvement",
+    "abstract": "Action-conditioned world models offer a scalable alternative to costly real-world interaction for improving robot policies. However, existing world-model-based methods largely treat world models as forward-only surrogates of the physical environment, leaving untapped a capability no physical environment affords: rewinding to past decision points to explore counterfactual futures. We introduce Rollback, a policy improvement paradigm that turns world models from passive simulators into counterfactual engines: it rolls back to critical decision points, branches into alternative actions, and contrasts their outcomes to attribute success to individual decisions. This concentrates imagination where it matters most and distills counterfactual outcomes into fine-grained, action-level supervision without a separately learned value model. We build a scalable training system that unifies distributed world-model search with asynchronous real-robot execution, forming a self-reinforcing cycle: real-world experience continually sharpens the world model, and a sharper world model in turn drives further policy improvement. We term the world-model side of this cycle test-time physics grounding, a capability that hand-built physics simulators lack: while the world model serves as the training environment, real transitions from the policy it trains correct its dynamics through a lightweight LoRA pipeline. Experiments on three challenging real-world tasks show that Rollback improves success rates over the strongest baseline by an absolute 10.67%, 11.11%, and 11.85% on block extraction, ball tossing, and tabletop curling, respectively, while achieving more stable improvement throughout training. Although initialized from teleoperated demonstrations far below human level, Rollback surpasses the average success rate of human players on both ball tossing and tabletop curling within 8 hours of training.",
+    "notes": "传统上，我们训练机器人策略时，常常依赖于所谓的“世界模型”。这些模型就像是物理环境的数字孪生，能够预测机器人行动的后果，让机器人在虚拟世界中提前“演练”，从而节省昂贵的真实世界交互成本。然而，目前大多数世界模型在应用中有一个巨大的局限：它们被当作是“只能向前推演”的模拟器。也就是说，一旦机器人做出了一个动作，世界模型就模拟出接下来的状态，然后这个中间的决策点就被抛弃了。这就像你玩一个游戏，每走一步就存档，但如果你走错了，只能从头再来，而不能回到上一步重新选择。这种“只能向前”的模式，忽略了世界模型一个独一无二的优势：它可以在任何一个过去的决策点“回溯”并重新考虑。物理世界无法让你回到过去，但数",
+    "url": "https://arxiv.org/abs/2610.36068",
+    "upvotes": 14,
+    "audio": "2026-10-28-rollback-experience-backtracking-in-world-models-for-policy--16daaa0d.mp3",
+    "size": 4730688,
+    "published": "2026-10-28T01:59:09.045100+00:00"
+  },
+  {
     "key": "2610.29139",
     "date": "2026-10-27",
     "title": "Steering Black-Box Large Language Model Agents with Pitfall Anticipation World Model",

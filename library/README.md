@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-10-28
+
+- **On the SPOT: Enhancing Speculative Decoding for Diffusion Language Models via Commit-Order Prediction** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-28-on-the-spot-enhancing-speculative-decoding-for-diffusion-lan-c094afa9.mp3) [arXiv](https://arxiv.org/abs/2610.22543)
+- **Cross-modal Steering Vectors Exist Across Both Image and Text Generation** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-28-cross-modal-steering-vectors-exist-across-both-image-and-tex-5a714af3.mp3) [arXiv](https://arxiv.org/abs/2610.36269)
+- **ChronoReplay: One Answer Interface Is Not Enough for Streaming Spatial Intelligence** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-28-chronoreplay-one-answer-interface-is-not-enough-for-streamin-3d33f3bc.mp3) [arXiv](https://arxiv.org/abs/2610.34283)
+- **LociArt: A Unified Paradigm for Free-Style Local Video Stylization** · 12★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-28-lociart-a-unified-paradigm-for-free-style-local-video-styliz-d3b3d80d.mp3) [arXiv](https://arxiv.org/abs/2610.36456)
+- **Rollback: Experience Backtracking in World Models for Policy Improvement** · 14★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-28-rollback-experience-backtracking-in-world-models-for-policy--16daaa0d.mp3) [arXiv](https://arxiv.org/abs/2610.36068)
+
 ## 2026-10-27
 
 - **Steering Black-Box Large Language Model Agents with Pitfall Anticipation World Model** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-27-steering-black-box-large-language-model-agents-with-pitfall--462e6098.mp3) [arXiv](https://arxiv.org/abs/2610.29139)

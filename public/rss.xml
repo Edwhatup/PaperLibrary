@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>On the SPOT: Enhancing Speculative Decoding for Diffusion Language Models via Commit-Order Prediction</title>
+      <description>扩散语言模型虽然有望实现并行文本生成，但在实际应用中却面临着一个难以解决的速度与质量的权衡难题。具体来说，如果追求高质量的生成效果，通常需要模型在每一步只填充一个被遮蔽的位置，这导致推理速度非常慢。而如果为了提升速度，采用多词元解码方案，一次性生成多个词元，又往往会牺牲生成质量，因为它可能改变原本的解码路径。对于自回归语言模型来说，推测解码是一种标准的无损加速方法，它通过一个轻量级的草稿模型来预测未来的词元序列，然后由目标模型并行验证这些预测，同时还能精确地保留无草稿解码的分布。</description>
+      <link>https://arxiv.org/abs/2610.22543</link>
+      <guid isPermaLink="false">2026-10-28-on-the-spot-enhancing-speculative-decoding-for-diffusion-lan-c094afa9.mp3</guid>
+      <pubDate>Wed, 28 Oct 2026 02:10:10 +0000</pubDate>
+      <itunes:duration>1104</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-28-on-the-spot-enhancing-speculative-decoding-for-diffusion-lan-c094afa9.mp3" length="6624432" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Cross-modal Steering Vectors Exist Across Both Image and Text Generation</title>
+      <description>这篇论文探讨了一个非常核心的问题：在当前的人工智能模型中，视觉和语言这些不同的模态，它们所代表的概念和背后的机制是统一的，还是各自独立实现的？具体来说，研究人员想知道，我们能否找到一种“转向向量”，它在一种模态（比如文本）中成功地引导模型生成特定内容，然后将这个完全相同的向量，不做任何修改地，应用到另一种模态（比如图像）的生成中，并观察到它也能产生一致且可解释的效果。</description>
+      <link>https://arxiv.org/abs/2610.36269</link>
+      <guid isPermaLink="false">2026-10-28-cross-modal-steering-vectors-exist-across-both-image-and-tex-5a714af3.mp3</guid>
+      <pubDate>Wed, 28 Oct 2026 02:08:01 +0000</pubDate>
+      <itunes:duration>941</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-28-cross-modal-steering-vectors-exist-across-both-image-and-tex-5a714af3.mp3" length="5651424" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ChronoReplay: One Answer Interface Is Not Enough for Streaming Spatial Intelligence</title>
+      <description>好的，我们来深入探讨这篇名为 ChronoReplay 的论文，它解决的是一个在流式空间智能领域非常核心的问题：一个视觉语言模型，也就是 VLM，在处理来自实时视频流的空间智能任务时，往往不能很好地同时应对多种不同形式的回答。比如，你问机器人一个物体在左边还是右边，这需要一个分类答案；你问沙发离这里多远，这需要一个具体的距离数值；你问我们什么时候经过了那棵植物，这需要一个时间点。一篇论文，一个模型，如果只针对其中一种回答形式进行训练，那么它在其他回答形式上的表现就会很差，甚至可能倒退。这种现象，论文称之为“接口锁定”（interface lock-in）。</description>
+      <link>https://arxiv.org/abs/2610.34283</link>
+      <guid isPermaLink="false">2026-10-28-chronoreplay-one-answer-interface-is-not-enough-for-streamin-3d33f3bc.mp3</guid>
+      <pubDate>Wed, 28 Oct 2026 02:06:12 +0000</pubDate>
+      <itunes:duration>875</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-28-chronoreplay-one-answer-interface-is-not-enough-for-streamin-3d33f3bc.mp3" length="5255280" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>LociArt: A Unified Paradigm for Free-Style Local Video Stylization</title>
+      <description>好的，没问题。下面是为您准备的口播稿，总字数大约在 6000-8000 字之间，适合 20 分钟的讲解时长。</description>
+      <link>https://arxiv.org/abs/2610.36456</link>
+      <guid isPermaLink="false">2026-10-28-lociart-a-unified-paradigm-for-free-style-local-video-styliz-d3b3d80d.mp3</guid>
+      <pubDate>Wed, 28 Oct 2026 02:01:13 +0000</pubDate>
+      <itunes:duration>1195</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-28-lociart-a-unified-paradigm-for-free-style-local-video-styliz-d3b3d80d.mp3" length="7174224" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Rollback: Experience Backtracking in World Models for Policy Improvement</title>
+      <description>传统上，我们训练机器人策略时，常常依赖于所谓的“世界模型”。这些模型就像是物理环境的数字孪生，能够预测机器人行动的后果，让机器人在虚拟世界中提前“演练”，从而节省昂贵的真实世界交互成本。然而，目前大多数世界模型在应用中有一个巨大的局限：它们被当作是“只能向前推演”的模拟器。也就是说，一旦机器人做出了一个动作，世界模型就模拟出接下来的状态，然后这个中间的决策点就被抛弃了。这就像你玩一个游戏，每走一步就存档，但如果你走错了，只能从头再来，而不能回到上一步重新选择。这种“只能向前”的模式，忽略了世界模型一个独一无二的优势：它可以在任何一个过去的决策点“回溯”并重新考虑。物理世界无法让你回到过去，但数</description>
+      <link>https://arxiv.org/abs/2610.36068</link>
+      <guid isPermaLink="false">2026-10-28-rollback-experience-backtracking-in-world-models-for-policy--16daaa0d.mp3</guid>
+      <pubDate>Wed, 28 Oct 2026 01:59:09 +0000</pubDate>
+      <itunes:duration>788</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-28-rollback-experience-backtracking-in-world-models-for-policy--16daaa0d.mp3" length="4730688" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Steering Black-Box Large Language Model Agents with Pitfall Anticipation World Model</title>
       <description>当前最先进的黑盒大型语言模型智能体，在执行复杂任务时，虽然擅长长期推理和精确行动生成，但它们普遍缺乏对特定环境如何演进的内在知识。想象一下，一个顶尖的棋手，虽然棋艺高超，能规划出精妙的招数，但如果他从来没见过某个特殊的棋盘布局，就很难预判对手在这种布局下的陷阱。这正是目前黑盒大型语言模型智能体所面临的挑战。它们虽然具备强大的通用能力，例如指令遵循、通用推理和任务规划，但在面对特定环境时，却无法像人类一样，通过经验形成对环境动态的直观理解。</description>
       <link>https://arxiv.org/abs/2610.29139</link>
