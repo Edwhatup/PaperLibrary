@@ -3,6 +3,10 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-10-30
+
+- **After One-Click Video: The Inflow of Service-Type Content, the Failure of the Recommendation Pool Mechanism, and the BoLe System** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-30-after-one-click-video-the-inflow-of-service-type-content-the-d014f4a7.mp3) [arXiv](https://arxiv.org/abs/2610.37695)
+
 ## 2026-10-28
 
 - **On the SPOT: Enhancing Speculative Decoding for Diffusion Language Models via Commit-Order Prediction** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-28-on-the-spot-enhancing-speculative-decoding-for-diffusion-lan-c094afa9.mp3) [arXiv](https://arxiv.org/abs/2610.22543)

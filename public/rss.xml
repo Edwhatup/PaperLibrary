@@ -8,6 +8,15 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>After One-Click Video: The Inflow of Service-Type Content, the Failure of the Recommendation Pool Mechanism, and the BoLe System</title>
+      <description>2026年9月，一个新的大语言模型发布了。紧接着，一种新的视频制作方式迅速蔓延：用户让模型写一段程序，程序逐帧绘制画面，最后渲染成视频文件。这种"一键视频"不经过任何视频生成模型，而是纯靠代码驱动。发布后一周，行业简报Latent Space就写道，这类用代码生成的讲解视频已经"占领了所有人的时间线"。很快，各平台上的一键视频技能包和教程铺天盖地。</description>
+      <link>https://arxiv.org/abs/2610.37695</link>
+      <guid isPermaLink="false">2026-10-30-after-one-click-video-the-inflow-of-service-type-content-the-d014f4a7.mp3</guid>
+      <pubDate>Fri, 30 Oct 2026 02:22:31 +0000</pubDate>
+      <itunes:duration>835</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-10-30-after-one-click-video-the-inflow-of-service-type-content-the-d014f4a7.mp3" length="5014512" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>On the SPOT: Enhancing Speculative Decoding for Diffusion Language Models via Commit-Order Prediction</title>
       <description>扩散语言模型虽然有望实现并行文本生成，但在实际应用中却面临着一个难以解决的速度与质量的权衡难题。具体来说，如果追求高质量的生成效果，通常需要模型在每一步只填充一个被遮蔽的位置，这导致推理速度非常慢。而如果为了提升速度，采用多词元解码方案，一次性生成多个词元，又往往会牺牲生成质量，因为它可能改变原本的解码路径。对于自回归语言模型来说，推测解码是一种标准的无损加速方法，它通过一个轻量级的草稿模型来预测未来的词元序列，然后由目标模型并行验证这些预测，同时还能精确地保留无草稿解码的分布。</description>
       <link>https://arxiv.org/abs/2610.22543</link>
