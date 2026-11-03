@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>DeFT-RAG: Decomposing Multi-Hop Questions into Self-Contained Sub-Questions with Reusable Answers</title>
+      <description>有一类问题，大语言模型回答起来特别棘手，那就是多跳问题。什么叫多跳问题？举个例子：要回答"灰狗巴士在那位演唱Darlings的音乐人所在城市从哪里发车？"，你首先得知道Darlings是谁的专辑，然后知道这个人的乐队在哪个城市成立，最后才能查那座城市的灰狗巴士站。答案链条要穿过好几个中间实体，而这些中间实体——比如"Kevin Drew"、"多伦多"——在原始问题里根本没有提到。这就是多跳问题的难点：你必须一步步找到这些隐藏的"桥接实体"，才能把整条证据链拼完整。</description>
+      <link>https://arxiv.org/abs/2610.37826</link>
+      <guid isPermaLink="false">2026-11-03-deft-rag-decomposing-multi-hop-questions-into-self-contained-b57e467f.mp3</guid>
+      <pubDate>Tue, 03 Nov 2026 04:06:02 +0000</pubDate>
+      <itunes:duration>795</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-03-deft-rag-decomposing-multi-hop-questions-into-self-contained-b57e467f.mp3" length="4774176" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>DecisionRank: On-Policy Distillation for Decision-Model Rerankers</title>
+      <description>文档重排序这个任务，说起来不复杂：给定一个用户查询，从检索系统返回的一百个候选文档里，把最相关的那些推到前面去。但要把这件事做得又快又好，一直是个难题。</description>
+      <link>https://arxiv.org/abs/2610.42128</link>
+      <guid isPermaLink="false">2026-11-03-decisionrank-on-policy-distillation-for-decision-model-reran-5068e782.mp3</guid>
+      <pubDate>Tue, 03 Nov 2026 04:03:02 +0000</pubDate>
+      <itunes:duration>1023</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-03-decisionrank-on-policy-distillation-for-decision-model-reran-5068e782.mp3" length="6138720" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Diagnosing the Reference Gap: What Visual Scaffolds Can and Cannot Fix in Multimodal Reasoning</title>
+      <description>当前多模态大语言模型面临的一个核心困境是：它们能看见图像里的内容，却往往无法在多步推理过程中稳定地"锁定"和追踪那些内容。这篇论文要解决的，就是这个被称为"引用缺口"的问题。</description>
+      <link>https://arxiv.org/abs/2610.39419</link>
+      <guid isPermaLink="false">2026-11-03-diagnosing-the-reference-gap-what-visual-scaffolds-can-and-c-235a230d.mp3</guid>
+      <pubDate>Tue, 03 Nov 2026 03:59:27 +0000</pubDate>
+      <itunes:duration>957</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-03-diagnosing-the-reference-gap-what-visual-scaffolds-can-and-c-235a230d.mp3" length="5747472" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>From Fragmentation to Fusion: A Survey and Roadmap for Omnimodal Embeddings</title>
+      <description>嵌入模型研究长期以来被一道无形的墙分割成互不相通的孤岛——文本、图像、音频、图结构、时间序列、表格，各自为政，各有各的社区、各有各的基准测试、各有各的方法论。这篇论文要解决的核心问题就是：这种碎片化状态是否合理？它是否正在阻碍整个人工智能领域的进步？而答案是，它不仅不合理，而且正在成为整个AI系统的瓶颈。</description>
+      <link>https://arxiv.org/abs/2611.00172</link>
+      <guid isPermaLink="false">2026-11-03-from-fragmentation-to-fusion-a-survey-and-roadmap-for-omnimo-535e03b1.mp3</guid>
+      <pubDate>Tue, 03 Nov 2026 03:56:05 +0000</pubDate>
+      <itunes:duration>752</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-03-from-fragmentation-to-fusion-a-survey-and-roadmap-for-omnimo-535e03b1.mp3" length="4512096" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Video Generation Meets Agent Harness: Agentic Video Generation, Agentic World Modeling and Recursive Self-Improvement</title>
+      <description>视频生成领域正在经历一场深刻的范式转变，但这场转变的核心问题不是"怎么生成更好的视频"，而是"谁来做生成视频这件事的决策"。一个视频生成模型，哪怕再强大，它本身也只是一个工具——它接受输入，吐出视频，仅此而已。但真实的视频制作任务远不止于此：你需要把一份创意简报变成一系列连贯的分镜，你需要跨越多个场景保持同一个角色的外观一致，你需要检查每一条生成素材是否符合叙事逻辑，你还需要在某个镜头出问题时知道该怎么修、修哪里，而不是全部推倒重来。这些都是决策，不是生成。这篇论文要解决的核心问题，就是：当视频生成模型越来越强的时候，围绕它的那套决策机制应该长什么样，又应该怎么被设计、被优化，甚至怎么自我进化</description>
+      <link>https://arxiv.org/abs/2610.40191</link>
+      <guid isPermaLink="false">2026-11-03-video-generation-meets-agent-harness-agentic-video-generatio-eb24b7c3.mp3</guid>
+      <pubDate>Tue, 03 Nov 2026 03:53:36 +0000</pubDate>
+      <itunes:duration>1195</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-03-video-generation-meets-agent-harness-agentic-video-generatio-eb24b7c3.mp3" length="7174944" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>After One-Click Video: The Inflow of Service-Type Content, the Failure of the Recommendation Pool Mechanism, and the BoLe System</title>
       <description>2026年9月，一个新的大语言模型发布了。紧接着，一种新的视频制作方式迅速蔓延：用户让模型写一段程序，程序逐帧绘制画面，最后渲染成视频文件。这种"一键视频"不经过任何视频生成模型，而是纯靠代码驱动。发布后一周，行业简报Latent Space就写道，这类用代码生成的讲解视频已经"占领了所有人的时间线"。很快，各平台上的一键视频技能包和教程铺天盖地。</description>
       <link>https://arxiv.org/abs/2610.37695</link>

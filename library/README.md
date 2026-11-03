@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-03
+
+- **DeFT-RAG: Decomposing Multi-Hop Questions into Self-Contained Sub-Questions with Reusable Answers** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-03-deft-rag-decomposing-multi-hop-questions-into-self-contained-b57e467f.mp3) [arXiv](https://arxiv.org/abs/2610.37826)
+- **DecisionRank: On-Policy Distillation for Decision-Model Rerankers** · 4★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-03-decisionrank-on-policy-distillation-for-decision-model-reran-5068e782.mp3) [arXiv](https://arxiv.org/abs/2610.42128)
+- **Diagnosing the Reference Gap: What Visual Scaffolds Can and Cannot Fix in Multimodal Reasoning** · 9★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-03-diagnosing-the-reference-gap-what-visual-scaffolds-can-and-c-235a230d.mp3) [arXiv](https://arxiv.org/abs/2610.39419)
+- **From Fragmentation to Fusion: A Survey and Roadmap for Omnimodal Embeddings** · 11★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-03-from-fragmentation-to-fusion-a-survey-and-roadmap-for-omnimo-535e03b1.mp3) [arXiv](https://arxiv.org/abs/2611.00172)
+- **Video Generation Meets Agent Harness: Agentic Video Generation, Agentic World Modeling and Recursive Self-Improvement** · 17★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-03-video-generation-meets-agent-harness-agentic-video-generatio-eb24b7c3.mp3) [arXiv](https://arxiv.org/abs/2610.40191)
+
 ## 2026-10-30
 
 - **After One-Click Video: The Inflow of Service-Type Content, the Failure of the Recommendation Pool Mechanism, and the BoLe System** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-10-30-after-one-click-video-the-inflow-of-service-type-content-the-d014f4a7.mp3) [arXiv](https://arxiv.org/abs/2610.37695)

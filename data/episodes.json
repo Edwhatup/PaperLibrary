@@ -1,5 +1,65 @@
 [
   {
+    "key": "2610.37826",
+    "date": "2026-11-03",
+    "title": "DeFT-RAG: Decomposing Multi-Hop Questions into Self-Contained Sub-Questions with Reusable Answers",
+    "abstract": "Retrieval-augmented generation (RAG) lets a large language model (LLM) answer questions by retrieving relevant passages from a large corpus. However, RAG struggles with multi-hop questions, which require chaining facts spread across several documents through intermediate entities that the question never mentions. Graph-based RAG methods retrieve once from the entities a question names and so rarely recover the full evidence chain. Iterative RAG methods recover it step by step, but their accuracy is limited by the many tasks they ask the LLM to perform, such as planning the sub-questions, deciding their dependencies, rewriting them as answers arrive, and keeping track of what is known. We propose DeFT-RAG, a RAG framework built on three components. First, DeFT-RAG generates one self-contained sub-question at a time from the original question and the sub-questions answered so far with their answers (QA pairs). Each sub-question names every entity it asks about, which removes the need to plan, track dependencies or rewrite, and lets the LLM focus on a single fine-grained task at a time. Second, DeFT-RAG moves the remaining LLM work outside the LLM: rule-based updates to a QA table that keeps track of what is known, and yes/no decisions made by a fine-tuned lightweight decision model. Third, DeFT-RAG caches the QA pairs and reuses an answer when a later question asks a sub-question with the same meaning. On MuSiQue, 2WikiMultiHopQA and HotpotQA, DeFT-RAG achieves the best accuracy among thirteen baselines with both gpt-4o-mini and Qwen3.6 as the backbone, while giving the LLM fewer input tokens than any other iterative method. With a QA cache shared across 1,000 MuSiQue questions, 23.1% of sub-questions are answered from the cache, which reduces LLM calls by 12.9% without lowering accuracy.",
+    "notes": "有一类问题，大语言模型回答起来特别棘手，那就是多跳问题。什么叫多跳问题？举个例子：要回答\"灰狗巴士在那位演唱Darlings的音乐人所在城市从哪里发车？\"，你首先得知道Darlings是谁的专辑，然后知道这个人的乐队在哪个城市成立，最后才能查那座城市的灰狗巴士站。答案链条要穿过好几个中间实体，而这些中间实体——比如\"Kevin Drew\"、\"多伦多\"——在原始问题里根本没有提到。这就是多跳问题的难点：你必须一步步找到这些隐藏的\"桥接实体\"，才能把整条证据链拼完整。",
+    "url": "https://arxiv.org/abs/2610.37826",
+    "upvotes": 3,
+    "audio": "2026-11-03-deft-rag-decomposing-multi-hop-questions-into-self-contained-b57e467f.mp3",
+    "size": 4774176,
+    "published": "2026-11-03T04:06:02.534290+00:00"
+  },
+  {
+    "key": "2610.42128",
+    "date": "2026-11-03",
+    "title": "DecisionRank: On-Policy Distillation for Decision-Model Rerankers",
+    "abstract": "Decision models target structured tasks by directly predicting choices or scores, avoiding autoregressive decoding latency. However, transferring a generative LLM's ranking knowledge to a decision model remains challenging: the teacher expresses preferences through a ranked list of document ID sequences, while the student determines the ranking using scores from the first-token position. To bridge this gap, we introduce DecisionRank, a decision model trained through item-space on-policy distillation (OPD). Item-space OPD constructs the student's rollout by sorting its document scores into a ranked sequence. A generative teacher takes the resulting ranking list as inputs and provides conditional feedback to directly supervise those scores. Combined with offline ranking supervision, DecisionRank achieves state-of-the-art performance on both general and reasoning-intensive retrieval benchmarks such as TREC DL, BEIR, and BRIGHT. Across four benchmarks, item-space OPD consistently outperforms alternative training objectives. Even at 1.7B parameters, DecisionRank surpasses its 27B generative teacher on TREC DL19--23. At 8B, it outperforms its generative listwise counterpart while running 24.5times faster on TREC DL and 16.7times faster on BRIGHT.",
+    "notes": "文档重排序这个任务，说起来不复杂：给定一个用户查询，从检索系统返回的一百个候选文档里，把最相关的那些推到前面去。但要把这件事做得又快又好，一直是个难题。",
+    "url": "https://arxiv.org/abs/2610.42128",
+    "upvotes": 4,
+    "audio": "2026-11-03-decisionrank-on-policy-distillation-for-decision-model-reran-5068e782.mp3",
+    "size": 6138720,
+    "published": "2026-11-03T04:03:02.043966+00:00"
+  },
+  {
+    "key": "2610.39419",
+    "date": "2026-11-03",
+    "title": "Diagnosing the Reference Gap: What Visual Scaffolds Can and Cannot Fix in Multimodal Reasoning",
+    "abstract": "Multimodal large language models can recognize visual content yet struggle to reason reliably over it across multiple steps. In counting, a model may see all objects but lose track of which ones it has counted. We argue that such failures, commonly attributed to perception, reveal a reference gap: the failure to bind language to the relevant visual entities, regions, or locations. Motivated by the theory of visual routines, we test whether external references such as numbering can narrow this gap. We introduce ReGap-Bench, a paired benchmark of five visual reasoning tasks in which the scene, question, and answer are fixed and only the reference varies. Results show that task-matched references improve accuracy by up to 25\\%, while mismatched references provide little benefit or even hurt performance. These findings identify the reference gap as a bottleneck distinct from visual perception and show that constructing task-appropriate visual references can serve as a training-free visual skill for improving multimodal reasoning.",
+    "notes": "当前多模态大语言模型面临的一个核心困境是：它们能看见图像里的内容，却往往无法在多步推理过程中稳定地\"锁定\"和追踪那些内容。这篇论文要解决的，就是这个被称为\"引用缺口\"的问题。",
+    "url": "https://arxiv.org/abs/2610.39419",
+    "upvotes": 9,
+    "audio": "2026-11-03-diagnosing-the-reference-gap-what-visual-scaffolds-can-and-c-235a230d.mp3",
+    "size": 5747472,
+    "published": "2026-11-03T03:59:27.042363+00:00"
+  },
+  {
+    "key": "2611.00172",
+    "date": "2026-11-03",
+    "title": "From Fragmentation to Fusion: A Survey and Roadmap for Omnimodal Embeddings",
+    "abstract": "Embedding models underpin virtually every modern AI system, from search engines to recommendation systems. Despite shared mathematical foundations, research on embedding models remains fragmented by modality: the communities develop largely in isolation, seldom exchanging insights. We argue that this fragmentation obscures a deeper convergence. Driven by contrastive learning, Transformer architectures, and a granularity shift, embedding research across modalities is converging toward a common set of principles, even as modality-specific challenges remain underexplored. To reason across this convergence without conflating it, we propose a framework of three progressively harder capabilities: coverage, comparability, and compositionality. Three paths toward unification satisfy these in turn: transformation broadens coverage, alignment enables comparability, and joint embedding, the terminus we advocate, aims at compositionality. This position paper traces the resulting evolution, providing the first unified, cross-cutting treatment of omnimodal embedding research.",
+    "notes": "嵌入模型研究长期以来被一道无形的墙分割成互不相通的孤岛——文本、图像、音频、图结构、时间序列、表格，各自为政，各有各的社区、各有各的基准测试、各有各的方法论。这篇论文要解决的核心问题就是：这种碎片化状态是否合理？它是否正在阻碍整个人工智能领域的进步？而答案是，它不仅不合理，而且正在成为整个AI系统的瓶颈。",
+    "url": "https://arxiv.org/abs/2611.00172",
+    "upvotes": 11,
+    "audio": "2026-11-03-from-fragmentation-to-fusion-a-survey-and-roadmap-for-omnimo-535e03b1.mp3",
+    "size": 4512096,
+    "published": "2026-11-03T03:56:05.910277+00:00"
+  },
+  {
+    "key": "2610.40191",
+    "date": "2026-11-03",
+    "title": "Video Generation Meets Agent Harness: Agentic Video Generation, Agentic World Modeling and Recursive Self-Improvement",
+    "abstract": "Video generation is shifting from end-to-end synthesis toward agentic generation, where planning, tool use, and feedback enable coherent, controllable multi-shot videos. In parallel, video world models provide action-conditioned observations and predicted futures, serving as interactive environments for agents. We study their intersection through the agent harness: an executable runtime that constructs context, exposes tools, maintains state, routes feedback, and manages budgets around video models. This report examines three directions. First, agentic video generation, where harnesses coordinate scripting, shot planning, asset management, production, and editing, alongside the evaluation challenges of these systems. Second, agentic world modeling, where harnesses mediate observation, control, execution, and state. We discuss hybrid designs in which game engines or agent-written programs maintain world state while video models render observations, and how agents and world models can mutually evaluate and improve one another. Third, recursive self-improvement (RSI) in video model development, distinguishing output revisions, updates to harness state, generator parameters, and evaluators, and changes to the improvement procedure itself. We identify how these improvements feed back into subsequent development. Across these directions, we analyze essential agent capabilities, including audiovisual perception, long-horizon planning, memory, code-based interaction, feedback-guided control, skill reuse, and multi-agent coordination. We conclude with challenges in autonomous video production, lifelong memory, programmable hybrid control, autonomous model development, provenance, cost accounting, and evaluation linking video quality and task performance to sustained improvements in models and harnesses.",
+    "notes": "视频生成领域正在经历一场深刻的范式转变，但这场转变的核心问题不是\"怎么生成更好的视频\"，而是\"谁来做生成视频这件事的决策\"。一个视频生成模型，哪怕再强大，它本身也只是一个工具——它接受输入，吐出视频，仅此而已。但真实的视频制作任务远不止于此：你需要把一份创意简报变成一系列连贯的分镜，你需要跨越多个场景保持同一个角色的外观一致，你需要检查每一条生成素材是否符合叙事逻辑，你还需要在某个镜头出问题时知道该怎么修、修哪里，而不是全部推倒重来。这些都是决策，不是生成。这篇论文要解决的核心问题，就是：当视频生成模型越来越强的时候，围绕它的那套决策机制应该长什么样，又应该怎么被设计、被优化，甚至怎么自我进化",
+    "url": "https://arxiv.org/abs/2610.40191",
+    "upvotes": 17,
+    "audio": "2026-11-03-video-generation-meets-agent-harness-agentic-video-generatio-eb24b7c3.mp3",
+    "size": 7174944,
+    "published": "2026-11-03T03:53:36.122874+00:00"
+  },
+  {
     "key": "2610.37695",
     "date": "2026-10-30",
     "title": "After One-Click Video: The Inflow of Service-Type Content, the Failure of the Recommendation Pool Mechanism, and the BoLe System",
