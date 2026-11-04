@@ -3,6 +3,12 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-04
+
+- **SeMo3D: Unifying 3D Generation, Editing, and Completion via Selective Modeling** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-04-semo3d-unifying-3d-generation-editing-and-completion-via-sel-d97119b2.mp3) [arXiv](https://arxiv.org/abs/2611.02568)
+- **MoviEdit: Long-form Multi-Shot Video Editing Made Easy** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-04-moviedit-long-form-multi-shot-video-editing-made-easy-3c1acba3.mp3) [arXiv](https://arxiv.org/abs/2611.02737)
+- **RoboColosseum: Evaluating Physical Intelligence at Scale In-The-Wild** · 5★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-04-robocolosseum-evaluating-physical-intelligence-at-scale-in-t-89945eff.mp3) [arXiv](https://arxiv.org/abs/2611.02497)
+
 ## 2026-11-03
 
 - **DeFT-RAG: Decomposing Multi-Hop Questions into Self-Contained Sub-Questions with Reusable Answers** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-03-deft-rag-decomposing-multi-hop-questions-into-self-contained-b57e467f.mp3) [arXiv](https://arxiv.org/abs/2610.37826)

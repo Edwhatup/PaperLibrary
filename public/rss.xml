@@ -8,6 +8,33 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>SeMo3D: Unifying 3D Generation, Editing, and Completion via Selective Modeling</title>
+      <description>现在的3D内容创作面临一个根本性的矛盾：生成、编辑、补全这三个任务，在绝大多数已有方法里，都被当成一件事来做——把整个三维物体从头生成一遍，只是在条件约束上有所不同。你想给椅子换个靠背？系统会重新生成整把椅子。你想补全一个缺失的轮子？系统同样会把整辆车重新生成一遍。这个逻辑直觉上就有问题：你只动了一个局部，凭什么要让模型把全局都重新算一遍？这篇来自南京大学的论文，叫做SeMo3D，就是要彻底解决这个问题。</description>
+      <link>https://arxiv.org/abs/2611.02568</link>
+      <guid isPermaLink="false">2026-11-04-semo3d-unifying-3d-generation-editing-and-completion-via-sel-d97119b2.mp3</guid>
+      <pubDate>Wed, 04 Nov 2026 03:03:30 +0000</pubDate>
+      <itunes:duration>1008</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-04-semo3d-unifying-3d-generation-editing-and-completion-via-sel-d97119b2.mp3" length="6048144" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>MoviEdit: Long-form Multi-Shot Video Editing Made Easy</title>
+      <description>想象一个场景：你有一段三分钟的电影片段，里面有五个镜头，主角从室内走到街上，又出现在咖啡馆里。你想把主角的衣服换成红色。问题来了——现有的视频编辑工具几乎全都只能处理单个镜头，处理完第一个镜头里的红衣服，到了第二个镜头，它根本不知道刚才发生了什么，红色可能变淡了，可能换到了错误的人物身上，可能完全消失了。这就是这篇论文要解决的核心痛点：如何让视频编辑在多个镜头之间保持真正的一致性。</description>
+      <link>https://arxiv.org/abs/2611.02737</link>
+      <guid isPermaLink="false">2026-11-04-moviedit-long-form-multi-shot-video-editing-made-easy-3c1acba3.mp3</guid>
+      <pubDate>Wed, 04 Nov 2026 02:59:40 +0000</pubDate>
+      <itunes:duration>1001</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-04-moviedit-long-form-multi-shot-video-editing-made-easy-3c1acba3.mp3" length="6009264" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>RoboColosseum: Evaluating Physical Intelligence at Scale In-The-Wild</title>
+      <description>机器人策略到底有多通用，这是整个具身智能领域最核心也最难回答的问题。你在实验室里训练出来的策略，换一个机器人还能用吗？换一个环境还能用吗？换一批任务还能用吗？这篇论文要解决的，正是这个问题在评测层面的根本困难：我们没有一个可靠的、大规模的、在真实物理世界里运行的基准，来系统地告诉我们，当前这些所谓的通用机器人策略，到底在哪里管用，在哪里失效，失效的程度又有多深。</description>
+      <link>https://arxiv.org/abs/2611.02497</link>
+      <guid isPermaLink="false">2026-11-04-robocolosseum-evaluating-physical-intelligence-at-scale-in-t-89945eff.mp3</guid>
+      <pubDate>Wed, 04 Nov 2026 02:55:50 +0000</pubDate>
+      <itunes:duration>946</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-04-robocolosseum-evaluating-physical-intelligence-at-scale-in-t-89945eff.mp3" length="5676192" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>DeFT-RAG: Decomposing Multi-Hop Questions into Self-Contained Sub-Questions with Reusable Answers</title>
       <description>有一类问题，大语言模型回答起来特别棘手，那就是多跳问题。什么叫多跳问题？举个例子：要回答"灰狗巴士在那位演唱Darlings的音乐人所在城市从哪里发车？"，你首先得知道Darlings是谁的专辑，然后知道这个人的乐队在哪个城市成立，最后才能查那座城市的灰狗巴士站。答案链条要穿过好几个中间实体，而这些中间实体——比如"Kevin Drew"、"多伦多"——在原始问题里根本没有提到。这就是多跳问题的难点：你必须一步步找到这些隐藏的"桥接实体"，才能把整条证据链拼完整。</description>
       <link>https://arxiv.org/abs/2610.37826</link>
