@@ -3,6 +3,13 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-05
+
+- **VeriSpoof: Beyond Real or Fake with One Audio LLM** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-05-verispoof-beyond-real-or-fake-with-one-audio-llm-37870457.mp3) [arXiv](https://arxiv.org/abs/2611.04634)
+- **SpecOPD: Branch-Parallel On-Policy Distillation for Speculative Decoding** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-05-specopd-branch-parallel-on-policy-distillation-for-speculati-0372be36.mp3) [arXiv](https://arxiv.org/abs/2611.02846)
+- **Human-to-Robot Transfer via Bridging Representation and Action Space in VLAs** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-05-human-to-robot-transfer-via-bridging-representation-and-acti-ce7dd8b0.mp3) [arXiv](https://arxiv.org/abs/2611.04391)
+- **GameVerse: A Minute-Scale Gameplay Dataset for Long-Horizon Interactive World Modeling** · 7★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-05-gameverse-a-minute-scale-gameplay-dataset-for-long-horizon-i-e6e38342.mp3) [arXiv](https://arxiv.org/abs/2610.37257)
+
 ## 2026-11-04
 
 - **SeMo3D: Unifying 3D Generation, Editing, and Completion via Selective Modeling** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-04-semo3d-unifying-3d-generation-editing-and-completion-via-sel-d97119b2.mp3) [arXiv](https://arxiv.org/abs/2611.02568)

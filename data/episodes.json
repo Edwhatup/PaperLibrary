@@ -1,5 +1,53 @@
 [
   {
+    "key": "2611.04634",
+    "date": "2026-11-05",
+    "title": "VeriSpoof: Beyond Real or Fake with One Audio LLM",
+    "abstract": "A speech deepfake detector estimates whether a recording is synthetic, but a forensic analyst also asks which system produced it, whether recordings share a source, and what evidence supports each conclusion. We present VeriSpoof, an audio language model that unifies five tasks with shared weights: deepfake detection, generator attribution (generator, acoustic model and vocoder), recording-condition analysis, synthesized-span localisation, and source verification. Each decision is supported by grounded rationales whose statements can be independently verified. Answers are scored by sentence likelihood, allowing detection and source verification to be thresholded without separate heads. Rationale statements can be checked against waveform measurements, span labels, or generator metadata. Counterfactual examples train decisions to follow the stated evidence. Across the 14 Speech-DF-Arena test sets, VeriSpoof-Plus achieves 2.14% pooled EER, ranking third of 28 systems and first among open-weight systems. VeriSpoof-Base, trained only on official training splits of eight corpora, achieves 4.43% EER, less than half that of the next open-weight detector. With the same weights, VeriSpoof-Plus verifies whether recordings from generators unseen in training share a source at 6.2% EER. Controlled studies show that the audio representation governs detection, the LLM governs recording comparison, and source supervision is necessary for neural-codec fakes. Statement-checkable rationales catch partial fakes missed by one-step answers (99.6% vs. 78.4% on PartialEdit) and determine decisions under edits unseen in training (99.5%). Training updates only 29.7M of 2.85B parameters, fitting a single 24 GB GPU with gradient checkpointing. We release both models, inference code, a demo, and VeriSpoof-Bench, the evaluation suite covering these questions.",
+    "notes": "语音深度伪造的检测问题，表面上看是一个二分类任务：这段录音是真人说的，还是机器合成的？但一个真正的法证分析师面对一段可疑录音时，他需要的远不止一个\"假\"字。他还想知道：是哪个系统生成的？另一段录音和这段录音是不是同一个系统产生的？模型凭什么这么判断？这些问题在现有系统里几乎没有统一的答案，而 VeriSpoof 这篇论文就是在正面回答这个问题。",
+    "url": "https://arxiv.org/abs/2611.04634",
+    "upvotes": 1,
+    "audio": "2026-11-05-verispoof-beyond-real-or-fake-with-one-audio-llm-37870457.mp3",
+    "size": 6412752,
+    "published": "2026-11-05T03:16:07.814854+00:00"
+  },
+  {
+    "key": "2611.02846",
+    "date": "2026-11-05",
+    "title": "SpecOPD: Branch-Parallel On-Policy Distillation for Speculative Decoding",
+    "abstract": "Speculative decoding (SD) accelerates large language model inference by reducing the sequential cost of token-by-token generation. Advanced SD methods reduce proposal cost with parallel drafters that predict entire blocks in one forward pass, but overall speedup still depends on acceptance length. On-policy distillation (OPD) can push well-trained drafters beyond acceptance-length plateaus, yet conventional pipelines collect supervision through sequential draft-and-verify rollouts. Our key insight is that on-policy supervision need not inherit these dependencies: a draft block can be supervised using only its reference prefix and draft-sampled history. We propose SpecOPD, a branch-parallel OPD framework that parallelizes draft sampling and target supervision across independent branches drawn from the evolving drafter policy at reference anchors. We pack these branches into proposal trees to share target-prefix computation, using tree masks for full attention, branch-consistent indexer groups for sparse attention, and indexed state replay for linear attention to preserve each branch's history. We train the drafter with an E2E-TV surrogate that directly targets acceptance length. Our study spans 8B full-attention (GQA), 27B full-linear (GQA--GDN), and 125B sparse-linear (QSA--GDN) targets, three parallel draft architectures (DFlash, DSpark, and DFlash V2), and four task domains (dialogue, coding, mathematics, and agentic). SpecOPD achieves up to 41.45% higher mean acceptance length, 16.09times supervised-token throughput over sequential-rollout OPD under native configurations, and up to 3.56times generation speedup over autoregressive decoding.",
+    "notes": "大型语言模型的推理速度，一直是大家关注的焦点，因为它直接影响了用户体验和运营成本。目前，一种非常流行的加速技术叫做“推测解码”，英文是 Speculative Decoding，简称 SD。它的基本思想是，我们用一个比较小、计算成本比较低的“草稿模型”，或者叫“提议模型”，来快速预测接下来的一串词。然后，我们把这些预测出来的词一次性提交给那个又大又准的“目标模型”去验证。如果大模型验证通过，这些词就直接接受了，这比大模型一个词一个词地生成要快得多。如果没通过，那就回退到通过的地方，让大模型重新生成。",
+    "url": "https://arxiv.org/abs/2611.02846",
+    "upvotes": 1,
+    "audio": "2026-11-05-specopd-branch-parallel-on-policy-distillation-for-speculati-0372be36.mp3",
+    "size": 5872464,
+    "published": "2026-11-05T03:11:59.267123+00:00"
+  },
+  {
+    "key": "2611.04391",
+    "date": "2026-11-05",
+    "title": "Human-to-Robot Transfer via Bridging Representation and Action Space in VLAs",
+    "abstract": "Pretrained Vision-Language-Action (VLA) policies provide a strong starting point for deployment, but adapting them to a target robot and environment still requires costly embodiment-specific demonstrations. Human demonstrations are far easier to collect, yet directly leveraging them is challenging due to the substantial human-robot embodiment gap, particularly when the underlying VLA has been pretrained primarily on robot data. We introduce H2RB (Human-To-Robot Bridge), a human-robot co-training framework for adapting pretrained VLA policies from unpaired human and robot demonstrations. H2RB bridges the embodiment gap at both interfaces: geometry-anchored alignment grounds human and robot observations in a compatible representation, while a decoupled-decoder tokenizer shares action latents without forcing both domains through a single action mapping. This design allows human demonstrations to provide useful behavioral supervision while retaining the rich visual, semantic, and control priors of the pretrained VLA. Across real-world tasks, H2RB substantially improves object transfer performance from 8.0 to 51.8 and enables skill transfer to score 62.7, in settings where co-train baselines totally fail to transfer human-demonstrated skills. The benefit also persists under object-placement shifts, improving out-of-distribution transfer from 6.0 to 45.3. H2RB suggests a way for human demonstrations to serve as a scalable supervision source for adapting pretrained robotic policies, reducing the dependence on costly target-robot data collection.",
+    "notes": "VLA模型，也就是视觉语言动作模型，虽然为机器人部署提供了强大的起点，但要让它们适应新的目标机器人和环境，仍然需要大量昂贵的、针对特定机器人形态的演示数据。这些数据通常需要物理平台、远程操控系统，并且需要反复重置环境才能收集。然而，人类演示数据收集起来就容易多了，只需要一个轻便的摄像头设置，就能自然而快速地获得。但问题是，如果直接利用人类演示来适应机器人策略，会面临一个巨大的挑战：人与机器人之间存在显著的“形态差异”，尤其是当预训练的VLA模型主要基于机器人数据进行训练时，这种差异会更大。",
+    "url": "https://arxiv.org/abs/2611.04391",
+    "upvotes": 3,
+    "audio": "2026-11-05-human-to-robot-transfer-via-bridging-representation-and-acti-ce7dd8b0.mp3",
+    "size": 5839056,
+    "published": "2026-11-05T03:08:32.138466+00:00"
+  },
+  {
+    "key": "2610.37257",
+    "date": "2026-11-05",
+    "title": "GameVerse: A Minute-Scale Gameplay Dataset for Long-Horizon Interactive World Modeling",
+    "abstract": "Recent advances in interactive world models have made it possible to generate controllable, dynamic environments from action inputs. Yet current models struggle to maintain coherence beyond roughly one minute of rollout, a limitation rooted not in model capacity but in the scarcity of long-horizon training data. Existing gameplay video datasets typically consist of clips under ten seconds, with captions that describe whole clips in coarse and undifferentiated text, which is insufficient for controllable long-horizon generation. We address this with GameVerse, a minute-scale gameplay video dataset purpose-built for long-horizon interactive world modeling. GameVerse contains 69.7K clips spanning 1,655 hours and 349.6 million frames across diverse first- and third-person gameplay, including 1,358 hours of continuous two-minute sequences, an order of magnitude longer than prior datasets. Clips pass through a unified pipeline of scene-consistent segmentation, quality filtering, camera pose estimation, and event-based caption annotation. Each clip is paired with a temporally stable camera trajectory that remains coherent across minutes, together with captions that separate static scene context from dynamic foreground events and align to event boundaries rather than fixed time windows. Comprehensive analysis shows that GameVerse surpasses existing public datasets in scale, diversity, and annotation quality. Experiments further demonstrate that training on GameVerse substantially extends the temporal horizon of interactive world models.",
+    "notes": "当前交互式世界模型有一个非常明显的天花板：生成超过大约一分钟的视频后，画面就会开始漂移、角色身份丢失、场景变得前后不一致。这个问题困扰着GameGen-X、Matrix-Game、Hunyuan-GameCraft这些近年来最受关注的游戏世界模型系统。研究者们很自然地会想，是不是模型容量不够大？是不是架构设计有问题？但这篇论文的核心论断是：这根本上是一个数据问题，而不是模型问题。训练这些系统所用的数据集，几乎全都由不超过十秒的短片段组成，而且每个片段只配一句笼统的整体描述，把静态场景背景和动态事件混在一起说。这种数据结构从根本上就无法教会模型维持分钟级别的时序连贯性，不管你的模型参数量有多大，",
+    "url": "https://arxiv.org/abs/2610.37257",
+    "upvotes": 7,
+    "audio": "2026-11-05-gameverse-a-minute-scale-gameplay-dataset-for-long-horizon-i-e6e38342.mp3",
+    "size": 5514480,
+    "published": "2026-11-05T03:04:29.237811+00:00"
+  },
+  {
     "key": "2611.02568",
     "date": "2026-11-04",
     "title": "SeMo3D: Unifying 3D Generation, Editing, and Completion via Selective Modeling",
