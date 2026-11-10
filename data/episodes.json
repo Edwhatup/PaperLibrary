@@ -1,5 +1,53 @@
 [
   {
+    "key": "2611.08452",
+    "date": "2026-11-10",
+    "title": "ReproBridge: Building Reproducibility into ML Research Artifacts",
+    "abstract": "Reproducing machine learning experiments requires reconstructing procedures from information scattered across papers, released code, and supporting artifacts. For coding agents, reproduction success can therefore depend on their ability to fill in missing details, rather than on the released artifacts alone. We ask whether preserving recovered procedures and decisions improves subsequent independent reproduction. We define a standardized artifact design comprising a refined codebase, environment setup, experiment launchers, and a reproduction guide, and introduce ReproBridge, an agent workflow for constructing these refined reproducible artifacts. ReproBridge-Bench provides 1,029 tasks from 387 experiments across 36 papers, anchored by five human-verified reference scores per task. Agents attempt tasks in fresh sessions with raw code or refined artifacts; a separate Auditor checks execution evidence. Across four evaluated models, refined artifacts raise mean reproduction success from 76.4% to 92.6% and reduce downstream API spending by 19.7% on average. The cross-model success-rate spread narrows from 21.6 to 3.9 percentage points, with all four models achieving mean success rates above 90%. Removing any component reduces success in the ablation study, with the largest losses from code and environment removal. These results suggest that preserving execution knowledge helps even models with lower raw-code success reproduce experiments more reliably and at lower API cost.",
+    "notes": "机器学习实验的可复现性问题，说起来人人都觉得重要，但真正动手复现一篇论文的时候，你会发现这件事有多痛苦。论文里说用了某个学习率，但代码里写的是另一个值；环境依赖版本冲突，装了三个小时还是跑不起来；好不容易跑通了，输出的数字对不上，不知道是自己哪里做错了，还是论文本身就有歧义。这篇叫做ReproBridge的论文，就是专门来解决这个问题的。它问的核心问题是：复现成功率到底取决于发布的代码质量，还是取决于做复现的人自身的能力？如果我们把第一个人踩过的坑、做过的决策都系统地保存下来，后面的人复现同一篇论文会不会容易很多？",
+    "url": "https://arxiv.org/abs/2611.08452",
+    "upvotes": 0,
+    "audio": "2026-11-10-reprobridge-building-reproducibility-into-ml-research-artifa-9dd3730d.mp3",
+    "size": 6030288,
+    "published": "2026-11-10T04:42:48.456625+00:00"
+  },
+  {
+    "key": "2610.42148",
+    "date": "2026-11-10",
+    "title": "Flide: Accelerating Decision Inference with Exact State Forking",
+    "abstract": "Decision models such as Jev have emerged as a highly promising paradigm for LLM agent systems, providing lightweight and reliable categorical reasoning for rapid System One execution. However, existing generation-oriented inference engines fail to support these workloads effectively, suffering from severe prefix recomputation overheads or distorted output probabilities. To address this challenge, we propose Flide, an efficient and exact inference engine that decouples the logical tree structure of a decision request from its physical execution within a single flattened token stream. Through ForkAttention, Flide navigates request dependencies using GPU-resident indices across both standard attention and recurrent Gated DeltaNet layers, guaranteeing in exact arithmetic that every query branch evaluates identically to an isolated forward pass. By expressing branch topologies directly in GPU-resident metadata, Flide accommodates diverse request mixtures with a compact set of pre-recorded execution graphs while enabling expanding agent histories to resume from checkpoints saved in earlier passes. Extensive evaluations on public hybrid and decision models demonstrate that Flide answers queries up to 9.5 times faster than vLLM and SGLang while staying closest to a float32 reference in total variation distance. By unifying physical execution throughput with mathematical exactness, Flide establishes a principled foundation for scalable, latency-critical decision intelligence in agent systems.",
+    "notes": "现有的大语言模型推理引擎，在面对一类特殊的工作负载时，会陷入一个非常尴尬的困境：要么重复计算大量相同的内容，要么为了避免重复计算而悄悄地修改了输入，导致输出结果发生偏移，甚至翻转决策。这篇论文要解决的，就是这个问题。",
+    "url": "https://arxiv.org/abs/2610.42148",
+    "upvotes": 1,
+    "audio": "2026-11-10-flide-accelerating-decision-inference-with-exact-state-forki-5dc13ebb.mp3",
+    "size": 6173856,
+    "published": "2026-11-10T04:39:01.709532+00:00"
+  },
+  {
+    "key": "2611.10690",
+    "date": "2026-11-10",
+    "title": "JoVox: Joint Hierarchical Flow Matching for Lightweight Voxel Generation",
+    "abstract": "Generating high-fidelity voxels while keeping their lightweight nature remains an open problem in computer vision. Current generators are either high-fidelity but computationally heavy, or lightweight but of lower fidelity. Hierarchical methods keep the lightweight nature of voxels. However, their coarse levels, which decide where all finer cells can appear, are generated with the least information about the shape and are never revisited, so they are often plausible but wrong. Our key insight is to let finer cells take part in deciding coarse cells. To this end, we propose JoVox, a discrete flow matching framework that learns the joint distribution of all levels of the voxel hierarchy, instead of a separate distribution for each level, so that coarse cells can be predicted with finer cells already generated nearby. Within this framework, we further introduce a two-level prediction, which outputs the cells two levels finer at once instead of one level finer, halving the number of levels that the network processes and yielding voxels of higher fidelity. We also introduce an unmasking strategy that revisits early decisions once finer cells are generated and corrects inconsistencies in masked diffusion models. Our framework outperforms the baselines on both unconditional and image-conditioned voxel generation. Compared with the current state-of-the-art TRELLIS.2, we achieve 8x higher training throughput, 1/15 of the FLOPs in a forward pass, train on 4 vs. 32 GPUs, and obtain higher quality with an 11% lower Chamfer distance.",
+    "notes": "在三维计算机视觉领域，生成高质量的体素模型，同时保持其轻量级的特性，一直是一个悬而未决的难题。体素，你可以把它想象成三维空间里的像素点，它们记录了一个三维形状在空间中的占据情况。这种表示方法非常轻量，而且应用广泛，比如可以把体素转换成更精细的三维形状网格，同时保留体素定义的结构。然而，目前生成高保真体素的方法，要么计算成本太高，要么虽然轻量，但生成质量又不够高。",
+    "url": "https://arxiv.org/abs/2611.10690",
+    "upvotes": 1,
+    "audio": "2026-11-10-jovox-joint-hierarchical-flow-matching-for-lightweight-voxel-21d24c2c.mp3",
+    "size": 5981040,
+    "published": "2026-11-10T04:34:55.522098+00:00"
+  },
+  {
+    "key": "2611.10771",
+    "date": "2026-11-10",
+    "title": "WorldFoundry: Towards Unified Infrastructure for World Intelligence",
+    "abstract": "Visual generative models increasingly blur the line between synthesizing observations and simulating environments. Yet visual plausibility alone does not constitute successful world modeling: compelling outputs may lack persistent state, physical dynamics, or causally consistent responses to interactions. We define a generative world model as a predictive dynamical system that maintains a persistent, history-conditioned representation of an environment, updates that representation in response to actions or interventions, and generates temporally coherent trajectories that reflect outcomes under observed and counterfactual interventions. From this definition, we derive an intelligence-oriented framework spanning perceptual grounding, persistent state modeling, controllable transformation, dynamics-aware prediction, and closed-loop interaction. We present WorldFoundry, open-source infrastructure for reproducible inference and evaluation across video, 3D and 4D, embodied action, and interactive world systems. WorldFoundry unifies model and benchmark discovery, runtime and asset preparation, execution orchestration, artifact management, and interactive visualization, while modality-specific adapters preserve native inputs, execution semantics, output representations, and evaluation protocols. Explicit manifests, durable artifact contracts, and evidence-aware scorecards separate execution readiness from evaluative claims, making each claim traceable to its supporting artifacts. The catalog contains 270 model entries, 74 benchmarks, and 62 registered metric entries, with readiness and execution evidence recorded separately. WorldFoundry enables reproducible comparison of persistent, controllable dynamics across heterogeneous systems, advancing the field from perceptual synthesis toward measurable world intelligence.",
+    "notes": "有一类问题在AI领域长期被忽视：我们怎么知道一个生成模型真的在\"模拟世界\"，而不只是在\"生成好看的画面\"？这两件事听起来很像，但本质上差距巨大。WorldFoundry这篇论文就是冲着这个问题来的，它不仅给出了一个严格的理论定义，还构建了一套开源基础设施，让这个问题从哲学讨论变成可以实际测量、可复现、可比较的工程实践。",
+    "url": "https://arxiv.org/abs/2611.10771",
+    "upvotes": 8,
+    "audio": "2026-11-10-worldfoundry-towards-unified-infrastructure-for-world-intell-c2e303eb.mp3",
+    "size": 5881536,
+    "published": "2026-11-10T04:30:47.550580+00:00"
+  },
+  {
     "key": "2611.04634",
     "date": "2026-11-05",
     "title": "VeriSpoof: Beyond Real or Fake with One Audio LLM",

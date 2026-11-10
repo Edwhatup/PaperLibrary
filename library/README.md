@@ -3,6 +3,13 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-10
+
+- **ReproBridge: Building Reproducibility into ML Research Artifacts** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-10-reprobridge-building-reproducibility-into-ml-research-artifa-9dd3730d.mp3) [arXiv](https://arxiv.org/abs/2611.08452)
+- **Flide: Accelerating Decision Inference with Exact State Forking** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-10-flide-accelerating-decision-inference-with-exact-state-forki-5dc13ebb.mp3) [arXiv](https://arxiv.org/abs/2610.42148)
+- **JoVox: Joint Hierarchical Flow Matching for Lightweight Voxel Generation** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-10-jovox-joint-hierarchical-flow-matching-for-lightweight-voxel-21d24c2c.mp3) [arXiv](https://arxiv.org/abs/2611.10690)
+- **WorldFoundry: Towards Unified Infrastructure for World Intelligence** · 8★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-10-worldfoundry-towards-unified-infrastructure-for-world-intell-c2e303eb.mp3) [arXiv](https://arxiv.org/abs/2611.10771)
+
 ## 2026-11-05
 
 - **VeriSpoof: Beyond Real or Fake with One Audio LLM** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-05-verispoof-beyond-real-or-fake-with-one-audio-llm-37870457.mp3) [arXiv](https://arxiv.org/abs/2611.04634)

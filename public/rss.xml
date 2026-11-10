@@ -8,6 +8,42 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>ReproBridge: Building Reproducibility into ML Research Artifacts</title>
+      <description>机器学习实验的可复现性问题，说起来人人都觉得重要，但真正动手复现一篇论文的时候，你会发现这件事有多痛苦。论文里说用了某个学习率，但代码里写的是另一个值；环境依赖版本冲突，装了三个小时还是跑不起来；好不容易跑通了，输出的数字对不上，不知道是自己哪里做错了，还是论文本身就有歧义。这篇叫做ReproBridge的论文，就是专门来解决这个问题的。它问的核心问题是：复现成功率到底取决于发布的代码质量，还是取决于做复现的人自身的能力？如果我们把第一个人踩过的坑、做过的决策都系统地保存下来，后面的人复现同一篇论文会不会容易很多？</description>
+      <link>https://arxiv.org/abs/2611.08452</link>
+      <guid isPermaLink="false">2026-11-10-reprobridge-building-reproducibility-into-ml-research-artifa-9dd3730d.mp3</guid>
+      <pubDate>Tue, 10 Nov 2026 04:42:48 +0000</pubDate>
+      <itunes:duration>1005</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-10-reprobridge-building-reproducibility-into-ml-research-artifa-9dd3730d.mp3" length="6030288" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Flide: Accelerating Decision Inference with Exact State Forking</title>
+      <description>现有的大语言模型推理引擎，在面对一类特殊的工作负载时，会陷入一个非常尴尬的困境：要么重复计算大量相同的内容，要么为了避免重复计算而悄悄地修改了输入，导致输出结果发生偏移，甚至翻转决策。这篇论文要解决的，就是这个问题。</description>
+      <link>https://arxiv.org/abs/2610.42148</link>
+      <guid isPermaLink="false">2026-11-10-flide-accelerating-decision-inference-with-exact-state-forki-5dc13ebb.mp3</guid>
+      <pubDate>Tue, 10 Nov 2026 04:39:01 +0000</pubDate>
+      <itunes:duration>1028</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-10-flide-accelerating-decision-inference-with-exact-state-forki-5dc13ebb.mp3" length="6173856" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>JoVox: Joint Hierarchical Flow Matching for Lightweight Voxel Generation</title>
+      <description>在三维计算机视觉领域，生成高质量的体素模型，同时保持其轻量级的特性，一直是一个悬而未决的难题。体素，你可以把它想象成三维空间里的像素点，它们记录了一个三维形状在空间中的占据情况。这种表示方法非常轻量，而且应用广泛，比如可以把体素转换成更精细的三维形状网格，同时保留体素定义的结构。然而，目前生成高保真体素的方法，要么计算成本太高，要么虽然轻量，但生成质量又不够高。</description>
+      <link>https://arxiv.org/abs/2611.10690</link>
+      <guid isPermaLink="false">2026-11-10-jovox-joint-hierarchical-flow-matching-for-lightweight-voxel-21d24c2c.mp3</guid>
+      <pubDate>Tue, 10 Nov 2026 04:34:55 +0000</pubDate>
+      <itunes:duration>996</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-10-jovox-joint-hierarchical-flow-matching-for-lightweight-voxel-21d24c2c.mp3" length="5981040" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>WorldFoundry: Towards Unified Infrastructure for World Intelligence</title>
+      <description>有一类问题在AI领域长期被忽视：我们怎么知道一个生成模型真的在"模拟世界"，而不只是在"生成好看的画面"？这两件事听起来很像，但本质上差距巨大。WorldFoundry这篇论文就是冲着这个问题来的，它不仅给出了一个严格的理论定义，还构建了一套开源基础设施，让这个问题从哲学讨论变成可以实际测量、可复现、可比较的工程实践。</description>
+      <link>https://arxiv.org/abs/2611.10771</link>
+      <guid isPermaLink="false">2026-11-10-worldfoundry-towards-unified-infrastructure-for-world-intell-c2e303eb.mp3</guid>
+      <pubDate>Tue, 10 Nov 2026 04:30:47 +0000</pubDate>
+      <itunes:duration>980</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-10-worldfoundry-towards-unified-infrastructure-for-world-intell-c2e303eb.mp3" length="5881536" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>VeriSpoof: Beyond Real or Fake with One Audio LLM</title>
       <description>语音深度伪造的检测问题，表面上看是一个二分类任务：这段录音是真人说的，还是机器合成的？但一个真正的法证分析师面对一段可疑录音时，他需要的远不止一个"假"字。他还想知道：是哪个系统生成的？另一段录音和这段录音是不是同一个系统产生的？模型凭什么这么判断？这些问题在现有系统里几乎没有统一的答案，而 VeriSpoof 这篇论文就是在正面回答这个问题。</description>
       <link>https://arxiv.org/abs/2611.04634</link>
