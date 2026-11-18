@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-18
+
+- **Breath-Dx: A Time Series Classification Benchmark for Disease Screening with eNose** · 8★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-18-breath-dx-a-time-series-classification-benchmark-for-disease-65bc98d2.mp3) [arXiv](https://arxiv.org/abs/2611.15348)
+- **ResWAM: Learning What Changes, Not What Stays, for World-Action Models** · 8★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-18-reswam-learning-what-changes-not-what-stays-for-world-action-4230b3ee.mp3) [arXiv](https://arxiv.org/abs/2611.19559)
+- **Multi-Branch Transformer** · 17★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-18-multi-branch-transformer-2d09a000.mp3) [arXiv](https://arxiv.org/abs/2611.19800)
+- **Weight-Space Programming Doesn't Need Transformers** · 18★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-18-weight-space-programming-doesn-t-need-transformers-c60dff96.mp3) [arXiv](https://arxiv.org/abs/2611.22055)
+- **ForceHarness: Turning Force into Action and Physics for Frozen Frontier Models** · 19★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-18-forceharness-turning-force-into-action-and-physics-for-froze-10b3296d.mp3) [arXiv](https://arxiv.org/abs/2611.21099)
+
 ## 2026-11-10
 
 - **ReproBridge: Building Reproducibility into ML Research Artifacts** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-10-reprobridge-building-reproducibility-into-ml-research-artifa-9dd3730d.mp3) [arXiv](https://arxiv.org/abs/2611.08452)

@@ -1,5 +1,65 @@
 [
   {
+    "key": "2611.15348",
+    "date": "2026-11-18",
+    "title": "Breath-Dx: A Time Series Classification Benchmark for Disease Screening with eNose",
+    "abstract": "Electronic nose (eNose) technology offers a portable, non-invasive route for disease screening via exhaled breath analysis. However, progress in the field is hindered by the lack of systematic benchmarks that compare machine learning methods under realistic conditions, particularly sensor drift, a known but rarely quantified failure mode. Most existing studies rely on small, private datasets with inconsistent protocols, rendering results non-comparable and slowing progress. We introduce Breath-Dx, the first comprehensive benchmark of time series classification methods for breath-based disease screening. Our work leverages the Scent of Health (S-OH) dataset, the largest public clinical eNose collection to date, comprising 1,234 patients across nine diagnostic groups, each providing a 17-channel multivariate time series with explicit temporal train/test splits that account for sensor drift. We systematically evaluate 10 methods spanning four families: feature-based tabular learners, convolution-based models, graph-based, and time series architectures. All methods degrade significantly under temporal validation (0.05-0.12 AUC drop compared to random cross-validation), confirming that drift embeds a strong temporal signal. Under this realistic evaluation, the best methods achieve ROC AUC of 0.74-0.76 for some lung conditions, though others remain near chance. Recurrent architectures show the most consistent performance across diseases, while specialized time series methods achieve the highest peak results. Demographic confounders matter: breath signals provide independent diagnostic value for some conditions but add little beyond age for others. We release the S-OH dataset, all temporal splits, evaluation protocols, and code to enable reproducible research and accelerate progress in clinical breathomics.",
+    "notes": "呼出的气体里藏着疾病的信号——这个想法听起来像科幻，但它其实已经有几十年的研究积累。问题是，这个领域至今没有一个可靠的、公开的、能让不同研究组相互比较的基准。每篇论文用自己的小数据集、自己的评估方式，结果根本没法横向比较，更不用说找到真正能部署到临床的方法。这篇来自Sber AI Lab和多家俄罗斯医疗机构的论文，就是要正面解决这个问题。它发布了一个叫做Breath-Dx的基准，配套了一个叫做S-OH，也就是\"健康的气味\"的公开数据集，系统评测了十种机器学习方法在电子鼻疾病筛查任务上的表现，并且第一次把传感器漂移这个行业内人尽皆知、却极少被量化的失效模式放到了台面上。这篇论文获得了ICDM 2",
+    "url": "https://arxiv.org/abs/2611.15348",
+    "upvotes": 8,
+    "audio": "2026-11-18-breath-dx-a-time-series-classification-benchmark-for-disease-65bc98d2.mp3",
+    "size": 6344640,
+    "published": "2026-11-18T04:19:24.966414+00:00"
+  },
+  {
+    "key": "2611.19559",
+    "date": "2026-11-18",
+    "title": "ResWAM: Learning What Changes, Not What Stays, for World-Action Models",
+    "abstract": "World-action models (WAMs) augment vision-language-action policies (VLAs) with future prediction so that the policy can anticipate how its actions will affect the physical world. Existing WAMs supervise complete future observations. However, observations typically change little over an action chunk, so the future loss is dominated by copying static background content rather than learning task-relevant robot and object motion, limiting policy learning. Moreover, existing WAMs rely on large video generation models or separate world models, incurring heavy training and inference compute that hinders closed-loop deployment. To improve policy performance, we propose visual residual learning, supervising only the feature change from the current frame to the future frame in a frozen DINOv3 space. Compared with complete future features, this residual learning target yields a higher feature rank with richer and more diverse representations of scene changes, and spatially concentrates on the robot arm and manipulated objects rather than the background. To further improve computational efficiency, we present ResWAM, a residual world-action model with 2.3B parameters in total, including a lightweight 0.5B dual-branch DiT that jointly trains an action branch and a residual branch via conditional flow matching. Without robot pretraining (i.e., pretraining on external robot action trajectories beyond the benchmark demonstrations), ResWAM achieves top average success rates on LIBERO-Plus (81.1%), RoboTwin 2.0 (93.8%), and RoboDojo (9.40% success, 13.41 score) at the lowest training (2.7-4.0 TFLOPs) and inference compute (1.0-1.4 TFLOPs), and leads real-robot Open, Put, and Stack (80.0% average, +10.0% over π_{0.5}) at 92.7 ms latency.",
+    "notes": "机器人策略学习里有一个长期被忽视的问题：现有的世界-动作模型在训练时，要求模型预测未来的完整视觉观测，但机器人在执行一段动作的过程中，场景里绝大多数东西根本就没动。桌面、墙壁、灯光、背景——这些静止的内容在前后两帧之间几乎一模一样。论文作者在LIBERO这个仿真基准上做了测量，发现当前帧和未来帧的视觉特征之间，余弦相似度平均高达0.96。也就是说，两帧之间有百分之九十六的信息是重复的。在这种情况下，如果你让模型去预测完整的未来帧，那它大部分的学习容量都被用在了复制静止背景上，真正需要关注的东西——机械臂在哪、抓的物体移到了哪——反而被这些无用的背景信号淹没了。这就是ResWAM这篇论文要解决的",
+    "url": "https://arxiv.org/abs/2611.19559",
+    "upvotes": 8,
+    "audio": "2026-11-18-reswam-learning-what-changes-not-what-stays-for-world-action-4230b3ee.mp3",
+    "size": 6368400,
+    "published": "2026-11-18T04:15:43.646595+00:00"
+  },
+  {
+    "key": "2611.19800",
+    "date": "2026-11-18",
+    "title": "Multi-Branch Transformer",
+    "abstract": "Transformer language models are commonly scaled by making their blocks wider or stacking them deeper. In this work, we explore a complementary path: branching, the parallel composition of full Transformer blocks. We introduce the Multi-Branch Transformer (MBT), which processes the input through shared initial layers, executes independently parameterized branches of sequential blocks in parallel, and fuses their outputs before shared final layers. At comparable training compute, we study three MBT variants: Wide-Shallow preserves block width, Narrow-Deep preserves sequential depth, and Balanced interpolates between them. In controlled pretraining experiments at four mixture-of-experts scales (0.8B to 2.1B total parameters), 2-branch Wide-Shallow MBTs consistently outperform sequential Transformers under matched parameter and training-compute budgets. Balanced MBTs improve further and retain comparable quality as the number of branches increases. To improve inference efficiency at long contexts, we introduce Joint-KV, which constructs a shared KV cache from branch representations at each depth. Our final recipe combines Balanced MBTs with Joint-KV, supported by an inference engine that exploits branch grouping and shared-cache reuse. Fitted scaling curves indicate that standard Transformers require up to 1.26x as much training body compute to match our final models' validation loss. These models reduce full-model KV-cache storage by up to 34% and deliver up to 51.4% higher decoding throughput on a single H200 GPU. Ablation studies show that branching yields gains beyond changes in width and depth, enables an effective KV-sharing strategy (Joint-KV), remains robust across fusion functions, and performs best in the middle layers. These findings show that branching offers a practical path for scaling language models toward both better modeling quality and faster inference.",
+    "notes": "语言模型的规模扩展，长期以来只有两条路可走：要么把网络做得更宽，每一层里的矩阵维度更大；要么把网络堆得更深，层数更多。这篇论文问了一个很直接的问题：除了宽度和深度，还有没有第三条路？他们给出的答案叫做\"分支化\"，也就是把完整的Transformer模块并行地组合起来，而不是一个接一个地串联。这个想法催生了一个新架构——多分支Transformer，英文缩写是MBT。",
+    "url": "https://arxiv.org/abs/2611.19800",
+    "upvotes": 17,
+    "audio": "2026-11-18-multi-branch-transformer-2d09a000.mp3",
+    "size": 4105872,
+    "published": "2026-11-18T04:11:40.816515+00:00"
+  },
+  {
+    "key": "2611.22055",
+    "date": "2026-11-18",
+    "title": "Weight-Space Programming Doesn't Need Transformers",
+    "abstract": "Standard neural architectures such as the Transformer were chosen because they train well with gradient descent and run fast on GPUs. In weight-space programming, a large language model (LLM) writes target weights by hand without gradient-based training, so those reasons no longer apply. Should we keep the Transformer? Given minimal guidance, ten labeled examples, and a sandbox, mainly on multiple-choice questions, we task three frontier LLMs with either generating the weights of a fixed architecture or designing the architecture themselves. When free to design, all three compile plain-text facts into a sparse table queried by a fixed procedure, reaching up to 54.4% test accuracy. An LLM-designed model achieves higher test accuracy than the most accurate released Transformer that the same LLM wrote while using about 1,800x fewer parameters. Without gradients, they choose a table, in which the LLM can state what each weight means and can find and rewrite a wrong one. Each wrong answer points to one row, and removing a row changes about one other answer. From this, we propose an associative-memory-based model up to 17x faster on GPUs than a same-sized Transformer. We also test pretrained weights, other benchmarks, and tasks where models generate answers. Pretrained LLMs remain more accurate; the claim concerns which structure to build when writing weights.",
+    "notes": "好的，我们来深入探讨这篇论文。",
+    "url": "https://arxiv.org/abs/2611.22055",
+    "upvotes": 18,
+    "audio": "2026-11-18-weight-space-programming-doesn-t-need-transformers-c60dff96.mp3",
+    "size": 8877024,
+    "published": "2026-11-18T04:09:21.033308+00:00"
+  },
+  {
+    "key": "2611.21099",
+    "date": "2026-11-18",
+    "title": "ForceHarness: Turning Force into Action and Physics for Frozen Frontier Models",
+    "abstract": "Frontier multimodal models can now control robots zero-shot from images, yet many manipulation tasks depend on contact forces that images cannot show. Bringing force to an API-only frozen model raises two challenges. First, contact evolves much faster than an API model can decide, so the system must close the loop on force beneath the model. Second, a frozen model cannot interpret raw force streams, so force must be returned in a form the model can reason about. Therefore, we present ForceHarness, a harness that lets frozen models use force without demonstrations or finetuning. After calibrating hand force from a wrist sensor or joint torques alone, ForceHarness addresses the first challenge with self-terminating force primitives that regulate force on their own and return at a contact event. To address the second challenge, a physics translation layer turns each force trace into physical quantities with uncertainty as the tool result. To evaluate ForceHarness against expert force controllers and learned policies under identical conditions, we also build HiddenPhys, a seven-task MuJoCo benchmark with hidden physical variables. On a real arm without a wrist force sensor, ForceHarness raises the zero-shot success rate of GPT-6 Astra from 3.3% to 90.0%. In simulation, it adds 17.5 percentage points on the public ForceBench suite and 34.3 percentage points on HiddenPhys, surpassing force-aware policies trained on demonstrations on both benchmarks and matching hand-written expert controllers on HiddenPhys. Ablations further show that smaller models make significantly better decisions when given physical quantities rather than raw force values.",
+    "notes": "有一类机器人操作任务，光靠看是做不到的。比如拧螺丝，你必须往下压的同时转动，直到螺纹咬合，这个咬合的感觉相机拍不到。再比如三瓶外观一模一样的液体，你要分出哪瓶最重、哪瓶最轻，摄像头给你的信息完全没用。这就是这篇论文要解决的核心问题：怎么让一个冻结的前沿多模态模型，也就是那种只能通过API调用、权重完全不能动的大模型，真正理解并利用接触力，来完成那些没有力就根本无法完成的操作任务。",
+    "url": "https://arxiv.org/abs/2611.21099",
+    "upvotes": 19,
+    "audio": "2026-11-18-forceharness-turning-force-into-action-and-physics-for-froze-10b3296d.mp3",
+    "size": 5539536,
+    "published": "2026-11-18T04:05:13.607901+00:00"
+  },
+  {
     "key": "2611.08452",
     "date": "2026-11-10",
     "title": "ReproBridge: Building Reproducibility into ML Research Artifacts",

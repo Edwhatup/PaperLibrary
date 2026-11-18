@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Breath-Dx: A Time Series Classification Benchmark for Disease Screening with eNose</title>
+      <description>呼出的气体里藏着疾病的信号——这个想法听起来像科幻，但它其实已经有几十年的研究积累。问题是，这个领域至今没有一个可靠的、公开的、能让不同研究组相互比较的基准。每篇论文用自己的小数据集、自己的评估方式，结果根本没法横向比较，更不用说找到真正能部署到临床的方法。这篇来自Sber AI Lab和多家俄罗斯医疗机构的论文，就是要正面解决这个问题。它发布了一个叫做Breath-Dx的基准，配套了一个叫做S-OH，也就是"健康的气味"的公开数据集，系统评测了十种机器学习方法在电子鼻疾病筛查任务上的表现，并且第一次把传感器漂移这个行业内人尽皆知、却极少被量化的失效模式放到了台面上。这篇论文获得了ICDM 2</description>
+      <link>https://arxiv.org/abs/2611.15348</link>
+      <guid isPermaLink="false">2026-11-18-breath-dx-a-time-series-classification-benchmark-for-disease-65bc98d2.mp3</guid>
+      <pubDate>Wed, 18 Nov 2026 04:19:24 +0000</pubDate>
+      <itunes:duration>1057</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-18-breath-dx-a-time-series-classification-benchmark-for-disease-65bc98d2.mp3" length="6344640" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ResWAM: Learning What Changes, Not What Stays, for World-Action Models</title>
+      <description>机器人策略学习里有一个长期被忽视的问题：现有的世界-动作模型在训练时，要求模型预测未来的完整视觉观测，但机器人在执行一段动作的过程中，场景里绝大多数东西根本就没动。桌面、墙壁、灯光、背景——这些静止的内容在前后两帧之间几乎一模一样。论文作者在LIBERO这个仿真基准上做了测量，发现当前帧和未来帧的视觉特征之间，余弦相似度平均高达0.96。也就是说，两帧之间有百分之九十六的信息是重复的。在这种情况下，如果你让模型去预测完整的未来帧，那它大部分的学习容量都被用在了复制静止背景上，真正需要关注的东西——机械臂在哪、抓的物体移到了哪——反而被这些无用的背景信号淹没了。这就是ResWAM这篇论文要解决的</description>
+      <link>https://arxiv.org/abs/2611.19559</link>
+      <guid isPermaLink="false">2026-11-18-reswam-learning-what-changes-not-what-stays-for-world-action-4230b3ee.mp3</guid>
+      <pubDate>Wed, 18 Nov 2026 04:15:43 +0000</pubDate>
+      <itunes:duration>1061</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-18-reswam-learning-what-changes-not-what-stays-for-world-action-4230b3ee.mp3" length="6368400" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Multi-Branch Transformer</title>
+      <description>语言模型的规模扩展，长期以来只有两条路可走：要么把网络做得更宽，每一层里的矩阵维度更大；要么把网络堆得更深，层数更多。这篇论文问了一个很直接的问题：除了宽度和深度，还有没有第三条路？他们给出的答案叫做"分支化"，也就是把完整的Transformer模块并行地组合起来，而不是一个接一个地串联。这个想法催生了一个新架构——多分支Transformer，英文缩写是MBT。</description>
+      <link>https://arxiv.org/abs/2611.19800</link>
+      <guid isPermaLink="false">2026-11-18-multi-branch-transformer-2d09a000.mp3</guid>
+      <pubDate>Wed, 18 Nov 2026 04:11:40 +0000</pubDate>
+      <itunes:duration>684</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-18-multi-branch-transformer-2d09a000.mp3" length="4105872" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Weight-Space Programming Doesn't Need Transformers</title>
+      <description>好的，我们来深入探讨这篇论文。</description>
+      <link>https://arxiv.org/abs/2611.22055</link>
+      <guid isPermaLink="false">2026-11-18-weight-space-programming-doesn-t-need-transformers-c60dff96.mp3</guid>
+      <pubDate>Wed, 18 Nov 2026 04:09:21 +0000</pubDate>
+      <itunes:duration>1479</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-18-weight-space-programming-doesn-t-need-transformers-c60dff96.mp3" length="8877024" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ForceHarness: Turning Force into Action and Physics for Frozen Frontier Models</title>
+      <description>有一类机器人操作任务，光靠看是做不到的。比如拧螺丝，你必须往下压的同时转动，直到螺纹咬合，这个咬合的感觉相机拍不到。再比如三瓶外观一模一样的液体，你要分出哪瓶最重、哪瓶最轻，摄像头给你的信息完全没用。这就是这篇论文要解决的核心问题：怎么让一个冻结的前沿多模态模型，也就是那种只能通过API调用、权重完全不能动的大模型，真正理解并利用接触力，来完成那些没有力就根本无法完成的操作任务。</description>
+      <link>https://arxiv.org/abs/2611.21099</link>
+      <guid isPermaLink="false">2026-11-18-forceharness-turning-force-into-action-and-physics-for-froze-10b3296d.mp3</guid>
+      <pubDate>Wed, 18 Nov 2026 04:05:13 +0000</pubDate>
+      <itunes:duration>923</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-18-forceharness-turning-force-into-action-and-physics-for-froze-10b3296d.mp3" length="5539536" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>ReproBridge: Building Reproducibility into ML Research Artifacts</title>
       <description>机器学习实验的可复现性问题，说起来人人都觉得重要，但真正动手复现一篇论文的时候，你会发现这件事有多痛苦。论文里说用了某个学习率，但代码里写的是另一个值；环境依赖版本冲突，装了三个小时还是跑不起来；好不容易跑通了，输出的数字对不上，不知道是自己哪里做错了，还是论文本身就有歧义。这篇叫做ReproBridge的论文，就是专门来解决这个问题的。它问的核心问题是：复现成功率到底取决于发布的代码质量，还是取决于做复现的人自身的能力？如果我们把第一个人踩过的坑、做过的决策都系统地保存下来，后面的人复现同一篇论文会不会容易很多？</description>
       <link>https://arxiv.org/abs/2611.08452</link>
