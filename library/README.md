@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-19
+
+- **Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-19-decoding-without-a-decoder-direct-pixel-prediction-from-diff-0ec7db58.mp3) [arXiv](https://arxiv.org/abs/2611.22287)
+- **Code World Model 2.0: Towards Infinite Controllable Video Generation** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-19-code-world-model-2-0-towards-infinite-controllable-video-gen-bcfcf666.mp3) [arXiv](https://arxiv.org/abs/2611.22925)
+- **ALIVE: Making Streaming Video Models Interactive** · 10★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-19-alive-making-streaming-video-models-interactive-40d6ac02.mp3) [arXiv](https://arxiv.org/abs/2611.21366)
+- **The Resolution Hypothesis: Agent Evolution's Key Is Identifying Improvements** · 11★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-19-the-resolution-hypothesis-agent-evolution-s-key-is-identifyi-0cd854ad.mp3) [arXiv](https://arxiv.org/abs/2611.23068)
+- **PROLA: Principal-Orthogonal Low-rank Adaptation for Predictive Spatiotemporal Weather Downscaling** · 14★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-19-prola-principal-orthogonal-low-rank-adaptation-for-predictiv-9748e4df.mp3) [arXiv](https://arxiv.org/abs/2611.11318)
+
 ## 2026-11-18
 
 - **Breath-Dx: A Time Series Classification Benchmark for Disease Screening with eNose** · 8★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-18-breath-dx-a-time-series-classification-benchmark-for-disease-65bc98d2.mp3) [arXiv](https://arxiv.org/abs/2611.15348)

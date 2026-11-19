@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers</title>
+      <description>好的，这是一篇约15分钟的口播稿，将论文《Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers》的核心内容进行讲解，用口语化、连贯的方式呈现，并严格遵守了您提出的所有要求。</description>
+      <link>https://arxiv.org/abs/2611.22287</link>
+      <guid isPermaLink="false">2026-11-19-decoding-without-a-decoder-direct-pixel-prediction-from-diff-0ec7db58.mp3</guid>
+      <pubDate>Thu, 19 Nov 2026 04:13:28 +0000</pubDate>
+      <itunes:duration>649</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-19-decoding-without-a-decoder-direct-pixel-prediction-from-diff-0ec7db58.mp3" length="3895056" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Code World Model 2.0: Towards Infinite Controllable Video Generation</title>
+      <description>怎么让一个AI视频模型既能接受粗糙的骨架控制信号、又能跟随精细的关节动作，同时在实时流式推理中不让画面越漂越远——这是这篇论文要正面解决的问题。</description>
+      <link>https://arxiv.org/abs/2611.22925</link>
+      <guid isPermaLink="false">2026-11-19-code-world-model-2-0-towards-infinite-controllable-video-gen-bcfcf666.mp3</guid>
+      <pubDate>Thu, 19 Nov 2026 04:10:49 +0000</pubDate>
+      <itunes:duration>696</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-19-code-world-model-2-0-towards-infinite-controllable-video-gen-bcfcf666.mp3" length="4181184" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ALIVE: Making Streaming Video Models Interactive</title>
+      <description>现有的流式视频大模型能持续看视频，但它们基本上是被动的——你问它一个问题，它回答一个问题，然后就等着。它不会主动监视你交代的任务，不会在你改变指令时调整行为，更不会在信息不足的时候主动向你要更多线索。这篇来自清华、北大、字节跳动等机构的论文，提出了一个叫ALIVE的系统，专门来解决这个问题：怎么让流式视频模型真正具备交互性，从一个被动的观察者变成一个能主动参与、持续协作的助手。</description>
+      <link>https://arxiv.org/abs/2611.21366</link>
+      <guid isPermaLink="false">2026-11-19-alive-making-streaming-video-models-interactive-40d6ac02.mp3</guid>
+      <pubDate>Thu, 19 Nov 2026 04:08:09 +0000</pubDate>
+      <itunes:duration>956</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-19-alive-making-streaming-video-models-interactive-40d6ac02.mp3" length="5739552" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>The Resolution Hypothesis: Agent Evolution's Key Is Identifying Improvements</title>
+      <description>智能体进化领域有一个反复出现的谜题：同一套方法，在这篇论文里有效，在另一篇论文里就失效了；某个方法在一个基准上大幅领先，换个基准就原地踏步。今天要聊的这篇论文，给出了一个相当有说服力的解释，他们把它称为"分辨率假说"。</description>
+      <link>https://arxiv.org/abs/2611.23068</link>
+      <guid isPermaLink="false">2026-11-19-the-resolution-hypothesis-agent-evolution-s-key-is-identifyi-0cd854ad.mp3</guid>
+      <pubDate>Thu, 19 Nov 2026 04:04:37 +0000</pubDate>
+      <itunes:duration>996</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-19-the-resolution-hypothesis-agent-evolution-s-key-is-identifyi-0cd854ad.mp3" length="5981616" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>PROLA: Principal-Orthogonal Low-rank Adaptation for Predictive Spatiotemporal Weather Downscaling</title>
+      <description>气象预报有一个长期悬而未决的问题：全球数值模式给出的预报，空间分辨率粗、时间间隔大，无法满足风电场分钟级功率预测、洪水预警的逐小时降水、以及航空湍流的精细化指导这类实际需求。过去的解法要么是做空间降尺度，把低分辨率的场"放大"到高分辨率，但只针对同一时刻；要么是做时间插值，把稀疏的时间序列变密，但空间分辨率不变；要么是做纯预报，预测未来状态，但分辨率还是粗的。这三件事从来没有被一个模型同时做过。这篇论文要解决的，正是这个"三合一"的难题。</description>
+      <link>https://arxiv.org/abs/2611.11318</link>
+      <guid isPermaLink="false">2026-11-19-prola-principal-orthogonal-low-rank-adaptation-for-predictiv-9748e4df.mp3</guid>
+      <pubDate>Thu, 19 Nov 2026 04:00:47 +0000</pubDate>
+      <itunes:duration>921</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-19-prola-principal-orthogonal-low-rank-adaptation-for-predictiv-9748e4df.mp3" length="5530464" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Breath-Dx: A Time Series Classification Benchmark for Disease Screening with eNose</title>
       <description>呼出的气体里藏着疾病的信号——这个想法听起来像科幻，但它其实已经有几十年的研究积累。问题是，这个领域至今没有一个可靠的、公开的、能让不同研究组相互比较的基准。每篇论文用自己的小数据集、自己的评估方式，结果根本没法横向比较，更不用说找到真正能部署到临床的方法。这篇来自Sber AI Lab和多家俄罗斯医疗机构的论文，就是要正面解决这个问题。它发布了一个叫做Breath-Dx的基准，配套了一个叫做S-OH，也就是"健康的气味"的公开数据集，系统评测了十种机器学习方法在电子鼻疾病筛查任务上的表现，并且第一次把传感器漂移这个行业内人尽皆知、却极少被量化的失效模式放到了台面上。这篇论文获得了ICDM 2</description>
       <link>https://arxiv.org/abs/2611.15348</link>

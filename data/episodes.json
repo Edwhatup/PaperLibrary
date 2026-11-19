@@ -1,5 +1,65 @@
 [
   {
+    "key": "2611.22287",
+    "date": "2026-11-19",
+    "title": "Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers",
+    "abstract": "Latent diffusion models rely on a decoder to map denoised latents to pixels, adding complexity and inference cost. We introduce Decoding Without a Decoder (DWD), which lets a finetuned diffusion transformer produce final pixels directly through a linear head. Unlike previous methods, where the denoising output leads to final pixels, DWD separates the two roles: the original denoising head continues to drive sampling, then the new DWD head predicts the pixels at the final step. We extend pretrained latent models with DWD efficiently by finetuning only the last few transformer blocks, training the DWD head with pixel quality losses while anchoring the denoising head to the pretrained model to preserve the sample trajectory. Across latent image and video generators, DWD removes the decoder and reduces inference cost while maintaining or even improving pixel quality. On Wan video generation, it visibly reduces detail distortion and flickering, lowering warping error by 23%. Remarkably, the same separation also improves pixel diffusion models that do not even use a decoder: a final-step DWD head produces substantially better texture detail in text-to-image generation, and improves ImageNet FID from 1.55 to 1.43, a new state of the art among pixel flow models.",
+    "notes": "好的，这是一篇约15分钟的口播稿，将论文《Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers》的核心内容进行讲解，用口语化、连贯的方式呈现，并严格遵守了您提出的所有要求。",
+    "url": "https://arxiv.org/abs/2611.22287",
+    "upvotes": 3,
+    "audio": "2026-11-19-decoding-without-a-decoder-direct-pixel-prediction-from-diff-0ec7db58.mp3",
+    "size": 3895056,
+    "published": "2026-11-19T04:13:28.447112+00:00"
+  },
+  {
+    "key": "2611.22925",
+    "date": "2026-11-19",
+    "title": "Code World Model 2.0: Towards Infinite Controllable Video Generation",
+    "abstract": "Visual proxies decouple explicit world-state simulation from photorealistic video synthesis, offering a controllable interface for both offline clip creation and real-time interactive streaming. Yet a practical renderer must address two challenges. Upstream proxies vary from coarse layouts to fine articulated geometry depending on the interaction, and streaming inference must operate in a few causal steps without accumulating drift across self-generated history. We present Invoker-Render, pairing a bidirectional creation model with a causal four-step streaming model under a shared conditioning interface over structural proxies, an appearance reference, and language. Trained on an aligned approximately 200-hour multi-granularity corpus, Invoker-Render honors fine geometric constraints when supplied while synthesizing plausible local motion under coarse proxies, enabling runtime selection of input detail. To bridge bidirectional creation and real-time streaming without compounding step compression and rollout drift, we introduce Progressive Forcing (ProForcing). ProForcing first trains a causal predictor and distills it into a four-step renderer using histories derived from training videos. Training then shifts to continuous self-generated rollouts. A pipelined serving stack supports efficient streaming inference. Experiments show versatile control across proxy families, granularities, and camera paths, consistent gains over recent streaming baselines, and stable 30-minute racing rollouts that preserve scene and subject appearance.",
+    "notes": "怎么让一个AI视频模型既能接受粗糙的骨架控制信号、又能跟随精细的关节动作，同时在实时流式推理中不让画面越漂越远——这是这篇论文要正面解决的问题。",
+    "url": "https://arxiv.org/abs/2611.22925",
+    "upvotes": 3,
+    "audio": "2026-11-19-code-world-model-2-0-towards-infinite-controllable-video-gen-bcfcf666.mp3",
+    "size": 4181184,
+    "published": "2026-11-19T04:10:49.617325+00:00"
+  },
+  {
+    "key": "2611.21366",
+    "date": "2026-11-19",
+    "title": "ALIVE: Making Streaming Video Models Interactive",
+    "abstract": "Streaming video LLMs can continuously observe the world, yet often handle user requests in isolation. We introduce ALIVE, an interactive streaming video model supporting proactive monitoring, streaming task coordination, and feedback-seeking interaction. We construct ALIVE-SFT-288K and ALIVE-RL-3K for two-stage training. Contrastive supervised fine-tuning teaches when and how to respond, while reinforcement learning with Behavior-Aligned Credit Assignment (BACA) combines trajectory-level and local advantages to refine decisions, responses, and silence across multi-turn interactions. We also introduce FSI-Bench to evaluate feedback seeking and subsequent task completion. ALIVE achieves the highest overall scores among the compared models on four public benchmarks and FSI-Bench, demonstrating strong streaming understanding and interactive capabilities.",
+    "notes": "现有的流式视频大模型能持续看视频，但它们基本上是被动的——你问它一个问题，它回答一个问题，然后就等着。它不会主动监视你交代的任务，不会在你改变指令时调整行为，更不会在信息不足的时候主动向你要更多线索。这篇来自清华、北大、字节跳动等机构的论文，提出了一个叫ALIVE的系统，专门来解决这个问题：怎么让流式视频模型真正具备交互性，从一个被动的观察者变成一个能主动参与、持续协作的助手。",
+    "url": "https://arxiv.org/abs/2611.21366",
+    "upvotes": 10,
+    "audio": "2026-11-19-alive-making-streaming-video-models-interactive-40d6ac02.mp3",
+    "size": 5739552,
+    "published": "2026-11-19T04:08:09.895507+00:00"
+  },
+  {
+    "key": "2611.23068",
+    "date": "2026-11-19",
+    "title": "The Resolution Hypothesis: Agent Evolution's Key Is Identifying Improvements",
+    "abstract": "Agent evolution follows a simple loop: a proposer writes candidate artifacts (prompts, skills, memories) and selection accepts those that score higher. This loop has shown promise, yet practitioners face a puzzle: methods trade wins across papers, and evolution often fails to bootstrap on certain tasks. We trace this puzzle to the Resolution Hypothesis: agent evolution stalls not because methods fail to propose better artifacts, but because noisy evaluations cannot reliably identify them. Across seven evolution methods and six models (over 10M LLM calls), we find support for the hypothesis at both levels where evaluation scores are used. At the candidate level (choosing artifacts), helpful candidate artifacts exist, but selection is no better than random at telling them from harmful ones, so errors accumulate across rounds. At the method level (ranking methods), typical margins of a few percentage points are smaller than the difference between two independent runs of the same method, so published rankings often rest on luck. Together, these findings indicate that agent evolution is often bottlenecked by reliably identifying improvements. This calls for a shift in how we develop and evaluate self-improving agents, from designing ever more candidate improvement systems to making true improvements detectable and accumulable.",
+    "notes": "智能体进化领域有一个反复出现的谜题：同一套方法，在这篇论文里有效，在另一篇论文里就失效了；某个方法在一个基准上大幅领先，换个基准就原地踏步。今天要聊的这篇论文，给出了一个相当有说服力的解释，他们把它称为\"分辨率假说\"。",
+    "url": "https://arxiv.org/abs/2611.23068",
+    "upvotes": 11,
+    "audio": "2026-11-19-the-resolution-hypothesis-agent-evolution-s-key-is-identifyi-0cd854ad.mp3",
+    "size": 5981616,
+    "published": "2026-11-19T04:04:37.256085+00:00"
+  },
+  {
+    "key": "2611.11318",
+    "date": "2026-11-19",
+    "title": "PROLA: Principal-Orthogonal Low-rank Adaptation for Predictive Spatiotemporal Weather Downscaling",
+    "abstract": "High-resolution weather prediction is important for resolving local atmospheric patterns missed by coarse global forecasts. Large pretrained weather backbones have improved global forecasting, but adapting them to produce future high-resolution fields from recent coarse states remains challenging and costly. We formulate this setting as Predictive Spatiotemporal Weather Downscaling (PSWD), a task that jointly refines spatial and temporal resolution while predicting future high-resolution trajectories. To this end, we propose a framework that decomposes prediction into spatial and temporal stages using a shared pretrained backbone, fixed numerical scaffolds, and lightweight residual heads. For backbone adaptation, we introduce PROLA (PRincipal-Orthogonal Low-rank Adaptation), which allocates a fixed low-rank budget between pretrained weights' principal directions and their orthogonal complement. PROLA further rescales rank-1 optimizer updates using gradient signals, improving adaptation without increasing trainable rank. Experiments in the PSWD setting show that PROLA outperforms representative low-rank adaptation baselines. Further experiments across diverse datasets and tasks support the broader applicability of PROLA, showing that its benefits extend beyond the primary weather downscaling setting.",
+    "notes": "气象预报有一个长期悬而未决的问题：全球数值模式给出的预报，空间分辨率粗、时间间隔大，无法满足风电场分钟级功率预测、洪水预警的逐小时降水、以及航空湍流的精细化指导这类实际需求。过去的解法要么是做空间降尺度，把低分辨率的场\"放大\"到高分辨率，但只针对同一时刻；要么是做时间插值，把稀疏的时间序列变密，但空间分辨率不变；要么是做纯预报，预测未来状态，但分辨率还是粗的。这三件事从来没有被一个模型同时做过。这篇论文要解决的，正是这个\"三合一\"的难题。",
+    "url": "https://arxiv.org/abs/2611.11318",
+    "upvotes": 14,
+    "audio": "2026-11-19-prola-principal-orthogonal-low-rank-adaptation-for-predictiv-9748e4df.mp3",
+    "size": 5530464,
+    "published": "2026-11-19T04:00:47.700148+00:00"
+  },
+  {
     "key": "2611.15348",
     "date": "2026-11-18",
     "title": "Breath-Dx: A Time Series Classification Benchmark for Disease Screening with eNose",
