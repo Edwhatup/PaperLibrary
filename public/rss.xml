@@ -8,6 +8,24 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>NarrowSpec: Draft Hidden Width Need Not Match the Target in Speculative Decoding</title>
+      <description>推测性解码这项技术，要解决的核心问题是：大语言模型生成文字太慢。每次生成一个词，模型都要完整跑一遍前向传播，这个过程在大模型上非常耗时。推测性解码的思路是用一个小模型先快速"猜"出接下来的几个词，再让大模型一次性验证这一批猜测，接受正确的部分。这样每次大模型跑一遍，就能提交多个词，整体速度就快多了。</description>
+      <link>https://arxiv.org/abs/2611.23835</link>
+      <guid isPermaLink="false">2026-11-20-narrowspec-draft-hidden-width-need-not-match-the-target-in-s-acbbe25e.mp3</guid>
+      <pubDate>Fri, 20 Nov 2026 03:55:22 +0000</pubDate>
+      <itunes:duration>713</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-20-narrowspec-draft-hidden-width-need-not-match-the-target-in-s-acbbe25e.mp3" length="4278960" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>On-Policy Morphing into Hybrid Attention Models</title>
+      <description>我们今天来聊一篇关于大型语言模型效率优化的研究，它要解决的核心问题是：在处理长文本时，像Transformer这样的大模型，虽然能力很强，但计算成本和内存消耗都非常巨大，尤其是随着文本长度增加，成本会呈平方级增长，这让它在实际应用中变得非常昂贵。为了解决这个痛点，研究人员提出了一个巧妙的方案，叫做混合注意力模型。</description>
+      <link>https://arxiv.org/abs/2611.24809</link>
+      <guid isPermaLink="false">2026-11-20-on-policy-morphing-into-hybrid-attention-models-0b7f3a35.mp3</guid>
+      <pubDate>Fri, 20 Nov 2026 03:52:52 +0000</pubDate>
+      <itunes:duration>992</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-20-on-policy-morphing-into-hybrid-attention-models-0b7f3a35.mp3" length="5952960" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers</title>
       <description>好的，这是一篇约15分钟的口播稿，将论文《Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers》的核心内容进行讲解，用口语化、连贯的方式呈现，并严格遵守了您提出的所有要求。</description>
       <link>https://arxiv.org/abs/2611.22287</link>

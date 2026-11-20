@@ -3,6 +3,11 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-20
+
+- **NarrowSpec: Draft Hidden Width Need Not Match the Target in Speculative Decoding** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-20-narrowspec-draft-hidden-width-need-not-match-the-target-in-s-acbbe25e.mp3) [arXiv](https://arxiv.org/abs/2611.23835)
+- **On-Policy Morphing into Hybrid Attention Models** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-20-on-policy-morphing-into-hybrid-attention-models-0b7f3a35.mp3) [arXiv](https://arxiv.org/abs/2611.24809)
+
 ## 2026-11-19
 
 - **Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-19-decoding-without-a-decoder-direct-pixel-prediction-from-diff-0ec7db58.mp3) [arXiv](https://arxiv.org/abs/2611.22287)

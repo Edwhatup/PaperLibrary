@@ -1,5 +1,29 @@
 [
   {
+    "key": "2611.23835",
+    "date": "2026-11-20",
+    "title": "NarrowSpec: Draft Hidden Width Need Not Match the Target in Speculative Decoding",
+    "abstract": "Speculative decoding is widely used to speed up generation in large language models (LLMs), with a small draft model proposing tokens that one forward pass of the target model verifies. Draft models that read the target's hidden states, such as DFlash and EAGLE-3, typically inherit the target's hidden width. We show that the draft's whole residual stream can run at half or a quarter of that width while largely preserving acceptance. For DFlash, which borrows the target's vocabulary projection, the trained output adapter folds into it, giving one narrower projection with logits unchanged up to floating-point rounding. We test two drafter families, DFlash and EAGLE-3, on two targets, Qwen3-8B (NVFP4) and GPT-OSS-20B (MXFP4), in SGLang on a B200 and a DGX Spark (GB10). At batch size 1 and temperature 0, narrowing the draft to half or a quarter width speeds up end-to-end decoding by 1.06-1.12x on B200 and 1.13-1.44x on GB10. The speedup holds at larger batch sizes. From batch 32 to the largest batch each GPU fits, narrowing reaches up to 1.21x on both GPUs, and no narrow draft is slower than full width.",
+    "notes": "推测性解码这项技术，要解决的核心问题是：大语言模型生成文字太慢。每次生成一个词，模型都要完整跑一遍前向传播，这个过程在大模型上非常耗时。推测性解码的思路是用一个小模型先快速\"猜\"出接下来的几个词，再让大模型一次性验证这一批猜测，接受正确的部分。这样每次大模型跑一遍，就能提交多个词，整体速度就快多了。",
+    "url": "https://arxiv.org/abs/2611.23835",
+    "upvotes": 0,
+    "audio": "2026-11-20-narrowspec-draft-hidden-width-need-not-match-the-target-in-s-acbbe25e.mp3",
+    "size": 4278960,
+    "published": "2026-11-20T03:55:22.629329+00:00"
+  },
+  {
+    "key": "2611.24809",
+    "date": "2026-11-20",
+    "title": "On-Policy Morphing into Hybrid Attention Models",
+    "abstract": "Hybrid attention models combine full and linear attention to achieve a better quality--efficiency trade-off. Converting pretrained Transformers into such models requires identifying which layers should retain full attention under a prescribed budget. We identify two off-policy mismatches in FlashMorph's layer selection: (i) continuous branch interpolation and teacher-forced hidden states differ from discrete hybrid computation; and (ii) frozen model weights fail to account for parameter adaptation during subsequent recovery. We introduce FlashMorph2, an on-policy layer-selection method that (I) evaluates sampled discrete hybrid architectures end to end using their own hidden states, and (II) jointly optimizes layer-selection scores and model weights under the recovery objective to reflect post-adaptation performance. Experiments across Qwen3 model scales and linear-attention variants show that FlashMorph2 consistently outperforms existing layer-selection methods, improving average scores over FlashMorph by +2.42 points on RULER, +1.08 on LongBench, and +0.76 on recall-intensive tasks, while completing layer selection in only 0.72--3.57 GPU hours across 0.6B--8B models, demonstrating high efficiency and scalability.",
+    "notes": "我们今天来聊一篇关于大型语言模型效率优化的研究，它要解决的核心问题是：在处理长文本时，像Transformer这样的大模型，虽然能力很强，但计算成本和内存消耗都非常巨大，尤其是随着文本长度增加，成本会呈平方级增长，这让它在实际应用中变得非常昂贵。为了解决这个痛点，研究人员提出了一个巧妙的方案，叫做混合注意力模型。",
+    "url": "https://arxiv.org/abs/2611.24809",
+    "upvotes": 0,
+    "audio": "2026-11-20-on-policy-morphing-into-hybrid-attention-models-0b7f3a35.mp3",
+    "size": 5952960,
+    "published": "2026-11-20T03:52:52.250032+00:00"
+  },
+  {
     "key": "2611.22287",
     "date": "2026-11-19",
     "title": "Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers",
