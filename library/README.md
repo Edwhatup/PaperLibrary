@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-23
+
+- **Duopra: From Full-Duplex Conversation to Full-Duplex Agency** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-23-duopra-from-full-duplex-conversation-to-full-duplex-agency-16c40ed2.mp3) [arXiv](https://arxiv.org/abs/2611.25773)
+- **AeroRSI: Recursive Self-Improvement for Aerial Vision-Language Navigation** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-23-aerorsi-recursive-self-improvement-for-aerial-vision-languag-1a88e0fa.mp3) [arXiv](https://arxiv.org/abs/2611.24077)
+- **Prune to Expand: Training Prompt Enhancers with Less to Imitate** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-23-prune-to-expand-training-prompt-enhancers-with-less-to-imita-78703fcb.mp3) [arXiv](https://arxiv.org/abs/2611.27229)
+- **PURE: A Diagnostic Benchmark for Multi-Granularity Multimodal Identity Matching** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-23-pure-a-diagnostic-benchmark-for-multi-granularity-multimodal-6663aa70.mp3) [arXiv](https://arxiv.org/abs/2611.22343)
+- **Lost in the Hallway: Benchmarking Persistent Spatial Memory Across Revisits** · 3★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-23-lost-in-the-hallway-benchmarking-persistent-spatial-memory-a-35460f4d.mp3) [arXiv](https://arxiv.org/abs/2611.21485)
+
 ## 2026-11-20
 
 - **NarrowSpec: Draft Hidden Width Need Not Match the Target in Speculative Decoding** — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-20-narrowspec-draft-hidden-width-need-not-match-the-target-in-s-acbbe25e.mp3) [arXiv](https://arxiv.org/abs/2611.23835)

@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>Duopra: From Full-Duplex Conversation to Full-Duplex Agency</title>
+      <description>现在的语音AI，越来越能听懂你说话，也越来越能自然地接话、打断、回应，但有一件事它们还做得很差：真正替你把事情办完。你让它帮你查航班、改订单、先搜索再下单，它可能听懂了，也可能开口回应了，但工具就是没调用，或者调用错了，或者根本就没开始。这篇论文要解决的，正是这个问题。</description>
+      <link>https://arxiv.org/abs/2611.25773</link>
+      <guid isPermaLink="false">2026-11-23-duopra-from-full-duplex-conversation-to-full-duplex-agency-16c40ed2.mp3</guid>
+      <pubDate>Mon, 23 Nov 2026 03:42:04 +0000</pubDate>
+      <itunes:duration>898</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-23-duopra-from-full-duplex-conversation-to-full-duplex-agency-16c40ed2.mp3" length="5388624" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>AeroRSI: Recursive Self-Improvement for Aerial Vision-Language Navigation</title>
+      <description>让无人机听懂自然语言指令、自主完成飞行任务，这个目标听起来很美，但现实中存在一个顽固的障碍：用人类示范数据训练出来的飞行策略，在真实闭环飞行中会频繁出错，撞上障碍物、偏离目标、提前降落。而且因为一次错误就能终结整段飞行，这些失败对任务完成率的打击非常致命。这篇论文要解决的，正是这个问题——怎么让无人机的控制策略在没有人类额外标注的情况下，从自己的失败里学会修正。</description>
+      <link>https://arxiv.org/abs/2611.24077</link>
+      <guid isPermaLink="false">2026-11-23-aerorsi-recursive-self-improvement-for-aerial-vision-languag-1a88e0fa.mp3</guid>
+      <pubDate>Mon, 23 Nov 2026 03:38:50 +0000</pubDate>
+      <itunes:duration>690</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-23-aerorsi-recursive-self-improvement-for-aerial-vision-languag-1a88e0fa.mp3" length="4144464" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Prune to Expand: Training Prompt Enhancers with Less to Imitate</title>
+      <description>现在，我们来聊聊一个在人工智能领域，特别是图像生成方面，大家可能都遇到过的问题：我们给AI一个简单的文字描述，比如“一只猫”，它确实能生成猫，但生成的图像往往缺乏细节、构图平淡，甚至跟我们心里想的那种生动、有艺术感的画面相去甚远。这是因为我们用户通常提供的提示词都比较简洁、高层次，很多视觉细节和构图选择都没有明确指定。</description>
+      <link>https://arxiv.org/abs/2611.27229</link>
+      <guid isPermaLink="false">2026-11-23-prune-to-expand-training-prompt-enhancers-with-less-to-imita-78703fcb.mp3</guid>
+      <pubDate>Mon, 23 Nov 2026 03:35:56 +0000</pubDate>
+      <itunes:duration>1073</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-23-prune-to-expand-training-prompt-enhancers-with-less-to-imita-78703fcb.mp3" length="6439680" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>PURE: A Diagnostic Benchmark for Multi-Granularity Multimodal Identity Matching</title>
+      <description>现在的多模态大语言模型，能认图、能读文字、能回答各种问题，但有一件事一直没有被认真追问过：当你让它判断两个商品是不是"同一个东西"的时候，它到底是真的理解了，还是只是碰巧答对了？更进一步，"同一个东西"本身就不是一个固定的概念，它取决于你在哪个粒度上问这个问题。这就是这篇论文真正想戳破的问题。</description>
+      <link>https://arxiv.org/abs/2611.22343</link>
+      <guid isPermaLink="false">2026-11-23-pure-a-diagnostic-benchmark-for-multi-granularity-multimodal-6663aa70.mp3</guid>
+      <pubDate>Mon, 23 Nov 2026 03:32:44 +0000</pubDate>
+      <itunes:duration>1077</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-23-pure-a-diagnostic-benchmark-for-multi-granularity-multimodal-6663aa70.mp3" length="6462432" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Lost in the Hallway: Benchmarking Persistent Spatial Memory Across Revisits</title>
+      <description>好的，这是一段约 20 分钟的口播稿，将论文《Lost in the Hallway: Benchmarking Persistent Spatial Memory Across Revisits》的核心内容深入浅出地讲解给听众。</description>
+      <link>https://arxiv.org/abs/2611.21485</link>
+      <guid isPermaLink="false">2026-11-23-lost-in-the-hallway-benchmarking-persistent-spatial-memory-a-35460f4d.mp3</guid>
+      <pubDate>Mon, 23 Nov 2026 03:28:36 +0000</pubDate>
+      <itunes:duration>859</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-23-lost-in-the-hallway-benchmarking-persistent-spatial-memory-a-35460f4d.mp3" length="5155776" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>NarrowSpec: Draft Hidden Width Need Not Match the Target in Speculative Decoding</title>
       <description>推测性解码这项技术，要解决的核心问题是：大语言模型生成文字太慢。每次生成一个词，模型都要完整跑一遍前向传播，这个过程在大模型上非常耗时。推测性解码的思路是用一个小模型先快速"猜"出接下来的几个词，再让大模型一次性验证这一批猜测，接受正确的部分。这样每次大模型跑一遍，就能提交多个词，整体速度就快多了。</description>
       <link>https://arxiv.org/abs/2611.23835</link>
