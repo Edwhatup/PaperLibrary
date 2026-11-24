@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-24
+
+- **A Glimpse of Training VLMs as Foundation Models for Robotic Manipulation** · 11★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-24-a-glimpse-of-training-vlms-as-foundation-models-for-robotic--8b6a328d.mp3) [arXiv](https://arxiv.org/abs/2611.29338)
+- **Plan4D: Generative Plannable 4D Worlds** · 26★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-24-plan4d-generative-plannable-4d-worlds-39205bfb.mp3) [arXiv](https://arxiv.org/abs/2611.26516)
+- **AutoPILOT: A Visual Agent Harness for Real-Time Gameplay** · 26★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-24-autopilot-a-visual-agent-harness-for-real-time-gameplay-9cefe962.mp3) [arXiv](https://arxiv.org/abs/2611.28202)
+- **3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets** · 30★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-24-3agamefactory-motion-agentic-rigging-and-reliable-complex-mo-3edb3ce4.mp3) [arXiv](https://arxiv.org/abs/2611.30013)
+- **Motion Mamba 2.0: Autoregressive Diffusion Mamba for Long-Horizon Humanoid Control** · 47★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-24-motion-mamba-2-0-autoregressive-diffusion-mamba-for-long-hor-f729acc7.mp3) [arXiv](https://arxiv.org/abs/2611.29897)
+
 ## 2026-11-23
 
 - **Duopra: From Full-Duplex Conversation to Full-Duplex Agency** · 1★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-23-duopra-from-full-duplex-conversation-to-full-duplex-agency-16c40ed2.mp3) [arXiv](https://arxiv.org/abs/2611.25773)
