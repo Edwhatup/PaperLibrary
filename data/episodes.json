@@ -1,5 +1,65 @@
 [
   {
+    "key": "2611.28719",
+    "date": "2026-11-25",
+    "title": "KMed-31B Technical Report",
+    "abstract": "We present KMed-31B, a medical large language model post-trained from an open-weight model for on-premises deployment with limited hardware. Post-training a model for diverse medical tasks remains difficult, because improving one kind of task can lower performance on another. We attribute this to differences between tasks in expected output and available feedback. Medical question answering and diagnosis prediction have reference answers, whereas clinical inquiry has no single correct response and is judged with rubrics. We therefore divide medical training tasks into four categories by these two properties, train one specialist per category with a reward that its feedback supports, and integrate the specialists into a single student with Multi-teacher On-policy Delta Distillation (MOPD^2). For clinical inquiry, we build Synthetic Health Dialogue, a simulated corpus of consultations with lay users and clinicians whose patient cases span common clinical presentations in primary care. Relative to its base model, KMed-31B raises HealthBench Hard from 22.95 to 41.87 and HealthBench Professional from 37.92 to 50.20 in non-thinking mode, and from 23.80 to 51.48 and from 41.97 to 59.18 in thinking mode, while its scores on four multiple-choice medical benchmarks are maintained or slightly improved. KMed-31B has the highest unadjusted HealthBench Hard score among the compared models, including proprietary ones, and scores higher on HealthBench Professional than every open-weight model we compare, including models with more than ten times as many total parameters. Applied to another base model, Qwen3.8-27B, the same training recipe also raises both HealthBench scores. We describe the training recipe, data construction, and settings in detail so that institutions requiring on-premises deployment can develop medical models from open-weight foundations.",
+    "notes": "医疗大语言模型在临床部署上面临一个根本性的矛盾：要让一个模型既能答好医学选择题，又能好好跟病人或医生对话，这两件事放在一起训练，往往会互相拖累。KMed-31B这篇技术报告，就是专门为了解决这个矛盾而来的，同时还有一个非常现实的约束——模型要能在医院自己的服务器上跑，不能把病人数据发送到外部云端，所以参数量不能太大。",
+    "url": "https://arxiv.org/abs/2611.28719",
+    "upvotes": 14,
+    "audio": "2026-11-25-kmed-31b-technical-report-324ffcb6.mp3",
+    "size": 6068880,
+    "published": "2026-11-25T05:31:11.205229+00:00"
+  },
+  {
+    "key": "2611.30634",
+    "date": "2026-11-25",
+    "title": "Rewirable Circuits in Transformers with Loom Attention",
+    "abstract": "We propose loom attention, which allows a Transformer to dynamically rewire its circuits at every token by interweaving a head's vertical attention over the outputs of earlier heads (to obtain its query, key and value) with its horizontal attention over tokens. We instantiate vertical attention efficiently with normalized and gated linear attention over a per-token matrix memory, which stores the compressed head outputs and serves as a second residual stream. This yields LoomFormer, a dual-stream architecture that splits control and content between the vector and matrix streams. Across model sizes and training token budgets in language modeling and downstream tasks, LoomFormer matches Transformers trained with over 3x compute and recent residual-stream baselines (HC/mHC, MUDDFormer, AttnRes) trained with ~1.7-2.8x. For example, trained on the same 300B tokens with only 2% extra FLOPs, LoomPythia-2.8B achieves ~1.6x the average downstream gain of mHC-Pythia-2.8B over Pythia-2.8B, and matches (0-shot) or surpasses (5-shot) Pythia-12B. Code is available at https://github.com/Caiyun-AI/LoomFormer",
+    "notes": "传统的Transformer是怎么让不同的注意力头协作完成任务的？答案是通过一个叫做\"残差流\"的共享通道。每一层的注意力头把自己的输出写进这条流，后面的头再从流里读取。研究者把这种上下游头之间的协作关系叫做\"电路\"。比如有一种叫做\"感应头\"的结构，它专门读取前一层某个头写下的特征，来完成上下文中的模式匹配。这些电路是Transformer能够完成复杂推理任务的基础。",
+    "url": "https://arxiv.org/abs/2611.30634",
+    "upvotes": 16,
+    "audio": "2026-11-25-rewirable-circuits-in-transformers-with-loom-attention-63bbfedd.mp3",
+    "size": 4404240,
+    "published": "2026-11-25T05:27:21.175826+00:00"
+  },
+  {
+    "key": "2611.31205",
+    "date": "2026-11-25",
+    "title": "ACAP: Asynchronous Coding Agents for Efficient Robot Control",
+    "abstract": "Coding agents can construct and revise robot behavior during execution, but using one agent for the whole robot can delay otherwise independent work. We introduce Asynchronous Coding Agents as Policy (ACAP), an asynchronous framework that organizes one robot as a team of persistent agents. Each member reasons and acts for a configurable control group, such as an arm with its gripper or the torso and chassis, enabling asynchronous reasoning and execution. However, different robot components often have physical dependencies that require coordination. To address this challenge, ACAP introduces a hyper-agent that assigns tasks, coordinates dependencies, and dynamically allocates control between the lead and member agents. This allows independent work to progress concurrently while supporting tightly coupled manipulation when necessary. Across 72 real-world rollouts covering 25 task/platform settings, ACAP reduces task-balanced time cost by 28.2% compared with a single-agent Direct Policy, with improvements across Fully Parallel, Parallel-Sequential, and Collaborative tasks. Across all eight Collaborative settings, ACAP also achieves lower mean time cost than Fixed Delegation, where only member agents can control their assigned groups. An additional 90-rollout study shows lower mean 30-minute-capped time cost than Direct on all six tasks. We further demonstrate mobile manipulation using the same member interface for chassis and torso control. We present the framework and a real-world rollout dataset containing observations, generated programs, actions, and feedback to support research on how coding agents reason and act in the physical world.",
+    "notes": "目前的机器人编码智能体，在执行任务时，虽然能够检查场景、构建模型、编写和修改机器人控制程序，但如果只用一个智能体来控制整个机器人，就会出现一个效率瓶颈：即使机器人的不同部件原本可以独立工作，它们的决策也必须经过同一个智能体的推理过程。这就像你有一个多功能的机器人，它有一只手臂需要诊断抓取失败的问题，而另一只手臂本来可以同时去执行一个完全不相关的独立动作。但因为所有的决策都由同一个“大脑”来处理，诊断问题就会耽误另一只手臂的工作，导致整个任务的完成时间被拉长。",
+    "url": "https://arxiv.org/abs/2611.31205",
+    "upvotes": 16,
+    "audio": "2026-11-25-acap-asynchronous-coding-agents-for-efficient-robot-control-100c68bf.mp3",
+    "size": 7664976,
+    "published": "2026-11-25T05:24:42.916447+00:00"
+  },
+  {
+    "key": "2611.25403",
+    "date": "2026-11-25",
+    "title": "Antom 3-in-1 Transformer: A Payment Foundation Model",
+    "abstract": "We report the development of Antom 3-in-1 Transformer, a payment foundation model that integrates sequence, tabular, and graph representations for payment risk detection. The model contains approximately 7B parameters, with approximately 1.7B activated per task route. Antom 3-in-1 Transformer is pretrained to learn reusable behavioral and relational representations, primarily on Ant International's internal payment data. In a cross-business transfer experiment, pretraining improves the target business metric by 34.5% over the same architecture trained from scratch. With only 25% of the training labels, the pretrained model outperforms the full-label scratch baseline in Average Precision (AP) and Recall@0.5% on different merchant domains. In a four-month online experiment on Ant International's billion-scale payment platform, the model reduced the overall loss rate by 37.88% relative to XGB-Online.",
+    "notes": "支付风险检测这件事，表面上看是一道分类题：这笔交易是不是欺诈？但真正做过的人都知道，它的难点不在于算法选择，而在于数据的异构性。同一个平台上，跨境电商、数字娱乐、旅行航空、AI服务，每一类商户的用户行为模式都不一样；欺诈者还会不断调整手法，昨天管用的规则，今天可能就失效了。传统做法是给每个业务场景单独维护一套模型，费时费力，而且换个场景就得重头来。这篇论文要解决的，就是这个问题：能不能训练一个通用的支付基础模型，让它学会跨场景复用的风险表征，然后用少量标注数据适配到新业务？",
+    "url": "https://arxiv.org/abs/2611.25403",
+    "upvotes": 18,
+    "audio": "2026-11-25-antom-3-in-1-transformer-a-payment-foundation-model-81646f5c.mp3",
+    "size": 4875552,
+    "published": "2026-11-25T05:19:29.918791+00:00"
+  },
+  {
+    "key": "2611.28649",
+    "date": "2026-11-25",
+    "title": "S-Mind: Internalizing Multi-View Geometry for Spatial Intelligence",
+    "abstract": "Spatial intelligence, the ability to reason about 3D space from visual observations, becomes essential as multimodal large language models (MLLMs) move into the physical world. Beyond perceiving each view, it rests on two cornerstones of human cognition: fusing multiple views into one coherent 3D scene and mentally transforming that scene to new viewpoints as reasoning unfolds. Yet our spatial probes reveal that MLLMs largely lack both capabilities, even after spatial fine-tuning. We therefore present S-Mind, which internalizes multi-view geometry within the MLLM through a compact set of spatial tokens. It supervises these tokens to hold the fused 3D scene and re-emits them to re-express this scene from every viewpoint the reasoning adopts. Across four spatial benchmarks, S-Mind improves its Qwen3.5 backbones by up to 22.26 points and surpasses frontier general models such as GPT-6-Astra (+0.45), Kimi-K3.1-Pro (+1.97), and GLM-5.3-Flash (+7.80) in average accuracy. Moreover, the same probes confirm that it acquires both capabilities, reaching fusion and transformation accuracies of 65.11% and 82.17%, against at most 16.02% and 37.28% for the baselines. At inference, S-Mind also runs about 100x faster than a tool-based agent on the same backbone. Instilled through these spatial tokens during training, spatial capability becomes intrinsic to the backbone and persists even when the tokens are withheld, offering a promising path toward spatial intelligence in MLLMs.",
+    "notes": "当前的多模态大语言模型在空间推理上究竟卡在哪里？这篇论文做的第一件事，就是把这个问题说清楚。",
+    "url": "https://arxiv.org/abs/2611.28649",
+    "upvotes": 21,
+    "audio": "2026-11-25-s-mind-internalizing-multi-view-geometry-for-spatial-intelli-707ff714.mp3",
+    "size": 6409872,
+    "published": "2026-11-25T05:16:25.334837+00:00"
+  },
+  {
     "key": "2611.29338",
     "date": "2026-11-24",
     "title": "A Glimpse of Training VLMs as Foundation Models for Robotic Manipulation",

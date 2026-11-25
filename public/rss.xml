@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>KMed-31B Technical Report</title>
+      <description>医疗大语言模型在临床部署上面临一个根本性的矛盾：要让一个模型既能答好医学选择题，又能好好跟病人或医生对话，这两件事放在一起训练，往往会互相拖累。KMed-31B这篇技术报告，就是专门为了解决这个矛盾而来的，同时还有一个非常现实的约束——模型要能在医院自己的服务器上跑，不能把病人数据发送到外部云端，所以参数量不能太大。</description>
+      <link>https://arxiv.org/abs/2611.28719</link>
+      <guid isPermaLink="false">2026-11-25-kmed-31b-technical-report-324ffcb6.mp3</guid>
+      <pubDate>Wed, 25 Nov 2026 05:31:11 +0000</pubDate>
+      <itunes:duration>1011</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-25-kmed-31b-technical-report-324ffcb6.mp3" length="6068880" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Rewirable Circuits in Transformers with Loom Attention</title>
+      <description>传统的Transformer是怎么让不同的注意力头协作完成任务的？答案是通过一个叫做"残差流"的共享通道。每一层的注意力头把自己的输出写进这条流，后面的头再从流里读取。研究者把这种上下游头之间的协作关系叫做"电路"。比如有一种叫做"感应头"的结构，它专门读取前一层某个头写下的特征，来完成上下文中的模式匹配。这些电路是Transformer能够完成复杂推理任务的基础。</description>
+      <link>https://arxiv.org/abs/2611.30634</link>
+      <guid isPermaLink="false">2026-11-25-rewirable-circuits-in-transformers-with-loom-attention-63bbfedd.mp3</guid>
+      <pubDate>Wed, 25 Nov 2026 05:27:21 +0000</pubDate>
+      <itunes:duration>734</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-25-rewirable-circuits-in-transformers-with-loom-attention-63bbfedd.mp3" length="4404240" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ACAP: Asynchronous Coding Agents for Efficient Robot Control</title>
+      <description>目前的机器人编码智能体，在执行任务时，虽然能够检查场景、构建模型、编写和修改机器人控制程序，但如果只用一个智能体来控制整个机器人，就会出现一个效率瓶颈：即使机器人的不同部件原本可以独立工作，它们的决策也必须经过同一个智能体的推理过程。这就像你有一个多功能的机器人，它有一只手臂需要诊断抓取失败的问题，而另一只手臂本来可以同时去执行一个完全不相关的独立动作。但因为所有的决策都由同一个“大脑”来处理，诊断问题就会耽误另一只手臂的工作，导致整个任务的完成时间被拉长。</description>
+      <link>https://arxiv.org/abs/2611.31205</link>
+      <guid isPermaLink="false">2026-11-25-acap-asynchronous-coding-agents-for-efficient-robot-control-100c68bf.mp3</guid>
+      <pubDate>Wed, 25 Nov 2026 05:24:42 +0000</pubDate>
+      <itunes:duration>1277</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-25-acap-asynchronous-coding-agents-for-efficient-robot-control-100c68bf.mp3" length="7664976" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Antom 3-in-1 Transformer: A Payment Foundation Model</title>
+      <description>支付风险检测这件事，表面上看是一道分类题：这笔交易是不是欺诈？但真正做过的人都知道，它的难点不在于算法选择，而在于数据的异构性。同一个平台上，跨境电商、数字娱乐、旅行航空、AI服务，每一类商户的用户行为模式都不一样；欺诈者还会不断调整手法，昨天管用的规则，今天可能就失效了。传统做法是给每个业务场景单独维护一套模型，费时费力，而且换个场景就得重头来。这篇论文要解决的，就是这个问题：能不能训练一个通用的支付基础模型，让它学会跨场景复用的风险表征，然后用少量标注数据适配到新业务？</description>
+      <link>https://arxiv.org/abs/2611.25403</link>
+      <guid isPermaLink="false">2026-11-25-antom-3-in-1-transformer-a-payment-foundation-model-81646f5c.mp3</guid>
+      <pubDate>Wed, 25 Nov 2026 05:19:29 +0000</pubDate>
+      <itunes:duration>812</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-25-antom-3-in-1-transformer-a-payment-foundation-model-81646f5c.mp3" length="4875552" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>S-Mind: Internalizing Multi-View Geometry for Spatial Intelligence</title>
+      <description>当前的多模态大语言模型在空间推理上究竟卡在哪里？这篇论文做的第一件事，就是把这个问题说清楚。</description>
+      <link>https://arxiv.org/abs/2611.28649</link>
+      <guid isPermaLink="false">2026-11-25-s-mind-internalizing-multi-view-geometry-for-spatial-intelli-707ff714.mp3</guid>
+      <pubDate>Wed, 25 Nov 2026 05:16:25 +0000</pubDate>
+      <itunes:duration>1068</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-25-s-mind-internalizing-multi-view-geometry-for-spatial-intelli-707ff714.mp3" length="6409872" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>A Glimpse of Training VLMs as Foundation Models for Robotic Manipulation</title>
       <description>这篇论文要解决的核心问题是：我们知道像GPT-6 Astra这样的通用视觉语言大模型，已经能够在机器人操控任务上展现出惊人的零样本泛化能力，但OpenAI对训练细节几乎没有公开。那么，对于普通研究者来说，到底该怎么复现这种能力？用什么样的数据表示方式、什么样的训练策略，才能让一个视觉语言模型真正学会操控机器人，同时又不把它原本具备的视觉理解和语言推理能力给破坏掉？这正是清华大学这支团队提出nanoAstra这个工作想要回答的问题。</description>
       <link>https://arxiv.org/abs/2611.29338</link>

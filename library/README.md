@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-25
+
+- **KMed-31B Technical Report** · 14★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-25-kmed-31b-technical-report-324ffcb6.mp3) [arXiv](https://arxiv.org/abs/2611.28719)
+- **Rewirable Circuits in Transformers with Loom Attention** · 16★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-25-rewirable-circuits-in-transformers-with-loom-attention-63bbfedd.mp3) [arXiv](https://arxiv.org/abs/2611.30634)
+- **ACAP: Asynchronous Coding Agents for Efficient Robot Control** · 16★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-25-acap-asynchronous-coding-agents-for-efficient-robot-control-100c68bf.mp3) [arXiv](https://arxiv.org/abs/2611.31205)
+- **Antom 3-in-1 Transformer: A Payment Foundation Model** · 18★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-25-antom-3-in-1-transformer-a-payment-foundation-model-81646f5c.mp3) [arXiv](https://arxiv.org/abs/2611.25403)
+- **S-Mind: Internalizing Multi-View Geometry for Spatial Intelligence** · 21★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-25-s-mind-internalizing-multi-view-geometry-for-spatial-intelli-707ff714.mp3) [arXiv](https://arxiv.org/abs/2611.28649)
+
 ## 2026-11-24
 
 - **A Glimpse of Training VLMs as Foundation Models for Robotic Manipulation** · 11★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-24-a-glimpse-of-training-vlms-as-foundation-models-for-robotic--8b6a328d.mp3) [arXiv](https://arxiv.org/abs/2611.29338)
