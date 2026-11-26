@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>SEEK: Self-Evolution through Execution Knowledge for Agentic Robot Manipulation</title>
+      <description>机器人每次做同一个任务，都在从头摸索——上一次学到的东西，任务一结束就消失了。这就是这篇论文要解决的核心问题。</description>
+      <link>https://arxiv.org/abs/2611.33915</link>
+      <guid isPermaLink="false">2026-11-26-seek-self-evolution-through-execution-knowledge-for-agentic--df179c26.mp3</guid>
+      <pubDate>Thu, 26 Nov 2026 04:57:52 +0000</pubDate>
+      <itunes:duration>923</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-26-seek-self-evolution-through-execution-knowledge-for-agentic--df179c26.mp3" length="5538096" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>DyLoMo-DiT: Dynamic Looped Mixture-of-Experts Diffusion Transformers</title>
+      <description>现有的大型扩散模型，比如Diffusion Transformers，简称DiT，以及它的变体混合专家模型DiT-MoE，它们在生成高质量图像时，面临着一个核心挑战：如何更有效地利用模型的参数和计算资源。简单来说，就是模型越强，需要的参数越多，计算量也越大，但这种增长并非总是最高效的。</description>
+      <link>https://arxiv.org/abs/2611.30844</link>
+      <guid isPermaLink="false">2026-11-26-dylomo-dit-dynamic-looped-mixture-of-experts-diffusion-trans-066ff5c3.mp3</guid>
+      <pubDate>Thu, 26 Nov 2026 04:54:35 +0000</pubDate>
+      <itunes:duration>925</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-26-dylomo-dit-dynamic-looped-mixture-of-experts-diffusion-trans-066ff5c3.mp3" length="5552208" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ROAM-Bench: Evaluating Embodied Active Spatial Intelligence through Evidence Verification</title>
+      <description>具身空间智能，也就是让机器人或智能体通过探索和互动来收集信息，然后利用这些信息进行推理和行动，它面临的一个核心挑战是：现有的评估基准往往无法准确区分智能体是真正完成了任务的所有必要步骤，还是仅仅碰巧得到了正确的结果。比如说，一个智能体可能需要在家中数清所有的马克杯，这包括搜索多个房间，打开封闭的储物柜，并追踪不同视角下的物体以避免重复计数。它还需要选择能揭示被遮挡物体的视角，并决定何时结束搜索。但问题是，智能体即使没有观察到每个马克杯，或者没有检查每个房间，也可能报告出正确的数量。反过来，它也可能收集了所有必需的观察结果，但仍然做出错误的数量判断。所以，仅仅看最终结果是否正确是不够的，我们还需</description>
+      <link>https://arxiv.org/abs/2611.33143</link>
+      <guid isPermaLink="false">2026-11-26-roam-bench-evaluating-embodied-active-spatial-intelligence-t-0c923e24.mp3</guid>
+      <pubDate>Thu, 26 Nov 2026 04:51:49 +0000</pubDate>
+      <itunes:duration>1298</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-26-roam-bench-evaluating-embodied-active-spatial-intelligence-t-0c923e24.mp3" length="7790976" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Target-Part Preference Optimization for Part-Aware 3D Generation</title>
+      <description>我们今天要讨论的这篇论文，它解决的是三维物体生成领域中一个非常具体但又至关重要的难题：如何让生成的三维物体，不仅整体看起来合理，而且其内部的语义部件也能做到完整、分离良好且独立可用。</description>
+      <link>https://arxiv.org/abs/2611.30472</link>
+      <guid isPermaLink="false">2026-11-26-target-part-preference-optimization-for-part-aware-3d-genera-b0138cee.mp3</guid>
+      <pubDate>Thu, 26 Nov 2026 04:47:38 +0000</pubDate>
+      <itunes:duration>1008</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-26-target-part-preference-optimization-for-part-aware-3d-genera-b0138cee.mp3" length="6048000" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>PyRUA-Dex: Learning Programmatic Policies for Dexterous Bimanual Manipulation with Coding Agents</title>
+      <description>当前灵巧操作的学习，很大程度上受限于高质量演示数据的稀缺。我们来看一下具体痛点：从人类视频中重定向到机器人手上，往往精度不够；通过远程操作收集数据时，操作员无法获得力反馈；而基于外骨骼的收集方式，又很难大规模推广。更麻烦的是，这些数据通常都与特定的机械手绑定，换一套手就需要重新收集数据和重新训练。结果就是，用这些数据训练出来的策略往往非常脆弱。举个例子，在Bench2Dex这个评估十二种不同臂手配置双臂任务的基准测试上，即便是最强的训练策略，成功率也刚刚超过一半，而且一旦场景布局或物体位置稍有扰动，它们的性能就会大幅下降。</description>
+      <link>https://arxiv.org/abs/2611.33144</link>
+      <guid isPermaLink="false">2026-11-26-pyrua-dex-learning-programmatic-policies-for-dexterous-biman-5dc76cff.mp3</guid>
+      <pubDate>Thu, 26 Nov 2026 04:44:09 +0000</pubDate>
+      <itunes:duration>1595</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-26-pyrua-dex-learning-programmatic-policies-for-dexterous-biman-5dc76cff.mp3" length="9574992" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>KMed-31B Technical Report</title>
       <description>医疗大语言模型在临床部署上面临一个根本性的矛盾：要让一个模型既能答好医学选择题，又能好好跟病人或医生对话，这两件事放在一起训练，往往会互相拖累。KMed-31B这篇技术报告，就是专门为了解决这个矛盾而来的，同时还有一个非常现实的约束——模型要能在医院自己的服务器上跑，不能把病人数据发送到外部云端，所以参数量不能太大。</description>
       <link>https://arxiv.org/abs/2611.28719</link>

@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-26
+
+- **SEEK: Self-Evolution through Execution Knowledge for Agentic Robot Manipulation** · 4★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-26-seek-self-evolution-through-execution-knowledge-for-agentic--df179c26.mp3) [arXiv](https://arxiv.org/abs/2611.33915)
+- **DyLoMo-DiT: Dynamic Looped Mixture-of-Experts Diffusion Transformers** · 7★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-26-dylomo-dit-dynamic-looped-mixture-of-experts-diffusion-trans-066ff5c3.mp3) [arXiv](https://arxiv.org/abs/2611.30844)
+- **ROAM-Bench: Evaluating Embodied Active Spatial Intelligence through Evidence Verification** · 8★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-26-roam-bench-evaluating-embodied-active-spatial-intelligence-t-0c923e24.mp3) [arXiv](https://arxiv.org/abs/2611.33143)
+- **Target-Part Preference Optimization for Part-Aware 3D Generation** · 11★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-26-target-part-preference-optimization-for-part-aware-3d-genera-b0138cee.mp3) [arXiv](https://arxiv.org/abs/2611.30472)
+- **PyRUA-Dex: Learning Programmatic Policies for Dexterous Bimanual Manipulation with Coding Agents** · 18★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-26-pyrua-dex-learning-programmatic-policies-for-dexterous-biman-5dc76cff.mp3) [arXiv](https://arxiv.org/abs/2611.33144)
+
 ## 2026-11-25
 
 - **KMed-31B Technical Report** · 14★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-25-kmed-31b-technical-report-324ffcb6.mp3) [arXiv](https://arxiv.org/abs/2611.28719)

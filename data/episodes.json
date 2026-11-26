@@ -1,5 +1,65 @@
 [
   {
+    "key": "2611.33915",
+    "date": "2026-11-26",
+    "title": "SEEK: Self-Evolution through Execution Knowledge for Agentic Robot Manipulation",
+    "abstract": "General-purpose multimodal foundation models enable robots to adapt during deployment from observations and execution feedback, without task-specific demonstrations or training. However, the robot retains what it learns only in the model's working context. Once the task ends, it loses this execution knowledge, such as how to carry a bowl between two grippers. On the next attempt at the task, the robot may take just as long and repeat the same mistakes. To avoid this repetition, robots must retain execution knowledge across attempts. Yet replaying past actions is insufficient, because their effects depend on the current conditions. Procedures that determine actions from the current scene address this, but when they meet conditions that earlier attempts did not cover, revising them requires the measured effects of earlier actions. We therefore propose SEEK, an agentic framework that retains both, enabling robots to improve across attempts while keeping the underlying model fixed. To adapt retained knowledge to the current scene, SEEK adopts a Self-Evolving Programmatic Policy (SEPP) that encodes manipulation as executable procedures and determines each action from current observations. As the robot executes these procedures, SEEK records the measured effects of its actions, including those from failed attempts, in a Persistent Action-Effect Bank (PAEB). Where a retained procedure applies, it acts without a model request; where it meets a condition it does not cover, this evidence guides its revision. On RoboDojo, knowledge retained over ten attempts raises SEEK's average task score from 27.0 to 54.4 and its success rate from 19.7% to 48.0% across all 42 tasks. On 34 of these tasks with GPT-6.2 Astra, SEEK reaches 80.1 after five attempts, against 49.6 for the same model acting directly, and uses 77.6% fewer model requests. https://zeyangguan.github.io/SEEK-Agentic-Robot-Manipulation/",
+    "notes": "机器人每次做同一个任务，都在从头摸索——上一次学到的东西，任务一结束就消失了。这就是这篇论文要解决的核心问题。",
+    "url": "https://arxiv.org/abs/2611.33915",
+    "upvotes": 4,
+    "audio": "2026-11-26-seek-self-evolution-through-execution-knowledge-for-agentic--df179c26.mp3",
+    "size": 5538096,
+    "published": "2026-11-26T04:57:52.494663+00:00"
+  },
+  {
+    "key": "2611.30844",
+    "date": "2026-11-26",
+    "title": "DyLoMo-DiT: Dynamic Looped Mixture-of-Experts Diffusion Transformers",
+    "abstract": "Diffusion Transformers (DiTs) scale model capacity by increasing both parameter count and computation. Mixture-of-Experts (MoE) variants expand parameter capacity while keeping per-token computation roughly fixed, but still require substantial parameter storage. In this paper, we propose Dynamic Looped MoE DiT (DyLoMo-DiT), which reuses parameters rather than adding them: a weight-shared loop repeatedly applies the middle layers, while sparse experts allocate parameter capacity across tokens. This design deepens the network without adding parameters, freeing the parameter budget for other uses, such as more experts or more distinct layers. It also allocates compute dynamically, varying the number of passes across noise levels. Experiments show that DyLoMo-DiT makes more effective use of parameter and compute budgets, with further gains from assigning more passes to low-noise steps. On ImageNet 256times256, DyLoMo-DiT reduces FID by 11-24% relative to DiT and 36-56% relative to DiT-MoE at matched parameter and compute budgets. For text-to-image generation, a scaled DyLoMo-DiT achieves a higher GenEval score than FLUX.1 (0.714 vs. 0.673), with less than one tenth of its active parameters (1.05B vs. 12B).",
+    "notes": "现有的大型扩散模型，比如Diffusion Transformers，简称DiT，以及它的变体混合专家模型DiT-MoE，它们在生成高质量图像时，面临着一个核心挑战：如何更有效地利用模型的参数和计算资源。简单来说，就是模型越强，需要的参数越多，计算量也越大，但这种增长并非总是最高效的。",
+    "url": "https://arxiv.org/abs/2611.30844",
+    "upvotes": 7,
+    "audio": "2026-11-26-dylomo-dit-dynamic-looped-mixture-of-experts-diffusion-trans-066ff5c3.mp3",
+    "size": 5552208,
+    "published": "2026-11-26T04:54:35.941225+00:00"
+  },
+  {
+    "key": "2611.33143",
+    "date": "2026-11-26",
+    "title": "ROAM-Bench: Evaluating Embodied Active Spatial Intelligence through Evidence Verification",
+    "abstract": "Embodied spatial intelligence requires agents to gather information through exploration and interaction, then use it to reason and act. Existing benchmarks insufficiently distinguish correct outcomes from completion of these task requirements. We introduce ROAM-Bench to evaluate these abilities under robot motion and collision constraints. Independent checks use simulation state and episode records to assess outcomes and task requirements, with stronger checks of geometry, coverage, or placement. It comprises 250 manually validated tasks across 11 types in five groups and 27 indoor environments, covering object and room search, counting, geometric judgments, direction reasoning, and relocation. Human evaluators achieve 84% strict task success on 100 sampled tasks, with every correct outcome satisfying the required checks. Across seven frontier vision-language models, we identify two complementary failure modes: correct outcomes with unmet task requirements, and incorrect outcomes despite passing stronger checks. Oracle-input diagnostics show that more complete target observations and calibrated feedback improve final spatial judgments.",
+    "notes": "具身空间智能，也就是让机器人或智能体通过探索和互动来收集信息，然后利用这些信息进行推理和行动，它面临的一个核心挑战是：现有的评估基准往往无法准确区分智能体是真正完成了任务的所有必要步骤，还是仅仅碰巧得到了正确的结果。比如说，一个智能体可能需要在家中数清所有的马克杯，这包括搜索多个房间，打开封闭的储物柜，并追踪不同视角下的物体以避免重复计数。它还需要选择能揭示被遮挡物体的视角，并决定何时结束搜索。但问题是，智能体即使没有观察到每个马克杯，或者没有检查每个房间，也可能报告出正确的数量。反过来，它也可能收集了所有必需的观察结果，但仍然做出错误的数量判断。所以，仅仅看最终结果是否正确是不够的，我们还需",
+    "url": "https://arxiv.org/abs/2611.33143",
+    "upvotes": 8,
+    "audio": "2026-11-26-roam-bench-evaluating-embodied-active-spatial-intelligence-t-0c923e24.mp3",
+    "size": 7790976,
+    "published": "2026-11-26T04:51:49.712460+00:00"
+  },
+  {
+    "key": "2611.30472",
+    "date": "2026-11-26",
+    "title": "Target-Part Preference Optimization for Part-Aware 3D Generation",
+    "abstract": "Part-aware 3D generation requires not only globally plausible objects but also complete, well-separated semantic parts, yet high-quality part decompositions remain too scarce to support large-scale supervised fine-tuning. We study whether preference fine-tuning based on Direct Preference Optimization (DPO) can adapt a pretrained part-aware generator from limited part-annotated data without architectural changes. We rank candidates generated with different random seeds against ground-truth (GT) geometric metrics, and select the (object, target-part) examples with the largest across-seed quality gap. Each selected example stores a seed pair whose two flow trajectories share one clean GT compositional latent and differ only in Gaussian noise. We derive a reference-relative target-block preference loss from FlowDPO that compares the two trajectories against a frozen reference model. GT flow-matching losses on the target block and complete part set provide absolute supervision, while only the diffusion transformer (DiT) is updated. Human-ranked controls test an alternative ordering source, and synthetic cropping provides controlled loser targets that are incomplete by construction. Among the three training-set scales, the medium-scale setting gives the strongest result on held-out Objaverse and outperforms both the pretrained generator and the reported direct supervised fine-tuning baseline on the multi-part aggregate. Further analysis shows sensitivity to pair ordering, target-part coverage, and the balance between pairwise and GT supervision. Cross-dataset experiments show less consistent gains under distribution shift.",
+    "notes": "我们今天要讨论的这篇论文，它解决的是三维物体生成领域中一个非常具体但又至关重要的难题：如何让生成的三维物体，不仅整体看起来合理，而且其内部的语义部件也能做到完整、分离良好且独立可用。",
+    "url": "https://arxiv.org/abs/2611.30472",
+    "upvotes": 11,
+    "audio": "2026-11-26-target-part-preference-optimization-for-part-aware-3d-genera-b0138cee.mp3",
+    "size": 6048000,
+    "published": "2026-11-26T04:47:38.692534+00:00"
+  },
+  {
+    "key": "2611.33144",
+    "date": "2026-11-26",
+    "title": "PyRUA-Dex: Learning Programmatic Policies for Dexterous Bimanual Manipulation with Coding Agents",
+    "abstract": "Learning for dexterous manipulation is limited by the scarcity of high-quality demonstrations: retargeting from human video is imprecise, teleoperation gives no force feedback to the operator, and exoskeleton-based collection is hard to scale up. We present PyRUA-Dex, a framework that enables coding agents to develop dexterous manipulation through programmatic policy, without the need of demonstrations. The programmatic policy is developed in two stages: during exploration, multiple agents explore in parallel for task skills and ways to compose them, and a distilling agent condenses the successful attempts into a task library and one program. During refinement, this program is improved through randomized layouts for enhanced robustness and execution efficiency. In simulated environments, PyRUA-Dex achieves SOTA on Bench2Dex with a score of 72.9 and reaches 81.0% success on DexJoCo under full randomization, ahead of every trained policy on both benchmarks. In real world experiments on a bimanual platform with two 22-DoF hands, PyRUA-Dex learns to play piano, write calligraphy, and other tasks efficiently: learning a new piece from sheet music takes as little as 30 minutes. These results suggest that PyRUA-Dex is an effective framework for developing dexterous manipulation policies with coding agents in the absence of high quality dexterous manipulation demonstrations.",
+    "notes": "当前灵巧操作的学习，很大程度上受限于高质量演示数据的稀缺。我们来看一下具体痛点：从人类视频中重定向到机器人手上，往往精度不够；通过远程操作收集数据时，操作员无法获得力反馈；而基于外骨骼的收集方式，又很难大规模推广。更麻烦的是，这些数据通常都与特定的机械手绑定，换一套手就需要重新收集数据和重新训练。结果就是，用这些数据训练出来的策略往往非常脆弱。举个例子，在Bench2Dex这个评估十二种不同臂手配置双臂任务的基准测试上，即便是最强的训练策略，成功率也刚刚超过一半，而且一旦场景布局或物体位置稍有扰动，它们的性能就会大幅下降。",
+    "url": "https://arxiv.org/abs/2611.33144",
+    "upvotes": 18,
+    "audio": "2026-11-26-pyrua-dex-learning-programmatic-policies-for-dexterous-biman-5dc76cff.mp3",
+    "size": 9574992,
+    "published": "2026-11-26T04:44:09.978049+00:00"
+  },
+  {
     "key": "2611.28719",
     "date": "2026-11-25",
     "title": "KMed-31B Technical Report",
