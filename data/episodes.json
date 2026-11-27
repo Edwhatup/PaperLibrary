@@ -1,5 +1,65 @@
 [
   {
+    "key": "2611.34693",
+    "date": "2026-11-27",
+    "title": "ShowNow: Fine-Grained Speculative Streaming for Responsive World Models",
+    "abstract": "Interactive world models must generate video continuously while responding promptly to user actions. Real-time throughput alone leaves input latency unresolved: coarse generation blocks delay action updates, and generation after input adds work to the response path. We introduce ShowNow, a fine-grained speculative streaming framework that uses computation available during playback to prepare action-conditioned futures before input arrives. Single-latent commitment enables frequent decisions, while configurable preparation covers one to eight actions. We construct a matched multi-future dataset to train alternative continuations from a common state; shared-history tree execution and fused commitment make their preparation efficient. On a single H100, our 5B model sustains 480p generation at 16 fps with eight prepared futures. In ViZDoom, the complete ShowNow deployment reduces median input-to-display latency from 620 to 208 ms relative to the native-block SolarWM-FT deployment. Matched-policy experiments reduce restart empty ticks from 1.56% to 0.09% (94%) and improve on-time responses to action changes. These results establish complementary roles for fine-grained commitment and advance preparation, with measured trade-offs in visual fidelity and long-horizon consistency. ShowNow turns playback-time computation into responsive visual interaction. Project: https://github.com/showlab/ShowNow.",
+    "notes": "有一个问题在交互式世界模型领域长期没有被正面解决：模型可以跑到每秒十六帧，画面流畅，但当用户按下一个新的按键时，系统还在忙着处理上一条指令，新动作的视觉反馈要等很长时间才能出现在屏幕上。这就是输入延迟，也叫 input-to-display latency。吞吐量够了，但响应性不够。ShowNow 这篇论文专门攻这个问题。",
+    "url": "https://arxiv.org/abs/2611.34693",
+    "upvotes": 16,
+    "audio": "2026-11-27-shownow-fine-grained-speculative-streaming-for-responsive-wo-45e11c05.mp3",
+    "size": 5160960,
+    "published": "2026-11-27T04:57:13.074210+00:00"
+  },
+  {
+    "key": "2611.34290",
+    "date": "2026-11-27",
+    "title": "StateWeaver: Multi-Agent Coordination of Story-State Transitions for Long-Horizon Video Generation",
+    "abstract": "Modern video foundation models generate high-quality short clips, but preserving long-video consistency and correctly depicting event-driven state changes remain challenging. Existing agentic workflows face these challenges because continual planning and repair accumulate context, while reference updates remain limited. We introduce StateWeaver, which combines Active States and Hierarchical Collaboration to connect review-driven visual reference updates with cross-shot state inheritance. Active States translate state discrepancies identified during review into concrete visual asset requirements that guide reference construction, validation, and regeneration, preserving identity and already-correct content while repairing target attributes. Confirmed generation results are linked to the corresponding asset states, story time, and reference versions for verification and reuse by subsequent shots. Hierarchical Collaboration isolates execution contexts by task, clip, and repair round, and uses hierarchical memory to organize this process across multiple sets. Across multiple benchmarks, StateWeaver outperforms existing methods and produces long videos with sustained cross-shot consistency under predefined and autonomously planned storyboards.",
+    "notes": "有一个核心难题困扰着所有想用AI生成长视频的研究者：短视频生成模型的质量已经很好了，但把十几个、几十个镜头串成一个连贯故事，依然极其困难。角色换个景别就变了样，一个道具被用过之后下一个镜头还是原来的状态，事件引发的变化根本没有被后续画面继承。这篇论文StateWeaver就是专门来解决这个问题的，而且它的解法不是去训练一个更大的视频模型，而是用多智能体协作的框架，把已有的短视频生成模型当成渲染器，在上面构建一套精密的状态管理和修复机制。",
+    "url": "https://arxiv.org/abs/2611.34290",
+    "upvotes": 18,
+    "audio": "2026-11-27-stateweaver-multi-agent-coordination-of-story-state-transiti-7828f5f0.mp3",
+    "size": 5901984,
+    "published": "2026-11-27T04:53:58.997582+00:00"
+  },
+  {
+    "key": "2611.34457",
+    "date": "2026-11-27",
+    "title": "ProxyGenBench: Benchmarking Proxy-Guided Video Generation",
+    "abstract": "Recent video generators produce realistic videos, yet controlling how scenes unfold remains challenging. Structural proxies, such as animated 3D blockouts, guide generation by specifying scene layout, motion, camera behavior, and event order. However, these coarse inputs leave details unspecified and may contain artifacts that should not be reproduced. Successful proxy-guided generation must therefore Preserve intended structure, Complete missing content and correct proxy artifacts, and Bind text, image, and audio conditions to the right entities and events. We introduce ProxyGenBench to study these interacting requirements, with 312 evaluation cases from 60 scenes across three scene tasks and controlled variations in proxy fidelity, text detail, and multimodal inputs. We evaluate five video generators using verified, case-specific checklists. Experiments show that proxies improve spatiotemporal control, but greater proxy detail can coincide with poorer completion, while strong structural adherence does not ensure correct binding.",
+    "notes": "视频生成领域有一个长期悬而未决的问题：我们已经能让模型生成画面逼真的视频，但要精确控制一个场景怎么展开，依然非常困难。角色在哪里、怎么移动、镜头怎么切、事件按什么顺序发生——这些空间和时间层面的结构性要求，单靠文字描述很难说清楚。这篇来自腾讯、中科院自动化所、加州大学圣地亚哥分校等机构联合发布的论文，就是在直面这个难题。它的名字叫 ProxyGenBench，核心贡献是构建了一个专门评估代理引导视频生成的基准测试集，把这个领域里真正棘手的三件事——结构保留、内容补全、条件绑定——同时放在台面上来量化。",
+    "url": "https://arxiv.org/abs/2611.34457",
+    "upvotes": 32,
+    "audio": "2026-11-27-proxygenbench-benchmarking-proxy-guided-video-generation-ead5550a.mp3",
+    "size": 5482368,
+    "published": "2026-11-27T04:50:49.859925+00:00"
+  },
+  {
+    "key": "2611.34232",
+    "date": "2026-11-27",
+    "title": "OS-Omni: Benchmarking Generalist Computer-Using Agents on Long-Horizon Workflows Across Platforms",
+    "abstract": "Computer-using agents are increasingly expected to complete realistic user goals rather than isolated GUI actions. However, existing benchmarks typically isolate web, mobile, or desktop environments, leaving it unclear whether a single generalist agent can execute long-horizon workflows that span multiple operating systems and persistent application states. We introduce OS-Omni, a live cross-platform benchmark and execution environment for evaluating computer-using agents across Windows, Ubuntu, macOS, iOS, Android, and Web environments. OS-Omni is released in versioned waves of 300 tasks each; this paper focuses on the first release, v1, which contains 48 tasks per platform and 12 cross-platform workflows that pair a desktop with an Android phone. OS-Omni provides reproducible initialization, platform-specific adapters, trajectory logging, and executable final-state evaluators, and includes controlled service-backed applications for workflows involving account, cart, budget, calendar, message, and other persistent state. Human studies show that OS-Omni tasks require 67.54 interaction steps, substantially exceeding OSWorld references of 15.0 steps. On v1, the strongest evaluated agent, Claude Opus 5.5, reaches 68.5% average success, trailing the 77.3% human reference by 8.8 points; the gap is uneven across platforms, with frontier models exceeding humans on Linux but trailing them by more than 25 points on iOS and macOS. These results indicate that current agents remain far from platform-robust, long-horizon computer use, especially when success requires sustained state tracking and durable final-state changes.",
+    "notes": "当前最强的AI智能体，能不能像真实用户一样，在Windows、Mac、iPhone、安卓和网页之间来回切换，完成一个跨越多个平台、需要几十步操作的完整工作流？这就是这篇论文OS-Omni想回答的核心问题。",
+    "url": "https://arxiv.org/abs/2611.34232",
+    "upvotes": 38,
+    "audio": "2026-11-27-os-omni-benchmarking-generalist-computer-using-agents-on-lon-fdfe2d88.mp3",
+    "size": 5448672,
+    "published": "2026-11-27T04:47:38.613782+00:00"
+  },
+  {
+    "key": "2611.34051",
+    "date": "2026-11-27",
+    "title": "Stable Gated DeltaNet-2: Understanding and Mitigating Recurrent State Instability",
+    "abstract": "Linear attention offers an efficient solution for long-sequence modeling via linear complexity and fixed-size recurrent states. Gated DeltaNet-2 (GDN-2) introduces independent channel-wise control over erasure and writing, enhancing state-update expressiveness and in-context retrieval, yet it suffers from training failures during long-context training. We trace these failures to the asymmetry between reading and modification directions during erasure, which yields non-normal erase operators whose directional gains accumulate across tokens, triggering exponential state growth even without new writes. To resolve this, we propose , employing symmetric erasure to ensure non-expansive state propagation and decay-regulated residual writing to preserve writing flexibility. Theoretically, we establish an O(T) upper bound on recurrent state growth while retaining chunkwise parallel computation. Experiments on ~1.6B parameter models show that  achieves stable training alongside improved long-context retrieval. Compared to GDN-2, it boosts the 128K average RULER score by 6.80 points in the recurrent setting and average accuracy across nine downstream tasks by 0.62 points in the hybrid setting.",
+    "notes": "训练一个能处理超长文本的大语言模型，有一个隐蔽但致命的问题：模型内部用来存储历史信息的\"记忆矩阵\"，会在某些条件下悄悄膨胀，最终爆炸崩溃。这篇论文要解决的，正是这个问题。",
+    "url": "https://arxiv.org/abs/2611.34051",
+    "upvotes": 51,
+    "audio": "2026-11-27-stable-gated-deltanet-2-understanding-and-mitigating-recurre-780c3f89.mp3",
+    "size": 4242672,
+    "published": "2026-11-27T04:44:35.611775+00:00"
+  },
+  {
     "key": "2611.33915",
     "date": "2026-11-26",
     "title": "SEEK: Self-Evolution through Execution Knowledge for Agentic Robot Manipulation",

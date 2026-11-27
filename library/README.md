@@ -3,6 +3,14 @@
 📻 播客订阅源（RSS）：`https://edwhatup.github.io/PaperLibrary/rss.xml`
 
 
+## 2026-11-27
+
+- **ShowNow: Fine-Grained Speculative Streaming for Responsive World Models** · 16★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-27-shownow-fine-grained-speculative-streaming-for-responsive-wo-45e11c05.mp3) [arXiv](https://arxiv.org/abs/2611.34693)
+- **StateWeaver: Multi-Agent Coordination of Story-State Transitions for Long-Horizon Video Generation** · 18★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-27-stateweaver-multi-agent-coordination-of-story-state-transiti-7828f5f0.mp3) [arXiv](https://arxiv.org/abs/2611.34290)
+- **ProxyGenBench: Benchmarking Proxy-Guided Video Generation** · 32★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-27-proxygenbench-benchmarking-proxy-guided-video-generation-ead5550a.mp3) [arXiv](https://arxiv.org/abs/2611.34457)
+- **OS-Omni: Benchmarking Generalist Computer-Using Agents on Long-Horizon Workflows Across Platforms** · 38★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-27-os-omni-benchmarking-generalist-computer-using-agents-on-lon-fdfe2d88.mp3) [arXiv](https://arxiv.org/abs/2611.34232)
+- **Stable Gated DeltaNet-2: Understanding and Mitigating Recurrent State Instability** · 51★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-27-stable-gated-deltanet-2-understanding-and-mitigating-recurre-780c3f89.mp3) [arXiv](https://arxiv.org/abs/2611.34051)
+
 ## 2026-11-26
 
 - **SEEK: Self-Evolution through Execution Knowledge for Agentic Robot Manipulation** · 4★ — [🔊 音频](https://edwhatup.github.io/PaperLibrary/audio/2026-11-26-seek-self-evolution-through-execution-knowledge-for-agentic--df179c26.mp3) [arXiv](https://arxiv.org/abs/2611.33915)

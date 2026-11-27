@@ -8,6 +8,51 @@
     <itunes:author>Paper Library</itunes:author>
     <itunes:category text="Technology"/>
     <item>
+      <title>ShowNow: Fine-Grained Speculative Streaming for Responsive World Models</title>
+      <description>有一个问题在交互式世界模型领域长期没有被正面解决：模型可以跑到每秒十六帧，画面流畅，但当用户按下一个新的按键时，系统还在忙着处理上一条指令，新动作的视觉反馈要等很长时间才能出现在屏幕上。这就是输入延迟，也叫 input-to-display latency。吞吐量够了，但响应性不够。ShowNow 这篇论文专门攻这个问题。</description>
+      <link>https://arxiv.org/abs/2611.34693</link>
+      <guid isPermaLink="false">2026-11-27-shownow-fine-grained-speculative-streaming-for-responsive-wo-45e11c05.mp3</guid>
+      <pubDate>Fri, 27 Nov 2026 04:57:13 +0000</pubDate>
+      <itunes:duration>860</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-27-shownow-fine-grained-speculative-streaming-for-responsive-wo-45e11c05.mp3" length="5160960" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>StateWeaver: Multi-Agent Coordination of Story-State Transitions for Long-Horizon Video Generation</title>
+      <description>有一个核心难题困扰着所有想用AI生成长视频的研究者：短视频生成模型的质量已经很好了，但把十几个、几十个镜头串成一个连贯故事，依然极其困难。角色换个景别就变了样，一个道具被用过之后下一个镜头还是原来的状态，事件引发的变化根本没有被后续画面继承。这篇论文StateWeaver就是专门来解决这个问题的，而且它的解法不是去训练一个更大的视频模型，而是用多智能体协作的框架，把已有的短视频生成模型当成渲染器，在上面构建一套精密的状态管理和修复机制。</description>
+      <link>https://arxiv.org/abs/2611.34290</link>
+      <guid isPermaLink="false">2026-11-27-stateweaver-multi-agent-coordination-of-story-state-transiti-7828f5f0.mp3</guid>
+      <pubDate>Fri, 27 Nov 2026 04:53:58 +0000</pubDate>
+      <itunes:duration>983</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-27-stateweaver-multi-agent-coordination-of-story-state-transiti-7828f5f0.mp3" length="5901984" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>ProxyGenBench: Benchmarking Proxy-Guided Video Generation</title>
+      <description>视频生成领域有一个长期悬而未决的问题：我们已经能让模型生成画面逼真的视频，但要精确控制一个场景怎么展开，依然非常困难。角色在哪里、怎么移动、镜头怎么切、事件按什么顺序发生——这些空间和时间层面的结构性要求，单靠文字描述很难说清楚。这篇来自腾讯、中科院自动化所、加州大学圣地亚哥分校等机构联合发布的论文，就是在直面这个难题。它的名字叫 ProxyGenBench，核心贡献是构建了一个专门评估代理引导视频生成的基准测试集，把这个领域里真正棘手的三件事——结构保留、内容补全、条件绑定——同时放在台面上来量化。</description>
+      <link>https://arxiv.org/abs/2611.34457</link>
+      <guid isPermaLink="false">2026-11-27-proxygenbench-benchmarking-proxy-guided-video-generation-ead5550a.mp3</guid>
+      <pubDate>Fri, 27 Nov 2026 04:50:49 +0000</pubDate>
+      <itunes:duration>913</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-27-proxygenbench-benchmarking-proxy-guided-video-generation-ead5550a.mp3" length="5482368" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>OS-Omni: Benchmarking Generalist Computer-Using Agents on Long-Horizon Workflows Across Platforms</title>
+      <description>当前最强的AI智能体，能不能像真实用户一样，在Windows、Mac、iPhone、安卓和网页之间来回切换，完成一个跨越多个平台、需要几十步操作的完整工作流？这就是这篇论文OS-Omni想回答的核心问题。</description>
+      <link>https://arxiv.org/abs/2611.34232</link>
+      <guid isPermaLink="false">2026-11-27-os-omni-benchmarking-generalist-computer-using-agents-on-lon-fdfe2d88.mp3</guid>
+      <pubDate>Fri, 27 Nov 2026 04:47:38 +0000</pubDate>
+      <itunes:duration>908</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-27-os-omni-benchmarking-generalist-computer-using-agents-on-lon-fdfe2d88.mp3" length="5448672" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Stable Gated DeltaNet-2: Understanding and Mitigating Recurrent State Instability</title>
+      <description>训练一个能处理超长文本的大语言模型，有一个隐蔽但致命的问题：模型内部用来存储历史信息的"记忆矩阵"，会在某些条件下悄悄膨胀，最终爆炸崩溃。这篇论文要解决的，正是这个问题。</description>
+      <link>https://arxiv.org/abs/2611.34051</link>
+      <guid isPermaLink="false">2026-11-27-stable-gated-deltanet-2-understanding-and-mitigating-recurre-780c3f89.mp3</guid>
+      <pubDate>Fri, 27 Nov 2026 04:44:35 +0000</pubDate>
+      <itunes:duration>707</itunes:duration>
+      <enclosure url="https://edwhatup.github.io/PaperLibrary/audio/2026-11-27-stable-gated-deltanet-2-understanding-and-mitigating-recurre-780c3f89.mp3" length="4242672" type="audio/mpeg"/>
+    </item>
+    <item>
       <title>SEEK: Self-Evolution through Execution Knowledge for Agentic Robot Manipulation</title>
       <description>机器人每次做同一个任务，都在从头摸索——上一次学到的东西，任务一结束就消失了。这就是这篇论文要解决的核心问题。</description>
       <link>https://arxiv.org/abs/2611.33915</link>
